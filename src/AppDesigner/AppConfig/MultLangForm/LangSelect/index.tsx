@@ -22,7 +22,7 @@ const LangSelect = memo(() => {
   const [keyword, setKeyWord] = useState("");
   const { t } = useTranslation();
   const appConfig = useDesignerAppConfig();
-  const getLang = useCallback((key) => {
+  const getLang = useCallback((key: any) => {
     return langs.find(lang => lang.key === key)
   }, [])
 
@@ -55,7 +55,7 @@ const LangSelect = memo(() => {
       ...appConfig,
       app: {
         sync: {
-          id: appConfig.app?.id,
+          id: appConfig?.app?.id,
         }
       },
       schemaJson: {

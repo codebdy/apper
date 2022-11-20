@@ -18,7 +18,7 @@ const ResourcesTable = memo(() => {
   const { langLocales } = useDesignerParams();
   const [deletingId, setDeletingId] = useState<ID>();
   const getLocal = useCallback((id: ID) => {
-    return langLocales.find(lang => lang.id === id);
+    return langLocales?.find(lang => lang.id === id);
   }, [langLocales])
 
   const [remove, { error, loading }] = useDeleteLangLocal({
@@ -52,7 +52,7 @@ const ResourcesTable = memo(() => {
       title: t('Operation'),
       key: 'operation',
       width: 100,
-      render: (_, record) => (
+      render: (_: any, record: any) => (
         <Space>
           <Button
             type="text"
@@ -97,7 +97,7 @@ const ResourcesTable = memo(() => {
   }, [keyword]);
 
   const data = useMemo(() => {
-    return langLocales.filter(lang => matchKeyword(lang))?.map((langLocal => {
+    return langLocales?.filter(lang => matchKeyword(lang))?.map((langLocal => {
       return {
         key: langLocal.id,
         name: langLocal.name,

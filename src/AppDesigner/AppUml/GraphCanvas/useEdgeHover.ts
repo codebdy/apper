@@ -18,7 +18,7 @@ export function useEdgeHover(graph: Graph | undefined, appId: ID) {
     }
   }, [drawingLine?.tempEdgeId]);
 
-  const handleEdgeMouseLeave = useCallback(({ edge }) => {
+  const handleEdgeMouseLeave = useCallback(({ edge }: any) => {
     if (edge) {
       edge.attr({
         line: {

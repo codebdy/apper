@@ -1,8 +1,7 @@
-import React from "react"
+import { MonacoInput } from "designable/react-settings-form";
 import { memo } from "react"
-import { MonacoInput } from "AppDesigner/UiDesigner/SettingsForm/components/MonacoInput";
 
-function formatXml(xml) {
+function formatXml(xml: any) {
   // https://stackoverflow.com/questions/57039218/doesnt-monaco-editor-support-xml-language-by-default
   const PADDING = ' '.repeat(2);
   const reg = /(>)(<)(\/*)/g;
@@ -10,7 +9,7 @@ function formatXml(xml) {
 
   xml = xml.replace(reg, '$1\r\n$2$3');
 
-  return xml.split('\r\n').map((node, index) => {
+  return xml.split('\r\n').map((node: any, index: number) => {
     let indent = 0;
     if (node.match(/.+<\/\w[^>]*>$/)) {
       indent = 0;
@@ -34,19 +33,6 @@ export const XmlEditor = memo((
   }
 ) => {
   const { value, onChange } = props;
-  const handleEditorDidMount = (editor: any, monaco: any) => {
-    //不起作用，先不管了
-    monaco.languages?.registerDocumentFormattingEditProvider('xml', {
-      async provideDocumentFormattingEdits(model, options, token) {
-        return [
-          {
-            range: model.getFullModelRange(),
-            text: formatXml(model.getValue()),
-          },
-        ];
-      },
-    });
-  }
 
   return (
     <MonacoInput

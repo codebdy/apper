@@ -46,7 +46,7 @@ const LangLocalEditDialog = memo((
 
   const handleOk = () => {
     form.validateFields().then((formValues) => {
-      if (langLocales.find(lang => lang.name === formValues.name && langLocal.id !== lang.id)) {
+      if (langLocales?.find(lang => lang.name === formValues.name && langLocal?.id !== lang.id)) {
         setNameError(t("ErrorNameRepeat"))
         return;
       }

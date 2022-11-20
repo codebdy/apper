@@ -26,7 +26,7 @@ const MultLangForm = memo(() => {
       ...appConfig,
       app: {
         sync: {
-          id: appConfig.app?.id,
+          id: appConfig?.app?.id,
         }
       },
       schemaJson: {
