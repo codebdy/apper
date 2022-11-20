@@ -8,7 +8,6 @@ import { TabPanelDesigner } from './PageTabPanelDesigner'
 import { FooterToolbarDesigner } from './FooterToolbarDesigner'
 import { observer } from '@formily/reactive-react'
 import './style.less'
-import { LoadTemplate } from "@designable/formily-antd/lib/common/LoadTemplate"
 import { HeaderContentExtraDesigner } from './HeaderContentExtraDesigner'
 import { IPageContainerProps } from '../view/IPageContainerProps'
 import { IHeaderActionsProps } from '../view/PageHeaderActions'
@@ -16,13 +15,13 @@ import { IPageHeaderContentProps } from '../view/PageHeaderContent'
 import { IPageHeaderContentExtraProps } from '../view/PageHeaderContentExtra'
 import { IPageTabPanelProps } from '../view/PageTabPanel'
 import { IPageFooterToolbarProps } from '../view/PageFooterToolbar'
-import { useFindNode, queryNodesByComponentPath, useRemoveNode } from '@rxdrag/plugin-sdk'
+import { useFindNode, queryNodesByComponentPath, useRemoveNode } from 'plugin-sdk'
 import { PageContainerShell } from '../view/PageContainerShell'
 import { PageHeader } from '../view/PageHeader'
 import { PageBody } from '../view/PageBody'
 import { IPageTitleProps } from '../view/PageTitle'
 import { PageTitleDesigner } from './PageTitleDesigner'
-import { useParseLangMessage } from "@rxdrag/plugin-sdk";
+import { useParseLangMessage } from "plugin-sdk";
 
 const { TabPane } = Tabs;
 export const routesPlaceholder = [

@@ -6,13 +6,13 @@ import {
   useFieldSchema,
   useField
 } from '@formily/react'
-import { useQueryParams } from '~/datasource/hooks/useQueryParams';
-import { useDataQuery } from '~/datasource/hooks/useDataQuery';
-import { useShowError } from '~/AppDesigner/hooks/useShowError';
+import { useQueryParams } from 'datasource/hooks/useQueryParams';
+import { useDataQuery } from 'datasource/hooks/useDataQuery';
+import { useShowError } from 'AppDesigner/hooks/useShowError';
 import { Spin } from "antd";
 import { Field, isField } from '@formily/core'
 import { useExpressionScope } from '@formily/react'
-import { InstanceContext } from "@rxdrag/plugin-sdk/contexts/instance";
+import { InstanceContext } from "plugin-sdk/contexts/instance";
 
 const Component = observer((props: {
   dataBind: IDataBindSource,

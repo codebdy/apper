@@ -55,7 +55,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'PageContainer.HeaderContent',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'PageContainer.HeaderContent',
+    selector: (node) => node.props?.['x-component'] === 'PageContainer.HeaderContent',
     designerProps: {
       droppable: true,
       draggable: false,
@@ -68,7 +68,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'PageContainer.HeaderContentExtra',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'PageContainer.HeaderContentExtra',
+    selector: (node) => node.props?.['x-component'] === 'PageContainer.HeaderContentExtra',
     designerProps: {
       droppable: true,
       draggable: false,
@@ -81,7 +81,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'PageContainer.TabPanel',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'PageContainer.TabPanel',
+    selector: (node) => node.props?.['x-component'] === 'PageContainer.TabPanel',
     designerProps: {
       droppable: true,
       draggable: false,
@@ -94,7 +94,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'PageContainer.FooterToolbar',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'PageContainer.FooterToolbar',
+    selector: (node) => node.props?.['x-component'] === 'PageContainer.FooterToolbar',
     designerProps: {
       droppable: true,
       draggable: false,

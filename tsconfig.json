@@ -19,11 +19,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "paths": {
-      "~/*": ["src/*"],
-      "@rxdrag/plugin-sdk/*": ["src/plugin-sdk/*"],
-      "@rxdrag/plugin-sdk": ["src/plugin-sdk"]
-    },
+    // "paths": {
+    //   "~/*": ["src/*"],
+    //   "@rxdrag/plugin-sdk/*": ["src/plugin-sdk/*"],
+    //   "@rxdrag/plugin-sdk": ["src/plugin-sdk"]
+    // },
     "baseUrl": "src"
   },
   "include": [
