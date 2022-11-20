@@ -11,11 +11,11 @@ export interface IComponentProps {
 
 const Component = observer((props: IComponentProps) => {
   const { className, ...other } = props;
-  const { setScrolled } = useLayoutParams();
+  const { setScrolled } = useLayoutParams() as any;
   const ref = useRef<HTMLDivElement>(null)
   const handleScroll = useCallback((event: Event) => {
     const scrollRect = ref?.current?.getBoundingClientRect();
-    if (scrollRect.y < 40) {
+    if ((scrollRect?.y||0) < 40) {
       setScrolled(true)
     } else {
       setScrolled(false)

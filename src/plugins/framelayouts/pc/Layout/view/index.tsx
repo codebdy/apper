@@ -1,5 +1,5 @@
 import { observer } from "@formily/reactive-react"
-import React, { CSSProperties, useCallback, useMemo, useState } from "react"
+import React, { CSSProperties, useMemo, useState } from "react"
 import "./style.less"
 import cls from "classnames"
 import { LayoutContext } from "plugin-sdk/contexts/layout"
@@ -27,7 +27,7 @@ const Component = observer((props: IComponentProps) => {
     }
   }, [scrolled])
   return (
-    <LayoutContext.Provider value={config}>
+    <LayoutContext.Provider value={config as any}>
       <div
         className={cls("appx-layout", className)}
         style={{ flexFlow: flexFlow, ...style }}

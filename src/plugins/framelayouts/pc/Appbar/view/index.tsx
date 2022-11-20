@@ -13,7 +13,7 @@ export interface IComponentProps {
 
 const Component = observer((props: IComponentProps) => {
   const { className, fixed = true, children, ...other } = props;
-  const { scrolled } = useLayoutParams();
+  const { scrolled } = useLayoutParams() as any;
   return (
     <>
       <Header className={cls(className, "appx-appbar", "bottom-border", { "fixed": fixed }, { float: scrolled })} {...other}>
