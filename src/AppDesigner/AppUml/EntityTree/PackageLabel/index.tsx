@@ -32,7 +32,7 @@ const PackageLabel = memo((
   const backup = useBackupSnapshot(appId);
   const setPackages = useSetRecoilState(packagesState(appId));
 
-  const handleVisableChange = useCallback((visible) => {
+  const handleVisableChange = useCallback((visible: any) => {
     setVisible(visible)
   }, []);
 
@@ -44,8 +44,8 @@ const PackageLabel = memo((
   const handleEditFinish = useCallback((newPkg?: PackageMeta) => {
     backup()
     setEditing(false);
-    setPackages(packages => packages.map(pg => pg.uuid === newPkg.uuid ? newPkg : pg))
-  }, [backup, name, pkg, setPackages])
+    setPackages(packages => packages.map(pg => pg.uuid === newPkg?.uuid ? newPkg : pg) as any)
+  }, [backup, setPackages])
 
   const handleClose = useCallback(() => {
     setEditing(false);
