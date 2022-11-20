@@ -9,10 +9,10 @@ import { useSave } from './useSave';
 var JSZip = require("jszip")
 
 async function getFile(template: ITemplateInfo, zip: any) {
-  const respo = await fetch(template.imageUrl);
+  const respo = await fetch(template.imageUrl || "");
   const buffer = await respo.arrayBuffer();
   const tArray = template.imageUrl?.split("/")
-  const fileName = tArray[tArray.length - 1]
+  const fileName = tArray?.[tArray?.length || 0 - 1]
   template.imageUrl = fileName;
   zip.file(fileName, buffer, { binary: true })
 }
@@ -36,25 +36,25 @@ export const ExportDialog = memo((
   const { t } = useTranslation();
 
   const handleCancel = useCallback(() => {
-    onClose();
+    onClose && onClose();
   }, [onClose])
 
-  const publics = useMemo(() => templates.filter(template => template.categoryType === CategoryType.Public), [templates])
-  const locales = useMemo(() => templates.filter(template => template.categoryType === CategoryType.Local), [templates])
+  const publics = useMemo(() => templates?.filter(template => template.categoryType === CategoryType.Public), [templates])
+  const locales = useMemo(() => templates?.filter(template => template.categoryType === CategoryType.Local), [templates])
 
   const publicSelects = useMemo(() => {
-    return selectedIds.filter(id => publics.find(template => template.id === id))
+    return selectedIds.filter(id => publics?.find(template => template.id === id))
   }, [selectedIds, publics])
 
   const localeSelects = useMemo(() => {
-    return selectedIds.filter(id => locales.find(template => template.id === id))
+    return selectedIds.filter(id => locales?.find(template => template.id === id))
   }, [selectedIds, locales])
 
   const save = useSave(() => {
     message.success(t("OperateSuccess"));
     setExporting(false);
     setSelectedIds([]);
-    onClose();
+    onClose && onClose();
   })
 
   const handleOk = useCallback(() => {
@@ -63,7 +63,7 @@ export const ExportDialog = memo((
     const temps = selectedIds.map(id => {
       const template = templates?.find(template => template.id === id);
       const newTemplate: ITemplateInfo = JSON.parse(JSON.stringify(template));
-      delete newTemplate.id;
+      newTemplate.id && (delete newTemplate.id);
       newTemplate.categoryType = CategoryType.Public;
       return newTemplate
     })
@@ -71,14 +71,14 @@ export const ExportDialog = memo((
     getAllFiles(temps, zip).then(() => {
       zip.file("templates.json", JSON.stringify({ templates: temps }, null, 2))
       zip.generateAsync({ type: "blob" })
-        .then(function (content) {
+        .then(function (content: any) {
           save("templates", content);
         });
     }).catch((err) => {
       setExporting(false);
       console.error(err)
     })
-  }, [save, onClose, selectedIds, templates])
+  }, [save, selectedIds, templates])
 
   const handleSelectChange = useCallback((id: ID, checked?: boolean) => {
     setSelectedIds(ids => {
@@ -108,19 +108,19 @@ export const ExportDialog = memo((
         defaultActiveKey="1"
         items={[
           {
-            label: t("Designer.PublicTemplates") + ` (${publicSelects.length}/${publics.length})`,
+            label: t("Designer.PublicTemplates") + ` (${publicSelects.length}/${publics?.length})`,
             key: '1',
             children: <TemplateList
-              templates={publics}
+              templates={publics || []}
               selectedIds={publicSelects}
               onSelectChange={handleSelectChange}
             />,
           },
           {
-            label: t("Designer.LocaltTemplates") + ` (${localeSelects.length}/${locales.length})`,
+            label: t("Designer.LocaltTemplates") + ` (${localeSelects.length}/${locales?.length})`,
             key: '2',
             children: <TemplateList
-              templates={locales}
+              templates={locales || []}
               selectedIds={localeSelects}
               onSelectChange={handleSelectChange}
             />,

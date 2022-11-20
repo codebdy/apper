@@ -4,7 +4,7 @@ import { saveFile } from "./saveFile";
 export function useSave(onSaved?: () => void) {
 
   const save = useCallback(
-    (name, content?:any) => {
+    (name:string, content?:any) => {
       saveFile(name, content).then(
         (savedName) => {
           if (savedName) {

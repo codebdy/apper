@@ -26,7 +26,7 @@ export const TemplateList = memo((
               <Checkbox
                 checked={!!selectedIds?.find(id => id === item.id)}
                 onChange={(e) => {
-                  onSelectChange(item.id, e.target.checked)
+                  onSelectChange(item?.id||"", e.target.checked)
                 }}
               />
             ]}

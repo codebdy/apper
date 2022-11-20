@@ -1,5 +1,4 @@
 import { createContext, useContext } from "react";
-import { IOrderBy } from "src/datasource/model/IOrderBy";
 
 export interface ITableConfig {
   size?: "middle" | "small",

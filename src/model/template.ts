@@ -17,7 +17,7 @@ export interface ElementsJson {
 }
 
 export interface ITemplateInfo {
-  id: ID;
+  id?: ID;
   name?: string;
   imageUrl?: string;
   dependencies?: any;
