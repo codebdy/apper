@@ -7,8 +7,8 @@ export const PluginList = memo(() => {
   const { uploadedPlugins, debugPlugins } = useDesignerParams();
   const items = useMemo(() => {
     return [
-      ...uploadedPlugins,
-      ...debugPlugins
+      ...uploadedPlugins || [],
+      ...debugPlugins || []
     ]
   }, [debugPlugins, uploadedPlugins]);
 

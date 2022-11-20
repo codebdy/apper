@@ -84,7 +84,7 @@ export const UploadDialog: React.FC = memo(() => {
     setOperationType(e.target.value)
   }, []);
 
-  const handleChange = useCallback(({ fileList }) => {
+  const handleChange = useCallback(({ fileList }: any) => {
     setUploadedPlugins((fileList as UploadFile[]).filter(
       file => file.status === "done" && file.xhr?.responseURL
     ).map(file => {

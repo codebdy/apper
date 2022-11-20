@@ -61,8 +61,8 @@ export const AppBpmn = memo((props) => {
     setProcesses(processes || [])
   }, [processes, setProcesses])
 
-  useEffect(()=>{
-    setCategories(categories||[])
+  useEffect(() => {
+    setCategories(categories || [])
   }, [categories, setCategories])
 
   const [upsert, { error: saveError, loading: saving }] = useUpsertProcess({
@@ -73,9 +73,9 @@ export const AppBpmn = memo((props) => {
 
   useShowError(error || saveError || listError || categoryierError);
 
-  const handleCommandStackChanged = useCallback((e) => {
+  const handleCommandStackChanged = useCallback((e: any) => {
     setChanged(true);
-  }, [bpmnModeler])
+  }, [])
 
   useEffect(() => {
     setChanged(false);
@@ -116,22 +116,19 @@ export const AppBpmn = memo((props) => {
         }
       });
       setBpmnModeler(bpmnModeler)
-      bpmnModeler.on('import.done', (event) => {
-        const {
-          error,
-          warnings
-        } = event;
+      bpmnModeler.on('import.done', (event: any) => {
+        const { error } = event;
 
         if (error) {
           console.error(error)
-          container.classList.remove('with-diagram')
-          container.classList.add('with-error');
+          container?.classList.remove('with-diagram')
+          container?.classList.add('with-error');
 
         } else {
           bpmnModeler.get('canvas').zoom('fit-viewport');
           minMapRef.current && bpmnModeler.get('minimap').open();
-          container.classList.remove('with-error')
-          container.classList.add('with-diagram');
+          container?.classList.remove('with-error')
+          container?.classList.add('with-diagram');
         }
       });
 
@@ -142,39 +139,39 @@ export const AppBpmn = memo((props) => {
         bpmnModeler?.destroy();
       }
     }
-  }, [process, customTranslateModule])
+  }, [process, customTranslateModule, selectedProcessId])
 
   const toggleMinMap = useCallback(() => {
     setMinMap(minMap => !minMap)
-  }, [])
+  }, [setMinMap])
 
   const handleSave = useCallback(() => {
     bpmnModeler.saveXML({ format: true })
-      .then((xml) => {
+      .then((xml: any) => {
         upsert({ id: process?.id, xml: xml?.xml })
       })
-      .catch(err => {
+      .catch((err: any) => {
         console.error(err)
       })
-  }, [bpmnModeler, process])
+  }, [bpmnModeler, process?.id, upsert])
 
   const handleToggleCode = useCallback(() => {
     if (showXml) {
       bpmnModeler.importXML(xml);
     } else {
       bpmnModeler.saveXML({ format: true })
-        .then((xml) => {
+        .then((xml: any) => {
           setXml(xml?.xml)
         })
-        .catch(err => {
+        .catch((err: any) => {
           console.error(err)
         })
     }
     setShowXml(showXml => !showXml);
 
-  }, [bpmnModeler, process, showXml, xml]);
+  }, [bpmnModeler, showXml, xml]);
 
-  const handleXMLChange = useCallback((value: string) => {
+  const handleXMLChange = useCallback((value?: string) => {
     setXml(value);
   }, []);
 
@@ -239,7 +236,7 @@ export const AppBpmn = memo((props) => {
       <Spin spinning={loading || listLoading || categoriesLoading}>
         <div
           className="bmpm-content react-bpmn-diagram-container"
-          ref={containerRef}
+          ref={containerRef as any}
           id="js-drop-zone"
           style={{
             display: showXml ? "none" : undefined
@@ -259,7 +256,7 @@ export const AppBpmn = memo((props) => {
         </div>
         {
           showXml &&
-          <div className="bpmn-xml-editor"        >
+          <div className="bpmn-xml-editor">
             <XmlEditor value={xml} onChange={handleXMLChange} />
           </div>
         }

@@ -1,6 +1,6 @@
+import { MonacoInput } from "designable/react-settings-form";
 import React, { useCallback } from "react";
 import { memo } from "react"
-import { MonacoInput } from "AppDesigner/UiDesigner/SettingsForm/components/MonacoInput";
 
 export const CodeInput = memo((
   props: {
@@ -10,8 +10,8 @@ export const CodeInput = memo((
 ) => {
   const { value, onChange } = props;
 
-  const handleChange = useCallback((newValue) => {
-    if (value != newValue && onChange) {
+  const handleChange = useCallback((newValue: any) => {
+    if (value !== newValue && onChange) {
       onChange(newValue)
     }
   }, [onChange, value])

@@ -8,7 +8,7 @@ export const HOVER_COLOR = "rgba(115,103,240,0.3)";
 export function useEdgeHover(graph: Graph | undefined, appId: ID) {
   const drawingLine = useRecoilValue(drawingLineState(appId));
 
-  const handleEdgeMouseEnter = useCallback(({ edge }) => {
+  const handleEdgeMouseEnter = useCallback(({ edge }: any) => {
     if (edge && drawingLine?.tempEdgeId !== edge.id) {
       edge.attr({
         line: {

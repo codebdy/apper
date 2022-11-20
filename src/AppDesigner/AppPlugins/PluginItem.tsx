@@ -32,7 +32,7 @@ export const PluginItem = memo((
       return undefined
     }
     return plugin.pluginInfo?.type === PluginType.debug ? '#1890ff' : '#87d068';
-  }, [])
+  }, [plugin.pluginInfo?.type, plugin.status])
 
   return (
     <List.Item

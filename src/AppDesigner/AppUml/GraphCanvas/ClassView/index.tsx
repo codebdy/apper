@@ -278,7 +278,7 @@ export const ClassView = memo(
                 <em>{p(data?.packageName)}</em>
               </div>
             )}
-            {((hover && !disableHover) || menuOpened) && (
+            {((hover && !disableHover) || menuOpened) && data &&(
               <ClassActions
                 cls={data}
                 onAddAttribute={handleAttributeCreate}
