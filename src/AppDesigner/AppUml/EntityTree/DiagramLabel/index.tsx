@@ -7,7 +7,7 @@ import { diagramsState } from '../../recoil/atoms';
 import { DiagramMeta } from "../../meta/DiagramMeta";
 import DiagramAction from "./DiagramAction";
 import { useGetPackage } from "../../hooks/useGetPackage";
-import { SYSTEM_APP_ID } from "~/consts";
+import { SYSTEM_APP_ID } from "consts";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useParseLangMessage } from "@rxdrag/plugin-sdk";
 import { DiagramDialog } from "./DiagramDialog";

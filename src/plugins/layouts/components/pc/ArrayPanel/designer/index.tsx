@@ -5,9 +5,8 @@ import {
   TreeNodeWidget
 } from 'designable/react'
 import { observer } from '@formily/reactive-react'
-import React from 'react'
-import { queryNodesByComponentPath } from 'plugin-sdk/funcs'
 import { IArrayPanelProps } from '../view'
+import { queryNodesByComponentPath } from 'designable/formily-antd/shared';
 
 
 export const ArrayPanelDesigner: DnFC<IArrayPanelProps> = observer((props: IArrayPanelProps) => {

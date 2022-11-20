@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
-import { DESIGNER_TOKEN_NAME, HEADER_APPX_APPID, HEADER_AUTHORIZATION, SERVER_SUBSCRIPTION_URL, TOKEN_PREFIX } from '~/consts';
+import { DESIGNER_TOKEN_NAME, HEADER_APPX_APPID, HEADER_AUTHORIZATION, SERVER_SUBSCRIPTION_URL, TOKEN_PREFIX } from 'consts';
 import { useToken } from 'enthooks';
 import { useAppParams } from 'plugin-sdk/contexts/app';
 const sClident = new SubscriptionClient(SERVER_SUBSCRIPTION_URL, {

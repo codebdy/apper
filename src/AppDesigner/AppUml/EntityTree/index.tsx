@@ -21,7 +21,7 @@ import { useGetTargetRelations } from './../hooks/useGetTargetRelations';
 import { useGetClass } from "../hooks/useGetClass";
 import { MethodMeta, MethodOperateType } from "../meta/MethodMeta";
 import AttributeLabel from "./AttributeLabel";
-import { PRIMARY_COLOR, SYSTEM_APP_ID } from "~/consts";
+import { PRIMARY_COLOR, SYSTEM_APP_ID } from "consts";
 import MethodLabel from "./MethodLabel";
 import AttributesLabel from "./AttributesLabel";
 import MethodsLabel from "./MethodsLabel";

@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelectedPageId } from '../hooks/useSelectedPageId';
 import { usePages } from '../hooks/usePages';
 import { AppEntryRouts } from 'AppDesigner/DesignerHeader/AppEntryRouts';
-import { DESIGN, DESIGN_BOARD } from '~/consts';
+import { DESIGN, DESIGN_BOARD } from 'consts';
 import { DesignerRoutes } from '..';
 
 export const NavigationWidget = memo((

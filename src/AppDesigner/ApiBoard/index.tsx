@@ -3,7 +3,7 @@ import "graphiql/graphiql.css";
 import { createGraphiQLFetcher } from "@graphiql/toolkit";
 import { memo, useMemo } from "react";
 import React from "react";
-import { HEADER_AUTHORIZATION, TOKEN_PREFIX, HEADER_APPX_APPID, SERVER_SUBSCRIPTION_URL } from "~/consts";
+import { HEADER_AUTHORIZATION, TOKEN_PREFIX, HEADER_APPX_APPID, SERVER_SUBSCRIPTION_URL } from "consts";
 import "./index.less";
 import { useEndpoint, useToken } from "enthooks";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";

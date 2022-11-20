@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { SYSTEM_APP_ID } from "~/consts";
+import { SYSTEM_APP_ID } from "consts";
 
 export interface IEntxConfig {
   token?: string,

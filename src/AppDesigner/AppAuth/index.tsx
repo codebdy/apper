@@ -13,7 +13,7 @@ import { useReadMeta } from "../AppUml/hooks/useReadMeta";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { useParseLangMessage } from "@rxdrag/plugin-sdk";
 import { useQueryRoles } from "./hooks/useQueryRoles";
-import { DESIGN, DESIGN_BOARD, SYSTEM_APP_ID } from "~/consts";
+import { DESIGN, DESIGN_BOARD, SYSTEM_APP_ID } from "consts";
 import { AppEntryRouts } from "../DesignerHeader/AppEntryRouts";
 
 

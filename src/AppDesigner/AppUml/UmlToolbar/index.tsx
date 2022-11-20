@@ -14,7 +14,7 @@ import { useDeleteSelectedElement } from "../hooks/useDeleteSelectedElement";
 import { CONST_ID } from "../meta/Meta";
 import { Button, Divider } from "antd";
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from "@ant-design/icons";
-import { PRIMARY_COLOR } from "~/consts";
+import { PRIMARY_COLOR } from "consts";
 import SaveActions from "../SaveActions";
 import { ModelToolbar } from "~/common/ModelBoard/ModelToolbar";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";

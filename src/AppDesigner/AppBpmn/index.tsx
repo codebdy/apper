@@ -20,7 +20,7 @@ import { categoriesState, minMapState, processesState, selectedBpmnProcessIdStat
 import { useDesignerParams } from "@rxdrag/plugin-sdk";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { ToolbarActions } from "./ToolbarActions";
-import { PRIMARY_COLOR } from "~/consts";
+import { PRIMARY_COLOR } from "consts";
 import { useUpsertProcess } from "./hooks/useUpsertProcess";
 import CustomPaletteModule from "./plugins/palette";
 import CustomReplaceMenuModule from "./plugins/replace";

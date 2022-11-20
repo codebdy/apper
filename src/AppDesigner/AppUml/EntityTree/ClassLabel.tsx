@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from "react"
 import { memo } from "react"
 import { ClassMeta } from "../meta/ClassMeta"
 import TreeNodeLabel from "~/common/TreeNodeLabel"
-import { PRIMARY_COLOR } from "~/consts";
+import { PRIMARY_COLOR } from "consts";
 import { NODE_INIT_SIZE } from "../GraphCanvas/nodeInitSize";
 import { ClassView } from "../GraphCanvas/ClassView";
 import { useRecoilValue } from 'recoil';

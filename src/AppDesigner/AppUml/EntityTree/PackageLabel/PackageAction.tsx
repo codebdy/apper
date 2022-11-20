@@ -12,7 +12,7 @@ import { useBackupSnapshot } from "../../hooks/useBackupSnapshot";
 import { useTranslation } from "react-i18next";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useChangePackage } from "../../hooks/useChangePackage";
-import { SYSTEM_APP_ID } from "~/consts";
+import { SYSTEM_APP_ID } from "consts";
 import { DiagramMeta } from "../../meta/DiagramMeta";
 import { DiagramDialog } from "../DiagramLabel/DiagramDialog";
 

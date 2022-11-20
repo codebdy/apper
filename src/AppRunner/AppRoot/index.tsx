@@ -2,7 +2,7 @@ import { Device } from "@rxdrag/appx-plugin-sdk";
 import React, { memo, useMemo } from "react"
 import { useParams } from "react-router-dom";
 import { CenterSpin } from "~/common/CenterSpin";
-import { DESIGNER_TOKEN_NAME, SERVER_URL } from "~/consts";
+import { DESIGNER_TOKEN_NAME, SERVER_URL } from "consts";
 import { EntiRoot, useToken } from "enthooks";
 import { IApp } from "model";
 import { useMe } from "plugin-sdk";

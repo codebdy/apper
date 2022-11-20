@@ -7,7 +7,7 @@ import { Form, FormButtonGroup, FormItem, Password, Submit } from "@formily/antd
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { message } from "antd";
 import { useSetToken } from "enthooks";
-import { DESIGNER_TOKEN_NAME } from "~/consts";
+import { DESIGNER_TOKEN_NAME } from "consts";
 import { useTranslation } from "react-i18next";
 
 const SchemaField = createSchemaField({

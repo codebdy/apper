@@ -11,7 +11,7 @@ import SelectLang from "~/plugins/framewidgets/pc/LangSelect/view"
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage"
 import AvatarMenu from "~/plugins/framewidgets/pc/AvatarMenu/view"
 import SvgIcon from "~/common/SvgIcon"
-import { DESIGN, DESIGN_BOARD } from "~/consts"
+import { DESIGN, DESIGN_BOARD } from "consts"
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid"
 import { Operate } from "./Operate"
 

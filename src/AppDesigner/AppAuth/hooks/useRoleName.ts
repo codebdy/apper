@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { GUEST_ROLE_ID } from "~/consts";
+import { GUEST_ROLE_ID } from "consts";
 import { useParseLangMessage } from "@rxdrag/plugin-sdk";
 import { ID } from "shared";
 import { useRole } from "./useRole";

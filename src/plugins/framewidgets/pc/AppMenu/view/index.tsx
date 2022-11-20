@@ -11,7 +11,7 @@ import { useGetMenuItemByPageUuid } from "./hooks/useGetMenuItemByPageUuid";
 import "./style.less"
 import cls from "classnames";
 import { useMenu } from "~/AppRunner/hooks/useMenu";
-import { SYSTEM_APP_ID } from "~/consts";
+import { SYSTEM_APP_ID } from "consts";
 import { Device } from "@rxdrag/appx-plugin-sdk";
 import { useCheckMenuAuth } from "./hooks/useCheckMenuAuth";
 
