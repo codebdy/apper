@@ -8,7 +8,7 @@ import { useShowError } from "AppDesigner/hooks/useShowError";
 import { useParseLangSchema } from "AppDesigner/hooks/useParseLangSchema";
 import { ID } from "shared";
 import { useQueryPageWithCache } from "./hooks/useQueryPageWithCache";
-import { IUser } from "~/enthooks/hooks/useQueryMe";
+import { IUser } from "enthooks/hooks/useQueryMe";
 import { useMe } from "plugin-sdk/contexts/login";
 import { useAppParams } from "plugin-sdk/contexts/app";
 import { PageContext } from "plugin-sdk/contexts/page";

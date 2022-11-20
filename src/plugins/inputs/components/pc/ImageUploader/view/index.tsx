@@ -3,7 +3,7 @@ import { Upload, UploadFile, UploadProps } from "antd";
 import React, { useCallback, useEffect, useState } from "react"
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { RcFile } from "antd/lib/upload";
-import { useUpload } from "~/enthooks/hooks/useUpload";
+import { useUpload } from "enthooks/hooks/useUpload";
 import { isArr } from "@formily/shared";
 
 export interface ImageUploaderProps {
@@ -42,7 +42,7 @@ const ImageUploader = observer((props: ImageUploaderProps) => {
 
   const p = useParseLangMessage();
 
-  const handleChange: UploadProps['onChange'] = useCallback(({ fileList: newFileList, file, event }) => {
+  const handleChange: UploadProps['onChange'] = useCallback(({ fileList: newFileList, file, event }:any) => {
     setFileList(newFileList);
     if (maxCount === 1) {
       if (newFileList?.[0]?.status === "done") {
@@ -53,8 +53,8 @@ const ImageUploader = observer((props: ImageUploaderProps) => {
         onChange && onChange("")
       }
     } else {
-      if (!newFileList?.find(file => file.status !== "done")) {
-        onChange && onChange(newFileList?.map(file => file.url || file.xhr?.responseURL) || []);
+      if (!newFileList?.find((file:any) => file.status !== "done")) {
+        onChange && onChange(newFileList?.map((file:any) => file.url || file.xhr?.responseURL) || []);
         return;
       }
       if(!newFileList?.length){

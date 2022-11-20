@@ -1,4 +1,4 @@
-import { gql, useQuery } from "~/enthooks";
+import { gql, useQuery } from "enthooks";
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { IProcessCategory } from "model";

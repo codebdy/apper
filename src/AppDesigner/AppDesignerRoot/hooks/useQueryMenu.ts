@@ -1,6 +1,6 @@
-import { gql } from "~/enthooks";
+import { gql } from "enthooks";
 import { useDesignerParams } from "plugin-sdk/contexts/desinger";
-import { useQueryOne } from "~/enthooks/hooks/useQueryOne";
+import { useQueryOne } from "enthooks/hooks/useQueryOne";
 import { useMemo } from "react";
 import { IMenu } from "model";
 

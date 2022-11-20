@@ -1,8 +1,8 @@
-import { gql, GraphQLRequestError } from "~/enthooks";
+import { gql, GraphQLRequestError } from "enthooks";
 import { useMemo, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { SYSTEM_APP_ID } from "~/consts";
-import { useQueryOne } from "~/enthooks/hooks/useQueryOne";
+import { useQueryOne } from "enthooks/hooks/useQueryOne";
 import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState, codesState, orchestrationsState } from "../recoil/atoms";
 import { IApp } from "model";
 import { ID } from "shared";

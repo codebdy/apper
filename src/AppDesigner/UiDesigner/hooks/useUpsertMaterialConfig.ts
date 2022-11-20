@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { IPostOptions, usePostOne } from "~/enthooks/hooks/usePostOne";
+import { IPostOptions, usePostOne } from "enthooks/hooks/usePostOne";
 import { IMaterialConfig } from "model";
 import { IMaterialConfigInput } from "model";
 import { useDesignerParams } from "plugin-sdk/contexts/desinger";

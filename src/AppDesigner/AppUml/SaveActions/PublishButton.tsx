@@ -8,7 +8,7 @@ import { useEdittingAppId } from 'AppDesigner/hooks/useEdittingAppUuid';
 import { usePublishMeta } from '../hooks/usePublishMeta';
 import { changedState } from '../recoil/atoms';
 import { usePublished } from '../hooks/usePublished';
-import { EVENT_DATA_POSTED, trigger } from '~/enthooks/events';
+import { EVENT_DATA_POSTED, trigger } from 'enthooks/events';
 
 const PublishButton = memo(() => {
   const appId = useEdittingAppId();

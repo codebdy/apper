@@ -1,4 +1,4 @@
-import { gql, useQueryOne } from "~/enthooks";
+import { gql, useQueryOne } from "enthooks";
 import { useMemo } from "react";
 import { IProcess } from "model/process";
 

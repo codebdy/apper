@@ -1,4 +1,4 @@
-import { useDeleteById } from "~/enthooks/hooks/useDeleteById";
+import { useDeleteById } from "enthooks/hooks/useDeleteById";
 import { useCallback, useRef } from "react";
 import { useInstanceParams } from "plugin-sdk/contexts/instance";
 

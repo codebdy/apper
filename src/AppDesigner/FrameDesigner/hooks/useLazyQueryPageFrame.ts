@@ -1,6 +1,6 @@
-import { gql } from "~/enthooks";
+import { gql } from "enthooks";
 import { useCallback } from "react";
-import { useLazyRequest } from "~/enthooks/hooks/useLazyRequest";
+import { useLazyRequest } from "enthooks/hooks/useLazyRequest";
 import { IUiFrame } from "model";
 import { IUiFrameInput } from "model";
 import { ID } from "shared";

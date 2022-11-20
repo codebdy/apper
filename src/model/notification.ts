@@ -1,4 +1,4 @@
-import { IUser } from "~/enthooks";
+import { IUser } from "enthooks";
 import { ID } from "shared";
 import { IApp, IAppInput } from "./app";
 import { IUserInput } from "./user";

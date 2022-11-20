@@ -2,11 +2,11 @@ import React, { memo, useCallback, useMemo } from "react"
 import * as ICONS from '@ant-design/icons'
 import { createForm } from "@formily/core";
 import { createSchemaField } from '@formily/react'
-import { useChangePassword } from "~/enthooks/hooks/useChangePassword";
+import { useChangePassword } from "enthooks/hooks/useChangePassword";
 import { Form, FormButtonGroup, FormItem, Password, Submit } from "@formily/antd";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { message } from "antd";
-import { useSetToken } from "~/enthooks";
+import { useSetToken } from "enthooks";
 import { DESIGNER_TOKEN_NAME } from "~/consts";
 import { useTranslation } from "react-i18next";
 

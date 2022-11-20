@@ -1,4 +1,4 @@
-import { useSet } from "~/enthooks/hooks/useSet";
+import { useSet } from "enthooks/hooks/useSet";
 import { useCallback, useRef } from "react";
 import { useRecentObjectField } from "./useRecentObjectField";
 import { useExtractFieldInput } from "./useExtractFieldInput";

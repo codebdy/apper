@@ -1,6 +1,6 @@
-import { gql } from "~/enthooks";
+import { gql } from "enthooks";
 import { useEffect, useMemo } from "react";
-import { useQueryOne } from "~/enthooks/hooks/useQueryOne";
+import { useQueryOne } from "enthooks/hooks/useQueryOne";
 import { IUiFrame } from "model";
 import { useFrameUuid } from "./useFrameUuid";
 

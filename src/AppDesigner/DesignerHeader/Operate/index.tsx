@@ -2,7 +2,7 @@ import { DownOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Menu, message, Space } from 'antd';
 import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useImportApp } from '~/enthooks/hooks/useImportApp';
+import { useImportApp } from 'enthooks/hooks/useImportApp';
 import { useEdittingAppId } from 'AppDesigner/hooks/useEdittingAppUuid';
 import { useShowError } from 'AppDesigner/hooks/useShowError';
 import { ExportDialog } from './ExportDialog';

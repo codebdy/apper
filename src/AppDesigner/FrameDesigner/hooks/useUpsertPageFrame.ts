@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 import { useDesignerParams } from "plugin-sdk/contexts/desinger";
-import { IPostOptions, usePostOne } from "~/enthooks/hooks/usePostOne";
+import { IPostOptions, usePostOne } from "enthooks/hooks/usePostOne";
 import { IUiFrame } from "model";
 import { IUiFrameInput } from "model";
-import { GraphQLRequestError } from "~/enthooks";
+import { GraphQLRequestError } from "enthooks";
 
 export function useUpsertPageFrame(options?: IPostOptions<any>): [
   (template: IUiFrameInput) => void,

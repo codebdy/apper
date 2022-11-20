@@ -1,5 +1,5 @@
-import { gql } from "~/enthooks";
-import { useQuery } from "~/enthooks/hooks/useQuery";
+import { gql } from "enthooks";
+import { useQuery } from "enthooks/hooks/useQuery";
 import { useMemo } from "react";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { IPageCategory } from "model";

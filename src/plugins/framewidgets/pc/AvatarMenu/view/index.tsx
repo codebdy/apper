@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useMe } from "plugin-sdk/contexts/login";
 import { LOGIN_URL, DESIGNER_TOKEN_NAME } from "~/consts";
-import { useLogout, useSetToken } from "~/enthooks";
+import { useLogout, useSetToken } from "enthooks";
 import ChangePasswordForm from "./ChangePasswordForm";
 import "./style.less"
 

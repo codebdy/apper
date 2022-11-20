@@ -1,5 +1,5 @@
 import { ID } from "shared";
-import { IDeleteOptions, useDeleteById } from "~/enthooks/hooks/useDeleteById";
+import { IDeleteOptions, useDeleteById } from "enthooks/hooks/useDeleteById";
 import { IProcessCategory } from "model";
 
 export function useDeleteCategory(options?: IDeleteOptions<IProcessCategory>): [

@@ -1,6 +1,6 @@
-import { gql } from "~/enthooks";
+import { gql } from "enthooks";
 import { useMemo } from "react";
-import { useQuery } from "~/enthooks/hooks/useQuery";
+import { useQuery } from "enthooks/hooks/useQuery";
 import { ISnapshot } from "model";
 import { ID } from "shared";
 

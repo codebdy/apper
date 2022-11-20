@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
-import { IPostOptions, usePostOne } from "~/enthooks/hooks/usePostOne";
+import { IPostOptions, usePostOne } from "enthooks/hooks/usePostOne";
 import { IClassAuthConfig, IClassAuthConfigInput } from "model";
 
 export function useUpsertClassAuthConfig(options?: IPostOptions<any>): [

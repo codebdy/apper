@@ -5,7 +5,7 @@ import { IMenuItem } from 'plugin-sdk/model/IMenuNode';
 import { FormItem } from "@formily/antd";
 import { useMemo } from "react";
 import { useParseLangSchema } from "../../AppDesigner/hooks/useParseLangSchema";
-import { IUser } from "~/enthooks/hooks/useQueryMe";
+import { IUser } from "enthooks/hooks/useQueryMe";
 import { useMe } from "plugin-sdk/contexts/login";
 import { createSchemaField, ExpressionScope, FormProvider } from '@formily/react';
 import { createForm } from '@formily/core';

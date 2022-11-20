@@ -1,4 +1,4 @@
-import { RequestOptions, useLazyRequest } from "~/enthooks";
+import { RequestOptions, useLazyRequest } from "enthooks";
 import { useCallback } from "react";
 import { ID } from "shared";
 

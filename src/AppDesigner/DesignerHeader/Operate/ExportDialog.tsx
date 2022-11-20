@@ -3,9 +3,9 @@ import React, { memo, useCallback, useRef, useState } from "react"
 import { useTranslation } from "react-i18next";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useShowError } from "AppDesigner/hooks/useShowError";
-import { useQueryVersions } from "~/enthooks/hooks/useQueryVersions";
+import { useQueryVersions } from "enthooks/hooks/useQueryVersions";
 import { useDesignerParams, useParseLangMessage } from "plugin-sdk";
-import { useExportApp } from "~/enthooks/hooks/useExportApp";
+import { useExportApp } from "enthooks/hooks/useExportApp";
 import { ID } from "shared";
 import { useSave } from "AppDesigner/UiDesigner/widgets/TemplateWidget/ExportDialog/useSave";
 import { Input } from "@formily/antd";

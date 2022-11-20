@@ -1,5 +1,5 @@
 import { ID } from "shared";
-import { IDeleteOptions, useDeleteById } from "~/enthooks/hooks/useDeleteById";
+import { IDeleteOptions, useDeleteById } from "enthooks/hooks/useDeleteById";
 import { IPage } from "model";
 
 export function useDeletePage(options?: IDeleteOptions<IPage>): [

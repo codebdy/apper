@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { gql, useQueryOne } from "~/enthooks";
+import { gql, useQueryOne } from "enthooks";
 import { IPage } from "model";
 import { ID } from "shared";
 

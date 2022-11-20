@@ -2,8 +2,8 @@ import { parse } from "graphql";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { HEADER_APPX_APPID, HEADER_AUTHORIZATION, TOKEN_PREFIX } from "~/consts";
-import { AwesomeGraphQLClient, useEndpoint, useToken } from "~/enthooks";
-import { EVENT_DATA_POSTED, trigger } from "~/enthooks/events";
+import { AwesomeGraphQLClient, useEndpoint, useToken } from "enthooks";
+import { EVENT_DATA_POSTED, trigger } from "enthooks/events";
 import { IGraphqlAction } from "plugin-sdk";
 import { useAppParams } from "plugin-sdk/contexts/app";
 

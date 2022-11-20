@@ -1,6 +1,6 @@
-import { gql } from "~/enthooks";
+import { gql } from "enthooks";
 import { useMemo } from "react";
-import { useQuery } from "~/enthooks/hooks/useQuery";
+import { useQuery } from "enthooks/hooks/useQuery";
 import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 import { IClassAuthConfig } from "model";
 

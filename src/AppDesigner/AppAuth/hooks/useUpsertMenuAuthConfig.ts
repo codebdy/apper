@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
-import { IPostOptions, usePostOne } from "~/enthooks/hooks/usePostOne";
+import { IPostOptions, usePostOne } from "enthooks/hooks/usePostOne";
 import { IMenuAuthConfig, IMenuAuthConfigInput } from "model";
-import { GraphQLRequestError } from "~/enthooks";
+import { GraphQLRequestError } from "enthooks";
 
 export function useUpsertMenuAuthConfig(options?: IPostOptions<any>): [
   (config: IMenuAuthConfigInput) => void,
