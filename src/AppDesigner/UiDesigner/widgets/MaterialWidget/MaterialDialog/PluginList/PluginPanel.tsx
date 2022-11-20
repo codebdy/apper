@@ -22,8 +22,8 @@ export const PluginPanel = React.forwardRef((
   const { getTitle } = useGetPluginLocalMessage();
   const getComTitle = useGetComponentLocalTitle();
   const getComponents = useGetNotCategoriedComponents(tabs);
-  
-  const components = useMemo(()=>getComponents(plugin), [getComponents, plugin]);
+
+  const components = useMemo(() => getComponents(plugin), [getComponents, plugin]);
 
   return (
     <div
@@ -52,7 +52,7 @@ export const PluginPanel = React.forwardRef((
                         : undefined,
                     }}
                   >
-                    {components?.map((item, index) => {
+                    {components?.map((item: any, index: number) => {
                       return (
                         <Draggable key={item.name} draggableId={item.name} index={index}>
                           {(provided, snapshot) => (
