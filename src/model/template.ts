@@ -35,7 +35,7 @@ export interface ITemplateInfoInput {
   dependencies?: any;
   schemaJson?: ElementsJson;
   app: { sync: IAppInput };
-  device: Device;
+  device?: Device;
   categoryType: CategoryType;
   templateType: TemplateType;
 }

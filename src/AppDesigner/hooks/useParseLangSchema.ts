@@ -17,12 +17,12 @@ export function useParseLangSchema() {
     schema.title = p(schema.title);
 
     for (const key of Object.keys(schema.properties || {})) {
-      schema.properties[key] = parse(schema.properties[key]);
+      (schema.properties as any)[key] = parse((schema.properties as any)[key]);
     }
 
     if (isArr(schema.items)) {
       for (let i = 0; i < schema.items.length; i++) {
-        schema.items[i] = parse(schema.items[i]);
+        (schema.properties as any)[i] = parse(schema.items[i]);
       }
     } else if (schema.items) {
       const properties = (schema.items as any).properties;

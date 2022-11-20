@@ -1,20 +1,18 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Spin } from "antd";
-import { useDesigner } from 'designable/react'
-import { transformToTreeNode } from "../../UiDesigner/transformer";
-import { Field, ObjectContainer } from "@designable/formily-antd";
+import { SettingsPanel, ToolbarPanel, useDesigner, ViewPanel, ViewportPanel, Workspace, WorkspacePanel } from 'designable/react'
 import { ComponentTreeWidget, DesignerToolsWidget, PreviewWidget, SchemaEditorWidget, ViewToolsWidget } from "../../UiDesigner/widgets";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { ID } from "shared";
-import { Workspace } from "../../UiDesigner/containers";
-import { SettingsPanel, ToolbarPanel, ViewPanel, ViewportPanel, WorkspacePanel } from "../../UiDesigner/panels";
 import { SettingsForm } from "../../UiDesigner/SettingsForm";
 import { useMaterialDesigners } from "material/hooks/useMaterialDesigners";
 import { useLazyQueryPageFrame } from "../hooks/useLazyQueryPageFrame";
 import { FormDesigner } from "components/pc/FormDesigner";
 import { SaveTemplateWidget } from "AppDesigner/UiDesigner/widgets/SaveTemplateWidget";
 import { TemplateType } from "model";
+import { transformToTreeNode } from "designable/formily-antd/transformer"
+import { Field, ObjectContainer } from "designable/formily-antd";
 
 export const FrameWorkSpace = (props: {
   frameId: ID
@@ -71,12 +69,12 @@ export const FrameWorkSpace = (props: {
                 )}
               </ViewPanel>
               <ViewPanel type="JSONTREE" scrollable={false}>
-                {(tree, onChange) => (
+                {(tree:any, onChange:any) => (
                   <SchemaEditorWidget tree={tree} onChange={onChange} />
                 )}
               </ViewPanel>
               <ViewPanel type="PREVIEW">
-                {(tree) => <PreviewWidget tree={tree} />}
+                {(tree:any) => <PreviewWidget tree={tree} />}
               </ViewPanel>
             </ViewportPanel>
           </WorkspacePanel>
