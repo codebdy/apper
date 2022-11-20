@@ -4,7 +4,7 @@ import { memo } from "react"
 import { IPagePopup, pagePopupsState } from "plugin-sdk/atoms";
 import { useRecoilValue } from "recoil";
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
-import { PageEngine } from "~/plugins/framelayouts/PageEngine";
+import { PageEngine } from "plugins/framelayouts/PageEngine";
 import { useClosePage } from "shared/action/hooks/useClosePage";
 import { useAppViewKey } from "plugin-sdk/contexts/app";
 

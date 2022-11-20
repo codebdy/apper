@@ -1,5 +1,5 @@
 import { Kind } from "graphql";
-import { ISearchText } from "~/plugins/inputs/components/pc/SearchInput/view";
+import { ISearchText } from "plugins/inputs/components/pc/SearchInput/view";
 import { createObjectFieldNode } from "./createObjectFieldNode";
 
 export function createSeachFieldNode(searchText: ISearchText) {

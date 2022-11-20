@@ -5,7 +5,7 @@ import {
 import { observer } from '@formily/reactive-react'
 import { usePrefix } from 'designable/react'
 import './styles.less'
-import { Image } from '~/plugins/displays/components/pc/Image/view'
+import { Image } from 'plugins/displays/components/pc/Image/view'
 
 export type SourceMapper = (resource: IResource) => React.ReactChild
 

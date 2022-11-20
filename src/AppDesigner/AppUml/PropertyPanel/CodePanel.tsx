@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Form, Input } from "antd";
 import { useTranslation } from "react-i18next";
-import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/view";
+import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { CodeMeta } from "../meta";
 import { useBackupSnapshot } from "../hooks/useBackupSnapshot";

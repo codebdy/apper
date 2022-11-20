@@ -10,14 +10,14 @@ import {
   DroppableWidget,
   DnFC,
 } from 'designable/react'
-import { matchComponent } from 'plugin-sdk'
 import { toArr } from '@formily/shared'
 import { LoadTemplate } from 'designable/formily-antd/common/LoadTemplate'
 import { useDropTemplate } from 'designable/formily-antd/hooks'
+import { matchComponent } from 'designable/formily-antd/shared'
 
-const parseCollapse = (parent: TreeNode) => {
+const parseCollapse = (parent?: TreeNode|null) => {
   const tabs: TreeNode[] = []
-  parent.children.forEach((node) => {
+  parent?.children.forEach((node) => {
     if (matchComponent(node, 'FormCollapse.CollapsePanel')) {
       tabs.push(node)
     }
@@ -49,7 +49,7 @@ export const FormCollapseDesigner: DnFC<CollapseProps> & {
   })
   const panels = parseCollapse(node)
   const renderCollapse = () => {
-    if (!node.children?.length) return <DroppableWidget />
+    if (!node?.children?.length) return <DroppableWidget />
     return (
       <Collapse {...props} activeKey={panels.map((tab) => tab.id)}>
         {panels.map((panel) => {
@@ -94,7 +94,7 @@ export const FormCollapseDesigner: DnFC<CollapseProps> & {
       <LoadTemplate
         actions={[
           {
-            title: node.getMessage('addCollapsePanel'),
+            title: node?.getMessage('addCollapsePanel'),
             icon: 'AddPanel',
             onClick: () => {
               const tabPane = new TreeNode({
@@ -107,7 +107,7 @@ export const FormCollapseDesigner: DnFC<CollapseProps> & {
                   },
                 },
               })
-              node.append(tabPane)
+              node?.append(tabPane)
               const keys = toArr(activeKey)
               setActiveKey(keys.concat(tabPane.id))
             },

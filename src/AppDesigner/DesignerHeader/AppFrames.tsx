@@ -5,7 +5,7 @@ import { memo } from "react"
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { DESIGN, DESIGN_FRAME } from "consts";
-import Container from "~/plugins/framelayouts/pc/Container/view";
+import Container from "plugins/framelayouts/pc/Container/view";
 import { useDevices } from "../hooks/useDevices";
 import { useEdittingAppId } from "../hooks/useEdittingAppUuid";
 

@@ -4,7 +4,7 @@ import clx from "classnames";
 import { IMaterialTab } from "@rxdrag/appx-plugin-sdk";
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { Button, Space } from "antd";
-import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/view";
+import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view";
 
 export const TabDragableLabel = React.forwardRef((
   props: {

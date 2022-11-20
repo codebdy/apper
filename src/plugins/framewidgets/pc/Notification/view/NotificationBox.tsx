@@ -1,9 +1,9 @@
 import { SettingOutlined } from "@ant-design/icons"
 import { Button, Card, List } from "antd"
 import moment from "moment";
-import React, { memo, useEffect, useRef } from "react"
+import { memo, useEffect, useRef } from "react"
 import { useShowError } from "AppDesigner/hooks/useShowError";
-import { useLayzyQueryRecentNotifications } from "~/plugins/framewidgets/hooks/useLayzyQueryRecentNotifications";
+import { useLayzyQueryRecentNotifications } from "plugins/framewidgets/hooks/useLayzyQueryRecentNotifications";
 import { useLocalTranslations } from "./hooks/useLocalTranslations";
 
 export const NotificationBox = memo((

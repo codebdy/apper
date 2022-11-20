@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useGetPage } from "../../../../hooks/useGetPage";
 import { SuccessMessagePanel } from "./SuccessMessagePanel";
 import { ConfirmPanel } from "./ConfirmPanel";
-import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/view";
+import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view";
 import { NavigatePanel } from "./NavigatePanel";
 import { OpenFilePanel } from "./OpenFilePanel";
 import { GraphqlPanel } from "./GraphqlPanel";

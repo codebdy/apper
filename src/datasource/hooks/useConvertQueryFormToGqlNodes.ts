@@ -1,7 +1,7 @@
 import { isArr, isObj, isStr } from "@formily/shared";
 import { ObjectFieldNode } from "graphql";
 import { useCallback } from "react";
-import { ISearchText } from "~/plugins/inputs/components/pc/SearchInput/view";
+import { ISearchText } from "plugins/inputs/components/pc/SearchInput/view";
 import { IQueryForm } from "../model/IQueryForm";
 import { createObjectFieldNode } from "./createObjectFieldNode";
 import { createSeachFieldNode } from "./createSeachFieldNode";

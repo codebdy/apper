@@ -2,8 +2,8 @@ import { Form, FormInstance } from "antd"
 import React from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
-import ImageUploader from "~/plugins/inputs/components/pc/ImageUploader/view"
-import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/view"
+import ImageUploader from "plugins/inputs/components/pc/ImageUploader/view"
+import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view"
 
 export const SaveTemplateForm = memo((
   props: {

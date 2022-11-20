@@ -3,7 +3,7 @@ import React, { memo, useCallback } from "react"
 import { useTranslation } from "react-i18next";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useShowError } from "AppDesigner/hooks/useShowError";
-import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/view";
+import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view";
 import { MakeVersionInput, useCreateVersion } from "enthooks/hooks/useCreateVersion";
 
 export const MakeVersionDialog = memo((

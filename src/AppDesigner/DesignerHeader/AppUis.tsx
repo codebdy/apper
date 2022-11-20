@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next"
 import { useNavigate, useParams } from "react-router-dom"
 import { DESIGN, DESIGN_UI } from "consts"
 import { useDevices } from "../hooks/useDevices"
-import Container from "~/plugins/framelayouts/pc/Container/view"
+import Container from "plugins/framelayouts/pc/Container/view"
 import { useEdittingAppId } from "../hooks/useEdittingAppUuid"
 
 const AppUis = memo((props: {

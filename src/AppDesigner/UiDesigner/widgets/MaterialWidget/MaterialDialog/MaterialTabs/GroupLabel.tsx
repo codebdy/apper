@@ -3,7 +3,7 @@ import React, { memo, useCallback, useEffect, useState } from "react"
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { Button, Space } from "antd";
 import { CheckOutlined, CloseOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/view";
+import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view";
 
 export const GroupLabel = memo((
   props: {

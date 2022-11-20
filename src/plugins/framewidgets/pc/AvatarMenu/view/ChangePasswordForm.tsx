@@ -17,7 +17,7 @@ const SchemaField = createSchemaField({
   },
   scope: {
     icon(name: string | number) {
-      return React.createElement(ICONS[name])
+      return React.createElement((ICONS as any)[name])
     },
   },
 })

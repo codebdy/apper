@@ -37,7 +37,7 @@ import {
 } from 'designable/react-settings-form'
 import SettingsTab from './components/SettingsTab'
 import { DataSourceInput, FieldSourceInput, FieldParamsInput, ActionInput, ColumnsSetter } from './components'
-import { MultiLangInput } from '~/plugins/inputs/components/pc/MultiLangInput/view'
+import { MultiLangInput } from 'plugins/inputs/components/pc/MultiLangInput/view'
 import IconInput from 'shared/icon/IconInput'
 import { SizeInput } from './components/SizeInput'
 import { ColorInput } from './components/ColorInput'

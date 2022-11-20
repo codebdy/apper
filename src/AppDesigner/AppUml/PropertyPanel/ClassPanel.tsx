@@ -3,7 +3,7 @@ import { ClassMeta, StereoType } from "../meta/ClassMeta";
 import { useChangeClass } from "../hooks/useChangeClass";
 import { Form, Input, Select, Switch } from "antd";
 import { useTranslation } from "react-i18next";
-import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/view";
+import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { ScriptInput } from "./ScriptInput/ScriptInput";
 import { useParseLangMessage } from "plugin-sdk";
