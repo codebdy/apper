@@ -22,7 +22,7 @@
     // "paths": {
     //   "~/*": ["src/*"],
     //   "plugin-sdk/*": ["src/plugin-sdk/*"],
-    //   "@rxdrag/plugin-sdk": ["src/plugin-sdk"]
+    //   "plugin-sdk": ["src/plugin-sdk"]
     // },
     "baseUrl": "src"
   },

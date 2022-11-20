@@ -6,7 +6,7 @@ import { Table } from "antd";
 import { useColumns } from "./useColumns";
 import { ID } from "shared";
 import { IUiAuthRow } from "../IUiAuthConfig";
-import { useParseLangMessage } from "@rxdrag/plugin-sdk";
+import { useParseLangMessage } from "plugin-sdk";
 import { usePagesWithoutCategory } from "../hooks/usePagesWithoutCategory";
 import { useAuthCategories } from "../hooks/useAuthCategories";
 import { useAuthPages } from "../hooks/useAuthPages";

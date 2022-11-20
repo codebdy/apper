@@ -2,7 +2,7 @@ import { observer } from "@formily/reactive-react"
 import React from "react"
 import "./style.less"
 import cls from "classnames"
-import { IconView, IIcon } from "@rxdrag/plugin-sdk"
+import { IconView, IIcon } from "plugin-sdk"
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage"
 
 export interface IComponentProps {

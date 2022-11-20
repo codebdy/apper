@@ -8,7 +8,7 @@ import { useSetRecoilState } from 'recoil';
 import { packagesState } from '../../recoil/atoms';
 import { SYSTEM_APP_ID } from "consts";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
-import { useParseLangMessage } from "@rxdrag/plugin-sdk";
+import { useParseLangMessage } from "plugin-sdk";
 import { PackageDialog } from "./PackageDialog";
 import "./style.less";
 

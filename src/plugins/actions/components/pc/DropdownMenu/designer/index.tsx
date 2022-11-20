@@ -12,7 +12,7 @@ import { Button } from 'antd'
 import { CloseOutlined, DownOutlined } from '@ant-design/icons'
 import { MenuItemDesigner } from './MenuItemDesigner'
 import { IDropdownMenuItemProps, IDropdownMenuProps } from '../view'
-import { PopupButton, IconView, useParseLangMessage } from '@rxdrag/plugin-sdk'
+import { PopupButton, IconView, useParseLangMessage } from 'plugin-sdk'
 
 
 const ComponentDesigner: DnFC<IDropdownMenuProps> &

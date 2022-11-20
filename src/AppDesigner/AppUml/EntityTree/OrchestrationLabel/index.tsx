@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { memo } from "react";
 import TreeNodeLabel from "~/common/TreeNodeLabel";
-import { useParseLangMessage } from "@rxdrag/plugin-sdk";
+import { useParseLangMessage } from "plugin-sdk";
 import { OrchestrationAction } from "./OrchestrationAction";
 import { OrchestrationMeta } from "../../meta/OrchestrationMeta";
 

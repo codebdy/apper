@@ -6,7 +6,7 @@ import { Table } from "antd";
 import { useColumns } from "./useColumns";
 import { ID } from "shared";
 import { IUiAuthRow } from "../IUiAuthConfig";
-import { IMenuItem, MenuItemType, useParseLangMessage } from "@rxdrag/plugin-sdk";
+import { IMenuItem, MenuItemType, useParseLangMessage } from "plugin-sdk";
 
 export const MenuPanal = memo((
   props: {

@@ -1,5 +1,5 @@
 import { useCallback, useRef } from "react";
-import { useTableParams } from "@rxdrag/plugin-sdk";
+import { useTableParams } from "plugin-sdk";
 import { useDeleteByIds } from "enthooks/hooks/useDeleteByIds";
 
 export function useBatchDelete() {

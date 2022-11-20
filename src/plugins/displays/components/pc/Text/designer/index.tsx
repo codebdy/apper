@@ -3,7 +3,7 @@ import { DnFC, useTreeNode } from 'designable/react'
 import cls from 'classnames'
 import './styles.less'
 import { ITextProps } from '../view'
-import { useParseLangMessage } from '@rxdrag/plugin-sdk'
+import { useParseLangMessage } from 'plugin-sdk'
 
 const ComponentDesigner: DnFC<ITextProps> = (props) => {
   const { value, textType, formatMask, ...other } = props;

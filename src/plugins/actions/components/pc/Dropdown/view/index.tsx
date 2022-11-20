@@ -1,6 +1,6 @@
 import { observer } from "@formily/reactive-react"
 import React, { useMemo, useState } from "react"
-import { useParseLangMessage } from '@rxdrag/plugin-sdk'
+import { useParseLangMessage } from 'plugin-sdk'
 import { Dropdown } from "antd"
 import { RecursionField, Schema, useFieldSchema } from "@formily/react"
 

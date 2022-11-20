@@ -1,5 +1,5 @@
 import { IPropsSchema } from '@rxdrag/appx-plugin-sdk'
-import { Events } from '@rxdrag/plugin-sdk';
+import { Events } from 'plugin-sdk';
 
 export const ButtonSchema: IPropsSchema = {
   actions: [Events.onClick],

@@ -6,7 +6,7 @@ import {
 import { observer } from '@formily/reactive-react'
 import './styles.less'
 import { IDropdownProps } from '../view'
-import { useFindNode } from '@rxdrag/plugin-sdk'
+import { useFindNode } from 'plugin-sdk'
 import { IPopupPanelProps } from '../view/PopupPanel'
 import { PopupPanelDesigner } from './PopupPanelDesigner'
 import { DropdownDesignerContext } from './context'

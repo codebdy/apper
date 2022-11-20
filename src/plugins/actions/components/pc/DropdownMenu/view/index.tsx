@@ -1,6 +1,6 @@
 import { observer } from "@formily/reactive-react"
 import React, { CSSProperties, useCallback, useMemo, useRef, useState } from "react"
-import { IAppxAction, IconView, IIcon, useParseLangMessage } from '@rxdrag/plugin-sdk'
+import { IAppxAction, IconView, IIcon, useParseLangMessage } from 'plugin-sdk'
 import { Button, Dropdown, Menu, message } from "antd"
 import { DownOutlined } from "@ant-design/icons"
 import { Schema, useFieldSchema } from "@formily/react"

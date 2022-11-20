@@ -14,7 +14,7 @@ import { useBreadcumbItems } from "./hooks/useBreadcumbItems";
 import PageHeaderContentExtra, { IPageHeaderContentExtraProps } from "./PageHeaderContentExtra";
 import { Schema } from "@formily/react";
 import PageTitle, { IPageTitleProps } from "./PageTitle";
-import { useParseLangMessage } from "@rxdrag/plugin-sdk";
+import { useParseLangMessage } from "plugin-sdk";
 import { HomeOutlined } from "@ant-design/icons";
 import { useAppParams } from "plugin-sdk/contexts/app";
 import { useNavigate } from "react-router-dom";

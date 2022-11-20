@@ -14,7 +14,7 @@ import { TableIndex } from "./TableIndex"
 import { observable } from "@formily/reactive"
 import { ITableToolbarActionsProps, TableToolbarActions } from "./TableToolbarActions"
 import { registerResourceBundle } from "~/i18n/registerResourceBundle"
-import { IDataSourceableProps } from "@rxdrag/plugin-sdk"
+import { IDataSourceableProps } from "plugin-sdk"
 import { ArrayContext } from "plugin-sdk/contexts/array"
 import { usePage } from "plugin-sdk/contexts/page"
 

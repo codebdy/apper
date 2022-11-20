@@ -26,7 +26,7 @@ import { StereoType } from "../../meta/ClassMeta";
 import { CONST_ID } from "../../meta/Meta";
 import ClassActions from "./ClassActions";
 import PlugIcon from "~/icons/PlugIcon";
-import { useParseLangMessage } from "@rxdrag/plugin-sdk";
+import { useParseLangMessage } from "plugin-sdk";
 import { CLASS_BACKGROUND_COLOR } from "../../consts";
 
 export const ClassView = memo(

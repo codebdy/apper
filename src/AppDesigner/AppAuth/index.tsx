@@ -11,7 +11,7 @@ import SvgIcon from "~/common/SvgIcon";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useReadMeta } from "../AppUml/hooks/useReadMeta";
 import { useShowError } from "AppDesigner/hooks/useShowError";
-import { useParseLangMessage } from "@rxdrag/plugin-sdk";
+import { useParseLangMessage } from "plugin-sdk";
 import { useQueryRoles } from "./hooks/useQueryRoles";
 import { DESIGN, DESIGN_BOARD, SYSTEM_APP_ID } from "consts";
 import { AppEntryRouts } from "../DesignerHeader/AppEntryRouts";
