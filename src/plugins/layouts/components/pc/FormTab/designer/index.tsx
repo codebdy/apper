@@ -10,9 +10,9 @@ import {
   DroppableWidget,
   DnFC,
 } from '@designable/react'
-import { matchComponent } from '~/plugin-sdk'
-import { useDropTemplate } from '@designable/formily-antd/lib/hooks'
-import { LoadTemplate } from '@designable/formily-antd/lib/common/LoadTemplate'
+import { matchComponent } from 'plugin-sdk'
+import { LoadTemplate } from 'designable/formily-antd/common/LoadTemplate'
+import { useDropTemplate } from 'designable/formily-antd/hooks'
 
 const parseTabs = (parent: TreeNode) => {
   const tabs: TreeNode[] = []
@@ -57,13 +57,13 @@ export const FormTabDesigner: DnFC<TabsProps> & {
     return (
       <Tabs
         {...props}
-        activeKey={getCorrectActiveKey(activeKey, tabs)}
+        activeKey={getCorrectActiveKey(activeKey as any, tabs)}
         onChange={(id) => {
           setActiveKey(id)
         }}
       >
         {tabs.map((tab) => {
-          const props = tab.props['x-component-props'] || {}
+          const props = tab.props?.['x-component-props'] || {}
           return (
             <Tabs.TabPane
               {...props}
@@ -81,7 +81,7 @@ export const FormTabDesigner: DnFC<TabsProps> & {
               {React.createElement(
                 'div',
                 {
-                  [designer.props.nodeIdAttrName]: tab.id,
+                  [designer.props.nodeIdAttrName as any]: tab.id,
                   style: {
                     padding: '20px 0',
                   },

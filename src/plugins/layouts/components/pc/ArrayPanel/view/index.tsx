@@ -13,6 +13,8 @@ export interface IArrayPanelProps {
   onChange?: (value?: boolean) => void,
 }
 
+const ArrayBaseAny = ArrayBase as any;
+
 export const ArrayPanel = observer((props: IArrayPanelProps) => {
   const field = useField<ArrayField>()
   const schema = useFieldSchema()
@@ -28,18 +30,18 @@ export const ArrayPanel = observer((props: IArrayPanelProps) => {
 
       const content = (
         <RecursionField
-          schema={items}
+          schema={items as any}
           name={index}
         />
       )
       return (
-        <ArrayBase.Item
+        <ArrayBaseAny
           key={index}
           index={index}
           record={() => dataSource[index]}
         >
           {content}
-        </ArrayBase.Item>
+        </ArrayBaseAny>
       )
     })
   }

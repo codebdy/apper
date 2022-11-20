@@ -1,4 +1,4 @@
-import { usePostOne } from "~/enthooks/hooks/usePostOne";
+import { usePostOne } from "enthooks/hooks/usePostOne";
 import { useCallback, useRef } from "react";
 import { useInstanceParams } from "plugin-sdk/contexts/instance";
 import { useExtractFieldInput } from "./useExtractFieldInput";
@@ -10,7 +10,7 @@ export function useSaveData() {
   const resolveRef = useRef<(value: unknown) => void>();
   const rejectRef = useRef<(reason?: any) => void>();
   const extract = useExtractFieldInput();
-  const [post] = usePostOne(entityName, {
+  const [post] = usePostOne(entityName as any, {
     onCompleted: (data: any) => {
       resolveRef.current && resolveRef.current(data)
     },

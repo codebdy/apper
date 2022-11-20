@@ -10,10 +10,10 @@ import {
   DroppableWidget,
   DnFC,
 } from '@designable/react'
-import { matchComponent } from '~/plugin-sdk'
-import { useDropTemplate } from '@designable/formily-antd/lib/hooks'
-import { LoadTemplate } from '@designable/formily-antd/lib/common/LoadTemplate'
+import { matchComponent } from 'plugin-sdk'
 import { toArr } from '@formily/shared'
+import { LoadTemplate } from 'designable/formily-antd/common/LoadTemplate'
+import { useDropTemplate } from 'designable/formily-antd/hooks'
 
 const parseCollapse = (parent: TreeNode) => {
   const tabs: TreeNode[] = []
@@ -53,7 +53,7 @@ export const FormCollapseDesigner: DnFC<CollapseProps> & {
     return (
       <Collapse {...props} activeKey={panels.map((tab) => tab.id)}>
         {panels.map((panel) => {
-          const props = panel.props['x-component-props'] || {}
+          const props = panel.props?.['x-component-props'] || {}
           return (
             <Collapse.Panel
               {...props}
@@ -71,7 +71,7 @@ export const FormCollapseDesigner: DnFC<CollapseProps> & {
               {React.createElement(
                 'div',
                 {
-                  [designer.props.nodeIdAttrName]: panel.id,
+                  [designer.props.nodeIdAttrName as any]: panel.id,
                   style: {
                     padding: '20px 0',
                   },

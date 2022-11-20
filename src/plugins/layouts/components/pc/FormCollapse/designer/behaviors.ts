@@ -7,12 +7,12 @@ const behaviors: IBehavior[] = [
   {
     name: Name,
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === Name,
+    selector: (node) => node.props?.['x-component'] === Name,
     designerProps: {
       droppable: true,
       allowAppend: (target, source) =>
         target.children.length === 0 ||
-        source.every((node) => node.props['x-component'] === CollapsePanelName),
+        source?.every((node) => node.props?.['x-component'] === CollapsePanelName) as any,
     },
     designerLocales: FormCollapse,
     schema: FormCollapseSchema,
@@ -20,10 +20,10 @@ const behaviors: IBehavior[] = [
   {
     name: CollapsePanelName,
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === CollapsePanelName,
+    selector: (node) => node.props?.['x-component'] === CollapsePanelName,
     designerProps: {
       droppable: true,
-      allowDrop: (node) => node.props['x-component'] === 'FormTab',
+      allowDrop: (node) => node.props?.['x-component'] === 'FormTab',
     },
     designerLocales: FormCollapsePanel,
     schema: FormCollapsePaneSchema,
