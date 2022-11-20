@@ -18,7 +18,7 @@ const CategoryLabel = (
   const [pageModalOpen, setPageModalOpen] = useState(false);
   const p = useParseLangMessage();
 
-  const handleVisableChange = useCallback((visible) => {
+  const handleVisableChange = useCallback((visible: any) => {
     setVisible(visible)
   }, []);
 

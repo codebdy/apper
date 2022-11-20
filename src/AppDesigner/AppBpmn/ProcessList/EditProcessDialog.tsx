@@ -47,7 +47,7 @@ const EditProccessDialog = memo((
       onOk={handleConfirm}
       confirmLoading={loading}
     >
-      <ProcessForm process={process} categories={categories} form={form} />
+      <ProcessForm process={process} categories={categories as any} form={form} />
     </Modal>
   )
 })

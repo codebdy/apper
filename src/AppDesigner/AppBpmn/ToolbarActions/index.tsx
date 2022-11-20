@@ -14,7 +14,7 @@ export const ToolbarActions = memo((
   const [undoDisabled, setUndoDisabled] = useState(true);
   const [redoDisabled, setRedoDisabled] = useState(true);
 
-  const handleCommandStackChanged = useCallback((e) => {
+  const handleCommandStackChanged = useCallback((e: any) => {
     const cammandStack = bpmnModeler?.get('commandStack');
     setUndoDisabled(!cammandStack.canUndo());
     setRedoDisabled(!cammandStack.canRedo());

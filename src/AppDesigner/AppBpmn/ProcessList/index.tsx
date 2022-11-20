@@ -48,7 +48,7 @@ const ProcessList = memo((
 
     for (const page of pagesWithoutCategory) {
       dataNodes.push({
-        title: page && <ProcessLabel process={page} categories={categories}/>,
+        title: page && <ProcessLabel process={page} categories={categories} />,
         key: page.id,
         isLeaf: true,
       })
@@ -56,7 +56,7 @@ const ProcessList = memo((
     return dataNodes
   }, [categories, getCategoryProcesses, pagesWithoutCategory])
 
-  const onSelect = (selectedKeys) => {
+  const onSelect = (selectedKeys: any) => {
     const page = getProcess(selectedKeys?.[0]);
     if (page?.id) {
       setSelectedProcessId(page?.id);
@@ -71,7 +71,7 @@ const ProcessList = memo((
       </div>
       <DirectoryTree
         className='process-list-tree'
-        selectedKeys={[selectedProcessId]}
+        selectedKeys={[selectedProcessId] as any}
         onSelect={onSelect}
         treeData={getTreeData()}
       />

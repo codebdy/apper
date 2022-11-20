@@ -252,7 +252,7 @@ export const AppBpmn = memo((props) => {
               </div>
             </div>
           </div>
-          <div className="canvas" ref={canvasrRef} id="js-canvas"></div>
+          <div className="canvas" ref={canvasrRef as any} id="js-canvas"></div>
         </div>
         {
           showXml &&

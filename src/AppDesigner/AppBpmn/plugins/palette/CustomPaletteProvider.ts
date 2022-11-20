@@ -1,10 +1,10 @@
 export default class CustomPaletteProvider {
-  constructor(palette) {
+  constructor(palette: any) {
     palette.registerProvider(this);
   }
 
   getPaletteEntries() {
-    return function (entries) {
+    return function (entries: any) {
       //delete entries["create.exclusive-gateway"];
       //delete entries["create.intermediate-event"];
       delete entries["create.data-object"];

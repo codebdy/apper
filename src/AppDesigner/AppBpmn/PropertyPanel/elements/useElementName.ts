@@ -7,11 +7,11 @@ export function useElementName(element: any, modeler: any): string {
     setName(element?.businessObject?.name || "")
   }, [element])
 
-  const handleElementChanged = useCallback((e) => {
+  const handleElementChanged = useCallback((e:any) => {
     if (element?.businessObject && element?.businessObject?.id === e.element?.businessObject?.id) {
       setName(e.element?.businessObject?.name)
     }
-  }, [modeler, element])
+  }, [element])
 
   useEffect(() => {
     //console.log("eventBus事件列表", modeler?.get('eventBus'))

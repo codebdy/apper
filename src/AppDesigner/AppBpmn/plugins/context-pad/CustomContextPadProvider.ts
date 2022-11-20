@@ -1,10 +1,10 @@
 export default class CustomContextPadProvider {
-  constructor(contextPad) {
+  constructor(contextPad: any) {
     contextPad.registerProvider(this);
   }
 
   getContextPadEntries() {
-    return function (entries) {
+    return function (entries: any) {
       console.log("ContextPad 项目", entries)
       delete entries["append.condition-intermediate-event"];
       delete entries["append.signal-intermediate-event"];

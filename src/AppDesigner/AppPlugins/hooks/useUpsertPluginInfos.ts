@@ -13,7 +13,7 @@ export function useUpsertPluginInfos(options?: IPostOptions<any>): [
   const [post, { error, loading }] = usePost<IPluginInfoInput, IPluginInfo>("PluginInfo",
     {
       ...options
-    }
+    } as any
   )
 
   const upsert = useCallback((pluginInfos: IPluginInfoInput[]) => {

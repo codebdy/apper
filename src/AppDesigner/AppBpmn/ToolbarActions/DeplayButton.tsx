@@ -13,7 +13,7 @@ export const DeplayButton = memo((
   }
 ) => {
   const { selectedProcessId, changed } = props;
-  const [deloy, { error, loading }] = useDeployProcess(selectedProcessId, {
+  const [deloy, { error, loading }] = useDeployProcess(selectedProcessId ||"", {
     onCompleted: () => {
       message.success(t("OperateSuccess"));
     }
