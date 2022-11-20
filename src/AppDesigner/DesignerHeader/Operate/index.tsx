@@ -18,7 +18,7 @@ enum OperateEnum {
 
 export const Operate = memo(() => {
   const appId = useEdittingAppId();
-  const [makeVersionOpen, setMakeVersionOpen] = useState(false);
+  const [makeVersionOpen, setMakeVersionOpen] = useState<boolean>();
   const [exportOpen, setExportOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
@@ -37,7 +37,7 @@ export const Operate = memo(() => {
 
   const [upsert, { loading: publishing, error: publishError }] = useUpsertApp(
     {
-      onCompleted:()=>{
+      onCompleted: () => {
         message.success(t("Designer.PublishSuccess"))
       }
     }
@@ -45,7 +45,7 @@ export const Operate = memo(() => {
 
   useShowError(error || publishError);
 
-  const handleMenuClick = useCallback(({ key }) => {
+  const handleMenuClick = useCallback(({ key }: any) => {
 
     if (key === OperateEnum.createVaresion) {
       setMakeVersionOpen(true)
@@ -53,9 +53,9 @@ export const Operate = memo(() => {
       setExportOpen(true)
     } else if (key === OperateEnum.import) {
       fileInputRef.current?.click()
-    } else if(key === OperateEnum.publish) {
-      upsert({id:appId, published:true })
-    } 
+    } else if (key === OperateEnum.publish) {
+      upsert({ id: appId, published: true })
+    }
   }, [fileInputRef, appId, upsert])
 
   const menu = useMemo(() => (
@@ -80,7 +80,7 @@ export const Operate = memo(() => {
         },
       ]}
     />
-  ), [t]);
+  ), [handleMenuClick, t]);
 
   const handleMakeVersionOpenChange = useCallback((open?: boolean) => {
     setMakeVersionOpen(open);
@@ -98,7 +98,7 @@ export const Operate = memo(() => {
         }
       }
     },
-    [importApp, fileInputRef]
+    [importApp, appId]
   );
 
   return (
@@ -112,7 +112,7 @@ export const Operate = memo(() => {
         </Button>
       </Dropdown>
       <MakeVersionDialog open={makeVersionOpen} onOpenChange={handleMakeVersionOpenChange} />
-      <ExportDialog open={exportOpen} onOpenChange={setExportOpen} />
+      <ExportDialog open={exportOpen} onOpenChange={setExportOpen as any} />
       <input
         ref={fileInputRef}
         type="file"

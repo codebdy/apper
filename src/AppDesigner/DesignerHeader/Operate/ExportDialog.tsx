@@ -1,5 +1,5 @@
 import { Form, message, Modal, Select } from "antd";
-import React, { memo, useCallback, useRef, useState } from "react"
+import { memo, useCallback, useRef, useState } from "react"
 import { useTranslation } from "react-i18next";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useShowError } from "AppDesigner/hooks/useShowError";
@@ -10,6 +10,8 @@ import { ID } from "shared";
 import { useSave } from "AppDesigner/UiDesigner/widgets/TemplateWidget/ExportDialog/useSave";
 import { Input } from "@formily/antd";
 const { Option } = Select;
+
+const TextArea = Input.TextArea as any
 
 export const ExportDialog = memo((
   props: {
@@ -30,7 +32,7 @@ export const ExportDialog = memo((
   const save = useSave(() => {
     message.success(t("OperateSuccess"));
     setExporting(false)
-    onOpenChange(false);
+    onOpenChange && onOpenChange(false);
   })
 
 
@@ -42,7 +44,7 @@ export const ExportDialog = memo((
       if (data?.exportApp) {
         fetch(data?.exportApp).then((resp => {
           resp.arrayBuffer().then((buffer) => {
-            save((p(app.title) || ("app" + appId)) + (snapshots.find(sn => sn.id === snapshotIdRef.current)?.version || ""), buffer);
+            save((p(app.title) || ("app" + appId)) + (snapshots?.find(sn => sn.id === snapshotIdRef.current)?.version || ""), buffer);
           }).catch(err => {
             message.error(err?.message)
             console.error(err)
@@ -64,17 +66,17 @@ export const ExportDialog = memo((
   const handleOk = useCallback(() => {
     form.validateFields().then((values: { snapshotId?: ID }) => {
       snapshotIdRef.current = values?.snapshotId
-      exportApp(values?.snapshotId)
+      exportApp(values?.snapshotId as any)
     })
 
-  }, [onOpenChange, exportApp, appId])
+  }, [form, exportApp])
 
   const handleCancel = useCallback(() => {
     form.resetFields();
-    onOpenChange(false);
+    onOpenChange && onOpenChange(false);
   }, [onOpenChange, form])
 
-  const handleValueChange = useCallback((changeValues) => {
+  const handleValueChange = useCallback((changeValues: any) => {
     if (changeValues?.snapshotId) {
       form.setFieldValue("description", snapshots?.find(snapshot => snapshot.id === changeValues?.snapshotId)?.description)
     }
@@ -120,7 +122,7 @@ export const ExportDialog = memo((
           label={t("Description")}
           name="description"
         >
-          <Input.TextArea readOnly />
+          <TextArea readOnly />
         </Form.Item>
       </Form>
     </Modal>
