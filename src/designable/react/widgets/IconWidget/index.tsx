@@ -27,7 +27,7 @@ export interface IIconWidgetProps extends React.HTMLAttributes<HTMLElement> {
 export const IconWidget: React.FC<IIconWidgetProps> & {
   Provider?: React.FC<IconProviderProps>
   ShadowSVG?: React.FC<IShadowSVGProps>
-} = observer((props: React.PropsWithChildren<IIconWidgetProps>) => {
+} = observer((props) => {
   const theme: any = useTheme()
   const context = useContext(IconContext)
   const registry = useRegistry()

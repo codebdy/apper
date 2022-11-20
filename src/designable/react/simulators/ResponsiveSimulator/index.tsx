@@ -176,16 +176,18 @@ export const ResponsiveSimulator: React.FC<IResponsiveSimulatorProps> =
               overflow: 'hidden',
             }}
           >
-            {props.children}
-            <ResizeHandle type={ResizeHandleType.Resize}>
-              <IconWidget infer="DragMove" style={{ pointerEvents: 'none' }} />
-            </ResizeHandle>
-            <ResizeHandle type={ResizeHandleType.ResizeHeight}>
-              <IconWidget infer="Menu" style={{ pointerEvents: 'none' }} />
-            </ResizeHandle>
-            <ResizeHandle type={ResizeHandleType.ResizeWidth}>
-              <IconWidget infer="Menu" style={{ pointerEvents: 'none' }} />
-            </ResizeHandle>
+            <>
+              {props.children}
+              <ResizeHandle type={ResizeHandleType.Resize}>
+                <IconWidget infer="DragMove" style={{ pointerEvents: 'none' }} />
+              </ResizeHandle>
+              <ResizeHandle type={ResizeHandleType.ResizeHeight}>
+                <IconWidget infer="Menu" style={{ pointerEvents: 'none' }} />
+              </ResizeHandle>
+              <ResizeHandle type={ResizeHandleType.ResizeWidth}>
+                <IconWidget infer="Menu" style={{ pointerEvents: 'none' }} />
+              </ResizeHandle>
+            </>
           </div>
         </div>
       </div>

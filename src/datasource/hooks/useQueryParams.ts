@@ -29,8 +29,8 @@ export enum QueryType {
   Multiple = "Multiple",
   QueryOne = "QueryOne"
 }
-const firstOperationDefinition = (ast) => ast.definitions?.[0];
-const firstFiledFromOperation = (operationDefinition) => operationDefinition?.selectionSet?.selections?.[0];
+const firstOperationDefinition = (ast: any) => ast.definitions?.[0];
+const firstFiledFromOperation = (operationDefinition: any) => operationDefinition?.selectionSet?.selections?.[0];
 
 
 //GQL拼接部分欠缺关联跟方法的参数
@@ -112,7 +112,7 @@ export function useQueryParams(
               return {
                 ...node,
                 arguments: [
-                  ...node.arguments,
+                  ...(node.arguments as any),
                   ...args,
                 ]
               }
@@ -143,14 +143,14 @@ export function useQueryParams(
               (ancestors?.[path.length - 6] as any)?.kind === Kind.OPERATION_DEFINITION &&
               node.kind === Kind.FIELD &&
               node.name?.value === "nodes" &&
-              (shchemaFragmentAst?.definitions?.[0] as any)?.selectionSet?.selections) {
+              ((shchemaFragmentAst as any)?.definitions?.[0] as any)?.selectionSet?.selections) {
               return {
                 ...node,
                 selectionSet: {
                   ...node.selectionSet || {},
                   selections: [
-                    ...node.selectionSet.selections || [],
-                    ...(shchemaFragmentAst?.definitions?.[0] as any)?.selectionSet?.selections || []
+                    ...(node.selectionSet as any).selections || [],
+                    ...((shchemaFragmentAst as any)?.definitions?.[0] as any)?.selectionSet?.selections || []
                   ]
                 }
               }
@@ -162,7 +162,7 @@ export function useQueryParams(
                 ...node,
                 selections: [
                   ...node.selections || [],
-                  ...(shchemaFragmentAst?.definitions?.[0] as any)?.selectionSet?.selections || []
+                  ...((shchemaFragmentAst as any)?.definitions?.[0] as any)?.selectionSet?.selections || []
                 ]
               }
             } else if ((ancestors?.[path.length - 3] as any)?.kind === Kind.OPERATION_DEFINITION &&
@@ -191,7 +191,7 @@ export function useQueryParams(
                   },
                   value: {
                     kind: Kind.INT,
-                    value: ((current - 1) * pageSize).toString(),
+                    value: ((current - 1) * (pageSize||0)).toString(),
                   }
                 })
               }
@@ -229,7 +229,9 @@ export function useQueryParams(
                 }
               })
 
-              const filterdOldValue = (node.value as ListValueNode)?.values.filter((val: ObjectValueNode) => !newOrderBys.find(orderBy => orderBy.field === val.fields?.[0]?.name?.value))
+              const filterdOldValue = (node.value as ListValueNode)?.values.filter(
+                (val: any) => !newOrderBys.find(orderBy => orderBy.field === val.fields?.[0]?.name?.value)
+              )
 
               return {
                 ...node,
@@ -258,7 +260,7 @@ export function useQueryParams(
         const gql = print(compiledAST);
         //console.log("compiledAST", compiledAST, gql)
         pms.gql = gql;
-      } catch (err) {
+      } catch (err: any) {
         console.error(err);
         message.error(t("Query.GraphqlExpressionError") + err?.message)
       }
