@@ -1,3 +1,3 @@
-const mobileComponents = [];
+const mobileComponents:any[] = [];
 
 export default mobileComponents;

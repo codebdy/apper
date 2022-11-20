@@ -13,18 +13,18 @@ export function useCheckComponentAuth() {
     }
 
     for (const key of Object.keys(schema.properties || {})) {
-      if (me.isSupper || me.isDemo) {
+      if (me?.isSupper || me?.isDemo) {
         continue;
       }
       for (const auth of appParams.componentAuthConfigs || []) {
         if (auth.componentId === key) {
           if (auth.refused) {
-            delete schema.properties[key];
+            (schema.properties as any)[key] && delete (schema.properties as any)[key];
             continue
           }
         }
       }
-      schema.properties[key] = check(schema.properties[key])
+      (schema.properties as any)[key] = check((schema.properties as any)[key])
     }
 
     if (isArr(schema.items)) {
@@ -32,7 +32,7 @@ export function useCheckComponentAuth() {
     } else if (schema.items) {
       const properties = (schema.items as any).properties;
       for (const key of Object.keys(properties || {})) {
-        if (me.isSupper || me.isDemo) {
+        if (me?.isSupper || me?.isDemo) {
           continue;
         }
         for (const auth of appParams.componentAuthConfigs || []) {
@@ -47,7 +47,7 @@ export function useCheckComponentAuth() {
       }
     }
     return schema
-  }, [appParams]);
+  }, [appParams.componentAuthConfigs, me?.isDemo, me?.isSupper]);
 
   return check;
 }

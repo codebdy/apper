@@ -1,4 +1,4 @@
-import { parse } from "graphql";
+import { DocumentNode, parse } from "graphql";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { HEADER_APPX_APPID, HEADER_AUTHORIZATION, TOKEN_PREFIX } from "consts";
@@ -7,7 +7,7 @@ import { EVENT_DATA_POSTED, trigger } from "enthooks/events";
 import { IGraphqlAction } from "plugin-sdk";
 import { useAppParams } from "plugin-sdk/contexts/app";
 
-const firstOperationDefinition = (ast) => ast.definitions?.[0];
+const firstOperationDefinition = (ast: DocumentNode) => ast.definitions?.[0];
 
 export function useGraphql() {
   const endpoint = useEndpoint();
@@ -22,7 +22,7 @@ export function useGraphql() {
 
     const ast = parse(palyload.gqlScript);
     const operationNode = firstOperationDefinition(ast);
-    const variableNames = operationNode?.variableDefinitions?.map(variableNode => {
+    const variableNames = (operationNode as any)?.variableDefinitions?.map((variableNode: any) => {
       return variableNode.variable?.name?.value
     })
 
