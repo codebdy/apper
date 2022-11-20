@@ -34,7 +34,7 @@ export const AttributePanel = (props: {
 
   const isId = useMemo(() => attribute.name === CONST_ID, [attribute.name]);
 
-  const handleChange = useCallback((form) => {
+  const handleChange = useCallback((form: any) => {
     if (form?.length && isStr(form?.length)) {
       form.length = parseInt(form.length)
     }

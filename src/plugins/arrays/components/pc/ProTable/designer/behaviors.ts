@@ -29,7 +29,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'ProTable.QueryForm',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'ProTable.QueryForm',
+    selector: (node) => node.props?.['x-component'] === 'ProTable.QueryForm',
     designerProps: {
       droppable: true,
       deletable: false,

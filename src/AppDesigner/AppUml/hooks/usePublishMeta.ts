@@ -14,13 +14,13 @@ export function usePublishMeta(
   options?: RequestOptions<boolean>
 ): [
     () => void,
-    { loading: boolean; error: Error | undefined }
+    { loading: boolean | undefined; error: Error | undefined }
   ] {
 
   const [doPublish, { loading, error }] = useLazyRequest(options)
 
   const publish = useCallback(() => {
-    doPublish(publishGql, {appId})
+    doPublish(publishGql, { appId })
   }, [appId, doPublish]);
 
   return [publish, { loading, error }];
