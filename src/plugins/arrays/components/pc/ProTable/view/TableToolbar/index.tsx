@@ -30,10 +30,13 @@ export const TableToolbar = observer((
 
   useEffect(() => {
     tableParams.tableConfig = tableConfig;
-  }, [params, tableConfig])
+  }, [params, tableConfig, tableParams])
 
   const slots = useMemo(() => {
-    const slts = {
+    const slts: {
+      children: Schema[],
+      actions: Schema | null
+    } = {
       children: [],
       actions: null,
     }
@@ -58,7 +61,7 @@ export const TableToolbar = observer((
       }
     >
       {
-        slots.children?.map((child) => {
+        slots.children?.map((child: any) => {
           return <RecursionField key={child.name} schema={child} name={child.name} />
         })
       }

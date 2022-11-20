@@ -1,13 +1,13 @@
 import { ReloadOutlined } from "@ant-design/icons"
-import { Button, Space, Tooltip } from "antd"
+import { Button, Tooltip } from "antd"
 import React, { useCallback } from "react"
 import { useLocalTranslations } from "../hooks/useLocalTranslations"
 import ColumnsSettings from "./ColumnsSettings"
 import HeightMenu from "./HeightMenu"
 import clx from "classnames"
-import { useTableParams } from "plugin-sdk/contexts/table"
 import { observer } from "@formily/reactive-react"
 import { ITableToolbarProps } from "."
+import { useArrayParams } from "plugin-sdk/contexts/array"
 
 export interface ITableToolbarShellProps {
   className?: string,
@@ -28,7 +28,7 @@ export const TableToolbarShell = observer((
     ...other
   } = props;
   const { t } = useLocalTranslations();
-  const params = useTableParams();
+  const params = useArrayParams();
 
   const handleRefresh = useCallback(() => {
     params.refreshFlag = params.refreshFlag ? (params.refreshFlag + 1) : 1
