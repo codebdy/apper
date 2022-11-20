@@ -43,8 +43,8 @@ const CollpaseGroupInner = memo(
 
     const handleMouseMove = useCallback((event: MouseEvent) => {
       const rect = ref.current?.getBoundingClientRect();
-      if (event.clientX >= rect.left && event.clientX <= rect.right &&
-        event.clientY >= rect.top && event.clientY <= rect.bottom) {
+      if (event.clientX >= (rect?.left||0) && event.clientX <= (rect?.right||0) &&
+        event.clientY >= (rect?.top||0) && event.clientY <= (rect?.bottom||0)) {
         setMouseHover(true && opened && !snapshot.isDragging);
       } else {
         setMouseHover(false)
@@ -105,8 +105,8 @@ const CollpaseGroupInner = memo(
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}
       >
-        <div ref={ref}>
-          <Collapse expandIconPosition="right" bordered={false} ghost accordion onChange={handleColapse}>
+        <div ref={ref as any}>
+          <Collapse expandIconPosition="right" bordered={false} ghost accordion onChange={handleColapse as any}>
             <Panel
               header={
                 <div className="item-label" onClick={handleClick}>
@@ -177,7 +177,7 @@ export const CollapseGroup = memo(
             node={node}
             onParentDropable={onParentDropable}
             opened={opened}
-            onOpened={setOpened}
+            onOpened={setOpened as any}
           />
         )}
       </Draggable>
