@@ -1,5 +1,5 @@
 import { observer } from "@formily/reactive-react";
-import { useParseLangMessage } from "@rxdrag/plugin-sdk/hooks/useParseLangMessage";
+import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import React, { useMemo } from "react";
 import cls from 'classnames'
 import moment from "moment";

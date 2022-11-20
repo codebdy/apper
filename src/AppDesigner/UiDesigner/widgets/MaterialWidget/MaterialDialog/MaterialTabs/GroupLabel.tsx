@@ -1,6 +1,6 @@
 import { IMaterialCollapseItem } from "@rxdrag/appx-plugin-sdk"
 import React, { memo, useCallback, useEffect, useState } from "react"
-import { useParseLangMessage } from "@rxdrag/plugin-sdk/hooks/useParseLangMessage";
+import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { Button, Space } from "antd";
 import { CheckOutlined, CloseOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/view";

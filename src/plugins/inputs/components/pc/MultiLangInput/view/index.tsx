@@ -1,7 +1,7 @@
 import { TranslationOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
 import React, { useCallback, useMemo, useState } from "react";
-import { useParseLangMessage } from "@rxdrag/plugin-sdk/hooks/useParseLangMessage";
+import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { useDesignerAppConfig } from "~/plugin-sdk/contexts/desinger";
 import ResourceEditDialog from "./ResourceEditDialog";
 

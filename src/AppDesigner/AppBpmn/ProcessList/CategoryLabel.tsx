@@ -3,7 +3,7 @@ import React, { useCallback, useState } from "react"
 import CategoryActions from "./CategoryActions"
 import EditCategoryDialog from "./EditCategoryDialog"
 import ProcessModal from "./ProcessModal"
-import { useParseLangMessage } from "@rxdrag/plugin-sdk/hooks/useParseLangMessage"
+import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage"
 import { IProcessCategory } from "~/model"
 
 const CategoryLabel = (

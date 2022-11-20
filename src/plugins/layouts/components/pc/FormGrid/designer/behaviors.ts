@@ -7,10 +7,10 @@ const behaviors: IBehavior[] = [
   {
     name: Name,
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === Name,
+    selector: (node) => node.props?.['x-component'] === Name,
     designerProps: {
       droppable: true,
-      allowDrop: (node) => node.props['x-component'] !== 'FormGrid',
+      allowDrop: (node) => node.props?.['x-component'] !== 'FormGrid',
     },
     designerLocales: locales,
     schema,
@@ -18,24 +18,29 @@ const behaviors: IBehavior[] = [
   {
     name: 'FormGrid.GridColumn',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'FormGrid.GridColumn',
+    selector: (node) => node.props?.['x-component'] === 'FormGrid.GridColumn',
     designerProps: {
       droppable: true,
       resizable: {
         width(node) {
-          const span = Number(node.props['x-component-props']?.gridSpan ?? 1)
+          const span = Number(node.props?.['x-component-props']?.gridSpan ?? 1)
           return {
             plus: () => {
               if (span + 1 > 12) return
-              node.props['x-component-props'] =
-                node.props['x-component-props'] || {}
-              node.props['x-component-props'].gridSpan = span + 1
+              if (node.props) {
+                node.props['x-component-props'] =
+                  node.props['x-component-props'] || {}
+                node.props['x-component-props'].gridSpan = span + 1
+              }
+
             },
             minus: () => {
               if (span - 1 < 1) return
-              node.props['x-component-props'] =
-                node.props['x-component-props'] || {}
-              node.props['x-component-props'].gridSpan = span - 1
+              if (node.props) {
+                node.props['x-component-props'] =
+                  node.props['x-component-props'] || {}
+                node.props['x-component-props'].gridSpan = span - 1
+              }
             },
           }
         },
@@ -44,7 +49,7 @@ const behaviors: IBehavior[] = [
       resizeStep: 1,
       resizeMin: 1,
       resizeMax: 12,
-      allowDrop: (node) => node.props['x-component'] === 'FormGrid',
+      allowDrop: (node) => node.props?.['x-component'] === 'FormGrid',
     },
     designerLocales: FormGridColumnLocales,
     schema: GridColumnSchema

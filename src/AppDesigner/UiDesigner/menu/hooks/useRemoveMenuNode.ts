@@ -5,7 +5,7 @@ import {
 } from "../atoms";
 import { useCallback } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { IMenuNode } from "@rxdrag/plugin-sdk/model/IMenuNode";
+import { IMenuNode } from "plugin-sdk/model/IMenuNode";
 import { useBackupSnapshot } from "./useBackupSnapshot";
 import { useGetMenuNode } from "./useGetMenuNode";
 import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";

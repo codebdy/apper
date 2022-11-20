@@ -71,7 +71,7 @@ const schema: IPropsSchema = {
       },
       size: {
         type: 'string',
-        enum: ['large', 'small', 'middle', null],
+        enum: ['large', 'small', 'middle', ""],
         'x-decorator': 'FormItem',
         'x-component': 'Select',
         'x-component-props': {

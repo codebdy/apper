@@ -11,11 +11,11 @@ const schema: IPropsSchema = {
     properties: {
       mode: {
         type: 'string',
-        enum: ['multiple', 'tags', null],
+        enum: ['multiple', 'tags', ""],
         'x-decorator': 'FormItem',
         'x-component': 'Radio.Group',
         'x-component-props': {
-          defaultValue: null,
+          defaultValue: "",
           optionType: 'button',
         },
       },
@@ -144,7 +144,7 @@ const schema: IPropsSchema = {
 
       size: {
         type: 'string',
-        enum: ['large', 'small', 'middle', null],
+        enum: ['large', 'small', 'middle', ""],
         'x-decorator': 'FormItem',
         'x-component': 'Select',
         'x-component-props': {

@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useSetRecoilState } from "recoil";
-import { pagePopupsState } from "@rxdrag/plugin-sdk/atoms";
+import { pagePopupsState } from "plugin-sdk/atoms";
 import { useExpressionScope } from '@formily/react';
 import { OpenPageType } from "@rxdrag/plugin-sdk";
 import { useAppViewKey } from "~/plugin-sdk/contexts/app";

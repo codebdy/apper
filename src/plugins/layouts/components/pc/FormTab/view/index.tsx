@@ -1,6 +1,6 @@
 import { observer } from '@formily/reactive-react'
 import { FormTab, IFormTabProps } from '@formily/antd';
-import { useParseLangMessage } from '@rxdrag/plugin-sdk/hooks/useParseLangMessage';
+import { useParseLangMessage } from 'plugin-sdk/hooks/useParseLangMessage';
 import React from 'react';
 
 const Component = observer((props: IFormTabProps) => {

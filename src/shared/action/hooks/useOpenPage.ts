@@ -1,10 +1,10 @@
-import { pagePopupsState } from "@rxdrag/plugin-sdk/atoms";
+import { pagePopupsState } from "plugin-sdk/atoms";
 import { useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { createId } from "../..";
-import { useInstanceId } from "@rxdrag/plugin-sdk/contexts/instance";
-import { IOpenPageAction, OpenPageType } from "@rxdrag/plugin-sdk/model/action";
+import { useInstanceId } from "plugin-sdk/contexts/instance";
+import { IOpenPageAction, OpenPageType } from "plugin-sdk/model/action";
 import { SYSTEM_APP_ID } from "~/consts";
 import { Device } from "@rxdrag/appx-plugin-sdk";
 import { useAppViewKey } from "~/plugin-sdk/contexts/app";

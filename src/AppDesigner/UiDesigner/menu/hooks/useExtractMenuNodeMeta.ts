@@ -4,7 +4,7 @@ import { useGetMenuNode } from "./useGetMenuNode";
 import { navigationNodesState } from "../atoms";
 import { cloneObject } from "../utils/cloneObject";
 import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";
-import { IMenuItem } from "@rxdrag/plugin-sdk/model/IMenuNode";
+import { IMenuItem } from "plugin-sdk/model/IMenuNode";
 
 export function useExtractMenuNodeMeta() {
   const key = useDesignerViewKey();

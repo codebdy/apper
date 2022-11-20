@@ -15,7 +15,7 @@ const QueryFormSchema: IPropsSchema = {
       },
       layout: {
         type: 'string',
-        enum: ['vertical', 'horizontal', 'inline', null],
+        enum: ['vertical', 'horizontal', 'inline', ""],
         'x-decorator': 'FormItem',
         'x-component': 'Select',
         'x-component-props': {

@@ -9,7 +9,7 @@ import { useParseLangSchema } from "~/AppDesigner/hooks/useParseLangSchema";
 import { ID } from "~/shared";
 import { useQueryPageWithCache } from "./hooks/useQueryPageWithCache";
 import { IUser } from "~/enthooks/hooks/useQueryMe";
-import { useMe } from "@rxdrag/plugin-sdk/contexts/login";
+import { useMe } from "plugin-sdk/contexts/login";
 import { useAppParams } from "~/plugin-sdk/contexts/app";
 import { PageContext } from "~/plugin-sdk/contexts/page";
 import { useCheckComponentAuth } from "./hooks/useCheckComponentAuth";

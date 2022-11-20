@@ -3,7 +3,7 @@ import {
   DraggableProvided,
   DraggableStateSnapshot,
 } from "react-beautiful-dnd";
-import { IMenuNode } from "@rxdrag/plugin-sdk/model/IMenuNode";
+import { IMenuNode } from "plugin-sdk/model/IMenuNode";
 import { navigationSelectedIdState } from "../../atoms";
 import { memo } from "react";
 import { useRecoilState } from "recoil";
@@ -11,8 +11,8 @@ import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";
 import React from "react";
 import clx from "classnames";
 import ItemIcon from "./ItemIcon";
-import { IconView } from "@rxdrag/plugin-sdk/icon/IconView";
-import { useParseLangMessage } from "@rxdrag/plugin-sdk/hooks/useParseLangMessage";
+import { IconView } from "plugin-sdk/icon/IconView";
+import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 
 const PageNavInner = memo(
   (props: {

@@ -1,12 +1,12 @@
 
 import { memo, useState } from 'react';
 import React from 'react';
-import { IMenuItem } from '@rxdrag/plugin-sdk/model/IMenuNode';
+import { IMenuItem } from 'plugin-sdk/model/IMenuNode';
 import { FormItem } from "@formily/antd";
 import { useMemo } from "react";
 import { useParseLangSchema } from "../../AppDesigner/hooks/useParseLangSchema";
 import { IUser } from "~/enthooks/hooks/useQueryMe";
-import { useMe } from "@rxdrag/plugin-sdk/contexts/login";
+import { useMe } from "plugin-sdk/contexts/login";
 import { createSchemaField, ExpressionScope, FormProvider } from '@formily/react';
 import { createForm } from '@formily/core';
 import { RouteContext, useAppParams } from '~/plugin-sdk/contexts/app';

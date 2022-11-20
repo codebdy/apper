@@ -7,7 +7,7 @@ import { useRecoilValue } from 'recoil';
 import { useMenuNode } from '../../hooks/useMenuNode';
 import { useSetMeta } from '../../hooks/useSetMeta';
 import { useDesignerViewKey } from '~/plugin-sdk/contexts/desinger';
-import { MenuItemType } from '@rxdrag/plugin-sdk/model/IMenuNode';
+import { MenuItemType } from 'plugin-sdk/model/IMenuNode';
 import { useGetPage } from '../../../hooks/useGetPage';
 import { MultiLangInput } from '~/plugins/inputs/components/pc/MultiLangInput/view';
 import { PageSelect } from '../../../SettingsForm/components/PageSelect';

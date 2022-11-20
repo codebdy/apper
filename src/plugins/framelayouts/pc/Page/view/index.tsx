@@ -1,10 +1,10 @@
 import { observer } from "@formily/reactive-react"
 import React from "react"
-import { pagePopupsState } from "@rxdrag/plugin-sdk/atoms";
+import { pagePopupsState } from "plugin-sdk/atoms";
 import { useRecoilValue } from "recoil";
 import { RootPage } from "./RootPage";
 import { ExpressionScope } from "@formily/react";
-import { OpenPageType } from "@rxdrag/plugin-sdk/model/action";
+import { OpenPageType } from "plugin-sdk/model/action";
 import { PageDialog } from "./PageDialog";
 import { PageDrawer } from "./PageDrawer";
 import { useAppViewKey } from "~/plugin-sdk/contexts/app";

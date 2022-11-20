@@ -3,7 +3,7 @@ import React, { useCallback, useState } from "react"
 import { IProcess, IProcessCategory } from "~/model"
 import ProcessActions from "./ProcessActions"
 import EditProccessDialog from "./EditProcessDialog"
-import { useParseLangMessage } from "@rxdrag/plugin-sdk/hooks/useParseLangMessage"
+import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage"
 
 const ProcessLabel = (
   props: {

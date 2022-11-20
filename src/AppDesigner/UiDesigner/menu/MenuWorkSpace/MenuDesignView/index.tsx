@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";
 import { navigationRootNodeState } from "../../atoms";
 import NavItemList from "./NavItemList";
-import { useParseLangMessage } from "@rxdrag/plugin-sdk/hooks/useParseLangMessage";
+import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { IApp } from "~/model";
 
 const MenuDesignView = memo((

@@ -5,7 +5,7 @@ import FormTemplates from "./FormTemplates";
 import { IPage, IPageCategory, IPageInput } from "~/model";
 import { useTranslation } from "react-i18next";
 import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/view";
-import { useParseLangMessage } from "@rxdrag/plugin-sdk/hooks/useParseLangMessage";
+import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 const { TabPane } = Tabs;
 const { Option } = Select;
 

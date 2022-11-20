@@ -1,4 +1,4 @@
-import { ActionType, IAppxAction } from "@rxdrag/plugin-sdk/model/action";
+import { ActionType, IAppxAction } from "plugin-sdk/model/action";
 import React, { useCallback, useEffect, useMemo } from "react";
 import { memo } from "react";
 import { Form } from "antd";

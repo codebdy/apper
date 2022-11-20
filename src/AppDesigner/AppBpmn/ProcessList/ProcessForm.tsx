@@ -4,7 +4,7 @@ import { memo } from "react";
 import { IPageInput, IProcess, IProcessCategory } from "~/model";
 import { useTranslation } from "react-i18next";
 import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/view";
-import { useParseLangMessage } from "@rxdrag/plugin-sdk/hooks/useParseLangMessage";
+import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 const { Option } = Select;
 
 const ProcessForm = memo((props: {

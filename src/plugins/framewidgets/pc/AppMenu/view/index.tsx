@@ -1,9 +1,9 @@
 import { Menu } from "antd";
-import { IMenuItem, MenuItemType } from "@rxdrag/plugin-sdk/model/IMenuNode";
+import { IMenuItem, MenuItemType } from "plugin-sdk/model/IMenuNode";
 import React, { memo, useCallback, useMemo } from "react";
-import { IconView } from "@rxdrag/plugin-sdk/icon/IconView";
+import { IconView } from "plugin-sdk/icon/IconView";
 import { ItemType } from "antd/lib/menu/hooks/useItems";
-import { useParseLangMessage } from "@rxdrag/plugin-sdk/hooks/useParseLangMessage";
+import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetMenuItem } from "./hooks/useGetMenuItem";
 import { useEntryPageUuid } from "./hooks/useEntryPageUuid";

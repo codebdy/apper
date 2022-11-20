@@ -5,7 +5,7 @@ import { useFieldSchema } from "@formily/react"
 import { IFieldSource } from "~/datasource/model/IFieldSource"
 import { isArr } from "@formily/shared"
 import { useDoActions } from "~/shared/action"
-import { IAppxAction } from "@rxdrag/plugin-sdk/model/action"
+import { IAppxAction } from "plugin-sdk/model/action"
 
 export interface ISearchText {
   isFuzzy?: boolean,

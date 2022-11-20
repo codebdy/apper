@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { IMenuItem } from "@rxdrag/plugin-sdk/model/IMenuNode";
+import { IMenuItem } from "plugin-sdk/model/IMenuNode";
 import { ID } from "~/shared";
 import { useMenu } from "~/AppRunner/hooks/useMenu";
 
