@@ -23,7 +23,7 @@ export function useSaveData() {
     const p = new Promise((resolve, reject) => {
       resolveRef.current = resolve;
       rejectRef.current = reject;
-      field.validate()
+      field?.validate()
         .then(() => {
           const data = { id: instance?.id, ...extract(field) || {} }
           post(data);

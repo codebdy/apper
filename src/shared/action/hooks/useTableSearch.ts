@@ -7,13 +7,13 @@ import { useArrayParams } from "plugin-sdk/contexts/array";
 export function useTableSearch() {
   const params = useArrayParams();
   const form = useParentForm();
-  const objectField = useMemo(() => (isObjectField(form) && form), [form]);
+  const objectField = useMemo(() => (isObjectField(form) ? form : undefined), [form]);
 
   const submit = useCallback(() => {
     if(!isObjectField(form)){
       console.error("Can not find ObjectField")
     }
-    if (objectField.validate) {
+    if (objectField?.validate) {
       objectField?.validate();
     }
 

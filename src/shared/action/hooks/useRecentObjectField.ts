@@ -1,10 +1,10 @@
-import { GeneralField, isObjectField } from "@formily/core";
+import { GeneralField, isObjectField, ObjectField } from "@formily/core";
 import { useCallback, useMemo } from "react";
 import { useField } from "@formily/react";
 
 export function useRecentObjectField() {
   const field = useField();
-  const getParentObjectField = useCallback((field: GeneralField) => {
+  const getParentObjectField = useCallback((field: GeneralField): ObjectField | undefined => {
     if (field?.parent) {
       if (isObjectField(field.parent)) {
         return field?.parent
