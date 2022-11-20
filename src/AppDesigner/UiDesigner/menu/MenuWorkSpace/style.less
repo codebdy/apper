@@ -1,0 +1,79 @@
+@import "../../../../variables.less";
+
+.menu-design-view-container{
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  .design-view{
+    min-width: 300px;
+    height: calc(100% - 16px);
+    //overflow: auto;
+    //margin: 8px;
+    display: flex;
+    flex-flow: column;
+    .ant-card-body{
+      flex: 1;
+      display: flex;
+      flex-flow: column;
+      padding: 2px;
+    }
+    .menu-item{
+      background-color: @backgrounColor;
+      padding: 4px 0;
+    }
+
+    .menu-text-item{
+      padding: 4px 8px;
+      padding-right: 0;
+    }
+
+    .menu-single-item:hover{
+      box-shadow: 2px 2px 10px 1px rgb(25 42 70 / 11%);
+      z-index: 1;
+    }
+
+    .float{
+      box-shadow: 2px 2px 10px 1px rgb(25 42 70 / 11%);
+      z-index: 6000;
+    }
+
+    .selected{
+      outline:  solid 1px @primaryColor;
+    }
+    .ant-collapse-ghost>.ant-collapse-item>.ant-collapse-content>.ant-collapse-content-box {
+      padding-bottom: 8px;
+      padding-top: 0;
+      padding-right: 0;
+      padding-left: 24px;
+    }
+    .collapse-item>.ant-collapse-content>.ant-collapse-content-box{
+      padding-bottom: 8px;
+      padding-top: 0;
+      padding-right: 0;
+      padding-left: 24px;
+    }
+
+    .collapse-inner{
+      display: flex;
+      flex-flow: column;
+      min-height: 60px;
+      position: relative;
+    }
+
+    .dashed{
+      border: dashed 1px lightgrey;
+    }
+
+    .ant-collapse-header{
+      padding: 4px 0 !important;
+    }
+
+    .item-label{
+      display: flex;
+      align-items: center;
+      .item-icon{
+        margin-right: 16px;
+      }
+    }
+  }
+}

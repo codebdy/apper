@@ -1,0 +1,27 @@
+@import "../../../variables.less"; 
+
+.menu-components{
+  flex:1;
+  height: 100%;
+  overflow: auto;
+  .draggable-label{
+    display: flex;
+    padding: 4px;
+    padding-left: 16px;
+    cursor: move;
+    background-color: @backgrounColor;
+  }
+  .draggable-label:hover{
+    transform: translate3d(0, 0, 0);
+  }
+  .draggable-icon{
+    opacity: 0.4;
+    margin-right: 8px;
+  }
+  .ant-collapse-content > .ant-collapse-content-box{
+    padding-top: 8px;
+  }
+  .ant-collapse-ghost>.ant-collapse-item>.ant-collapse-content>.ant-collapse-content-box{
+    padding-top: 0;
+  }
+}
