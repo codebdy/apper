@@ -12,7 +12,7 @@ const SelectLang = memo((props: IComponentProps) => {
 
   const appConfig = useDesignerAppConfig();
   const { t, i18n } = useTranslation();
-  const handleClick = ({ key }): void => {
+  const handleClick = ({ key }: any): void => {
     i18n.changeLanguage(key)
   };
 

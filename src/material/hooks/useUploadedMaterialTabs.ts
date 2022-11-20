@@ -11,8 +11,8 @@ export function useUploadedMaterialTabs() {
   const { t } = useTranslation();
   const convert = useConvertMaterialFromPlugin();
   const getComponent = useCallback((name: string) => {
-    for (const plugin of uploadedPlugins) {
-      for (const component of plugin.plugin?.components?.[device] || []) {
+    for (const plugin of uploadedPlugins || []) {
+      for (const component of plugin.plugin?.components?.[device || ""] || []) {
         if (component.name === name) {
           return convert(component)
         }
@@ -25,7 +25,7 @@ export function useUploadedMaterialTabs() {
     return names?.map(name => getComponent(name)).filter(material => material)
   }, [getComponent]);
 
-  const findNameInConfig = useCallback((name) => {
+  const findNameInConfig = useCallback((name: any) => {
     for (const tab of materialConfig?.schemaJson?.tabs || []) {
       if (tab.collopsesItems?.find(item => item.components?.find(nm => nm === name))) {
         return true;
@@ -35,11 +35,11 @@ export function useUploadedMaterialTabs() {
   const extract = useExtractMaterialGroupFromPlugin();
 
   const getOtherTab = useCallback(() => {
-    const usefullPlugins = uploadedPlugins.filter(plugin => {
-      return plugin.plugin?.components?.[device].length &&
-        !plugin.plugin?.components?.[device].find(com => findNameInConfig(com.name))
+    const usefullPlugins = uploadedPlugins?.filter(plugin => {
+      return plugin.plugin?.components?.[device || ""].length &&
+        !plugin.plugin?.components?.[device || ""].find(com => findNameInConfig(com.name))
     })
-    if (usefullPlugins.length > 0) {
+    if (usefullPlugins?.length) {
       return {
         title: t("Materials.Other"),
         uuid: "TAB-OTHER",
@@ -62,14 +62,14 @@ export function useUploadedMaterialTabs() {
               title: group.title,
               materials: getMaterials(group.components),
             }
-          })
+          }) as any
         }
       )
     }
     const otherTab = getOtherTab()
-    otherTab && tabs.push(otherTab)
+    otherTab && tabs.push(otherTab as any)
     return tabs
-  }, [getMaterials, getOtherTab])
+  }, [getMaterials, getOtherTab, materialConfig?.schemaJson?.tabs])
 
   return uploadTabs;
 }

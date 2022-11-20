@@ -8,7 +8,7 @@ export function useExtractMaterialGroupFromPlugin() {
   const extractMaterials = useExtractMaterialsFromPlugin();
   const { getTitle } = useGetPluginLocalMessage();
 
-  const extractMaterialGroupFromPlugin = useCallback((plugin: IPlugin) => {
+  const extractMaterialGroupFromPlugin = useCallback((plugin?: IPlugin) => {
     if(plugin){
       const group: MaterialGroup = {
         title: getTitle(plugin),

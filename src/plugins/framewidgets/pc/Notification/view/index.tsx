@@ -1,6 +1,6 @@
 import { Dropdown, Button, Badge } from 'antd';
 import './style.less';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BellOutlined } from '@ant-design/icons';
 import { NotificationBox } from './NotificationBox';
 import { useSubscribeNotificationCounts } from '../../../hooks/useSubscribeNotificationCounts';
@@ -9,6 +9,10 @@ import locales, { LOCALES_NS } from "./locales"
 import { registerResourceBundle } from 'i18n/registerResourceBundle';
 
 registerResourceBundle(LOCALES_NS, locales);
+
+export interface IComponentProps{
+  
+}
 
 export const Notification: React.FC = () => {
   const { count, error } = useSubscribeNotificationCounts()
