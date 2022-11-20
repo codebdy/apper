@@ -1,13 +1,13 @@
 import { useCallback, useRef } from "react";
-import { useTableParams } from "plugin-sdk";
 import { useDeleteByIds } from "enthooks/hooks/useDeleteByIds";
+import { useArrayParams } from "plugin-sdk/contexts/array";
 
 export function useBatchDelete() {
   const resolveRef = useRef<(value: unknown) => void>();
   const rejectRef = useRef<(reason?: any) => void>();
-  const tableParams = useTableParams();
+  const tableParams = useArrayParams();
   const { dataBind, selectedRowKeys } = tableParams;
-  const [doDelete ] = useDeleteByIds(dataBind?.entityName, {
+  const [doDelete ] = useDeleteByIds(dataBind?.entityName||"", {
     onCompleted: () => {
       resolveRef.current && resolveRef.current(undefined);
       tableParams.selectedRowKeys = [];
@@ -24,7 +24,7 @@ export function useBatchDelete() {
       }
       resolveRef.current = resolve;
       rejectRef.current = reject;
-      doDelete(selectedRowKeys?.map(key => key?.toString()));
+      doDelete(selectedRowKeys?.map((key:any) => key?.toString()) as any);
     });
     return p;
   }, [doDelete, selectedRowKeys])

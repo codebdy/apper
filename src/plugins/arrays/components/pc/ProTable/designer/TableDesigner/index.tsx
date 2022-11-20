@@ -11,14 +11,11 @@ import {
 import { ArrayBase } from '@formily/antd'
 import { observer } from '@formily/react'
 import cls from 'classnames'
-import {
-  queryNodesByComponentPath,
-  hasNodeByComponentPath,
-  createEnsureTypeItemsNode,
-} from 'plugin-sdk/funcs'
-import { LoadTemplate } from '@designable/formily-antd/lib/common/LoadTemplate'
 import { useParseLangMessage } from 'plugin-sdk/hooks/useParseLangMessage'
 import { useSelectable } from 'plugin-sdk/contexts/array'
+import { createEnsureTypeItemsNode, hasNodeByComponentPath, queryNodesByComponentPath } from 'designable/formily-antd/shared'
+import { LoadTemplate } from 'designable/formily-antd/common/LoadTemplate'
+const ArrayBaseAny = ArrayBase as any
 
 const ensureObjectItemsNode = createEnsureTypeItemsNode('object')
 
@@ -50,19 +47,19 @@ export const TableDesigner: DnFC<TableProps<any>> = observer((props) => {
   const nodeId = useNodeIdProps();
   const p = useParseLangMessage();
   const selectable = useSelectable();
-  const itemsNode = node.children.find((child) => child.props['type'] === "object");
+  const itemsNode = node?.children.find((child) => child.props?.['type'] === "object");
 
   const findOperationNode = useCallback(() => {
     return queryNodesByComponentPath(node, [
       'ProTable.Table',
       '*',
       'ProTable.Column',
-    ])?.find(node => node?.props?.["x-actions"])
+    ])?.find((node:any) => node?.props?.["x-actions"])
   }, [node]);
 
   const defaultRowKey = useCallback(() => {
-    return node.id
-  }, [node.id])
+    return node?.id
+  }, [node?.id])
 
   const renderColumn = useCallback((node: TreeNode) => {
     const { sortable, ...props } = node.props?.['x-component-props'] || {}
@@ -80,7 +77,7 @@ export const TableDesigner: DnFC<TableProps<any>> = observer((props) => {
         className={`data-id:${node.id}`}
         render={(value, record, key) => {
           return (
-            <ArrayBase.Item key={key} index={key} record={null}>
+            <ArrayBaseAny.Item key={key} index={key} record={null}>
               {(children as any)?.length
                 ?
                 children?.map(child => {
@@ -88,7 +85,7 @@ export const TableDesigner: DnFC<TableProps<any>> = observer((props) => {
                 })
                 : 'Droppable'
               }
-            </ArrayBase.Item>
+            </ArrayBaseAny.Item>
           )
         }}
       />
@@ -134,7 +131,7 @@ export const TableDesigner: DnFC<TableProps<any>> = observer((props) => {
   return (
     <div {...nodeId} className="dn-array-table">
       {
-        node.children.length === 0
+        node?.children.length === 0
           ?
           <DroppableWidget />
           :
@@ -146,7 +143,7 @@ export const TableDesigner: DnFC<TableProps<any>> = observer((props) => {
               scroll={{ x: '100%' }}
               className={cls('ant-formily-array-table', props.className)}
               style={{ marginBottom: 10, ...props.style }}
-              rowKey={defaultRowKey}
+              rowKey={defaultRowKey as any}
               dataSource={[{ id: '1' }]}
               pagination={false}
               components={{
@@ -157,7 +154,7 @@ export const TableDesigner: DnFC<TableProps<any>> = observer((props) => {
                   cell: BodyCell,
                 },
               }}
-              rowSelection={selectable && {}}
+              rowSelection={selectable && {} as any}
             >
               {itemsNode?.children?.map((node) => {
                 return renderChild(node);
@@ -168,7 +165,7 @@ export const TableDesigner: DnFC<TableProps<any>> = observer((props) => {
       <LoadTemplate
         actions={[
           {
-            title: node.getMessage('addIndex'),
+            title: node?.getMessage('addIndex'),
             icon: 'AddIndex',
             onClick: () => {
               if (
@@ -205,7 +202,7 @@ export const TableDesigner: DnFC<TableProps<any>> = observer((props) => {
             },
           },
           {
-            title: node.getMessage('addColumnGroup'),
+            title: node?.getMessage('addColumnGroup'),
             icon: 'AddColumnGroup',
             onClick: () => {
               const operationNode = findOperationNode();
@@ -228,7 +225,7 @@ export const TableDesigner: DnFC<TableProps<any>> = observer((props) => {
             },
           },
           {
-            title: node.getMessage('addColumn'),
+            title: node?.getMessage('addColumn'),
             icon: 'AddColumn',
             onClick: () => {
               const operationNode = findOperationNode()
@@ -250,7 +247,7 @@ export const TableDesigner: DnFC<TableProps<any>> = observer((props) => {
             },
           },
           {
-            title: node.getMessage('addOperation'),
+            title: node?.getMessage('addOperation'),
             icon: 'AddOperation',
             onClick: () => {
               const oldOperationNode = findOperationNode();

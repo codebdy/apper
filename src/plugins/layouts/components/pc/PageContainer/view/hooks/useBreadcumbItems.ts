@@ -35,11 +35,11 @@ export function useBreadcumbItems() {
     for (const item of menuPath) {
       items.push({
         breadcrumbName: p(item.title),
-        path: item.route?.pageUuid && `/${device}/${appId}/${mnUuid || 'no'}/${item.route?.pageUuid}`
+        path: (item.route?.pageUuid && `/${device}/${appId}/${mnUuid || 'no'}/${item.route?.pageUuid}`) || ""
       })
     }
     items.push({
-      breadcrumbName: p(page.title),
+      breadcrumbName: p(page?.title),
       path: "",
     })
     return items;

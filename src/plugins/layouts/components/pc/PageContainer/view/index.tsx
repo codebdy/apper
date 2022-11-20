@@ -48,7 +48,7 @@ export const Component: React.FC<IPageContainerProps> & {
   const p = useParseLangMessage();
   const navigate = useNavigate();
   const slots = useMemo(() => {
-    const slts = {
+    const slts: any = {
       title: null,
       headerExtra: null,
       headerContent: null,
@@ -88,7 +88,8 @@ export const Component: React.FC<IPageContainerProps> & {
 
   const selectedTab = slots.tabs?.[parseInt(selectedTabKey) - 1]
   //const basePath = useMemo(()=>field.path, [field.path]);
-
+  // eslint-disable-next-line no-script-url
+  const voidUrl = "javascript:void(0)"
   return (
     <PageContainerShell {...other}>
       <PageHeader
@@ -100,7 +101,7 @@ export const Component: React.FC<IPageContainerProps> & {
         footer={
           hasTabs && slots.tabs && <Tabs activeKey={selectedTabKey} onChange={handleSelectTab}>
             {
-              slots.tabs.map((tab, index) => {
+              slots.tabs.map((tab: any, index: any) => {
                 return (
                   <TabPane tab={p(tab['x-component-props']?.["title"])} key={index + 1} />
                 )
@@ -111,12 +112,12 @@ export const Component: React.FC<IPageContainerProps> & {
         }
         breadcrumb={hasBreadcrumb
           ? <Breadcrumb>
-            <Breadcrumb.Item href="javascript:void(0)" onClick={() => navigate(`/${device}/${app.id}`)}>
+            <Breadcrumb.Item href={voidUrl} onClick={() => navigate(`/${device}/${app.id}`)}>
               <HomeOutlined />
             </Breadcrumb.Item>
             {
               breadcrumbs.map(bread => {
-                const href = bread.path ? { href: "javascript:void(0)" } : {};
+                const href = bread.path ? { href: voidUrl } : {};
                 return (
                   <Breadcrumb.Item
                     {...href}
@@ -142,7 +143,7 @@ export const Component: React.FC<IPageContainerProps> & {
       <PageBody>
         {hasTabs && selectedTab && <RecursionField schema={selectedTab} name={selectedTab.name} />}
         {
-          slots.otherChildren?.map((child, index) => {
+          slots.otherChildren?.map((child:any, index:any) => {
             return (
               <div key={index}>
                 <RecursionField key={index} schema={child} name={child.name} />

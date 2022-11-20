@@ -13,7 +13,7 @@ import { IQueryFormProps, QueryForm } from "./QueryForm"
 import { TableIndex } from "./TableIndex"
 import { observable } from "@formily/reactive"
 import { ITableToolbarActionsProps, TableToolbarActions } from "./TableToolbarActions"
-import { registerResourceBundle } from "~/i18n/registerResourceBundle"
+import { registerResourceBundle } from "i18n/registerResourceBundle"
 import { IDataSourceableProps } from "plugin-sdk"
 import { ArrayContext } from "plugin-sdk/contexts/array"
 import { usePage } from "plugin-sdk/contexts/page"
@@ -64,7 +64,7 @@ const Component: React.FC<IProTableProps> & {
   const page = usePage();
   const tableParams = useMemo(() => {
     return observable({
-      path: page.id + "/" + field.path.toString()
+      path: page?.id + "/" + field.path.toString()
     });
   }, [field.path, page]);
 
@@ -73,7 +73,7 @@ const Component: React.FC<IProTableProps> & {
   console.log("ProTable 刷新")
 
   const slots = useMemo(() => {
-    const slts = {
+    const slts: any = {
       queryForm: null,
       dataTable: null,
       tableBatchActions: null,
@@ -81,14 +81,14 @@ const Component: React.FC<IProTableProps> & {
     }
 
     for (const key of Object.keys(fieldSchema?.properties || {})) {
-      const childSchema = fieldSchema.properties[key]
-      if (childSchema["x-component"] === 'ProTable.QueryForm') {
+      const childSchema = fieldSchema.properties?.[key]
+      if (childSchema?.["x-component"] === 'ProTable.QueryForm') {
         slts.queryForm = childSchema
-      } else if (childSchema["x-component"] === 'ProTable.Table') {
+      } else if (childSchema?.["x-component"] === 'ProTable.Table') {
         slts.dataTable = childSchema
-      } else if (childSchema["x-component"] === 'ProTable.BatchActions') {
+      } else if (childSchema?.["x-component"] === 'ProTable.BatchActions') {
         slts.tableBatchActions = childSchema
-      } else if (childSchema["x-component"] === 'ProTable.Toolbar') {
+      } else if (childSchema?.["x-component"] === 'ProTable.Toolbar') {
         slts.tableToolbar = childSchema;
       }
     }
@@ -114,7 +114,7 @@ const Component: React.FC<IProTableProps> & {
               selectable && slots.tableBatchActions && <RecursionField schema={slots.tableBatchActions} name={slots.tableBatchActions.name} />
             }
             {
-              <RecursionField schema={slots.dataTable} name={slots.dataTable.name} />
+              <RecursionField schema={slots.dataTable as any} name={slots.dataTable?.name} />
             }
           </Card>
         </div>

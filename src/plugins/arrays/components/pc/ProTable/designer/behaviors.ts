@@ -19,7 +19,7 @@ const behaviors: IBehavior[] = [
   {
     name: Name,
     extends: [],
-    selector: (node) => node.props['x-component'] === Name,
+    selector: (node) => node.props?.['x-component'] === Name,
     designerProps: {
       droppable: false,
     },
@@ -42,7 +42,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'ProTable.Toolbar',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'ProTable.Toolbar',
+    selector: (node) => node.props?.['x-component'] === 'ProTable.Toolbar',
     designerProps: {
       droppable: true,
       deletable: false,
@@ -55,7 +55,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'ProTable.ToolbarActions',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'ProTable.ToolbarActions',
+    selector: (node) => node.props?.['x-component'] === 'ProTable.ToolbarActions',
     designerProps: {
       droppable: true,
       deletable: false,
@@ -68,7 +68,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'ProTable.BatchActions',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'ProTable.BatchActions',
+    selector: (node) => node.props?.['x-component'] === 'ProTable.BatchActions',
     designerProps: {
       droppable: true,
       deletable: false,
@@ -81,7 +81,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'ProTable.Table',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'ProTable.Table',
+    selector: (node) => node.props?.['x-component'] === 'ProTable.Table',
     designerProps: {
       droppable: false,
       deletable: false,
@@ -94,12 +94,12 @@ const behaviors: IBehavior[] = [
   {
     name: 'ProTable.Column',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'ProTable.Column',
+    selector: (node) => node.props?.['x-component'] === 'ProTable.Column',
     designerProps: {
       droppable: true,
       allowDrop: (node) => {
         return (
-          (node.props['type'] === 'object' &&
+          (node.props?.['type'] === 'object' &&
             node.parent?.props?.['x-component'] === 'ProTable.Table') ||
           node?.props?.['x-component'] === 'ProTable.ColumnGroup'
         );
@@ -112,12 +112,12 @@ const behaviors: IBehavior[] = [
   {
     name: 'ProTable.ColumnGroup',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'ProTable.ColumnGroup',
+    selector: (node) => node.props?.['x-component'] === 'ProTable.ColumnGroup',
     designerProps: {
       droppable: true,
       allowDrop: (node) => {
         return (
-          (node.props['type'] === 'object' &&
+          (node.props?.['type'] === 'object' &&
             node.parent?.props?.['x-component'] === 'ProTable.Table') ||
           node?.props?.['x-component'] === 'ProTable.ColumnGroup'
         );

@@ -6,7 +6,7 @@ import { NotificationBox } from './NotificationBox';
 import { useSubscribeNotificationCounts } from '../../../hooks/useSubscribeNotificationCounts';
 import { useShowError } from 'AppRunner/hooks/useShowError';
 import locales, { LOCALES_NS } from "./locales"
-import { registerResourceBundle } from '~/i18n/registerResourceBundle';
+import { registerResourceBundle } from 'i18n/registerResourceBundle';
 
 registerResourceBundle(LOCALES_NS, locales);
 

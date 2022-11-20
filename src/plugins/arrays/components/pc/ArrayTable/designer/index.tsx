@@ -12,10 +12,11 @@ import { ArrayBase } from '@formily/antd'
 import { observer } from '@formily/react'
 import cls from 'classnames'
 import './styles.less'
-import { createEnsureTypeItemsNode, findNodeByComponentPath, hasNodeByComponentPath, queryNodesByComponentPath } from 'plugin-sdk'
-import { useDropTemplate } from '@designable/formily-antd/lib/hooks'
-import { LoadTemplate } from '@designable/formily-antd/lib/common/LoadTemplate'
+import { createEnsureTypeItemsNode, findNodeByComponentPath, hasNodeByComponentPath, queryNodesByComponentPath } from 'designable/formily-antd/shared'
+import { useDropTemplate } from 'designable/formily-antd/hooks'
+import { LoadTemplate } from 'designable/formily-antd/common/LoadTemplate'
 
+const ArrayBaseAny = ArrayBase as any
 
 const ensureObjectItemsNode = createEnsureTypeItemsNode('object')
 
@@ -23,6 +24,7 @@ const HeaderCell: React.FC = (props: any) => {
   return (
     <th
       {...props}
+      // eslint-disable-next-line no-useless-escape
       data-designer-node-id={props.className.match(/data-id\:([^\s]+)/)?.[1]}
     >
       {props.children}
@@ -34,6 +36,7 @@ const BodyCell: React.FC = (props: any) => {
   return (
     <td
       {...props}
+      // eslint-disable-next-line no-useless-escape
       data-designer-node-id={props.className.match(/data-id\:([^\s]+)/)?.[1]}
     >
       {props.children}
@@ -44,7 +47,7 @@ const BodyCell: React.FC = (props: any) => {
 export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
   const node = useTreeNode()
   const nodeId = useNodeIdProps()
-  useDropTemplate('ArrayTable', (source) => {
+  useDropTemplate('ArrayTable', (source:any) => {
     const sortHandleNode = new TreeNode({
       componentName: 'Field',
       props: {
@@ -92,7 +95,7 @@ export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
           title: `Title`,
         },
       },
-      children: source.map((node) => {
+      children: source.map((node:any) => {
         node.props.title = undefined
         return node
       }),
@@ -158,11 +161,11 @@ export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
     'ArrayTable.Addition',
   ])
   const defaultRowKey = () => {
-    return node.id
+    return node?.id
   }
 
   const renderTable = () => {
-    if (node.children.length === 0) return <DroppableWidget />
+    if (node?.children.length === 0) return <DroppableWidget />
     return (
       <ArrayBase disabled>
         <Table
@@ -172,7 +175,7 @@ export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
           scroll={{ x: '100%' }}
           className={cls('ant-formily-array-table', props.className)}
           style={{ marginBottom: 10, ...props.style }}
-          rowKey={defaultRowKey}
+          rowKey={defaultRowKey as any}
           dataSource={[{ id: '1' }]}
           pagination={false}
           components={{
@@ -188,7 +191,7 @@ export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
             const children = node.children.map((child) => {
               return <TreeNodeWidget node={child} key={child.id} />
             })
-            const props = node.props['x-component-props']
+            const props = node.props?.['x-component-props']
             return (
               <Table.Column
                 {...props}
@@ -202,9 +205,9 @@ export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
                 key={node.id}
                 render={(value, record, key) => {
                   return (
-                    <ArrayBase.Item key={key} index={key} record={null}>
+                    <ArrayBaseAny.Item key={key} index={key} record={null}>
                       {children.length > 0 ? children : 'Droppable'}
-                    </ArrayBase.Item>
+                    </ArrayBaseAny.Item>
                   )
                 }}
               />
@@ -223,7 +226,7 @@ export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
 
   useDropTemplate('ArrayTable.Column', (source) => {
     return source.map((node) => {
-      node.props.title = undefined
+      node.props && (node.props.title = undefined)
       return node
     })
   })
@@ -234,7 +237,7 @@ export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
       <LoadTemplate
         actions={[
           {
-            title: node.getMessage('addSortHandle'),
+            title: node?.getMessage('addSortHandle'),
             icon: 'AddSort',
             onClick: () => {
               if (
@@ -269,7 +272,7 @@ export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
             },
           },
           {
-            title: node.getMessage('addIndex'),
+            title: node?.getMessage('addIndex'),
             icon: 'AddIndex',
             onClick: () => {
               if (
@@ -316,14 +319,14 @@ export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
             },
           },
           {
-            title: node.getMessage('addColumn'),
+            title: node?.getMessage('addColumn'),
             icon: 'AddColumn',
             onClick: () => {
               const operationNode = findNodeByComponentPath(node, [
                 'ArrayTable',
                 '*',
                 'ArrayTable.Column',
-                (name) => {
+                (name: string) => {
                   return (
                     name === 'ArrayTable.Remove' ||
                     name === 'ArrayTable.MoveDown' ||
@@ -349,7 +352,7 @@ export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
             },
           },
           {
-            title: node.getMessage('addOperation'),
+            title: node?.getMessage('addOperation'),
             icon: 'AddOperation',
             onClick: () => {
               const oldOperationNode = findNodeByComponentPath(node, [
@@ -423,4 +426,4 @@ export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
   )
 })
 
-ArrayBase.mixin(ArrayTableDesigner)
+ArrayBaseAny.mixin(ArrayTableDesigner)
