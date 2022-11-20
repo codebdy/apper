@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { SYSTEM_APP_ID } from "../../consts";
 import { useQueryOne } from "../../enthooks/hooks/useQueryOne";
 import { IAppDeviceConfig } from "../../model";
-import { ID } from "~/shared";
+import { ID } from "shared";
 
 const configGql = gql`
 query ($appId:ID, $device:String){

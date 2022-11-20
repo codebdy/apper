@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerViewKey } from "plugin-sdk/contexts/desinger";
 import { navigationNodesState } from "../atoms";
 
 export function useGetMenuNode() {

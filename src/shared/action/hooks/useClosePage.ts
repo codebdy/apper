@@ -3,7 +3,7 @@ import { useSetRecoilState } from "recoil";
 import { pagePopupsState } from "plugin-sdk/atoms";
 import { useExpressionScope } from '@formily/react';
 import { OpenPageType } from "@rxdrag/plugin-sdk";
-import { useAppViewKey } from "~/plugin-sdk/contexts/app";
+import { useAppViewKey } from "plugin-sdk/contexts/app";
 
 export function useClosePage() {
   const key = useAppViewKey();

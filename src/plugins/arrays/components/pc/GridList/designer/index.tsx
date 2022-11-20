@@ -8,7 +8,7 @@ import { IGridListProps } from '../view'
 import cls from "classnames";
 import { IListHeaderProps } from '../view/ListHeader'
 import { ListHeaderDesigner } from './ListHeaderDesigner'
-import { useFindNode } from '~/plugin-sdk'
+import { useFindNode } from 'plugin-sdk'
 import { ListPagination } from '../view/ListPagination'
 import { IListBodyProps } from '../view/ListBody'
 import { ListBodyDesigner } from './ListBodyDesigner'

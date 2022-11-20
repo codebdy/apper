@@ -7,7 +7,7 @@ import { ExpressionScope } from "@formily/react";
 import { OpenPageType } from "plugin-sdk/model/action";
 import { PageDialog } from "./PageDialog";
 import { PageDrawer } from "./PageDrawer";
-import { useAppViewKey } from "~/plugin-sdk/contexts/app";
+import { useAppViewKey } from "plugin-sdk/contexts/app";
 
 
 export interface IComponentProps {

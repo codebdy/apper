@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { usePost } from "~/enthooks";
 import { IPostOptions } from "~/enthooks/hooks/usePostOne";
 import { CategoryType, ITemplateInfo, ITemplateInfoInput, TemplateType } from "~/model";
-import { useDesignerParams } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 
 export function useUpsertTemplates(options?: IPostOptions<any>): [
   (templates: ITemplateInfo[], templateType: TemplateType) => void,

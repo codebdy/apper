@@ -6,7 +6,7 @@ import { useForm } from "antd/lib/form/Form";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import CategoryForm from "./CategoryForm";
 import { useTranslation } from "react-i18next";
-import { createUuid } from "~/shared";
+import { createUuid } from "shared";
 import { useUpsertCategory } from "../hooks/useUpsertCategory";
 
 const CreateCategoryDialog = memo(() => {

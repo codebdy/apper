@@ -1,12 +1,12 @@
 import { observer } from '@formily/reactive-react'
 import React, { useMemo } from 'react';
-import { IDataSourceableProps } from '~/plugin-sdk';
+import { IDataSourceableProps } from 'plugin-sdk';
 import "./style.less"
 import cls from "classnames";
 import { ListHeader } from './ListHeader';
 import { RecursionField, Schema, useField, useFieldSchema } from '@formily/react';
 import { observable } from "@formily/reactive"
-import { ArrayContext } from '~/plugin-sdk/contexts/array';
+import { ArrayContext } from 'plugin-sdk/contexts/array';
 import { ListBody } from './ListBody';
 
 export interface IGridListProps extends IDataSourceableProps {

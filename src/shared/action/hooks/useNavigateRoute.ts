@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { useInstanceParams } from "~/plugin-sdk";
+import { useInstanceParams } from "plugin-sdk";
 import { parseRoute } from "./parseRoute";
 
 export function useNavigateRoute() {

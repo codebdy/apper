@@ -5,7 +5,7 @@ import {
 import { observer } from "@formily/reactive-react";
 import { Button } from 'antd';
 import React, { useCallback } from "react";
-import { useParseLangMessage } from '~/plugin-sdk';
+import { useParseLangMessage } from 'plugin-sdk';
 import { ButtonProps } from '../../view/Button';
 import { useDropdownDesignerParams } from '../context';
 

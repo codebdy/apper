@@ -5,7 +5,7 @@ import { useLocalTranslations } from "../hooks/useLocalTranslations"
 import ColumnsSettings from "./ColumnsSettings"
 import HeightMenu from "./HeightMenu"
 import clx from "classnames"
-import { useTableParams } from "~/plugin-sdk/contexts/table"
+import { useTableParams } from "plugin-sdk/contexts/table"
 import { observer } from "@formily/reactive-react"
 import { ITableToolbarProps } from "."
 

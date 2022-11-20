@@ -7,7 +7,7 @@ import { useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { useBackupSnapshot } from "./useBackupSnapshot";
 import { IMenuItem } from "plugin-sdk/model/IMenuNode";
-import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerViewKey } from "plugin-sdk/contexts/desinger";
 
 export function useSetMeta() {
   const key = useDesignerViewKey();

@@ -5,7 +5,7 @@ import { SYSTEM_APP_ID } from "~/consts";
 import { useQueryOne } from "~/enthooks/hooks/useQueryOne";
 import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState, codesState, orchestrationsState } from "../recoil/atoms";
 import { IApp } from "~/model";
-import { ID } from "~/shared";
+import { ID } from "shared";
 
 const queryGql = gql`
 query ($appId:ID!) {

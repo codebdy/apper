@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useInstanceParams } from "~/plugin-sdk";
+import { useInstanceParams } from "plugin-sdk";
 import { parseRoute } from "./parseRoute";
 
 export function useWindowOpen() {

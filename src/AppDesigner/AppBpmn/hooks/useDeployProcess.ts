@@ -1,6 +1,6 @@
 import { gql } from "~/enthooks";
 import { useCallback } from "react";
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { RequestOptions, useLazyRequest } from "~/enthooks/hooks/useLazyRequest";
 
 const deployGql = gql`

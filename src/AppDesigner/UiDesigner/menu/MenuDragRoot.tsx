@@ -10,11 +10,11 @@ import { useInsertAt } from "./hooks/useInsertAt";
 import { IMenuItem, IMenuNode, MenuItemType } from "plugin-sdk/model/IMenuNode";
 import { useTranslation } from "react-i18next";
 import "./index.less"
-import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerViewKey } from "plugin-sdk/contexts/desinger";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { cloneObject } from "./utils/cloneObject";
 import { parseMeta } from "./hooks/useParseMenuMeta";
-import { createUuid } from "~/shared";
+import { createUuid } from "shared";
 import { useGetPage } from "../hooks/useGetPage";
 import { useQueryMenu } from "AppDesigner/AppDesignerRoot/hooks/useQueryMenu";
 

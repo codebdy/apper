@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSetRecoilState } from "recoil";
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { OrchestrationMeta } from "../meta/OrchestrationMeta";
 import { orchestrationsState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";

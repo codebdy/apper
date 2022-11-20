@@ -1,7 +1,7 @@
 import { Card } from "antd";
 import React, { memo, useCallback, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerViewKey } from "plugin-sdk/contexts/desinger";
 import { navigationRootNodeState } from "../../atoms";
 import NavItemList from "./NavItemList";
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";

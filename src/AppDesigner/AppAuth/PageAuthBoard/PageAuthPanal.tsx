@@ -4,7 +4,7 @@ import { IComponentAuthConfig, IPage, IPageCategory } from "~/model";
 import { IDevice } from "AppDesigner/hooks/useDevices"
 import { Table } from "antd";
 import { useColumns } from "./useColumns";
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { IUiAuthRow } from "../IUiAuthConfig";
 import { useParseLangMessage } from "@rxdrag/plugin-sdk";
 import { usePagesWithoutCategory } from "../hooks/usePagesWithoutCategory";

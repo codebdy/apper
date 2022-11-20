@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/view";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { ScriptInput } from "./ScriptInput/ScriptInput";
-import { useParseLangMessage } from "~/plugin-sdk";
+import { useParseLangMessage } from "plugin-sdk";
 import { packagesState } from "../recoil/atoms";
 import { useRecoilValue } from "recoil";
 const { Option } = Select;

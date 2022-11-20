@@ -7,7 +7,7 @@ import { IMenuNode } from "plugin-sdk/model/IMenuNode";
 import { navigationSelectedIdState } from "../../atoms";
 import { memo } from "react";
 import { useRecoilState } from "recoil";
-import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerViewKey } from "plugin-sdk/contexts/desinger";
 import React from "react";
 import clx from "classnames";
 import ItemIcon from "./ItemIcon";

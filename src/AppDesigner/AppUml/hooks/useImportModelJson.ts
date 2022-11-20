@@ -2,7 +2,7 @@ import { message } from "antd";
 import { useCallback } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { SYSTEM_APP_ID } from "~/consts";
-import { getTheFiles } from "~/shared/action/hooks/useOpenFile";
+import { getTheFiles } from "shared/action/hooks/useOpenFile";
 import { MetaContent } from "../meta";
 import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";

@@ -4,7 +4,7 @@ import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { GUEST_ROLE_ID } from "~/consts";
 import { useParseLangMessage } from "@rxdrag/plugin-sdk";
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { useRoles } from "../hooks/useRoles";
 import "./style.less";
 

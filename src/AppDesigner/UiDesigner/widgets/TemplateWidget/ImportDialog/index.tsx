@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useShowError } from 'AppDesigner/hooks/useShowError';
 import { useUpsertTemplates } from 'AppDesigner/UiDesigner/hooks/useUpsertTemplates';
 import { ITemplateInfo, TemplateType } from '~/model';
-import { ID } from '~/shared';
+import { ID } from 'shared';
 import "../ExportDialog/style.less"
 import { TemplateList } from '../ExportDialog/TemplateList';
 

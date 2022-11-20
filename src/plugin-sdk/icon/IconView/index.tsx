@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react";
-import { getIcon } from "~/shared/icon/data";
+import { getIcon } from "shared/icon/data";
 import { IIcon } from "../model";
-import { isEmpertyIcon, EmpertyIcon } from "~/shared/icon/IconInput/index";
+import { isEmpertyIcon, EmpertyIcon } from "shared/icon/IconInput/index";
 import { SvgStringIcon } from "./SvgStringIcon";
 
 export interface IIconViewProps {

@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
 import { SYSTEM_APP_ID } from "~/consts";
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState, codesState, orchestrationsState } from "../recoil/atoms";
 import { useClassPackage } from "./useClassPackage";
 

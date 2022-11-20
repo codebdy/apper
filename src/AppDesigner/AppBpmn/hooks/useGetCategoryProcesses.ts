@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { useProcesses } from "./useProcesses";
 
 export function useGetCategoryProcesses() {

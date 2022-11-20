@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useAppParams } from "~/plugin-sdk/contexts/app";
+import { useAppParams } from "plugin-sdk/contexts/app";
 
 export function useDeviceConfig() {
   const { app, device } = useAppParams();

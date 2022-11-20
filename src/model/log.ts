@@ -1,5 +1,5 @@
 import { IUser } from "../enthooks";
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { IApp } from "./app";
 
 export enum ModelOperateType {

@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { IPostOptions, usePostOne } from "~/enthooks/hooks/usePostOne";
 import { IProcessInput, IProcess } from "~/model/process";
-import { useDesignerParams } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 
 export function useUpsertProcess(options?: IPostOptions<any>): [
   (page: IProcessInput) => void,

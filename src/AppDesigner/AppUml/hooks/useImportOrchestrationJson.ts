@@ -1,7 +1,7 @@
 import { message } from "antd";
 import { useCallback } from "react";
 import { useSetRecoilState } from "recoil";
-import { getTheFiles } from "~/shared/action/hooks/useOpenFile";
+import { getTheFiles } from "shared/action/hooks/useOpenFile";
 import { MetaContent } from "../meta";
 import { codesState, orchestrationsState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";

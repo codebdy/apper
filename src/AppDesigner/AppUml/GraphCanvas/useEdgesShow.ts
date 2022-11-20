@@ -16,7 +16,7 @@ import {
   selectedElementState,
 } from "../recoil/atoms";
 import { EdgeConfig, useDiagramEdges } from "../hooks/useDiagramEdges";
-import { ID } from "~/shared";
+import { ID } from "shared";
 
 export function useEdgesShow(graph: Graph | undefined, appId: ID) {
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(appId));

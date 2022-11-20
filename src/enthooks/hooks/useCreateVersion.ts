@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { gql, RequestOptions, useLazyRequest } from "~/enthooks";
-import { ID } from "~/shared"
+import { ID } from "shared"
 import { trigger, EVENT_DATA_POSTED } from "../events";
 
 export interface MakeVersionInput {

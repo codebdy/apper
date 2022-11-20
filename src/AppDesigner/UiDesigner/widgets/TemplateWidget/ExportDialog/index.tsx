@@ -2,7 +2,7 @@ import { message, Modal, Tabs } from 'antd';
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CategoryType, ITemplateInfo } from '~/model';
-import { ID } from '~/shared';
+import { ID } from 'shared';
 import "./style.less"
 import { TemplateList } from './TemplateList';
 import { useSave } from './useSave';

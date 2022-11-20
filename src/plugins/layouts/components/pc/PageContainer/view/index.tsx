@@ -16,7 +16,7 @@ import { Schema } from "@formily/react";
 import PageTitle, { IPageTitleProps } from "./PageTitle";
 import { useParseLangMessage } from "@rxdrag/plugin-sdk";
 import { HomeOutlined } from "@ant-design/icons";
-import { useAppParams } from "~/plugin-sdk/contexts/app";
+import { useAppParams } from "plugin-sdk/contexts/app";
 import { useNavigate } from "react-router-dom";
 
 const { TabPane } = Tabs;

@@ -2,7 +2,7 @@ import { ColumnHeightOutlined } from "@ant-design/icons";
 import { observer } from "@formily/reactive-react";
 import { Button, Dropdown, Menu, Tooltip } from "antd";
 import React, { useCallback } from "react"
-import { useTableParams } from "~/plugin-sdk/contexts/table";
+import { useTableParams } from "plugin-sdk/contexts/table";
 import { useLocalTranslations } from "../hooks/useLocalTranslations";
 import { toJS } from "@formily/reactive";
 import { useShowError } from "AppDesigner/hooks/useShowError";

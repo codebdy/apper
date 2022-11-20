@@ -5,7 +5,7 @@ import { getParentClasses } from "datasource/hooks/getParentClasses";
 import { AttributeMeta, ClassMeta, CONST_ID } from "../../AppUml/meta";
 import { sort } from "datasource";
 import _ from "lodash";
-import { ID } from "~/shared";
+import { ID } from "shared";
 
 export function useGetClassAttributes(appId?: ID) {
   const classMetas = useRecoilValue(classesState(appId))

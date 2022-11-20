@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { orchestrationsState, selectedElementState } from "../recoil/atoms";
 
 export function useSelectedOrcherstration(appId: ID) {

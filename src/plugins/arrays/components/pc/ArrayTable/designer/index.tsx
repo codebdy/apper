@@ -12,7 +12,7 @@ import { ArrayBase } from '@formily/antd'
 import { observer } from '@formily/react'
 import cls from 'classnames'
 import './styles.less'
-import { createEnsureTypeItemsNode, findNodeByComponentPath, hasNodeByComponentPath, queryNodesByComponentPath } from '~/plugin-sdk'
+import { createEnsureTypeItemsNode, findNodeByComponentPath, hasNodeByComponentPath, queryNodesByComponentPath } from 'plugin-sdk'
 import { useDropTemplate } from '@designable/formily-antd/lib/hooks'
 import { LoadTemplate } from '@designable/formily-antd/lib/common/LoadTemplate'
 

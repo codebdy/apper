@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useAppParams } from "~/plugin-sdk/contexts/app";
+import { useAppParams } from "plugin-sdk/contexts/app";
 
 export function useMenu() {
   const { app, device } = useAppParams();

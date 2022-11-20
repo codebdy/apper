@@ -8,7 +8,7 @@ import { IMaterialCollapseItem, IMaterialTab } from '@rxdrag/appx-plugin-sdk';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import { PluginList, PLUGINS_LIST_ID } from './PluginList';
 import { GROUP_TYPE } from './MaterialTabs/MaterialTab';
-import { useDesignerParams } from '~/plugin-sdk/contexts/desinger';
+import { useDesignerParams } from 'plugin-sdk/contexts/desinger';
 import { useGetNotCategoriedComponents } from './hooks/useGetNotCategoriedComponents';
 import { useUpsertMaterialConfig } from '../../../hooks/useUpsertMaterialConfig';
 import { useShowError } from 'AppDesigner/hooks/useShowError';

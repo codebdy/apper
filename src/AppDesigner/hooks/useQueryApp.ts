@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { SYSTEM_APP_ID } from "../../consts";
 import { useQueryOne } from "../../enthooks/hooks/useQueryOne";
 import { IApp } from "../../model";
-import { ID } from "~/shared";
+import { ID } from "shared";
 
 const appGql = gql`
 query ($appId:ID!){

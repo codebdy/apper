@@ -9,7 +9,7 @@ import { TemplateNodeWidget } from "./TemplateNodeWidget";
 import { ManageDialog } from "./ManageDialog";
 import { ExportOutlined, ImportOutlined, MoreOutlined, SettingOutlined } from "@ant-design/icons";
 import { CategoryType, ITemplateInfo, TemplateType } from "~/model";
-import { useParseLangMessage } from "~/plugin-sdk";
+import { useParseLangMessage } from "plugin-sdk";
 import { ExportDialog } from "./ExportDialog";
 import { useUploadTempltes } from "./hooks/useUploadTempltes";
 import { ImportDialog } from "./ImportDialog";

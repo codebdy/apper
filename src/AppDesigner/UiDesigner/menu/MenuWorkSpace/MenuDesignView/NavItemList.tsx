@@ -11,7 +11,7 @@ import { IMenuNode, MenuItemType } from "plugin-sdk/model/IMenuNode";
 import { useGetMenuNode } from "../../hooks/useGetMenuNode";
 import { useSetRecoilState } from "recoil";
 import { navigationSelectedIdState } from "../../atoms";
-import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerViewKey } from "plugin-sdk/contexts/desinger";
 import { LinkItem } from "./LinkItem";
 
 export const NavItemListInner = (props: {

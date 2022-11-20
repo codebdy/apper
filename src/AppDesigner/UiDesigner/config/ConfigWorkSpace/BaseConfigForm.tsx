@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { useShowError } from 'AppDesigner/hooks/useShowError';
 import { useQueryPageFrames } from '../../../FrameDesigner/hooks/useQueryPageFrames';
-import { useDesignerParams, useDesignerViewKey } from '~/plugin-sdk/contexts/desinger';
+import { useDesignerParams, useDesignerViewKey } from 'plugin-sdk/contexts/desinger';
 import { deviceConfigChangedState, deviceConfigState } from '../../recoil/atom';
 import { PageSelect } from '../../SettingsForm/components/PageSelect';
 import "./style.less"

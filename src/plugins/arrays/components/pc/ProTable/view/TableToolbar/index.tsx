@@ -1,12 +1,12 @@
 import React, { useEffect, useMemo } from "react"
-import { ITableConfig, useTableParams } from "~/plugin-sdk/contexts/table"
+import { ITableConfig, useTableParams } from "plugin-sdk/contexts/table"
 import { observer } from "@formily/reactive-react"
 import { TableToolbarShell } from "./TableToolbarShell"
 import { RecursionField, useFieldSchema } from '@formily/react';
 import { Schema } from "@formily/react";
 import "./style.less";
 import { useComponentConfig } from "~/AppRunner/hooks/useComponentConfig";
-import { useArrayParams } from "~/plugin-sdk/contexts/array";
+import { useArrayParams } from "plugin-sdk/contexts/array";
 
 export interface ITableToolbarProps {
   className?: string,

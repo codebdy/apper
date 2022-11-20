@@ -9,7 +9,7 @@ import { IUser } from "~/enthooks/hooks/useQueryMe";
 import { useMe } from "plugin-sdk/contexts/login";
 import { createSchemaField, ExpressionScope, FormProvider } from '@formily/react';
 import { createForm } from '@formily/core';
-import { RouteContext, useAppParams } from '~/plugin-sdk/contexts/app';
+import { RouteContext, useAppParams } from 'plugin-sdk/contexts/app';
 import { NotReady } from '../NotReady';
 import { useTranslation } from 'react-i18next';
 

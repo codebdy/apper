@@ -1,4 +1,4 @@
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { IDeleteOptions, useDeleteById } from "~/enthooks/hooks/useDeleteById";
 import { ITemplateInfo } from "~/model";
 

@@ -6,7 +6,7 @@ import {
 import { useCallback } from "react";
 import { useSetRecoilState } from "recoil";
 import { IMenuItem, IMenuNode } from "plugin-sdk/model/IMenuNode";
-import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerViewKey } from "plugin-sdk/contexts/desinger";
 
 export const parseMeta = (
   meta: IMenuItem,

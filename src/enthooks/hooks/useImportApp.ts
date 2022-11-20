@@ -1,6 +1,6 @@
 import { RequestOptions, useLazyRequest } from "~/enthooks";
 import { useCallback } from "react";
-import { ID } from "~/shared";
+import { ID } from "shared";
 
 const importGql = `
   mutation ($appFile:Upload!, $appId:ID){

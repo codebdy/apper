@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Menu, Dropdown, Button } from 'antd';
-import { useDesignerAppConfig } from '~/plugin-sdk/contexts/desinger';
+import { useDesignerAppConfig } from 'plugin-sdk/contexts/desinger';
 import { useTranslation } from 'react-i18next';
 import { TranslationOutlined } from '@ant-design/icons';
 

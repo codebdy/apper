@@ -4,7 +4,7 @@ import React, { memo, useCallback, useMemo } from "react"
 import { useDeleteCategory } from "../../hooks/useDeleteCategory";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { useTranslation } from "react-i18next";
-import { ID } from "~/shared";
+import { ID } from "shared";
 
 const CategoryActions = memo((
   props: {

@@ -2,7 +2,7 @@ import React, { useMemo } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
 import { useExtractMaterialGroupFromPlugin } from "./hooks/useExtractMaterialGroupFromPlugin";
-import { useDesignerParams } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 import { AppMaterialTabsContext } from "./context";
 import { useUploadedMaterialTabs } from "./hooks/useUploadedMaterialTabs";
 

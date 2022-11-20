@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useDevices } from 'AppDesigner/hooks/useDevices';
 import { DESIGN, DESIGN_BOARD } from '~/consts';
 import { AppEntryRouts } from '../DesignerHeader/AppEntryRouts';
-import { useDesignerParams } from '~/plugin-sdk';
+import { useDesignerParams } from 'plugin-sdk';
 
 export const NavigationWidget = memo(() => {
   const { app } = useDesignerParams();

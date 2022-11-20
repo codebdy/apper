@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { useDesignerParams, useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerParams, useDesignerViewKey } from "plugin-sdk/contexts/desinger";
 import { processesState } from "../recoil/atoms";
 
 export function useProcesses() {

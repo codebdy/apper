@@ -2,7 +2,7 @@
 import { Layout } from 'antd';
 import React, { memo } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useDesignerParams } from '~/plugin-sdk';
+import { useDesignerParams } from 'plugin-sdk';
 import DesignerHeader from "../DesignerHeader";
 
 const { Content } = Layout;

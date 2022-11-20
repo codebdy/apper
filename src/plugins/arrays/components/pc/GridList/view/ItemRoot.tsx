@@ -2,8 +2,8 @@ import { Field } from "@formily/core";
 import { useField } from "@formily/react";
 import { observer } from "@formily/reactive-react"
 import React from "react"
-import { InstanceContext } from "~/plugin-sdk";
-import { useArrayParams } from "~/plugin-sdk/contexts/array";
+import { InstanceContext } from "plugin-sdk";
+import { useArrayParams } from "plugin-sdk/contexts/array";
 
 export const ItemRoot = observer((
   props: {

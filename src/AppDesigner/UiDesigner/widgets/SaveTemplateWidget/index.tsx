@@ -8,7 +8,7 @@ import {
 } from '@designable/react'
 import { useTranslation } from "react-i18next"
 import { useUpsertTemplate } from "../../hooks/useUpsertTemplate"
-import { useDesignerParams } from "~/plugin-sdk"
+import { useDesignerParams } from "plugin-sdk"
 import { useShowError } from "AppDesigner/hooks/useShowError"
 import { CategoryType, TemplateType } from "~/model"
 import { transForm } from "./transform"

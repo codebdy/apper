@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger"
+import { useDesignerViewKey } from "plugin-sdk/contexts/desinger"
 import { isNavigationDirtyState, navigationNodesState, navigationRootNodeState, navigationSelectedIdState, redoListState, undoListState } from "../atoms";
 
 export function useUndo() {

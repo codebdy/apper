@@ -1,6 +1,6 @@
 import { Table as AntdTable, TableProps } from 'antd';
 import React, { useCallback, useEffect, useMemo } from 'react';
-import { useTableParams } from '~/plugin-sdk/contexts/table';
+import { useTableParams } from 'plugin-sdk/contexts/table';
 import { ArrayBase } from "@formily/antd"
 import {
   useFieldSchema
@@ -19,7 +19,7 @@ import {
 import { useGetTableColumns } from './useGetTableColumns';
 import { useArrayTableSources } from './useArrayTableSources';
 import { mapOrderBy } from "datasource/hooks/mapOrderBy";
-import { useArrayParams, useSelectable } from '~/plugin-sdk/contexts/array';
+import { useArrayParams, useSelectable } from 'plugin-sdk/contexts/array';
 
 export interface ObservableColumnSource {
   columnProps: ColumnProps<any> & { sortable?: boolean }

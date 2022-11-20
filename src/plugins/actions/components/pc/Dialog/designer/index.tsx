@@ -15,7 +15,7 @@ import {
 } from '@designable/react'
 import { observer } from '@formily/react'
 import './styles.less'
-import { useFindNode, useParseLangMessage } from '~/plugin-sdk'
+import { useFindNode, useParseLangMessage } from 'plugin-sdk'
 import { IDialogTitleProps } from '../view/DialogTitle'
 import { IDialogContentProps } from '../view/DialogContent'
 import { IDialogFooterProps } from '../view/DialogFooter'

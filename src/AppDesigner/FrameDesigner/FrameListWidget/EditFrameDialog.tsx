@@ -7,7 +7,7 @@ import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/vi
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { IUiFrame } from "~/model";
 import { useUpsertPageFrame } from "../hooks/useUpsertPageFrame";
-import { createUuid } from "~/shared";
+import { createUuid } from "shared";
 
 export const EditFrameDialog = memo((
   props: {

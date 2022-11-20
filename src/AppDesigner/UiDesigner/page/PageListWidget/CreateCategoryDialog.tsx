@@ -7,7 +7,7 @@ import { useUpsertCategory } from "../../hooks/useUpsertCategory";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import CategoryForm from "./CategoryForm";
 import { useTranslation } from "react-i18next";
-import { createUuid } from "~/shared";
+import { createUuid } from "shared";
 
 const CreateCategoryDialog = memo(() => {
   const [isModalVisible, setIsModalVisible] = useState(false);

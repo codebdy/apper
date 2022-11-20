@@ -1,6 +1,6 @@
 import { useCallback } from "react";
-import { useMe } from "~/plugin-sdk";
-import { useAppParams } from "~/plugin-sdk/contexts/app";
+import { useMe } from "plugin-sdk";
+import { useAppParams } from "plugin-sdk/contexts/app";
 import { isArr, isObj } from '@designable/shared'
 import { ISchema } from "@formily/react";
 

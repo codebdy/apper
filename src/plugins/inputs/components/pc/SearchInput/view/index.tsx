@@ -4,7 +4,7 @@ import React, { useCallback, useMemo } from "react"
 import { useFieldSchema } from "@formily/react"
 import { IFieldSource } from "datasource/model/IFieldSource"
 import { isArr } from "@formily/shared"
-import { useDoActions } from "~/shared/action"
+import { useDoActions } from "shared/action"
 import { IAppxAction } from "plugin-sdk/model/action"
 
 export interface ISearchText {
@@ -36,8 +36,8 @@ const Component = observer((props: IComponentProps) => {
   const handleChange = useCallback((event?: React.ChangeEvent<HTMLInputElement>) => {
     onChange && onChange({
       isFuzzy,
-      keyword: event.target.value,
-      fields: fields,
+      keyword: event?.target.value,
+      fields: fields as any,
       isSearchText: true,
     })
   }, [fields, isFuzzy, onChange]);

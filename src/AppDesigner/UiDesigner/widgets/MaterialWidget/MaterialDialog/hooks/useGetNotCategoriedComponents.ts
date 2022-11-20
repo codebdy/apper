@@ -1,4 +1,4 @@
-import { useDesignerParams } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 import { useCallback } from "react";
 import { IMaterialTab, IPlugin } from "@rxdrag/appx-plugin-sdk";
 

@@ -2,7 +2,7 @@ import { observer } from "@formily/reactive-react"
 import React, { CSSProperties, useCallback, useMemo, useState } from "react"
 import "./style.less"
 import cls from "classnames"
-import { LayoutContext } from "~/plugin-sdk/contexts/layout"
+import { LayoutContext } from "plugin-sdk/contexts/layout"
 
 export enum FlexFlow {
   column = "column",

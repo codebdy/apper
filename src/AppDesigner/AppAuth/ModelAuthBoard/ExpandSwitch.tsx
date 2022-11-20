@@ -4,7 +4,7 @@ import { memo } from "react"
 import { IClassAuthConfig } from "~/model"
 import { useUpsertClassAuthConfig } from "../hooks/useUpsertClassAuthConfig";
 import { useShowError } from "AppDesigner/hooks/useShowError";
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 
 export const ExpandSwitch = memo((

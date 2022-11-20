@@ -1,6 +1,6 @@
 import { observer } from "@formily/reactive-react"
 import React, { useMemo } from "react"
-import { useParseLangMessage } from "~/plugin-sdk";
+import { useParseLangMessage } from "plugin-sdk";
 
 export interface IEnumTagsProps {
   value?: string | string[]

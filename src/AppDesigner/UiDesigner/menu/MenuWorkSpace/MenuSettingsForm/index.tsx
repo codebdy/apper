@@ -1,12 +1,12 @@
 import { Form, Input, Select } from 'antd';
-import IconInput from '~/shared/icon/IconInput';
+import IconInput from 'shared/icon/IconInput';
 import React, { memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { navigationSelectedIdState } from '../../atoms';
 import { useRecoilValue } from 'recoil';
 import { useMenuNode } from '../../hooks/useMenuNode';
 import { useSetMeta } from '../../hooks/useSetMeta';
-import { useDesignerViewKey } from '~/plugin-sdk/contexts/desinger';
+import { useDesignerViewKey } from 'plugin-sdk/contexts/desinger';
 import { MenuItemType } from 'plugin-sdk/model/IMenuNode';
 import { useGetPage } from '../../../hooks/useGetPage';
 import { MultiLangInput } from '~/plugins/inputs/components/pc/MultiLangInput/view';

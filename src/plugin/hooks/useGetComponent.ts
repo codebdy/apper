@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useDesignerParams } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 
 export function useGetComponent() {
   const { uploadedPlugins, device } = useDesignerParams();

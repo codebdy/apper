@@ -1,5 +1,5 @@
 import { IUser } from "~/enthooks";
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { IApp, IAppInput } from "./app";
 
 export interface IUserInput {

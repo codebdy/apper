@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { useRecoilState } from "recoil";
 import { pagesCacheState } from "plugin-sdk/atoms";
-import { useAppParams, useAppViewKey } from "~/plugin-sdk/contexts/app";
+import { useAppParams, useAppViewKey } from "plugin-sdk/contexts/app";
 import { useQueryPageByUuid } from "./useQueryPageByUuid";
 
 export function useQueryPageWithCache(uuid?: string) {

@@ -1,7 +1,7 @@
 import { gql, useQuery } from "~/enthooks";
 import { useMemo } from "react";
 import { IProcess } from "~/model/process";
-import { useDesignerParams } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 
 const processesGql = gql`
 query ($appId:ID!){

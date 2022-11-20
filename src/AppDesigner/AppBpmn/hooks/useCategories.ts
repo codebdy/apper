@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { useDesignerParams } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 import { categoriesState } from "../recoil/atoms";
 
 export function useCategories() {

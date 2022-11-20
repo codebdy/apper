@@ -6,7 +6,7 @@ import { useUpsertPage } from "../../hooks/useUpsertPage";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { useTranslation } from "react-i18next";
 import { IPageCategory } from "~/model";
-import { createUuid, ID } from "~/shared";
+import { createUuid, ID } from "shared";
 
 const CreatePageModal = memo((
   props: {

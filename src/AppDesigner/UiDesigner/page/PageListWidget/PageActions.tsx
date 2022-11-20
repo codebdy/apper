@@ -7,7 +7,7 @@ import { useShowError } from "AppDesigner/hooks/useShowError";
 import { useTranslation } from "react-i18next";
 import { useUpsertPage } from "../../hooks/useUpsertPage";
 import { useLazyQueryPage } from "AppDesigner/hooks/useLazyQueryPage";
-import { createUuid } from "~/shared";
+import { createUuid } from "shared";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 
 const PageActions = memo((

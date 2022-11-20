@@ -12,7 +12,7 @@ import { SortableContainer, SortableElement, SortableHandle } from 'react-sortab
 import { arrayMoveImmutable } from "array-move";
 import { Type, Types } from "../../../meta/Type";
 import { ArgMeta } from "../../../meta/MethodMeta";
-import { createUuid } from "~/shared";
+import { createUuid } from "shared";
 import { LazyInput } from "./LazyInput";
 import { useGetTypeLabel } from "../../../hooks/useGetTypeLabel";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";

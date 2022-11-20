@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { IMenuItem } from "plugin-sdk/model/IMenuNode";
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { useMenu } from "~/AppRunner/hooks/useMenu";
 
 export function useGetMenuItemByPageUuid() {

@@ -14,7 +14,7 @@ import { LoadTemplate } from '@designable/formily-antd/lib/common/LoadTemplate'
 import { useDropTemplate } from '@designable/formily-antd/lib/hooks'
 import cls from 'classnames'
 import './styles.less'
-import { createEnsureTypeItemsNode, createNodeId, findNodeByComponentPath, hasNodeByComponentPath, queryNodesByComponentPath } from '~/plugin-sdk'
+import { createEnsureTypeItemsNode, createNodeId, findNodeByComponentPath, hasNodeByComponentPath, queryNodesByComponentPath } from 'plugin-sdk'
 import { useTranslation } from 'react-i18next'
 
 const ensureObjectItemsNode = createEnsureTypeItemsNode('object')

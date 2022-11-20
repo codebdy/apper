@@ -3,7 +3,7 @@ import React from "react"
 import cls from "classnames"
 import "./style.less"
 import { Header } from "antd/lib/layout/layout"
-import { useLayoutParams } from "~/plugin-sdk/contexts/layout"
+import { useLayoutParams } from "plugin-sdk/contexts/layout"
 
 export interface IComponentProps {
   fixed?: boolean,

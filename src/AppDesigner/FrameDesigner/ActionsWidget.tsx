@@ -5,7 +5,7 @@ import { observer } from '@formily/react'
 import { useTranslation } from 'react-i18next'
 import { transformToSchema } from '../UiDesigner/transformer'
 import { useShowError } from 'AppDesigner/hooks/useShowError'
-import { ID } from '~/shared'
+import { ID } from 'shared'
 import { useUpsertPageFrame } from './hooks/useUpsertPageFrame'
 
 export const ActionsWidget = observer((props: {

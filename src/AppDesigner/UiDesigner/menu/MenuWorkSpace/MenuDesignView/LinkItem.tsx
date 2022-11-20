@@ -3,15 +3,15 @@ import {
   DraggableProvided,
   DraggableStateSnapshot,
 } from "react-beautiful-dnd";
-import { IMenuNode } from "~/plugin-sdk/model/IMenuNode";
+import { IMenuNode } from "plugin-sdk/model/IMenuNode";
 import { memo, useMemo } from "react";
 import { useRecoilState } from "recoil";
 import { navigationSelectedIdState } from "../../atoms";
-import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerViewKey } from "plugin-sdk/contexts/desinger";
 import React from "react";
 import clx from "classnames";
 import ItemIcon from "./ItemIcon";
-import { IconView } from "~/plugin-sdk/icon/IconView";
+import { IconView } from "plugin-sdk/icon/IconView";
 
 const LinkItemInner = memo(
   (props: {

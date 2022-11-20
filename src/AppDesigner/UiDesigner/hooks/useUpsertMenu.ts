@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { IPostOptions, usePostOne } from "~/enthooks/hooks/usePostOne";
 import { IMenuInput } from "~/model";
 import { IMenu } from "~/model";
-import { useDesignerParams } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 
 export function useUpsertMenu(options?: IPostOptions<any>): [
   (menu: IMenuInput) => void,

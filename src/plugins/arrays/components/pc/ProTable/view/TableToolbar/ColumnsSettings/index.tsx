@@ -3,7 +3,7 @@ import { observer } from "@formily/reactive-react";
 import { Button, Checkbox, Divider, Popover, Space, Tooltip } from "antd";
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd";
-import { useTableParams } from "~/plugin-sdk/contexts/table";
+import { useTableParams } from "plugin-sdk/contexts/table";
 import { useLocalTranslations } from "../../hooks/useLocalTranslations";
 import DraggableLabel from "./DraggableLabel";
 import "./style.less"

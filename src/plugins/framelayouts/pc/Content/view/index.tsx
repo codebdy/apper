@@ -2,7 +2,7 @@ import { observer } from "@formily/reactive-react"
 import React, { useCallback, useEffect, useRef } from "react"
 import "./style.less"
 import cls from "classnames"
-import { useLayoutParams } from "~/plugin-sdk/contexts/layout"
+import { useLayoutParams } from "plugin-sdk/contexts/layout"
 
 export interface IComponentProps {
   className?: string,

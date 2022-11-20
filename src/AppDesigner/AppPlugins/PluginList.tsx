@@ -1,6 +1,6 @@
 import { List } from 'antd';
 import React, { memo, useMemo } from 'react';
-import { useDesignerParams } from '~/plugin-sdk/contexts/desinger';
+import { useDesignerParams } from 'plugin-sdk/contexts/desinger';
 import { PluginItem } from './PluginItem';
 
 export const PluginList = memo(() => {

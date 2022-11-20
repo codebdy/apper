@@ -1,6 +1,6 @@
 import { Card, TableProps } from "antd"
 import React, { useMemo } from "react"
-import { TableContext } from "~/plugin-sdk/contexts/table"
+import { TableContext } from "plugin-sdk/contexts/table"
 import "./style.less"
 import locales, { LOCALES_NS } from "./locales"
 import { Table } from "./Table"
@@ -15,8 +15,8 @@ import { observable } from "@formily/reactive"
 import { ITableToolbarActionsProps, TableToolbarActions } from "./TableToolbarActions"
 import { registerResourceBundle } from "~/i18n/registerResourceBundle"
 import { IDataSourceableProps } from "@rxdrag/plugin-sdk"
-import { ArrayContext } from "~/plugin-sdk/contexts/array"
-import { usePage } from "~/plugin-sdk/contexts/page"
+import { ArrayContext } from "plugin-sdk/contexts/array"
+import { usePage } from "plugin-sdk/contexts/page"
 
 registerResourceBundle(LOCALES_NS, locales);
 

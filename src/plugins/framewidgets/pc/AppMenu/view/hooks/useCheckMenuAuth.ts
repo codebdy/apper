@@ -1,6 +1,6 @@
 import { useCallback } from "react";
-import { IMenuItem, useMe } from "~/plugin-sdk";
-import { useAppParams } from "~/plugin-sdk/contexts/app";
+import { IMenuItem, useMe } from "plugin-sdk";
+import { useAppParams } from "plugin-sdk/contexts/app";
 
 export function useCheckMenuAuth() {
   const appParams = useAppParams();

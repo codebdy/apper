@@ -2,7 +2,7 @@ import { Avatar, List } from "antd";
 import React from "react";
 import { memo } from "react"
 import { ITemplateInfo } from "~/model";
-import { useParseLangMessage } from "~/plugin-sdk";
+import { useParseLangMessage } from "plugin-sdk";
 import { DeleteTemplateButton } from "./DeleteTemplateButton";
 import { EditTemplateDialog } from "./EditTemplateDialog";
 

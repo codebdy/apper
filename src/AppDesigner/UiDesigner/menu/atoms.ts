@@ -1,5 +1,5 @@
 import { atomFamily } from "recoil";
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { IMenuNode } from "plugin-sdk/model/IMenuNode";
 
 export interface INavigationSnapshot {

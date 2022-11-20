@@ -2,8 +2,8 @@ import { observer } from "@formily/reactive-react"
 import React, { CSSProperties, useCallback } from "react"
 import "./style.less"
 import cls from "classnames"
-import { IAppxAction } from "~/plugin-sdk"
-import { useDoActions } from "~/shared/action"
+import { IAppxAction } from "plugin-sdk"
+import { useDoActions } from "shared/action"
 import { message } from "antd"
 
 export interface IComponentProps {

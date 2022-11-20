@@ -1,7 +1,7 @@
 import { MoreOutlined, EditOutlined, DeleteOutlined, LoadingOutlined } from "@ant-design/icons";
 import { Menu, Dropdown, Button } from "antd";
 import React, { memo, useCallback, useMemo } from "react"
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { IProcess } from "~/model";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { useTranslation } from "react-i18next";

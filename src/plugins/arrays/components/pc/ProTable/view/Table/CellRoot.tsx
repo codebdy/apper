@@ -2,7 +2,7 @@ import { Field } from '@formily/core';
 import { useField } from '@formily/react';
 import React from 'react';
 import { InstanceContext } from 'plugin-sdk/contexts/instance';
-import { useArrayParams } from '~/plugin-sdk/contexts/array';
+import { useArrayParams } from 'plugin-sdk/contexts/array';
 
 export interface ICellRootProps {
   instance?: any,

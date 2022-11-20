@@ -12,7 +12,7 @@ import { useGetProcess } from '../hooks/useGetProcess';
 import { selectedBpmnProcessIdState } from '../recoil/atoms';
 import { useProcessesWithoutCategory } from '../hooks/useProcessesWithoutCategory';
 import { useGetCategoryProcesses } from '../hooks/useGetCategoryProcesses';
-import { useDesignerParams } from '~/plugin-sdk';
+import { useDesignerParams } from 'plugin-sdk';
 
 const { DirectoryTree } = Tree;
 

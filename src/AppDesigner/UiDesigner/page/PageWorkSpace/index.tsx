@@ -12,7 +12,7 @@ import { SettingsForm } from '../../SettingsForm'
 import { Field } from '~/components/common/Field'
 import { useTranslation } from "react-i18next";
 import { Spin } from "antd";
-import { ID } from "~/shared";
+import { ID } from "shared";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { transformToTreeNode } from "../../transformer";
 import { useDesigner } from '@designable/react'

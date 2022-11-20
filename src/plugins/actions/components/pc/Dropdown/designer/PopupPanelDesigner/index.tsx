@@ -4,7 +4,7 @@ import React, { useCallback, useEffect } from "react"
 import clx from "classnames"
 import { IPopupPanelProps, PopupPanel } from "../../view/PopupPanel"
 import { useDropdownDesignerParams } from "../context"
-import { PopupButton } from "~/plugin-sdk"
+import { PopupButton } from "plugin-sdk"
 import { CloseOutlined } from "@ant-design/icons"
 
 export const PopupPanelDesigner = observer((props: IPopupPanelProps) => {

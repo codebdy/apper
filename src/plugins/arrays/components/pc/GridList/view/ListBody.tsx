@@ -1,7 +1,7 @@
 import { List } from 'antd';
 import React, { useEffect, useMemo } from "react";
 import { observer, RecursionField, ObjectField, Schema, useFieldSchema, useField } from '@formily/react';
-import { useArrayParams } from "~/plugin-sdk/contexts/array";
+import { useArrayParams } from "plugin-sdk/contexts/array";
 import { QueryType, useQueryParams } from "datasource/hooks/useQueryParams";
 import { useDataQuery } from "datasource";
 import { useShowError } from "AppDesigner/hooks/useShowError";

@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react"
 import { memo } from "react"
-import { ID } from "~/shared"
+import { ID } from "shared"
 import { ListConentLayout } from "~/common/ListConentLayout"
 import { RoleList } from "../RoleList"
 import { useTranslation } from "react-i18next"

@@ -3,7 +3,7 @@ import { useCallback, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { IMenuItem, useParseLangMessage } from "@rxdrag/plugin-sdk";
 import { useMenu } from "~/AppRunner/hooks/useMenu";
-import { usePage } from "~/plugin-sdk/contexts/page";
+import { usePage } from "plugin-sdk/contexts/page";
 
 export function useBreadcumbItems() {
   const menu = useMenu();

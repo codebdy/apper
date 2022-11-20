@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { gql, useQueryOne } from "~/enthooks";
 import { IPage } from "~/model";
-import { ID } from "~/shared";
+import { ID } from "shared";
 
 const pageGql = gql`
 query ($uuid:String!, $appId:ID!){

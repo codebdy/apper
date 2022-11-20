@@ -8,7 +8,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { IMenuNode } from "plugin-sdk/model/IMenuNode";
 import { useBackupSnapshot } from "./useBackupSnapshot";
 import { useGetMenuNode } from "./useGetMenuNode";
-import { useDesignerViewKey } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerViewKey } from "plugin-sdk/contexts/desinger";
 
 export function useInsertAt() {
   const key = useDesignerViewKey();

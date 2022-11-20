@@ -3,10 +3,10 @@ import React, { useCallback, useMemo } from "react"
 import { memo } from "react"
 import { IPagePopup, pagePopupsState } from "plugin-sdk/atoms";
 import { useRecoilValue } from "recoil";
-import { useClosePage } from "~/shared/action/hooks/useClosePage";
+import { useClosePage } from "shared/action/hooks/useClosePage";
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { PageEngine } from "../../../../PageEngine";
-import { useAppViewKey } from "~/plugin-sdk/contexts/app";
+import { useAppViewKey } from "plugin-sdk/contexts/app";
 export const PageDialog = memo((
   props: {
     pageDialog: IPagePopup,

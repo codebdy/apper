@@ -1,6 +1,6 @@
 import { FormOutlined } from "@ant-design/icons";
 import { Input, message, Modal, Tag } from "antd";
-import { useDesignerAppConfig } from "~/plugin-sdk/contexts/desinger";
+import { useDesignerAppConfig } from "plugin-sdk/contexts/desinger";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { memo } from "react";
 import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd";
