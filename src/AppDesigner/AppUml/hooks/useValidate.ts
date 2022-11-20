@@ -8,7 +8,7 @@ import { classesState } from "../recoil/atoms";
 import { useGetClassAssociations } from "./useGetClassAssociations";
 
 function hasDuplicates(array: string[]) {
-  return _.some(array, function (elt, index) {
+  return _.some(array, function (elt: any, index: number) {
     return array.indexOf(elt) !== index;
   });
 }
@@ -32,7 +32,7 @@ export function useValidate(appId: ID) {
     }
     //检查关联类属性名冲突
     return true;
-  }, [classes, getClassAssociations]);
+  }, [classes, getClassAssociations, t]);
 
   return validate;
 }
