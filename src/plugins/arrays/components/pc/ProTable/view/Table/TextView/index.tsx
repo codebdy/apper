@@ -15,7 +15,7 @@ export const TextView = observer((
 ) => {
   const { inherited = true } = props;
   const field = useField();
-  const getParentField = useCallback((field: GeneralField) => {
+  const getParentField = useCallback((field: GeneralField): GeneralField|undefined => {
     if (field?.parent) {
       if (isField(field.parent)) {
         return field?.parent
