@@ -23,13 +23,13 @@ export const MenuTabs = memo((
         label: device.name,
         children: <MenuPanal
           device={device}
-          menu={menus.find(menu => menu.device === device.key)}
+          menu={menus.find(menu => menu.device === device.key) as any}
           roleId={roleId}
           menuConfigs={menuConfigs.filter(item => item.roleId === roleId && item.device === device.key)}
         />
       }
     })
-  }, [devices, menuConfigs, roleId])
+  }, [devices, menuConfigs, menus, roleId])
 
   return (
     <Tabs

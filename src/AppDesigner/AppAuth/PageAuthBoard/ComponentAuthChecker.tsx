@@ -28,16 +28,18 @@ export const ComponentAuthChecker = memo((
 
   const handleChange = useCallback((e: CheckboxChangeEvent) => {
     setChecked(e.target.checked);
+    const { app, ...other } = componentAuthConfig||{}
     upsertConfig(
       {
-        ...componentAuthConfig,
+        ...other,
         roleId,
         componentId,
         device,
+        app: app?.id ? { sync: { id: app?.id } } : undefined,
         refused: !e.target.checked,
       }
     )
-  }, [upsertConfig, roleId, componentId, device])
+  }, [upsertConfig, componentAuthConfig, roleId, componentId, device])
 
   return (
     <>
