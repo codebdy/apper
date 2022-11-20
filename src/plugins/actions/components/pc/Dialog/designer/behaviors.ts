@@ -13,7 +13,7 @@ const behaviors: IBehavior[] = [
   {
     name: Name,
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === Name,
+    selector: (node) => node.props?.['x-component'] === Name,
     designerProps: {
       droppable: false,
     },
@@ -23,7 +23,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'Dialog.Title',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'Dialog.Title',
+    selector: (node) => node.props?.['x-component'] === 'Dialog.Title',
     designerProps: {
       droppable: true,
       draggable: false,
@@ -36,7 +36,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'Dialog.Content',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'Dialog.Content',
+    selector: (node) => node.props?.['x-component'] === 'Dialog.Content',
     designerProps: {
       droppable: true,
       draggable: false,
@@ -49,7 +49,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'Dialog.Footer',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'Dialog.Footer',
+    selector: (node) => node.props?.['x-component'] === 'Dialog.Footer',
     designerProps: {
       droppable: true,
       draggable: false,

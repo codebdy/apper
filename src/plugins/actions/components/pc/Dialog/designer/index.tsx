@@ -35,7 +35,6 @@ export const DialogDesigner: DnFC<IDialogProps> & {
     children,
     width = 520,
     centered,
-    closable = true,
     destroyOnClose,
     focusTriggerAfterClose,
     keyboard,
@@ -58,9 +57,9 @@ export const DialogDesigner: DnFC<IDialogProps> & {
   const content = useFindNode("Content");
   const footer = useFindNode("Footer");
 
-  const canShow = useRef(selected?.[0] === node.id ? 1 : 0)
+  const canShow = useRef(selected?.[0] === node?.id ? 1 : 0)
 
-  dialogContainer.current = document.querySelector('.dn-designable-form')
+  dialogContainer.current = document.querySelector('.dn-designable-form') as any
 
   useEffect(() => {
     if (!dialogContainer.current) {
@@ -69,14 +68,14 @@ export const DialogDesigner: DnFC<IDialogProps> & {
 
     const name = designer.props.nodeIdAttrName
     if (!antModelRef.current) {
-      antModelRef.current = dialogContainer.current.querySelector(`div[data-dialog-id='${nodeIdProps[name]}'] .ant-modal`)
+      antModelRef.current = dialogContainer.current.querySelector(`div[data-dialog-id='${nodeIdProps[name as any]}'] .ant-modal`) as any
     }
     //tree.operation.selection.clear()
 
     if (visible) {
-      antModelRef.current?.setAttribute(name, nodeIdProps[name])
+      name && antModelRef.current?.setAttribute(name, nodeIdProps[name as any] as any)
     } else {
-      antModelRef.current?.removeAttribute(name)
+      name && antModelRef.current?.removeAttribute(name)
     }
 
     setTimeout(() => {
@@ -84,7 +83,7 @@ export const DialogDesigner: DnFC<IDialogProps> & {
       //tree.operation.selection.select(nodeIdProps[name])
     }, 100)
 
-  }, [dialogContainer, visible])
+  }, [designer.props.nodeIdAttrName, dialogContainer, nodeIdProps, visible])
 
   useEffect(() => {
     if (!selected?.[0]) {
@@ -92,17 +91,17 @@ export const DialogDesigner: DnFC<IDialogProps> & {
       return
     }
 
-    if (selected?.[0] === node.id) {
+    if (selected?.[0] === node?.id) {
       canShow.current = Math.max(canShow.current, 0) + 1
     } else {
       canShow.current = 0
     }
-  }, [selected?.[0]])
+  }, [node?.id, selected])
 
 
   const dialogProps = {
     ...props,
-    [designer.props.nodeIdAttrName]: null
+    [designer.props.nodeIdAttrName as any]: null
   }
 
   return (
@@ -134,8 +133,8 @@ export const DialogDesigner: DnFC<IDialogProps> & {
           keyboard = {keyboard}
           mask
           closable={true}
-          data-dialog-id={nodeIdProps[designer.props.nodeIdAttrName]}
-          getContainer={() => dialogContainer.current}
+          data-dialog-id={nodeIdProps[designer.props.nodeIdAttrName as any]}
+          getContainer={() => dialogContainer.current as any}
           maskClosable={false}
           transitionName={''}
           {...other}

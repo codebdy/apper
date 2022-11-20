@@ -2,7 +2,7 @@ import { IPlugin } from "@rxdrag/appx-plugin-sdk";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { IPredefinedPlugins } from "../contexts";
-declare const window: Window & { rxPlugin: IPlugin };
+declare const window: Window & { rxPlugin?: IPlugin };
 
 function loadOne(p: () => Promise<any>): Promise<IPlugin> {
   return new Promise((resolve, reject) => {
@@ -12,7 +12,7 @@ function loadOne(p: () => Promise<any>): Promise<IPlugin> {
         plugin = window.rxPlugin;
       }
       window.rxPlugin = undefined;
-      resolve(plugin);
+      plugin && resolve(plugin);
     }).catch(err => {
       reject(err);
     });
@@ -56,7 +56,7 @@ export function useLoadPredefinedPlugins() {
   const predefinedPlugins: IPredefinedPlugins = useMemo(() => ({
     basicPlugins,
     frameworkPlugins
-  }),
+  }) as any,
     [basicPlugins, frameworkPlugins]);
 
   return predefinedPlugins;
