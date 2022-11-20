@@ -15,13 +15,15 @@ import { IPageHeaderContentProps } from '../view/PageHeaderContent'
 import { IPageHeaderContentExtraProps } from '../view/PageHeaderContentExtra'
 import { IPageTabPanelProps } from '../view/PageTabPanel'
 import { IPageFooterToolbarProps } from '../view/PageFooterToolbar'
-import { useFindNode, queryNodesByComponentPath, useRemoveNode } from 'plugin-sdk'
+import { useFindNode, useRemoveNode } from 'plugin-sdk'
 import { PageContainerShell } from '../view/PageContainerShell'
 import { PageHeader } from '../view/PageHeader'
 import { PageBody } from '../view/PageBody'
 import { IPageTitleProps } from '../view/PageTitle'
 import { PageTitleDesigner } from './PageTitleDesigner'
 import { useParseLangMessage } from "plugin-sdk";
+import { LoadTemplate } from 'designable/formily-antd/common/LoadTemplate'
+import { queryNodesByComponentPath } from 'designable/formily-antd/shared'
 
 const { TabPane } = Tabs;
 export const routesPlaceholder = [
@@ -68,14 +70,14 @@ const ComponentDesigner: DnFC<IPageContainerProps> & {
     'PageContainer.TabPanel',
   ])
 
-  const otherChildrenNodes = useMemo(() => node.children?.filter(child =>
+  const otherChildrenNodes = useMemo(() => node?.children?.filter(child =>
     child.id !== headerActions?.id &&
     child.id !== headerContent?.id &&
     child.id !== headerContentExtra?.id &&
     child.id !== footer?.id &&
     child.id !== pageTitle?.id &&
     !tabs?.find(tab => tab.id === child.id)
-  ), [footer?.id, headerActions?.id, headerContent?.id, headerContentExtra?.id, node.children, tabs])
+  ), [footer?.id, headerActions?.id, headerContent?.id, headerContentExtra?.id, node?.children, pageTitle?.id, tabs])
 
   const handleSelectTab = useCallback((key: string) => {
     setSelectedTabKey(key);
@@ -92,7 +94,7 @@ const ComponentDesigner: DnFC<IPageContainerProps> & {
         },
       },
     })
-    node.append(tabPanel)
+    node?.append(tabPanel)
     setSelectedTabKey(tabPanel.id)
   }, [node]);
 
@@ -108,10 +110,10 @@ const ComponentDesigner: DnFC<IPageContainerProps> & {
   )
 
   const handleRemoveNode = useCallback((target: TreeNode) => {
-    if (target.parent?.id === node.id && target?.props?.['x-component'] === 'PageContainer.TabPanel') {
+    if (target.parent?.id === node?.id && target?.props?.['x-component'] === 'PageContainer.TabPanel') {
       setSelectedTabKey(tabs?.[0]?.id)
     }
-  }, [node.id, tabs])
+  }, [node?.id, tabs])
 
   useRemoveNode('PageContainer', (target) => {
     if (target && Array.isArray(target)) {
@@ -162,11 +164,11 @@ const ComponentDesigner: DnFC<IPageContainerProps> & {
         {
           hasTabs &&
           <>
-            <TreeNodeWidget node={selectedTab} />
+            <TreeNodeWidget node={selectedTab as any} />
             <LoadTemplate
               actions={[
                 {
-                  title: node.getMessage('addPanel'),
+                  title: node?.getMessage('addPanel'),
                   icon: "AddPanel",
                   onClick: handleAddPannel,
                 },
@@ -183,7 +185,7 @@ const ComponentDesigner: DnFC<IPageContainerProps> & {
 })
 
 
-ComponentDesigner.PageTitle = PageTitleDesigner,
+ComponentDesigner.PageTitle = PageTitleDesigner
 ComponentDesigner.HeaderActions = HeaderActionsDesigner
 ComponentDesigner.HeaderContent = HeaderContentDesigner
 ComponentDesigner.HeaderContentExtra = HeaderContentExtraDesigner
