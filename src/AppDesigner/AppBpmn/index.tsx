@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ModelToolbar } from "~/common/ModelBoard/ModelToolbar";
-import { ModelBoard } from "~/common/ModelBoard";
+import { ModelToolbar } from "common/ModelBoard/ModelToolbar";
+import { ModelBoard } from "common/ModelBoard";
 import { Button, Divider, Space, Spin } from "antd";
 import { useTranslation } from "react-i18next";
 import BpmnModeler from 'bpmn-js/lib/Modeler';
@@ -11,7 +11,7 @@ import "bpmn-js-properties-panel/dist/assets/properties-panel.css";
 import "./style.less"
 import minimapModule from 'diagram-js-minimap';
 import "diagram-js-minimap/assets/diagram-js-minimap.css";
-import { PropertyBox } from "~/common/ModelBoard/PropertyBox";
+import { PropertyBox } from "common/ModelBoard/PropertyBox";
 import { useSelection } from "./hooks/useSelection";
 import { PropertyPanel } from "./PropertyPanel";
 import { useQueryOneProcess } from "./hooks/useQueryOneProcess";

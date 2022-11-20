@@ -1,13 +1,13 @@
 import React, { useCallback, useMemo } from "react"
 import { memo } from "react"
 import { Outlet, useMatch, useNavigate } from "react-router-dom"
-import { ListConentLayout } from "~/common/ListConentLayout"
+import { ListConentLayout } from "common/ListConentLayout"
 import { MenuProps, Spin } from 'antd';
 import { Menu } from 'antd';
 import { LayoutOutlined, MenuOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import "./style.less";
-import SvgIcon from "~/common/SvgIcon";
+import SvgIcon from "common/SvgIcon";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useReadMeta } from "../AppUml/hooks/useReadMeta";
 import { useShowError } from "AppDesigner/hooks/useShowError";

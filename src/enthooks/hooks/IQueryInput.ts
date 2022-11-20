@@ -1,6 +1,6 @@
 
 export interface IQueryInput {
-  gql: string;
+  gql?: string;
   params?: any;
   depEntityNames?: string[];
 }

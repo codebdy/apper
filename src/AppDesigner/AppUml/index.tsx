@@ -6,7 +6,7 @@ import "./style.less"
 import { useReadMeta } from "./hooks/useReadMeta";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { Spin } from "antd";
-import { ModelBoard } from "~/common/ModelBoard";
+import { ModelBoard } from "common/ModelBoard";
 import { minMapState, selectedElementState, selectedUmlDiagramState } from "./recoil/atoms";
 import { useRecoilValue } from "recoil";
 import { Toolbox } from "./Toolbox";

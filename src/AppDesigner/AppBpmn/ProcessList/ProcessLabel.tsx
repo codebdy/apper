@@ -1,4 +1,4 @@
-import TreeNodeLabel from "~/common/TreeNodeLabel"
+import TreeNodeLabel from "common/TreeNodeLabel"
 import React, { useCallback, useState } from "react"
 import { IProcess, IProcessCategory } from "model"
 import ProcessActions from "./ProcessActions"

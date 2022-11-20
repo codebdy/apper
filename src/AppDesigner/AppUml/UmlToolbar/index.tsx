@@ -16,7 +16,7 @@ import { Button, Divider } from "antd";
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from "@ant-design/icons";
 import { PRIMARY_COLOR } from "consts";
 import SaveActions from "../SaveActions";
-import { ModelToolbar } from "~/common/ModelBoard/ModelToolbar";
+import { ModelToolbar } from "common/ModelBoard/ModelToolbar";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useIsCode } from "../hooks/useIsCode";
 import { useIsOrchestration } from "../hooks/useIsOrchestration";

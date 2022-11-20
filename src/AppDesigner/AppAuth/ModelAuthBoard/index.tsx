@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react"
 import { memo } from "react"
-import { ListConentLayout } from "~/common/ListConentLayout"
+import { ListConentLayout } from "common/ListConentLayout"
 import { ModelTable } from "./ModelTable"
 import { RoleList } from "../RoleList"
 import "./style.less"

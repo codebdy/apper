@@ -11,7 +11,7 @@ import { useMethod } from "../hooks/useMethod";
 import { MethodPanel } from "./MethodPanel";
 import { Empty } from "antd";
 import { useTranslation } from "react-i18next";
-import { PropertyBox } from "~/common/ModelBoard/PropertyBox";
+import { PropertyBox } from "common/ModelBoard/PropertyBox";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useSelectedCode } from "../hooks/useSelectedCode";
 import { CodePanel } from "./CodePanel";

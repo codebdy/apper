@@ -5,7 +5,7 @@ import { useQueryMe } from "../enthooks/hooks/useQueryMe";
 import { useLoginCheck } from "../AppDesigner/hooks/useLoginCheck";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { UserContext } from "plugin-sdk/contexts/login";
-import { CenterSpin } from "~/common/CenterSpin";
+import { CenterSpin } from "common/CenterSpin";
 
 export const LoggedInPanel = memo(() => {
   useLoginCheck();

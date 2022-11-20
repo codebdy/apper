@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react"
 import { memo } from "react"
 import { ID } from "shared"
-import { ListConentLayout } from "~/common/ListConentLayout"
+import { ListConentLayout } from "common/ListConentLayout"
 import { RoleList } from "../RoleList"
 import { useTranslation } from "react-i18next"
 import { Breadcrumb, Spin } from "antd"

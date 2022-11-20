@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { memo } from "react";
-import TreeNodeLabel from "~/common/TreeNodeLabel";
+import TreeNodeLabel from "common/TreeNodeLabel";
 import { useParseLangMessage } from "plugin-sdk";
 import CodeAction from "./CodeAction";
 import { CodeMeta } from "../../meta/CodeMeta";

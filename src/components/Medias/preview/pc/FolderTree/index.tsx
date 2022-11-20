@@ -37,11 +37,11 @@ const treeData = [
 ];
 
 export const FolderTree = () => {
-  const onSelect = (keys, info) => {
+  const onSelect = (keys: any, info: any) => {
     console.log('Trigger Select', keys, info);
   };
 
-  const onExpand = (keys, info) => {
+  const onExpand = (keys: any, info: any) => {
     console.log('Trigger Expand', keys, info);
   };
 

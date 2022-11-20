@@ -3,7 +3,7 @@ import { memo } from "react";
 import { useBackupSnapshot } from "../../hooks/useBackupSnapshot";
 import { PackageMeta } from "../../meta/PackageMeta";
 import PackageAction from "./PackageAction";
-import TreeNodeLabel from "~/common/TreeNodeLabel";
+import TreeNodeLabel from "common/TreeNodeLabel";
 import { useSetRecoilState } from 'recoil';
 import { packagesState } from '../../recoil/atoms';
 import { SYSTEM_APP_ID } from "consts";

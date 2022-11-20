@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { memo } from "react";
 import { useBackupSnapshot } from "../../hooks/useBackupSnapshot";
-import TreeNodeLabel from "~/common/TreeNodeLabel";
+import TreeNodeLabel from "common/TreeNodeLabel";
 import { useSetRecoilState } from 'recoil';
 import { diagramsState } from '../../recoil/atoms';
 import { DiagramMeta } from "../../meta/DiagramMeta";

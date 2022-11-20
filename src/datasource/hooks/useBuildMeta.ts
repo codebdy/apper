@@ -46,14 +46,14 @@ const getEntityAssociations = (classUuid: string, classMetas: ClassMeta[], relat
 
     if (relation.sourceId === classUuid) {
       associations.push({
-        name: relation.roleOfTarget,
+        name: relation.roleOfTarget||"",
         label: relation.labelOfTarget,
         typeUuid: relation.targetId,
         associationType: relation.targetMultiplicity === RelationMultiplicity.ZERO_MANY ? AssociationType.HasMany : AssociationType.HasOne,
       })
     } else if (relation.targetId === classUuid) {
       associations.push({
-        name: relation.roleOfSource,
+        name: relation.roleOfSource||"",
         label: relation.labelOfSource,
         typeUuid: relation.sourceId,
         associationType: relation.sourceMutiplicity === RelationMultiplicity.ZERO_MANY ? AssociationType.HasMany : AssociationType.HasOne
@@ -183,7 +183,7 @@ export function useBuildMeta(): { error?: GraphQLRequestError; loading?: boolean
         return systemMeta?.publishedMeta?.packages?.find(pkg => pkg.uuid === packageUuid);
       }
       const systemPackages = systemMeta?.publishedMeta?.packages?.filter(pkg => pkg.sharable) || [];
-      const systemClasses = systemMeta?.publishedMeta?.classes?.filter(cls => getPackage(cls.packageUuid).sharable) || []
+      const systemClasses = systemMeta?.publishedMeta?.classes?.filter(cls => getPackage(cls.packageUuid)?.sharable) || []
       const allClasses: ClassMeta[] = [...systemClasses, ...meta?.publishedMeta?.classes || []];
       const allRelations: RelationMeta[] = makeRelations(allClasses, [...systemMeta?.publishedMeta?.relations || [], ...meta?.publishedMeta?.relations || []]);
       setPackages([...systemPackages, ...meta?.publishedMeta?.packages || []]);

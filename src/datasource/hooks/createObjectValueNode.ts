@@ -62,7 +62,7 @@ export const createObjectValueNode = (value: any): IntValueNode |
             kind: Kind.NAME,
             value: key
           },
-          value: createObjectValueNode(value[key]),
+          value: createObjectValueNode((value as any)[key]),
         };
       })
     };
