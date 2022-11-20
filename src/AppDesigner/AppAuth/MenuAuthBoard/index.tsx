@@ -4,7 +4,7 @@ import { ID } from "shared"
 import { ListConentLayout } from "common/ListConentLayout"
 import { RoleList } from "../RoleList"
 import { useTranslation } from "react-i18next"
-import { Breadcrumb, Spin } from "antd"
+import { Breadcrumb } from "antd"
 import "./style.less"
 import { MenuTabs } from "./MenuTabs"
 import { useRoleName } from "../hooks/useRoleName"
@@ -15,7 +15,7 @@ import { useQueryMenuAuthConfigs } from "../hooks/useQueryMenuAuthConfigs"
 export const MenuAuthBoard = memo(() => {
   const [selectedRoleId, setSelectedRoleId] = useState<ID>();
   const { t } = useTranslation();
-  const roleName = useRoleName(selectedRoleId);
+  const roleName = useRoleName(selectedRoleId || "");
 
   const { menus, error } = useQueryAppMenus();
   const { menuConfigs, error: configError } = useQueryMenuAuthConfigs()

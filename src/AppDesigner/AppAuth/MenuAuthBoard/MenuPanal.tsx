@@ -20,7 +20,7 @@ export const MenuPanal = memo((
   const columns = useColumns(roleId);
   const p = useParseLangMessage();
 
-  const makeItem = useCallback((item: IMenuItem) => {
+  const makeItem = useCallback((item: IMenuItem): any => {
     const menuItemConfig = menuConfigs?.find(config => config.roleId === roleId && config.menuItemUuid === item.uuid);
     return {
       key: item.uuid,

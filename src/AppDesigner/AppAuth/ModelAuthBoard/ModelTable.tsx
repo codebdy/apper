@@ -10,6 +10,7 @@ import { useGetPackageCanAuthClasses } from '../hooks/useGetPackageCanAuthClasse
 import { IClassAuthConfig, IPropertyAuthConfig } from 'model';
 import { ID } from 'shared';
 import { useGetClassAttributes } from '../hooks/useGetClassAttributes';
+import { AttributeMeta } from 'AppDesigner/AppUml/meta';
 
 export const ModelTable = memo((
   props: {
@@ -49,7 +50,7 @@ export const ModelTable = memo((
             rowType: RowType.Class,
             classConfig: classConfig,
             children: classConfig?.expanded
-              ? getClassAttributes(cls).map(attr => {
+              ? getClassAttributes(cls).map((attr:AttributeMeta) => {
                 return {
                   key: attr.uuid,
                   classUuid: cls.uuid,
@@ -64,7 +65,7 @@ export const ModelTable = memo((
         }),
       }
     }) || []
-  }, [packages, getClasses, getClassConfig, getPropertyConfig])
+  }, [packages, p, getClasses, getClassConfig, getClassAttributes, getPropertyConfig])
 
   return (
     <Table
