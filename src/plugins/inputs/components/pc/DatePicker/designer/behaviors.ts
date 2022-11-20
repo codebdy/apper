@@ -7,7 +7,7 @@ const behaviors: IBehavior[] = [
   {
     name: Name,
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === Name,
+    selector: (node) => node.props?.['x-component'] === Name,
     designerProps: {
       droppable: false,
     },
@@ -17,7 +17,7 @@ const behaviors: IBehavior[] = [
   {
     name: DateRangePickerName,
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === DateRangePickerName,
+    selector: (node) => node.props?.['x-component'] === DateRangePickerName,
     designerProps: {
       droppable: false,
     },

@@ -10,13 +10,13 @@ import {
   DroppableWidget,
   DnFC,
 } from 'designable/react'
-import { matchComponent } from 'plugin-sdk'
 import { LoadTemplate } from 'designable/formily-antd/common/LoadTemplate'
 import { useDropTemplate } from 'designable/formily-antd/hooks'
+import { matchComponent } from 'designable/formily-antd/shared'
 
-const parseTabs = (parent: TreeNode) => {
+const parseTabs = (parent?: TreeNode | null) => {
   const tabs: TreeNode[] = []
-  parent.children.forEach((node) => {
+  parent?.children.forEach((node) => {
     if (matchComponent(node, 'FormTab.TabPane')) {
       tabs.push(node)
     }
@@ -53,7 +53,7 @@ export const FormTabDesigner: DnFC<TabsProps> & {
   })
   const tabs = parseTabs(node)
   const renderTabs = () => {
-    if (!node.children?.length) return <DroppableWidget />
+    if (!node?.children?.length) return <DroppableWidget />
     return (
       <Tabs
         {...props}
@@ -104,7 +104,7 @@ export const FormTabDesigner: DnFC<TabsProps> & {
       <LoadTemplate
         actions={[
           {
-            title: node.getMessage('addTabPane'),
+            title: node?.getMessage('addTabPane'),
             icon: 'AddPanel',
             onClick: () => {
               const tabPane = new TreeNode({
@@ -117,7 +117,7 @@ export const FormTabDesigner: DnFC<TabsProps> & {
                   },
                 },
               })
-              node.append(tabPane)
+              node?.append(tabPane)
               setActiveKey(tabPane.id)
             },
           },

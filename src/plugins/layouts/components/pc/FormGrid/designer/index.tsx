@@ -9,7 +9,7 @@ import {
 } from 'designable/react'
 import { observer } from '@formily/reactive-react'
 import './styles.less'
-import { LoadTemplate } from '@designable/formily-antd/lib/common/LoadTemplate'
+import { LoadTemplate } from 'designable/formily-antd/common/LoadTemplate'
 
 type formilyGrid = typeof FormilyGird
 
@@ -18,7 +18,7 @@ const FormGridDesigner: DnFC<React.ComponentProps<formilyGrid>> & {
 } = observer((props) => {
   const node = useTreeNode()
   const nodeId = useNodeIdProps()
-  if (node.children.length === 0) return <DroppableWidget {...props} />
+  if (node?.children.length === 0) return <DroppableWidget {...props} />
 
   const key = new Date().getTime()
 
@@ -30,7 +30,7 @@ const FormGridDesigner: DnFC<React.ComponentProps<formilyGrid>> & {
       <LoadTemplate
         actions={[
           {
-            title: node.getMessage('addGridColumn'),
+            title: node?.getMessage('addGridColumn'),
             icon: 'AddColumn',
             onClick: () => {
               const column = new TreeNode({
@@ -40,7 +40,7 @@ const FormGridDesigner: DnFC<React.ComponentProps<formilyGrid>> & {
                   'x-component': 'FormGrid.GridColumn',
                 },
               })
-              node.append(column)
+              node?.append(column)
             },
           },
         ]}

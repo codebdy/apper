@@ -40,7 +40,7 @@ export function useLoadPlugins() {
     }
 
     return installedPlugins;
-  }, [])
+  }, [app, getPlugInfo])
 
   return load;
 }

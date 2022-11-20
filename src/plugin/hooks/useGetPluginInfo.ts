@@ -9,7 +9,7 @@ export function useGetPluginInfo() {
 
   const { getTitle, getDescription } = useGetPluginLocalMessage();
 
-  const getPlugInfo = useCallback((plugin: IPlugin, url: string, type: PluginType): IPluginInfo => {
+  const getPlugInfo = useCallback((plugin: IPlugin, url: string|undefined, type?: PluginType): IPluginInfo => {
     return {
       app: app,
       url,
@@ -19,7 +19,7 @@ export function useGetPluginInfo() {
       description: getDescription(plugin),
       version: plugin.version,
     }
-  }, [app?.uuid, getDescription, getTitle])
+  }, [app, getDescription, getTitle])
 
   return getPlugInfo;
 }

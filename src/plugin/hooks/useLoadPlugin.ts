@@ -59,8 +59,8 @@ function loadJS(src: string, clearCache = false): Promise<HTMLScriptElement> {
   return p;
 }
 
-export function loadPlugin(url: string): Promise<IPlugin> {
-  const path = trimUrl(url);
+export function loadPlugin(url?: string): Promise<IPlugin> {
+  const path = trimUrl(url||"");
   const indexJs = path + "index.js";
 
   const p = new Promise<IPlugin>((resolve, reject) => {
@@ -80,8 +80,8 @@ export function loadPlugin(url: string): Promise<IPlugin> {
   return p;
 }
 
-export function loadDebugPlugin(url: string): Promise<IPlugin> {
-  const path = trimUrl(url);
+export function loadDebugPlugin(url?: string): Promise<IPlugin> {
+  const path = trimUrl(url||"");
   const indexJs = path + "index.js";
   const venderJs = path + "vendors~index.js";
 
@@ -144,7 +144,7 @@ export function useLoadPlugin() {
         status: PluginStatus.Error
       }
     }
-  }, [app?.uuid, getPlugInfo]);
+  }, [app, getPlugInfo]);
 
   return load;
 }
