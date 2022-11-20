@@ -7,7 +7,7 @@ export function useDeleteData() {
   const rejectRef = useRef<(reason?: any) => void>();
   const { entityName, instance } = useInstanceParams()
 
-  const [doDelete] = useDeleteById(entityName, {
+  const [doDelete] = useDeleteById(entityName || "", {
     onCompleted: () => {
       resolveRef.current && resolveRef.current(undefined);
     },

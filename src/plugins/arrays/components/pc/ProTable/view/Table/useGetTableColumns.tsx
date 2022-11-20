@@ -12,6 +12,8 @@ import { isColumnComponent, isColumnGroupComponent } from './useArrayTableSource
 import { CellRoot } from './CellRoot';
 import { TextView } from './TextView';
 
+const ArrayBaseAny = ArrayBase as any
+
 export function useGetTableColumns() {
   const getTableColumns = useCallback((sources: ObservableColumnSource[], parentGroupNames: string[] = []): TableProps<any>['columns'] => {
     return sources?.reduce((buf, source, key, index) => {
@@ -22,16 +24,16 @@ export function useGetTableColumns() {
       let rootName = parentGroupNames.length ? parentGroupNames[0] : name; //组根名字
       const groups = [...parentGroupNames, name];
       const { sortable, ...otherCoumnProps } = columnProps;
-      const childrenColumns = getTableColumns(children, groups);
+      const childrenColumns = getTableColumns(children as any, groups);
 
       return buf.concat({
         ...otherCoumnProps,
         //children不赋空，defaultSortOrder不起作用
-        children: childrenColumns.length ? childrenColumns : undefined,
+        children: childrenColumns?.length ? childrenColumns : undefined,
         key,
         dataIndex: name,
         sorter: sortable ? { multiple: (key + 1) } : undefined,
-        render: !children.length
+        render: !children?.length
           ? (value: any, record: any, index: number) => {
             let childrenCom: any = <TextView inherited={false}></TextView>
             if (schema.properties && Object.keys(schema.properties).length > 0) {
@@ -64,17 +66,17 @@ export function useGetTableColumns() {
               </VoidField>
 
             return (
-              <ArrayBase.Item index={index} record={record}>
+              <ArrayBaseAny.Item index={index} record={record}>
                 <ReactField name={index}>
                   <CellRoot instance={record}>
                     {childrenCom}
                   </CellRoot>
                 </ReactField>
-              </ArrayBase.Item>
+              </ArrayBaseAny.Item>
             );
           }
           : undefined,
-      });
+      } as any);
     }, []);
   }, []);
 

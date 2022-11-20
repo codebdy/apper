@@ -6,7 +6,7 @@ import { parseRoute } from "./parseRoute";
 export function useNavigateRoute() {
   const navigate = useNavigate();
   const { instance } = useInstanceParams()
-  const navigateRoute = useCallback((route: string) => {
+  const navigateRoute = useCallback((route?: string) => {
     const realRoute = parseRoute(route, instance);
     navigate(realRoute)
   }, [navigate, instance])

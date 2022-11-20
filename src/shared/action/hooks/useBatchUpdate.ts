@@ -9,10 +9,10 @@ export function useBatchUpdate() {
   const rejectRef = useRef<(reason?: any) => void>();
   const arrayParams = useArrayParams();
   const { dataBind, selectedRowKeys } = arrayParams;
-  const objectField = useRecentObjectField();
+  const objectField: any = useRecentObjectField();
   const extract = useExtractFieldInput();
 
-  const [doSet] = useSet(dataBind?.entityName, {
+  const [doSet] = useSet(dataBind?.entityName||"", {
     onCompleted: () => {
       resolveRef.current && resolveRef.current(undefined);
       arrayParams.selectedRowKeys = [];

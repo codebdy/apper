@@ -10,8 +10,8 @@ import { ColumnProps } from "antd/lib/table"
 import { Schema } from '@formily/json-schema'
 import { isArr, isObj } from '@formily/shared'
 import { observer } from '@formily/reactive-react';
-import { QueryType, useQueryParams } from '~/datasource/hooks/useQueryParams';
-import { useDataQuery } from '~/datasource/hooks/useDataQuery';
+import { QueryType, useQueryParams } from 'datasource/hooks/useQueryParams';
+import { useDataQuery } from 'datasource/hooks/useDataQuery';
 import { useShowError } from 'AppDesigner/hooks/useShowError';
 import {
   useField
@@ -50,7 +50,7 @@ export const Table = observer((
   const getTableColumns = useGetTableColumns();
   const columns = useMemo(() => {
     const colSources = sources.filter(source => tableParams?.tableConfig?.columns?.find(col => col === source.name))
-    return getTableColumns(tableParams?.tableConfig?.columns?.map(column => colSources.find(src => column === src.name)) || sources) || []
+    return getTableColumns((tableParams?.tableConfig?.columns?.map(column => colSources.find(src => column === src.name)) || sources) as any) || []
   }, [getTableColumns, tableParams?.tableConfig?.columns, sources]);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export const Table = observer((
     onChange: (selectedRowKeys: React.Key[]) => {
       arrayParams.selectedRowKeys = selectedRowKeys
     },
-  }), [tableParams, selectedRowKeys]);
+  }), [selectedRowKeys, arrayParams]);
 
   const schema = useFieldSchema();
   const queryParams = useQueryParams(
@@ -95,7 +95,7 @@ export const Table = observer((
     (field as Field).setInitialValue(data?.nodes);
   }, [data?.nodes, field])
 
-  const onChange = useCallback((pagination, filters, sorter, extra) => {
+  const onChange = useCallback((pagination: any, _filters: any, sorter: any, _extra: any) => {
     const sortableColumns = sources?.filter(column => column.columnProps?.sortable);
     const orderBys = isArr(sorter)
       ?
@@ -125,7 +125,7 @@ export const Table = observer((
         columns={columns}
         dataSource={data?.nodes}
         rowKey="id"
-        rowSelection={selectable && rowSelection}
+        rowSelection={(selectable && rowSelection) as any}
         pagination={{
           position: paginationPosition as any,
           pageSize,

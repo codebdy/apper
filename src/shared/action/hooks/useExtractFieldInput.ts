@@ -75,7 +75,7 @@ export function useExtractFieldInput() {
         } else if (value[CONST_ID]) {
           value[name] = { clear: true }
         }
-      } else if (field.value != undefined) {
+      } else if (field.value !== undefined) {
         value[name] = toJS(field.value);
       }
     }
@@ -87,7 +87,7 @@ export function useExtractFieldInput() {
   }, [])
 
   const convert = useCallback((field: Field) => {
-    const value = {};
+    const value = {} as any;
     const name = field.address.toString().split(".")[field.address.length - 1];
     recursionField(
       {

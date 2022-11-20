@@ -36,14 +36,14 @@ export function useUpdateComponentConfig(options?: IPostOptions<any>): [
       },
       user: {
         sync: {
-          id: me.id,
+          id: me?.id,
         }
       },
       device,
     }
 
     post(newConfig);
-  }, [app?.id, device, me.id, post, userConfig])
+  }, [app?.id, device, me?.id, post, userConfig])
 
   return [update, { error: error, loading: loading }];
 }

@@ -15,9 +15,9 @@ const HeightMenu = observer(() => {
 
   useShowError(error);
 
-  const handleClick = useCallback((info) => {
+  const handleClick = useCallback((info: { key: any; }) => {
     //params.size = info?.key || undefined;
-    updateConfig(params.path, { ...toJS(params.tableConfig) || {}, size: info?.key || undefined })
+    params.path && updateConfig(params.path, { ...toJS(params.tableConfig) || {}, size: info?.key || undefined })
   }, [params, updateConfig])
 
   const menu = (

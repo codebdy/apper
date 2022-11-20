@@ -20,20 +20,21 @@ export function useOpenFile() {
   const open = useCallback(async (palyload: IOpenFileAction, variables: any) => {
     try {
       const allFiles = await Promise.all(
-        (await getTheFiles(palyload.accept, palyload.multiple)).map(async (fileHandle) => {
+        (await getTheFiles(palyload.accept as any, palyload.multiple)).map(async (fileHandle:any) => {
           const file = await fileHandle.getFile();
           return file;
         })
       );
 
       if (palyload.multiple) {
-        variables[palyload.variableName] = allFiles
+        variables[palyload.variableName as any] = allFiles
       } else {
-        variables[palyload.variableName] = allFiles?.[0]
+        variables[palyload.variableName as any] = allFiles?.[0]
       }
     } catch (err) {
       console.error(err)
       //中断动作链，但是不显示错误信息
+      // eslint-disable-next-line no-throw-literal
       throw undefined
     }
 

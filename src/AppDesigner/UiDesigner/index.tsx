@@ -27,7 +27,7 @@ import { useDesignerParams, useDesignerViewKey } from 'plugin-sdk/contexts/desin
 import { useQueryCagegories } from './hooks/useQueryCagegories'
 import { useQueryPages } from './hooks/useQueryPages'
 import { SettingOutlined } from '@ant-design/icons'
-import { useBuildMeta } from '~/datasource/hooks'
+import { useBuildMeta } from 'datasource/hooks'
 import { useSetRecoilState } from 'recoil'
 import { categoriesState, pagesState } from './recoil/atom'
 import ConfigWorkSpace from './config/ConfigWorkSpace'

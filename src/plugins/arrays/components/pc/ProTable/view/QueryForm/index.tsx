@@ -20,7 +20,7 @@ export type IQueryFormProps = {
   style?: CSSProperties,
   colon?: boolean,
   value?: any,
-  onChange?: (value) => void,
+  onChange?: (value: any) => void,
 } & React.ComponentProps<formilyGrid>
 
 export const QueryForm: React.FC = observer((props: IQueryFormProps) => {
@@ -57,7 +57,7 @@ export const QueryForm: React.FC = observer((props: IQueryFormProps) => {
           if (!collapsiable) return true;
           if (node.index === grid.childSize - 1) return true
           if (grid.maxRows === Infinity) return true
-          return node.shadowRow < maxRowsOnCollapsed + 1 && node.index < maxColumns - 1
+          return (node?.shadowRow || 0) < maxRowsOnCollapsed + 1 && (node.index || 0) < (maxColumns || 0) - 1
         },
       })
     },

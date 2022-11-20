@@ -1,7 +1,7 @@
 import { SettingOutlined } from "@ant-design/icons";
 import { observer } from "@formily/reactive-react";
 import { Button, Checkbox, Divider, Popover, Space, Tooltip } from "antd";
-import React, { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd";
 import { useTableParams } from "plugin-sdk/contexts/table";
 import { useLocalTranslations } from "../../hooks/useLocalTranslations";
@@ -55,7 +55,7 @@ const ColumnsSettings = observer(() => {
     const sCols = protableParams?.columns ? sortedColumns.map(column => {
       const col = protableParams?.columns?.find(col => col.name === column)
       return col
-    }) :[]
+    }) : []
 
     return [...sCols, ...protableParams?.columns?.filter(col => !sortedColumns?.find(column => col.name === column)) || []];
   }, [protableParams?.columns, sortedColumns])
@@ -82,7 +82,7 @@ const ColumnsSettings = observer(() => {
   }, [reset])
 
   const handleConfirm = useCallback(() => {
-    updateConfig(
+    protableParams.path && updateConfig(
       protableParams.path,
       {
         ...toJS(protableParams.tableConfig) || {},
@@ -92,7 +92,7 @@ const ColumnsSettings = observer(() => {
     )
   }, [protableParams.path, protableParams.tableConfig, selectedColumns, sortedColumns, updateConfig])
 
-  const handelVisableChange = useCallback((vb) => {
+  const handelVisableChange = useCallback((vb:any) => {
     setVisable(vb);
   }, [])
 
@@ -122,7 +122,7 @@ const ColumnsSettings = observer(() => {
     <div className="columns-settings">
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId={"DropList"}>
-          {(provided, snapshot) => (
+          {(provided: any, snapshot: any) => (
             <div className="columns-list" ref={provided.innerRef}
               style={{
                 flex: 1,
@@ -135,17 +135,17 @@ const ColumnsSettings = observer(() => {
               {
                 columns?.map((column, index) => {
                   return (
-                    <Draggable key={column.name} draggableId={column.name} index={index}>
+                    <Draggable key={column?.name} draggableId={column?.name as any} index={index}>
                       {
-                        (provided, snapshot) => (
+                        (provided:any, snapshot:any) => (
                           <DraggableLabel
-                            key={column.name}
-                            name={column.name}
-                            title={column.title}
+                            key={column?.name}
+                            name={column?.name}
+                            title={column?.title}
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            checked={!!selectedColumns?.find(col => col === column.name)}
+                            checked={!!selectedColumns?.find(col => col === column?.name)}
                             onChange={handleChange}
                           />
                         )
