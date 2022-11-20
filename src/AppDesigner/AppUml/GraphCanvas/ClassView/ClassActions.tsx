@@ -36,7 +36,7 @@ const ClassActions = memo((
     }
   }, [onVisible, onAddAttribute, onAddMethod, onHidden, onDelete]);
 
-  const handleVisibleChange = useCallback((flag) => {
+  const handleVisibleChange = useCallback((flag: any) => {
     setVisible(flag);
     onVisible(flag);
   }, [onVisible]);

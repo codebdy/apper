@@ -27,7 +27,7 @@ import AttributesLabel from "./AttributesLabel";
 import MethodsLabel from "./MethodsLabel";
 import RelationLabel from "./RelationLabel";
 import { useTranslation } from "react-i18next";
-import PlugIcon from "~/icons/PlugIcon";
+import PlugIcon from "icons/PlugIcon";
 import DiagramLabel from "./DiagramLabel";
 import { useParams } from "react-router-dom";
 import { CodeMeta } from "../meta/CodeMeta";
@@ -373,8 +373,8 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     >
       <DirectoryTree
         defaultExpandedKeys={["0"]}
-        selectedKeys={[selectedDiagramId || selectedCode?.uuid || selectedOrches?.uuid]}
-        onSelect={handleSelect}
+        selectedKeys={[selectedDiagramId || selectedCode?.uuid || selectedOrches?.uuid] as any}
+        onSelect={handleSelect as any}
         treeData={treeData}
       />
     </div>

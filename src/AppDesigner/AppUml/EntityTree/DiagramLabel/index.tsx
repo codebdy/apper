@@ -31,7 +31,7 @@ const DiagramLabel = memo((
     setName(diagram.name)
   }, [diagram])
 
-  const handleVisableChange = useCallback((visible) => {
+  const handleVisableChange = useCallback((visible: any) => {
     setVisible(visible)
   }, []);
 
@@ -42,7 +42,7 @@ const DiagramLabel = memo((
   const handleConfirm = useCallback((diagram?: DiagramMeta) => {
     backup()
     setEditing(false);
-    setDiagrams(diagrams => diagrams.map(dm => dm.uuid === diagram.uuid ? diagram : dm))
+    setDiagrams(diagrams => diagrams.map(dm => dm.uuid === diagram?.uuid ? diagram : dm) as any)
   }, [backup, setDiagrams]);
 
 

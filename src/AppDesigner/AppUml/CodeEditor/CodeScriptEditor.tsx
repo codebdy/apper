@@ -11,11 +11,11 @@ export const CodeScriptEditor = memo(() => {
   const code = useSelectedCode(appId);
   const setCodes = useSetRecoilState(codesState(appId))
   const backup = useBackupSnapshot(appId);
-  const handleChange = useCallback((value: string) => {
+  const handleChange = useCallback((value?: string) => {
     backup();
-    setCodes(codes => codes.map(cd => cd.uuid === code.uuid ? { ...cd, script: value } : cd))
+    setCodes(codes => codes.map(cd => cd.uuid === code?.uuid ? { ...cd, script: value } : cd))
   }, [backup, setCodes, code])
   return (
-    <CodeInput key={code.uuid} value={code.script} onChange={handleChange} />
+    <CodeInput key={code?.uuid} value={code?.script} onChange={handleChange} />
   )
 })
