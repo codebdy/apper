@@ -47,7 +47,7 @@ export function useQueryVersions(appId?: ID, instanceId?: ID) {
     }
   }, [appId, instanceId])
 
-  const { data, error, loading } = useQuery<ISnapshot>(args)
+  const { data, error, loading } = useQuery<ISnapshot>(args as any)
 
   return { snapshots: data?.snapshots?.nodes, error, loading }
 }

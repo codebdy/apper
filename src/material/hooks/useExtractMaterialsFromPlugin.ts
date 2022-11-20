@@ -8,7 +8,7 @@ export function useExtractMaterialsFromPlugin() {
   const convert = useConvertMaterialFromPlugin();
 
   const extractMaterialsFromPlugin = useCallback((plugin: IPlugin) => {
-    return plugin.components[device]?.map(material => convert(material)) || []
+    return device && (plugin.components[device]?.map(material => convert(material)) || [])
   }, [convert, device])
   return extractMaterialsFromPlugin;
 }

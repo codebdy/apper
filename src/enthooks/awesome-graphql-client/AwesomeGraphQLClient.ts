@@ -97,13 +97,13 @@ export class AwesomeGraphQLClient<
 
 		const map: Record<string, string[]> = {}
 		let i = 0
-		files.forEach(paths => {
+		files.forEach((paths: any) => {
 			map[++i] = paths
 		})
 		form.append('map', JSON.stringify(map))
 
 		i = 0
-		files.forEach((paths, file) => {
+		files.forEach((paths: any, file: any) => {
 			form.append(`${++i}`, file)
 		})
 
