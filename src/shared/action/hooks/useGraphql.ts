@@ -52,7 +52,7 @@ export function useGraphql() {
       trigger(EVENT_DATA_POSTED, { entity: entityName.trim() })
     }
     return data;
-  }, [endpoint, token, app])
+  }, [endpoint, token, app.id, t])
 
   return doGraphql;
 }
