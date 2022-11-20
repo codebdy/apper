@@ -8,8 +8,8 @@ import _ from "lodash";
 import { ID } from "shared";
 
 export function useGetClassAttributes(appId?: ID) {
-  const classMetas = useRecoilValue(classesState(appId))
-  const relations = useRecoilValue(relationsState(appId));
+  const classMetas = useRecoilValue(classesState(appId||""))
+  const relations = useRecoilValue(relationsState(appId||""));
   const getAttrs = useCallback((cls: ClassMeta) => {
     const parentClasses = getParentClasses(cls.uuid, classMetas, relations);
     const parentAttributes: AttributeMeta[] = [];

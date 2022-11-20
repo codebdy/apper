@@ -28,16 +28,18 @@ export const MenuAuthChecker = memo((
 
   const handleChange = useCallback((e: CheckboxChangeEvent) => {
     setChecked(e.target.checked);
+    const { app, ...other } = menuAuthConfig || {};
     upsertMenuConfig(
       {
-        ...menuAuthConfig,
+        ...other,
         roleId,
         menuItemUuid,
         device,
+        app: app?.id ? { sync: { id: app.id } } : undefined,
         refused: !e.target.checked,
       }
     )
-  }, [upsertMenuConfig, roleId, menuItemUuid, device])
+  }, [menuAuthConfig, upsertMenuConfig, roleId, menuItemUuid, device])
 
   return (
     <>
