@@ -57,8 +57,8 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
               request.current = null
             }
             request.current = setTimeout(() => {
-              ref.current.classList.add('expanded')
-            }, 600)
+              ref.current?.classList.add('expanded')
+            }, 600) as any
           }
         } else {
           if (request.current) {
@@ -113,7 +113,7 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
     }
 
     const renderTitle = (node: TreeNode) => {
-      if (isFn(ctx.renderTitle)) return ctx.renderTitle(node)
+      if (isFn(ctx?.renderTitle)) return ctx?.renderTitle(node)
       return (
         <span>
           <NodeTitleWidget node={node} />
@@ -122,13 +122,13 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
     }
 
     const renderActions = (node: TreeNode) => {
-      if (isFn(ctx.renderActions)) return ctx.renderActions(node)
+      if (isFn(ctx?.renderActions)) return ctx?.renderActions(node)
     }
 
     return (
       <div
         style={style}
-        ref={ref}
+        ref={ref as any}
         className={cls(prefix, className, 'expanded')}
         data-designer-outline-node-id={node.id}
       >

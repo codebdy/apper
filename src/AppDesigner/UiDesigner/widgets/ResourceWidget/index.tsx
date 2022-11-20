@@ -31,10 +31,10 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
         <div
           className={prefix + '-item'}
           style={{ gridColumnStart: `span ${span || 1}` }}
-          key={node.id}
-          data-designer-source-id={node.id}
+          key={node?.id}
+          data-designer-source-id={node?.id}
         >
-          {thumb && <img className={prefix + '-item-thumb'} src={thumb} />}
+          {thumb && <img alt={node?.sourceName} className={prefix + '-item-thumb'} src={thumb} />}
           {icon && React.isValidElement(icon) ? (
             <>{icon}</>
           ) : (
@@ -47,25 +47,25 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
           <span className={prefix + '-item-text'}>
             {
               <TextWidget>
-                {title || node.children[0]?.getMessage('title')}
+                {title || node?.children[0]?.getMessage('title')}
               </TextWidget>
             }
           </span>
         </div>
       )
     }
-    const sources = props.sources.reduce<IResource[]>((buf, source) => {
+    const sources = props.sources?.reduce<IResource[]>((buf, source) => {
       if (isResourceList(source)) {
         return buf.concat(source)
       } else if (isResourceHost(source)) {
-        return buf.concat(source.Resource)
+        return buf.concat(source.Resource as any)
       }
       return buf
     }, [])
     const remainItems =
-      sources.reduce((length, source) => {
+      sources?.reduce((length, source) => {
         return length + (source.span ?? 1)
-      }, 0) % 3
+      }, 0) as any % 3
     return (
       <div
         className={cls(prefix, props.className, {
@@ -89,7 +89,7 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
         </div>
         <div className={prefix + '-content-wrapper'}>
           <div className={prefix + '-content'}>
-            {sources.map(isFn(props.children) ? props.children : renderNode)}
+            {sources?.map(isFn(props.children) ? props.children : renderNode)}
             {remainItems ? (
               <div
                 className={prefix + '-item-remain'}
