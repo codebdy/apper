@@ -17,7 +17,7 @@ export const DeleteTemplateButton = memo((
   useShowError(error);
 
   const handleClick = useCallback(() => {
-    doDelete(template.id)
+    template.id && doDelete(template.id)
   }, [doDelete, template])
 
   return (

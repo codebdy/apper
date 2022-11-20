@@ -80,7 +80,7 @@ const NavItemList = (props: {
   node: IMenuNode;
   canDrop: boolean;
   isSubList?: boolean;
-  onParentDropable?: (drapable: boolean) => void;
+  onParentDropable?: (drapable?: boolean) => void;
 }) => {
   const { node, canDrop, isSubList, onParentDropable } = props;
 
@@ -92,7 +92,7 @@ const NavItemList = (props: {
           snapshot={snapshot}
           node={node}
           isSubList={isSubList}
-          onParentDropable={onParentDropable}
+          onParentDropable={onParentDropable as any}
         />
       )}
     </Droppable>

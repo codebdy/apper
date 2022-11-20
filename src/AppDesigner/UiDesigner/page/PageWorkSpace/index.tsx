@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import {
   ViewToolsWidget,
-  DesignerToolsWidget,
   ComponentTreeWidget,
   SchemaEditorWidget,
   PreviewWidget,
@@ -12,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { Spin } from "antd";
 import { ID } from "shared";
 import { useShowError } from "AppDesigner/hooks/useShowError";
-import { SettingsPanel, ToolbarPanel, useDesigner, ViewPanel, ViewportPanel, Workspace, WorkspacePanel } from 'designable/react'
+import { DesignerToolsWidget, SettingsPanel, ToolbarPanel, useDesigner, ViewPanel, ViewportPanel, Workspace, WorkspacePanel } from 'designable/react'
 import { useLazyQueryPage } from "AppDesigner/hooks/useLazyQueryPage";
 import { FormDesigner } from "components/pc/FormDesigner";
 import { useMaterialDesigners } from "material/hooks/useMaterialDesigners";

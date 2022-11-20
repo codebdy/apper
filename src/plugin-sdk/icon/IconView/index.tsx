@@ -16,14 +16,14 @@ export const IconView = (props: IIconViewProps) => {
     return <EmpertyIcon {...other} />;
   }
 
-  if (icon.iconKey) {
+  if (icon?.iconKey) {
     const realIcon = getIcon(icon.iconKey);
     if (realIcon?.icon) {
       return <realIcon.icon {...other} />;
     }
   }
 
-  if (icon.svgString) {
+  if (icon?.svgString) {
     return <SvgStringIcon icon={icon.svgString} {...other} />;
   }
 

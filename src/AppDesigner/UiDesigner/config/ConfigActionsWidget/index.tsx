@@ -28,9 +28,11 @@ export const ConfigActionsWidget = observer(() => {
   useShowError(error);
 
   const handleSave = useCallback(() => {
+    const { app, ...other } = appDeviceConfig || {}
     upsert({
-      ...appDeviceConfig,
+      ...other,
       device,
+      app: app?.id ? { sync: { id: app.id } } : undefined,
       schemaJson: {
         ...appDeviceConfig?.schemaJson || {},
         entryId: appDeviceConfig?.schemaJson?.entryUuid,

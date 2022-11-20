@@ -80,7 +80,7 @@ export const ActionInput = observer((props: {
     (result: DropResult) => {
       const { destination, source, draggableId } = result;
       if (destination?.droppableId) {
-        var draggedNode: IAppxAction;
+        var draggedNode: IAppxAction | undefined;
         if (source.droppableId === DATA_ACTIONS_LIST || source.droppableId === UI_ACTIONS_LIST) {
           draggedNode = {
             uuid: createUuid(),
@@ -108,7 +108,7 @@ export const ActionInput = observer((props: {
     [actions, insertAt, t]
   )
 
-  const handleSelect = useCallback((selectedId: string) => {
+  const handleSelect = useCallback((selectedId?: string) => {
     setSelectedUuid(selectedId)
   }, [])
 
@@ -116,9 +116,9 @@ export const ActionInput = observer((props: {
     return actions.find(action => action.uuid === selectedUuid)
   }, [actions, selectedUuid])
 
-  const handleActionChange = useCallback((action: IAppxAction) => {
+  const handleActionChange = useCallback((action?: IAppxAction) => {
     backup();
-    setActions(actions => actions.map(act => act.uuid === action.uuid ? action : act))
+    action && setActions(actions => actions.map(act => act.uuid === action.uuid ? action : act))
   }, [backup]);
 
   const handleUndo = useCallback(() => {
@@ -217,7 +217,7 @@ export const ActionInput = observer((props: {
             <div className='toolbar bottom-border'>{t("Action.Properties")}</div>
             <div style={{ padding: 16, overflow: "auto" }}>
               {
-                selectedUuid
+                selectedAction
                   ?
                   <ActionPropertyBox action={selectedAction} onChange={handleActionChange} />
                   :

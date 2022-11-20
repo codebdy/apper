@@ -28,7 +28,7 @@ const MenuDesignView = memo((
       {rootNode && (
         <NavItemList
           node={rootNode}
-          onParentDropable={handleDropable}
+          onParentDropable={handleDropable as any}
           canDrop={canDrop}
         />
       )}

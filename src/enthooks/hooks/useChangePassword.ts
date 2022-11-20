@@ -21,7 +21,7 @@ export function useChangePassword(
     (input: ChangeInput) => void,
     { token?: string; loading?: boolean; error?: Error }
   ] {
-  const [doChange, { data, error, loading }] = useLazyRequest<ChangeInput>({
+  const [doChange, { data, error, loading }] = useLazyRequest<{ changePassword: string }>({
     onCompleted: (data: any) => {
       options?.onCompleted && options?.onCompleted(data?.changePassword);
     },
@@ -30,8 +30,8 @@ export function useChangePassword(
     }
   })
 
-  const change = useCallback((input: ChangeInput)=>{
+  const change = useCallback((input: ChangeInput) => {
     doChange(changePasswordGql, input)
   }, [doChange])
-  return [change, { token:data?.changePassword, loading, error }];
+  return [change, { token: data?.changePassword, loading, error }];
 }

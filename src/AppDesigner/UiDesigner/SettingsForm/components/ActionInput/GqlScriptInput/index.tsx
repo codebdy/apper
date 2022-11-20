@@ -1,8 +1,8 @@
 import { observer } from "@formily/reactive-react";
 import { Button, Modal } from "antd";
+import { MonacoInput } from "designable/react-settings-form";
 import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { MonacoInput } from "../../MonacoInput";
 
 export const GqlScriptInput = observer((
   props: {
@@ -26,14 +26,14 @@ export const GqlScriptInput = observer((
   const handleOk = useCallback(() => {
     setIsModalVisible(false);
     onChange && onChange(expression)
-  }, [expression]);
+  }, [expression, onChange]);
 
   const handleCancel = useCallback(() => {
     setIsModalVisible(false);
     setExpression(value)
   }, [value]);
 
-  const handleChange = useCallback((valueStr: string) => {
+  const handleChange = useCallback((valueStr?: string) => {
     setExpression(valueStr)
   }, [])
 

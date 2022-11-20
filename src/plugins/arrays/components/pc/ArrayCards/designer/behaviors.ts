@@ -8,7 +8,7 @@ const behaviors: IBehavior[] = [
   {
     name,
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === name,
+    selector: (node) => node.props?.['x-component'] === name,
     designerProps: {
       droppable: true,
     },

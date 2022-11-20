@@ -51,7 +51,7 @@ const Component: React.FC<IDropdownMenuProps> = observer((props) => {
       ;
   }, [doActions, setLoading])
 
-  const handleMenuClick = useCallback(({ key }) => {
+  const handleMenuClick = useCallback(({ key }: any) => {
     const action = childActionsRef.current[key]
     handleAction(action);
   }, [handleAction])
@@ -72,14 +72,14 @@ const Component: React.FC<IDropdownMenuProps> = observer((props) => {
         label: p(child["x-component-props"]?.title),
       }
     })
-  }, [fieldSchema, handleAction])
+  }, [fieldSchema, p])
 
   const contextValue = useMemo(() => {
     return { loading, setLoading }
   }, [loading])
 
   return (
-    <DropdownContext.Provider value={contextValue}>
+    <DropdownContext.Provider value={contextValue as any}>
       <Dropdown overlay={<Menu items={items} onClick={handleMenuClick} />} placement={placement} trigger={trigger}>
         {
           showDropdownIcon
