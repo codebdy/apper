@@ -11,7 +11,7 @@ const ComponentDesigner: DnFC<IComponentProps> = observer((
   const node = useTreeNode();
   return (
     <Spring className="appx-spring-designer" {...props}>
-      {node.getMessage("title")}
+      {node?.getMessage("title")}
     </Spring>
   )
 })
