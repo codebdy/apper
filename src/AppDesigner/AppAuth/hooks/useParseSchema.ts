@@ -8,7 +8,7 @@ export function useParseSchema() {
   const p = useParseLangMessage();
 
   const parse = useCallback((schema: ISchema | undefined, key?: string): IAuthComponent[] => {
-    const coms = [];
+    const coms: any[] = [];
     if (!schema || !isObj(schema)) {
       return coms;
     }
@@ -21,7 +21,7 @@ export function useParseSchema() {
     }
 
     for (const key of Object.keys(schema.properties || {})) {
-      coms.push(...parse(schema.properties[key], key));
+      coms.push(...parse((schema.properties as any)[key], key));
     }
 
     if (isArr(schema.items)) {

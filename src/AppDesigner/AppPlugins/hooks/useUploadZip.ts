@@ -22,7 +22,7 @@ export function useUploadZip(folder: string) {
           headers: {
             [HEADER_AUTHORIZATION]: token ? `${TOKEN_PREFIX}${token}` : "",
             [HEADER_APPX_APPID]: appId,
-          }
+          } as any
         })
         .then((data) => {
           resolve(data?.uploadZip);
@@ -32,7 +32,7 @@ export function useUploadZip(folder: string) {
         });
     })
     return p;
-  }, [appId, endpoint, token])
+  }, [appId, endpoint, folder, token])
 
   return upload;
 }
