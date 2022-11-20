@@ -1,14 +1,13 @@
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Input, Modal, Select } from "antd"
+import { Button,  Modal } from "antd"
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
 import "./style.less";
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import { MenuOutlined } from '@ant-design/icons';
 import { SortableContainerProps, SortEnd } from 'react-sortable-hoc';
-import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
+import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import { arrayMoveImmutable } from "array-move";
 import { Type, Types } from "../../../meta/Type";
 import { ArgMeta } from "../../../meta/MethodMeta";
@@ -17,10 +16,6 @@ import { LazyInput } from "./LazyInput";
 import { useGetTypeLabel } from "../../../hooks/useGetTypeLabel";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { ArgTypeInput } from "./ArgTypeInput";
-
-const { Option } = Select;
-
-const DragHandle = SortableHandle(() => <MenuOutlined style={{ cursor: 'grab', color: '#999' }} />) as any;
 
 const SortableItem: any = SortableElement((props: React.HTMLAttributes<HTMLTableRowElement>) => (
   <tr {...props} />
@@ -70,7 +65,7 @@ export const ArgsInput = memo((
           : item
       })
     })
-  }, [])
+  }, [getTypeLabel])
 
   const handleRemove = useCallback((uuid: string) => {
     setItems(items => items.filter(item => item.uuid !== uuid));
@@ -86,7 +81,7 @@ export const ArgsInput = memo((
           value={name}
           style={{ width: 150 }}
           onChange={
-            (value) => handleNameChange(uuid, value)
+            (value) => handleNameChange(uuid, value as any)
           }
         />
       ),
@@ -97,7 +92,7 @@ export const ArgsInput = memo((
       className: 'drag-visible',
       width: 332,
       render: (_, { uuid, type, typeUuid }) => (
-        <ArgTypeInput uuid={uuid} type={type} typeUuid={typeUuid} onTypeChange={handleTypeChange} />
+        <ArgTypeInput uuid={uuid} type={type} typeUuid={typeUuid} onTypeChange={handleTypeChange as any} />
       ),
     },
 
@@ -114,7 +109,7 @@ export const ArgsInput = memo((
         />
       ),
     },
-  ], []);
+  ], [handleNameChange, handleRemove, handleTypeChange, t]);
 
 
   const onSortEnd = ({ oldIndex, newIndex }: SortEnd) => {
@@ -154,7 +149,7 @@ export const ArgsInput = memo((
         }
       ]
     })
-  }, [])
+  }, [getTypeLabel])
 
   const showModal = useCallback(() => {
     setOpen(true)

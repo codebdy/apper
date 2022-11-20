@@ -1,4 +1,3 @@
-import React from "react"
 import { memo } from "react"
 import { Type } from "AppDesigner/AppUml/meta"
 import { TypeSelect } from "../../TypeSelect";
@@ -9,7 +8,7 @@ export const ArgTypeInput = memo((
     uuid: string,
     type: Type,
     typeUuid?: string,
-    onTypeChange: (uuid: string, type: Type, typeUuid?: string) => void,
+    onTypeChange: (uuid: string, type?: Type, typeUuid?: string) => void,
   }
 ) => {
   const { uuid, type, typeUuid, onTypeChange } = props;

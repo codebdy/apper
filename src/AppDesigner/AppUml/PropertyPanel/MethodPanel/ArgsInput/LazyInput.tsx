@@ -12,7 +12,7 @@ export const LazyInput = memo((
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    setInputValue(value);
+    setInputValue(value as any);
   }, [value])
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +22,7 @@ export const LazyInput = memo((
 
   const handleBlur = useCallback(() => {
     onChange(inputValue)
-  }, [inputValue]);
+  }, [inputValue, onChange]);
 
   return (
     <Input value={inputValue} onChange={handleChange} onBlur={handleBlur} {...other} />

@@ -17,7 +17,7 @@ export const MethodPanel = memo((props: { method: MethodMeta; cls: ClassMeta }) 
   const getTypeLabel = useGetTypeLabel(appId);
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  
+
   useEffect(
     () => {
       form.setFieldsValue({ ...method });
@@ -25,7 +25,7 @@ export const MethodPanel = memo((props: { method: MethodMeta; cls: ClassMeta }) 
     [method, form]
   )
 
-  const handleChange = useCallback((form) => {
+  const handleChange = useCallback((form: any) => {
     const errMsg = changeMethod(
       {
         ...method,

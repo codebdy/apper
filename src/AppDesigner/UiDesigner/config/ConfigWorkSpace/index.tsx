@@ -1,9 +1,9 @@
 import React, { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { ViewportPanel, WorkspacePanel } from "../../panels";
 import "./style.less"
 import { Collapse } from "antd";
 import { BaseConfigForm } from "./BaseConfigForm";
+import { ViewportPanel, WorkspacePanel } from "designable/react";
 const { Panel } = Collapse;
 
 const MenuWorkSpace = memo(() => {

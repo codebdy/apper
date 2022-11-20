@@ -21,7 +21,7 @@ export const OrchestrationPanel = memo((props: { orchestration: OrchestrationMet
     [orchestration, form]
   )
 
-  const handleChange = useCallback((form) => {
+  const handleChange = useCallback((form: any) => {
     const errMsg = changeOrchestration(
       {
         ...orchestration,

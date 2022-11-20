@@ -37,7 +37,7 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
     [relation.relationType]
   );
 
-  const handleChange = useCallback((values) => {
+  const handleChange = useCallback((values: any) => {
     changeRelation({
       ...relation,
       ...values,
