@@ -19,7 +19,7 @@ export const FrameListWidget = memo((
 
   const getTreeData = useCallback(() => {
     const dataNodes: DataNode[] = []
-    for (const template of templates) {
+    for (const template of templates||[]) {
       dataNodes.push({
         title: <FrameLabel frame={template} />,
         icon: <FileOutlined />,
@@ -29,7 +29,7 @@ export const FrameListWidget = memo((
     return dataNodes
   }, [templates])
 
-  const onSelect = useCallback((selectedKeys) => {
+  const onSelect = useCallback((selectedKeys:any) => {
     onSelected(selectedKeys?.[0])
   }, [onSelected]);
 
@@ -39,7 +39,7 @@ export const FrameListWidget = memo((
       <Tree
         showIcon
         className='template-list-tree'
-        selectedKeys={[selectedId]}
+        selectedKeys={[selectedId] as any}
         onSelect={onSelect}
         treeData={getTreeData()}
       />

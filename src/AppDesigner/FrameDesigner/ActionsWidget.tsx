@@ -3,10 +3,10 @@ import { Button, message } from 'antd'
 import { useDesigner, TextWidget } from 'designable/react'
 import { observer } from '@formily/react'
 import { useTranslation } from 'react-i18next'
-import { transformToSchema } from '../UiDesigner/transformer'
 import { useShowError } from 'AppDesigner/hooks/useShowError'
 import { ID } from 'shared'
 import { useUpsertPageFrame } from './hooks/useUpsertPageFrame'
+import { transformToSchema } from 'designable/formily-antd/transformer'
 
 export const ActionsWidget = observer((props: {
   templateId?: ID,

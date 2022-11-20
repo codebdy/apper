@@ -1,8 +1,7 @@
-import { gql } from "../../enthooks";
+import { gql, QueryOneResult } from "../../enthooks";
 import { useCallback } from "react";
 import { RequestOptions, useLazyRequest } from "../../enthooks/hooks/useLazyRequest";
 import { IPage } from "../../model";
-import { IPageInput } from "../../model";
 import { ID } from "shared";
 
 const pageGql = gql`
@@ -28,9 +27,9 @@ export function useLazyQueryPage(options?: RequestOptions<IPage>): [
     error?: Error,
   }
 ] {
-  const [doQuery, { data, error, loading }] = useLazyRequest<IPageInput>({
+  const [doQuery, { data, error, loading }] = useLazyRequest<QueryOneResult<IPage>>({
     onCompleted: (data) => {
-      options?.onCompleted(data?.onePage)
+      options?.onCompleted && options?.onCompleted(data?.onePage)
     },
     onError: options?.onError
   })

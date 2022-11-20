@@ -18,7 +18,7 @@ export const MakeVersionDialog = memo((
   const [form] = Form.useForm<any>();
   const [create, { loading, error }] = useCreateVersion({
     onCompleted: () => {
-      onOpenChange(false);
+      onOpenChange && onOpenChange(false);
       message.success(t("OperateSuccess"));
       form.resetFields();
     }
@@ -36,10 +36,10 @@ export const MakeVersionDialog = memo((
       })
     })
 
-  }, [onOpenChange, create, appId])
+  }, [form, create, appId])
 
   const handleCancel = useCallback(() => {
-    onOpenChange(false);
+    onOpenChange && onOpenChange(false);
     form.resetFields()
   }, [onOpenChange, form])
   return (

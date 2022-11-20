@@ -14,7 +14,7 @@ const FrameLabel = (
   const [visible, setVisible] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const p = useParseLangMessage();
-  const handleVisableChange = useCallback((visible) => {
+  const handleVisableChange = useCallback((visible:boolean) => {
     setVisible(visible)
   }, []);
 
