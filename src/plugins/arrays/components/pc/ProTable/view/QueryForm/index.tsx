@@ -23,7 +23,7 @@ export type IQueryFormProps = {
   onChange?: (value: any) => void,
 } & React.ComponentProps<formilyGrid>
 
-export const QueryForm: React.FC = observer((props: IQueryFormProps) => {
+export const QueryForm: React.FC<IQueryFormProps> = observer((props) => {
   const {
     layout = "horizontal",
     collapsiable = true,

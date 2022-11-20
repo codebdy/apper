@@ -25,7 +25,7 @@ export const ButtonsGridColum = observer((
 
   const submit = useTableSearch();
   const handleReset = useCallback(() => {
-    params && objectField?.reset();
+    params && objectField && objectField?.reset();
   }, [objectField, params])
 
   const handleSubmit = useCallback(() => {
