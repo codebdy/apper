@@ -53,7 +53,7 @@ export const AppRoot = memo((
       token: token || localStorageToken,
       tokenName: DESIGNER_TOKEN_NAME,
     }
-  }, [app, SERVER_URL, token])
+  }, [app, token])
 
 
   const isLoading = useMemo(() => loading || userConfigLoading, [loading, userConfigLoading])
@@ -61,7 +61,7 @@ export const AppRoot = memo((
     isLoading || menuAuthLoading || comAuthLoading?
       <CenterSpin />
       :
-      <EntiRoot config={config} >
+      <EntiRoot config={config as any} >
         <AppContext.Provider value={appParams}>
           {
             children

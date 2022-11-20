@@ -10,9 +10,9 @@ export const MediasDesigner: DnFC<IMediasProps> = Medias
 MediasDesigner.Behavior = createBehavior({
   name: 'Medias',
   extends: ['Field'],
-  selector: (node) => node.props['x-component'] === 'Medias',
+  selector: (node) => node.props?.['x-component'] === 'Medias',
   designerProps: {
-    propsSchema: createFieldSchema(MediasSchema),
+    propsSchema: createFieldSchema(MediasSchema) as any,
   },
   designerLocales: MediasLocales,
 })
