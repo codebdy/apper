@@ -57,7 +57,7 @@ export const TabsEditDialog = memo((
     (result: DropResult) => {
       const { destination, draggableId } = result;
       if (destination?.droppableId) {
-        var draggedNode: IMaterialTab;
+        var draggedNode: IMaterialTab | undefined;
 
         draggedNode = items.find(action => action.uuid === draggableId);
 
