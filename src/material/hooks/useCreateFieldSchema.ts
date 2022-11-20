@@ -10,7 +10,7 @@ export function useCreateFieldSchema() {
   const createStyleTab = useCreateStyleSchemaTab();
   const createDisplayTab = useCreateDisplaySchemaTab();
   const createActionsTab = useCreateActionsSchemaTab();
-  const create = useCallback((propsSchema: IPropsSchema) => {
+  const create = useCallback((propsSchema?: IPropsSchema) => {
     return {
       type: 'object',
       properties: {

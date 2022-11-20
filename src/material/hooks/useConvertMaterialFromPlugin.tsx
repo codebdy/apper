@@ -27,7 +27,7 @@ export function useConvertMaterialFromPlugin() {
     const dnfc: DnFC<any> | DnComponent<any> = material.designer;
 
     if (material.behaviors) {
-      const Behavior = createBehavior(...convertBehaviors(material.behaviors))
+      const Behavior = createBehavior(...(convertBehaviors(material.behaviors) as any))
       dnfc.Behavior = Behavior
     }
 

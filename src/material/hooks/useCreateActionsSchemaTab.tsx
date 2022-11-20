@@ -32,7 +32,7 @@ export const createActionSchemaTab = (actions: string[]) => {
 }
 
 export function useCreateActionsSchemaTab() {
-  const create = useCallback((propsSchema: IPropsSchema) => {
+  const create = useCallback((propsSchema?: IPropsSchema) => {
     if (!propsSchema?.actions?.length) {
       return {}
     }

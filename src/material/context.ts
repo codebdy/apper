@@ -18,4 +18,4 @@ export interface IMaterialTabsContextParams {
 
 export const AppMaterialTabsContext = createContext<IMaterialTabsContextParams | undefined>(undefined);
 
-export const useAppMaterialTabs = (): IMaterialTabsContextParams | undefined => useContext(AppMaterialTabsContext);
+export const useAppMaterialTabs = (): IMaterialTabsContextParams => useContext(AppMaterialTabsContext) || { uploadedMaterialTabs: [] };

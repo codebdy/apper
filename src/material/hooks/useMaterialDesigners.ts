@@ -3,7 +3,7 @@ import { useAppMaterialTabs, usePredefinedMaterialTab } from "../context";
 
 export function useMaterialDesigners() {
   const { basicTab, frameworkTab } = usePredefinedMaterialTab();
-  const { debugMaterialTab, uploadedMaterialTabs } = useAppMaterialTabs();
+  const { uploadedMaterialTabs } = useAppMaterialTabs();
   const materialDesigners = useMemo(() => {
     const designers = {} as any;
 
@@ -15,7 +15,7 @@ export function useMaterialDesigners() {
       }
     }
     return designers
-  }, [debugMaterialTab?.groups, basicTab, frameworkTab, uploadedMaterialTabs])
+  }, [basicTab, frameworkTab, uploadedMaterialTabs])
 
   return materialDesigners;
 }
