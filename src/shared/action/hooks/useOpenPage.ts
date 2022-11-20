@@ -20,7 +20,7 @@ export function useOpenPage() {
     if (action.openType === OpenPageType.RouteTo) {
       navigate(`/${device}/${appId}/${menuUuid || "no"}/${action.pageUuid}/${dataId || ""}`)
     } else if (action.openType === OpenPageType.Dialog || action.openType === OpenPageType.Drawer) {
-      setPagePopups(pgPops => ([...pgPops, {
+      setPagePopups((pgPops: any) => ([...pgPops, {
         id: createId(),
         ...action,
         dataId
