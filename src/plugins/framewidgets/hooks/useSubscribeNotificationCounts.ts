@@ -17,7 +17,7 @@ export function useSubscribeNotificationCounts() {
   const { app } = useAppParams();
   const token = useToken();
 
-  const handleError = useCallback((error) => {
+  const handleError = useCallback((error: Error) => {
     setError(new Error("Subscribe error:" + error?.message))
   }, [])
 
@@ -33,14 +33,14 @@ export function useSubscribeNotificationCounts() {
     const { unsubscribe } = sClident.request({
       query: 'subscription { unreadNoticationCounts }',
     }).subscribe({
-      next: (value:any) => { 
+      next: (value: any) => {
         setCount(value?.unreadNoticationCounts)
-       },
-      error: (error: Error) => { 
+      },
+      error: (error: Error) => {
         setError(error)
-       },
-      complete: () => { 
-        console.log("useSubscribeNotificationCounts complete") 
+      },
+      complete: () => {
+        console.log("useSubscribeNotificationCounts complete")
       },
     })
 

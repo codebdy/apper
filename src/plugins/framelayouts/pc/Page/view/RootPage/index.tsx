@@ -5,7 +5,7 @@ import { PageEngine } from "../../../../PageEngine";
 import { ExpressionScope } from '@formily/react';
 import { useGetMenuItem } from "../../../../../framewidgets/pc/AppMenu/view/hooks/useGetMenuItem";
 import { OpenPageType } from "plugin-sdk/model/action";
-import { useEntryPageUuid } from "~/AppRunner/hooks/useEntryPageUuid";
+import { useEntryPageUuid } from "AppRunner/hooks/useEntryPageUuid";
 
 export interface ILoadingSpanProps {
   spinning?: boolean,

@@ -10,7 +10,7 @@ import { useEntryPageUuid } from "./hooks/useEntryPageUuid";
 import { useGetMenuItemByPageUuid } from "./hooks/useGetMenuItemByPageUuid";
 import "./style.less"
 import cls from "classnames";
-import { useMenu } from "~/AppRunner/hooks/useMenu";
+import { useMenu } from "AppRunner/hooks/useMenu";
 import { SYSTEM_APP_ID } from "consts";
 import { Device } from "@rxdrag/appx-plugin-sdk";
 import { useCheckMenuAuth } from "./hooks/useCheckMenuAuth";
@@ -33,7 +33,7 @@ const AppMenu = memo((props: IComponentProps) => {
   const getMenuItemByPageId = useGetMenuItemByPageUuid();
   const checkAuth = useCheckMenuAuth();
 
-  const makeItem = useCallback((item: IMenuItem) => {
+  const makeItem = useCallback((item: IMenuItem): any => {
     const children = item.children?.filter(item => checkAuth(item))
     return ({
       key: item.uuid,
@@ -44,17 +44,17 @@ const AppMenu = memo((props: IComponentProps) => {
         : children?.map((child) => makeItem(child)),
       type: item.type === MenuItemType.Divider ? "divider" : undefined
     })
-  }, [p]);
+  }, [checkAuth, p]);
 
   const data: ItemType[] = useMemo(() => {
     const rtValue = [];
-    for (const item of menu?.schemaJson?.items?.filter(item => checkAuth(item)) || []) {
+    for (const item of menu?.schemaJson?.items?.filter((item: any) => checkAuth(item)) || []) {
       rtValue.push(makeItem(item))
     }
     return rtValue
-  }, [makeItem, menu?.schemaJson?.items]);
+  }, [checkAuth, makeItem, menu?.schemaJson?.items]);
 
-  const handleClick = useCallback(({ key }) => {
+  const handleClick = useCallback(({ key }: any) => {
     const item = getMenuItem(key);
 
     if (item?.type === MenuItemType.Link) {

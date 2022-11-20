@@ -1,5 +1,5 @@
 import { gql, QueryResult, useLazyRequest } from "enthooks";
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useMe } from "plugin-sdk";
 import { useAppParams } from "plugin-sdk/contexts/app";
 import { EVENT_DATA_POSTED, EVENT_DATA_REMOVED, EVENT_DATA_UPDATED, off, on } from "enthooks/events";
@@ -56,7 +56,7 @@ export function useLayzyQueryRecentNotifications(): [
 
   const query = useCallback(() => {
     doQuery(notificationsGql, { userId: me?.id, appId: appParams?.app?.id })
-  }, [doQuery])
+  }, [appParams?.app?.id, doQuery, me?.id])
 
   const queryRef = useRef(query);
   queryRef.current = query
@@ -65,16 +65,16 @@ export function useLayzyQueryRecentNotifications(): [
     if (event.detail?.entity === "Notification") {
       queryRef.current()
     }
-  }, [query]);
+  }, []);
 
   useEffect(() => {
-    on(EVENT_DATA_POSTED, eventHandler);
-    on(EVENT_DATA_REMOVED, eventHandler);
-    on(EVENT_DATA_UPDATED, eventHandler);
+    on(EVENT_DATA_POSTED, eventHandler as any);
+    on(EVENT_DATA_REMOVED, eventHandler as any);
+    on(EVENT_DATA_UPDATED, eventHandler as any);
     return () => {
-      off(EVENT_DATA_POSTED, eventHandler);
-      off(EVENT_DATA_REMOVED, eventHandler);
-      off(EVENT_DATA_UPDATED, eventHandler);
+      off(EVENT_DATA_POSTED, eventHandler as any);
+      off(EVENT_DATA_REMOVED, eventHandler as any);
+      off(EVENT_DATA_UPDATED, eventHandler as any);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
