@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import {
-  PreviewWidget,
-  SchemaEditorWidget,
   ViewToolsWidget,
   DesignerToolsWidget,
   ComponentTreeWidget,
+  SchemaEditorWidget,
+  PreviewWidget,
 } from '../../widgets'
 import { SettingsForm } from '../../SettingsForm'
 import { Field } from 'components/common/Field'
@@ -45,7 +45,7 @@ const PageWorkSpace = (props: {
   useShowError(error);
 
   return (
-    visable && (
+    visable ? (
       loading ?
         <Spin>
           <div style={{ width: "calc(100vw - 280px)", height: "calc(100vh - 64px)" }}>
@@ -93,6 +93,7 @@ const PageWorkSpace = (props: {
           </SettingsPanel>
         </>
     )
+    :<></>
   )
 }
 

@@ -6,7 +6,6 @@ export * from './PreviewWidget'
 export * from './SchemaEditorWidget'
 export * from './MarkupSchemaWidget'
 
-export * from './AuxToolWidget'
 export * from './ComponentTreeWidget'
 export * from './DesignerToolsWidget'
 export * from './ViewToolsWidget'

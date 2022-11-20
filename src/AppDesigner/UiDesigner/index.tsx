@@ -10,7 +10,6 @@ import {
   ActionsWidget,
   OutlineTreeWidget,
 } from './widgets'
-import { CompositePanel, StudioPanel } from './panels'
 import { MaterialWidget } from './widgets/MaterialWidget'
 import { Designer } from './containers'
 import PageListWidget from './page/PageListWidget'
@@ -35,7 +34,9 @@ import { ConfigActionsWidget } from './config/ConfigActionsWidget'
 import { TemplateWidget } from './widgets/TemplateWidget'
 import { useQueryTemplates } from './hooks/useQueryTemplates'
 import { TemplateType } from 'model'
+import { CompositePanel as CompositePanelDesignable, StudioPanel } from 'designable/react'
 
+const CompositePanel = CompositePanelDesignable as any
 export enum DesignerRoutes {
   Templates = "Templates",
   Pages = "pages",
@@ -119,7 +120,7 @@ export const UiDesigner = memo(() => {
               </Space>
             }
           >
-            <CompositePanel showNavTitle activeKey={activeKey} onChange={hanclePannelChange}>
+            <CompositePanel showNavTitle activeKey={activeKey} onChange={hanclePannelChange as any}>
               <CompositePanel.Item
                 key={DesignerRoutes.Pages}
                 title={t("Panels.Page")} icon="Page"
