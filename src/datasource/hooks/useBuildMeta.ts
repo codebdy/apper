@@ -173,7 +173,7 @@ export function useBuildMeta(): { error?: GraphQLRequestError; loading?: boolean
       methods: sort(_.uniqBy([...cls.methods || [], ...parentMethods], "name")),
       associations: getEntityAssociations(cls.uuid, classMetas, relations)
     }
-  }, [getEntityAssociations, getParentClasses]);
+  }, []);
 
   useEffect(() => {
     if (data && (systemData || appId === SYSTEM_APP_ID)) {
