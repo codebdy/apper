@@ -36,8 +36,8 @@ export const GroupLabel = memo((
     setEditing(false);
   }, []);
 
-  const handleChange = useCallback((value: string) => {
-    setTitle(value);
+  const handleChange = useCallback((value?: string) => {
+    setTitle(value||"");
   }, []);
 
   const hancleOk = useCallback(() => {

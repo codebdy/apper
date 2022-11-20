@@ -37,7 +37,7 @@ export const MaterialDialog = memo(() => {
 
   const handleOk = useCallback(() => {
     upsert({ ...materialConfig, app: { sync: { id: app.id } }, device, schemaJson: { tabs } })
-  }, [app.uuid, device, materialConfig, tabs, upsert]);
+  }, [app.id, device, materialConfig, tabs, upsert]);
 
   const handleCancel = useCallback(() => {
     setIsModalVisible(false);
@@ -63,29 +63,29 @@ export const MaterialDialog = memo(() => {
     setTabs(tabs => tabs.map(tb => tb.uuid === tab.uuid ? { ...tab, collopsesItems: newGroups } : tb))
   }, [])
 
-  const moveComponent = useCallback((sourceGroup: IMaterialCollapseItem, targetGroup: IMaterialCollapseItem, name: string, index: number) => {
+  const moveComponent = useCallback((sourceGroup: IMaterialCollapseItem, targetGroup: IMaterialCollapseItem, name: string, index?: number) => {
     const tab = tabs.find(tab => tab.collopsesItems?.find(gp => gp.uuid === targetGroup.uuid));
     const newSourceGroup = { ...sourceGroup, components: sourceGroup?.components?.filter(com => com !== name) || [] }
-    const newGroups = tab.collopsesItems.map(gp => gp.uuid === newSourceGroup.uuid ? newSourceGroup : gp);
+    const newGroups = tab?.collopsesItems.map(gp => gp.uuid === newSourceGroup.uuid ? newSourceGroup : gp);
     const tgGroup = newGroups?.find(gp => gp.uuid === targetGroup.uuid);
     if (!tgGroup) {
       console.error("Can not find target group")
       return;
     }
     const newNames = [...tgGroup.components];
-    newNames.splice(index, 0, name);
+    newNames.splice(index||0, 0, name);
     const newTargetGroup = { ...tgGroup, components: newNames };
-    const newGroups2 = newGroups.map(gp => gp.uuid === newTargetGroup.uuid ? newTargetGroup : gp);
-    setTabs(tabs => tabs.map(tb => tb.uuid === tab.uuid ? { ...tab, collopsesItems: newGroups2 } : tb))
+    const newGroups2 = newGroups?.map(gp => gp.uuid === newTargetGroup.uuid ? newTargetGroup : gp);
+    setTabs(tabs => tabs.map(tb => tb.uuid === tab?.uuid ? { ...tab, collopsesItems: newGroups2 } : tb) as any)
   }, [tabs])
 
-  const addComponentsToGroup = useCallback((group: IMaterialCollapseItem, names: string[], index: number) => {
+  const addComponentsToGroup = useCallback((group: IMaterialCollapseItem, names: string[], index?: number) => {
     const newNames = [...group.components];
-    newNames.splice(index, 0, ...names);
+    newNames.splice(index||0, 0, ...names);
     const newGroup = { ...group, components: newNames };
     const tab = tabs.find(tab => tab.collopsesItems?.find(gp => gp.uuid === group.uuid));
-    const newGroups = tab.collopsesItems.map(gp => gp.uuid === newGroup.uuid ? newGroup : gp);
-    setTabs(tabs => tabs.map(tb => tb.uuid === tab.uuid ? { ...tab, collopsesItems: newGroups } : tb))
+    const newGroups = tab?.collopsesItems.map(gp => gp.uuid === newGroup.uuid ? newGroup : gp);
+    setTabs(tabs => tabs.map(tb => tb.uuid === tab?.uuid ? { ...tab, collopsesItems: newGroups } : tb) as any)
   }, [tabs]);
 
   const onDragEnd = useCallback(
@@ -93,8 +93,8 @@ export const MaterialDialog = memo(() => {
       const { destination, source, draggableId, type } = result;
       if (type === GROUP_TYPE) {
         const tab = tabs.find(tab => tab.collopsesItems?.find(group => group.uuid === draggableId));
-        const group = tab.collopsesItems.find(group => group.uuid === draggableId)
-        groupInsertAt(tab, group, destination.index);
+        const group = tab?.collopsesItems.find(group => group.uuid === draggableId)
+        tab && group && destination && groupInsertAt(tab, group, destination.index);
         return;
       }
       const targetGroup = getGroup(destination?.droppableId);
@@ -106,7 +106,7 @@ export const MaterialDialog = memo(() => {
       if (source.droppableId === PLUGINS_LIST_ID) {
         const draggedPlugin = getPlugin(draggableId);
         const coms = getUnCategoriedComponents(draggedPlugin?.plugin) || [];
-        addComponentsToGroup(targetGroup, coms?.map(com => com.name), destination.index);
+        addComponentsToGroup(targetGroup, coms?.map(com => com.name), destination?.index);
         return;
       }
 
@@ -114,10 +114,10 @@ export const MaterialDialog = memo(() => {
 
       if (targetGroup) {
         if (sourceGroup) {
-          moveComponent(sourceGroup, targetGroup, draggableId, destination.index);
+          moveComponent(sourceGroup, targetGroup, draggableId, destination?.index);
         }
         else {
-          addComponentsToGroup(targetGroup, [draggableId], destination.index)
+          addComponentsToGroup(targetGroup, [draggableId], destination?.index)
         }
       }
     },

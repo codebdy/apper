@@ -27,7 +27,7 @@ export const MaterialTabs = memo((
     }
   }), [handleTabChange, p, tabs])
 
-  const onChange = useCallback((newActiveKey) => {
+  const onChange = useCallback((newActiveKey: any) => {
     setActiveKey(newActiveKey);
   }, []);
 

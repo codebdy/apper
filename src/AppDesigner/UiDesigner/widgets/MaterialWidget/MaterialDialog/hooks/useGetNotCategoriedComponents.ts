@@ -4,8 +4,8 @@ import { IMaterialTab, IPlugin } from "@rxdrag/appx-plugin-sdk";
 
 export function useGetNotCategoriedComponents(tabs: IMaterialTab[]) {
   const { device } = useDesignerParams();
-  const getComponents = useCallback((plugin: IPlugin) => {
-    return plugin?.components?.[device].filter(
+  const getComponents = useCallback((plugin?: IPlugin) => {
+    return plugin?.components?.[device as any].filter(
       com => !tabs?.find(
         tab => tab.collopsesItems?.find(
           group => group.components?.find(

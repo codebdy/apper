@@ -8,7 +8,7 @@ export function useUploadTempltes() {
   const doImport = useCallback(async () => {
     try {
       const files = await Promise.all(
-        (await getTheFiles(".zip", false)).map(async (fileHandle) => {
+        (await getTheFiles(".zip", false)).map(async (fileHandle: any) => {
           const file = await fileHandle.getFile();
           return file;
         })
@@ -23,8 +23,7 @@ export function useUploadTempltes() {
       console.error(err)
       throw err
     }
-    return undefined
-  }, [])
+  }, [uploadZip])
 
   return doImport;
 }
