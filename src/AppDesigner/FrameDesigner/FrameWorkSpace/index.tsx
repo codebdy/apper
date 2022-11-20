@@ -10,7 +10,7 @@ import { ID } from "shared";
 import { Workspace } from "../../UiDesigner/containers";
 import { SettingsPanel, ToolbarPanel, ViewPanel, ViewportPanel, WorkspacePanel } from "../../UiDesigner/panels";
 import { SettingsForm } from "../../UiDesigner/SettingsForm";
-import { useMaterialDesigners } from "~/material/hooks/useMaterialDesigners";
+import { useMaterialDesigners } from "material/hooks/useMaterialDesigners";
 import { useLazyQueryPageFrame } from "../hooks/useLazyQueryPageFrame";
 import { FormDesigner } from "~/components/pc/FormDesigner";
 import { SaveTemplateWidget } from "AppDesigner/UiDesigner/widgets/SaveTemplateWidget";

@@ -19,7 +19,7 @@ import { useDesigner } from 'designable/react'
 import { useLazyQueryPage } from "AppDesigner/hooks/useLazyQueryPage";
 import { FormDesigner } from "~/components/pc/FormDesigner";
 import { ObjectContainer } from "@designable/formily-antd";
-import { useMaterialDesigners } from "~/material/hooks/useMaterialDesigners";
+import { useMaterialDesigners } from "material/hooks/useMaterialDesigners";
 import { SaveTemplateWidget } from "../../widgets/SaveTemplateWidget";
 import { TemplateType } from "model";
 

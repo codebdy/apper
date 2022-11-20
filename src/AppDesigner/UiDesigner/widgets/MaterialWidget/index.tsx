@@ -1,12 +1,10 @@
 import { Tabs } from "antd"
-import React from "react"
 import { MaterialSearchWidget } from "./MaterialSearchWidget";
 import "./style.less"
 import { MaterialDialog } from "./MaterialDialog";
 import { observer } from "@formily/reactive-react";
 import { ResourceWidget } from "../ResourceWidget";
-import { useTranslation } from "react-i18next";
-import { useAppMaterialTabs, usePredefinedMaterialTab } from "~/material/context";
+import { useAppMaterialTabs, usePredefinedMaterialTab } from "material/context";
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 const { TabPane } = Tabs;
 
@@ -18,13 +16,12 @@ export const MaterialWidget = observer((
   const { withFrameMaterials } = props;
   const { debugMaterialTab, uploadedMaterialTabs } = useAppMaterialTabs();
   const { basicTab, frameworkTab } = usePredefinedMaterialTab();
-  const { t } = useTranslation();
   const p = useParseLangMessage();
 
   return (
     <div className="rx-material-panel">
       <MaterialSearchWidget />
-      <Tabs defaultActiveKey={withFrameMaterials ? frameworkTab.uuid : basicTab.uuid}
+      <Tabs defaultActiveKey={withFrameMaterials ? frameworkTab?.uuid : basicTab?.uuid}
         animated
         size="small"
         className="materail-tabs"
@@ -61,15 +58,15 @@ export const MaterialWidget = observer((
           </TabPane>
         }
         {
-          uploadedMaterialTabs?.map(tab => {
+          uploadedMaterialTabs?.map((tab:any) => {
             return (
               <TabPane tab={p(tab.title)} key={tab.uuid}>
                 {
-                  tab.groups?.map((groupData, gIndex) => {
+                  tab.groups?.map((groupData:any, gIndex:number) => {
                     return (<ResourceWidget
                       key={gIndex + 1}
                       title={p(groupData.title)}
-                      sources={groupData.materials.map(material => material.designer)}
+                      sources={groupData.materials.map((material:any) => material.designer)}
                     />)
                   })
                 }
@@ -81,11 +78,11 @@ export const MaterialWidget = observer((
           debugMaterialTab &&
           <TabPane tab={debugMaterialTab.title} key={debugMaterialTab.uuid}>
             {
-              debugMaterialTab.groups?.map((groupData, gIndex) => {
+              debugMaterialTab.groups?.map((groupData: any, gIndex: any) => {
                 return (<ResourceWidget
                   key={gIndex + 1}
                   title={groupData.title}
-                  sources={groupData.materials.map(material => material.designer)}
+                  sources={groupData.materials.map((material: any) => material.designer)}
                 />)
               })
             }
