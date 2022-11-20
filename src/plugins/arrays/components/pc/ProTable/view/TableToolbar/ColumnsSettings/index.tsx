@@ -7,7 +7,7 @@ import { useTableParams } from "~/plugin-sdk/contexts/table";
 import { useLocalTranslations } from "../../hooks/useLocalTranslations";
 import DraggableLabel from "./DraggableLabel";
 import "./style.less"
-import { useShowError } from "~/AppDesigner/hooks/useShowError";
+import { useShowError } from "AppDesigner/hooks/useShowError";
 import { toJS } from "@formily/reactive";
 import { useUpdateComponentConfig } from "~/AppRunner/hooks/useUpdateComponentConfig";
 

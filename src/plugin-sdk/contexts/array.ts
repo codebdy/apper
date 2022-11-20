@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
-import { IDataBindSource } from "~/datasource";
-import { IOrderBy } from "~/datasource/model/IOrderBy";
-import { IQueryForm } from "~/datasource/model/IQueryForm";
+import { IDataBindSource } from "datasource";
+import { IOrderBy } from "datasource/model/IOrderBy";
+import { IQueryForm } from "datasource/model/IQueryForm";
 
 export interface IArrayParams {
   dataBind?: IDataBindSource,

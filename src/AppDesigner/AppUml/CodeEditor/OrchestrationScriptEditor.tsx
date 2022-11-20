@@ -1,6 +1,6 @@
 import React, { memo, useCallback } from "react"
 import { useSetRecoilState } from "recoil";
-import { useEdittingAppId } from "~/AppDesigner/hooks/useEdittingAppUuid";
+import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useBackupSnapshot } from "../hooks/useBackupSnapshot";
 import { useSelectedOrcherstration } from "../hooks/useSelectedOrcherstration";
 import { orchestrationsState } from "../recoil/atoms";

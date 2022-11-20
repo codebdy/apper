@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useUploadZip } from "~/AppDesigner/AppPlugins/hooks/useUploadZip";
+import { useUploadZip } from "AppDesigner/AppPlugins/hooks/useUploadZip";
 import { getTheFiles } from "~/shared/action/hooks/useOpenFile";
 
 export function useUploadTempltes() {

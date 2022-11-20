@@ -5,7 +5,7 @@ import { useChangeMethod } from "../../hooks/useChangeMethod";
 import { useGetTypeLabel } from "../../hooks/useGetTypeLabel";
 import { Form } from "antd";
 import { useTranslation } from "react-i18next";
-import { useEdittingAppId } from "~/AppDesigner/hooks/useEdittingAppUuid";
+import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { ScriptInput } from "../ScriptInput/ScriptInput";
 import { MethodFormCommonItems } from "./MethodFormCommonItems";
 

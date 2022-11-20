@@ -2,7 +2,7 @@ import { Modal } from "antd"
 import React, { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
-import { MonacoInput } from "~/AppDesigner/UiDesigner/SettingsForm/components/MonacoInput";
+import { MonacoInput } from "AppDesigner/UiDesigner/SettingsForm/components/MonacoInput";
 
 export const ExpressionModal = memo((
   props: {

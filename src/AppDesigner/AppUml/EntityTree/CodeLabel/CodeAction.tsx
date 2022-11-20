@@ -2,7 +2,7 @@ import { DeleteOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import React, { memo, useCallback } from "react"
 import { useDeleteCode } from "../../hooks/useDeleteCode";
-import { useEdittingAppId } from "~/AppDesigner/hooks/useEdittingAppUuid";
+import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { CodeMeta } from "../../meta/CodeMeta";
 
 const CodeAction = memo((

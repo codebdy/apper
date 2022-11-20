@@ -1,7 +1,7 @@
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import React, { memo, useCallback } from "react"
-import { useEdittingAppId } from "~/AppDesigner/hooks/useEdittingAppUuid";
+import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { OrchestrationMeta } from "../../meta/OrchestrationMeta";
 import { useDeleteOrchestration } from "../../hooks/useDeleteOrchestration";
 

@@ -3,7 +3,7 @@ import React, { useCallback } from "react";
 import { memo } from "react";
 import ProcessForm from "./ProcessForm";
 import { IProcess, IProcessCategory } from "~/model";
-import { useShowError } from "~/AppDesigner/hooks/useShowError";
+import { useShowError } from "AppDesigner/hooks/useShowError";
 import { useTranslation } from "react-i18next";
 import { useUpsertProcess } from "../hooks/useUpsertProcess";
 

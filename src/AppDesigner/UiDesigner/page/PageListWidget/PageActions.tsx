@@ -3,12 +3,12 @@ import { Menu, Dropdown, Button } from "antd";
 import React, { memo, useCallback, useMemo } from "react"
 import { useDeletePage } from "../../hooks/useDeletePage";
 import { IPage } from "~/model";
-import { useShowError } from "~/AppDesigner/hooks/useShowError";
+import { useShowError } from "AppDesigner/hooks/useShowError";
 import { useTranslation } from "react-i18next";
 import { useUpsertPage } from "../../hooks/useUpsertPage";
-import { useLazyQueryPage } from "~/AppDesigner/hooks/useLazyQueryPage";
+import { useLazyQueryPage } from "AppDesigner/hooks/useLazyQueryPage";
 import { createUuid } from "~/shared";
-import { useEdittingAppId } from "~/AppDesigner/hooks/useEdittingAppUuid";
+import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 
 const PageActions = memo((
   props: {

@@ -2,12 +2,12 @@ import { observer } from "@formily/reactive-react"
 import React, { useCallback } from "react"
 import { IDataSourceableProps } from "plugin-sdk/model/IDataSourceableProps"
 import { Select as FormilySelect } from "@formily/antd";
-import { useDataQuery } from "~/datasource";
+import { useDataQuery } from "datasource";
 import { useFieldSchema } from '@formily/react'
-import { QueryType, useQueryParams } from "~/datasource/hooks/useQueryParams";
-import { useShowError } from "~/AppDesigner/hooks/useShowError";
+import { QueryType, useQueryParams } from "datasource/hooks/useQueryParams";
+import { useShowError } from "AppDesigner/hooks/useShowError";
 import { isArr } from "@formily/shared";
-import { AssociationType } from "~/datasource/model/IFieldSource";
+import { AssociationType } from "datasource/model/IFieldSource";
 
 const Component = observer((props: IDataSourceableProps & {
   associationType?:AssociationType
@@ -25,25 +25,25 @@ const Component = observer((props: IDataSourceableProps & {
 
   const decodeValue = useCallback((value: any) => {
     if (isArr(value)) {
-      return value?.map(child => ({ [valueField]: child }))
+      return value?.map(child => ({ [valueField as any]: child }))
     } else if (value) {
-      return { [valueField]: value }
+      return { [valueField as any]: value }
     }
     return value;
   }, [valueField])
 
   const encodeValue = useCallback((value: any) => {
     if (isArr(value)) {
-      return value?.map(child => (child?.[valueField]))
+      return value?.map(child => (child?.[valueField as any]))
     } else if (value) {
-      return value?.[valueField]
+      return value?.[valueField as any]
     }
     return value;
   }, [valueField])
 
-  const handleChange = useCallback((value) => {
+  const handleChange = useCallback((value:any) => {
     const decodedValue = decodeValue(value);
-    onChange(decodedValue)
+    onChange && onChange(decodedValue)
   }, [decodeValue, onChange])
 
   return (

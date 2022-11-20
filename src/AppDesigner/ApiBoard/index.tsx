@@ -6,7 +6,7 @@ import React from "react";
 import { HEADER_AUTHORIZATION, TOKEN_PREFIX, HEADER_APPX_APPID, SERVER_SUBSCRIPTION_URL } from "~/consts";
 import "./index.less";
 import { useEndpoint, useToken } from "~/enthooks";
-import { useEdittingAppId } from "~/AppDesigner/hooks/useEdittingAppUuid";
+import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { SubscriptionClient } from "subscriptions-transport-ws";
 
 //例子連接

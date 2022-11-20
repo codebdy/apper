@@ -12,13 +12,13 @@ import { isArr, isObj } from '@formily/shared'
 import { observer } from '@formily/reactive-react';
 import { QueryType, useQueryParams } from '~/datasource/hooks/useQueryParams';
 import { useDataQuery } from '~/datasource/hooks/useDataQuery';
-import { useShowError } from '~/AppDesigner/hooks/useShowError';
+import { useShowError } from 'AppDesigner/hooks/useShowError';
 import {
   useField
 } from '@formily/react'
 import { useGetTableColumns } from './useGetTableColumns';
 import { useArrayTableSources } from './useArrayTableSources';
-import { mapOrderBy } from "~/datasource/hooks/mapOrderBy";
+import { mapOrderBy } from "datasource/hooks/mapOrderBy";
 import { useArrayParams, useSelectable } from '~/plugin-sdk/contexts/array';
 
 export interface ObservableColumnSource {

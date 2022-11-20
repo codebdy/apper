@@ -2,7 +2,7 @@ import { Form, Select } from "antd";
 import React, { useMemo } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
-import { useEdittingAppId } from "~/AppDesigner/hooks/useEdittingAppUuid";
+import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useEntities } from "../hooks/useEntities";
 import { useEnums } from "../hooks/useEnums";
 import { useValueObjects } from "../hooks/useValueObjects";

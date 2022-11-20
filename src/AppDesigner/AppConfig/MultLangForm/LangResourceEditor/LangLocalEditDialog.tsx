@@ -4,8 +4,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
 import { useDesignerAppConfig, useDesignerParams } from "~/plugin-sdk/contexts/desinger";
-import { useUpsertLangLocal } from "~/AppDesigner/hooks/useUpsertLangLocal";
-import { useShowError } from "~/AppDesigner/hooks/useShowError";
+import { useUpsertLangLocal } from "AppDesigner/hooks/useUpsertLangLocal";
+import { useShowError } from "AppDesigner/hooks/useShowError";
 
 const LangLocalEditDialog = memo((
   props: {

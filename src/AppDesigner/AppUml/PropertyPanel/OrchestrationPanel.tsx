@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { useGetTypeLabel } from "../hooks/useGetTypeLabel";
 import { Form } from "antd";
-import { useEdittingAppId } from "~/AppDesigner/hooks/useEdittingAppUuid";
+import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { MethodFormCommonItems } from "./MethodPanel/MethodFormCommonItems";
 import { OrchestrationMeta } from "../meta/OrchestrationMeta";
 import { useChangeOrchestration } from "../hooks/useChangeOrchestration";

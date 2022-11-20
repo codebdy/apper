@@ -1,8 +1,8 @@
 import { Button, message, Modal, Space, Spin } from 'antd';
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useShowError } from '~/AppDesigner/hooks/useShowError';
-import { useUpsertTemplates } from '~/AppDesigner/UiDesigner/hooks/useUpsertTemplates';
+import { useShowError } from 'AppDesigner/hooks/useShowError';
+import { useUpsertTemplates } from 'AppDesigner/UiDesigner/hooks/useUpsertTemplates';
 import { ITemplateInfo, TemplateType } from '~/model';
 import { ID } from '~/shared';
 import "../ExportDialog/style.less"

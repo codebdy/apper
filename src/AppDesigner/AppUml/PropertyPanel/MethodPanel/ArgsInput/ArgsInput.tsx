@@ -15,7 +15,7 @@ import { ArgMeta } from "../../../meta/MethodMeta";
 import { createUuid } from "~/shared";
 import { LazyInput } from "./LazyInput";
 import { useGetTypeLabel } from "../../../hooks/useGetTypeLabel";
-import { useEdittingAppId } from "~/AppDesigner/hooks/useEdittingAppUuid";
+import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { ArgTypeInput } from "./ArgTypeInput";
 
 const { Option } = Select;

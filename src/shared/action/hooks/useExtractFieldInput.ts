@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { Field, GeneralField, isField } from "@formily/core";
 import { toJS } from "@formily/reactive";
-import { AssociationType } from "~/datasource/model/IFieldSource";
-import { CONST_ID } from "~/AppDesigner/AppUml/meta";
+import { AssociationType } from "datasource/model/IFieldSource";
+import { CONST_ID } from "AppDesigner/AppUml/meta";
 
 interface IFieldInfo {
   name: string,

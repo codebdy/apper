@@ -2,8 +2,8 @@ import { DeleteOutlined } from "@ant-design/icons"
 import { Button } from "antd"
 import React, { useCallback } from "react"
 import { memo } from "react"
-import { useShowError } from "~/AppDesigner/hooks/useShowError"
-import { useDeleteTemplate } from "~/AppDesigner/UiDesigner/hooks/useDeleteTemplate"
+import { useShowError } from "AppDesigner/hooks/useShowError"
+import { useDeleteTemplate } from "AppDesigner/UiDesigner/hooks/useDeleteTemplate"
 import { ITemplateInfo } from "~/model"
 
 export const DeleteTemplateButton = memo((

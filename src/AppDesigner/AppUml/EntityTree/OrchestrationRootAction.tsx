@@ -2,7 +2,7 @@ import { DownloadOutlined, ImportOutlined, MoreOutlined, PlusSquareOutlined } fr
 import { Menu, Dropdown, Button } from "antd";
 import React, { memo, useCallback, useMemo } from "react"
 import { useTranslation } from "react-i18next";
-import { useEdittingAppId } from "~/AppDesigner/hooks/useEdittingAppUuid";
+import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useCreateNewCode } from "../hooks/useCreateNewCode";
 import { useCreateNewOrchestration } from "../hooks/useCreateNewOrchestration";
 import { MethodOperateType } from "../meta";

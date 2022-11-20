@@ -3,7 +3,7 @@ import { Menu, Dropdown, Button } from "antd";
 import React, { memo, useCallback, useMemo } from "react"
 import { ID } from "~/shared";
 import { IProcess } from "~/model";
-import { useShowError } from "~/AppDesigner/hooks/useShowError";
+import { useShowError } from "AppDesigner/hooks/useShowError";
 import { useTranslation } from "react-i18next";
 import { useDeleteProcess } from "../hooks/useDeleteProcess";
 

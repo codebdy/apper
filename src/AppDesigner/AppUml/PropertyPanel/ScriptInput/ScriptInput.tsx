@@ -3,7 +3,7 @@ import { Button, Modal, Space, Switch } from "antd"
 import React, { useCallback, useState } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
-import { MonacoInput } from "~/AppDesigner/UiDesigner/SettingsForm/components/MonacoInput";
+import { MonacoInput } from "AppDesigner/UiDesigner/SettingsForm/components/MonacoInput";
 import "./style.less";
 
 export const ScriptInput = memo((

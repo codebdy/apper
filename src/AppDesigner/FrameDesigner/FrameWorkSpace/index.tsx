@@ -5,7 +5,7 @@ import { useDesigner } from '@designable/react'
 import { transformToTreeNode } from "../../UiDesigner/transformer";
 import { Field, ObjectContainer } from "@designable/formily-antd";
 import { ComponentTreeWidget, DesignerToolsWidget, PreviewWidget, SchemaEditorWidget, ViewToolsWidget } from "../../UiDesigner/widgets";
-import { useShowError } from "~/AppDesigner/hooks/useShowError";
+import { useShowError } from "AppDesigner/hooks/useShowError";
 import { ID } from "~/shared";
 import { Workspace } from "../../UiDesigner/containers";
 import { SettingsPanel, ToolbarPanel, ViewPanel, ViewportPanel, WorkspacePanel } from "../../UiDesigner/panels";
@@ -13,7 +13,7 @@ import { SettingsForm } from "../../UiDesigner/SettingsForm";
 import { useMaterialDesigners } from "~/material/hooks/useMaterialDesigners";
 import { useLazyQueryPageFrame } from "../hooks/useLazyQueryPageFrame";
 import { FormDesigner } from "~/components/pc/FormDesigner";
-import { SaveTemplateWidget } from "~/AppDesigner/UiDesigner/widgets/SaveTemplateWidget";
+import { SaveTemplateWidget } from "AppDesigner/UiDesigner/widgets/SaveTemplateWidget";
 import { TemplateType } from "~/model";
 
 export const FrameWorkSpace = (props: {

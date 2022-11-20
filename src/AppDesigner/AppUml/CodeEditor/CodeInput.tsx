@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { memo } from "react"
-import { MonacoInput } from "~/AppDesigner/UiDesigner/SettingsForm/components/MonacoInput";
+import { MonacoInput } from "AppDesigner/UiDesigner/SettingsForm/components/MonacoInput";
 
 export const CodeInput = memo((
   props: {

@@ -1,6 +1,6 @@
 import React from "react"
 import { memo } from "react"
-import { Type } from "~/AppDesigner/AppUml/meta"
+import { Type } from "AppDesigner/AppUml/meta"
 import { TypeSelect } from "../../TypeSelect";
 import { TypeUuidSelect } from "../../TypeUuidSelect";
 

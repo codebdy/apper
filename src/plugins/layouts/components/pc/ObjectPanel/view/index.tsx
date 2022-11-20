@@ -1,5 +1,5 @@
 import { observer } from "@formily/reactive-react"
-import { IDataBindSource } from "~/datasource"
+import { IDataBindSource } from "datasource"
 import React, { useEffect, useMemo } from "react"
 import { isObj } from "@formily/shared";
 import {

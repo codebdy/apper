@@ -3,12 +3,12 @@ import React, { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { IClassAuthConfig } from "~/model"
 import { useUpsertClassAuthConfig } from "../hooks/useUpsertClassAuthConfig";
-import { useShowError } from "~/AppDesigner/hooks/useShowError";
+import { useShowError } from "AppDesigner/hooks/useShowError";
 import { ID } from "~/shared";
 import { FunctionOutlined, LoadingOutlined } from "@ant-design/icons";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
 import { ExpressionModal } from "./ExpressionModal";
-import { useEdittingAppId } from "~/AppDesigner/hooks/useEdittingAppUuid";
+import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 
 export const ClassAuthChecker = memo((
   props: {
