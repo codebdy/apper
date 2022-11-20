@@ -42,10 +42,10 @@ export const TypeUuidSelect = memo((
     }
 
     return []
-  }, [type, enums, valueObjects, entities])
+  }, [type, t, enums, valueObjects, entities])
 
   return (
-    classes && (
+    classes ? (
       withFormItem
         ?
         <Form.Item
@@ -75,5 +75,6 @@ export const TypeUuidSelect = memo((
           })}
         </Select>
     )
+    :<></>
   )
 })

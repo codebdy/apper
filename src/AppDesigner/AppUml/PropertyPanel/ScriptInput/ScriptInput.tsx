@@ -1,9 +1,9 @@
 import { PlayCircleOutlined } from "@ant-design/icons";
-import { Button, Modal, Space, Switch } from "antd"
-import React, { useCallback, useState } from "react"
+import { Button, Modal, Space } from "antd"
+import { MonacoInput } from "designable/react-settings-form";
+import { useCallback, useState } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
-import { MonacoInput } from "AppDesigner/UiDesigner/SettingsForm/components/MonacoInput";
 import "./style.less";
 
 export const ScriptInput = memo((
@@ -29,13 +29,7 @@ export const ScriptInput = memo((
     setOpen(false);
   }, [])
 
-  const handleEditorDidMount = (monaco: any) => {
-    // monaco.languages?.json.jsonDefaults.setDiagnosticsOptions({
-    //   validate: true,
-    // });
-  }
-
-  const handleChange = useCallback((valueStr: string) => {
+  const handleChange = useCallback((valueStr?: string) => {
     onChange && onChange(valueStr)
   }, [onChange])
   return (
