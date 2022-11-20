@@ -12,8 +12,8 @@ import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 
 export const PropertyAuthChecker = memo((
   props: {
-    classUuid: string,
-    propertyUuid: string,
+    classUuid?: string,
+    propertyUuid?: string,
     propertyConfig?: IPropertyAuthConfig,
     roleId: ID,
     field: string,
@@ -21,8 +21,8 @@ export const PropertyAuthChecker = memo((
   }
 ) => {
   const { classUuid, propertyUuid, propertyConfig, roleId, field, expressionField } = props;
-  const [open, setOpen] = useState(false);
-  const [checked, setChecked] = useState(false);
+  const [open, setOpen] = useState<boolean>();
+  const [checked, setChecked] = useState<boolean>();
   const [upsert, { error, loading }] = useUpsertPropertyAuthConfig({
     onCompleted: () => {
       setOpen(false);
@@ -32,7 +32,7 @@ export const PropertyAuthChecker = memo((
   const appId = useEdittingAppId();
   
   useEffect(() => {
-    setChecked(propertyConfig?.[field])
+    setChecked((propertyConfig as any)?.[field])
   }, [propertyConfig, field])
 
   const handleChange = useCallback((e: CheckboxChangeEvent) => {
@@ -51,17 +51,17 @@ export const PropertyAuthChecker = memo((
         [field]: e.target.checked,
       }
     )
-  }, [propertyConfig, upsert, field, appId, roleId])
+  }, [upsert, propertyConfig, appId, classUuid, propertyUuid, roleId, field])
 
   const handleOpenExpressionDialog = useCallback(() => {
     setOpen(true);
   }, [])
 
-  const handleOpenChange = useCallback((open: boolean) => {
+  const handleOpenChange = useCallback((open?: boolean) => {
     setOpen(open);
   }, [])
 
-  const handleExrpessionChange = useCallback((expression: string) => {
+  const handleExrpessionChange = useCallback((expression?: string) => {
     upsert(
       {
         ...propertyConfig,
@@ -76,7 +76,7 @@ export const PropertyAuthChecker = memo((
         [expressionField]: expression,
       }
     )
-  }, [upsert, roleId, appId, expressionField])
+  }, [upsert, propertyConfig, appId, classUuid, propertyUuid, roleId, expressionField])
 
   return (
     <>
@@ -89,7 +89,7 @@ export const PropertyAuthChecker = memo((
           />
       }
       {
-        propertyConfig?.[field] &&
+        (propertyConfig as any)?.[field] &&
         <>
           <Button
             type="text"
@@ -100,7 +100,7 @@ export const PropertyAuthChecker = memo((
           {
             open &&
             <ExpressionModal
-              value={propertyConfig?.[expressionField]}
+              value={(propertyConfig as any)?.[expressionField]}
               open={open}
               onOpenChange={handleOpenChange}
               saving={loading}

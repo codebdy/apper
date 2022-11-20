@@ -1,8 +1,8 @@
 import { Modal } from "antd"
+import { MonacoInput } from "designable/react-settings-form";
 import React, { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
-import { MonacoInput } from "AppDesigner/UiDesigner/SettingsForm/components/MonacoInput";
 
 export const ExpressionModal = memo((
   props: {
@@ -21,23 +21,18 @@ export const ExpressionModal = memo((
     setExpression(value);
   }, [value])
 
-  const handleEditorDidMount = (monaco: any) => {
-    monaco.languages?.json.jsonDefaults.setDiagnosticsOptions({
-      validate: true,
-    });
-  }
 
   const handleOk = useCallback(() => {
     //onOpenChange && onOpenChange(false);
     onChange && onChange(expression);
-  }, [onChange, onOpenChange, expression])
+  }, [onChange, expression])
 
   const handleCancel = useCallback(() => {
     onOpenChange && onOpenChange(false);
     setExpression(value);
   }, [value, onOpenChange])
 
-  const handleChange = useCallback((valueStr: string) => {
+  const handleChange = useCallback((valueStr?: string) => {
     setExpression(valueStr)
   }, [])
 

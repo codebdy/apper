@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 export function useCreateNewDiagram(appId: ID) {
   const getDiagramByName = useGetDiagramByName(appId);
   const { t } = useTranslation();
-  
+
   const getNewDiagramName = useCallback(() => {
     const prefix = t("AppUml.NewDiagram");
     let index = 1;
@@ -17,7 +17,7 @@ export function useCreateNewDiagram(appId: ID) {
     return prefix + index;
   }, [getDiagramByName, t]);
 
-  const createNewDiagram = useCallback((packageUuid) => {
+  const createNewDiagram = useCallback((packageUuid: string) => {
     const newDiagram = {
       uuid: createUuid(),
       name: getNewDiagramName(),

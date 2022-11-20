@@ -15,7 +15,7 @@ import { useRoleName } from "../hooks/useRoleName"
 export const ModelAuthBoard = memo(() => {
   const [selectedRoleId, setSelectedRoleId] = useState<ID>();
   const { t } = useTranslation();
-  const roleName = useRoleName(selectedRoleId);
+  const roleName = useRoleName(selectedRoleId || "");
   const { classAuthConfigs, error, loading } = useQueryClassAuthConfigs();
   const { propertyAuthConfigs, error: propertyEror, loading: propertyLoading } = useQueryPropertyAuthConfigs();
 
@@ -33,7 +33,7 @@ export const ModelAuthBoard = memo(() => {
           <RoleList selectedRoleId={selectedRoleId} onSelect={handleSelectRole} />
         }
       >
-        <Breadcrumb className ="auth-breadcrumb">
+        <Breadcrumb className="auth-breadcrumb">
           <Breadcrumb.Item>{t("Auth.ModelAuth")}</Breadcrumb.Item>
           <Breadcrumb.Item>{roleName}</Breadcrumb.Item>
         </Breadcrumb>
