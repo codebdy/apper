@@ -1,6 +1,6 @@
 import { List } from 'antd';
 import React, { useEffect, useMemo } from "react";
-import { observer, RecursionField, ObjectField, Schema, useFieldSchema, useField } from '@formily/react';
+import { observer, RecursionField, ObjectField, useFieldSchema, useField } from '@formily/react';
 import { useArrayParams } from "plugin-sdk/contexts/array";
 import { QueryType, useQueryParams } from "datasource/hooks/useQueryParams";
 import { useDataQuery } from "datasource";
@@ -26,6 +26,8 @@ export interface IListBodyProps {
   children?: React.ReactNode,
   className?: string,
 }
+
+const ArrayBaseAny = ArrayBase as any;
 export const ListBody = observer((
   props: IListBodyProps,
 ) => {
@@ -84,13 +86,13 @@ export const ListBody = observer((
           renderItem={(item, index) => {
             return (
               <List.Item>
-                <ArrayBase.Item index={index} record={item}>
+                <ArrayBaseAny.Item index={index} record={item}>
                   <ObjectField name={index}>
                     <ItemRoot instance={item}>
-                      <RecursionField schema={items} name={items?.["x-designable-id"]} />
+                      <RecursionField schema={items as any} name={items?.["x-designable-id"]} />
                     </ItemRoot>
                   </ObjectField>
-                </ArrayBase.Item>
+                </ArrayBaseAny.Item>
               </List.Item>
             )
           }
