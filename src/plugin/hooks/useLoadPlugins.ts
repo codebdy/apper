@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useDesignerParams } from "plugin-sdk/contexts/desinger";
-import { IPluginInfo, PluginType } from "~/model";
+import { IPluginInfo, PluginType } from "model";
 import { IInstalledPlugin, PluginStatus } from "../model";
 import { useGetPluginInfo } from "./useGetPluginInfo";
 import { loadDebugPlugin, loadPlugin } from "./useLoadPlugin";

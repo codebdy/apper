@@ -9,7 +9,7 @@ export const PasswordSchema: IPropsSchema = {
   props: {
     type: 'object',
     properties: {
-      ...(InputSchema.props.properties as any),
+      ...(InputSchema.props?.properties as any),
       checkStrength: {
         type: 'boolean',
         'x-decorator': 'FormItem',

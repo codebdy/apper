@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { IPostOptions, usePostOne } from "~/enthooks/hooks/usePostOne";
-import { IPageInput } from "~/model";
-import { IPage } from "~/model";
+import { IPageInput } from "model";
+import { IPage } from "model";
 import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 
 export function useUpsertPage(options?: IPostOptions<any>): [

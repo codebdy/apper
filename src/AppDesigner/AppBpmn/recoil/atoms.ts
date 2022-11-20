@@ -1,5 +1,5 @@
 import { atomFamily } from "recoil";
-import { IProcess, IProcessCategory } from "~/model";
+import { IProcess, IProcessCategory } from "model";
 import { ID } from "shared";
 
 export const selectedBpmnProcessIdState = atomFamily<ID | undefined, string>({

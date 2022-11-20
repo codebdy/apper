@@ -4,7 +4,7 @@ import { memo } from "react";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import CategoryForm from "./CategoryForm";
 import { useTranslation } from "react-i18next";
-import { IProcessCategory } from "~/model";
+import { IProcessCategory } from "model";
 import { useUpsertCategory } from "../hooks/useUpsertCategory";
 
 const EditCategoryDialog = memo((

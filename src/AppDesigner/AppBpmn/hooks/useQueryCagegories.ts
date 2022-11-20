@@ -1,7 +1,7 @@
 import { gql, useQuery } from "~/enthooks";
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { IProcessCategory } from "~/model";
+import { IProcessCategory } from "model";
 
 const categoriesGql = gql`
 query ($appId:ID!){

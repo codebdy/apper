@@ -1,5 +1,5 @@
 import { atomFamily } from "recoil";
-import { IAppDeviceConfig, IPage, IPageCategory, IUiFrame } from "~/model";
+import { IAppDeviceConfig, IPage, IPageCategory, IUiFrame } from "model";
 import { ID } from "shared";
 
 export const selectedPageIdState = atomFamily<ID | undefined, string>({

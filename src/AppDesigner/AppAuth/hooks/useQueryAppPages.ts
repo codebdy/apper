@@ -2,7 +2,7 @@ import { gql } from "~/enthooks";
 import { useMemo } from "react";
 import { useQuery } from "~/enthooks/hooks/useQuery";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
-import { IPage } from "~/model";
+import { IPage } from "model";
 
 const pagesGql = gql`
 query ($appId:ID!){

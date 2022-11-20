@@ -1,5 +1,5 @@
 import { Device } from "@rxdrag/appx-plugin-sdk";
-import { IMenuAuthConfig, IComponentAuthConfig } from "~/model";
+import { IMenuAuthConfig, IComponentAuthConfig } from "model";
 
 export interface IUiAuthRow {
   name: string;

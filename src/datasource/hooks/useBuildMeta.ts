@@ -10,7 +10,7 @@ import { AssociationMeta } from "../model";
 import { AssociationType } from "../model/IFieldSource";
 import { getParentClasses } from "./getParentClasses";
 import { AttributeMeta, ClassMeta, MethodMeta, RelationMeta, RelationMultiplicity, RelationType, StereoType } from "AppDesigner/AppUml/meta";
-import { IApp } from "~/model";
+import { IApp } from "model";
 import { getChildEntities } from "./getChildEntities";
 
 export const sort = (array: { name: string }[]) => {

@@ -14,7 +14,7 @@ import { useMaterialDesigners } from "~/material/hooks/useMaterialDesigners";
 import { useLazyQueryPageFrame } from "../hooks/useLazyQueryPageFrame";
 import { FormDesigner } from "~/components/pc/FormDesigner";
 import { SaveTemplateWidget } from "AppDesigner/UiDesigner/widgets/SaveTemplateWidget";
-import { TemplateType } from "~/model";
+import { TemplateType } from "model";
 
 export const FrameWorkSpace = (props: {
   frameId: ID

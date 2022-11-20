@@ -17,7 +17,7 @@ import { useQueryPageFrames } from "./hooks/useQueryPageFrames"
 import { DesignerRoutes } from "../UiDesigner"
 import { useBuildMeta } from "datasource"
 import { useQueryTemplates } from "../UiDesigner/hooks/useQueryTemplates"
-import { TemplateType } from "~/model"
+import { TemplateType } from "model"
 import { TemplateWidget } from "../UiDesigner/widgets/TemplateWidget"
 
 export const FrameDesigner = memo(() => {

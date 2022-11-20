@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from "react"
 import { memo } from "react"
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useSetRecoilState } from "recoil";
-import { IPage } from "~/model";
+import { IPage } from "model";
 import { isNavigationDirtyState, menuIdState, navigationNodesState, navigationRootNodeState } from "./atoms";
 import { COLLAPSE_GROUP_ID, CUSTOMIZED_LINK_ID, DIVIDER_ID, PAGE_LIST_ID } from "./consts";
 import { useGetMenuNode } from "./hooks/useGetMenuNode";

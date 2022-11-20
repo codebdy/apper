@@ -2,7 +2,7 @@ import { gql } from "~/enthooks";
 import { useQueryOne } from "~/enthooks/hooks/useQueryOne";
 import { useMemo } from "react";
 import { Device } from "@rxdrag/appx-plugin-sdk";
-import { IUserConfig } from "~/model/user";
+import { IUserConfig } from "model/user";
 import { ID } from "shared";
 
 const userConfigGql = gql`

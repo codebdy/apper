@@ -2,7 +2,7 @@ import { FormInstance, Col, Form, Row, Tabs, Select } from "antd";
 import React, { useCallback } from "react";
 import { memo } from "react";
 import FormTemplates from "./FormTemplates";
-import { IPage, IPageCategory, IPageInput } from "~/model";
+import { IPage, IPageCategory, IPageInput } from "model";
 import { useTranslation } from "react-i18next";
 import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/view";
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";

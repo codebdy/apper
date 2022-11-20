@@ -1,5 +1,5 @@
 import { atomFamily } from "recoil";
-import { IPage } from "~/model";
+import { IPage } from "model";
 import { ID } from "shared";
 import { OpenPageType } from "../model";
 

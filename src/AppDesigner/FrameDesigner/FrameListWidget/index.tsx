@@ -6,7 +6,7 @@ import FrameLabel from './FrameLabel';
 import { ID } from 'shared';
 import CreateFrameDialog from './CreateFrameDialog';
 import { FileOutlined } from '@ant-design/icons';
-import { IUiFrame } from '~/model';
+import { IUiFrame } from 'model';
 
 export const FrameListWidget = memo((
   props: {

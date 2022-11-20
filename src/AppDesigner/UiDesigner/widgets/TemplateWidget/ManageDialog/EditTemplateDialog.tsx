@@ -5,7 +5,7 @@ import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { useShowError } from "AppDesigner/hooks/useShowError"
 import { useUpsertTemplate } from "AppDesigner/UiDesigner/hooks/useUpsertTemplate"
-import { ITemplateInfo } from "~/model"
+import { ITemplateInfo } from "model"
 import { SaveTemplateForm } from "../../SaveTemplateWidget/SaveTemplateForm"
 
 export const EditTemplateDialog = memo((

@@ -3,7 +3,7 @@ import { usePredefinedPlugins } from "../../plugin/contexts";
 import { Device, IPlugin } from "@rxdrag/appx-plugin-sdk";
 import { useConvertMaterialFromPlugin } from "../../material/hooks/useConvertMaterialFromPlugin";
 import { useLoadPlugins } from "~/plugin/hooks";
-import { IApp } from "~/model";
+import { IApp } from "model";
 
 export function usePluginComponents(app?:IApp, device?:Device) {
   const [installedPlugins, setInstalledPlugins] = useState<IPlugin[]>([])

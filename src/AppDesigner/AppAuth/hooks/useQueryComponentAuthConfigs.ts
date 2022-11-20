@@ -2,7 +2,7 @@ import { gql } from "~/enthooks";
 import { useMemo } from "react";
 import { useQuery } from "~/enthooks/hooks/useQuery";
 import { useDesignerParams } from "plugin-sdk/contexts/desinger";
-import { IComponentAuthConfig } from "~/model";
+import { IComponentAuthConfig } from "model";
 
 const authConfigGql = gql`
 query ($appId:ID!){

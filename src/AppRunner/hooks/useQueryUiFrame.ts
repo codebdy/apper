@@ -1,7 +1,7 @@
 import { gql } from "~/enthooks";
 import { useEffect, useMemo } from "react";
 import { useQueryOne } from "~/enthooks/hooks/useQueryOne";
-import { IUiFrame } from "~/model";
+import { IUiFrame } from "model";
 import { useFrameUuid } from "./useFrameUuid";
 
 const pageFrameGql = gql`

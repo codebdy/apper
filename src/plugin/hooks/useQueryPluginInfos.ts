@@ -2,7 +2,7 @@ import { gql } from "~/enthooks";
 import { useMemo } from "react";
 import { IQueryInput } from "~/enthooks/hooks/IQueryInput";
 import { useQuery } from "~/enthooks/hooks/useQuery";
-import { IPluginInfo } from "~/model";
+import { IPluginInfo } from "model";
 import { ID } from "shared";
 
 const pluginsGql = gql`

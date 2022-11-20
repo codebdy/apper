@@ -1,6 +1,6 @@
 import { ID } from "shared";
 import { IDeleteOptions, useDeleteById } from "~/enthooks/hooks/useDeleteById";
-import { ITemplateInfo } from "~/model";
+import { ITemplateInfo } from "model";
 
 export function useDeleteTemplate(options?: IDeleteOptions<ITemplateInfo>): [
   (id: ID) => void,

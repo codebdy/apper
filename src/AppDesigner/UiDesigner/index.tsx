@@ -34,7 +34,7 @@ import ConfigWorkSpace from './config/ConfigWorkSpace'
 import { ConfigActionsWidget } from './config/ConfigActionsWidget'
 import { TemplateWidget } from './widgets/TemplateWidget'
 import { useQueryTemplates } from './hooks/useQueryTemplates'
-import { TemplateType } from '~/model'
+import { TemplateType } from 'model'
 
 export enum DesignerRoutes {
   Templates = "Templates",

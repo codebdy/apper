@@ -1,7 +1,7 @@
 import { gql } from "~/enthooks";
 import { useMemo } from "react";
 import { useQuery } from "~/enthooks/hooks/useQuery";
-import { IMenuAuthConfig } from "~/model";
+import { IMenuAuthConfig } from "model";
 import { ID } from "shared";
 import { Device } from "@rxdrag/appx-plugin-sdk";
 

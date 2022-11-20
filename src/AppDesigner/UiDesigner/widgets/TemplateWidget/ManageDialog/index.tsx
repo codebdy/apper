@@ -1,7 +1,7 @@
 import { Modal, Tabs } from 'antd';
 import React, { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CategoryType, ITemplateInfo } from '~/model';
+import { CategoryType, ITemplateInfo } from 'model';
 import "./style.less"
 import { TemplateList } from './TemplateList';
 

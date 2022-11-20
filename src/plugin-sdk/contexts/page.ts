@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { IPage } from "~/model";
+import { IPage } from "model";
 
 
 export const PageContext = createContext<IPage | undefined>(undefined);

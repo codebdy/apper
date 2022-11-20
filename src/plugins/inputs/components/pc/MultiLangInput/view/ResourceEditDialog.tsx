@@ -7,7 +7,7 @@ import { useUpsertLangLocal } from "AppDesigner/hooks/useUpsertLangLocal";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { LANG_INLINE_PREFIX, LANG_RESOURCE_PREFIX } from "plugin-sdk/hooks/useParseLangMessage";
 import { ID } from "shared";
-import { ILangLocal } from "~/model";
+import { ILangLocal } from "model";
 
 export enum MultilangType {
   Inline = "Inline",

@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { IPostOptions, usePostOne } from "~/enthooks/hooks/usePostOne";
-import { IComponentAuthConfig, IComponentAuthConfigIput } from "~/model";
+import { IComponentAuthConfig, IComponentAuthConfigIput } from "model";
 
 export function useUpsertComponentAuthConfig(options?: IPostOptions<any>): [
   (config: IComponentAuthConfigIput) => void,

@@ -2,7 +2,7 @@ import { gql } from "~/enthooks";
 import { useMemo } from "react";
 import { useQuery } from "~/enthooks/hooks/useQuery";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
-import { IMenu } from "~/model";
+import { IMenu } from "model";
 
 const menuGql = gql`
 query ($appId:ID!){

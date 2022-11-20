@@ -1,6 +1,6 @@
 import { Device } from "@rxdrag/appx-plugin-sdk";
 import { useMemo } from "react";
-import { IApp } from "~/model";
+import { IApp } from "model";
 
 export function useFrameUuid(app:IApp, device:Device) {
   const frameUuid = useMemo(() => {

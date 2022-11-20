@@ -4,7 +4,7 @@ import React, { useCallback } from "react"
 import { memo } from "react"
 import { useShowError } from "AppDesigner/hooks/useShowError"
 import { useDeleteTemplate } from "AppDesigner/UiDesigner/hooks/useDeleteTemplate"
-import { ITemplateInfo } from "~/model"
+import { ITemplateInfo } from "model"
 
 export const DeleteTemplateButton = memo((
   props: {

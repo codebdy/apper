@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react"
 import TreeNodeLabel from "../../../common/TreeNodeLabel";
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
-import { IUiFrame } from "~/model";
+import { IUiFrame } from "model";
 import { EditFrameDialog } from "./EditFrameDialog";
 import FrameActions from "./FrameActions"
 

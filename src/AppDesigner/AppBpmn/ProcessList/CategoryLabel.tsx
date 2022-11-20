@@ -4,7 +4,7 @@ import CategoryActions from "./CategoryActions"
 import EditCategoryDialog from "./EditCategoryDialog"
 import ProcessModal from "./ProcessModal"
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage"
-import { IProcessCategory } from "~/model"
+import { IProcessCategory } from "model"
 
 const CategoryLabel = (
   props: {

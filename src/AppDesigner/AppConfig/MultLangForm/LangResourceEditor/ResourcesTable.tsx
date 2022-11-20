@@ -3,10 +3,10 @@ import { Button, Input, Space, Table } from 'antd';
 import { useDesignerAppConfig, useDesignerParams } from 'plugin-sdk/contexts/desinger';
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ILangLocalInput } from '~/model';
+import { ILangLocalInput } from 'model';
 import LangLocalEditDialog from './LangLocalEditDialog';
 import { ID } from 'shared';
-import { ILangLocal } from '~/model';
+import { ILangLocal } from 'model';
 import { useDeleteLangLocal } from 'AppDesigner/hooks/useDeleteLangLocal';
 import { useShowError } from 'AppDesigner/hooks/useShowError';
 

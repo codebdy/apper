@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { IPostOptions, usePostOne } from "~/enthooks/hooks/usePostOne";
-import { IPluginInfo } from "~/model";
-import { IPluginInfoInput } from "~/model";
+import { IPluginInfo } from "model";
+import { IPluginInfoInput } from "model";
 import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 
 export function useUpsertPluginInfo(options?: IPostOptions<any>): [

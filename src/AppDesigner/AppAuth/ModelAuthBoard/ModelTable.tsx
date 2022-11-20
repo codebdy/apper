@@ -7,7 +7,7 @@ import { useEdittingAppId } from 'AppDesigner/hooks/useEdittingAppUuid';
 import { useColumns } from './useColumns';
 import { IAuthRow, RowType } from './IAuthRow';
 import { useGetPackageCanAuthClasses } from '../hooks/useGetPackageCanAuthClasses';
-import { IClassAuthConfig, IPropertyAuthConfig } from '~/model';
+import { IClassAuthConfig, IPropertyAuthConfig } from 'model';
 import { ID } from 'shared';
 import { useGetClassAttributes } from '../hooks/useGetClassAttributes';
 

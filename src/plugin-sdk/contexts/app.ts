@@ -1,8 +1,8 @@
 import { JSXComponent } from "@formily/core";
 import { Device } from "@rxdrag/appx-plugin-sdk";
 import { createContext, useContext, useMemo } from "react";
-import { IApp, IComponentAuthConfig, IMenuAuthConfig, IUiFrame } from "~/model";
-import { IUserConfig } from "~/model/user";
+import { IApp, IComponentAuthConfig, IMenuAuthConfig, IUiFrame } from "model";
+import { IUserConfig } from "model/user";
 import { IMenuItem } from "../model";
 
 export type IComponents = Record<string, JSXComponent>;

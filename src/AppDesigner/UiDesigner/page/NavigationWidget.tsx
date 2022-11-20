@@ -2,7 +2,7 @@ import React, { memo, useCallback, useMemo } from 'react'
 import { ArrowLeftOutlined } from '@ant-design/icons'
 import { Breadcrumb, Button, Divider } from 'antd'
 import { useNavigate, useParams } from "react-router-dom"
-import { IApp } from '~/model';
+import { IApp } from 'model';
 import { useParseLangMessage } from 'plugin-sdk/hooks/useParseLangMessage';
 import { useTranslation } from 'react-i18next';
 import { useSelectedPageId } from '../hooks/useSelectedPageId';

@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import ImageUploader from "~/plugins/inputs/components/pc/ImageUploader/view";
 import { MultiLangInput } from "~/plugins/inputs/components/pc/MultiLangInput/view";
 import { useShowError } from "AppDesigner/hooks/useShowError";
-import { IUiFrame } from "~/model";
+import { IUiFrame } from "model";
 import { useUpsertPageFrame } from "../hooks/useUpsertPageFrame";
 import { createUuid } from "shared";
 

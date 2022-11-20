@@ -4,7 +4,7 @@ import React, { useCallback, useState } from "react";
 import { memo } from "react";
 import ProcessModal from "./ProcessModal";
 import { useTranslation } from "react-i18next";
-import { IPageCategory } from "~/model";
+import { IPageCategory } from "model";
 
 const CreateProcessDialog = memo((
   props: {

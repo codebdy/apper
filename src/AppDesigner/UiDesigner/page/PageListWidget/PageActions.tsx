@@ -2,7 +2,7 @@ import { MoreOutlined, EditOutlined, DeleteOutlined, LoadingOutlined, CopyOutlin
 import { Menu, Dropdown, Button } from "antd";
 import React, { memo, useCallback, useMemo } from "react"
 import { useDeletePage } from "../../hooks/useDeletePage";
-import { IPage } from "~/model";
+import { IPage } from "model";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { useTranslation } from "react-i18next";
 import { useUpsertPage } from "../../hooks/useUpsertPage";

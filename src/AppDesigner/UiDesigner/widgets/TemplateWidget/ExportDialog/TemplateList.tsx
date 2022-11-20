@@ -1,7 +1,7 @@
 import { Avatar, Checkbox, List } from "antd";
 import React from "react";
 import { memo } from "react"
-import { ITemplateInfo } from "~/model";
+import { ITemplateInfo } from "model";
 import { useParseLangMessage } from "plugin-sdk";
 import { ID } from "shared";
 

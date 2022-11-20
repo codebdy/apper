@@ -2,7 +2,7 @@ import 'antd/dist/antd.less'
 import React, { memo, useMemo } from 'react'
 import { DESIGNER_TOKEN_NAME, SERVER_URL, SYSTEM_APP_ID } from '~/consts'
 import { EntiRoot, useToken } from '~/enthooks'
-import { IApp } from '~/model'
+import { IApp } from 'model'
 import { DesignerRootInner } from './DesignerRootInner'
 
 const AppDesignerRoot = memo((

@@ -1,6 +1,6 @@
 import TreeNodeLabel from "~/common/TreeNodeLabel"
 import React, { useCallback, useState } from "react"
-import { IProcess, IProcessCategory } from "~/model"
+import { IProcess, IProcessCategory } from "model"
 import ProcessActions from "./ProcessActions"
 import EditProccessDialog from "./EditProcessDialog"
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage"

@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useMe } from "plugin-sdk";
 import { useAppParams } from "plugin-sdk/contexts/app";
 import { EVENT_DATA_POSTED, EVENT_DATA_REMOVED, EVENT_DATA_UPDATED, off, on } from "~/enthooks/events";
-import { INotification } from "~/model";
+import { INotification } from "model";
 
 const notificationsGql = gql`
 query ($appId:ID!, $userId:ID!){

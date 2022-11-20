@@ -2,7 +2,7 @@ import { gql } from "~/enthooks";
 import { useMemo } from "react";
 import { useQueryOne } from "~/enthooks/hooks/useQueryOne";
 import { Device } from "@rxdrag/appx-plugin-sdk";
-import { IMaterialConfig } from "~/model";
+import { IMaterialConfig } from "model";
 import { ID } from "shared";
 
 const materialConfigGql = gql`

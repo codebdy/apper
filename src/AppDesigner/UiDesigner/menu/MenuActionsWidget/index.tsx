@@ -9,7 +9,7 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { isNavigationDirtyState, menuIdState, navigationRootNodeState } from '../atoms'
 import { useUpsertMenu } from '../../hooks/useUpsertMenu'
 import { useExtractMenuNodeMeta } from '../hooks/useExtractMenuNodeMeta'
-import { IMenu } from '~/model'
+import { IMenu } from 'model'
 
 export const MenuActionsWidget = observer(() => {
   const { t } = useTranslation();

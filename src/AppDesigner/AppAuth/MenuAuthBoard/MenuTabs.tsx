@@ -1,7 +1,7 @@
 import { Tabs } from "antd"
 import React, { useMemo } from "react"
 import { memo } from "react"
-import { IMenu, IMenuAuthConfig } from "~/model";
+import { IMenu, IMenuAuthConfig } from "model";
 import { useDevices } from "AppDesigner/hooks/useDevices";
 import { MenuPanal } from "./MenuPanal";
 import { ID } from "shared";

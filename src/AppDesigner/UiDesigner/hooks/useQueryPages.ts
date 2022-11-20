@@ -1,7 +1,7 @@
 import { gql } from "~/enthooks";
 import { useMemo } from "react";
 import { useQuery } from "~/enthooks/hooks/useQuery";
-import { IPage } from "~/model";
+import { IPage } from "model";
 import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 
 const pagesGql = gql`
