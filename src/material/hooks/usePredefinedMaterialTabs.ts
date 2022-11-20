@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { usePredefinedPlugins } from "../../plugin/contexts";
 import { IPredefinedMaterialTabs } from "../context";
@@ -10,19 +10,19 @@ export function usePredefinedMaterialTabs() {
   const extract = useExtractMaterialGroupFromPlugin();
   const predefinedPlugsins = usePredefinedPlugins();
 
-  const basicTab: MaterialTab = useMemo(() => {
+  const basicTab: MaterialTab | undefined = useMemo(() => {
     return {
       title: t("Materials.Basic"),
       uuid: "UUID-MATERIALS-BASIC",
-      groups: predefinedPlugsins?.basicPlugins?.map(plugin => extract(plugin)) || []
+      groups: (predefinedPlugsins?.basicPlugins?.map(plugin => extract(plugin)) || []) as any
     }
   }, [extract, predefinedPlugsins, t])
 
-  const frameworkTab: MaterialTab = useMemo(() => {
+  const frameworkTab: MaterialTab | undefined = useMemo(() => {
     return {
       title: t("Materials.FrameWork"),
       uuid: "UUID-MATERIALS-FRAMEWORK",
-      groups: predefinedPlugsins?.frameworkPlugins?.map(plugin => extract(plugin)) || []
+      groups: (predefinedPlugsins?.frameworkPlugins?.map(plugin => extract(plugin)) || []) as any
     }
   }, [extract, predefinedPlugsins, t])
 

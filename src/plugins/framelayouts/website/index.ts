@@ -1,3 +1,3 @@
-const websiteComponents = [];
+const websiteComponents: any[] = [];
 
 export default websiteComponents;

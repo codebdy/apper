@@ -30,7 +30,7 @@ export function useRequest(gql: string | undefined, params?: { [key: string]: an
           headers: {
             [HEADER_AUTHORIZATION]: token ? `${TOKEN_PREFIX}${token}` : "",
             [HEADER_APPX_APPID]: appId,
-          }
+          } as any
         })
         .then((data) => {
           setLoading(false);

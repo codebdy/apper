@@ -11,11 +11,11 @@ export interface RequestOptions<T> {
 
 export function useLazyRequest<T>(options?: RequestOptions<any>)
   : [
-    (gql: string | undefined, input?: T) => void,
+    (gql: string | undefined, params?: any) => void,
     {
       error?: GraphQLRequestError,
       loading?: boolean,
-      data?: { [key:string]: any },
+      data?: T,
     }
   ] {
   const [loading, setLoading] = useState(false);

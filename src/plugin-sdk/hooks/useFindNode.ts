@@ -1,4 +1,4 @@
-import { findNodeByComponentPath } from "../funcs";
+import { findNodeByComponentPath } from 'designable/formily-antd/shared';
 import { useTreeNode } from 'designable/react';
 import { useCallback, useMemo } from "react";
 

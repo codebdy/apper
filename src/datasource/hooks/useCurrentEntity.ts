@@ -7,7 +7,7 @@ import { useGetEntity } from './useGetEntity';
 export function useCurrentEntity() {
   const currentNode = useCurrentNode();
   const getEntity = useGetEntity();
-  const getRecentDataSourceUuid = useCallback((node?: TreeNode) => {
+  const getRecentDataSourceUuid = useCallback((node?: TreeNode): any => {
     const fieldSource = node?.parent?.props?.["x-field-source"];
     if (fieldSource?.["typeUuid"]) {
       return fieldSource?.["typeUuid"];

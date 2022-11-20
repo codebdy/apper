@@ -32,11 +32,8 @@
 
 
 import { ISchema } from '@formily/json-schema'
-import {
-  ReactionsSetter,
-  ValidatorSetter,
-} from '@designable/formily-setters'
-import { AllSchemas } from '@designable/formily-antd/lib/schemas'
+import { AllSchemas } from 'designable/formily-antd'
+import { ValidatorSetter, ReactionsSetter } from 'designable/formily-antd/setters'
 
 export enum FieldsType {
   Multiple = "Multiple",
@@ -407,7 +404,7 @@ export const createFieldSchema = (
         type: 'void',
         'x-component': 'SettingsTab',
         properties: {
-          ...component && createComponentSchemaTab(component, options?.decorator || (options?.fieldSourceType && AllSchemas.FormItem)),
+          ...component && createComponentSchemaTab(component, options?.decorator || (options?.fieldSourceType && AllSchemas.FormItem) as any),
           ...(!options?.noStyleTab ? createStyleSchemaTab() : {}),
           ...(!options?.noDisplayTab ? createDisplaySchemaTab(options) : {}),
           ...(options?.actions ? createActionSchemaTab(options?.actions) : {}),

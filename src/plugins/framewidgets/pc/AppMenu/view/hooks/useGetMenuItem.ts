@@ -5,7 +5,7 @@ import { useMenu } from "AppRunner/hooks/useMenu";
 export function useGetMenuItem() {
   const  menu  = useMenu();
 
-  const getMenuItem = useCallback((uuid: string, items?: IMenuItem[]): IMenuItem => {
+  const getMenuItem = useCallback((uuid: string, items?: IMenuItem[]): IMenuItem|undefined => {
     for (const item of items || menu?.schemaJson?.items || []) {
       if (item.uuid === uuid) {
         return item;

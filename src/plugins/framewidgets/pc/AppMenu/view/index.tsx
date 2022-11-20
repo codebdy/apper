@@ -60,7 +60,7 @@ const AppMenu = memo((props: IComponentProps) => {
     if (item?.type === MenuItemType.Link) {
       item?.link && window.open(item?.link)
     } else if (item?.type !== MenuItemType.Divider) {
-      navigate(`/${device}/${appId}/${item.uuid}`)
+      navigate(`/${device}/${appId}/${item?.uuid}`)
     }
   }, [appId, device, getMenuItem, navigate]);
 

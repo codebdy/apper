@@ -38,7 +38,7 @@ export const routesPlaceholder = [
 ];
 
 const ComponentDesigner: DnFC<IPageContainerProps> & {
-  PageTitle?:React.FC<IPageTitleProps>,
+  PageTitle?: React.FC<IPageTitleProps>,
   HeaderActions?: React.FC<IHeaderActionsProps>,
   HeaderContent?: React.FC<IPageHeaderContentProps>,
   HeaderContentExtra?: React.FC<IPageHeaderContentExtraProps>,
@@ -178,7 +178,7 @@ const ComponentDesigner: DnFC<IPageContainerProps> & {
         }
 
         <div style={{ flex: 1 }}></div>
-        <TreeNodeWidget node={hasFooterToolbar ? footer : undefined} />
+        {hasFooterToolbar && footer && <TreeNodeWidget node={footer} />}
       </PageBody>
     </PageContainerShell>
   )

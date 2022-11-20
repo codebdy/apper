@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { usePredefinedPlugins } from "../../plugin/contexts";
 import { Device, IPlugin } from "@rxdrag/appx-plugin-sdk";
 import { useConvertMaterialFromPlugin } from "../../material/hooks/useConvertMaterialFromPlugin";
-import { useLoadPlugins } from "~/plugin/hooks";
+import { useLoadPlugins } from "plugin/hooks";
 import { IApp } from "model";
 
 export function usePluginComponents(app?:IApp, device?:Device) {
@@ -11,7 +11,7 @@ export function usePluginComponents(app?:IApp, device?:Device) {
 
   useEffect(() => {
     load(app?.plugins || []).then((plugins) => {
-      setInstalledPlugins(plugins.map(plugin => plugin.plugin));
+      setInstalledPlugins(plugins.map(plugin => plugin.plugin) as any);
     })
   }, [app?.plugins, load])
 

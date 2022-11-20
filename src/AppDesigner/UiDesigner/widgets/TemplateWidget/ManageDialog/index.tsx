@@ -22,7 +22,7 @@ export const ManageDialog = memo((
 
 
   const handleCancel = useCallback(() => {
-    onClose();
+    onClose && onClose();
   }, [onClose])
 
   return (
@@ -45,12 +45,12 @@ export const ManageDialog = memo((
           {
             label: t("Designer.PublicTemplates"),
             key: '1',
-            children: <TemplateList templates={templates.filter(template => template.categoryType === CategoryType.Public)} />,
+            children: <TemplateList templates={templates?.filter(template => template.categoryType === CategoryType.Public)} />,
           },
           {
             label: t("Designer.LocaltTemplates"),
             key: '2',
-            children: <TemplateList templates={templates.filter(template => template.categoryType === CategoryType.Local)} />,
+            children: <TemplateList templates={templates?.filter(template => template.categoryType === CategoryType.Local)} />,
           },
         ]}
       />

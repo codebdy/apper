@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next';
 import { useUpsertPluginInfo } from './hooks/useUpsertPluginInfo';
 import { useShowError } from 'AppDesigner/hooks/useShowError';
 import { IPluginInfo, PluginType } from 'model';
-import { PluginStatus } from '~/plugin/model';
+import { PluginStatus } from 'plugin/model';
 import { useUploadZip } from './hooks/useUploadZip';
 import Dragger from 'antd/lib/upload/Dragger';
-import { useLoadPlugins, useLoadPlugin } from '~/plugin/hooks';
+import { useLoadPlugins, useLoadPlugin } from 'plugin/hooks';
 import { useUpsertPluginInfos } from './hooks/useUpsertPluginInfos';
 
 export const UploadDialog: React.FC = memo(() => {

@@ -1,5 +1,5 @@
 import { Button, message, Modal, Space, Spin } from 'antd';
-import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useShowError } from 'AppDesigner/hooks/useShowError';
 import { useUpsertTemplates } from 'AppDesigner/UiDesigner/hooks/useUpsertTemplates';
@@ -27,7 +27,7 @@ export const ImportDialog = memo((
     }
   });
   const handleCancel = useCallback(() => {
-    onClose();
+    onClose && onClose();
   }, [onClose])
 
   useShowError(error);
@@ -45,7 +45,7 @@ export const ImportDialog = memo((
             template.id = "" + i
             if (template.templateType !== templateType) {
               message.error(t("Designer.TemplateTypeError"))
-              onClose();
+              onClose && onClose();
               return;
             }
           }
@@ -64,8 +64,8 @@ export const ImportDialog = memo((
   }, [uploadedUrl, templateType, onClose, t])
 
   const handleOk = useCallback(() => {
-    save(selectedIds.map(id => templates.find(template => template.id === id)).map(template => ({ ...template, id: undefined })), templateType)
-  }, [selectedIds, templates])
+    save(selectedIds.map(id => templates.find(template => template.id === id)).map(template => ({ ...template, id: undefined })) as any, templateType)
+  }, [save, selectedIds, templateType, templates])
 
   const handleSelectChange = useCallback((id: ID, checked?: boolean) => {
     setSelectedIds(ids => {

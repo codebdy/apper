@@ -6,9 +6,9 @@ import { useTranslation } from "react-i18next"
 import SvgIcon from "common/SvgIcon"
 import { useShowError } from "AppDesigner/hooks/useShowError"
 import { PluginType } from "model"
-import { useGetPluginLocalMessage } from "~/plugin/hooks"
-import { useDeletePluginInfo } from "~/plugin/hooks/useDeletePluginInfo"
-import { IInstalledPlugin, PluginStatus } from "~/plugin/model"
+import { useGetPluginLocalMessage } from "plugin/hooks"
+import { useDeletePluginInfo } from "plugin/hooks/useDeletePluginInfo"
+import { IInstalledPlugin, PluginStatus } from "plugin/model"
 
 export const PluginItem = memo((
   props: {
