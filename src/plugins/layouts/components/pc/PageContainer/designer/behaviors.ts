@@ -19,7 +19,7 @@ const behaviors: IBehavior[] = [
   {
     name: Name,
     extends: [],
-    selector: (node) => node.props['x-component'] === Name,
+    selector: (node) => node.props?.['x-component'] === Name,
     designerProps: {
       droppable: true,
     },
@@ -29,7 +29,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'PageContainer.PageTitle',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'PageContainer.PageTitle',
+    selector: (node) => node.props?.['x-component'] === 'PageContainer.PageTitle',
     designerProps: {
       droppable: true,
       draggable: false,
@@ -42,7 +42,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'PageContainer.HeaderActions',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'PageContainer.HeaderActions',
+    selector: (node) => node.props?.['x-component'] === 'PageContainer.HeaderActions',
     designerProps: {
       droppable: true,
       draggable: false,
