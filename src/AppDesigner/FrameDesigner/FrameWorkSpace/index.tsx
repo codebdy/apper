@@ -12,7 +12,7 @@ import { SettingsPanel, ToolbarPanel, ViewPanel, ViewportPanel, WorkspacePanel }
 import { SettingsForm } from "../../UiDesigner/SettingsForm";
 import { useMaterialDesigners } from "material/hooks/useMaterialDesigners";
 import { useLazyQueryPageFrame } from "../hooks/useLazyQueryPageFrame";
-import { FormDesigner } from "~/components/pc/FormDesigner";
+import { FormDesigner } from "components/pc/FormDesigner";
 import { SaveTemplateWidget } from "AppDesigner/UiDesigner/widgets/SaveTemplateWidget";
 import { TemplateType } from "model";
 

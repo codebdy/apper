@@ -15,7 +15,7 @@ const PageLabel = (
   const [visible, setVisible] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const p = useParseLangMessage();
-  const handleVisableChange = useCallback((visible) => {
+  const handleVisableChange = useCallback((visible: any) => {
     setVisible(visible)
   }, []);
 

@@ -27,7 +27,7 @@ const EditCategoryDialog = memo((
 
   useShowError(error);
 
-  const handleConfirm = useCallback((values) => {
+  const handleConfirm = useCallback((values: any) => {
     form.validateFields().then((values) => {
       update({ id: category.id, title: values.title })
     });

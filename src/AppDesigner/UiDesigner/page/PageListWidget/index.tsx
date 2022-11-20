@@ -48,7 +48,7 @@ const PageListWidget = memo((
 
     for (const page of pagesWithoutCategory) {
       dataNodes.push({
-        title: page && <PageLabel page={page} categories={categories}/>,
+        title: page && <PageLabel page={page} categories={categories} />,
         key: page.id,
         isLeaf: true,
       })
@@ -56,7 +56,7 @@ const PageListWidget = memo((
     return dataNodes
   }, [categories, getCategoryPages, pagesWithoutCategory])
 
-  const onSelect = (selectedKeys) => {
+  const onSelect = (selectedKeys: any) => {
     const page = getPage(selectedKeys?.[0]);
     if (page?.id) {
       setSelectedPageId(page?.id);
@@ -71,7 +71,7 @@ const PageListWidget = memo((
       </div>
       <DirectoryTree
         className='page-list-tree'
-        selectedKeys={[selectedPageId]}
+        selectedKeys={[selectedPageId] as any}
         onSelect={onSelect}
         treeData={getTreeData()}
       />

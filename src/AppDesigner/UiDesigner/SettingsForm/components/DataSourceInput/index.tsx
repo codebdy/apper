@@ -8,7 +8,7 @@ import { TextWidget } from 'designable/react'
 import { useGetEntity } from "datasource/hooks/useGetEntity";
 import { objToString, stringToObj } from "shared";
 import { useParseLangMessage } from "plugin-sdk";
-import { MonacoInput } from "../MonacoInput";
+import { MonacoInput } from "designable/react-settings-form";
 
 const { OptGroup, Option } = Select;
 var pluralize = require('pluralize')
@@ -16,7 +16,7 @@ var pluralize = require('pluralize')
 function lowcaseFirst(str: string) {
   var strTemp = ""; //新字符串
   for (var i = 0; i < str.length; i++) {
-    if (i == 0) {
+    if (i === 0) {
       strTemp += str[i].toLowerCase(); //第一个
       continue;
     }
@@ -89,7 +89,7 @@ export const DataSourceInput = memo((
     setIsModalVisible(false);
   }, []);
 
-  const handleFormChange = useCallback((changedValues) => {
+  const handleFormChange = useCallback((changedValues: any) => {
     if (changedValues?.entityUuid) {
       const entityName = getEntity(changedValues?.entityUuid)?.name || ""
       const expression = isSingle
@@ -97,7 +97,7 @@ export const DataSourceInput = memo((
         : multipleTemplateStr.replace("#name#", lowcaseFirst(pluralize(entityName)));
       form.setFieldValue("expression", expression)
     }
-  }, [form, getEntity]);
+  }, [form, getEntity, isSingle]);
 
   return (
     <>

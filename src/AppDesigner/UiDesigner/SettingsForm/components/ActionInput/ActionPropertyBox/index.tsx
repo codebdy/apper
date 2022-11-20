@@ -27,7 +27,7 @@ const pannels: { [key: string]: React.FC<{ payload: any }> } = {
 
 export const ActionPropertyBox = memo((
   props: {
-    action?: IAppxAction,
+    action: IAppxAction,
     onChange?: (action?: IAppxAction) => void,
   }
 ) => {
@@ -45,7 +45,7 @@ export const ActionPropertyBox = memo((
     form.setFieldsValue({ title: action.title, ...action.payload })
   }, [action.payload, action.title, action.uuid, form])
 
-  const handleChange = useCallback((changeValues, fromValues) => {
+  const handleChange = useCallback((changeValues: any, fromValues: any) => {
     const { title, ...payload } = fromValues;
     if (changeValues?.pageId) {
       const page = getPage(changeValues?.pageId);

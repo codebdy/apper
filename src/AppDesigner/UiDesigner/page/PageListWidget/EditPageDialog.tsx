@@ -47,7 +47,7 @@ const EditPageDialog = memo((
       onOk={handleConfirm}
       confirmLoading={loading}
     >
-      <PageForm page={page} categories={categories} form={form} />
+      <PageForm page={page} categories={categories as any} form={form} />
     </Modal>
   )
 })

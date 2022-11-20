@@ -33,16 +33,16 @@ const MenuSettingsForm = memo((
 
   useEffect(() => {
     form.setFieldsValue({
-      uuid: node.meta?.uuid,
-      type: node.meta?.type,
-      title: node.meta?.title,
-      icon: node.meta?.icon,
-      badge: node.meta?.badge,
-      link: node.meta?.link,
-      "route.pageUuid": node.meta?.route?.pageUuid,
-      "route.payload": node.meta?.route?.payload,
+      uuid: node?.meta?.uuid,
+      type: node?.meta?.type,
+      title: node?.meta?.title,
+      icon: node?.meta?.icon,
+      badge: node?.meta?.badge,
+      link: node?.meta?.link,
+      "route.pageUuid": node?.meta?.route?.pageUuid,
+      "route.payload": node?.meta?.route?.payload,
     })
-  }, [form, node.meta])
+  }, [form, node?.meta])
 
   const predetailForm = useCallback((form: any, key: string) => {
     const path = "route." + key;
@@ -53,15 +53,15 @@ const MenuSettingsForm = memo((
     }
   }, [])
 
-  const handleChange = useCallback((form) => {
-    let title = node.meta.title;
+  const handleChange = useCallback((form:any) => {
+    let title = node?.meta.title;
     if (form["route.pageUuid"]) {
       title = getPge(form["route.pageUuid"])?.title;
     }
     predetailForm(form, "pageUuid");
     predetailForm(form, "payload");
-    setMeta(node.meta.uuid, { ...node.meta, title, ...form });
-  }, [getPge, node.meta, predetailForm, setMeta])
+    setMeta(node?.meta.uuid||"", { ...node?.meta, title, ...form });
+  }, [getPge, node?.meta, predetailForm, setMeta])
 
   return (
     <div style={{ padding: "16px" }}>
@@ -76,14 +76,14 @@ const MenuSettingsForm = memo((
         }}
         labelAlign="left"
         initialValues={{
-          title: node.meta?.title,
-          icon: node.meta?.icon
+          title: node?.meta?.title,
+          icon: node?.meta?.icon
         }}
         onValuesChange={handleChange}
         autoComplete="off"
       >
         {
-          node.meta?.type !== MenuItemType.Divider ?
+          node?.meta?.type !== MenuItemType.Divider ?
             <>
               <Form.Item
                 label={t("Menu.Title")}
@@ -102,7 +102,7 @@ const MenuSettingsForm = memo((
             : <div>{t("Menu.Divider")}</div>
         }
         {
-          node.meta?.type === MenuItemType.Item &&
+          node?.meta?.type === MenuItemType.Item &&
           <>
             <Form.Item
               label={t("Menu.Page")}
@@ -120,7 +120,7 @@ const MenuSettingsForm = memo((
         }
         {
 
-          node.meta?.type === MenuItemType.Link &&
+          node?.meta?.type === MenuItemType.Link &&
           <Form.Item
             label={t("Menu.Link")}
             name="link"

@@ -4,9 +4,9 @@ import { useDesigner, TextWidget } from 'designable/react'
 import { observer } from '@formily/react'
 import { useUpdatePage } from 'AppDesigner/hooks/useUpdatePage'
 import { useSelectedPageId } from '../hooks/useSelectedPageId'
-import { transformToSchema } from '../transformer'
 import { useShowError } from 'AppDesigner/hooks/useShowError'
 import { useTranslation } from 'react-i18next'
+import { transformToSchema } from 'designable/formily-antd/transformer'
 
 export const ActionsWidget = observer(() => {
   const designer = useDesigner();
