@@ -18,7 +18,7 @@ const ComponentDesigner: DnFC<ITextProps> = (props) => {
       className: cls(props.className, 'dn-text'),
       value: p(value),
     },
-    p(props.content) || node.props?.["x-field-source"]?.name
+    p(props.content) || node?.props?.["x-field-source"]?.name
   )
 }
 
