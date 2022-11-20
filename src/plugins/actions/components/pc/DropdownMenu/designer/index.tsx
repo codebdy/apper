@@ -7,12 +7,12 @@ import {
 } from 'designable/react'
 import { observer } from '@formily/reactive-react'
 import './styles.less'
-import { LoadTemplate } from '@designable/formily-antd/lib/common/LoadTemplate'
 import { Button } from 'antd'
 import { CloseOutlined, DownOutlined } from '@ant-design/icons'
 import { MenuItemDesigner } from './MenuItemDesigner'
 import { IDropdownMenuItemProps, IDropdownMenuProps } from '../view'
 import { PopupButton, IconView, useParseLangMessage } from 'plugin-sdk'
+import { LoadTemplate } from 'designable/formily-antd/common/LoadTemplate'
 
 
 const ComponentDesigner: DnFC<IDropdownMenuProps> &
@@ -27,8 +27,8 @@ const ComponentDesigner: DnFC<IDropdownMenuProps> &
   const selected = useSelected();
   const [canShow, setCanShow] = useState(false);
   useEffect(() => {
-    setCanShow(selected?.[0] === node.id)
-  }, [node.id, selected])
+    setCanShow(selected?.[0] === node?.id)
+  }, [node?.id, selected])
 
   const handleShow = useCallback(() => {
     if (canShow) {
@@ -60,28 +60,28 @@ const ComponentDesigner: DnFC<IDropdownMenuProps> &
       case "bottomRight":
         return {
           top: rect?.bottom,
-          right: document.documentElement.clientWidth - rect?.right,
+          right: document.documentElement.clientWidth - (rect?.right||0),
           left: "auto",
           bottom: "auto",
         }
       case "top":
         return {
-          bottom: document.documentElement.clientHeight - rect?.top,
+          bottom: document.documentElement.clientHeight - (rect?.top||0),
           left: "auto",
           right: "auto",
           top: "auto",
         }
       case "topLeft":
         return {
-          bottom: document.documentElement.clientHeight - rect?.top,
+          bottom: document.documentElement.clientHeight - (rect?.top||0),
           left: rect?.left,
           top: "auto",
           right: "auto",
         }
       case "topRight":
         return {
-          bottom: document.documentElement.clientHeight - rect?.top,
-          right: document.documentElement.clientWidth - rect?.right,
+          bottom: document.documentElement.clientHeight - (rect?.top||0),
+          right: document.documentElement.clientWidth - (rect?.right||0),
           left: "auto",
           top: "auto",
         }
@@ -100,7 +100,7 @@ const ComponentDesigner: DnFC<IDropdownMenuProps> &
           <LoadTemplate
             actions={[
               {
-                title: node.getMessage('addItem'),
+                title: node?.getMessage('addItem'),
                 icon: 'AddOperation',
                 onClick: () => {
                   const item = new TreeNode({
@@ -113,7 +113,7 @@ const ComponentDesigner: DnFC<IDropdownMenuProps> &
                       }
                     },
                   })
-                  node.append(item)
+                  node?.append(item)
                 },
               },
             ]}

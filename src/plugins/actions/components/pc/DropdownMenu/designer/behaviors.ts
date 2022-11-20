@@ -9,7 +9,7 @@ const behaviors: IBehavior[] = [
   {
     name: Name,
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === Name,
+    selector: (node) => node.props?.['x-component'] === Name,
     designerProps: {
       droppable: true,
     },
@@ -19,7 +19,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'DropdownMenu.Item',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'DropdownMenu.Item',
+    selector: (node) => node.props?.['x-component'] === 'DropdownMenu.Item',
     designerProps: {
       droppable: false,
     },

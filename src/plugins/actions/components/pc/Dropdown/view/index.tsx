@@ -1,6 +1,5 @@
 import { observer } from "@formily/reactive-react"
-import React, { useMemo, useState } from "react"
-import { useParseLangMessage } from 'plugin-sdk'
+import React, { useMemo } from "react"
 import { Dropdown } from "antd"
 import { RecursionField, Schema, useFieldSchema } from "@formily/react"
 
@@ -11,12 +10,10 @@ export interface IDropdownProps {
 }
 
 const Component: React.FC<IDropdownProps> = observer((props) => {
-  const { placement, trigger, children, ...other } = props;
-  const [loading, setLoading] = useState(false);
-  const p = useParseLangMessage();
+  const { placement, trigger } = props;
   const fieldSchema = useFieldSchema();
 
-  const slots = useMemo(() => {
+  const slots: any = useMemo(() => {
     const slts = {
       button: null,
       pannel: null,
@@ -35,9 +32,6 @@ const Component: React.FC<IDropdownProps> = observer((props) => {
   }, [fieldSchema])
 
 
-  const contextValue = useMemo(() => {
-    return { loading, setLoading }
-  }, [loading])
 
   return (
     <Dropdown
