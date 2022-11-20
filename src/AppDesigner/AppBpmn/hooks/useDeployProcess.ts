@@ -14,7 +14,7 @@ export function useDeployProcess(
   options?: RequestOptions<ID>
 ): [
     () => void,
-    { loading: boolean; error: Error | undefined }
+    { loading: boolean|undefined; error: Error | undefined }
   ] {
 
   const [doDeploy, { loading, error }] = useLazyRequest(options)

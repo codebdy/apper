@@ -45,12 +45,12 @@ export function useAssignment(element: any, modeler: any) {
   return [assignment, updateAssgnment];
 }
 
-function getExtensionElement(element, type) {
+function getExtensionElement(element: any, type: any) {
   if (!element.extensionElements) {
     return;
   }
 
-  return element.extensionElements.values.filter((extensionElement) => {
+  return element.extensionElements.values.filter((extensionElement: any) => {
     return extensionElement.$instanceOf(type);
   })[0];
 }

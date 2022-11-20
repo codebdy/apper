@@ -16,7 +16,7 @@ import { useQueryAppPageCagegories } from "../hooks/useQueryAppPageCagegories"
 export const PageAuthBoard = memo(() => {
   const [selectedRoleId, setSelectedRoleId] = useState<ID>();
   const { t } = useTranslation();
-  const roleName = useRoleName(selectedRoleId);
+  const roleName = useRoleName(selectedRoleId||"");
   const { pages, error } = useQueryAppPages();
   const { componentConfigs, error: configError } = useQueryComponentAuthConfigs();
   const { categories, error: categoriesError } = useQueryAppPageCagegories();

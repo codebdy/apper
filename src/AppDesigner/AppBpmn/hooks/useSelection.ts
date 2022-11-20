@@ -9,7 +9,7 @@ export function useSelection(modeler?: any) {
     setElement(canvas?.getRootElement())
   }, [modeler])
 
-  const handleSelectionsChanged = useCallback((e) => {
+  const handleSelectionsChanged = useCallback((e: any) => {
     if (!modeler) {
       return;
     }

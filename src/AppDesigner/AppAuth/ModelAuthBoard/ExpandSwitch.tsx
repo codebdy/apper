@@ -9,7 +9,7 @@ import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 
 export const ExpandSwitch = memo((
   props: {
-    classUuid: string,
+    classUuid?: string,
     classConfig?: IClassAuthConfig,
     roleId: ID,
   }
@@ -32,7 +32,7 @@ export const ExpandSwitch = memo((
         expanded: checked,
       }
     )
-  }, [postClassConfig, classConfig, roleId, appId])
+  }, [postClassConfig, classConfig, appId, classUuid, roleId])
 
   return (
     <Switch

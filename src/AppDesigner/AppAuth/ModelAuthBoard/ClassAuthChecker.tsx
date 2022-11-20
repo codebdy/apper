@@ -12,7 +12,7 @@ import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 
 export const ClassAuthChecker = memo((
   props: {
-    classUuid: string,
+    classUuid?: string,
     classConfig?: IClassAuthConfig,
     roleId: ID,
     field: string,
@@ -20,7 +20,7 @@ export const ClassAuthChecker = memo((
   }
 ) => {
   const { classUuid, classConfig, roleId, field, expressionField } = props;
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>();
   const appId = useEdittingAppId();
   const [checked, setChecked] = useState(false);
   const [postClassConfig, { error, loading }] = useUpsertClassAuthConfig({
@@ -31,7 +31,7 @@ export const ClassAuthChecker = memo((
   useShowError(error)
 
   useEffect(() => {
-    setChecked(classConfig?.[field])
+    setChecked((classConfig as any)?.[field])
   }, [classConfig, field])
 
   const handleChange = useCallback((e: CheckboxChangeEvent) => {
@@ -49,17 +49,17 @@ export const ClassAuthChecker = memo((
         [field]: e.target.checked,
       }
     )
-  }, [postClassConfig, field, classConfig, roleId, appId])
+  }, [postClassConfig, classConfig, appId, classUuid, roleId, field])
 
   const handleOpenExpressionDialog = useCallback(() => {
     setOpen(true);
   }, [])
 
-  const handleOpenChange = useCallback((open: boolean) => {
+  const handleOpenChange = useCallback((open?: boolean) => {
     setOpen(open);
   }, [])
 
-  const handleExrpessionChange = useCallback((expression: string) => {
+  const handleExrpessionChange = useCallback((expression?: string) => {
     postClassConfig(
       {
         ...classConfig,
@@ -73,7 +73,7 @@ export const ClassAuthChecker = memo((
         [expressionField]: expression,
       }
     )
-  }, [postClassConfig, roleId, appId, expressionField])
+  }, [postClassConfig, classConfig, appId, classUuid, roleId, expressionField])
 
   return (
     <>
@@ -86,7 +86,7 @@ export const ClassAuthChecker = memo((
           />
       }
       {
-        classConfig?.[field] &&
+        (classConfig as any)?.[field] &&
         <>
           <Button
             type="text"
@@ -97,7 +97,7 @@ export const ClassAuthChecker = memo((
           {
             open &&
             <ExpressionModal
-              value={classConfig?.[expressionField]}
+              value={(classConfig as any)?.[expressionField]}
               open={open}
               onOpenChange={handleOpenChange}
               saving={loading}

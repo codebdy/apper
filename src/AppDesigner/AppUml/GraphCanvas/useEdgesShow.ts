@@ -44,10 +44,10 @@ export function useEdgesShow(graph: Graph | undefined, appId: ID) {
           //   getRelationGraphAttrs(edgeMeta.relationType)
           // );
           grahpEdge.remove();
-          grahpEdge = addNewEdge(grahpEdge, graph, edgeMeta, selectedElement);
+          grahpEdge = addNewEdge(graph, edgeMeta, selectedElement);
         }
       } else {
-        grahpEdge = addNewEdge(grahpEdge, graph, edgeMeta, selectedElement);
+        grahpEdge = addNewEdge(graph, edgeMeta, selectedElement);
       }
 
       //如果是跟自己连接，那么需要增加2个中间点
@@ -131,8 +131,8 @@ export function useEdgesShow(graph: Graph | undefined, appId: ID) {
     });
   }, [drawingLine?.tempEdgeId, edges, graph, selectedElement,]);
 }
-function addNewEdge(grahpEdge: Edge<Edge.Properties>, graph: Graph, edgeMeta: EdgeConfig, selectedElement: string) {
-  grahpEdge = graph?.addEdge({
+function addNewEdge(graph: Graph | undefined, edgeMeta: EdgeConfig, selectedElement: string | undefined) {
+  const grahpEdge = graph?.addEdge({
     id: edgeMeta.id,
     source: {
       cell: edgeMeta.sourceId,

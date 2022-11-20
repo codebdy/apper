@@ -38,9 +38,9 @@ export const RoleList = memo((
   const roles = useRoles();
   const p = useParseLangMessage();
   const { t } = useTranslation();
-  const handleSelect = useCallback((info) => {
+  const handleSelect = useCallback((info: any) => {
     onSelect && onSelect(info.key)
-  }, [])
+  }, [onSelect])
 
   const items: MenuProps['items'] = useMemo(
     () => [

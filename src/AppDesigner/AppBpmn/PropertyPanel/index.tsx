@@ -1,11 +1,11 @@
-import { Collapse, Empty, Form, Input } from "antd"
+import { Collapse, Empty, Form } from "antd"
 import React, { useCallback, useEffect } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { useAssignment } from "../hooks/useAssignment"
 import { useElementView } from "./elements"
 import { DocumentItem } from "./items/DocumentItem"
-import { IdItem } from "./items/idItem"
+import { IdItem } from "./items/IdItem"
 import { NameItem } from "./items/NameItem"
 import "./style.less"
 
@@ -26,10 +26,10 @@ export const PropertyPanel = memo((props: {
     form.setFieldValue("documentation", element?.businessObject?.documentation || '')
     form.setFieldValue("assignee", assignment?.assignee);
     form.setFieldValue("candidateGroups", assignment?.candidateGroups);
-  }, [element?.businessObject, assignment])
+  }, [element?.businessObject, assignment, form])
   console.log("Element的 businessObject", element?.businessObject)
 
-  const handleValueChange = useCallback((changedValue) => {
+  const handleValueChange = useCallback((changedValue:any) => {
     const modeling = modeler.get('modeling');
     if (changedValue?.name) {
       //modeling.updateLabel(element, changedValue.name);
