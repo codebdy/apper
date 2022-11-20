@@ -19,7 +19,7 @@ const ClassActions = memo((
   const [visible, setVisible] = useState(false);
   const { t } = useTranslation();
 
-  const handleMenuClick = useCallback((e) => {
+  const handleMenuClick = useCallback((e: any) => {
     setVisible(false);
     onVisible(false);
     if (e.key === 'addAttribute') {

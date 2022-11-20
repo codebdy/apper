@@ -20,8 +20,8 @@ export const ListBodyDesigner = observer((props: IListBodyProps) => {
       renderItem={item => (
         <List.Item>
           {
-            node.children?.length > 0
-              ? node.children?.map((node) => {
+            node?.children?.length
+              ? node?.children?.map((node) => {
                 return <TreeNodeWidget node={node} />;
               })
               : <div className="appx-grid-list-placeholder">Drop here</div>

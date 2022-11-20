@@ -1,6 +1,6 @@
 import React from "react"
 
-export const IndexDesigner = (props) => {
+export const IndexDesigner = (props: any) => {
   return (
     <span {...props}>
       #1.

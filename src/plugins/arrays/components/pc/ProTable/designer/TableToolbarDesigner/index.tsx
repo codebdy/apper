@@ -4,8 +4,8 @@ import './schema'
 import { DnFC, useTreeNode, TreeNodeWidget } from 'designable/react'
 import { observer } from "@formily/reactive-react"
 import { TableToolbar } from "../../view/TableToolbar"
-import { findNodeByComponentPath } from "plugin-sdk"
 import { TableToolbarShell } from "../../view/TableToolbar/TableToolbarShell"
+import { findNodeByComponentPath } from "designable/formily-antd/shared"
 
 export const TableToolbarDesigner: DnFC<React.ComponentProps<typeof TableToolbar>> = observer((props) => {
   const { hasActions = true, ...other } = props;
@@ -22,7 +22,7 @@ export const TableToolbarDesigner: DnFC<React.ComponentProps<typeof TableToolbar
       actions={hasActions && actions && <TreeNodeWidget node={actions} />}
     >
       {
-        node.children?.filter(child => child.id !== actions.id).map(child => {
+        node?.children?.filter(child => child.id !== actions?.id).map(child => {
           return <TreeNodeWidget key={child.id} node={child} />
         })
       }

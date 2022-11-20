@@ -52,7 +52,7 @@ const ComponentDesigner: DnFC<IProTableProps> & {
           selectable && batchActions && <TreeNodeWidget node={batchActions} />
         }
 
-        <TreeNodeWidget node={dataTable} />
+        <TreeNodeWidget node={dataTable as any} />
       </Card>
     </div>
   )

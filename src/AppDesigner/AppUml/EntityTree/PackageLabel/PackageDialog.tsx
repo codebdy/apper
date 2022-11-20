@@ -1,5 +1,5 @@
 import { Form, Modal, Select } from "antd"
-import React, { memo, useCallback, useEffect, useState } from "react"
+import { memo, useCallback, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { PackageMeta, PackageStereoType } from "../../meta/PackageMeta"
 import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view"
@@ -24,13 +24,8 @@ export const PackageDialog = memo((
     form.validateFields().then(changeValues => {
       onConfirm({ ...pkg, ...changeValues })
     })
-  }, [onConfirm, form])
+  }, [form, onConfirm, pkg])
 
-  const handleEditorDidMount = useCallback((monaco: any) => {
-    // monaco.languages?.json.jsonDefaults.setDiagnosticsOptions({
-    //   validate: true,
-    // });
-  }, [])
 
   return (
     <Modal
@@ -43,7 +38,7 @@ export const PackageDialog = memo((
       centered
       wrapProps={
         {
-          onClick: (e) => {
+          onClick: (e: any) => {
             e.stopPropagation()
           },
         }

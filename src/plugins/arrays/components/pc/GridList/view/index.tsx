@@ -45,7 +45,7 @@ export const GridList: React.FC<IGridListProps> & {
   }, [dataBind, field.path, pageSize, hasPagination, paginationPosition]);
 
 
-  const slots = useMemo(() => {
+  const slots: any = useMemo(() => {
     const slts = {
       header: null,
       body: null
