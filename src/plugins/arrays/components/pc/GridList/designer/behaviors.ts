@@ -11,7 +11,7 @@ const behaviors: IBehavior[] = [
   {
     name: Name,
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === Name,
+    selector: (node) => node.props?.['x-component'] === Name,
     designerProps: {
       droppable: false,
     },
@@ -21,7 +21,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'GridList.Header',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'GridList.Header',
+    selector: (node) => node.props?.['x-component'] === 'GridList.Header',
     designerProps: {
       droppable: true,
       deletable: false,
@@ -33,7 +33,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'GridList.Body',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'GridList.Body',
+    selector: (node) => node.props?.['x-component'] === 'GridList.Body',
     designerProps: {
       droppable: true,
       deletable: false,

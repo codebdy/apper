@@ -7,10 +7,10 @@ export const createArrayExtraBehavior = (name: string): IBehavior[] => {
     {
       name: `${name}.Addition`,
       extends: ['Field'],
-      selector: (node) => node.props['x-component'] === `${name}.Addition`,
+      selector: (node) => node.props?.['x-component'] === `${name}.Addition`,
       designerProps: {
         allowDrop(parent) {
-          return parent.props['x-component'] === name
+          return parent.props?.['x-component'] === name
         },
       },
       designerLocales: ArrayAdditionLocales,
@@ -19,10 +19,10 @@ export const createArrayExtraBehavior = (name: string): IBehavior[] => {
     {
       name: `${name}.Remove`,
       extends: ['Field'],
-      selector: (node) => node.props['x-component'] === `${name}.Remove`,
+      selector: (node) => node.props?.['x-component'] === `${name}.Remove`,
       designerProps: {
         allowDrop(parent) {
-          return parent.props['x-component'] === name
+          return parent.props?.['x-component'] === name
         },
       },
       designerLocales: ArrayRemoveLocales,
@@ -30,10 +30,10 @@ export const createArrayExtraBehavior = (name: string): IBehavior[] => {
     {
       name: `${name}.Index`,
       extends: ['Field'],
-      selector: (node) => node.props['x-component'] === `${name}.Index`,
+      selector: (node) => node.props?.['x-component'] === `${name}.Index`,
       designerProps: {
         allowDrop(parent) {
-          return parent.props['x-component'] === name
+          return parent.props?.['x-component'] === name
         },
       },
       designerLocales: ArrayIndexLocales,
@@ -41,10 +41,10 @@ export const createArrayExtraBehavior = (name: string): IBehavior[] => {
     {
       name: `${name}.MoveUp`,
       extends: ['Field'],
-      selector: (node) => node.props['x-component'] === `${name}.MoveUp`,
+      selector: (node) => node.props?.['x-component'] === `${name}.MoveUp`,
       designerProps: {
         allowDrop(parent) {
-          return parent.props['x-component'] === name
+          return parent.props?.['x-component'] === name
         },
       },
       designerLocales: ArrayMoveUpLocales,
@@ -52,10 +52,10 @@ export const createArrayExtraBehavior = (name: string): IBehavior[] => {
     {
       name: `${name}.MoveDown`,
       extends: ['Field'],
-      selector: (node) => node.props['x-component'] === `${name}.MoveDown`,
+      selector: (node) => node.props?.['x-component'] === `${name}.MoveDown`,
       designerProps: {
         allowDrop(parent) {
-          return parent.props['x-component'] === name
+          return parent.props?.['x-component'] === name
         },
       },
       designerLocales: ArrayMoveDownLocales,
