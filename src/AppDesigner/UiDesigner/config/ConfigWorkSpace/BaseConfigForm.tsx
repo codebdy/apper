@@ -35,8 +35,8 @@ export const BaseConfigForm = memo(() => {
     form.setFieldsValue({ entryId: config?.schemaJson?.entryUuid });
   }, [config, form])
 
-  const handleValuesChange = useCallback((changeValues, formValues) => {
-    setConfig(config => ({ ...config, schemaJson: { ...config?.schemaJson || {}, ...formValues } }));
+  const handleValuesChange = useCallback((changeValues: any, formValues: any) => {
+    setConfig(config => ({ ...config, schemaJson: { ...config?.schemaJson || {}, ...formValues } }) as any);
     setChanged(true);
   }, [setChanged, setConfig]);
 
