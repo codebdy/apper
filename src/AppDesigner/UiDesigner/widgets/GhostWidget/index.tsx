@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react'
-import { useCursor, usePrefix, useDesigner } from '@designable/react'
+import { useCursor, usePrefix, useDesigner } from 'designable/react'
 import { CursorStatus } from '@designable/core'
 import { autorun } from '@formily/reactive'
 import { observer } from '@formily/reactive-react'

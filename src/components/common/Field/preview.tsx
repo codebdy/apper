@@ -18,7 +18,7 @@ import {
   useTreeNode,
   useComponents,
   DnFC,
-} from '@designable/react'
+} from 'designable/react'
 import { isArr, isStr } from '@designable/shared'
 import { Container } from '@designable/formily-antd/lib/common/Container'
 import { FieldLocales } from './locales'

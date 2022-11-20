@@ -4,7 +4,7 @@ import {
   usePrefix,
   useValidNodeOffsetRect,
   useSelection,
-} from '@designable/react'
+} from 'designable/react'
 import { observer } from '@formily/reactive-react'
 
 export const DashedBox = observer(() => {

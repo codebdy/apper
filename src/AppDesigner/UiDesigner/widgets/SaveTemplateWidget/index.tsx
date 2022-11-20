@@ -5,7 +5,7 @@ import { IconWidget } from "../IconWidget"
 import {
   useTree,
   useSelected
-} from '@designable/react'
+} from 'designable/react'
 import { useTranslation } from "react-i18next"
 import { useUpsertTemplate } from "../../hooks/useUpsertTemplate"
 import { useDesignerParams } from "plugin-sdk"

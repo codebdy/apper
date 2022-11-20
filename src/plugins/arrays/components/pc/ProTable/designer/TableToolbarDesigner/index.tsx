@@ -1,7 +1,7 @@
 import React from "react"
 import './locales'
 import './schema'
-import { DnFC, useTreeNode, TreeNodeWidget } from '@designable/react'
+import { DnFC, useTreeNode, TreeNodeWidget } from 'designable/react'
 import { observer } from "@formily/reactive-react"
 import { TableToolbar } from "../../view/TableToolbar"
 import { findNodeByComponentPath } from "@rxdrag/plugin-sdk"

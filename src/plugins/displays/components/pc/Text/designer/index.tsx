@@ -1,5 +1,5 @@
 import React from 'react'
-import { DnFC, useTreeNode } from '@designable/react'
+import { DnFC, useTreeNode } from 'designable/react'
 import cls from 'classnames'
 import './styles.less'
 import { ITextProps } from '../view'

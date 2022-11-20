@@ -1,5 +1,5 @@
 import { AutoComplete, Form, Input, Modal, Radio, RadioChangeEvent } from "antd";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
 import { useDesignerAppConfig, useDesignerParams } from "plugin-sdk/contexts/desinger";
@@ -36,7 +36,7 @@ const ResourceEditDialog = memo((
 
   const options = useMemo(() => {
     return langLocales?.filter(lang => {
-      return lang.name?.indexOf(searchText) > -1
+      return lang.name?.indexOf(searchText as any) > -1
     }).map(lang => {
       return {
         label: lang.name,
@@ -46,7 +46,7 @@ const ResourceEditDialog = memo((
   }, [langLocales, searchText]);
 
   const getResource = useCallback((name: string) => {
-    return langLocales.find(lang => lang.name === name)
+    return langLocales?.find(lang => lang.name === name)
   }, [langLocales])
 
   useEffect(() => {
@@ -215,7 +215,7 @@ const ResourceEditDialog = memo((
                   label={t("Lang." + lang.key)}
                   name={lang.key}
                 >
-                  <InputCtrl disabled={hasSelectedResource}/>
+                  <InputCtrl disabled={hasSelectedResource as any} />
                 </Form.Item>
               )
             })

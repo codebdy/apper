@@ -1,6 +1,6 @@
 import React, { useContext, Fragment, useRef, useLayoutEffect } from 'react'
 import { each } from '@designable/shared'
-import { DesignerLayoutContext, IDesignerLayoutProps } from "@designable/react"
+import { DesignerLayoutContext, IDesignerLayoutProps } from "designable/react"
 import cls from 'classnames'
 
 export const Layout: React.FC<IDesignerLayoutProps> = (props) => {

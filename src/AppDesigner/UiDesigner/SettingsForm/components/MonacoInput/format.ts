@@ -1,5 +1,5 @@
 import { parse } from '@babel/parser'
-import { getNpmCDNRegistry } from '@designable/react-settings-form'
+import { getNpmCDNRegistry } from 'designable/react-settings-form'
 interface IPrettierModule {
   default: {
     format(

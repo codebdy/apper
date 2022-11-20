@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { Button, message } from 'antd'
-import { useDesigner, TextWidget } from '@designable/react'
+import { useDesigner, TextWidget } from 'designable/react'
 import { observer } from '@formily/react'
 import { useTranslation } from 'react-i18next'
 import { transformToSchema } from '../UiDesigner/transformer'

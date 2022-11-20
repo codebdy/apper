@@ -1,6 +1,6 @@
 import { observer } from '@formily/reactive-react'
 import React from 'react'
-import { useScreen, usePrefix, useTheme } from "@designable/react"
+import { useScreen, usePrefix, useTheme } from "designable/react"
 
 export interface IMobileBodyProps {}
 

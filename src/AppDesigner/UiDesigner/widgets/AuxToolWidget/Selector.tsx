@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { TreeNode } from '@designable/core'
-import { useHover, useSelection, usePrefix } from '@designable/react'
+import { useHover, useSelection, usePrefix } from 'designable/react'
 import { IconWidget } from '../IconWidget'
 import { NodeTitleWidget } from '../NodeTitleWidget'
 import { Button } from 'antd'

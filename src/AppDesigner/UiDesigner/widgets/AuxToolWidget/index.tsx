@@ -6,7 +6,7 @@ import {
   useDesigner,
   usePrefix,
   useOperation,
-} from '@designable/react'
+} from 'designable/react'
 import { Insertion } from './Insertion'
 import { Selection } from './Selection'
 import { FreeSelection } from './FreeSelection'

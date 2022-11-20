@@ -1,4 +1,4 @@
-import { DnFC } from '@designable/react'
+import { DnFC } from 'designable/react'
 import { Tag, ITagProps } from '../view'
 import { observer } from '@formily/reactive-react'
 import React from 'react'

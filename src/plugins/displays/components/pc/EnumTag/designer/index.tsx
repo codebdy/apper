@@ -1,4 +1,4 @@
-import { DnFC, useTreeNode } from '@designable/react'
+import { DnFC, useTreeNode } from 'designable/react'
 import { observer } from '@formily/reactive-react'
 import React from 'react'
 import { IEnumTagsProps } from '../view'

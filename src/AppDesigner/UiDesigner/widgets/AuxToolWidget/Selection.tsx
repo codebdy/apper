@@ -9,7 +9,7 @@ import {
   useDragon,
   usePrefix,
   useDesigner,
-} from '@designable/react'
+} from 'designable/react'
 import { observer } from '@formily/reactive-react'
 import { TreeNode } from '@designable/core'
 import { TranslateHandler } from './TranslateHandler'

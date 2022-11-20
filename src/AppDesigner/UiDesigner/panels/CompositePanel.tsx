@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { isValid } from '@designable/shared'
 import cls from 'classnames'
-import {usePrefix, TextWidget, IconWidget} from "@designable/react"
+import {usePrefix, TextWidget, IconWidget} from "designable/react"
 
 export interface ICompositePanelProps {
   direction?: 'left' | 'right'

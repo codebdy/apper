@@ -1,6 +1,6 @@
 import React from 'react'
 import cls from 'classnames'
-import { usePrefix } from "@designable/react"
+import { usePrefix } from "designable/react"
 import './styles.less'
 export interface IPCSimulatorProps
   extends React.HTMLAttributes<HTMLDivElement> {

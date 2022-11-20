@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTree, usePrefix } from '@designable/react'
+import { useTree, usePrefix } from 'designable/react'
 import { observer } from '@formily/reactive-react'
 import { IconWidget } from '../IconWidget'
 import './styles.less'

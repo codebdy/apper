@@ -2,7 +2,7 @@ import React, { useMemo, useRef, useState } from 'react'
 import {
   DnFC,
   TreeNodeWidget,
-} from '@designable/react'
+} from 'designable/react'
 import { observer } from '@formily/reactive-react'
 import './styles.less'
 import { IDropdownProps } from '../view'

@@ -2,7 +2,7 @@ import React from 'react'
 import { TreeNode } from '@designable/core'
 import { observer } from '@formily/reactive-react'
 import { IconWidget } from '../IconWidget'
-import { useDesigner, usePrefix } from '@designable/react'
+import { useDesigner, usePrefix } from 'designable/react'
 import { Button } from 'antd'
 
 export interface IDragHandlerProps {

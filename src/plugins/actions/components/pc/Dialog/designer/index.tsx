@@ -12,7 +12,7 @@ import {
   useNodeIdProps,
   useTreeNode,
   useSelected
-} from '@designable/react'
+} from 'designable/react'
 import { observer } from '@formily/react'
 import './styles.less'
 import { useFindNode, useParseLangMessage } from 'plugin-sdk'

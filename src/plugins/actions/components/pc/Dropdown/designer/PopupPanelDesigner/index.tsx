@@ -1,4 +1,4 @@
-import { DroppableWidget, useTree, useTreeNode } from "@designable/react"
+import { DroppableWidget, useTree, useTreeNode } from "designable/react"
 import { observer } from "@formily/react"
 import React, { useCallback, useEffect } from "react"
 import clx from "classnames"

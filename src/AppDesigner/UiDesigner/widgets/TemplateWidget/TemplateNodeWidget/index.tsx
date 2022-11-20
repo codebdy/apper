@@ -3,7 +3,7 @@ import {
   IResource,
 } from '@designable/core'
 import { observer } from '@formily/reactive-react'
-import { usePrefix } from '@designable/react'
+import { usePrefix } from 'designable/react'
 import './styles.less'
 import { Image } from '~/plugins/displays/components/pc/Image/view'
 

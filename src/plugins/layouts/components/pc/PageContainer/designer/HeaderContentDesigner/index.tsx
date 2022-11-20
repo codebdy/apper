@@ -1,4 +1,4 @@
-import { DroppableWidget } from "@designable/react"
+import { DroppableWidget } from "designable/react"
 import { observer } from "@formily/react"
 import { Col } from "antd"
 import React from "react"

@@ -34,7 +34,7 @@ import {
   FlexStyleSetter,
   DrawerSetter,
   CollapseItem,
-} from '@designable/react-settings-form'
+} from 'designable/react-settings-form'
 import SettingsTab from './components/SettingsTab'
 import { DataSourceInput, FieldSourceInput, FieldParamsInput, ActionInput, ColumnsSetter } from './components'
 import { MultiLangInput } from '~/plugins/inputs/components/pc/MultiLangInput/view'

@@ -1,6 +1,6 @@
 import React from 'react'
 import { TreeNode } from '@designable/core'
-import { useOperation, usePrefix } from '@designable/react'
+import { useOperation, usePrefix } from 'designable/react'
 import { IconWidget } from '../IconWidget'
 import { Button } from 'antd'
 export interface ICopyProps {

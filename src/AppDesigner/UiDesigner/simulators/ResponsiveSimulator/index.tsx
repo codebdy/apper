@@ -11,7 +11,7 @@ import {
   calcSpeedFactor,
   createUniformSpeedAnimation,
 } from '@designable/shared'
-import { useScreen, useDesigner, usePrefix, IconWidget } from "@designable/react"
+import { useScreen, useDesigner, usePrefix, IconWidget } from "designable/react"
 import { ResizeHandle, ResizeHandleType } from './handle'
 
 import cls from 'classnames'

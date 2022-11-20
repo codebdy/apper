@@ -1,8 +1,6 @@
-import { DnFC } from '@designable/react'
 import FormButtonGroup, { IFormButtonGroupProps } from "../view";
-import React from 'react';
 import { observer } from '@formily/reactive-react';
-import { DroppableWidget } from "@designable/react"
+import { DnFC, DroppableWidget } from "designable/react";
 
 const FormButtonGroupDesigner: DnFC<IFormButtonGroupProps> = observer((props) => {
   const { sticky, children, ...others } = props;
@@ -15,7 +13,7 @@ const FormButtonGroupDesigner: DnFC<IFormButtonGroupProps> = observer((props) =>
       </FormButtonGroup>
       :
       <DroppableWidget >
-        {children}
+        {children as any}
       </DroppableWidget>
   )
 });

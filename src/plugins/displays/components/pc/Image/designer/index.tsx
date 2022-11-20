@@ -1,4 +1,4 @@
-import { DnFC } from '@designable/react'
+import { DnFC } from 'designable/react'
 import { Image, IImageProps } from '../view'
 
 

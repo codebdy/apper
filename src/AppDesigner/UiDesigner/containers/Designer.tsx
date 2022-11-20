@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { Engine, GlobalRegistry } from '@designable/core'
-import { DesignerEngineContext, IDesignerProps, GhostWidget, useDesigner } from "@designable/react"
+import { DesignerEngineContext, IDesignerProps, GhostWidget, useDesigner } from "designable/react"
 import { Layout } from './Layout'
 import * as icons from '../icons'
 

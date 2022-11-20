@@ -1,7 +1,7 @@
 import React from 'react'
 import { TreeNode } from '@designable/core'
 import { observer } from '@formily/reactive-react'
-import { useTreeNode, useNodeIdProps } from '@designable/react'
+import { useTreeNode, useNodeIdProps } from 'designable/react'
 import { NodeTitleWidget } from '../NodeTitleWidget'
 import {
   NodeActionsWidget,

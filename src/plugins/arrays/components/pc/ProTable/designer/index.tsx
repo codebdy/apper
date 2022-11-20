@@ -1,7 +1,7 @@
 import { observer } from "@formily/reactive-react"
 import { Card, TableProps } from "antd"
 import React from "react"
-import { DnFC, TreeNodeWidget } from '@designable/react'
+import { DnFC, TreeNodeWidget } from 'designable/react'
 import clx from "classnames"
 import _ from "lodash"
 import { QueryFormDesigner } from "./QueryFormDesigner"

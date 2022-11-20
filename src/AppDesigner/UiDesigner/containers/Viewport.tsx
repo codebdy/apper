@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
-import { usePrefix, useViewport } from '@designable/react'
-import { AuxToolWidget } from '@designable/react'
+import { usePrefix, useViewport } from 'designable/react'
+import { AuxToolWidget } from 'designable/react'
 import { Viewport as ViewportType } from '@designable/core'
 import { requestIdle, globalThisPolyfill } from '@designable/shared'
 import cls from 'classnames'

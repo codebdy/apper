@@ -1,5 +1,5 @@
 import React from 'react'
-import { usePrefix } from "@designable/react"
+import { usePrefix } from "designable/react"
 import cls from 'classnames'
 export enum ResizeHandleType {
   Resize = 'RESIZE',

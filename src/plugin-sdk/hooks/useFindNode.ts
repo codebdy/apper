@@ -1,5 +1,5 @@
 import { findNodeByComponentPath } from "../funcs";
-import { useTreeNode } from '@designable/react';
+import { useTreeNode } from 'designable/react';
 import { useCallback, useMemo } from "react";
 
 export function useFindNode(name: string) {

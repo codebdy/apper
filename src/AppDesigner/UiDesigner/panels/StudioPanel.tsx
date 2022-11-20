@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, usePrefix, usePosition } from "@designable/react"
+import { Layout, usePrefix, usePosition } from "designable/react"
 
 import cls from 'classnames'
 export interface IStudioPanelProps {

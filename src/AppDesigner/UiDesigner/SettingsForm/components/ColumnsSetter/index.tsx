@@ -1,7 +1,7 @@
 import React from 'react'
 import { useField, Field, observer } from '@formily/react'
 import { NumberPicker } from '@formily/antd'
-import { FoldItem, InputItems } from '@designable/react-settings-form'
+import { FoldItem, InputItems } from 'designable/react-settings-form'
 import cls from 'classnames'
 import "./style.less"
 

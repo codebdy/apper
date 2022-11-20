@@ -11,9 +11,9 @@ import {
   useWorkbench,
   IconWidget,
   NodePathWidget,
-} from '@designable/react'
-import { SettingsFormContext } from '@designable/react-settings-form/lib//shared/context'
-import { useLocales, useSnapshot } from '@designable/react-settings-form/lib//effects'
+} from 'designable/react'
+import { SettingsFormContext } from 'designable/react-settings-form/lib//shared/context'
+import { useLocales, useSnapshot } from 'designable/react-settings-form/lib//effects'
 import { Empty, Tooltip } from 'antd'
 import cls from 'classnames'
 import './styles.less'

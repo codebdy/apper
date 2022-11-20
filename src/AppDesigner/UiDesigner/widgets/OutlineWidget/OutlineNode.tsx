@@ -14,7 +14,7 @@ import {
   useSelection,
   useOutlineDragon,
   useDesigner,
-} from '@designable/react'
+} from 'designable/react'
 import { IconWidget } from '../IconWidget'
 import { NodeTitleWidget } from '../NodeTitleWidget'
 import { NodeContext } from './context'

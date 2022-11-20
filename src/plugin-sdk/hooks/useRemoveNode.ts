@@ -1,5 +1,5 @@
 import { RemoveNodeEvent, TreeNode } from '@designable/core'
-import { useDesigner } from '@designable/react'
+import { useDesigner } from 'designable/react'
 
 export const useRemoveNode = (
   name: string,

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { InputProps } from 'antd/lib/input'
 import { Input, Upload } from 'antd'
-import { usePrefix, IconWidget } from '@designable/react'
+import { usePrefix, IconWidget } from 'designable/react'
 import cls from 'classnames'
 import './styles.less'
-import { SettingsFormContext } from '@designable/react-settings-form/lib//shared/context'
+import { SettingsFormContext } from 'designable/react-settings-form/lib//shared/context'
 
 export interface ImageInputProps extends Omit<InputProps, 'onChange'> {
   value?: string

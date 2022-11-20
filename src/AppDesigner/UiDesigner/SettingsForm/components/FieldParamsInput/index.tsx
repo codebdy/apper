@@ -1,7 +1,7 @@
 import { observer } from "@formily/reactive-react";
 import { Button, Modal } from "antd";
 import React, { useCallback, useState } from "react";
-import { TextWidget } from '@designable/react'
+import { TextWidget } from 'designable/react'
 import { MonacoInput } from "../MonacoInput";
 
 export const FieldParamsInput = observer(() => {

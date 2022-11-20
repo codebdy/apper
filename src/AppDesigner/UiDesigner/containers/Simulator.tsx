@@ -2,7 +2,7 @@ import React from 'react'
 import { ScreenType } from '@designable/core'
 import { requestIdle } from '@designable/shared'
 import { observer } from '@formily/reactive-react'
-import { useScreen } from "@designable/react"
+import { useScreen } from "designable/react"
 import {
   MobileSimulator,
   PCSimulator,

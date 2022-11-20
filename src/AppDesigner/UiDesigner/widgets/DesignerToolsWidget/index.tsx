@@ -9,7 +9,7 @@ import {
   usePrefix,
   useWorkbench,
   IconWidget,
-} from "@designable/react"
+} from "designable/react"
 import cls from 'classnames'
 import './styles.less'
 

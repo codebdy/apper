@@ -1,6 +1,6 @@
 import React from 'react'
 import { MobileBody } from './body'
-import { usePrefix } from "@designable/react"
+import { usePrefix } from "designable/react"
 import cls from 'classnames'
 import './styles.less'
 export interface IMobileSimulatorProps

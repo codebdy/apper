@@ -4,7 +4,7 @@ import "./style.less"
 import { useGetPackageRootEntities, usePackages } from "datasource/hooks";
 import { IDataBindSource } from "datasource";
 import { PlayCircleOutlined } from "@ant-design/icons";
-import { TextWidget } from '@designable/react'
+import { TextWidget } from 'designable/react'
 import { useGetEntity } from "datasource/hooks/useGetEntity";
 import { objToString, stringToObj } from "shared";
 import { useParseLangMessage } from "@rxdrag/plugin-sdk";

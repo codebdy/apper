@@ -1,4 +1,4 @@
-import { DnFC, DnComponent } from "@designable/react"
+import { DnFC, DnComponent } from "designable/react"
 import React from "react";
 
 export interface Material {

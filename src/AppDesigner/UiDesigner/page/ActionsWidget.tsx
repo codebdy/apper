@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { Button, message } from 'antd'
-import { useDesigner, TextWidget } from '@designable/react'
+import { useDesigner, TextWidget } from 'designable/react'
 import { observer } from '@formily/react'
 import { useUpdatePage } from 'AppDesigner/hooks/useUpdatePage'
 import { useSelectedPageId } from '../hooks/useSelectedPageId'

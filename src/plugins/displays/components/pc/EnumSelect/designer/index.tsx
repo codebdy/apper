@@ -1,5 +1,5 @@
 import { createBehavior, createResource } from '@designable/core'
-import { DnFC } from '@designable/react'
+import { DnFC } from 'designable/react'
 import { EnumSelectSchema } from './schema'
 import { EnumSelectLocales } from './locales'
 import { EnumSelect, IEnumSelectProps } from '../view'

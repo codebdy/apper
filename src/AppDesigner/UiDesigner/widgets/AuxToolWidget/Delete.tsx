@@ -1,7 +1,7 @@
 import React from 'react'
 import { TreeNode } from '@designable/core'
 import { IconWidget } from '../IconWidget'
-import { useOperation, usePrefix } from '@designable/react'
+import { useOperation, usePrefix } from 'designable/react'
 import { Button } from 'antd'
 
 export interface IDeleteProps {

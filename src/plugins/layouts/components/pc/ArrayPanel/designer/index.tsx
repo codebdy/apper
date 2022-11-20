@@ -3,7 +3,7 @@ import {
   DroppableWidget,
   useTreeNode,
   TreeNodeWidget
-} from '@designable/react'
+} from 'designable/react'
 import { observer } from '@formily/reactive-react'
 import React from 'react'
 import { queryNodesByComponentPath } from 'plugin-sdk/funcs'

@@ -5,7 +5,7 @@ import {
   useCursor,
   useValidNodeOffsetRect,
   usePrefix,
-} from '@designable/react'
+} from 'designable/react'
 import { observer } from '@formily/reactive-react'
 import { CursorStatus, ClosestPosition, TreeNode } from '@designable/core'
 import cls from 'classnames'

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { TreeNode, ITreeNode, WorkbenchTypes } from '@designable/core'
 import { observer } from '@formily/reactive-react'
-import { useTree, useWorkbench } from '@designable/react'
+import { useTree, useWorkbench } from 'designable/react'
 import { requestIdle } from '@designable/shared'
 import { Viewport } from '../containers/Viewport'
 

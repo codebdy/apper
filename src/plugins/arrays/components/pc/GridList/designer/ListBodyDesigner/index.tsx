@@ -6,7 +6,7 @@ import './styles.less'
 import {
   useTreeNode,
   TreeNodeWidget
-} from '@designable/react'
+} from 'designable/react'
 
 const data = [{}]
 export const ListBodyDesigner = observer((props: IListBodyProps) => {

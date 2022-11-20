@@ -1257,9 +1257,9 @@
     "@designable/shared" "1.0.0-beta.45"
     "@juggle/resize-observer" "^3.3.1"
 
-"@designable/react@^1.0.0-beta.45":
+"designable/react@^1.0.0-beta.45":
   version "1.0.0-beta.45"
-  resolved "https://registry.npmmirror.com/@designable/react/-/react-1.0.0-beta.45.tgz#d6b592904c55bce969959c14ec846a6dc262556c"
+  resolved "https://registry.npmmirror.com/designable/react/-/react-1.0.0-beta.45.tgz#d6b592904c55bce969959c14ec846a6dc262556c"
   integrity sha512-zZQ7cIl+X1ntXCNkeesCeMtLChWbFLsKTNmMVA6gS1wUWIlWb2aFQg/cM3P2JVmu2ovBE5EEEnomC94Nwz390A==
   dependencies:
     "@designable/core" "1.0.0-beta.45"
@@ -1830,7 +1830,7 @@
   integrity sha512-ZFGwZMdqGFsy90FwYCk6qjEr3U2gdxuydh4O/txB4dvSfyXt+mExubctaSuU7+DzKd2L0keIiHEaSWiVRrFI4A==
   dependencies:
     "@designable/core" "^1.0.0-beta.45"
-    "@designable/react" "^1.0.0-beta.45"
+    "designable/react" "^1.0.0-beta.45"
     "@formily/json-schema" "^2.2.5"
     prop-types "^15.7.2"
 

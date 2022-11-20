@@ -1,5 +1,5 @@
 import React from "react"
-import { DnFC, useTreeNode } from '@designable/react'
+import { DnFC, useTreeNode } from 'designable/react'
 import { observer } from "@formily/reactive-react"
 import { IComponentProps } from "../view"
 import Spring from "../view"

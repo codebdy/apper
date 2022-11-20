@@ -9,7 +9,7 @@ import {
   TreeNodeWidget,
   DroppableWidget,
   DnFC,
-} from '@designable/react'
+} from 'designable/react'
 import { matchComponent } from 'plugin-sdk'
 import { LoadTemplate } from 'designable/formily-antd/common/LoadTemplate'
 import { useDropTemplate } from 'designable/formily-antd/hooks'

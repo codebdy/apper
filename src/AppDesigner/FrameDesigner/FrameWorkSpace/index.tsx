@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Spin } from "antd";
-import { useDesigner } from '@designable/react'
+import { useDesigner } from 'designable/react'
 import { transformToTreeNode } from "../../UiDesigner/transformer";
 import { Field, ObjectContainer } from "@designable/formily-antd";
 import { ComponentTreeWidget, DesignerToolsWidget, PreviewWidget, SchemaEditorWidget, ViewToolsWidget } from "../../UiDesigner/widgets";

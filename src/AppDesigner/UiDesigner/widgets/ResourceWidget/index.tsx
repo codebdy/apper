@@ -7,7 +7,7 @@ import {
 } from '@designable/core'
 import { isFn } from '@designable/shared'
 import { observer } from '@formily/reactive-react'
-import { usePrefix, IconWidget, TextWidget } from '@designable/react'
+import { usePrefix, IconWidget, TextWidget } from 'designable/react'
 import cls from 'classnames'
 import './styles.less'
 

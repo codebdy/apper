@@ -4,7 +4,7 @@ import {
   DnFC,
   useTreeNode,
   useSelected,
-} from '@designable/react'
+} from 'designable/react'
 import { observer } from '@formily/reactive-react'
 import './styles.less'
 import { LoadTemplate } from '@designable/formily-antd/lib/common/LoadTemplate'

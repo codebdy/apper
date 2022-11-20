@@ -1,7 +1,7 @@
 import { observer } from "@formily/reactive-react"
 import React from "react"
 import { IListHeaderProps } from "../../view/ListHeader"
-import { DroppableWidget } from "@designable/react"
+import { DroppableWidget } from "designable/react"
 import clx from "classnames"
 
 export const ListHeaderDesigner = observer((props: IListHeaderProps) => {

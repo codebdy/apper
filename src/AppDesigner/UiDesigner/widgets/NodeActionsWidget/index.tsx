@@ -1,10 +1,10 @@
 import React from 'react'
 import { Space, Typography, Divider, TypographyProps } from 'antd'
 import { observer } from '@formily/reactive-react'
-import { useTreeNode, useSelected } from '@designable/react'
+import { useTreeNode, useSelected } from 'designable/react'
 import cls from 'classnames'
 import './styles.less'
-import { usePrefix, IconWidget, TextWidget } from "@designable/react"
+import { usePrefix, IconWidget, TextWidget } from "designable/react"
 
 export interface INodeActionsWidgetProps {
   className?: string

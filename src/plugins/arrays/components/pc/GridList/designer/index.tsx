@@ -2,7 +2,7 @@ import React from 'react'
 import {
   DnFC,
   TreeNodeWidget,
-} from '@designable/react'
+} from 'designable/react'
 import { observer } from '@formily/reactive-react'
 import { IGridListProps } from '../view'
 import cls from "classnames";

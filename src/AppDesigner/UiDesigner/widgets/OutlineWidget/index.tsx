@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect } from 'react'
 import cls from 'classnames'
-import { useTree, usePrefix, useOutline, useWorkbench } from '@designable/react'
+import { useTree, usePrefix, useOutline, useWorkbench } from 'designable/react'
 import { observer } from '@formily/reactive-react'
 import { OutlineTreeNode } from './OutlineNode'
 import { Insertion } from './Insertion'

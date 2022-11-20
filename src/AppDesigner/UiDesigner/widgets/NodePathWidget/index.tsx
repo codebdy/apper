@@ -1,6 +1,6 @@
 import React from 'react'
 import { Breadcrumb, Button } from 'antd'
-import { useCurrentNode, useSelection, usePrefix, useHover } from '@designable/react'
+import { useCurrentNode, useSelection, usePrefix, useHover } from 'designable/react'
 import { IconWidget } from '../IconWidget'
 import { NodeTitleWidget } from '../NodeTitleWidget'
 import { observer } from '@formily/reactive-react'

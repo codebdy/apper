@@ -1,7 +1,7 @@
 import { DownOutlined } from '@ant-design/icons';
 import {
   DnFC,
-} from '@designable/react'
+} from 'designable/react'
 import { observer } from "@formily/reactive-react";
 import { Button } from 'antd';
 import React, { useCallback } from "react";

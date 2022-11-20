@@ -7,7 +7,7 @@ import {
   DroppableWidget,
   useNodeIdProps,
   DnFC,
-} from '@designable/react'
+} from 'designable/react'
 import { ArrayBase } from '@formily/antd'
 import { observer } from '@formily/react'
 import { LoadTemplate } from '@designable/formily-antd/lib/common/LoadTemplate'

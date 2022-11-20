@@ -1,5 +1,5 @@
 import React from 'react'
-import { usePrefix } from "@designable/react"
+import { usePrefix } from "designable/react"
 
 export interface IWorkspaceItemProps {
   style?: React.CSSProperties

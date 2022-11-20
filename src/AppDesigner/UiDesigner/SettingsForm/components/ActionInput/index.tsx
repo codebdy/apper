@@ -3,7 +3,7 @@ import {
   observer,
 } from '@formily/react'
 import { Button, Divider, Empty, Modal, Space } from 'antd';
-import { TextWidget } from '@designable/react';
+import { TextWidget } from 'designable/react';
 import "./style.less"
 import { DATA_ACTIONS_LIST, ToolCollapse, UI_ACTIONS_LIST } from './ToolCollapse';
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from '@ant-design/icons';

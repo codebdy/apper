@@ -1,4 +1,4 @@
-import { DroppableWidget } from "@designable/react"
+import { DroppableWidget } from "designable/react"
 import { observer } from "@formily/react"
 import React from "react"
 import PageTabPanel, { IPageTabPanelProps } from "../../view/PageTabPanel"

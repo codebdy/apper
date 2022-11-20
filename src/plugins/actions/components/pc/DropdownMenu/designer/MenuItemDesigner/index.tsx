@@ -1,7 +1,7 @@
 import React, { } from 'react'
 import {
   DnFC,
-} from '@designable/react'
+} from 'designable/react'
 import { observer } from '@formily/reactive-react'
 import clx from "classnames";
 import { IconView, useParseLangMessage } from '@rxdrag/plugin-sdk'

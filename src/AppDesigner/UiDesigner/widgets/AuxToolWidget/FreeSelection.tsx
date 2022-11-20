@@ -1,5 +1,5 @@
 import React from 'react'
-import { useCursor, usePrefix, useViewport } from '@designable/react'
+import { useCursor, usePrefix, useViewport } from 'designable/react'
 import { observer } from '@formily/reactive-react'
 import { CursorStatus, CursorType } from '@designable/core'
 import { calcRectByStartEndPoint } from '@designable/shared'

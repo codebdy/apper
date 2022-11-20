@@ -3,7 +3,7 @@ import { Button } from 'antd'
 import {
   usePrefix,
   IconWidget,
-} from "@designable/react"
+} from "designable/react"
 import cls from 'classnames'
 import './styles.less'
 import { useDesignerViewKey } from 'plugin-sdk/contexts/desinger'

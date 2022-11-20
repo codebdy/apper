@@ -1,5 +1,5 @@
 import React, { useMemo, useRef, Fragment } from 'react'
-import { WorkspaceContext, useDesigner } from "@designable/react"
+import { WorkspaceContext, useDesigner } from "designable/react"
 
 export interface IWorkspaceProps {
   id?: string
