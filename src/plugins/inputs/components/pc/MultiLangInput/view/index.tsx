@@ -5,17 +5,19 @@ import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { useDesignerAppConfig } from "plugin-sdk/contexts/desinger";
 import ResourceEditDialog from "./ResourceEditDialog";
 
+export interface IMultiLangInputProps{
+  multiline?: boolean,
+  onChange?: (value?: string) => void,
+  value?: string,
+  inline?: boolean,
+  title?: string,
+  rows?: number,
+  onClick?: (event: React.MouseEvent<any>) => void,
+  onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void,
+}
+
 export const MultiLangInput = (
-  props?: {
-    multiline?: boolean,
-    onChange?: (value: string) => void,
-    value?: string,
-    inline?: boolean,
-    title?: string,
-    rows?: number,
-    onClick?: (event: React.MouseEvent<any>) => void,
-    onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void,
-  }
+  props: IMultiLangInputProps
 ) => {
   const { multiline, onChange, onKeyUp, onClick, value, inline, title, rows, ...other } = props;
   const appConfig = useDesignerAppConfig();
