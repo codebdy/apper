@@ -119,7 +119,7 @@ export function useColumns(roleId: ID) {
         </>
       }
     },
-  ], [roleId]);
+  ], [roleId, t]);
 
   return columns;
 }

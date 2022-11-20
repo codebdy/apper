@@ -1,11 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { ColumnsType } from 'antd/es/table';
 import { useMemo } from "react";
-import React from "react";
 import { ID } from "shared";
 import { IUiAuthRow } from "../IUiAuthConfig";
 import { MenuAuthChecker } from "./MenuAuthChecker";
-
 
 export function useColumns(roleId: ID) {
   const { t } = useTranslation();
@@ -25,7 +23,7 @@ export function useColumns(roleId: ID) {
         return <MenuAuthChecker
           roleId={roleId}
           menuAuthConfig={menuConfig}
-          menuItemUuid={menuItemUuid}
+          menuItemUuid={menuItemUuid || ""}
           device={device}
         />
       }
@@ -36,7 +34,7 @@ export function useColumns(roleId: ID) {
       key: 'blank',
     },
 
-  ], [roleId, roleId]);
+  ], [roleId, t]);
 
   return columns;
 }
