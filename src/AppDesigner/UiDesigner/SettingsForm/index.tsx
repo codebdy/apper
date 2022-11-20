@@ -12,8 +12,6 @@ import {
   IconWidget,
   NodePathWidget,
 } from 'designable/react'
-import { SettingsFormContext } from 'designable/react-settings-form/lib//shared/context'
-import { useLocales, useSnapshot } from 'designable/react-settings-form/lib//effects'
 import { Empty, Tooltip } from 'antd'
 import cls from 'classnames'
 import './styles.less'
@@ -21,6 +19,8 @@ import { ISettingFormProps } from './types'
 import { QuestionCircleOutlined } from '@ant-design/icons'
 import { SchemaField } from './SchemaField'
 import "./locales"
+import { SettingsFormContext } from 'designable/react-settings-form/shared/context'
+import { getLocales, getSnapshot } from 'designable/react-settings-form/effects'
 
 const GlobalState = {
   idleRequest: null,
@@ -47,10 +47,8 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
         initialValues: node?.designerProps?.defaultProps,
         values: node?.props,
         effects(form) {
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          useLocales(node)
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          useSnapshot(operation)
+          getLocales(node)
+          getSnapshot(operation)
           props.effects?.(form)
         },
       })
@@ -92,9 +90,9 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
     }
 
     const description = useMemo(() => node?.getMessage("description"), [node]);
-
+    const IconWidgetProvider = IconWidget.Provider as any
     return (
-      <IconWidget.Provider tooltip>
+      <IconWidgetProvider tooltip>
         <div className={prefix + '-wrapper'}>
           {!isEmpty &&
             <div
@@ -110,15 +108,15 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
           }
           <div className={prefix + '-content'}>{render()}</div>
         </div>
-      </IconWidget.Provider>
+      </IconWidgetProvider>
     )
   },
   {
     scheduler: (update) => {
-      cancelIdle(GlobalState.idleRequest)
+      cancelIdle(GlobalState.idleRequest as any)
       GlobalState.idleRequest = requestIdle(update, {
         timeout: 500,
-      })
+      }) as any
     },
   }
 )

@@ -42,7 +42,7 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
           props.effects?.(form)
         },
       })
-    }, [node, node?.props, schema, operation, isEmpty])
+    }, [node, operation, props])
 
     const render = () => {
       if (!isEmpty) {

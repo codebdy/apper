@@ -34,19 +34,19 @@ export const FieldSourceInput = observer((
     };
   }, [getEntity])
 
-  const handleSingleChange = useCallback((value) => {
+  const handleSingleChange = useCallback((value: any) => {
     if (!value) {
-      onChange(undefined);
+      onChange && onChange(undefined);
       return;
     }
     const attr = currentEntity?.attributes?.find(attr => attr.name === value);
     if (attr) {
-      onChange(createAttrSource(attr))
+      onChange && onChange(createAttrSource(attr))
       return;
     }
     const method = currentEntity?.methods?.find(method => method.name === value);
     if (method) {
-      onChange({
+      onChange && onChange({
         name: method.name,
         sourceType: FieldSourceType.Method,
         label: method.label,
@@ -58,7 +58,7 @@ export const FieldSourceInput = observer((
 
     const assoc = currentEntity?.associations?.find(assoc => assoc.name === value);
     if (assoc) {
-      onChange({
+      onChange && onChange({
         name: assoc.name,
         sourceType: FieldSourceType.Association,
         label: assoc.label,
@@ -69,28 +69,28 @@ export const FieldSourceInput = observer((
       return;
     }
 
-    onChange(undefined);
+    onChange && onChange(undefined);
   }, [createAttrSource, currentEntity?.associations, currentEntity?.attributes, currentEntity?.methods, getEntity, onChange])
 
-  const handleMultiChange = useCallback((value) => {
+  const handleMultiChange = useCallback((value: any) => {
     if (!value) {
-      onChange(undefined);
+      onChange && onChange(undefined);
       return;
     }
 
     if (isArr(value)) {
-      onChange(value?.map(child => {
+      onChange && onChange(value?.map(child => {
         const attr = currentEntity?.attributes?.find(attr => attr.name === child);
         return attr && createAttrSource(attr);
-      }))
+      }) as any)
     }
     else {
       const attr = currentEntity?.attributes?.find(attr => attr.name === value);
-      onChange([createAttrSource(attr)])
+      onChange && onChange([createAttrSource(attr as any)])
     }
   }, [createAttrSource, currentEntity?.attributes, onChange])
 
-  const handleChange = useCallback((value) => {
+  const handleChange = useCallback((value: any) => {
     if (!onChange) {
       return;
     }

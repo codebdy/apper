@@ -18,7 +18,7 @@ export const useArrayTableSources = () => {
   useEffect(() => {
     console.log("schema 变化");
   }, [schema]);
-  const parseSources = useCallback((schema: Schema): ObservableColumnSource[] => {
+  const parseSources = useCallback((schema: Schema): ObservableColumnSource[] | undefined => {
     const isColumn = isColumnComponent(schema);
     const isColumnGroup = isColumnGroupComponent(schema);
     if (isColumn || isColumnGroup) {
@@ -35,13 +35,13 @@ export const useArrayTableSources = () => {
           schema,
           columnProps,
           children: schema.reduceProperties((buf, schema) => {
-            return buf.concat(parseSources(schema));
+            return buf.concat(parseSources(schema) as any);
           }, []).filter(child => child),
         },
       ];
     } else if (schema.properties) {
       return schema.reduceProperties((buf, schema) => {
-        return buf.concat(parseSources(schema));
+        return buf.concat(parseSources(schema) as any);
       }, []);
     }
   }, [p]);
