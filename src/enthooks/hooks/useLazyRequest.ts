@@ -11,15 +11,15 @@ export interface RequestOptions<T> {
 
 export function useLazyRequest<T>(options?: RequestOptions<any>)
   : [
-    (gql: string | undefined, input?: any) => void,
+    (gql: string | undefined, input?: T) => void,
     {
       error?: GraphQLRequestError,
       loading?: boolean,
-      data?: T,
+      data?: { [key:string]: any },
     }
   ] {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<T>(undefined);
+  const [data, setData] = useState<any>(undefined);
   const [error, setError] = useState<GraphQLRequestError | undefined>();
   const endpoint = useEndpoint();
   const token = useToken();
@@ -50,9 +50,9 @@ export function useLazyRequest<T>(options?: RequestOptions<any>)
       setError(undefined);
       graphQLClient
         .request(gql, params, {
-          headers: headers
+          headers: headers as any
         })
-        .then((data: T) => {
+        .then((data: any) => {
           if (!mountRef.current) {
             return;
           }
@@ -67,6 +67,8 @@ export function useLazyRequest<T>(options?: RequestOptions<any>)
           options?.onError && options?.onError(err);
         });
     },
+    //此处需要确认
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [endpoint, token, appId, mountRef/*, options*/]
   );
 

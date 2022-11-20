@@ -39,7 +39,7 @@ export function normalizeHeaders(
 	if (isIterableHeaders(headers)) {
 		const newHeaders: Record<string, string> = {}
 
-		for (const [key, value] of headers) {
+		for (const [key, value] of headers as any) {
 			newHeaders[key.toLowerCase()] = value
 		}
 

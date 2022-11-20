@@ -63,16 +63,16 @@ export function useQueryOne<T>(input: IQueryInput): QueryOneResponse<T> {
   }, [endpoint, input.gql, input.params]);
 
   useEffect(() => {
-    on(EVENT_DATA_POSTED, eventHandler);
-    on(EVENT_DATA_REMOVED, eventHandler);
-    on(EVENT_DATA_UPDATED, eventHandler);
+    on(EVENT_DATA_POSTED, eventHandler as any);
+    on(EVENT_DATA_REMOVED, eventHandler as any);
+    on(EVENT_DATA_UPDATED, eventHandler as any);
     return () => {
-      off(EVENT_DATA_POSTED, eventHandler);
-      off(EVENT_DATA_REMOVED, eventHandler);
-      off(EVENT_DATA_UPDATED, eventHandler);
+      off(EVENT_DATA_POSTED, eventHandler as any);
+      off(EVENT_DATA_REMOVED, eventHandler as any);
+      off(EVENT_DATA_UPDATED, eventHandler as any);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return { data, loading: (revalidating ? false : loading), revalidating, error, refresh };
+  return { data: data as any, loading: (revalidating ? false : loading), revalidating, error, refresh };
 }

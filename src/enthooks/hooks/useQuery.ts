@@ -66,13 +66,13 @@ export function useQuery<T>(input: IQueryInput): QueryResponse<T> {
   }, [load]);
 
   useEffect(() => {
-    on(EVENT_DATA_POSTED, eventHandler);
-    on(EVENT_DATA_REMOVED, eventHandler);
-    on(EVENT_DATA_UPDATED, eventHandler);
+    on(EVENT_DATA_POSTED, eventHandler as any);
+    on(EVENT_DATA_REMOVED, eventHandler as any);
+    on(EVENT_DATA_UPDATED, eventHandler as any);
     return () => {
-      off(EVENT_DATA_POSTED, eventHandler);
-      off(EVENT_DATA_REMOVED, eventHandler);
-      off(EVENT_DATA_UPDATED, eventHandler);
+      off(EVENT_DATA_POSTED, eventHandler as any);
+      off(EVENT_DATA_REMOVED, eventHandler as any);
+      off(EVENT_DATA_UPDATED, eventHandler as any);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -27,7 +27,7 @@ export function useCreateVersion(options?: RequestOptions<any>): [
     ...options||{},
     onCompleted:(data)=>{
       trigger(EVENT_DATA_POSTED, { entity: "Snapshot" })
-      options?.onCompleted(data);
+      options?.onCompleted && options?.onCompleted(data);
     }
   })
 
