@@ -10,7 +10,7 @@ const ComponentDesigner: DnFC<IComponentProps> = observer((
   const node = useTreeNode();
   return (
     <div className="appx-page-designer" {...props}>
-      {node.getMessage("pageReander")}
+      {node?.getMessage("pageReander")}
     </div>
   )
 })
