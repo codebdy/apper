@@ -40,7 +40,7 @@ const IconSelectForm = memo((
     }
   }), [t])
 
-  const handleChange = useCallback((key) => {
+  const handleChange = useCallback((key: any) => {
     onTypeChange(key)
   }, [onTypeChange]);
 
@@ -88,7 +88,7 @@ const IconSelectForm = memo((
           </Space>
         }
         {
-          !keyword && getCategory(categoryName).iconGroups.map((group) => {
+          !keyword && getCategory(categoryName)?.iconGroups.map((group) => {
             return (
               <div>
                 <h3 style={{ padding: "16px 0" }}>

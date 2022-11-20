@@ -48,7 +48,7 @@ const IconInput = memo((
 
   const handelRemove = useCallback(() => {
     setInputValue(undefined);
-    onChange({ target: { value: undefined } });
+    onChange && onChange({ target: { value: undefined } });
   }, [onChange]);
 
   const handleShow = useCallback(() => {
@@ -61,13 +61,13 @@ const IconInput = memo((
   }, [reset])
 
   const handleConfirm = useCallback(() => {
-    let newValue: IIcon = {
+    let newValue: IIcon | undefined = {
       iconKey: iconType === IconType.Normal ? selectedIcon : undefined,
       svgString: iconType === IconType.Customized ? customizedIcon : undefined,
     }
     newValue = isEmpertyIcon(newValue) ? undefined : newValue;
     setInputValue(newValue);
-    onChange({ target: { value: newValue } });
+    onChange && onChange({ target: { value: newValue } });
     setVisible(false);
   }, [customizedIcon, iconType, onChange, selectedIcon])
 
