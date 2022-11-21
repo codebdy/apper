@@ -33,7 +33,7 @@ const mapDateFormat = function () {
     } else if (props['picker'] === 'week') {
       return 'gggg-wo'
     }
-    return props['showTime'] ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD'
+    return (props as any)['showTime'] ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD'
   }
   return (props: any) => {
     const format = props['format'] || getDefaultFormat(props)
@@ -55,12 +55,12 @@ export const DatePicker: ComposedDatePicker = connect(
   AntdDatePicker,
   mapProps(mapDateFormat()),
   mapReadPretty(PreviewText.DatePicker)
-)
+) as any
 
 DatePicker.RangePicker = connect(
   AntdDatePicker.RangePicker,
   mapProps(mapDateFormat()),
   mapReadPretty(PreviewText.DateRangePicker)
-)
+) as any
 
 export default DatePicker

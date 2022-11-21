@@ -9,6 +9,8 @@ export interface IPortalProps {
 
 const PortalMap = observable(new Map<string | symbol, React.ReactNode>())
 
+const ObserverAny = Observer as any;
+
 export const createPortalProvider = (id: string | symbol) => {
   const Portal = (props: React.PropsWithChildren<IPortalProps>) => {
     if (props.id && !PortalMap.has(props.id)) {
@@ -18,14 +20,14 @@ export const createPortalProvider = (id: string | symbol) => {
     return (
       <Fragment>
         {props.children}
-        <Observer>
+        <ObserverAny>
           {() => {
             if (!props.id) return null
             const portal = PortalMap.get(props.id)
             if (portal) return createPortal(portal, document.body)
             return null
-          }}
-        </Observer>
+          } }
+        </ObserverAny>
       </Fragment>
     )
   }

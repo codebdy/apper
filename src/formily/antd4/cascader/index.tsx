@@ -14,7 +14,7 @@ export const Cascader = connect(
       return {
         ...props,
         suffixIcon:
-          field?.['loading'] || field?.['validating'] ? (
+          (field as any)?.['loading'] || (field as any)?.['validating'] ? (
             <LoadingOutlined />
           ) : (
             props.suffixIcon
