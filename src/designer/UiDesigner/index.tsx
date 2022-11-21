@@ -39,6 +39,7 @@ export enum DesignerRoutes {
   Templates = "Templates",
   Pages = "pages",
   Components = "coms",
+  Entities = "entities",
   //Fragments = "fratments",
   OutlinedTree = "outlinedTree",
   Menu = "menu",
@@ -128,6 +129,13 @@ export const UiDesigner = memo(() => {
               <CompositePanel.Item
                 key={DesignerRoutes.Components}
                 title={t("Panels.Component")}
+                icon="Component"
+              >
+                <MaterialWidget />
+              </CompositePanel.Item>
+              <CompositePanel.Item
+                key={DesignerRoutes.Entities}
+                title={t("Panels.Entities")}
                 icon="Component"
               >
                 <MaterialWidget />
