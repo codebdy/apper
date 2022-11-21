@@ -100,12 +100,12 @@ const NumberPicker: React.FC<React.PropsWithChildren<InputNumberProps>> = (
       {usePlaceholder(
         props.formatter
           ? props.formatter(String(props.value), {
-              userTyping: false,
-              input: '',
-            })
+            userTyping: false,
+            input: '',
+          })
           : props.value
       )}
-      {props['suffix']}
+      {(props as any)['suffix']}
       {props.addonAfter}
     </Space>
   )
@@ -118,8 +118,8 @@ const Select: React.FC<React.PropsWithChildren<SelectProps<any>>> = observer(
     const dataSource: any[] = field?.dataSource?.length
       ? field.dataSource
       : props?.options?.length
-      ? props.options
-      : []
+        ? props.options
+        : []
     const placeholder = usePlaceholder()
     const getSelected = () => {
       const value = props.value
@@ -142,7 +142,7 @@ const Select: React.FC<React.PropsWithChildren<SelectProps<any>>> = observer(
 
     const getLabel = (target: any) => {
       return (
-        dataSource?.find((item) => item.value == target?.value)?.label ||
+        dataSource?.find((item) => item.value === target?.value)?.label ||
         target.label ||
         placeholder
       )
@@ -172,8 +172,8 @@ const TreeSelect: React.FC<React.PropsWithChildren<TreeSelectProps<any>>> =
     const dataSource = field?.dataSource?.length
       ? field.dataSource
       : props?.treeData?.length
-      ? props.treeData
-      : []
+        ? props.treeData
+        : []
     const getSelected = () => {
       const value = props.value
       if (props.multiple) {
@@ -201,9 +201,9 @@ const TreeSelect: React.FC<React.PropsWithChildren<TreeSelectProps<any>>> =
       for (let i = 0; i < dataSource?.length; i++) {
         const item = dataSource[i]
         if (item?.value === value) {
-          return item?.label ?? item[treeNodeLabelProp]
+          return item?.label ?? item[treeNodeLabelProp as any]
         } else {
-          const childLabel = findLabel(value, item?.children, treeNodeLabelProp)
+          const childLabel: any = findLabel(value, item?.children, treeNodeLabelProp)
           if (childLabel) return childLabel
         }
       }
@@ -233,12 +233,12 @@ const Cascader: React.FC<React.PropsWithChildren<CascaderProps<any>>> =
   observer((props) => {
     const field = useField<Field>()
     const placeholder = usePlaceholder()
-    const prefixCls = usePrefixCls('form-text', props)
+    const prefixCls = usePrefixCls('form-text', props as any)
     const dataSource: any[] = field?.dataSource?.length
       ? field.dataSource
       : props?.options?.length
-      ? props.options
-      : []
+        ? props.options
+        : []
     const getSelected = () => {
       const val = toArr(props.value)
       return props.multiple
@@ -248,8 +248,8 @@ const Cascader: React.FC<React.PropsWithChildren<CascaderProps<any>>> =
     const getLabels = () => {
       const selected = getSelected()
       const labels = getValueByValue(dataSource, selected)
-        ?.filter((item) => isValid(item))
-        ?.map((item) => item?.whole?.join('/'))
+        ?.filter((item: any) => isValid(item))
+        ?.map((item: any) => item?.whole?.join('/'))
         .join(', ')
       return labels || placeholder
     }

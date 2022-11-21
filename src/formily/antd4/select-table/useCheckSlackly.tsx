@@ -23,7 +23,7 @@ const getIndeterminate = (
     return undefined
   }
   const wholeRecord = flatDataSource.find(
-    (item) => item[primaryKey] === record[primaryKey]
+    (item: any) => item[primaryKey] === record[primaryKey]
   )
   return hasSelectedKey(wholeRecord.children, selected, primaryKey) || undefined
 }
@@ -75,7 +75,7 @@ const useCheckSlackly: ICheckSlackly = (
   let newSelected = []
   if (isSelected) {
     // 选中当前key及其子keys
-    newSelected = [...new Set([...selected, currentKey, ...currentTreeKeys])]
+    newSelected = [...new Set([...selected, currentKey, ...currentTreeKeys]) as any]
   } else {
     // 移除当前key及其子keys
     newSelected = selected.filter(
