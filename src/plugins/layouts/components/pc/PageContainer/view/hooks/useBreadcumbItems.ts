@@ -31,7 +31,7 @@ export function useBreadcumbItems() {
   const breadCumbs = useMemo(() => {
     const items: Route[] = [];
     const mnUuid = menuUuid
-    const menuPath = getMenuItemPath(mnUuid);
+    const menuPath = getMenuItemPath(mnUuid||"");
     for (const item of menuPath) {
       items.push({
         breadcrumbName: p(item.title),

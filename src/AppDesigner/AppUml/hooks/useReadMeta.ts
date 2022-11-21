@@ -36,7 +36,7 @@ export function useReadMeta(appId: ID): { error?: GraphQLRequestError; loading?:
   const input = useMemo(() => ({
     gql: queryGql,
     params: { appId }
-  }), [appId, queryGql])
+  }), [appId])
 
   const { data, error, loading } = useQueryOne<IApp>(input);
 
@@ -45,7 +45,7 @@ export function useReadMeta(appId: ID): { error?: GraphQLRequestError; loading?:
       gql: appId !== SYSTEM_APP_ID ? queryGql : undefined,
       params: { appId: SYSTEM_APP_ID }
     }
-  ), [appId, queryGql])
+  ), [appId])
   const { data: systemData, error: systemError, loading: systemLoading } = useQueryOne<IApp>(systemInput);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export function useReadMeta(appId: ID): { error?: GraphQLRequestError; loading?:
         return systemMeta?.packages?.find(pkg => pkg.uuid === packageUuid);
       }
       const systemPackages = systemMeta?.packages?.filter(pkg => pkg.sharable) || [];
-      const systemClasses = systemMeta?.classes?.filter(cls => getPackage(cls.packageUuid).sharable) || []
+      const systemClasses = systemMeta?.classes?.filter(cls => getPackage(cls.packageUuid)?.sharable) || []
       setPackages([...systemPackages, ...meta?.packages || []]);
       setClasses([...systemClasses, ...meta?.classes || []]);
       setRelations(meta?.relations || []);

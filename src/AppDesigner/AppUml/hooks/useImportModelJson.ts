@@ -29,7 +29,7 @@ export function useImportModelJson(appId: string) {
             }
 
             const systemPackages = appId === SYSTEM_APP_ID ? [] : packages?.filter(pkg => pkg.sharable) || [];
-            const systemClasses = appId === SYSTEM_APP_ID ? [] : classes?.filter(cls => getPackage(cls.packageUuid).sharable) || []
+            const systemClasses = appId === SYSTEM_APP_ID ? [] : classes?.filter(cls => getPackage(cls.packageUuid)?.sharable) || []
             setPackages([...systemPackages, ...meta?.packages || []]);
             setClasses([...systemClasses, ...meta?.classes || []]);
             setRelations(meta?.relations || []);
@@ -45,7 +45,7 @@ export function useImportModelJson(appId: string) {
         });
       });
     });
-  }, [backupSnapshot, classes, packages, setClasses, setRelations, setDiagrams, setX6Nodes, setX6Edges, setPackages]);
+  }, [backupSnapshot, appId, packages, classes, setPackages, setClasses, setRelations, setDiagrams, setX6Nodes, setX6Edges]);
 
   return doImport
 }

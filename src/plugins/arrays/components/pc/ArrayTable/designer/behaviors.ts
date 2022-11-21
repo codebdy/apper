@@ -8,7 +8,7 @@ const behaviors: IBehavior[] = [
   {
     name,
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === name,
+    selector: (node) => node.props?.['x-component'] === name,
     designerProps: {
       droppable: true,
     },
@@ -20,11 +20,11 @@ const behaviors: IBehavior[] = [
   {
     name: 'ArrayTable.Column',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'ArrayTable.Column',
+    selector: (node) => node.props?.['x-component'] === 'ArrayTable.Column',
     designerProps: {
       droppable: true,
       allowDrop: (node) =>
-        node.props['type'] === 'object' &&
+        node.props?.['type'] === 'object' &&
         node.parent?.props?.['x-component'] === 'ArrayTable',
     },
     designerLocales: ArrayTableColumnLocales,

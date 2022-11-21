@@ -6,13 +6,13 @@ import { useLazyRequest } from "./useLazyRequest";
 export interface IPostOptions<T> {
   fieldsGql?:string,
   onCompleted?: (data: T) => void;
-  onError?: (error: GraphQLRequestError) => void;
+  onError?: (error: GraphQLRequestError|Error) => void;
   noRefresh?: boolean;
 }
 
 export type PostResponse<T> = [
   (data: T) => void,
-  { loading?: boolean; error?: GraphQLRequestError }
+  { loading?: boolean; error?: GraphQLRequestError|Error }
 ]
 
 export function usePostOne<T, T2>(

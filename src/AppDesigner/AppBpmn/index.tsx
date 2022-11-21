@@ -133,7 +133,7 @@ export const AppBpmn = memo((props) => {
       });
 
       if (process?.xml) {
-        bpmnModeler.importXML(process?.xml);
+        bpmnModeler.importXML(process?.xml, undefined);
       }
       return () => {
         bpmnModeler?.destroy();

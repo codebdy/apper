@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { Form, Input } from "antd";
 import { useTranslation } from "react-i18next";
 import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view";
@@ -26,10 +26,10 @@ export const CodePanel = (props: { code: CodeMeta }) => {
     },
     [code, form]
   )
-  const handleChange = useCallback((formData) => {
+  const handleChange = useCallback((formData: any) => {
     backup();
     setCodes(codes => codes.map(dm => dm.uuid === code.uuid ? { ...code, ...formData } : dm))
-  }, [backup, code])
+  }, [backup, code, setCodes])
 
   return (
     <div className="property-pannel">

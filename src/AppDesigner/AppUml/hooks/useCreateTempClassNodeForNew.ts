@@ -10,6 +10,9 @@ export function useCreateTempClassNodeForNew(appId: ID) {
   const creatNewClassMeta = useCreateNewClass(appId);
   const createTempClassNodeForNew = useCallback(
     (stereoType: StereoType) => {
+      if (!packageUuid) {
+        return
+      }
       const classMeta = creatNewClassMeta(stereoType, packageUuid);
       if (
         stereoType === StereoType.ValueObject ||
