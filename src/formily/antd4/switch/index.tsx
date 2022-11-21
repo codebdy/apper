@@ -9,11 +9,11 @@ export const Switch = connect(
     },
     (props) => {
       const onChange = props.onChange
-      delete props['value']
+      delete (props as any)['value']
       return {
         ...props,
         onChange(checked) {
-          onChange?.(checked, null)
+          onChange?.(checked, null as any)
         },
       }
     }

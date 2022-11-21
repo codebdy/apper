@@ -31,7 +31,7 @@ const useEditable = (): [boolean, (payload: boolean) => void] => {
     if (pattern === 'editable') {
       return field.setPattern('readPretty')
     }
-  }, [pattern])
+  }, [field, pattern])
   return [
     field.pattern === 'editable',
     (payload: boolean) => {
@@ -106,14 +106,14 @@ export const Editable: ComposedEditable = observer((props) => {
 
   const onClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const target = e.target as HTMLElement
-    const close = innerRef.current.querySelector(`.${prefixCls}-close-btn`)
-    if (target?.contains(close) || close?.contains(target)) {
+    const close = innerRef.current?.querySelector(`.${prefixCls}-close-btn`)
+    if (target?.contains(close as any) || close?.contains(target)) {
       recover()
     } else if (!ref.current) {
       setTimeout(() => {
         setEditable(true)
         setTimeout(() => {
-          innerRef.current.querySelector('input')?.focus()
+          innerRef.current?.querySelector('input')?.focus()
         })
       })
     }
@@ -122,7 +122,7 @@ export const Editable: ComposedEditable = observer((props) => {
   ref.current = editable
 
   return (
-    <div className={prefixCls} ref={innerRef} onClick={onClick}>
+    <div className={prefixCls} ref={innerRef as any} onClick={onClick}>
       <div className={`${prefixCls}-content`}>
         <BaseItem {...props} {...itemProps}>
           {props.children}

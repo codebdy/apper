@@ -70,9 +70,9 @@ type ComposedArrayBase = React.FC<React.PropsWithChildren<IArrayBaseProps>> &
     mixin?: <T extends JSXComponent>(target: T) => T & ArrayBaseMixins
   }
 
-const ArrayBaseContext = createContext<IArrayBaseContext>(null)
+const ArrayBaseContext = createContext<IArrayBaseContext|null>(null)
 
-const ItemContext = createContext<IArrayBaseItemProps>(null)
+const ItemContext = createContext<IArrayBaseItemProps|null>(null)
 
 const takeRecord = (val: any) => (typeof val === 'function' ? val() : val)
 
@@ -95,7 +95,7 @@ const getSchemaDefaultValue = (schema: Schema) => {
   if (schema?.type === 'object') return {}
   if (schema?.type === 'void') {
     for (let key in schema.properties) {
-      const value = getSchemaDefaultValue(schema.properties[key])
+      const value: any = getSchemaDefaultValue(schema.properties[key])
       if (isValid(value)) return value
     }
   }
@@ -105,7 +105,7 @@ const getDefaultValue = (defaultValue: any, schema: Schema) => {
   if (isValid(defaultValue)) return clone(defaultValue)
   if (Array.isArray(schema?.items))
     return getSchemaDefaultValue(schema.items[0])
-  return getSchemaDefaultValue(schema.items)
+  return getSchemaDefaultValue(schema.items as any)
 }
 
 export const ArrayBase: ComposedArrayBase = (props) => {
@@ -145,6 +145,7 @@ const SortHandle = SortableHandle((props: any) => {
 }) as any
 
 ArrayBase.SortHandle = (props) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const array = useArray()
   if (!array) return null
   if (array.field?.pattern !== 'editable') return null
@@ -152,18 +153,23 @@ ArrayBase.SortHandle = (props) => {
 }
 
 ArrayBase.Index = (props) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const index = useIndex()
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const prefixCls = usePrefixCls('formily-array-base')
   return (
     <span {...props} className={`${prefixCls}-index`}>
-      #{index + 1}.
+      #{(index||0) + 1}.
     </span>
   )
 }
 
 ArrayBase.Addition = (props) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const self = useField()
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const array = useArray()
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const prefixCls = usePrefixCls('formily-array-base')
   if (!array) return null
   if (
@@ -199,7 +205,7 @@ ArrayBase.Addition = (props) => {
   )
 }
 
-ArrayBase.Remove = React.forwardRef((props, ref) => {
+ArrayBase.Remove = React.forwardRef((props:any, ref) => {
   const index = useIndex(props.index)
   const self = useField()
   const array = useArray()
@@ -218,17 +224,17 @@ ArrayBase.Remove = React.forwardRef((props, ref) => {
       onClick={(e) => {
         if (self?.disabled) return
         e.stopPropagation()
-        array.field?.remove?.(index)
-        array.props?.onRemove?.(index)
+        array.field?.remove?.(index as any)
+        array.props?.onRemove?.(index as any)
         if (props.onClick) {
           props.onClick(e)
         }
       }}
     />
   )
-})
+}) as any
 
-ArrayBase.MoveDown = React.forwardRef((props, ref) => {
+ArrayBase.MoveDown = React.forwardRef((props:any, ref) => {
   const index = useIndex(props.index)
   const self = useField()
   const array = useArray()
@@ -247,17 +253,17 @@ ArrayBase.MoveDown = React.forwardRef((props, ref) => {
       onClick={(e) => {
         if (self?.disabled) return
         e.stopPropagation()
-        array.field?.moveDown?.(index)
-        array.props?.onMoveDown?.(index)
+        array.field?.moveDown?.(index as any)
+        array.props?.onMoveDown?.(index as any)
         if (props.onClick) {
           props.onClick(e)
         }
       }}
     />
   )
-})
+}) as any
 
-ArrayBase.MoveUp = React.forwardRef((props, ref) => {
+ArrayBase.MoveUp = React.forwardRef((props:any, ref) => {
   const index = useIndex(props.index)
   const self = useField()
   const array = useArray()
@@ -276,18 +282,18 @@ ArrayBase.MoveUp = React.forwardRef((props, ref) => {
       onClick={(e) => {
         if (self?.disabled) return
         e.stopPropagation()
-        array?.field?.moveUp(index)
-        array?.props?.onMoveUp?.(index)
+        array?.field?.moveUp(index as any)
+        array?.props?.onMoveUp?.(index as any)
         if (props.onClick) {
           props.onClick(e)
         }
       }}
     />
   )
-})
+}) as any
 
-ArrayBase.useArray = useArray
-ArrayBase.useIndex = useIndex
+ArrayBase.useArray = useArray as any
+ArrayBase.useIndex = useIndex as any
 ArrayBase.useRecord = useRecord
 ArrayBase.mixin = (target: any) => {
   target.Index = ArrayBase.Index

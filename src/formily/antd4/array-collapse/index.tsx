@@ -20,6 +20,8 @@ import cls from 'classnames'
 import ArrayBase, { ArrayBaseMixins } from '../array-base'
 import { usePrefixCls } from '../__builtins__'
 
+const ArrayBaseAny = ArrayBase as any;
+
 export interface IArrayCollapseProps extends CollapseProps {
   defaultOpenPanelCount?: number
 }
@@ -72,9 +74,9 @@ const takeDefaultActiveKeys = (
 const insertActiveKeys = (activeKeys: number[], index: number) => {
   if (activeKeys.length <= index) return activeKeys.concat(index)
   return activeKeys.reduce((buf, key) => {
-    if (key < index) return buf.concat(key)
-    if (key === index) return buf.concat([key, key + 1])
-    return buf.concat(key + 1)
+    if (key < index) return buf.concat(key as any)
+    if (key === index) return buf.concat([key, key + 1] as any)
+    return buf.concat(key + 1 as any)
   }, [])
 }
 
@@ -83,17 +85,17 @@ export const ArrayCollapse: ComposedArrayCollapse = observer(
     const field = useField<ArrayField>()
     const dataSource = Array.isArray(field.value) ? field.value : []
     const [activeKeys, setActiveKeys] = useState<number[]>(
-      takeDefaultActiveKeys(dataSource.length, props.defaultOpenPanelCount)
+      takeDefaultActiveKeys(dataSource.length, props.defaultOpenPanelCount as any)
     )
     const schema = useFieldSchema()
     const prefixCls = usePrefixCls('formily-array-collapse', props)
     useEffect(() => {
       if (!field.modified && dataSource.length) {
         setActiveKeys(
-          takeDefaultActiveKeys(dataSource.length, props.defaultOpenPanelCount)
+          takeDefaultActiveKeys(dataSource.length, props.defaultOpenPanelCount as any)
         )
       }
-    }, [dataSource.length, field])
+    }, [dataSource.length, field, props.defaultOpenPanelCount])
     if (!schema) throw new Error('can not found schema object')
 
     const renderAddition = () => {
@@ -118,7 +120,7 @@ export const ArrayCollapse: ComposedArrayCollapse = observer(
         <Collapse
           {...props}
           activeKey={activeKeys}
-          onChange={(keys: string[]) => setActiveKeys(toArr(keys).map(Number))}
+          onChange={((keys: string[]) => setActiveKeys(toArr(keys).map(Number)) )as any}
           className={cls(`${prefixCls}-item`, props.className)}
         >
           {dataSource.map((item, index) => {
@@ -129,7 +131,7 @@ export const ArrayCollapse: ComposedArrayCollapse = observer(
             const panelProps = field
               .query(`${field.address}.${index}`)
               .get('componentProps')
-            const props: CollapsePanelProps = items['x-component-props']
+            const props: CollapsePanelProps = items?.['x-component-props']
             const header = () => {
               const header = `${
                 panelProps?.header || props.header || field.title
@@ -140,9 +142,9 @@ export const ArrayCollapse: ComposedArrayCollapse = observer(
                 address: `${path}.**`,
               })
               return (
-                <ArrayBase.Item index={index} record={() => dataSource[index]}>
+                <ArrayBaseAny.Item index={index} record={() => dataSource[index]}>
                   <RecursionField
-                    schema={items}
+                    schema={items as any}
                     name={index}
                     filterProperties={(schema) => {
                       if (!isIndexComponent(schema)) return false
@@ -161,14 +163,14 @@ export const ArrayCollapse: ComposedArrayCollapse = observer(
                   ) : (
                     header
                   )}
-                </ArrayBase.Item>
+                </ArrayBaseAny.Item>
               )
             }
 
             const extra = (
-              <ArrayBase.Item index={index} record={item}>
+              <ArrayBaseAny.Item index={index} record={item}>
                 <RecursionField
-                  schema={items}
+                  schema={items as any}
                   name={index}
                   filterProperties={(schema) => {
                     if (!isOperationComponent(schema)) return false
@@ -177,12 +179,12 @@ export const ArrayCollapse: ComposedArrayCollapse = observer(
                   onlyRenderProperties
                 />
                 {panelProps?.extra}
-              </ArrayBase.Item>
+              </ArrayBaseAny.Item>
             )
 
             const content = (
               <RecursionField
-                schema={items}
+                schema={items as any}
                 name={index}
                 filterProperties={(schema) => {
                   if (isIndexComponent(schema)) return false
@@ -200,9 +202,9 @@ export const ArrayCollapse: ComposedArrayCollapse = observer(
                 header={header()}
                 extra={extra}
               >
-                <ArrayBase.Item index={index} key={index} record={item}>
+                <ArrayBaseAny.Item index={index} key={index} record={item}>
                   {content}
-                </ArrayBase.Item>
+                </ArrayBaseAny.Item>
               </Collapse.Panel>
             )
           })}
@@ -237,6 +239,6 @@ ArrayCollapse.defaultProps = {
 ArrayCollapse.displayName = 'ArrayCollapse'
 ArrayCollapse.CollapsePanel = CollapsePanel
 
-ArrayBase.mixin(ArrayCollapse)
+ArrayBaseAny.mixin(ArrayCollapse)
 
 export default ArrayCollapse
