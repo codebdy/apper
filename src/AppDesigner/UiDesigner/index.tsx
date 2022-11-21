@@ -1,4 +1,3 @@
-import 'antd/dist/antd.less'
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import {
   createDesigner,

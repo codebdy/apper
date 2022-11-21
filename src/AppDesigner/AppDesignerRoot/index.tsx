@@ -1,4 +1,3 @@
-import 'antd/dist/antd.less'
 import React, { memo, useMemo } from 'react'
 import { DESIGNER_TOKEN_NAME, SERVER_URL } from 'consts'
 import { EntiRoot, useToken } from 'enthooks'

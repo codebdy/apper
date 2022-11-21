@@ -1,5 +1,4 @@
 import { Spin } from 'antd'
-import 'antd/dist/antd.less'
 import React, { memo, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQueryLangLocales } from '../hooks/useQueryLangLocales'
