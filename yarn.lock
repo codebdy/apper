@@ -8962,6 +8962,13 @@ react-sortable-hoc@^2.0.0:
     invariant "^2.2.4"
     prop-types "^15.5.7"
 
+react-sticky-box@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmmirror.com/react-sticky-box/-/react-sticky-box-1.0.2.tgz#7e72a0f237bdf8270cec9254337f49519a411174"
+  integrity sha512-Kyvtppdtv1KqJyNU4DtrSMI0unyQRgtraZvVQ0GAazVbYiTsIVpyhpr+5R0Aavzu4uJNSe1awj2rk/qI7i6Zfw==
+  dependencies:
+    resize-observer-polyfill "^1.5.1"
+
 react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.npmmirror.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"

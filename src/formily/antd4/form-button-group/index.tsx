@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /**
  * 1. FormItem网格布局
  * 2. 居中，居右，居左布局
@@ -30,7 +31,7 @@ type ComposedButtonGroup = ReactFC<IFormButtonGroupProps> & {
   >
 }
 
-function getInheritedBackgroundColor(el: HTMLElement) {
+function getInheritedBackgroundColor(el: HTMLElement) : any{
   // get default style for current browser
   const defaultStyle = getDefaultBackground() // typically "rgba(0, 0, 0, 0)"
 
@@ -38,7 +39,7 @@ function getInheritedBackgroundColor(el: HTMLElement) {
   const backgroundColor = window.getComputedStyle(el).backgroundColor
 
   // if we got a real value, return it
-  if (backgroundColor != defaultStyle) return backgroundColor
+  if (backgroundColor !== defaultStyle) return backgroundColor
 
   // if we've reached the top parent el without getting an explicit color, return default
   if (!el.parentElement) return defaultStyle
@@ -100,7 +101,7 @@ FormButtonGroup.FormItem = ({ gutter, ...props }) => {
       }}
       colon={false}
     >
-      {props.children?.['length'] ? (
+      {(props.children as any)?.['length'] ? (
         <Space size={gutter}>{props.children}</Space>
       ) : (
         props.children
@@ -114,6 +115,7 @@ FormButtonGroup.Sticky = ({ align, ...props }) => {
   const [color, setColor] = useState('transparent')
   const prefixCls = usePrefixCls('formily-button-group')
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useLayoutEffect(() => {
     if (ref.current) {
       const computed = getInheritedBackgroundColor(ref.current)
@@ -133,7 +135,7 @@ FormButtonGroup.Sticky = ({ align, ...props }) => {
       bottom
     >
       <div
-        ref={ref}
+        ref={ref as any}
         className={`${prefixCls}-sticky-inner`}
         style={{
           ...props.style,
