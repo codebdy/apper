@@ -6,10 +6,10 @@ import {
   UploadChangeParam,
   UploadProps as AntdUploadProps,
   DraggerProps as AntdDraggerProps,
-} from 'antd/lib/upload'
+} from 'antd/es/upload'
 import { InboxOutlined, UploadOutlined } from '@ant-design/icons'
 import { reaction } from '@formily/reactive'
-import { UploadFile } from 'antd/lib/upload/interface'
+import { UploadFile } from 'antd/es/upload/interface'
 import { isArr, toArr } from '@formily/shared'
 import { UPLOAD_PLACEHOLDER } from './placeholder'
 import { usePrefixCls } from '../__builtins__'
@@ -130,7 +130,7 @@ const useValidator = (validator: (value: any) => string) => {
     return () => {
       dispose()
     }
-  }, [])
+  }, [field, validator])
 }
 
 const useUploadValidator = (serviceErrorMessage = 'Upload Service Error') => {
@@ -158,7 +158,7 @@ function useUploadProps<T extends IExtendsUploadProps = IUploadProps>({
   }
   return {
     ...props,
-    fileList: normalizeFileList(props.fileList),
+    fileList: normalizeFileList(props.fileList as any),
     onChange,
   }
 }
