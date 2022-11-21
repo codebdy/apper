@@ -45,6 +45,8 @@ const isOperationComponent = (schema: ISchema) => {
   )
 }
 
+const ArrayBaseAny = ArrayBase as any;
+
 export const ArrayCards: ComposedArrayCards = observer((props) => {
   const field = useField<ArrayField>()
   const schema = useFieldSchema()
@@ -61,7 +63,7 @@ export const ArrayCards: ComposedArrayCards = observer((props) => {
       const title = (
         <span>
           <RecursionField
-            schema={items}
+            schema={items as any}
             name={index}
             filterProperties={(schema) => {
               if (!isIndexComponent(schema)) return false
@@ -75,7 +77,7 @@ export const ArrayCards: ComposedArrayCards = observer((props) => {
       const extra = (
         <span>
           <RecursionField
-            schema={items}
+            schema={items as any}
             name={index}
             filterProperties={(schema) => {
               if (!isOperationComponent(schema)) return false
@@ -88,7 +90,7 @@ export const ArrayCards: ComposedArrayCards = observer((props) => {
       )
       const content = (
         <RecursionField
-          schema={items}
+          schema={items as any}
           name={index}
           filterProperties={(schema) => {
             if (isIndexComponent(schema)) return false
@@ -98,7 +100,7 @@ export const ArrayCards: ComposedArrayCards = observer((props) => {
         />
       )
       return (
-        <ArrayBase.Item
+        <ArrayBaseAny.Item
           key={index}
           index={index}
           record={() => dataSource[index]}
@@ -112,7 +114,7 @@ export const ArrayCards: ComposedArrayCards = observer((props) => {
           >
             {content}
           </Card>
-        </ArrayBase.Item>
+        </ArrayBaseAny.Item>
       )
     })
   }
@@ -151,6 +153,6 @@ export const ArrayCards: ComposedArrayCards = observer((props) => {
 
 ArrayCards.displayName = 'ArrayCards'
 
-ArrayBase.mixin(ArrayCards)
+ArrayBaseAny.mixin(ArrayCards)
 
 export default ArrayCards

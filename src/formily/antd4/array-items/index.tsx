@@ -69,6 +69,8 @@ const useAddition = () => {
   }, null)
 }
 
+const ArrayBaseAny = ArrayBase as any;
+
 export const ArrayItems: ComposedArrayItems = observer((props) => {
   const field = useField<ArrayField>()
   const prefixCls = usePrefixCls('formily-array-items')
@@ -96,17 +98,17 @@ export const ArrayItems: ComposedArrayItems = observer((props) => {
               ? schema.items[index] || schema.items[0]
               : schema.items
             return (
-              <ArrayBase.Item
+              <ArrayBaseAny.Item
                 key={index}
                 index={index}
                 record={() => dataSource[index]}
               >
                 <SortableItem key={`item-${index}`} index={index}>
                   <div className={`${prefixCls}-item-inner`}>
-                    <RecursionField schema={items} name={index} />
+                    <RecursionField schema={items as any} name={index} />
                   </div>
                 </SortableItem>
-              </ArrayBase.Item>
+              </ArrayBaseAny.Item>
             )
           })}
         </SortableList>
@@ -119,6 +121,7 @@ export const ArrayItems: ComposedArrayItems = observer((props) => {
 ArrayItems.displayName = 'ArrayItems'
 
 ArrayItems.Item = (props) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const prefixCls = usePrefixCls('formily-array-items')
   return (
     <div
@@ -131,6 +134,6 @@ ArrayItems.Item = (props) => {
   )
 }
 
-ArrayBase.mixin(ArrayItems)
+ArrayBaseAny.mixin(ArrayItems)
 
 export default ArrayItems

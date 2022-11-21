@@ -8,7 +8,7 @@ import {
 } from '@formily/react'
 import { Schema, SchemaKey } from '@formily/json-schema'
 import cls from 'classnames'
-import { usePrefixCls } from 'formily/antd4/esm/__builtins__'
+import { usePrefixCls } from 'formily/antd4/__builtins__'
 import { useTranslation } from 'react-i18next'
 
 export interface ISettingsTab {
