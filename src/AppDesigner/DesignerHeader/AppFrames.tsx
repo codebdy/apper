@@ -1,5 +1,4 @@
 import { Button, Card, Col, Row } from "antd";
-import Meta from "antd/lib/card/Meta";
 import { useCallback } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
@@ -8,6 +7,7 @@ import { DESIGN, DESIGN_FRAME } from "consts";
 import Container from "plugins/framelayouts/pc/Container/view";
 import { useDevices } from "../hooks/useDevices";
 import { useEdittingAppId } from "../hooks/useEdittingAppUuid";
+import Meta from "antd/es/card/Meta";
 
 export const AppFrames = memo(() => {
   const { t } = useTranslation();

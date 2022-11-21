@@ -7,9 +7,9 @@ import { useShowError } from 'AppDesigner/hooks/useShowError';
 import { IPluginInfo, PluginType } from 'model';
 import { PluginStatus } from 'plugin/model';
 import { useUploadZip } from './hooks/useUploadZip';
-import Dragger from 'antd/lib/upload/Dragger';
 import { useLoadPlugins, useLoadPlugin } from 'plugin/hooks';
 import { useUpsertPluginInfos } from './hooks/useUpsertPluginInfos';
+import Dragger from 'antd/es/upload/Dragger';
 
 export const UploadDialog: React.FC = memo(() => {
   const [isModalVisible, setIsModalVisible] = useState(false);

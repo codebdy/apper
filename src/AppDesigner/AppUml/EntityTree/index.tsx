@@ -1,7 +1,6 @@
-import React, { memo, useCallback, useMemo, } from "react";
+import { memo, useCallback, useMemo, } from "react";
 import { Graph } from "@antv/x6";
 import { Tree } from "antd";
-import { DataNode } from "antd/lib/tree";
 import SvgIcon from "common/SvgIcon";
 import { ModelRootAction } from "./ModelRootAction";
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -40,6 +39,7 @@ import { OrchestrationMeta } from "../meta/OrchestrationMeta";
 import { OrchestrationLabel } from "./OrchestrationLabel";
 import { useSelectedOrcherstration } from "../hooks/useSelectedOrcherstration";
 import { useIsOrchestration } from "../hooks/useIsOrchestration";
+import { DataNode } from "antd/es/tree";
 const { DirectoryTree } = Tree;
 
 export const EntityTree = memo((props: { graph?: Graph }) => {

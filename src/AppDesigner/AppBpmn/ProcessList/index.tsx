@@ -1,7 +1,6 @@
 import { Tree } from 'antd';
 import React, { memo, useCallback } from 'react';
 import "./index.less"
-import { DataNode } from 'antd/lib/tree';
 import CreateCategoryDialog from './CreateCategoryDialog';
 import CreateProcessDialog from './CreateProcessDialog';
 import { useRecoilState } from 'recoil';
@@ -13,6 +12,7 @@ import { selectedBpmnProcessIdState } from '../recoil/atoms';
 import { useProcessesWithoutCategory } from '../hooks/useProcessesWithoutCategory';
 import { useGetCategoryProcesses } from '../hooks/useGetCategoryProcesses';
 import { useDesignerParams } from 'plugin-sdk';
+import { DataNode } from 'antd/es/tree';
 
 const { DirectoryTree } = Tree;
 
