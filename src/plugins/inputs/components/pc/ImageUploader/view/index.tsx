@@ -2,9 +2,9 @@ import { observer } from "@formily/reactive-react"
 import { Upload, UploadFile, UploadProps } from "antd";
 import React, { useCallback, useEffect, useState } from "react"
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
-import { RcFile } from "antd/lib/upload";
 import { useUpload } from "enthooks/hooks/useUpload";
 import { isArr } from "@formily/shared";
+import { RcFile } from "antd/es/upload";
 
 export interface ImageUploaderProps {
   title?: string,

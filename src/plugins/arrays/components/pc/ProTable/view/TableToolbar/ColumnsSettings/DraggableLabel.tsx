@@ -1,7 +1,7 @@
 import React, { CSSProperties, useCallback, useState } from "react"
 import { HolderOutlined } from "@ant-design/icons"
 import { Checkbox } from "antd";
-import { CheckboxChangeEvent } from "antd/lib/checkbox";
+import { CheckboxChangeEvent } from "antd/es/checkbox";
 
 const DraggableLabel = React.forwardRef((
   props: {

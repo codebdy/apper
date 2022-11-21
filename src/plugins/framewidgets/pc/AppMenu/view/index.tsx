@@ -1,8 +1,7 @@
 import { Menu } from "antd";
 import { IMenuItem, MenuItemType } from "plugin-sdk/model/IMenuNode";
-import React, { memo, useCallback, useMemo } from "react";
+import  { memo, useCallback, useMemo } from "react";
 import { IconView } from "plugin-sdk/icon/IconView";
-import { ItemType } from "antd/lib/menu/hooks/useItems";
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetMenuItem } from "./hooks/useGetMenuItem";
@@ -14,6 +13,7 @@ import { useMenu } from "AppRunner/hooks/useMenu";
 import { SYSTEM_APP_ID } from "consts";
 import { Device } from "@rxdrag/appx-plugin-sdk";
 import { useCheckMenuAuth } from "./hooks/useCheckMenuAuth";
+import { ItemType } from "antd/es/menu/hooks/useItems";
 
 export interface IComponentProps {
   mode?: "vertical" | "horizontal" | "inline",

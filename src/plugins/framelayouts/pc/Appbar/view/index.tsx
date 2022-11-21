@@ -2,8 +2,8 @@ import { observer } from "@formily/reactive-react"
 import React from "react"
 import cls from "classnames"
 import "./style.less"
-import { Header } from "antd/lib/layout/layout"
 import { useLayoutParams } from "plugin-sdk/contexts/layout"
+import { Header } from "antd/es/layout/layout"
 
 export interface IComponentProps {
   fixed?: boolean,

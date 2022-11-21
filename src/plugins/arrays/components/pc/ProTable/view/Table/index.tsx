@@ -6,7 +6,6 @@ import {
   useFieldSchema
 } from '@formily/react'
 import { Field, FieldDisplayTypes } from '@formily/core'
-import { ColumnProps } from "antd/lib/table"
 import { Schema } from '@formily/json-schema'
 import { isArr, isObj } from '@formily/shared'
 import { observer } from '@formily/reactive-react';
@@ -20,6 +19,7 @@ import { useGetTableColumns } from './useGetTableColumns';
 import { useArrayTableSources } from './useArrayTableSources';
 import { mapOrderBy } from "datasource/hooks/mapOrderBy";
 import { useArrayParams, useSelectable } from 'plugin-sdk/contexts/array';
+import { ColumnProps } from 'antd/es/table';
 
 export interface ObservableColumnSource {
   columnProps: ColumnProps<any> & { sortable?: boolean }

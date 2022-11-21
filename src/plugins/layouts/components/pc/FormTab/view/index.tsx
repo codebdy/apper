@@ -4,12 +4,12 @@ import { useParseLangMessage } from 'plugin-sdk/hooks/useParseLangMessage';
 import React from 'react';
 
 const Component = observer((props: IFormTabProps) => {
-  const { title, ...other } = props;
+  const { ...other } = props;
   const p = useParseLangMessage();
 
   return (
     <FormTab
-      title={p(title as any)}
+      //title={p(title as any)}
       {...other}
     />
   )
