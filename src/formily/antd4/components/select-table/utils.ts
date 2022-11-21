@@ -7,18 +7,18 @@ import { useFlatOptions } from './useFlatOptions'
  * @param primaryKey 键名称
  * @returns 键值数组集合
  */
-const getTreeKeys = (tree: any[], primaryKey: string) =>
+const getTreeKeys: any = (tree: any[], primaryKey: string) =>
   isArr(tree)
     ? tree.reduce((prev, current) => {
-        if (current?.disabled) {
-          return prev
-        }
-        return [
-          ...prev,
-          current[primaryKey],
-          ...getTreeKeys(current?.children, primaryKey),
-        ]
-      }, [])
+      if (current?.disabled) {
+        return prev
+      }
+      return [
+        ...prev,
+        current[primaryKey],
+        ...getTreeKeys(current?.children, primaryKey),
+      ]
+    }, []) 
     : []
 
 /**
@@ -31,7 +31,7 @@ const getTreeKeys = (tree: any[], primaryKey: string) =>
 const hasSelectedKey = (tree: any[], selected: any[], primaryKey: string) => {
   const keys = getTreeKeys(tree, primaryKey)
   const mergedKeys = [...keys, ...selected]
-  const validKeys = [...new Set(mergedKeys)]
+  const validKeys = [...new Set(mergedKeys) as any]
   return validKeys.length !== mergedKeys.length
 }
 
@@ -74,7 +74,7 @@ const completedKeys = (
       if (isAllSelected(item.children, allSelectedKeys, primaryKey)) {
         // 如果该元素的子元素全部选中，且该元素未禁用，则也选中该项（即包含全选子元素的父元素）
         if (!item?.disabled) {
-          allSelectedKeys = [...new Set([...allSelectedKeys, item[primaryKey]])]
+          allSelectedKeys = [...new Set([...allSelectedKeys, item[primaryKey]]) as any]
         }
       } else {
         // 如果该元素的子元素未全部选中，则移除该项
@@ -94,10 +94,10 @@ const completedKeys = (
  * @param primaryKey 键名称
  * @returns 有效的树路径
  */
-const getSelectedPath = (tree = [], selected, primaryKey) => {
-  const pathData = []
+const getSelectedPath = (tree = [], selected: any, primaryKey: any) => {
+  const pathData: any[] = []
 
-  tree.forEach((item) => {
+  tree.forEach((item: any) => {
     const validChildren = getSelectedPath(item.children, selected, primaryKey)
     if (validChildren.length || selected?.includes(item[primaryKey])) {
       pathData.push({
@@ -139,31 +139,31 @@ const deleteTreeItem = (tree: any[], key: string) =>
  * @returns 最终输出的 keys 和 options
  */
 const getOutputData = (
-  keys, // selected
-  options,
-  dataSource,
-  primaryKey,
-  originalValueType,
-  originalOptionAsValue,
-  mode,
-  checkStrictly
+  keys: any, // selected
+  options: any,
+  dataSource: any,
+  primaryKey: any,
+  originalValueType: any,
+  originalOptionAsValue: any,
+  mode: any,
+  checkStrictly: any
 ) => {
   const valueType = checkStrictly !== false ? 'all' : originalValueType // valueType 在 Strictly 为 false 时生效
   const optionAsValue = valueType === 'path' ? false : originalOptionAsValue // optionAsValue 在 path 模式不生效
-  let outputValue = []
-  let outputOptions = []
+  let outputValue: any[] = []
+  let outputOptions: any[] = []
 
   if (valueType === 'parent') {
     // 移除所有选中值的子值
-    let childrenKeys = []
-    options.forEach((option) => {
+    let childrenKeys: any[] = []
+    options.forEach((option: any) => {
       childrenKeys = [
         ...childrenKeys,
         ...getTreeKeys(option.children, primaryKey),
       ]
     })
-    outputValue = keys.filter((key) => !childrenKeys.includes(key))
-    outputOptions = options.filter((options) =>
+    outputValue = keys.filter((key: any) => !childrenKeys.includes(key))
+    outputOptions = options.filter((options: any) =>
       outputValue.includes(options[primaryKey])
     )
   } else if (valueType === 'child') {
@@ -211,14 +211,14 @@ const getOutputData = (
  * @returns [] TableUI keys 集合
  */
 const getUISelected = (
-  value,
-  flatDataSource,
-  primaryKey,
-  originalValueType,
-  originalOptionAsValue,
-  mode,
-  checkStrictly,
-  rowKey
+  value: any,
+  flatDataSource: any,
+  primaryKey: any,
+  originalValueType: any,
+  originalOptionAsValue: any,
+  mode: any,
+  checkStrictly: any,
+  rowKey: any
 ) => {
   const valueType = checkStrictly !== false ? 'all' : originalValueType // valueType 在 Strictly 为 false 时生效
   const optionAsValue = valueType === 'path' ? false : originalOptionAsValue // optionAsValue 在 path 模式不生效
@@ -227,26 +227,27 @@ const getUISelected = (
   keys =
     optionAsValue && valueType !== 'path'
       ? keys.map((record: any) =>
-          isFn(rowKey) ? rowKey(record) : record?.[primaryKey]
-        )
+        isFn(rowKey) ? rowKey(record) : record?.[primaryKey]
+      )
       : keys
 
   let newKeys = []
   if (valueType === 'parent') {
-    const options = flatDataSource.filter((item) =>
+    const options = flatDataSource.filter((item: any) =>
       keys.includes(item[primaryKey])
     )
-    let childrenKeys = []
-    options.forEach((option) => {
+    let childrenKeys: any[] = []
+    options.forEach((option: any) => {
       childrenKeys = [
         ...childrenKeys,
         ...getTreeKeys(option.children, primaryKey),
       ]
     })
-    newKeys = [...new Set([...keys, ...childrenKeys])]
+    newKeys = [...new Set([...keys, ...childrenKeys]) as any]
   } else if (valueType === 'child') {
     newKeys = completedKeys(flatDataSource, keys, primaryKey)
   } else if (valueType === 'path') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const pathKeys = useFlatOptions(keys).map((item) => item[primaryKey])
     newKeys = completedKeys(flatDataSource, pathKeys, primaryKey)
   } else {
@@ -267,17 +268,17 @@ const getUISelected = (
  * @returns 是否全部选中
  */
 const getCompatibleAllSelected = (
-  selected,
-  dataSource,
-  usableKeys,
-  checkStrictly,
-  primaryKey
+  selected: any,
+  dataSource: any,
+  usableKeys: any,
+  checkStrictly: any,
+  primaryKey: any
 ) => {
   if (!usableKeys.length) {
     return false
   }
   // 当前模式下已选中的项
-  const currentSelected = selected.filter((item) => usableKeys.includes(item))
+  const currentSelected = selected.filter((item: any) => usableKeys.includes(item))
   // 获取有效选中（父子模式或非父子模式）
   const validSelected =
     checkStrictly !== false

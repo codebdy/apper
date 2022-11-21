@@ -68,7 +68,7 @@ const useColumns = () => {
   return columns
 }
 
-const addPrimaryKey = (dataSource:any, rowKey:any, primaryKey:any) =>
+const addPrimaryKey = (dataSource: any, rowKey: any, primaryKey: any) =>
   dataSource.map((item) => {
     const children = isArr(item.children)
       ? addPrimaryKey(item.children, rowKey, primaryKey)
@@ -172,7 +172,7 @@ export const SelectTable: ComposedSelectTable = observer((props) => {
     (value, item) => value.includes(item[primaryKey as any])
   )
 
-  const onInnerSearch = (searchText?:string) => {
+  const onInnerSearch = (searchText?: string) => {
     const formatted = (searchText || '').trim()
     setSearchValue(searchText)
     onSearch?.(formatted)
@@ -200,7 +200,7 @@ export const SelectTable: ComposedSelectTable = observer((props) => {
     onChange?.(outputValue, outputOptions)
   }
 
-  const onRowClick = (record:any) => {
+  const onRowClick = (record: any) => {
     if (readPretty || disabled || readOnly || record?.disabled) {
       return
     }
@@ -278,38 +278,38 @@ export const SelectTable: ComposedSelectTable = observer((props) => {
           readPretty
             ? undefined
             : ({
-                ...rowSelection,
-                ...titleAddon,
-                getCheckboxProps: (record) => ({
-                  ...(rowSelection?.getCheckboxProps?.(record) as any),
-                  disabled: disabled || record?.disabled,
-                }), // antd
-                ...(rowSelection?.checkStrictly !== false
-                  ? {}
-                  : {
-                      renderCell: (checked, record, index, originNode) => {
-                        return React.cloneElement(
-                          originNode as React.ReactElement,
-                          {
-                            indeterminate: getIndeterminate(
-                              record,
-                              flatDataSource,
-                              selected,
-                              primaryKey as any
-                            ),
-                          }
-                        )
-                      },
-                    }),
-                selectedRowKeys: selected,
-                onChange:
-                  rowSelection?.checkStrictly !== false
-                    ? onInnerChange
-                    : onSlacklyChange,
-                type: modeAsType,
-                preserveSelectedRowKeys: true,
-                checkStrictly: true,
-              } as any)
+              ...rowSelection,
+              ...titleAddon,
+              getCheckboxProps: (record: any) => ({
+                ...(rowSelection?.getCheckboxProps?.(record) as any),
+                disabled: disabled || record?.disabled,
+              }), // antd
+              ...(rowSelection?.checkStrictly !== false
+                ? {}
+                : {
+                  renderCell: (checked: any, record: any, index: any, originNode: any) => {
+                    return React.cloneElement(
+                      originNode as React.ReactElement,
+                      {
+                        indeterminate: getIndeterminate(
+                          record,
+                          flatDataSource,
+                          selected,
+                          primaryKey as any
+                        ),
+                      }
+                    )
+                  },
+                }),
+              selectedRowKeys: selected,
+              onChange:
+                rowSelection?.checkStrictly !== false
+                  ? onInnerChange
+                  : onSlacklyChange,
+              type: modeAsType,
+              preserveSelectedRowKeys: true,
+              checkStrictly: true,
+            } as any)
         }
         columns={props.columns || columns}
         rowKey={primaryKey}
