@@ -7,7 +7,6 @@ import BpmnModeler from 'bpmn-js/lib/Modeler';
 import "bpmn-js/dist/assets/diagram-js.css";
 import "bpmn-js/dist/assets/bpmn-js.css";
 import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
-import "bpmn-js-properties-panel/dist/assets/properties-panel.css";
 import "./style.less"
 import minimapModule from 'diagram-js-minimap';
 import "diagram-js-minimap/assets/diagram-js-minimap.css";
