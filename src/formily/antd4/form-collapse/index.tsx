@@ -1,7 +1,7 @@
 import React, { Fragment, useMemo } from 'react'
 import { Collapse, Badge } from 'antd'
 import { model, markRaw } from '@formily/reactive'
-import { CollapseProps, CollapsePanelProps } from 'antd/lib/collapse'
+import { CollapseProps, CollapsePanelProps } from 'antd/es/collapse'
 import {
   useField,
   observer,

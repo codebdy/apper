@@ -1,4 +1,4 @@
-import 'antd/lib/card/style/index'
-import 'antd/lib/empty/style/index'
-import 'antd/lib/button/style/index'
+import 'antd/es/card/style/index'
+import 'antd/es/empty/style/index'
+import 'antd/es/button/style/index'
 import './style.less'

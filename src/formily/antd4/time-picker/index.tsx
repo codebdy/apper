@@ -4,7 +4,7 @@ import { TimePicker as AntdTimePicker } from 'antd'
 import {
   TimePickerProps as AntdTimePickerProps,
   TimeRangePickerProps,
-} from 'antd/lib/time-picker'
+} from 'antd/es/time-picker'
 import { PreviewText } from '../preview-text'
 import { formatMomentValue, momentable } from '../__builtins__'
 

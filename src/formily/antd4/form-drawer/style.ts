@@ -1,1 +1,1 @@
-import 'antd/lib/drawer/style/index'
+import 'antd/es/drawer/style/index'

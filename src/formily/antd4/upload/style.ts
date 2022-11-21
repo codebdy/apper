@@ -1,1 +1,1 @@
-import 'antd/lib/upload/style/index'
+import 'antd/es/upload/style/index'

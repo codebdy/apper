@@ -8,7 +8,7 @@ import {
   RecursionField,
   ReactFC,
 } from '@formily/react'
-import { TabsProps } from 'antd/lib/tabs'
+import { TabsProps } from 'antd/es/tabs'
 
 interface IFeedbackBadgeProps {
   index: number

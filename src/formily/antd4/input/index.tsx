@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect, mapProps, mapReadPretty } from '@formily/react'
 import { Input as AntdInput } from 'antd'
-import { InputProps, TextAreaProps } from 'antd/lib/input'
+import { InputProps, TextAreaProps } from 'antd/es/input'
 import { PreviewText } from '../preview-text'
 import { LoadingOutlined } from '@ant-design/icons'
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { connect, mapReadPretty, mapProps } from '@formily/react'
 import { TreeSelect as AntdTreeSelect } from 'antd'
 import { PreviewText } from '../preview-text'
@@ -13,7 +12,7 @@ export const TreeSelect = connect(
       return {
         ...props,
         suffixIcon:
-          field?.['loading'] || field?.['validating'] ? (
+          (field as any)?.['loading'] || (field as any)?.['validating'] ? (
             <LoadingOutlined />
           ) : (
             props.suffixIcon

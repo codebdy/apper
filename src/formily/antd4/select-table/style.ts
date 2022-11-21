@@ -1,2 +1,2 @@
-import 'antd/lib/radio/style/index'
+import 'antd/es/radio/style/index'
 import './style.less'

@@ -4,7 +4,7 @@ import { useField, observer } from '@formily/react'
 import { Popover } from 'antd'
 import { EditOutlined, CloseOutlined, MessageOutlined } from '@ant-design/icons'
 import { BaseItem, IFormItemProps } from '../form-item'
-import { PopoverProps } from 'antd/lib/popover'
+import { PopoverProps } from 'antd/es/popover'
 import { useClickAway, usePrefixCls } from '../__builtins__'
 import cls from 'classnames'
 /**

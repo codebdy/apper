@@ -8,7 +8,7 @@ import {
   MenuOutlined,
 } from '@ant-design/icons'
 import { AntdIconProps } from '@ant-design/icons/lib/components/AntdIcon'
-import { ButtonProps } from 'antd/lib/button'
+import { ButtonProps } from 'antd/es/button'
 import { ArrayField } from '@formily/core'
 import {
   useField,

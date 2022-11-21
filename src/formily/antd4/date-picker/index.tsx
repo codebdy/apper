@@ -4,7 +4,7 @@ import { DatePicker as AntdDatePicker } from 'antd'
 import {
   DatePickerProps as AntdDatePickerProps,
   RangePickerProps,
-} from 'antd/lib/date-picker'
+} from 'antd/es/date-picker'
 import { PreviewText } from '../preview-text'
 import { formatMomentValue, momentable } from '../__builtins__'
 

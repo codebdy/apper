@@ -1,4 +1,4 @@
-import 'antd/lib/form/style/index'
-import 'antd/lib/space/style/index'
-import 'antd/lib/popover/style/index'
+import 'antd/es/form/style/index'
+import 'antd/es/space/style/index'
+import 'antd/es/popover/style/index'
 import './style.less'

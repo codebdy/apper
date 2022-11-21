@@ -1,7 +1,7 @@
 import React, { Fragment, useMemo } from 'react'
 import { Tabs, Badge } from 'antd'
 import { model, markRaw } from '@formily/reactive'
-import { TabPaneProps, TabsProps } from 'antd/lib/tabs'
+import { TabPaneProps, TabsProps } from 'antd/es/tabs'
 import {
   useField,
   ReactFC,

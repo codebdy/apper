@@ -1,2 +1,2 @@
-import 'antd/lib/tag/style/index'
+import 'antd/es/tag/style/index'
 import './style.less'

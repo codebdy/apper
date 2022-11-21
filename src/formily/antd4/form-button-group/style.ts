@@ -1,2 +1,2 @@
-import 'antd/lib/form/style/index'
+import 'antd/es/form/style/index'
 import './style.less'

@@ -1,6 +1,6 @@
 import { connect, mapProps, mapReadPretty } from '@formily/react'
 import { Checkbox as AntdCheckbox } from 'antd'
-import { CheckboxProps, CheckboxGroupProps } from 'antd/lib/checkbox'
+import { CheckboxProps, CheckboxGroupProps } from 'antd/es/checkbox'
 import { PreviewText } from '../preview-text'
 
 type ComposedCheckbox = React.FC<React.PropsWithChildren<CheckboxProps>> & {

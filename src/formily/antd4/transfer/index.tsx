@@ -26,7 +26,7 @@ export const Transfer = connect(
 )
 
 Transfer.defaultProps = {
-  render: (item) => item.title,
+  render: (item) => item.title as any,
 }
 
 export default Transfer

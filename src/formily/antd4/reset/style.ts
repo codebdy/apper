@@ -1,1 +1,1 @@
-import 'antd/lib/button/style/index'
+import 'antd/es/button/style/index'

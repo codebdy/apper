@@ -1,1 +1,1 @@
-import 'antd/lib/transfer/style/index'
+import 'antd/es/transfer/style/index'

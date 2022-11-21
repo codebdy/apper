@@ -1,1 +1,1 @@
-import 'antd/lib/space/style/index'
+import 'antd/es/space/style/index'

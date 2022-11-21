@@ -8,9 +8,9 @@ import React, {
   useCallback,
 } from 'react'
 import { Table, Pagination, Space, Select, Badge } from 'antd'
-import { PaginationProps } from 'antd/lib/pagination'
-import { TableProps, ColumnProps } from 'antd/lib/table'
-import { SelectProps } from 'antd/lib/select'
+import { PaginationProps } from 'antd/es/pagination'
+import { TableProps, ColumnProps } from 'antd/es/table'
+import { SelectProps } from 'antd/es/select'
 import cls from 'classnames'
 import { SortableContainer, SortableElement } from 'react-sortable-hoc'
 import { GeneralField, FieldDisplayTypes, ArrayField } from '@formily/core'
@@ -26,6 +26,7 @@ import { Schema } from '@formily/json-schema'
 import { usePrefixCls } from '../__builtins__'
 import { ArrayBase, ArrayBaseMixins } from '../array-base'
 
+const ArrayBaseAny = ArrayBase as any;
 interface ObservableColumnSource {
   field: GeneralField
   columnProps: ColumnProps<any>
@@ -74,7 +75,7 @@ const isAdditionComponent = (schema: Schema) => {
 const useArrayTableSources = () => {
   const arrayField = useField()
   const schema = useFieldSchema()
-  const parseSources = (schema: Schema): ObservableColumnSource[] => {
+  const parseSources = (schema: Schema): ObservableColumnSource[] | undefined => {
     if (
       isColumnComponent(schema) ||
       isOperationsComponent(schema) ||
@@ -85,7 +86,7 @@ const useArrayTableSources = () => {
       const name = schema['x-component-props']?.['dataIndex'] || schema['name']
       const field = arrayField.query(arrayField.address.concat(name)).take()
       const columnProps =
-        field?.component?.[1] || schema['x-component-props'] || {}
+        (field?.component as any)?.[1] || schema['x-component-props'] || {}
       const display = field?.display || schema['x-display']
       return [
         {
@@ -98,7 +99,7 @@ const useArrayTableSources = () => {
       ]
     } else if (schema.properties) {
       return schema.reduceProperties((buf, schema) => {
-        return buf.concat(parseSources(schema))
+        return buf.concat(parseSources(schema) as any)
       }, [])
     }
   }
@@ -135,13 +136,13 @@ const useArrayTableColumns = (
       render: (value: any, record: any) => {
         const index = dataSource.indexOf(record)
         const children = (
-          <ArrayBase.Item index={index} record={() => dataSource[index]}>
+          <ArrayBaseAny.Item index={index} record={() => dataSource[index]}>
             <RecursionField schema={schema} name={index} onlyRenderProperties />
-          </ArrayBase.Item>
+          </ArrayBaseAny.Item>
         )
         return children
       },
-    })
+    } as any)
   }, [])
 }
 
@@ -173,10 +174,10 @@ const StatusSelect: ReactFC<IStatusSelectProps> = observer(
     }
     const options = props.options?.map(({ label, value }) => {
       const val = Number(value)
-      const hasError = errors.some(({ address }) => {
+      const hasError = errors.some(({ address }: any) => {
         const currentIndex = parseIndex(address)
-        const startIndex = (val - 1) * props.pageSize
-        const endIndex = val * props.pageSize
+        const startIndex = (val - 1) * (props.pageSize || 0)
+        const endIndex = val * (props.pageSize || 0)
         return currentIndex >= startIndex && currentIndex <= endIndex
       })
       return {
@@ -204,10 +205,10 @@ const StatusSelect: ReactFC<IStatusSelectProps> = observer(
   },
   {
     scheduler: (update) => {
-      clearTimeout(schedulerRequest.request)
+      clearTimeout(schedulerRequest.request as any)
       schedulerRequest.request = setTimeout(() => {
         update()
-      }, 100)
+      }, 100) as any
     },
   }
 )
@@ -301,6 +302,7 @@ export const ArrayTable: ComposedArrayTable = observer(
     const defaultRowKey = (record: any) => {
       return dataSource.indexOf(record)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const addTdStyles = (node: HTMLElement) => {
       const helper = document.body.querySelector(`.${prefixCls}-sort-helper`)
       if (helper) {
@@ -326,26 +328,26 @@ export const ArrayTable: ComposedArrayTable = observer(
           onSortStart={({ node }) => {
             addTdStyles(node as HTMLElement)
           }}
-          onSortEnd={({ oldIndex, newIndex }) => {
+          onSortEnd={({ oldIndex, newIndex }: any) => {
             field.move(oldIndex, newIndex)
           }}
           {...props}
         />
       ),
-      []
+      [addTdStyles, field, prefixCls]
     )
 
     return (
       <ArrayTablePagination {...pagination} dataSource={dataSource}>
         {(dataSource, pager) => (
-          <div ref={ref} className={prefixCls}>
+          <div ref={ref as any} className={prefixCls}>
             <ArrayBase>
               <Table
                 size="small"
                 bordered
                 rowKey={defaultRowKey}
                 {...props}
-                onChange={() => {}}
+                onChange={() => { }}
                 pagination={false}
                 columns={columns}
                 dataSource={dataSource}
@@ -359,7 +361,7 @@ export const ArrayTable: ComposedArrayTable = observer(
               <div style={{ marginTop: 5, marginBottom: 5 }}>{pager}</div>
               {sources.map((column, key) => {
                 //专门用来承接对Column的状态管理
-                if (!isColumnComponent(column.schema)) return
+                if (!isColumnComponent(column.schema)) return <></>
                 return React.createElement(RecursionField, {
                   name: column.name,
                   schema: column.schema,
@@ -382,15 +384,15 @@ ArrayTable.Column = () => {
   return <Fragment />
 }
 
-ArrayBase.mixin(ArrayTable)
+ArrayBaseAny.mixin(ArrayTable)
 
 const Addition: ArrayBaseMixins['Addition'] = (props) => {
-  const array = ArrayBase.useArray()
+  const array = ArrayBaseAny.useArray()
   const { totalPage = 0, pageSize = 10, changePage } = usePagination()
   return (
-    <ArrayBase.Addition
+    <ArrayBaseAny.Addition
       {...props}
-      onClick={(e) => {
+      onClick={(e: any) => {
         // 如果添加数据后将超过当前页，则自动切换到下一页
         const total = array?.field?.value.length || 0
         if (total === totalPage * pageSize + 1 && isFn(changePage)) {

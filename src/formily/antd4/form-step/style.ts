@@ -1,1 +1,1 @@
-import 'antd/lib/steps/style/index'
+import 'antd/es/steps/style/index'

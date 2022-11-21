@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { define, observable, action, markRaw, model } from '@formily/reactive'
 import { Steps } from 'antd'
 import cls from 'classnames'
-import { StepsProps, StepProps } from 'antd/lib/steps'
+import { StepsProps, StepProps } from 'antd/es/steps'
 import { Form, VoidField } from '@formily/core'
 import {
   connect,

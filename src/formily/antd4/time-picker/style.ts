@@ -1,1 +1,1 @@
-import 'antd/lib/time-picker/style/index'
+import 'antd/es/time-picker/style/index'

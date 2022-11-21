@@ -1,1 +1,1 @@
-import 'antd/lib/modal/style/index'
+import 'antd/es/modal/style/index'
