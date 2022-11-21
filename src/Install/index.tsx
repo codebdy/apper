@@ -24,7 +24,7 @@ const Install = memo(() => {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      background: "url(/public/img/background1.jpg)",
+      background: "url(/img/background1.jpg)",
       height: "100vh",
       backgroundPosition: " 50%",
       backgroundRepeat: "no-repeat",
