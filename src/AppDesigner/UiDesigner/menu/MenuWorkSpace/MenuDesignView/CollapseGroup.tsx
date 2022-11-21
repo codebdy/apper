@@ -142,7 +142,7 @@ const CollpaseGroupInner = memo(
                 }
                 <NavItemList
                   node={node}
-                  onParentDropable={handleParentDropable}
+                  onParentDropable={handleParentDropable as any}
                   canDrop={canDrop}
                   isSubList={true}
                 />

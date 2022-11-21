@@ -31,7 +31,7 @@ export const ClassPanel = (props: { cls: ClassMeta }) => {
     },
     [cls, form]
   )
-  const handleChange = useCallback((formData) => {
+  const handleChange = useCallback((formData: any) => {
     const errMsg = changeClass({ ...cls, ...formData });
     setNameError(errMsg)
   }, [changeClass, cls])

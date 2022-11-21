@@ -11,7 +11,6 @@ import {
   OutlineTreeWidget,
 } from './widgets'
 import { MaterialWidget } from './widgets/MaterialWidget'
-import { Designer } from './containers'
 import PageListWidget from './page/PageListWidget'
 import { useTranslation } from 'react-i18next'
 import PageWorkSpace from './page/PageWorkSpace'
@@ -34,7 +33,7 @@ import { ConfigActionsWidget } from './config/ConfigActionsWidget'
 import { TemplateWidget } from './widgets/TemplateWidget'
 import { useQueryTemplates } from './hooks/useQueryTemplates'
 import { TemplateType } from 'model'
-import { CompositePanel as CompositePanelDesignable, StudioPanel } from 'designable/react'
+import { CompositePanel as CompositePanelDesignable, Designer, StudioPanel } from 'designable/react'
 
 const CompositePanel = CompositePanelDesignable as any
 export enum DesignerRoutes {

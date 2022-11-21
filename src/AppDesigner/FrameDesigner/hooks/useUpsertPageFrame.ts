@@ -7,7 +7,7 @@ import { GraphQLRequestError } from "enthooks";
 
 export function useUpsertPageFrame(options?: IPostOptions<any>): [
   (template: IUiFrameInput) => void,
-  { loading?: boolean; error?: GraphQLRequestError }
+  { loading?: boolean; error?: GraphQLRequestError | Error }
 ] {
   const params = useDesignerParams();
   const [post, { error, loading }] = usePostOne<IUiFrameInput, IUiFrame>("PageFrame",
