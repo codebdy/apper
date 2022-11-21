@@ -8,6 +8,7 @@ export const usePrefixCls = (
   }
 ) => {
   if ('ConfigContext' in ConfigProvider) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const { getPrefixCls } = useContext(ConfigProvider.ConfigContext)
     return getPrefixCls(tag, props?.prefixCls)
   } else {
