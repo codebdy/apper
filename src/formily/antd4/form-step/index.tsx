@@ -72,9 +72,9 @@ const createFormStep = (defaultCurrent = 0): IFormStep => {
       field: observable.ref,
       steps: observable.shallow,
     }
-  )
+  ) as any
 
-  const setDisplay = action.bound((target: number) => {
+  const setDisplay:any = action.bound && action.bound((target: number) => {
     const currentStep = env.steps[target]
     env.steps.forEach(({ name }) => {
       env.form.query(`${env.field.address}.${name}`).take((field) => {
@@ -87,13 +87,13 @@ const createFormStep = (defaultCurrent = 0): IFormStep => {
     })
   })
 
-  const next = action.bound(() => {
+  const next: any = action.bound && action.bound(() => {
     if (formStep.allowNext) {
       formStep.setCurrent(formStep.current + 1)
     }
   })
 
-  const back = action.bound(() => {
+  const back: any = action.bound && action.bound(() => {
     if (formStep.allowBack) {
       formStep.setCurrent(formStep.current - 1)
     }
@@ -122,7 +122,7 @@ const createFormStep = (defaultCurrent = 0): IFormStep => {
         if (env.form.valid) {
           next()
         }
-      } catch {}
+      } catch { }
     },
     async back() {
       back()
@@ -154,7 +154,7 @@ export const FormStep = connect(
           })}
         </Steps>
         {steps.map(({ name, schema }, key) => {
-          if (key !== current) return
+          if (key !== current) return <></>
           return <RecursionField key={key} name={name} schema={schema} />
         })}
       </div>

@@ -4,10 +4,10 @@ import { isArr, isValid } from '@formily/shared'
 interface IProps {
   breakpoints?: number[]
   layout?:
-    | 'vertical'
-    | 'horizontal'
-    | 'inline'
-    | ('vertical' | 'horizontal' | 'inline')[]
+  | 'vertical'
+  | 'horizontal'
+  | 'inline'
+  | ('vertical' | 'horizontal' | 'inline')[]
   labelCol?: number | number[]
   wrapperCol?: number | number[]
   labelAlign?: 'right' | 'left' | ('right' | 'left')[]
@@ -30,13 +30,13 @@ interface IUseResponsiveFormLayout {
   }
 }
 
-const calcBreakpointIndex: ICalcBreakpointIndex = (breakpoints, width) => {
+const calcBreakpointIndex: ICalcBreakpointIndex = ((breakpoints: any, width: any) => {
   for (let i = 0; i < breakpoints.length; i++) {
     if (width <= breakpoints[i]) {
       return i
     }
   }
-}
+}) as any
 
 const calcFactor = <T>(value: T | T[], breakpointIndex: number): T => {
   if (Array.isArray(value)) {
@@ -61,7 +61,7 @@ const calculateProps: ICalculateProps = (target, props) => {
     wrapperCol,
     ...otherProps
   } = props
-  const breakpointIndex = calcBreakpointIndex(breakpoints, clientWidth)
+  const breakpointIndex = calcBreakpointIndex(breakpoints as any, clientWidth)
 
   return {
     layout: factor(layout, breakpointIndex),
@@ -79,6 +79,7 @@ export const useResponsiveFormLayout: IUseResponsiveFormLayout = (props) => {
   if (!isArr(breakpoints)) {
     return { ref, props }
   }
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [layoutProps, setLayout] = useState<any>(props)
 
   const updateUI = () => {
@@ -87,6 +88,7 @@ export const useResponsiveFormLayout: IUseResponsiveFormLayout = (props) => {
     }
   }
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     const observer = () => {
       updateUI()
@@ -99,10 +101,11 @@ export const useResponsiveFormLayout: IUseResponsiveFormLayout = (props) => {
     return () => {
       resizeObserver.disconnect()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return {
     ref,
     props: layoutProps,
-  }
+  } as any
 }

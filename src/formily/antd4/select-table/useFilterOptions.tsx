@@ -9,7 +9,7 @@ function includes(test: React.ReactNode, search: string) {
 
 function includesOption(option: any, search: string) {
   const searched = new Set()
-  const _includesOption = (option: any) => {
+  const _includesOption:any = (option: any) => {
     const keys = Object.keys(option || {})
     return keys.some((key) => {
       if (key === '__level') {
@@ -70,6 +70,6 @@ const useFilterOptions = (
     }
 
     return doFilter(options)
-  }, [options, searchValue, filterOption])
+  }, [searchValue, filterOption, options, checkStrictly])
 
 export { useFilterOptions }

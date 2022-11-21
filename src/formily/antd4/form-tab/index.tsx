@@ -123,6 +123,6 @@ const TabPane: React.FC<React.PropsWithChildren<IFormTabPaneProps>> = ({
 }
 
 FormTab.TabPane = TabPane
-FormTab.createFormTab = createFormTab
+FormTab.createFormTab = createFormTab as any
 
 export default FormTab

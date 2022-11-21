@@ -19,10 +19,10 @@ export interface IFormLayoutProps {
   fullness?: boolean
   size?: 'small' | 'default' | 'large'
   layout?:
-    | 'vertical'
-    | 'horizontal'
-    | 'inline'
-    | ('vertical' | 'horizontal' | 'inline')[]
+  | 'vertical'
+  | 'horizontal'
+  | 'inline'
+  | ('vertical' | 'horizontal' | 'inline')[]
   direction?: 'rtl' | 'ltr'
   inset?: boolean
   shallow?: boolean
@@ -48,9 +48,9 @@ export interface IFormLayoutContext
   wrapperCol?: number
 }
 
-export const FormLayoutDeepContext = createContext<IFormLayoutContext>(null)
+export const FormLayoutDeepContext = createContext<IFormLayoutContext | null>(null)
 
-export const FormLayoutShallowContext = createContext<IFormLayoutContext>(null)
+export const FormLayoutShallowContext = createContext<IFormLayoutContext | null>(null)
 
 export const useFormDeepLayout = () => useContext(FormLayoutDeepContext)
 
@@ -112,8 +112,8 @@ FormLayout.defaultProps = {
   shallow: true,
 }
 
-FormLayout.useFormDeepLayout = useFormDeepLayout
-FormLayout.useFormShallowLayout = useFormShallowLayout
+FormLayout.useFormDeepLayout = useFormDeepLayout as any
+FormLayout.useFormShallowLayout = useFormShallowLayout as any
 FormLayout.useFormLayout = useFormLayout
 
 export default FormLayout
