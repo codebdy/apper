@@ -152,7 +152,7 @@ export function useEdgeLineDraw(graph: Graph | undefined, appId: ID) {
         addVertex({ x, y });
       }
     },
-    [addVertex, appId, backupSnapshot, canLinkTo, createRelationInnerId, drawingLine, getClass, graph, selectedDiagram, selectedElement, setDrawingLine, setEdges, setPressedLineType, setRelations]
+    [addVertex, backupSnapshot, canLinkTo, createRelationInnerId, drawingLine, getClass, graph, selectedDiagram, selectedElement, setDrawingLine, setEdges, setPressedLineType, setRelations]
   );
 
   const handleEdgeDbclick = useCallback(

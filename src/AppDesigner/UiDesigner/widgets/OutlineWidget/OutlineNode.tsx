@@ -70,7 +70,7 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
           }
         }
       })
-    }, [node, outlineDragon, cursor])
+    }, [node, outlineDragon, cursor, engine])
 
     useEffect(() => {
       return autorun(() => {
@@ -95,7 +95,7 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
           }
         }
       })
-    }, [node, selection, outlineDragon])
+    }, [node, selection, outlineDragon, cursor.status])
 
     if (!node) return null
 

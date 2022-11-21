@@ -17,10 +17,6 @@ export const FormGrid: DnFC<React.ComponentProps<formilyGrid>> & {
   const node = useTreeNode()
   const nodeId = useNodeIdProps()
   if (node?.children.length === 0) return <DroppableWidget {...props} />
-  const totalColumns = node?.children.reduce(
-    (buf, child) => buf + (child.props?.['x-component-props']?.gridSpan ?? 1),
-    0
-  )
 
   const key = new Date().getTime()
 

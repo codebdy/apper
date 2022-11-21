@@ -20,7 +20,7 @@ export function useExportModelJson(appId: string) {
         }
       }
     );
-  }, [appId, getMeta]);
+  }, [appId, getMeta, t]);
 
   return doExport
 }

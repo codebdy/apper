@@ -1,1 +1,3 @@
-export default "MenuTrigger"
+const Name = "MenuTrigger"
+
+export default Name

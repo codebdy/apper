@@ -20,7 +20,7 @@ const FoldItemInner: React.FC<IFormItemProps &
   const field = useField()
   const expand = useMemo(
     () => observable.ref(ExpandedMap.get(field.address.toString())),
-    []
+    [field.address]
   )
   const slots = useRef({ base: null, extra: null })
   React.Children.forEach(children, (node) => {

@@ -11,7 +11,7 @@ const ValidatorFormats = [
   { label: 'Zip', value: 'zip' },
 ]
 
-export default {
+const locales = {
   'ko-KR': {
     settings: {
       'x-validator': {
@@ -98,3 +98,5 @@ export default {
     },
   },
 }
+
+export default locales

@@ -68,7 +68,7 @@ export const TemplateWidget = observer((
       icon: <SettingOutlined />,
       onClick: handleOpenManageDialog,
     },
-  ], [t, handleOpenExportDialog, handleOpenManageDialog, upload]);
+  ], [t, doImport, handleOpenExportDialog, handleOpenManageDialog]);
 
   const handleManageClose = useCallback(() => {
     setManageDialogOpen(false)

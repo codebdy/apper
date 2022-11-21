@@ -1,4 +1,4 @@
-export default {
+const chrome = {
   base: 'vs',
   inherit: true,
   rules: [
@@ -104,3 +104,5 @@ export default {
     'editorWhitespace.foreground': '#B3B3B3F4',
   },
 }
+
+export default chrome

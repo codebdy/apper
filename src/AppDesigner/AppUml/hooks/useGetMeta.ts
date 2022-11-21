@@ -3,7 +3,6 @@ import { useRecoilValue } from "recoil";
 import { SYSTEM_APP_ID } from "consts";
 import { ID } from "shared";
 import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState, codesState, orchestrationsState } from "../recoil/atoms";
-import { useClassPackage } from "./useClassPackage";
 
 export function useGetMeta(appId: ID) {
   const packages = useRecoilValue(packagesState(appId))
@@ -14,8 +13,6 @@ export function useGetMeta(appId: ID) {
   const orchestrations = useRecoilValue(orchestrationsState(appId));
   const x6Nodes = useRecoilValue(x6NodesState(appId));
   const x6Edges = useRecoilValue(x6EdgesState(appId));
-  const getPackage = useClassPackage(appId);
-
   const getMeta = useCallback(() => {
     const pkgs = packages.filter(pgk => !pgk.sharable || appId === SYSTEM_APP_ID)
     const clses = classes.filter(cls => pkgs.find(pkg => cls.packageUuid === pkg.uuid))
@@ -36,7 +33,7 @@ export function useGetMeta(appId: ID) {
     };
 
     return content;
-  }, [appId, classes, diagrams, codes, orchestrations, getPackage, packages, relations, x6Edges, x6Nodes]);
+  }, [appId, classes, diagrams, codes, orchestrations, packages, relations, x6Edges, x6Nodes]);
 
   return getMeta
 }

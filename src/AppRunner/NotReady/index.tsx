@@ -1,6 +1,6 @@
 import { EditOutlined } from "@ant-design/icons"
-import { Button, Card } from "antd"
-import React, { useCallback } from "react"
+import { Button } from "antd"
+import { useCallback } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
@@ -21,7 +21,7 @@ export const NotReady = memo((
 
   const handleGoEdit = useCallback(() => {
     navigate(`/design/${appId}/${DESIGN_BOARD}`)
-  }, [navigate])
+  }, [appId, navigate])
 
   return (
     <div className="not-published-page">
