@@ -56,6 +56,7 @@ export const MobileBody: React.FC<IMobileBodyProps> = observer((props) => {
         }}
       >
         <img
+          alt =""
           src={screen.flip ? MockupImages[theme][0] : MockupImages[theme][1]}
           style={{
             display: 'block',

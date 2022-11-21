@@ -68,7 +68,7 @@ export const BorderStyleSetter: React.FC<IBorderStyleSetterProps> = observer(
         observable({
           value: parseInitPosition(field),
         }),
-      [field.value]
+      [field]
     )
     const prefix = usePrefix('border-style-setter')
     const createReaction = (position: string) => (field: FieldType) => {

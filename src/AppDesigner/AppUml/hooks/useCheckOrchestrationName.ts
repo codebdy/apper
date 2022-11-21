@@ -11,8 +11,6 @@ export function useCheckOrchestrationName(appId: ID) {
    */
   const checkName = useCallback(
     (orchestrationName: string, orchestrationUuid: string) => {
-      const names: string[] = [];
-
       return !orchestrations.find((ors) => ors.name === orchestrationName && ors.uuid !== orchestrationUuid);
     },
     [orchestrations]

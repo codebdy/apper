@@ -48,8 +48,8 @@ export default function MethodView(props: {
   return (
     <div
       className={classNames('property', {
-        ['hover']: hover,
-        ['selected']: isSelected,
+        'hover': hover,
+        'selected': isSelected,
       })}
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}

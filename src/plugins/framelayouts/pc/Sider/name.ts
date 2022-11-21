@@ -1,1 +1,2 @@
-export default "Sider"
+const Name = "Sider"
+export default Name

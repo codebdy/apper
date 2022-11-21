@@ -17,7 +17,7 @@ export function useAuthCategories(categories: IPageCategory[], authPages: IAuthP
       }
     }
     return athCats;
-  }, [categories, getPages, authPages])
+  }, [categories, getPages])
 
   return authCategories;
 }

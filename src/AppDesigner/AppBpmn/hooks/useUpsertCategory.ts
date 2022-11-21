@@ -24,7 +24,7 @@ export function useUpsertCategory(options?: IPostOptions<any>): [
         sync: { id: params.app.id }
       },
     })
-  }, [params.app.id, params.device, post]);
+  }, [params.app.id, post]);
 
   return [upsert, { error: error, loading: loading }]
 }

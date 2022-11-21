@@ -1,6 +1,6 @@
 import { Button, Card, Col, Row } from "antd";
 import Meta from "antd/lib/card/Meta";
-import React, { useCallback } from "react"
+import { useCallback } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ export const AppFrames = memo(() => {
 
   const handleClick = useCallback((key: string) => {
     navigate(`/${DESIGN}/${appId}/${DESIGN_FRAME}/${key}`)
-  }, [navigate]);
+  }, [appId, navigate]);
 
   return (
     <div className='content-inner'>

@@ -1,6 +1,6 @@
 import { observer } from "@formily/reactive-react"
 import { Button, Form, Modal } from "antd"
-import React, { useCallback, useMemo, useState } from "react"
+import { useCallback, useMemo, useState } from "react"
 import { IconWidget } from "../IconWidget"
 import {
   useTree,
@@ -62,7 +62,7 @@ export const SaveTemplateWidget = observer((
       })
     })
 
-  }, [upsert, templateType, elements]);
+  }, [form, upsert, templateType, device, app.id, elements]);
 
   const handleCancel = useCallback(() => {
     form.resetFields();

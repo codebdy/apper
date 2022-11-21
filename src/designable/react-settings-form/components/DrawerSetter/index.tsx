@@ -25,7 +25,7 @@ export const DrawerSetter: React.FC<IDrawerSetterProps> = observer((props) => {
     if (wrapper) {
       setRoot(wrapper)
     }
-  }, [node])
+  }, [formWrapperCls, node])
 
   const renderDrawer = () => {
     if (root && visible) {

@@ -1,2 +1,3 @@
-export default "Container"
+const Name = "Container"
 
+export default Name

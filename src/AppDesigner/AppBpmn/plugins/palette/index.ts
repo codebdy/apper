@@ -1,6 +1,8 @@
 import CustomPaletteProvider from "./CustomPaletteProvider";
 
-export default {
+const palette = {
   __init__: ["customPaletteProvider"],
   customPaletteProvider: ["type", CustomPaletteProvider]
 };
+
+export default palette

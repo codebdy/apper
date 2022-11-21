@@ -1,8 +1,7 @@
 import { gql } from "enthooks";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { useQueryOne } from "enthooks/hooks/useQueryOne";
 import { IUiFrame } from "model";
-import { useFrameUuid } from "./useFrameUuid";
 
 const pageFrameGql = gql`
 query ($uuid:String!, $appId:ID!){

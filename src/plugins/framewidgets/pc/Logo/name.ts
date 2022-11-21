@@ -1,1 +1,3 @@
-export default "Logo"
+const Name = "Logo"
+
+export default Name

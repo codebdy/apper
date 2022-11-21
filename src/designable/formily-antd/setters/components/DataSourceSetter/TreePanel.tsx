@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Tree, Button, TreeProps } from 'antd'
+import { Tree, Button } from 'antd'
 import { uid } from '@formily/shared'
 import { observer } from '@formily/reactive-react'
 import { Title } from './Title'

@@ -9,7 +9,7 @@ import ObjectPanel from "./ObjectPanel";
 import PageContainer from "./PageContainer";
 import Space from "./Space";
 
-export default [
+const pc = [
   PageContainer,
   Card,
   FormLayout,
@@ -21,3 +21,5 @@ export default [
   ArrayPanel,
   Space,
 ]
+
+export default pc

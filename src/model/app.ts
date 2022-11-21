@@ -3,9 +3,7 @@ import { MetaContent } from "AppDesigner/AppUml/meta";
 import { ID } from "shared";
 import { ILang, ILangLocal } from "./lang";
 import { IMenu } from "./menu";
-import { IPage } from "./page";
 import { IPluginInfo } from "./plugin";
-import { IUiFrame } from "./uiframe";
 
 export interface IAppConfig {
   id: ID;

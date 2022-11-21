@@ -1,4 +1,3 @@
-import React from "react";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useParseLangMessage } from "plugin-sdk";
@@ -23,7 +22,7 @@ export function useUserTask(element: any, modeler: any): IElement {
         }
       ]
     }
-  }, [element, name, modeler]);
+  }, [t, p, name, element, modeler]);
 
   return iElement;
 }

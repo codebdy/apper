@@ -14,7 +14,7 @@ export const Layout: React.FC<IDesignerLayoutProps> = (props: any) => {
         ref.current?.style.setProperty(`--${key}`, value)
       })
     }
-  }, [])
+  }, [props.variables])
 
   if (layout) {
     return <Fragment>{props.children}</Fragment>

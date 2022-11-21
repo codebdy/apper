@@ -21,7 +21,7 @@ export function useDeleteOrchestration(appId: ID) {
         setSelectedDiagram(undefined)
       }
     },
-    [backupSnapshot, selectedElementId, setSelectedDiagram]
+    [backupSnapshot, selectedElementId, setOrchestrations, setSelectedDiagram]
   );
 
   return deleteOrchestration;

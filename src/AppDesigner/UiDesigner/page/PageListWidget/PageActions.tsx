@@ -1,6 +1,6 @@
 import { MoreOutlined, EditOutlined, DeleteOutlined, LoadingOutlined, CopyOutlined } from "@ant-design/icons";
 import { Menu, Dropdown, Button } from "antd";
-import React, { memo, useCallback, useMemo } from "react"
+import { memo, useCallback, useMemo } from "react"
 import { useDeletePage } from "../../hooks/useDeletePage";
 import { IPage } from "model";
 import { useShowError } from "AppDesigner/hooks/useShowError";
@@ -86,7 +86,7 @@ const PageActions = memo((
         },
       ]}
     />
-  ), [handleDelete, handleEdit, t]);
+  ), [handleClone, handleDelete, handleEdit, t]);
 
   return (
     <Dropdown

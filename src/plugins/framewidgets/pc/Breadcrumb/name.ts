@@ -1,1 +1,3 @@
-export default "Breadcrumb"
+const Name = "Breadcrumb"
+
+export default Name

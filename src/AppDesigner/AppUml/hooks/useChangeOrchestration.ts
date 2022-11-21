@@ -20,7 +20,7 @@ export function useChangeOrchestration(appId: ID) {
       backupSnapshot();
       setOrchestration(ors => ors.map(or => or.uuid === orche.uuid ? orche : or));
     },
-    [backupSnapshot, chackName, t]
+    [backupSnapshot, chackName, setOrchestration, t]
   );
 
   return changeOrchestration;

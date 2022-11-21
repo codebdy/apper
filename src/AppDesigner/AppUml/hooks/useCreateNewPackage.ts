@@ -28,7 +28,7 @@ export function useCreateNewPackage(appId: ID) {
       };
       return newPackage;
     },
-    [appId, getNewPackageName]
+    [getNewPackageName]
   );
 
   return createNewPackage;

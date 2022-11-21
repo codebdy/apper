@@ -42,10 +42,7 @@ export const DataSettingPanel: React.FC<IDataSettingPanelProps> = observer(
         values,
         effects: effects,
       })
-    }, [
-      props.treeDataSource.selectedKey,
-      props.treeDataSource.dataSource.length,
-    ])
+    }, [props.treeDataSource.dataSource, props.treeDataSource.selectedKey, effects])
     if (!props.treeDataSource.selectedKey)
       return (
         <Fragment>

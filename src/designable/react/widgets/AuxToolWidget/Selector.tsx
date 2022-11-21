@@ -32,7 +32,7 @@ const useMouseHover = <T extends { current: HTMLElement }>(
       unmounted = true
       document.removeEventListener('mouseover', onMouseOver)
     }
-  }, [])
+  }, [enter, leave, ref])
 }
 
 export interface ISelectorProps {

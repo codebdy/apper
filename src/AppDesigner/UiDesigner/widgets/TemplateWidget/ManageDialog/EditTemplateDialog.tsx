@@ -1,6 +1,6 @@
 import { EditOutlined } from "@ant-design/icons"
 import { Button, Form, Modal } from "antd"
-import React, { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { useShowError } from "AppDesigner/hooks/useShowError"
@@ -43,7 +43,7 @@ export const EditTemplateDialog = memo((
       })
     })
 
-  }, [upsert, template]);
+  }, [form, upsert, template]);
 
   const handleCancel = useCallback(() => {
     form.resetFields();

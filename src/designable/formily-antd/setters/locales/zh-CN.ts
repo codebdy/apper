@@ -11,7 +11,7 @@ const ValidatorFormats = [
   { label: '邮编格式', value: 'zip' },
 ]
 
-export default {
+const locales = {
   'zh-CN': {
     settings: {
       'x-validator': {
@@ -98,3 +98,5 @@ export default {
     },
   },
 }
+
+export default locales

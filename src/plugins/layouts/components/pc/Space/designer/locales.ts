@@ -1,4 +1,4 @@
-export default {
+const locales = {
   'zh-CN': {
     title: '弹性间距',
     settings: {
@@ -48,3 +48,5 @@ export default {
     },
   },
 }
+
+export default locales
