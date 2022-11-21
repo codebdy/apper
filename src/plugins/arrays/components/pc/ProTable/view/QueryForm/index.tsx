@@ -23,6 +23,8 @@ export type IQueryFormProps = {
   onChange?: (value: any) => void,
 } & React.ComponentProps<formilyGrid>
 
+const FormGridAny = FormGrid as any;
+
 export const QueryForm: React.FC<IQueryFormProps> = observer((props) => {
   const {
     layout = "horizontal",
@@ -43,7 +45,7 @@ export const QueryForm: React.FC<IQueryFormProps> = observer((props) => {
     value,
     onChange,
     ...other
-  } = props;
+  } = props as any;
   const [expanded, setExpanded] = useState(false);
 
 
@@ -53,13 +55,13 @@ export const QueryForm: React.FC<IQueryFormProps> = observer((props) => {
         maxColumns: maxColumns,
         maxWidth: maxWidth,
         maxRows: expanded && collapsiable ? maxRowsOnCollapsed : Infinity,
-        shouldVisible: (node, grid) => {
+        shouldVisible: (node: any, grid: any) => {
           if (!collapsiable) return true;
           if (node.index === grid.childSize - 1) return true
           if (grid.maxRows === Infinity) return true
           return (node?.shadowRow || 0) < maxRowsOnCollapsed + 1 && (node.index || 0) < (maxColumns || 0) - 1
         },
-      })
+      } as any)
     },
     [collapsiable, expanded, maxColumns, maxRowsOnCollapsed, maxWidth]
   )
@@ -71,8 +73,10 @@ export const QueryForm: React.FC<IQueryFormProps> = observer((props) => {
   return (
     <Card {...other} style={{ ...style || {}, marginBottom: "16px" }}>
       <FormLayout layout={layout} colon={colon} feedbackLayout="terse">
-        <FormGrid
+        <FormGridAny
           grid={grid}
+          minWidth={minWidth}
+          maxWidth={maxWidth}
           minColumns={minColumns}
           maxColumns={maxColumns}
           breakpoints={breakpoints}
@@ -86,7 +90,7 @@ export const QueryForm: React.FC<IQueryFormProps> = observer((props) => {
           {
             !collapsiable && <ButtonsGridColum collapsiable={collapsiable} layout={layout} expanded={expanded} onToggle={handleToggle} />
           }
-        </FormGrid>
+        </FormGridAny>
         {
           collapsiable && <ButtonsGridColum collapsiable={collapsiable} layout={layout} expanded={expanded} onToggle={handleToggle} />
         }
