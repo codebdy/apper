@@ -5,8 +5,8 @@ import React, { useCallback } from "react"
 import { useTableParams } from "plugin-sdk/contexts/table";
 import { useLocalTranslations } from "../hooks/useLocalTranslations";
 import { toJS } from "@formily/reactive";
-import { useShowError } from "AppDesigner/hooks/useShowError";
-import { useUpdateComponentConfig } from "AppRunner/hooks/useUpdateComponentConfig";
+import { useShowError } from "designer/hooks/useShowError";
+import { useUpdateComponentConfig } from "runner/hooks/useUpdateComponentConfig";
 
 const HeightMenu = observer(() => {
   const { t } = useLocalTranslations();

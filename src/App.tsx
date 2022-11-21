@@ -1,28 +1,28 @@
 import { memo } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Login from './Login';
-import AppDesigner from './AppDesigner/index';
+import AppDesigner from './designer/index';
 import Install from './Install';
 import { DESIGN, DESIGNER_TOKEN_NAME, DESIGN_BOARD, DESIGN_FRAME, DESIGN_UI, INDEX_URL, INSTALL_URL, LOGIN_URL, SERVER_URL, SYSTEM_APP_ID } from './consts';
-import { AppEntryRouts } from './AppDesigner/DesignerHeader/AppEntryRouts';
-import AppUis from './AppDesigner/DesignerHeader/AppUis';
-import AppRunner from './AppRunner';
+import { AppEntryRouts } from './designer/DesignerHeader/AppEntryRouts';
+import AppUis from './designer/DesignerHeader/AppUis';
+import AppRunner from './runner';
 import { LoggedInPanel } from './Login/LoggedInPanel';
-import { AppFrames } from './AppDesigner/DesignerHeader/AppFrames';
-import { AppBpmn } from './AppDesigner/AppBpmn';
-import { AppDmn } from './AppDesigner/AppDmn';
-import { AppPlugins } from './AppDesigner/AppPlugins';
-import AppConfig from './AppDesigner/AppConfig';
-import AppUml from './AppDesigner/AppUml';
-import ApiBoard from './AppDesigner/ApiBoard';
-import { FrameDesigner } from './AppDesigner/FrameDesigner';
-import { AuthBoard, AuthRoutes } from './AppDesigner/AppAuth';
-import { MenuAuthBoard } from './AppDesigner/AppAuth/MenuAuthBoard';
-import { ModelAuthBoard } from './AppDesigner/AppAuth/ModelAuthBoard';
-import { PageAuthBoard } from './AppDesigner/AppAuth/PageAuthBoard';
+import { AppFrames } from './designer/DesignerHeader/AppFrames';
+import { AppBpmn } from './designer/AppBpmn';
+import { AppDmn } from './designer/AppDmn';
+import { AppPlugins } from './designer/AppPlugins';
+import AppConfig from './designer/AppConfig';
+import AppUml from './designer/AppUml';
+import ApiBoard from './designer/ApiBoard';
+import { FrameDesigner } from './designer/FrameDesigner';
+import { AuthBoard, AuthRoutes } from './designer/AppAuth';
+import { MenuAuthBoard } from './designer/AppAuth/MenuAuthBoard';
+import { ModelAuthBoard } from './designer/AppAuth/ModelAuthBoard';
+import { PageAuthBoard } from './designer/AppAuth/PageAuthBoard';
 import { EntiRoot } from './enthooks';
-import { UiDesigner } from './AppDesigner/UiDesigner';
-import { AppDesignBoard } from './AppDesigner/AppDesignBoard/inex';
+import { UiDesigner } from './designer/UiDesigner';
+import { AppDesignBoard } from './designer/AppDesignBoard/inex';
 
 const App = memo(() => {
   return (

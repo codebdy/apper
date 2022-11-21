@@ -9,7 +9,7 @@ import { useEntryPageUuid } from "./hooks/useEntryPageUuid";
 import { useGetMenuItemByPageUuid } from "./hooks/useGetMenuItemByPageUuid";
 import "./style.less"
 import cls from "classnames";
-import { useMenu } from "AppRunner/hooks/useMenu";
+import { useMenu } from "runner/hooks/useMenu";
 import { SYSTEM_APP_ID } from "consts";
 import { Device } from "@rxdrag/appx-plugin-sdk";
 import { useCheckMenuAuth } from "./hooks/useCheckMenuAuth";

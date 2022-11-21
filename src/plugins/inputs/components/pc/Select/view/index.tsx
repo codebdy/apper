@@ -5,7 +5,7 @@ import { Select as FormilySelect } from "formily/antd4";
 import { useDataQuery } from "datasource";
 import { useFieldSchema } from '@formily/react'
 import { QueryType, useQueryParams } from "datasource/hooks/useQueryParams";
-import { useShowError } from "AppDesigner/hooks/useShowError";
+import { useShowError } from "designer/hooks/useShowError";
 import { isArr } from "@formily/shared";
 import { AssociationType } from "datasource/model/IFieldSource";
 

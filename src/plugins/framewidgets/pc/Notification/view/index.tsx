@@ -4,7 +4,7 @@ import React from 'react';
 import { BellOutlined } from '@ant-design/icons';
 import { NotificationBox } from './NotificationBox';
 import { useSubscribeNotificationCounts } from '../../../hooks/useSubscribeNotificationCounts';
-import { useShowError } from 'AppRunner/hooks/useShowError';
+import { useShowError } from 'runner/hooks/useShowError';
 import locales, { LOCALES_NS } from "./locales"
 import { registerResourceBundle } from 'i18n/registerResourceBundle';
 

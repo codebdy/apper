@@ -4,7 +4,7 @@ import { createForm } from "@formily/core";
 import { createSchemaField } from '@formily/react'
 import { useChangePassword } from "enthooks/hooks/useChangePassword";
 import { Form, FormButtonGroup, FormItem, Password, Submit } from "formily/antd4";
-import { useShowError } from "AppDesigner/hooks/useShowError";
+import { useShowError } from "designer/hooks/useShowError";
 import { Button, message } from "antd";
 import { useSetToken } from "enthooks";
 import { DESIGNER_TOKEN_NAME } from "consts";

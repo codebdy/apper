@@ -1,5 +1,5 @@
 import { atomFamily } from "recoil";
-import { PackageMeta, ClassMeta } from "AppDesigner/AppUml/meta";
+import { PackageMeta, ClassMeta } from "designer/AppUml/meta";
 
 import { EntityMeta } from "../model/EntityMeta";
 

@@ -9,7 +9,7 @@ import _ from "lodash";
 import { AssociationMeta } from "../model";
 import { AssociationType } from "../model/IFieldSource";
 import { getParentClasses } from "./getParentClasses";
-import { AttributeMeta, ClassMeta, MethodMeta, RelationMeta, RelationMultiplicity, RelationType, StereoType } from "AppDesigner/AppUml/meta";
+import { AttributeMeta, ClassMeta, MethodMeta, RelationMeta, RelationMultiplicity, RelationType, StereoType } from "designer/AppUml/meta";
 import { IApp } from "model";
 import { getChildEntities } from "./getChildEntities";
 

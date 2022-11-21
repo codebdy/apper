@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { IMenuItem, useParseLangMessage } from "plugin-sdk";
-import { useMenu } from "AppRunner/hooks/useMenu";
+import { useMenu } from "runner/hooks/useMenu";
 import { usePage } from "plugin-sdk/contexts/page";
 import { Route } from "antd/es/breadcrumb/Breadcrumb";
 
