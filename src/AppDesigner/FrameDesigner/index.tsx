@@ -4,8 +4,6 @@ import React, { useCallback, useMemo, useState } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { useShowError } from "AppDesigner/hooks/useShowError"
-import { Designer } from "../UiDesigner/containers"
-import { CompositePanel, StudioPanel } from "../UiDesigner/panels"
 import { OutlineTreeWidget } from "../UiDesigner/widgets"
 import { MaterialWidget } from "../UiDesigner/widgets/MaterialWidget"
 import { ID } from "shared"
@@ -19,6 +17,9 @@ import { useBuildMeta } from "datasource"
 import { useQueryTemplates } from "../UiDesigner/hooks/useQueryTemplates"
 import { TemplateType } from "model"
 import { TemplateWidget } from "../UiDesigner/widgets/TemplateWidget"
+import { CompositePanel, Designer, StudioPanel } from "designable/react"
+
+const CompositePanelAny = CompositePanel as any;
 
 export const FrameDesigner = memo(() => {
   const [activeKey, setActiveKey] = useState<string>(DesignerRoutes.Pages);
@@ -29,7 +30,7 @@ export const FrameDesigner = memo(() => {
   const { templates, loading: templateLoading, error: templateError } = useQueryTemplates(TemplateType.Frame);
 
   useShowError(error || metaError || templateError);
-  const hanclePannelChange = useCallback((activeKey: string) => {
+  const hanclePannelChange = useCallback((activeKey?: any) => {
     setActiveKey(activeKey)
   }, []);
 
@@ -64,8 +65,8 @@ export const FrameDesigner = memo(() => {
             </Space>
           }
         >
-          <CompositePanel showNavTitle activeKey={activeKey} onChange={hanclePannelChange}>
-            <CompositePanel.Item
+          <CompositePanelAny showNavTitle activeKey={activeKey} onChange={hanclePannelChange}>
+            <CompositePanelAny.Item
               key={DesignerRoutes.Pages}
               title={t("Panels.PageFrames")} icon={
                 <svg style={{ width: "28px", height: "28px" }} fill="currentColor" viewBox="0 0 1024 1024">
@@ -78,15 +79,15 @@ export const FrameDesigner = memo(() => {
                 selectedId={selectedId}
                 onSelected={handleSelect}
               />
-            </CompositePanel.Item>
-            <CompositePanel.Item
+            </CompositePanelAny.Item>
+            <CompositePanelAny.Item
               key={DesignerRoutes.Components}
               title={t("Panels.Component")}
               icon="Component"
             >
               <MaterialWidget withFrameMaterials />
-            </CompositePanel.Item>
-            <CompositePanel.Item
+            </CompositePanelAny.Item>
+            <CompositePanelAny.Item
               key={DesignerRoutes.Templates}
               title={t("Panels.Templates")}
               icon={
@@ -96,14 +97,14 @@ export const FrameDesigner = memo(() => {
               }
             >
               <TemplateWidget templates={templates||[]} templateType={TemplateType.Frame}  />
-            </CompositePanel.Item>
-            <CompositePanel.Item
+            </CompositePanelAny.Item>
+            <CompositePanelAny.Item
               key={DesignerRoutes.OutlinedTree}
               title={t("Panels.OutlinedTree")} icon="Outline"
             >
               <OutlineTreeWidget />
-            </CompositePanel.Item>
-          </CompositePanel>
+            </CompositePanelAny.Item>
+          </CompositePanelAny>
           {
             selectedId && <FrameWorkSpace frameId={selectedId} />
           }

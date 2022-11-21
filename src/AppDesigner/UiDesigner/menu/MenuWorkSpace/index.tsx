@@ -1,7 +1,6 @@
 import { IApp } from "model";
-import React, { memo, useCallback } from "react";
+import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { SettingsPanel, ToolbarPanel, ViewportPanel, WorkspacePanel } from "../../panels";
 import { MenuToolsWidget } from "../MenuToolsWidget";
 import MenuDesignView from "./MenuDesignView";
 import "./style.less"
@@ -10,6 +9,7 @@ import { navigationSelectedIdState } from "../atoms";
 import { useDesignerViewKey } from "plugin-sdk/contexts/desinger";
 import MenuSettingsForm from "./MenuSettingsForm";
 import { Empty } from "antd";
+import { SettingsPanel, ToolbarPanel, ViewportPanel, WorkspacePanel } from "designable/react";
 
 const MenuWorkSpace = memo((
   props: {

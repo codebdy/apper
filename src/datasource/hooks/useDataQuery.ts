@@ -20,7 +20,7 @@ export function useDataQuery(params?: IQueryParams): QueryResponse {
   const endpoint = useEndpoint();
   const refreshRef = useRef<() => void>();
 
-  const [doLoad, { error, data, loading }] = useLazyRequest({
+  const [doLoad, { error, data, loading }] = useLazyRequest<any>({
     onCompleted: (data) => {
       setRevalidating(false)
     },

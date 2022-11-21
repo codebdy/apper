@@ -13,10 +13,11 @@ const AppDesigner = memo(() => {
   useShowError(error);
 
   return (
-    app &&
-    <AppDesignerRoot app={app}>
-      <Outlet />
-    </AppDesignerRoot>
+    app ?
+      <AppDesignerRoot app={app}>
+        <Outlet />
+      </AppDesignerRoot>
+      : <></>
   )
 })
 

@@ -8,7 +8,7 @@ export function useNavigateRoute() {
   const { instance } = useInstanceParams()
   const navigateRoute = useCallback((route?: string) => {
     const realRoute = parseRoute(route, instance);
-    navigate(realRoute)
+    realRoute && navigate(realRoute)
   }, [navigate, instance])
 
   return navigateRoute;

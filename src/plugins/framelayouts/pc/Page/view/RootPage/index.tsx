@@ -17,7 +17,7 @@ export const RootPage = memo(() => {
   const { dataId } = useParams();
   const getMenuItem = useGetMenuItem();
   const entryUuid = useEntryPageUuid();
-  const pageUuidFormMenu = useMemo(() => getMenuItem(menuUuid)?.route?.pageUuid, [getMenuItem, menuUuid])
+  const pageUuidFormMenu = useMemo(() => getMenuItem(menuUuid||"")?.route?.pageUuid, [getMenuItem, menuUuid])
   const realPageUuid = useMemo(() => pageUuid || pageUuidFormMenu || entryUuid, [entryUuid, pageUuid, pageUuidFormMenu])
 
   return (

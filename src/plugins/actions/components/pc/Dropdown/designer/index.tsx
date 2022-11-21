@@ -37,7 +37,7 @@ const ComponentDesigner: DnFC<IDropdownProps> & {
         <Dropdown
           overlay={
             <div>
-              <TreeNodeWidget node={pannel} />
+              {pannel && <TreeNodeWidget node={pannel} />}
             </div>
           }
           open={visible}
@@ -45,7 +45,7 @@ const ComponentDesigner: DnFC<IDropdownProps> & {
           getPopupContainer={() => ref.current as any}
           {...other}
         >
-          <TreeNodeWidget node={button} />
+          {button && <TreeNodeWidget node={button} />}
         </Dropdown>
       </div>
     </DropdownDesignerContext.Provider>
