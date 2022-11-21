@@ -3,15 +3,14 @@ import { observer, useFieldSchema, useField, Schema } from '@formily/react'
 import cls from 'classnames'
 import { isArr, isBool, isFn } from '@formily/shared'
 import { Input, Table } from 'antd'
-import { TableProps, ColumnProps } from 'antd/lib/table'
-import { SearchProps } from 'antd/lib/input'
 import { useFilterOptions } from './useFilterOptions'
 import { useFlatOptions } from './useFlatOptions'
 import { useSize } from './useSize'
 import { useTitleAddon } from './useTitleAddon'
 import { useCheckSlackly, getIndeterminate } from './useCheckSlackly'
 import { getUISelected, getOutputData } from './utils'
-import { usePrefixCls } from '../__builtins__'
+import { ColumnProps, TableProps } from 'antd/es/table'
+import { SearchProps } from 'antd/es/input'
 
 const { Search } = Input
 
@@ -68,7 +67,7 @@ const useColumns = () => {
   return columns
 }
 
-const addPrimaryKey = (dataSource, rowKey, primaryKey) =>
+const addPrimaryKey = (dataSource:any, rowKey:any, primaryKey:any) =>
   dataSource.map((item) => {
     const children = isArr(item.children)
       ? addPrimaryKey(item.children, rowKey, primaryKey)
@@ -169,10 +168,10 @@ export const SelectTable: ComposedSelectTable = observer((props) => {
   const readPrettyDataSource = useFilterOptions(
     orderedFilteredDataSource,
     selected,
-    (value, item) => value.includes(item[primaryKey])
+    (value, item) => value.includes(item[primaryKey as any])
   )
 
-  const onInnerSearch = (searchText) => {
+  const onInnerSearch = (searchText?:string) => {
     const formatted = (searchText || '').trim()
     setSearchValue(searchText)
     onSearch?.(formatted)
@@ -184,7 +183,7 @@ export const SelectTable: ComposedSelectTable = observer((props) => {
     }
     // 筛选后onChange默认的records数据不完整，此处需使用完整数据过滤
     const wholeRecords = getWholeDataSource().filter((item) =>
-      selectedRowKeys.includes(item?.[primaryKey])
+      selectedRowKeys.includes(item?.[primaryKey as any])
     )
     const { outputValue, outputOptions } = getOutputData(
       selectedRowKeys,
@@ -200,11 +199,11 @@ export const SelectTable: ComposedSelectTable = observer((props) => {
     onChange?.(outputValue, outputOptions)
   }
 
-  const onRowClick = (record) => {
+  const onRowClick = (record:any) => {
     if (readPretty || disabled || readOnly || record?.disabled) {
       return
     }
-    const selectedRowKey = record?.[primaryKey]
+    const selectedRowKey = record?.[primaryKey as any]
     const isSelected = selected?.includes(selectedRowKey)
     let selectedRowKeys = []
     if (mode === 'single') {
@@ -225,12 +224,13 @@ export const SelectTable: ComposedSelectTable = observer((props) => {
 
   // TreeData SlacklyChange
   const onSlacklyChange = (currentSelected: any[]) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     let { selectedRowKeys } = useCheckSlackly(
       currentSelected,
       selected,
       flatDataSource,
       flatFilteredDataSource,
-      primaryKey,
+      primaryKey as any,
       rowSelection?.checkStrictly
     )
     onInnerChange(selectedRowKeys)
@@ -241,8 +241,8 @@ export const SelectTable: ComposedSelectTable = observer((props) => {
     selected,
     flatDataSource,
     flatFilteredDataSource,
-    primaryKey,
-    mode,
+    primaryKey as any,
+    mode as any,
     disabled,
     readOnly,
     rowSelection?.checkStrictly,
@@ -294,7 +294,7 @@ export const SelectTable: ComposedSelectTable = observer((props) => {
                               record,
                               flatDataSource,
                               selected,
-                              primaryKey
+                              primaryKey as any
                             ),
                           }
                         )
