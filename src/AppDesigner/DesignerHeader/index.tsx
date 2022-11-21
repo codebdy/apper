@@ -1,6 +1,5 @@
 import { QuestionCircleOutlined, GithubOutlined, HomeOutlined, DownOutlined, ApiOutlined, SettingOutlined, DesktopOutlined, LayoutOutlined } from "@ant-design/icons"
 import { Button, Divider, Menu, Space } from "antd"
-import { Header } from "antd/lib/layout/layout"
 import React, { useCallback } from "react"
 import { memo } from "react"
 import { useMatch, useNavigate } from "react-router-dom"
@@ -14,6 +13,7 @@ import SvgIcon from "common/SvgIcon"
 import { DESIGN, DESIGN_BOARD } from "consts"
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid"
 import { Operate } from "./Operate"
+import { Header } from "antd/es/layout/layout"
 
 const DesignerHeader = memo((props: {
   app?: IApp,

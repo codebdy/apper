@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
-import { Tabs } from 'antd'
-import { TabsProps } from 'antd/lib/tabs'
+import { Tabs, TabsProps } from 'antd'
 import {
   useField,
   observer,

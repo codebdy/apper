@@ -136,6 +136,8 @@ const FieldStateValueTypes = {
   validating: 'boolean',
 }
 
+const SchemaFieldAny = SchemaField as any;
+
 export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
   const [modalVisible, setModalVisible] = useState(false)
   const [innerVisible, setInnerVisible] = useState(false)
@@ -193,7 +195,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
           {innerVisible && (
             <Form form={form}>
               <SchemaField>
-                <SchemaField.Void
+                <SchemaFieldAny.Void
                   x-component="FormCollapse"
                   x-component-props={{
                     formCollapse,
@@ -425,7 +427,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                       }}
                     />
                   </SchemaField.Void>
-                </SchemaField.Void>
+                </SchemaFieldAny.Void>
               </SchemaField>
             </Form>
           )}

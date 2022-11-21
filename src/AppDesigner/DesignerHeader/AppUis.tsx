@@ -1,5 +1,4 @@
 import { Row, Col, Card, Button, Skeleton } from "antd"
-import Meta from "antd/lib/card/Meta"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
@@ -7,6 +6,7 @@ import { DESIGN, DESIGN_UI } from "consts"
 import { useDevices } from "../hooks/useDevices"
 import Container from "plugins/framelayouts/pc/Container/view"
 import { useEdittingAppId } from "../hooks/useEdittingAppUuid"
+import Meta from "antd/es/card/Meta"
 
 const AppUis = memo((props: {
   loading?: boolean

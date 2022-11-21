@@ -1,13 +1,13 @@
 import { Button, Modal } from "antd";
 import SvgIcon from "common/SvgIcon";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { memo } from "react";
-import { useForm } from "antd/lib/form/Form";
 import { useUpsertCategory } from "../../hooks/useUpsertCategory";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import CategoryForm from "./CategoryForm";
 import { useTranslation } from "react-i18next";
 import { createUuid } from "shared";
+import { useForm } from "antd/es/form/Form";
 
 const CreateCategoryDialog = memo(() => {
   const [isModalVisible, setIsModalVisible] = useState(false);

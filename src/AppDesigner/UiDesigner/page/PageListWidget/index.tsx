@@ -1,7 +1,6 @@
 import { Tree } from 'antd';
 import React, { memo, useCallback } from 'react';
 import "./index.less"
-import { DataNode } from 'antd/lib/tree';
 import CreateCategoryDialog from './CreateCategoryDialog';
 import CreatePageDialog from './CreatePageDialog';
 import { useRecoilState } from 'recoil';
@@ -13,6 +12,7 @@ import { useGetPage } from '../../hooks/useGetPage';
 import { usePagesWithoutCategory } from '../../hooks/usePagesWithoutCategory';
 import { useGetCategoryPages } from '../../hooks/useGetCategoryPages';
 import { useCategories } from '../../hooks/useCategories';
+import { DataNode } from 'antd/es/tree';
 
 const { DirectoryTree } = Tree;
 

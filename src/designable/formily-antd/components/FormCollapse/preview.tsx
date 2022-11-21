@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import { observer } from '@formily/react'
-import { Collapse } from 'antd'
-import { CollapseProps, CollapsePanelProps } from 'antd/lib/collapse'
+import { Collapse, CollapsePanelProps, CollapseProps } from 'antd'
 import { TreeNode, createBehavior, createResource } from '@designable/core'
 import { toArr } from '@formily/shared'
 import { LoadTemplate } from '../../common/LoadTemplate'
