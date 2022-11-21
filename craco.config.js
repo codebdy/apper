@@ -1,10 +1,3 @@
-import { theme } from 'antd';
-import { convertLegacyToken } from '@ant-design/compatible';
-
-const { defaultAlgorithm, defaultSeed } = theme;
-
-const mapToken = defaultAlgorithm(defaultSeed);
-const v4Token = convertLegacyToken(mapToken);
 const CracoLessPlugin = require('craco-less');
 
 module.exports = {
@@ -14,8 +7,8 @@ module.exports = {
       options: {
         lessLoaderOptions: {
           lessOptions: {
+            //modifyVars: { '@primary-color': '#1DA57A' },
             javascriptEnabled: true,
-            modifyVars: v4Token,
           },
         },
       },
