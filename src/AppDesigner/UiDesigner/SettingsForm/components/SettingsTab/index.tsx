@@ -87,7 +87,7 @@ const TabPane: React.FC<ISettingsTabPaneProps> = observer((
   }
 ) => {
   return <Fragment>{props.children}</Fragment>
-})
+}) as any
 
 SettingsTab.TabPane = TabPane
 

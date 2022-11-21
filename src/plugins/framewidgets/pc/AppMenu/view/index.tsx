@@ -69,7 +69,7 @@ const AppMenu = memo((props: IComponentProps) => {
       <Menu
         className={cls("app-menu", className)}
         {...other}
-        selectedKeys={[(menuUuid !== "no" && menuUuid) || getMenuItemByPageId(entryId)?.uuid]}
+        selectedKeys={[(menuUuid !== "no" && menuUuid) || getMenuItemByPageId(entryId)?.uuid] as any}
         items={data}
         onClick={handleClick}
       />
