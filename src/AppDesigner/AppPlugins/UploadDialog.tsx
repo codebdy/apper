@@ -1,5 +1,5 @@
 import { CloudUploadOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, Form, Input, message, Modal, Radio, RadioChangeEvent, UploadFile, UploadProps } from 'antd';
+import { Button, Form, Input, message, Modal, Radio, RadioChangeEvent, UploadFile } from 'antd';
 import React, { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useUpsertPluginInfo } from './hooks/useUpsertPluginInfo';

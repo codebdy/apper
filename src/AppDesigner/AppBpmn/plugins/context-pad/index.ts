@@ -1,6 +1,8 @@
 import CustomContextPadProvider from "./CustomContextPadProvider";
 
-export default {
+const pad= {
   __init__: ["customContextPadProvider"],
   customContextPadProvider: ["type", CustomContextPadProvider]
 };
+
+export default pad

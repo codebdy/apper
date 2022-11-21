@@ -1,1 +1,2 @@
-export default "Layout"
+const Name = "Layout"
+export default Name

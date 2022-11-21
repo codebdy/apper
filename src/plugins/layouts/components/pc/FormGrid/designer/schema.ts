@@ -1,4 +1,3 @@
-import { ISchema } from '@formily/react'
 import { IPropsSchema } from '@rxdrag/appx-plugin-sdk'
 
 const schema: IPropsSchema = {

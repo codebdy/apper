@@ -31,7 +31,7 @@ const Component = observer((props: ITextProps) => {
     }
 
     return p(txtValue);
-  }, [props.content, value])
+  }, [formatMask, p, props.content, textType, value])
   return React.createElement(
     tagName,
     {

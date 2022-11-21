@@ -1,6 +1,7 @@
 import { MonacoInput } from "designable/react-settings-form";
 import { memo } from "react"
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function formatXml(xml: any) {
   // https://stackoverflow.com/questions/57039218/doesnt-monaco-editor-support-xml-language-by-default
   const PADDING = ' '.repeat(2);

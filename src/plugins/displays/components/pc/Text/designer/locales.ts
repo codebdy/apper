@@ -1,5 +1,3 @@
-import { TextType } from "../view";
-
 const locales = {
   'zh-CN': {
     title: '文本',

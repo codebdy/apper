@@ -1,1 +1,2 @@
-export default "Appbar"
+const Name = "Appbar"
+export default Name
