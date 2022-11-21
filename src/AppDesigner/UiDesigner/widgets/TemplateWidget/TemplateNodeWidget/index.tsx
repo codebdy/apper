@@ -25,7 +25,7 @@ export const TemplateNodeWidget: React.FC<IResourceNodeWidgetProps> = observer(
       >
         <Image value={props.imageUrl} />
         <div className={'template-item-text'}>
-          {title}
+          {title as any}
         </div>
       </div>
     )
