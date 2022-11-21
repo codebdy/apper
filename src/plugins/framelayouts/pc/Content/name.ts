@@ -1,2 +1,3 @@
-export default "Content"
+const Name = "Content"
 
+export default Name

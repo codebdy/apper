@@ -62,8 +62,8 @@ export const Cover = observer(() => {
   return (
     <Fragment>
       {viewportDragon.dragNodes.map((node) => {
-        if (!node) return
-        if (!viewport.findElementById(node.id)) return
+        if (!node) return<></>
+        if (!viewport.findElementById(node.id)) return<></>
         return <CoverRect key={node.id} node={node} dragging />
       })}
       {renderDropCover()}

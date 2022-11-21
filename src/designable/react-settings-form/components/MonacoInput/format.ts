@@ -19,6 +19,7 @@ const cache: { prettier: Promise<IPrettierModule> | null } = {
 export const format = async (language: string, source: string) => {
   cache.prettier =
     cache.prettier ||
+    // eslint-disable-next-line no-new-func
     new Function(
       `return import("${getNpmCDNRegistry()}/prettier@2.x/esm/standalone.mjs")`
     )()

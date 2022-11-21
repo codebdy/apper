@@ -1,4 +1,4 @@
-export default {
+const locales = {
   'zh-CN': {
     SettingComponents: {
       ValueInput: {
@@ -10,3 +10,6 @@ export default {
     },
   },
 }
+
+export default locales
+

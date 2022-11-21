@@ -64,7 +64,7 @@ export const PageEngine = memo((
       return [createForm(), newExpScope];
     }
     ,
-    [$me, expScope, pageUuid]
+    [$me, expScope]
   );
 
   return (

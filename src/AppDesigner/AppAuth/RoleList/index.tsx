@@ -61,7 +61,7 @@ export const RoleList = memo((
         </svg>
       )
     ],
-    [roles]);
+    [p, roles, t]);
 
   return (
     <div className="right-border role-list">

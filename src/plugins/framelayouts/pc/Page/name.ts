@@ -1,1 +1,3 @@
-export default "Page"
+const Name = "Page"
+
+export default Name

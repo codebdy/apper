@@ -1,1 +1,3 @@
-export default "FlexBox"
+const Name = "FlexBox"
+
+export default Name

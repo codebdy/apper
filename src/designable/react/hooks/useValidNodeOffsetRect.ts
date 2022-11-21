@@ -36,7 +36,7 @@ export const useValidNodeOffsetRect = (node: TreeNode) => {
       rectRef.current = nextRect
       forceUpdate(nextRect as any)
     }
-  }, [viewport, node])
+  }, [engine.cursor.status, engine.screen.status, viewport, node])
 
   useEffect(() => {
     if (!element || !element.isConnected) return
@@ -50,7 +50,7 @@ export const useValidNodeOffsetRect = (node: TreeNode) => {
     return () => {
       observerRef.current.disconnect()
     }
-  }, [element, viewport])
+  }, [compute, element, viewport])
 
   useEffect(() => {
     unmountRef.current = false
@@ -66,7 +66,7 @@ export const useValidNodeOffsetRect = (node: TreeNode) => {
       unmountRef.current = true
       cancelIdle(idleTaskRef.current)
     }
-  }, [node])
+  }, [compute, node])
 
   return rectRef.current
 }

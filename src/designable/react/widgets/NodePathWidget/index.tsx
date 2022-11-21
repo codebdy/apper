@@ -11,6 +11,7 @@ export interface INodePathWidgetProps {
   maxItems?: number
 }
 
+const url = ""
 export const NodePathWidget: React.FC<INodePathWidgetProps> = observer(
   (props) => {
     const selected = useCurrentNode(props.workspaceId)
@@ -33,7 +34,7 @@ export const NodePathWidget: React.FC<INodePathWidgetProps> = observer(
                 <IconWidget infer="Position" style={{ marginRight: 3 }} />
               )}
               <a
-                href=""
+                href={url}
                 onMouseEnter={() => {
                   hover.setHover(node)
                 }}

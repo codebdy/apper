@@ -1,4 +1,4 @@
-export default {
+const themes = {
   base: 'vs-dark',
   inherit: true,
   rules: [
@@ -138,3 +138,5 @@ export default {
     'editor.selectionHighlightBorder': '#222218',
   },
 }
+
+export default themes

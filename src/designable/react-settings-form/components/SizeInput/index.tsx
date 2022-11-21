@@ -4,6 +4,7 @@ import { createPolyInput } from '../PolyInput'
 const takeNumber = (value: any) => {
   const num = String(value)
     .trim()
+    // eslint-disable-next-line no-useless-escape
     .replace(/[^\d\.]+/, '')
   if (num === '') return
   return Number(num)
