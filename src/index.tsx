@@ -15,7 +15,7 @@ root.render(
   <React.StrictMode>
       <RecoilRoot>
         <PredefinedPluginsRoot>
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
             <App />
           </BrowserRouter>
         </PredefinedPluginsRoot>

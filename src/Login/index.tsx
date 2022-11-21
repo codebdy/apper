@@ -113,7 +113,7 @@ const Login = observer(() => {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      background: "url(/public/img/background2.jpg)",
+      background: "url(/img/background2.jpg)",
       height: "100vh",
       backgroundPosition: " 50%",
       backgroundRepeat: "no-repeat",
