@@ -69,7 +69,7 @@ const useColumns = () => {
 }
 
 const addPrimaryKey = (dataSource: any, rowKey: any, primaryKey: any) =>
-  dataSource.map((item) => {
+  dataSource.map((item:any) => {
     const children = isArr(item.children)
       ? addPrimaryKey(item.children, rowKey, primaryKey)
       : {}
@@ -144,11 +144,11 @@ export const SelectTable: ComposedSelectTable = observer((props) => {
       const map = new Map()
       const arr = [...flatDataSource, ...value]
       arr.forEach((item) => {
-        if (!map.has(item[primaryKey])) {
-          map.set(item[primaryKey], item)
+        if (!map.has(item[primaryKey as any])) {
+          map.set(item[primaryKey as any], item)
         }
       })
-      return [...map.values()]
+      return [...map.values() as any]
     }
     return flatDataSource
   }
@@ -232,7 +232,7 @@ export const SelectTable: ComposedSelectTable = observer((props) => {
       flatDataSource,
       flatFilteredDataSource,
       primaryKey as any,
-      rowSelection?.checkStrictly
+      rowSelection?.checkStrictly as any
     )
     onInnerChange(selectedRowKeys)
   }
@@ -246,12 +246,12 @@ export const SelectTable: ComposedSelectTable = observer((props) => {
     mode as any,
     disabled,
     readOnly,
-    rowSelection?.checkStrictly,
+    rowSelection?.checkStrictly as any,
     onInnerChange
   )
 
   // Antd rowSelection type
-  const modeAsType: any = { multiple: 'checkbox', single: 'radio' }?.[mode]
+  const modeAsType: any = ({ multiple: 'checkbox', single: 'radio' } as any)?.[mode as any]
 
   return (
     <div className={prefixCls}>
