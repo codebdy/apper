@@ -11,7 +11,6 @@ export default class CustomReplaceMenuProvider {
   }
 
   getPopupMenuEntries(element) {
-    const self = this;
     return function (entries) {
       console.log("Replace 菜单", entries)
 

@@ -1,1 +1,2 @@
-export default "Footer"
+const Name = "Footer"
+export default Name

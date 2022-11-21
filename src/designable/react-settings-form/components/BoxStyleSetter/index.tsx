@@ -24,6 +24,7 @@ const PositionMap = {
 }
 
 const BoxRex =
+  // eslint-disable-next-line no-useless-escape
   /([\d\.]+[^\d\s\.+-]+)(?:\s+([\d\.]+[^\d\s\.+-]+)(?:\s+([\d\.]+[^\d\s\.+-]+)(?:\s+([\d\.]+[^\d\s\.+-]+))?)?)?/
 
 export const BoxStyleSetter: React.FC<IMarginStyleSetterProps> = observer(

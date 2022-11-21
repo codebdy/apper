@@ -8,7 +8,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { packagesState, diagramsState, classesState, selectedUmlDiagramState, selectedElementState, codesState, orchestrationsState } from './../recoil/atoms';
 import TreeNodeLabel from "common/TreeNodeLabel";
 import PackageLabel from "./PackageLabel";
-import { PackageMeta, PackageStereoType } from "../meta/PackageMeta";
+import { PackageMeta } from "../meta/PackageMeta";
 import { ClassMeta, StereoType } from "../meta/ClassMeta";
 import { ClassIcon } from "./svgs";
 import { useIsDiagram } from "../hooks/useIsDiagram";
@@ -246,7 +246,7 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     }
 
     return packageChildren;
-  }, [classes, codes, getClassCategoryNode, t, diagrams])
+  }, [classes, getClassCategoryNode, t, diagrams])
 
   const getModelPackageNodes = useCallback(() => {
 
@@ -307,7 +307,7 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
       orchestrationChildren.push(getCodesNode(t("AppUml.CustomCode"), "codes"))
     }
     return orchestrationChildren
-  }, [codes, getQueryNodes, getMutationNodes, getCodesNode]);
+  }, [getQueryNodes, t, getMutationNodes, codes.length, getCodesNode]);
 
 
   const treeData: DataNode[] = useMemo(() => [

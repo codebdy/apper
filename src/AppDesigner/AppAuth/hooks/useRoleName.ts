@@ -18,7 +18,7 @@ export function useRoleName(roleId: ID) {
     if (roleId === GUEST_ROLE_ID) {
       return t("Auth.Guest");
     }
-  }, [role, roleId])
+  }, [p, role?.name, roleId, t])
 
   return roleName;
 }

@@ -21,7 +21,7 @@ export function useExportOrchestrationJson(appId: string) {
         }
       }
     );
-  }, [appId, getMeta]);
+  }, [appId, getMeta, t]);
 
   return doExport
 }

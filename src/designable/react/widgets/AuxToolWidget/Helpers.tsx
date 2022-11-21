@@ -2,7 +2,7 @@ import React, { useRef, useState, useLayoutEffect } from 'react'
 import { TreeNode } from '@designable/core'
 import { reaction } from '@formily/reactive'
 import cls from 'classnames'
-import { useDesigner, usePrefix, useViewport } from '../../hooks'
+import { usePrefix, useViewport } from '../../hooks'
 import { Selector } from './Selector'
 import { Copy } from './Copy'
 import { Delete } from './Delete'
@@ -25,7 +25,6 @@ export interface IViewportState {
 
 export const Helpers: React.FC<IHelpersProps> = ({ node, nodeRect }) => {
   const prefix = usePrefix('aux-helpers')
-  const designer = useDesigner()
   const viewport = useViewport()
   const unmountRef = useRef(false)
   const ref = useRef<HTMLDivElement>()

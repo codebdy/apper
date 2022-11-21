@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react'
 import Editor, { EditorProps, loader } from '@monaco-editor/react'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import { Tooltip } from 'antd'
@@ -63,13 +63,7 @@ export const MonacoInput: React.FC<MonacoInputProps> & {
       }
     }, [])
 
-    useEffect(() => {
-      if (monacoRef.current && props.extraLib) {
-        updateExtraLib()
-      }
-    }, [props.extraLib])
-
-    const updateExtraLib = () => {
+    const updateExtraLib = useCallback(() => {
       if (extraLibRef.current) {
         extraLibRef.current.dispose()
       }
@@ -78,8 +72,13 @@ export const MonacoInput: React.FC<MonacoInputProps> & {
           props.extraLib as any,
           `${uidRef.current}.d.ts`
         )
-    }
+    }, [props.extraLib])
 
+    useEffect(() => {
+      if (monacoRef.current && props.extraLib) {
+        updateExtraLib()
+      }
+    }, [props.extraLib, updateExtraLib])
     const isFileLanguage = () => {
       const lang = computedLanguage.current
       return lang === 'javascript' || lang === 'typescript'

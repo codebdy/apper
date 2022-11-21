@@ -3,7 +3,7 @@ import { DnFC } from 'designable/react'
 import { observer } from "@formily/reactive-react"
 import { IComponentProps } from "../view"
 import { Menu, MenuProps } from "antd";
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from "@ant-design/icons";
+import { AppstoreOutlined, MailOutlined } from "@ant-design/icons";
 import "../view/style.less"
 import cls from "classnames";
 

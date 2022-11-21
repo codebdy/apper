@@ -21,7 +21,7 @@ export function useDeleteCode(appId: ID) {
         setSelectedDiagram(undefined)
       }
     },
-    [backupSnapshot, selectedElementId, setSelectedDiagram]
+    [backupSnapshot, selectedElementId, setCodes, setSelectedDiagram]
   );
 
   return deleteCode;

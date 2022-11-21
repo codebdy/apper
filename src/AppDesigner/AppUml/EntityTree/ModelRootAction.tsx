@@ -30,7 +30,7 @@ export const ModelRootAction = memo(() => {
     () => {
       setNewPackage(createNewPackage());
     },
-    [setNewPackage],
+    [createNewPackage],
   );
 
   const handleClose = useCallback(() => {
@@ -41,7 +41,7 @@ export const ModelRootAction = memo(() => {
     backup();
     setPackages(packages => [...packages, pkg]);
     setNewPackage(undefined);
-  }, [backup, setPackages, createNewPackage])
+  }, [backup, setPackages])
 
   const menu = useMemo(() => (
     <Menu

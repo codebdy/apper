@@ -1,1 +1,2 @@
-export default "AppMenu"
+const Name = "AppMenu"
+export default Name

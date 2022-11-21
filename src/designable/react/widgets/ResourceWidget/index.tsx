@@ -36,7 +36,7 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
           key={node?.id}
           data-designer-source-id={node?.id}
         >
-          {thumb && <img className={prefix + '-item-thumb'} src={thumb} />}
+          {thumb && <img alt="" className={prefix + '-item-thumb'} src={thumb} />}
           {icon && React.isValidElement(icon) ? (
             <>{icon}</>
           ) : (

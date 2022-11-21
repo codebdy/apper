@@ -1,1 +1,2 @@
-export default "Box"
+const Name = "Box"
+export default Name

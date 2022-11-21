@@ -74,7 +74,7 @@ export function createPolyInput(polyTypes: PolyTypes = []): React.FC<IInput> {
           setCurrent(type)
         }
       })
-    }, [value])
+    }, [types, value])
 
     const getNextType = () => {
       const currentIndex = types?.findIndex(({ type }) => type === current)

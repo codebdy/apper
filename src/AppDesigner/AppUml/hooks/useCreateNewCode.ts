@@ -37,7 +37,7 @@ export function useCreateNewCode(appId: ID) {
     setCodes(codes => [...codes, newCode]);
     setSelectedElement(newCode.uuid);
     setSelectedDiagram(undefined);
-  }, [backup, setCodes, getNewCodeName]);
+  }, [backup, getNewCodeName, setCodes, setSelectedElement, setSelectedDiagram]);
 
   return createNewCode;
 }

@@ -67,8 +67,8 @@ export const Selection = observer(() => {
     <Fragment>
       {selection.selected.map((id) => {
         const node = tree.findById(id)
-        if (!node) return
-        if (node.hidden) return
+        if (!node) return<></>
+        if (node.hidden) return<></>
         return (
           <SelectionBox
             key={id}

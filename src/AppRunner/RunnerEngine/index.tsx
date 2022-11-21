@@ -1,6 +1,5 @@
 
 import { memo, useState } from 'react';
-import React from 'react';
 import { IMenuItem } from 'plugin-sdk/model/IMenuNode';
 import { FormItem } from "@formily/antd";
 import { useMemo } from "react";
@@ -46,7 +45,7 @@ const RunnerEngine = memo(() => {
       return [createForm(), newExpScope];
     }
     ,
-    [$me, uiFrame]
+    [$me]
   );
 
   return (

@@ -6,6 +6,7 @@ import { IconWidget } from '../../react'
 
 const takeIcon = (message: string) => {
   if (!isStr(message)) return
+  // eslint-disable-next-line no-useless-escape
   const matched = message.match(/@([^:\s]+)(?:\s*\:\s*([\s\S]+))?/)
   if (matched) return [matched[1], matched[2]]
   return

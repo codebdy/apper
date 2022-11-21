@@ -6,8 +6,8 @@ export type FileSystemFileHandle = {
   createWritable: () => any;
 };
 
-export function setHandle(fileHandle: FileSystemFileHandle) {
-  fileHandle = fileHandle;
+export function setHandle(fHandle: FileSystemFileHandle) {
+  fileHandle = fHandle;
 }
 
 export function getHandle() {

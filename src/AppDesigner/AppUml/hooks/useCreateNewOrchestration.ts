@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 import { createUuid, ID } from "shared";
-import { useTranslation } from "react-i18next";
 import { useBackupSnapshot } from "./useBackupSnapshot";
 import { orchestrationsState, selectedElementState, selectedUmlDiagramState } from "../recoil/atoms";
 import { useSetRecoilState } from "recoil";
@@ -17,8 +16,6 @@ export function useCreateNewOrchestration(appId: ID) {
     selectedUmlDiagramState(appId)
   );
 
-  const { t } = useTranslation();
-
   const getNewName = useCallback(() => {
     const prefix = "newOrchestration";
     let index = 1;
@@ -27,7 +24,7 @@ export function useCreateNewOrchestration(appId: ID) {
     }
 
     return prefix + index;
-  }, [getByName, t]);
+  }, [getByName]);
 
   const createNewOrchestration = useCallback((operateType: MethodOperateType) => {
     backup()
@@ -43,7 +40,7 @@ export function useCreateNewOrchestration(appId: ID) {
     setOrchestrations(orchestrations => [...orchestrations, newOrchestration]);
     setSelectedElement(newOrchestration.uuid);
     setSelectedDiagram(undefined);
-  }, [backup, setOrchestrations, getNewName]);
+  }, [backup, getNewName, setOrchestrations, setSelectedElement, setSelectedDiagram]);
 
   return createNewOrchestration;
 }

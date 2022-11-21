@@ -36,7 +36,7 @@ export const PageAuthPanal = memo((
       componentConfig: componentConfigs.find(config => config.componentId === com.name),
       device: device.key as any
     }
-  }, [p, componentConfigs, roleId, device])
+  }, [p, componentConfigs, device])
 
   const makePageItem = useCallback((page: IAuthPage) => {
     return {
@@ -45,7 +45,7 @@ export const PageAuthPanal = memo((
       children: page.components.map(com => makeComponentItem(com, page.page.id)),
       device: device.key as any
     }
-  }, [p, componentConfigs, roleId, device])
+  }, [p, device.key, makeComponentItem])
 
   const makeCategoryItem = useCallback((category: IAuthCategory) => {
     return {
@@ -54,7 +54,7 @@ export const PageAuthPanal = memo((
       children: category.pages.map(page => makePageItem(page)),
       device: device.key as any
     }
-  }, [p, componentConfigs, roleId, device, makePageItem])
+  }, [p, device, makePageItem])
 
   const data: IUiAuthRow[] = useMemo(() => {
     const categoryItems = authCategories.map(category => makeCategoryItem(category))

@@ -212,7 +212,7 @@ true
  * RegExp
  **/
 
-/\d+/
+/d+/
 
 /** 
  * Example 1

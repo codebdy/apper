@@ -1,6 +1,6 @@
 import React from 'react'
 import { useField, Field, observer } from '@formily/react'
-import { Select, Input, IFormItemProps } from '@formily/antd'
+import { Select, Input } from '@formily/antd'
 import { FoldItem} from '../FoldItem'
 import { ColorInput } from '../ColorInput'
 import { BackgroundSizeInput } from '../SizeInput'
