@@ -6,7 +6,7 @@ import {
   RecursionField,
 } from '@formily/react'
 import { ArrayField } from "@formily/core";
-import { ArrayBase } from "@formily/antd";
+import { ArrayBase } from "formily/antd4";
 
 export interface IArrayPanelProps {
   value?: boolean,

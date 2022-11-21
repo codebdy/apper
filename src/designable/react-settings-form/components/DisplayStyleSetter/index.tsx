@@ -1,7 +1,7 @@
 import React from 'react'
 import { useField, Field, observer } from '@formily/react'
 import { Field as FieldType } from '@formily/core'
-import { FormItem as FormItemFormily } from '@formily/antd'
+import { FormItem as FormItemFormily } from 'formily/antd4'
 import { Radio } from 'antd'
 import { FlexStyleSetter } from '../FlexStyleSetter'
 import cls from 'classnames'

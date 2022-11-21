@@ -3,7 +3,7 @@ import * as ICONS from '@ant-design/icons'
 import { createForm } from "@formily/core";
 import { createSchemaField } from '@formily/react'
 import { useChangePassword } from "enthooks/hooks/useChangePassword";
-import { Form, FormButtonGroup, FormItem, Password, Submit } from "@formily/antd";
+import { Form, FormButtonGroup, FormItem, Password, Submit } from "formily/antd4";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { Button, message } from "antd";
 import { useSetToken } from "enthooks";

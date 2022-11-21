@@ -1,5 +1,5 @@
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import { FormButtonGroup, Reset, Submit } from "@formily/antd";
+import { FormButtonGroup, Reset, Submit } from "formily/antd4";
 import { Button } from "antd";
 import React, { useCallback, useMemo } from "react"
 import { useLocalTranslations } from "../hooks/useLocalTranslations";

@@ -1,7 +1,7 @@
 
 import { memo, useState } from 'react';
 import { IMenuItem } from 'plugin-sdk/model/IMenuNode';
-import { FormItem } from "@formily/antd";
+import { FormItem } from "formily/antd4";
 import { useMemo } from "react";
 import { useParseLangSchema } from "../../AppDesigner/hooks/useParseLangSchema";
 import { IUser } from "enthooks/hooks/useQueryMe";

@@ -8,7 +8,7 @@ import { useDesignerParams, useParseLangMessage } from "plugin-sdk";
 import { useExportApp } from "enthooks/hooks/useExportApp";
 import { ID } from "shared";
 import { useSave } from "AppDesigner/UiDesigner/widgets/TemplateWidget/ExportDialog/useSave";
-import { Input } from "@formily/antd";
+import { Input } from "formily/antd4";
 const { Option } = Select;
 
 const TextArea = Input.TextArea as any

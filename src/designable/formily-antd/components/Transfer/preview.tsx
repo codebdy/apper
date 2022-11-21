@@ -1,5 +1,5 @@
 import React from 'react'
-import { Transfer as FormilyTransfer } from '@formily/antd'
+import { Transfer as FormilyTransfer } from 'formily/antd4'
 import { createBehavior, createResource } from '@designable/core'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'

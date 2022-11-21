@@ -1,7 +1,7 @@
 import { observer } from "@formily/reactive-react";
 import React, { useCallback } from "react";
 import { DnFC } from 'designable/react'
-import { FormButtonGroup as FormilyFormButtonGroup } from "@formily/antd";
+import { FormButtonGroup as FormilyFormButtonGroup } from "formily/antd4";
 
 export type IFormButtonGroupProps = React.ComponentProps<typeof FormilyFormButtonGroup> & {
   formItem?: boolean;

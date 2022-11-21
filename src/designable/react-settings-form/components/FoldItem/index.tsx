@@ -1,5 +1,5 @@
 import React, { Fragment, useRef, useMemo } from 'react'
-import { FormItem, IFormItemProps } from '@formily/antd'
+import { FormItem, IFormItemProps } from 'formily/antd4'
 import { useField, observer } from '@formily/react'
 import { observable } from '@formily/reactive'
 import cls from 'classnames'

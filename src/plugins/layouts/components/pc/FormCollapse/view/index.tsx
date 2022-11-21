@@ -1,5 +1,5 @@
 import { observer } from '@formily/reactive-react'
-import { FormCollapse, IFormTabProps } from '@formily/antd';
+import { FormCollapse, IFormTabProps } from 'formily/antd4';
 //import { useParseLangMessage } from 'plugin-sdk/hooks/useParseLangMessage';
 //import React from 'react';
 

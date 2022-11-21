@@ -90,7 +90,7 @@ import {
   FormCollapse,
   ArrayTable,
   ArrayCards,
-} from '@formily/antd'
+} from 'formily/antd4'
 import { Card, Slider, Rate } from 'antd'
 
 const Text: React.FC<{

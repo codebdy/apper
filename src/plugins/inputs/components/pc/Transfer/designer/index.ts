@@ -1,5 +1,5 @@
 import React from 'react'
-import { Transfer } from '@formily/antd'
+import { Transfer } from 'formily/antd4'
 import { DnFC } from 'designable/react'
 
 const ComponentDesigner: DnFC<React.ComponentProps<typeof Transfer>> =

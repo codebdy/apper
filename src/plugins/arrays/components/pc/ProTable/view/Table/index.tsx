@@ -1,7 +1,7 @@
 import { Table as AntdTable, TableProps } from 'antd';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useTableParams } from 'plugin-sdk/contexts/table';
-import { ArrayBase } from "@formily/antd"
+import { ArrayBase } from "formily/antd4"
 import {
   useFieldSchema
 } from '@formily/react'

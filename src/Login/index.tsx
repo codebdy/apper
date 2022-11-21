@@ -2,7 +2,7 @@ import React, { useCallback, useRef } from "react"
 import { useMemo } from "react"
 import { createForm } from '@formily/core'
 import { createSchemaField } from '@formily/react'
-import { Checkbox, Form, FormItem, Input, Password, Submit } from '@formily/antd'
+import { Checkbox, Form, FormItem, Input, Password, Submit } from 'formily/antd4'
 import { Button, Card, message } from 'antd'
 import * as ICONS from '@ant-design/icons'
 import { observer } from "@formily/reactive-react"

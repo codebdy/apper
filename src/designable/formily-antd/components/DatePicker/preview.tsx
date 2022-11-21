@@ -1,5 +1,5 @@
 import React from 'react'
-import { DatePicker as FormilyDatePicker } from '@formily/antd'
+import { DatePicker as FormilyDatePicker } from 'formily/antd4'
 import { createBehavior, createResource } from '@designable/core'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'

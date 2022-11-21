@@ -1,5 +1,5 @@
 import React from 'react'
-import { Space as FormilySpace } from '@formily/antd'
+import { Space as FormilySpace } from 'formily/antd4'
 import { DnFC } from 'designable/react'
 import { withContainer } from 'designable/formily-antd/common/Container';
 

@@ -6,7 +6,7 @@ import { QueryType, useQueryParams } from "datasource/hooks/useQueryParams";
 import { useDataQuery } from "datasource";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { ListPagination } from "./ListPagination";
-import { ArrayBase } from '@formily/antd';
+import { ArrayBase } from 'formily/antd4';
 import { ItemRoot } from './ItemRoot';
 import { Field } from '@formily/core';
 

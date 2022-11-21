@@ -8,7 +8,7 @@ import {
   useNodeIdProps,
   DnFC,
 } from 'designable/react'
-import { ArrayBase } from '@formily/antd'
+import { ArrayBase } from 'formily/antd4'
 import { observer } from '@formily/react'
 import cls from 'classnames'
 import { useParseLangMessage } from 'plugin-sdk/hooks/useParseLangMessage'

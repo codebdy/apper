@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { createForm } from '@formily/core'
-import { Form } from '@formily/antd'
+import { Form } from 'formily/antd4'
 import { observer } from '@formily/react'
 import { SchemaField } from './SchemaField'
 import { ISettingFormProps } from './types'

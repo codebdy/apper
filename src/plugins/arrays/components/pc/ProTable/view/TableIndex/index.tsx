@@ -1,5 +1,5 @@
-import { ArrayBase } from "@formily/antd"
-import { usePrefixCls } from "@formily/antd/esm/__builtins__"
+import { ArrayBase } from "formily/antd4"
+import { usePrefixCls } from "formily/antd4/__builtins__"
 import { observer } from "@formily/reactive-react"
 import React, { useMemo } from "react"
 import { useArrayParams } from "plugin-sdk/contexts/array"

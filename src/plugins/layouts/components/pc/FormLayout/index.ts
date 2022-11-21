@@ -2,7 +2,7 @@ import { IMaterialComponent } from "@rxdrag/appx-plugin-sdk";
 import behaviors from "./designer/behaviors";
 import resources from "./designer/resources";
 import Name from "./name";
-import { FormLayout } from '@formily/antd'
+import { FormLayout } from 'formily/antd4'
 import FormLayoutDesigner from "./designer";
 
 const material:IMaterialComponent = {

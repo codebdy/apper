@@ -1,6 +1,6 @@
 import React, { Fragment, useMemo } from 'react'
 import { camelCase } from '@formily/shared'
-import { Select } from '@formily/antd'
+import { Select } from 'formily/antd4'
 import { observable } from '@formily/reactive'
 import { Field as FieldType } from '@formily/core'
 import { useField, Field, observer } from '@formily/react'

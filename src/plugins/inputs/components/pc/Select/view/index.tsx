@@ -1,7 +1,7 @@
 import { observer } from "@formily/reactive-react"
 import React, { useCallback } from "react"
 import { IDataSourceableProps } from "plugin-sdk/model/IDataSourceableProps"
-import { Select as FormilySelect } from "@formily/antd";
+import { Select as FormilySelect } from "formily/antd4";
 import { useDataQuery } from "datasource";
 import { useFieldSchema } from '@formily/react'
 import { QueryType, useQueryParams } from "datasource/hooks/useQueryParams";

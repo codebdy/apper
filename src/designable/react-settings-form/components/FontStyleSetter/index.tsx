@@ -1,6 +1,6 @@
 import React from 'react'
 import { useField, Field, observer } from '@formily/react'
-import { Select, Radio, NumberPicker } from '@formily/antd'
+import { Select, Radio, NumberPicker } from 'formily/antd4'
 import { FoldItem } from '../FoldItem'
 import { InputItems } from '../InputItems'
 import { SizeInput } from '../SizeInput'

@@ -1,6 +1,6 @@
 import { TableProps } from 'antd';
 import React, { useCallback } from 'react';
-import { ArrayBase } from "@formily/antd";
+import { ArrayBase } from "formily/antd4";
 import {
   RecursionField,
   Field as ReactField,

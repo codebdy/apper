@@ -3,7 +3,7 @@ import resources from "./designer/resources";
 import Name from "./name";
 import { IMaterialComponent } from "@rxdrag/appx-plugin-sdk";
 import { ArrayTableDesigner } from "./designer";
-import { ArrayTable } from "@formily/antd";
+import { ArrayTable } from "formily/antd4";
 
 const material: IMaterialComponent = {
   name: Name,

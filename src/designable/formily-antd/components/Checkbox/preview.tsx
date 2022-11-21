@@ -1,5 +1,5 @@
 import React from 'react'
-import { Checkbox as FormilyCheckbox } from '@formily/antd'
+import { Checkbox as FormilyCheckbox } from 'formily/antd4'
 import { createBehavior, createResource } from '@designable/core'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'

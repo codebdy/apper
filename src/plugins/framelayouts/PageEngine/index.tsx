@@ -1,6 +1,6 @@
 import { createForm } from "@formily/core";
 import { FormProvider, createSchemaField, useExpressionScope, ExpressionScope } from '@formily/react';
-import { FormItem } from "@formily/antd";
+import { FormItem } from "formily/antd4";
 import React, { memo } from "react";
 import { useMemo } from "react";
 import { Spin } from "antd";

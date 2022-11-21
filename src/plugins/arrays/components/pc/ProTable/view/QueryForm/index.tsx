@@ -3,7 +3,7 @@ import { observer } from '@formily/react'
 import {
   FormGrid,
   FormLayout,
-} from '@formily/antd'
+} from 'formily/antd4'
 import { ButtonsGridColum } from './ButtonsGridColum'
 import { Card } from 'antd'
 
@@ -73,8 +73,6 @@ export const QueryForm: React.FC<IQueryFormProps> = observer((props) => {
       <FormLayout layout={layout} colon={colon} feedbackLayout="terse">
         <FormGrid
           grid={grid}
-          minWidth={minWidth}
-          maxWidth={maxWidth}
           minColumns={minColumns}
           maxColumns={maxColumns}
           breakpoints={breakpoints}
