@@ -11,6 +11,7 @@ import { useCheckSlackly, getIndeterminate } from './useCheckSlackly'
 import { getUISelected, getOutputData } from './utils'
 import { ColumnProps, TableProps } from 'antd/es/table'
 import { SearchProps } from 'antd/es/input'
+import { usePrefixCls } from 'formily/antd4/__builtins__'
 
 const { Search } = Input
 
@@ -106,8 +107,8 @@ export const SelectTable: ComposedSelectTable = observer((props) => {
   const readPretty = field.readPretty
   const { searchSize, tableSize } = useSize(
     field.decoratorProps?.size,
-    searchProps?.size,
-    props?.size
+    searchProps?.size as any,
+    props?.size as any
   )
   const primaryKey = isFn(rowKey) ? '__formily_key__' : rowKey
   const columns = useColumns()
