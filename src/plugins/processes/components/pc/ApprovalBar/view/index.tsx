@@ -3,8 +3,7 @@ import React, { useMemo } from "react"
 import cls from "classnames"
 import "./style.less"
 import { Button, Dropdown, Menu, Space, Typography } from "antd"
-import { CheckOutlined, ClockCircleOutlined, CloseOutlined, FileAddOutlined, HistoryOutlined, MoreOutlined, NodeIndexOutlined, QuestionCircleOutlined, UserAddOutlined } from "@ant-design/icons"
-import { useTranslation } from "react-i18next"
+import { CheckOutlined, ClockCircleOutlined, CloseOutlined, HistoryOutlined, MoreOutlined, NodeIndexOutlined, UserAddOutlined } from "@ant-design/icons"
 
 export interface IApprovalBarProps {
   className?: string,
@@ -13,7 +12,7 @@ export interface IApprovalBarProps {
 
 export const ApprovalBar = observer((props: IApprovalBarProps) => {
   const { className, children, ...other } = props;
-  const { t } = useTranslation();
+
 
   const menu = useMemo(() => (
     <Menu
@@ -57,7 +56,7 @@ export const ApprovalBar = observer((props: IApprovalBarProps) => {
         },
       ]}
     />
-  ), [t]);
+  ), []);
 
   return (
     <div className={cls("appx-arroval-bar", className)} {...other}>

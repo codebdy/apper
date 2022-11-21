@@ -9,7 +9,7 @@ export function useChangePackage() {
   const setPackages = useSetRecoilState(packagesState(appId));
   const change = useCallback((pkg: PackageMeta) => {
     setPackages(packages => packages.map(pg => pg.uuid === pkg.uuid ? pkg : pg))
-  }, [])
+  }, [setPackages])
 
   return change;
 }

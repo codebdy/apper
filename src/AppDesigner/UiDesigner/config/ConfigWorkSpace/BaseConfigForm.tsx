@@ -1,5 +1,5 @@
 import { Form, Select } from 'antd';
-import React, { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { useShowError } from 'AppDesigner/hooks/useShowError';
@@ -7,7 +7,6 @@ import { useQueryPageFrames } from '../../../FrameDesigner/hooks/useQueryPageFra
 import { useDesignerParams, useDesignerViewKey } from 'plugin-sdk/contexts/desinger';
 import { deviceConfigChangedState, deviceConfigState } from '../../recoil/atom';
 import { PageSelect } from '../../SettingsForm/components/PageSelect';
-import "./style.less"
 import { useParseLangMessage } from 'plugin-sdk/hooks/useParseLangMessage';
 const { Option } = Select
 
