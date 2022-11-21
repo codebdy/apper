@@ -6,7 +6,7 @@ import { usePrefixCls, pickDataProps } from '../__builtins__'
 import { useFormLayout } from '../form-layout'
 import cls from 'classnames'
 
-const FormGridContext = React.createContext<Grid<HTMLElement>>(null)
+const FormGridContext = React.createContext<Grid<HTMLElement>|null>(null)
 
 export interface IFormGridProps extends IGridOptions {
   grid?: Grid<HTMLElement>
@@ -76,7 +76,7 @@ export const FormGrid: ComposedFormGrid = observer(
     const prefixCls = usePrefixCls('formily-grid', props)
     const dataProps = pickDataProps(props)
     useLayoutEffect(() => {
-      return grid.connect(ref.current)
+      return grid.connect(ref.current as any)
     }, [grid])
     return (
       <FormGridContext.Provider value={grid}>
@@ -88,7 +88,7 @@ export const FormGrid: ComposedFormGrid = observer(
             gridTemplateColumns: grid.templateColumns,
             gap: grid.gap,
           }}
-          ref={ref}
+          ref={ref as any}
         >
           {children}
         </div>
@@ -116,7 +116,7 @@ GridColumn.defaultProps = {
 FormGrid.createFormGrid = createFormGrid
 FormGrid.useGridSpan = useGridSpan
 FormGrid.useGridColumn = useGridColumn
-FormGrid.useFormGrid = useFormGrid
+FormGrid.useFormGrid = useFormGrid as any
 FormGrid.GridColumn = GridColumn
 
 export default FormGrid

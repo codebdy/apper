@@ -195,7 +195,7 @@ export const BaseItem: React.FC<React.PropsWithChildren<IFormItemProps>> = ({
               [`${prefixCls}-help`]: true,
             })}
           >
-            {ICON_MAP[feedbackStatus]} {feedbackText}
+            {(ICON_MAP as any)[feedbackStatus as any]} {feedbackText}
           </div>
         }
         visible={!!feedbackText}
@@ -223,8 +223,8 @@ export const BaseItem: React.FC<React.PropsWithChildren<IFormItemProps>> = ({
 
   const renderLabelText = () => {
     const labelChildren = (
-      <div className={`${prefixCls}-label-content`} ref={containerRef}>
-        <span ref={contentRef}>
+      <div className={`${prefixCls}-label-content`} ref={containerRef as any}>
+        <span ref={contentRef as any}>
           {asterisk && <span className={`${prefixCls}-asterisk`}>{'*'}</span>}
           <label>{label}</label>
         </span>
@@ -303,7 +303,7 @@ export const BaseItem: React.FC<React.PropsWithChildren<IFormItemProps>> = ({
         [`${prefixCls}-control-wrap`]: !!wrapperWrap,
         [`${prefixCls}-bordered-none`]:
           bordered === false || !!inset || !!feedbackIcon,
-        [props.className]: !!props.className,
+        [props.className as any]: !!props.className,
       })}
       onFocus={() => {
         if (feedbackIcon || inset) {
@@ -338,7 +338,7 @@ export const BaseItem: React.FC<React.PropsWithChildren<IFormItemProps>> = ({
                 !!feedbackIcon,
             })}
           >
-            <FormLayoutShallowContext.Provider value={undefined}>
+            <FormLayoutShallowContext.Provider value={undefined as any}>
               {formatChildren}
             </FormLayoutShallowContext.Provider>
             {feedbackIcon && (

@@ -57,7 +57,7 @@ export interface IFormDrawer {
 }
 
 export interface IDrawerProps extends DrawerProps {
-  onClose?: (e: EventType) => void | boolean
+  onClose?: (e: any) => void | boolean
   loadingText?: React.ReactNode
 }
 
@@ -112,7 +112,7 @@ export function FormDrawer(title: any, id: any, renderer?: any): IFormDrawer {
   const renderDrawer = (visible = true) => {
     return (
       <Drawer {...drawer} visible={visible}>
-        <FormProvider form={env.form}>
+        <FormProvider form={env.form as any}>
           <DrawerContent />
         </FormProvider>
       </Drawer>
@@ -123,7 +123,7 @@ export function FormDrawer(title: any, id: any, renderer?: any): IFormDrawer {
   const formDrawer = {
     forOpen: (middleware: IMiddleware<IFormProps>) => {
       if (isFn(middleware)) {
-        env.openMiddlewares.push(middleware)
+        (env.openMiddlewares as any).push(middleware)
       }
       return formDrawer
     },
@@ -145,7 +145,7 @@ export function FormDrawer(title: any, id: any, renderer?: any): IFormDrawer {
                 })
                 props?.effects?.(form)
               },
-            })
+            }) as any
         } catch (e) {
           reject(e)
         }
@@ -153,7 +153,7 @@ export function FormDrawer(title: any, id: any, renderer?: any): IFormDrawer {
         setTimeout(() => {
           root.render(() => renderDrawer(true))
         }, 16)
-      })
+      }) as any
       return env.promise
     },
     close: () => {
@@ -161,7 +161,7 @@ export function FormDrawer(title: any, id: any, renderer?: any): IFormDrawer {
       root.render(() => renderDrawer(false))
     },
   }
-  return formDrawer
+  return formDrawer as any
 }
 
 const DrawerExtra: ReactFC = (props) => {
@@ -169,13 +169,14 @@ const DrawerExtra: ReactFC = (props) => {
   const [extra, setExtra] = useState<HTMLDivElement>()
   const extraRef = useRef<HTMLDivElement>()
   const prefixCls = usePrefixCls('drawer')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useLayoutEffect(() => {
     const content = ref.current
       ?.closest(`.${prefixCls}-wrapper-body`)
       ?.querySelector(`.${prefixCls}-header`)
     if (content) {
       if (!extraRef.current) {
-        extraRef.current = content.querySelector(`.${prefixCls}-extra`)
+        extraRef.current = content.querySelector(`.${prefixCls}-extra`) as any
         if (!extraRef.current) {
           extraRef.current = document.createElement('div')
           extraRef.current.classList.add(`${prefixCls}-extra`)
@@ -189,7 +190,7 @@ const DrawerExtra: ReactFC = (props) => {
   extraRef.current = extra
 
   return (
-    <div ref={ref} style={{ display: 'none' }}>
+    <div ref={ref as any} style={{ display: 'none' }}>
       {extra && createPortal(props.children, extra)}
     </div>
   )
@@ -200,11 +201,12 @@ const DrawerFooter: ReactFC = (props) => {
   const [footer, setFooter] = useState<HTMLDivElement>()
   const footerRef = useRef<HTMLDivElement>()
   const prefixCls = usePrefixCls('drawer')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useLayoutEffect(() => {
     const content = ref.current?.closest(`.${prefixCls}-wrapper-body`)
     if (content) {
       if (!footerRef.current) {
-        footerRef.current = content.querySelector(`.${prefixCls}-footer`)
+        footerRef.current = content.querySelector(`.${prefixCls}-footer`) as any
         if (!footerRef.current) {
           footerRef.current = document.createElement('div')
           footerRef.current.classList.add(`${prefixCls}-footer`)
@@ -218,7 +220,7 @@ const DrawerFooter: ReactFC = (props) => {
   footerRef.current = footer
 
   return (
-    <div ref={ref} style={{ display: 'none' }}>
+    <div ref={ref as any} style={{ display: 'none' }}>
       {footer && createPortal(props.children, footer)}
     </div>
   )

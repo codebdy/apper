@@ -1338,6 +1338,14 @@
     "@formily/shared" "2.2.12"
     "@formily/validator" "2.2.12"
 
+"@formily/grid@^2.2.12":
+  version "2.2.12"
+  resolved "https://registry.npmmirror.com/@formily/grid/-/grid-2.2.12.tgz#f5d334d2a80f0ea3ad433f54417c5cbede07b4d2"
+  integrity sha512-sFbHiPz1y0ph/wDHMgfKhm1q0Dl+CaIM1pFiQ6CEquhfeNZ4ViCILEsnLfCTSP/0KwhcXH749BMu03Wz+mJ1bQ==
+  dependencies:
+    "@formily/reactive" "2.2.12"
+    "@juggle/resize-observer" "^3.3.1"
+
 "@formily/json-schema@2.2.12", "@formily/json-schema@^2.2.5":
   version "2.2.12"
   resolved "https://registry.npmmirror.com/@formily/json-schema/-/json-schema-2.2.12.tgz#17c1c91624e2093a1619246445da1ae9acd10021"

@@ -80,11 +80,11 @@ export function FormDialog(title: any, id: any, renderer?: any): IFormDialog {
   }
   const env = {
     host: document.createElement('div'),
-    form: null,
-    promise: null,
-    openMiddlewares: [],
-    confirmMiddlewares: [],
-    cancelMiddlewares: [],
+    form: null as any,
+    promise: null as any,
+    openMiddlewares: [] as any[],
+    confirmMiddlewares: [] as any[],
+    cancelMiddlewares: [] as any[],
   }
   const root = createPortalRoot(env.host, id)
   const props = getModelProps(title)
@@ -109,19 +109,19 @@ export function FormDialog(title: any, id: any, renderer?: any): IFormDialog {
           <Modal
             {...modal}
             visible={visible}
-            confirmLoading={env.form.submitting}
+            confirmLoading={(env.form as any)?.submitting}
             onCancel={(e) => {
               if (modal?.onCancel?.(e) !== false) {
-                reject()
+                reject && reject()
               }
             }}
             onOk={async (e) => {
               if (modal?.onOk?.(e) !== false) {
-                resolve()
+                resolve && resolve()
               }
             }}
           >
-            <FormProvider form={env.form}>
+            <FormProvider form={env.form as any}>
               <DialogContent />
             </FormProvider>
           </Modal>
@@ -181,7 +181,7 @@ export function FormDialog(title: any, id: any, renderer?: any): IFormDialog {
             }
           )
         )
-      })
+      }) as any
       return env.promise
     },
     close: () => {
@@ -197,11 +197,12 @@ const DialogFooter: ReactFC = (props) => {
   const [footer, setFooter] = useState<HTMLDivElement>()
   const footerRef = useRef<HTMLDivElement>()
   const prefixCls = usePrefixCls('modal')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useLayoutEffect(() => {
     const content = ref.current?.closest(`.${prefixCls}-content`)
     if (content) {
       if (!footerRef.current) {
-        footerRef.current = content.querySelector(`.${prefixCls}-footer`)
+        footerRef.current = content.querySelector(`.${prefixCls}-footer`) as any
         if (!footerRef.current) {
           footerRef.current = document.createElement('div')
           footerRef.current.classList.add(`${prefixCls}-footer`)
@@ -215,7 +216,7 @@ const DialogFooter: ReactFC = (props) => {
   footerRef.current = footer
 
   return (
-    <div ref={ref} style={{ display: 'none' }}>
+    <div ref={ref as any} style={{ display: 'none' }}>
       {footer && createPortal(props.children, footer)}
     </div>
   )
