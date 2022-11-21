@@ -12,7 +12,7 @@ export const DiagramDialog = memo((
     onConfirm: (diagram: DiagramMeta) => void,
   }
 ) => {
-  const { open, diagram: diagram, onClose, onConfirm } = props;
+  const { open, diagram, onClose, onConfirm } = props;
   const [form] = Form.useForm<DiagramMeta>();
   useEffect(() => {
     form.setFieldsValue(diagram)
@@ -23,7 +23,7 @@ export const DiagramDialog = memo((
     form.validateFields().then(changeValues => {
       onConfirm({ ...diagram, ...changeValues })
     })
-  }, [onConfirm, form])
+  }, [form, onConfirm, diagram])
 
   return (
     <Modal
@@ -36,7 +36,7 @@ export const DiagramDialog = memo((
       centered
       wrapProps={
         {
-          onClick: (e) => {
+          onClick: (e:any) => {
             e.stopPropagation()
           },
         }

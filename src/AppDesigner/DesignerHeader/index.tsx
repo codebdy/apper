@@ -29,7 +29,7 @@ const DesignerHeader = memo((props: {
   const appId = useEdittingAppId();
   const match = useMatch(`/${DESIGN}/${appId}/${DESIGN_BOARD}/*`)
   const parse = useParseLangMessage();
-  const handleSelect = useCallback((info) => {
+  const handleSelect = useCallback((info: any) => {
     navigate(`/${DESIGN}/${appId}/${DESIGN_BOARD}/${info.key}`)
   }, [appId, navigate]);
 

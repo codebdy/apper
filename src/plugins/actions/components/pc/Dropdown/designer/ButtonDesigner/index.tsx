@@ -15,7 +15,7 @@ const ComponentDesigner: DnFC<ButtonProps> = observer((props) => {
   const { setVisible } = useDropdownDesignerParams()
 
   const handleClick = useCallback(() => {
-    setVisible(true);
+    setVisible && setVisible(true);
   }, [setVisible]);
 
   return <Button {...other} onDoubleClick={handleClick}>

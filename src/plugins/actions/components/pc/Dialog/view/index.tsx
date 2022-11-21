@@ -127,7 +127,7 @@ const Dialog: React.FC<IDialogProps> & {
         visiable &&
         <DialogContext.Provider value={contextValue}>
           {/* initialValue会有堆栈溢出bug，好奇怪 */}
-          <ObjectField name={fieldSchema.name} value={instanceParams?.instance}>
+          <ObjectField name={fieldSchema.name as any} value={instanceParams?.instance}>
             <Modal
               title={slots.title && <RecursionField schema={slots.title} name={slots.title.name} />}
               footer={slots.footer && <RecursionField schema={slots.footer} name={slots.footer.name} />}

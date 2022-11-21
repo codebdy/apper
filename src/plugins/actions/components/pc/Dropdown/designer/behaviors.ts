@@ -11,7 +11,7 @@ const behaviors: IBehavior[] = [
   {
     name: Name,
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === Name,
+    selector: (node) => node.props?.['x-component'] === Name,
     designerProps: {
       droppable: false,
     },
@@ -21,7 +21,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'Dropdown.PopupPanel',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'Dropdown.PopupPanel',
+    selector: (node) => node.props?.['x-component'] === 'Dropdown.PopupPanel',
     designerProps: {
       droppable: true,
       deletable: false,
@@ -34,7 +34,7 @@ const behaviors: IBehavior[] = [
   {
     name: 'Dropdown.Button',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'Dropdown.Button',
+    selector: (node) => node.props?.['x-component'] === 'Dropdown.Button',
     designerProps: {
       droppable: true,
       deletable: false,

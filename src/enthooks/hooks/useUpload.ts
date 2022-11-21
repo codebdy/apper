@@ -22,7 +22,7 @@ export function useUpload() {
           headers: {
             [HEADER_AUTHORIZATION]: token ? `${TOKEN_PREFIX}${token}` : "",
             [HEADER_APPX_APPID]: appId,
-          }
+          } as any
         })
         .then((data) => {
           resolve(data?.upload);

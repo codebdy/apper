@@ -6,7 +6,7 @@ import { GraphQLRequestError } from "enthooks";
 
 export function useUpsertMenuAuthConfig(options?: IPostOptions<any>): [
   (config: IMenuAuthConfigInput) => void,
-  { loading?: boolean; error?: GraphQLRequestError }
+  { loading?: boolean; error?: GraphQLRequestError | Error }
 ] {
   const appId = useEdittingAppId()
   const [post, { error, loading }] = usePostOne<IMenuAuthConfigInput, IMenuAuthConfig>("MenuAuthConfig",

@@ -25,7 +25,7 @@ export function usePluginComponents(app?:IApp, device?:Device) {
       ...(predefinedPlugins.frameworkPlugins || [])
     ];
     for (const plugin of plugins) {
-      for (const material of plugin?.components[device] || []) {
+      for (const material of plugin?.components[device as any] || []) {
         components[material.name] = convert(material).component
       }
     }

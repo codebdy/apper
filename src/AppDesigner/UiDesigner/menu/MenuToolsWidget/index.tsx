@@ -39,7 +39,7 @@ export const MenuToolsWidget: React.FC<IMenuToolsWidgetProps> =
     }, [redo])
 
     const handleRemove = useCallback(()=>{
-      remove(selectedId);
+      selectedId && remove(selectedId);
     }, [remove, selectedId]);
 
     return (

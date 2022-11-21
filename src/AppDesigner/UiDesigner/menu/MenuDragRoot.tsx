@@ -41,7 +41,7 @@ const MenuDragRoot = memo((
   const insertAt = useInsertAt();
 
   useEffect(() => {
-    setMenuId(menu?.id);
+    menu?.id && setMenuId(menu?.id);
   }, [menu?.id, setMenuId])
 
   useEffect(() => {

@@ -5,8 +5,8 @@ export function useGetComponent() {
   const { uploadedPlugins, device } = useDesignerParams();
 
   const getCompoent = useCallback((name: string) => {
-    for (const plugin of uploadedPlugins) {
-      const com = plugin.plugin?.components[device]?.find(com => com.name === name)
+    for (const plugin of uploadedPlugins || []) {
+      const com = plugin.plugin?.components[device as any]?.find(com => com.name === name)
       if (com) {
         return com;
       }
