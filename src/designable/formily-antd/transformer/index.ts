@@ -4,7 +4,7 @@ import { clone, uid } from '@designable/shared'
 
 export interface ITransformerOptions {
   designableFieldName?: string
-  designableFormName?: string
+  designableRootName?: string
 }
 
 export interface IFormilySchema {
@@ -15,7 +15,7 @@ export interface IFormilySchema {
 const createOptions = (options?: ITransformerOptions): ITransformerOptions => {
   return {
     designableFieldName: 'Field',
-    designableFormName: 'Form',
+    designableRootName: 'RootComponent',
     ...options,
   }
 }
@@ -36,7 +36,7 @@ export const transformToSchema = (
 ): IFormilySchema => {
   const realOptions = createOptions(options)
   const root = findNode(node, (child) => {
-    return child.componentName === realOptions.designableFormName
+    return child.componentName === realOptions.designableRootName
   })
   const schema = {
     type: 'object',
@@ -84,7 +84,7 @@ export const transformToTreeNode = (
 ) => {
   const realOptions = createOptions(options)
   const root: ITreeNode = {
-    componentName: realOptions.designableFormName,
+    componentName: realOptions.designableRootName,
     props: formily.form,
     children: [],
   }
