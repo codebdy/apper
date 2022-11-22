@@ -1,6 +1,6 @@
-import { createSchemaField } from '@formily/react'
+import { connect, createSchemaField, mapProps } from '@formily/react'
 import {
-  FormItem,
+  //FormItem,
   Input,
   NumberPicker,
   DatePicker,
@@ -16,7 +16,7 @@ import {
   FormLayout,
   FormTab,
 } from 'formily/antd4'
-import { Slider } from 'antd'
+import { Form, Slider } from 'antd'
 import {
   SizeInput,
   ColorInput,
@@ -37,6 +37,24 @@ import {
   DrawerSetter,
   CollapseItem,
 } from './components'
+
+const FormItem = connect(
+  Form.Item,
+  mapProps(
+    {
+      title: 'label',
+      description: 'extra',
+      required: true,
+      validateStatus: true,
+    },
+    (props, field:any) => {
+      return {
+        ...props,
+        help: field.selfErrors?.length ? field.selfErrors : undefined,
+      }
+    }
+  )
+)
 
 export const SchemaField = createSchemaField({
   components: {
