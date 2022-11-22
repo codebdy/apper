@@ -14,7 +14,7 @@ import {
   ILineSegment,
   calcClosestEdges,
   calcCombineSnapLineSegment,
-} from '@designable/shared'
+} from 'designable/shared'
 import { observable, define, action } from '@formily/reactive'
 import { SpaceBlock, AroundSpaceBlock } from './SpaceBlock'
 import { Operation } from './Operation'
@@ -53,9 +53,9 @@ export interface ITransformHelperDragStartProps {
 export class TransformHelper {
   operation: Operation
 
-  type: TransformHelperType
+  type?: TransformHelperType
 
-  direction: ResizeDirection
+  direction?: ResizeDirection
 
   dragNodes: TreeNode[] = []
 
@@ -63,7 +63,7 @@ export class TransformHelper {
 
   aroundSnapLines: SnapLine[] = []
 
-  aroundSpaceBlocks: AroundSpaceBlock = null
+  aroundSpaceBlocks: AroundSpaceBlock | null = null
 
   viewportRectsStore: Record<string, Rect> = {}
 
@@ -71,11 +71,11 @@ export class TransformHelper {
 
   dragStartSizeStore: Record<string, ISize> = {}
 
-  draggingNodesRect: Rect
+  draggingNodesRect?: Rect|null
 
-  cacheDragNodesReact: Rect
+  cacheDragNodesReact?: Rect
 
-  dragStartNodesRect: IRect = null
+  dragStartNodesRect: IRect | null = null
 
   snapping = false
 
@@ -111,85 +111,86 @@ export class TransformHelper {
   get cursorPosition() {
     const position = this.cursor.position
     return this.operation.workspace.viewport.getOffsetPoint(
-      new Point(position.clientX, position.clientY)
+      new Point(position.clientX || 0, position.clientY || 0)
     )
   }
 
-  get cursorDragNodesRect() {
+  get cursorDragNodesRect(): Rect | undefined {
     if (this.type === 'translate') {
       return new Rect(
         this.cursorPosition.x - this.dragStartCursorOffset.x,
         this.cursorPosition.y - this.dragStartCursorOffset.y,
-        this.dragNodesRect.width,
-        this.dragNodesRect.height
+        this.dragNodesRect?.width || 0,
+        this.dragNodesRect?.height || 0
       )
     } else if (this.type === 'resize') {
       const dragNodesRect = this.dragStartNodesRect
-      const deltaX = this.cursor.dragStartToCurrentDelta.clientX
-      const deltaY = this.cursor.dragStartToCurrentDelta.clientY
+      const deltaX = this.cursor.dragStartToCurrentDelta.clientX || 0
+      const deltaY = this.cursor.dragStartToCurrentDelta.clientY || 0
       switch (this.direction) {
         case 'left-top':
           return new Rect(
             this.cursorPosition.x - this.dragStartCursorOffset.x,
             this.cursorPosition.y - this.dragStartCursorOffset.y,
-            dragNodesRect.width - deltaX,
-            dragNodesRect.height - deltaY
+            (dragNodesRect?.width || 0) - deltaX,
+            (dragNodesRect?.height || 0) - deltaY
           )
         case 'left-center':
           return new Rect(
             this.cursorPosition.x - this.dragStartCursorOffset.x,
-            dragNodesRect.y,
-            dragNodesRect.width - deltaX,
-            dragNodesRect.height
+            dragNodesRect?.y || 0,
+            (dragNodesRect?.width || 0) - deltaX,
+            (dragNodesRect?.height || 0)
           )
         case 'left-bottom':
           return new Rect(
             this.cursorPosition.x - this.dragStartCursorOffset.x,
-            dragNodesRect.y,
-            dragNodesRect.width - deltaX,
-            dragNodesRect.height - deltaY
+            dragNodesRect?.y || 0,
+            (dragNodesRect?.width || 0) - deltaX,
+            (dragNodesRect?.height || 0) - deltaY
           )
         case 'center-top':
           return new Rect(
-            dragNodesRect.x,
+            dragNodesRect?.x || 0,
             this.cursorPosition.y - this.dragStartCursorOffset.y,
-            dragNodesRect.width,
-            dragNodesRect.height - deltaY
+            dragNodesRect?.width || 0,
+            (dragNodesRect?.height || 0) - deltaY
           )
         case 'center-bottom':
           return new Rect(
-            dragNodesRect.x,
-            dragNodesRect.y,
-            dragNodesRect.width,
-            dragNodesRect.height + deltaY
+            dragNodesRect?.x || 0,
+            dragNodesRect?.y || 0,
+            dragNodesRect?.width || 0,
+            (dragNodesRect?.height || 0) + deltaY
           )
         case 'right-top':
           return new Rect(
-            dragNodesRect.x,
+            dragNodesRect?.x || 0,
             this.cursorPosition.y - this.dragStartCursorOffset.y,
-            dragNodesRect.width + deltaX,
-            dragNodesRect.height - deltaY
+            (dragNodesRect?.width || 0) + deltaX,
+            (dragNodesRect?.height || 0) - deltaY
           )
         case 'right-center':
           return new Rect(
-            dragNodesRect.x,
-            dragNodesRect.y,
-            dragNodesRect.width + deltaX,
-            dragNodesRect.height
+            (dragNodesRect?.x || 0),
+            (dragNodesRect?.y || 0),
+            (dragNodesRect?.width || 0) + deltaX,
+            (dragNodesRect?.height || 0)
           )
         case 'right-bottom':
           return new Rect(
-            dragNodesRect.x,
-            dragNodesRect.y,
-            dragNodesRect.width + deltaX,
-            dragNodesRect.height - deltaY
+            dragNodesRect?.x || 0,
+            dragNodesRect?.y || 0,
+            (dragNodesRect?.width || 0) + deltaX,
+            (dragNodesRect?.height || 0) - deltaY
           )
       }
     }
+    return undefined
   }
 
   get cursorDragNodesEdgeLines() {
-    return calcEdgeLinesOfRect(this.cursorDragNodesRect)
+    return calcEdgeLinesOfRect(this.cursorDragNodesRect as any)
   }
 
   get dragNodesRect() {
@@ -200,27 +201,27 @@ export class TransformHelper {
   }
 
   get dragNodesEdgeLines() {
-    return calcEdgeLinesOfRect(this.dragNodesRect)
+    return calcEdgeLinesOfRect(this.dragNodesRect as any)
   }
 
   get cursorOffset() {
     return new Point(
-      this.cursorPosition.x - this.dragNodesRect.x,
-      this.cursorPosition.y - this.dragNodesRect.y
+      this.cursorPosition.x - (this.dragNodesRect?.x as any),
+      this.cursorPosition.y - (this.dragNodesRect?.y as any)
     )
   }
 
   get dragStartCursor() {
     const position = this.operation.engine.cursor.dragStartPosition
     return this.operation.workspace.viewport.getOffsetPoint(
-      new Point(position.clientX, position.clientY)
+      new Point(position.clientX as any, position.clientY as any)
     )
   }
 
   get dragStartCursorOffset() {
     return new Point(
-      this.dragStartCursor.x - this.dragStartNodesRect.x,
-      this.dragStartCursor.y - this.dragStartNodesRect.y
+      this.dragStartCursor.x - (this.dragStartNodesRect?.x as any),
+      this.dragStartCursor.y - (this.dragStartNodesRect?.y as any)
     )
   }
 
@@ -309,23 +310,23 @@ export class TransformHelper {
   }
 
   calcBaseTranslate(node: TreeNode) {
-    const dragStartTranslate = this.dragStartTranslateStore[node.id] ?? {
+    const dragStartTranslate = this.dragStartTranslateStore[node.id as any] ?? {
       x: 0,
       y: 0,
     }
-    const x = dragStartTranslate.x + this.deltaX,
-      y = dragStartTranslate.y + this.deltaY
+    const x = dragStartTranslate.x + (this.deltaX || 0),
+      y = dragStartTranslate.y + (this.deltaY || 0)
     return { x, y }
   }
 
   calcBaseResize(node: TreeNode) {
-    const deltaX = this.deltaX
-    const deltaY = this.deltaY
-    const dragStartTranslate = this.dragStartTranslateStore[node.id] ?? {
+    const deltaX = this.deltaX || 0
+    const deltaY = this.deltaY || 0
+    const dragStartTranslate = this.dragStartTranslateStore[node.id as any] ?? {
       x: 0,
       y: 0,
     }
-    const dragStartSize = this.dragStartSizeStore[node.id] ?? {
+    const dragStartSize = this.dragStartSizeStore[node.id as any] ?? {
       width: 0,
       height: 0,
     }
@@ -390,12 +391,12 @@ export class TransformHelper {
   }
 
   calcDragStartStore(nodes: TreeNode[] = []) {
-    this.dragStartNodesRect = this.dragNodesRect
+    this.dragStartNodesRect = this.dragNodesRect as any
     nodes.forEach((node) => {
       const element = node.getElement()
       const rect = node.getElementOffsetRect()
-      this.dragStartTranslateStore[node.id] = calcElementTranslate(element)
-      this.dragStartSizeStore[node.id] = {
+      this.dragStartTranslateStore[node.id as any] = calcElementTranslate(element as any)
+      this.dragStartSizeStore[node.id as any] = {
         width: rect.width,
         height: rect.height,
       }
@@ -411,7 +412,7 @@ export class TransformHelper {
   }
 
   calcAroundSnapLines(dragNodesRect: Rect): SnapLine[] {
-    const results = []
+    const results: any[] = []
     const edgeLines = calcEdgeLinesOfRect(dragNodesRect)
     this.eachViewportNodes((refer, referRect) => {
       if (this.dragNodes.includes(refer)) return
@@ -440,7 +441,7 @@ export class TransformHelper {
   }
 
   calcAroundSpaceBlocks(dragNodesRect: IRect): AroundSpaceBlock {
-    const closestSpaces = {}
+    const closestSpaces: any = {}
     this.eachViewportNodes((refer, referRect) => {
       if (isEqualRect(dragNodesRect, referRect)) return
 
@@ -467,18 +468,18 @@ export class TransformHelper {
       const offsetRect = node.getValidElementOffsetRect()
       if (this.dragNodes.includes(node)) return
       if (this.viewport.isRectInViewport(topRect)) {
-        this.viewportRectsStore[node.id] = offsetRect
+        this.viewportRectsStore[node.id as any] = offsetRect
       }
     })
   }
 
   getNodeRect(node: TreeNode) {
-    return this.viewportRectsStore[node.id]
+    return this.viewportRectsStore[node.id as any]
   }
 
   eachViewportNodes(visitor: (node: TreeNode, rect: Rect) => void) {
     for (let id in this.viewportRectsStore) {
-      visitor(this.tree.findById(id), this.viewportRectsStore[id])
+      visitor(this.tree.findById(id) as any, this.viewportRectsStore[id])
     }
   }
 
@@ -509,7 +510,7 @@ export class TransformHelper {
       this.snapping = true
       this.snapped = true
     }
-    handler(rect)
+    handler(rect as any)
     if (this.snapping) {
       this.dragMove()
       this.snapping = false
@@ -528,7 +529,7 @@ export class TransformHelper {
 
   addRulerSnapLine(line: ISnapLine) {
     if (!isLineSegment(line)) return
-    if (!this.findRulerSnapLine(line.id)) {
+    if (!this.findRulerSnapLine((line as any).id)) {
       this.rulerSnapLines.push(new SnapLine(this, { ...line, type: 'ruler' }))
     }
   }
@@ -551,7 +552,7 @@ export class TransformHelper {
       if (nodes.length) {
         this.dragging = true
         this.type = type
-        this.direction = direction
+        this.direction = direction as any
         this.dragNodes = nodes
         this.calcDragStartStore(nodes)
         this.cursor.setDragType(CursorDragType.Resize)
@@ -561,7 +562,7 @@ export class TransformHelper {
       if (nodes.length) {
         this.dragging = true
         this.type = type
-        this.direction = direction
+        this.direction = direction as any
         this.dragNodes = nodes
         this.calcDragStartStore(nodes)
         this.cursor.setDragType(CursorDragType.Translate)
@@ -601,11 +602,11 @@ export class TransformHelper {
 
   dragMove() {
     if (!this.dragging) return
-    this.draggingNodesRect = null
-    this.draggingNodesRect = this.dragNodesRect
-    this.rulerSnapLines = this.calcRulerSnapLines(this.dragNodesRect)
-    this.aroundSnapLines = this.calcAroundSnapLines(this.dragNodesRect)
-    this.aroundSpaceBlocks = this.calcAroundSpaceBlocks(this.dragNodesRect)
+    this.draggingNodesRect = null as any
+    this.draggingNodesRect = this.dragNodesRect as any
+    this.rulerSnapLines = this.calcRulerSnapLines(this.dragNodesRect as any)
+    this.aroundSnapLines = this.calcAroundSnapLines(this.dragNodesRect as any)
+    this.aroundSpaceBlocks = this.calcAroundSpaceBlocks(this.dragNodesRect as any)
   }
 
   dragEnd() {
