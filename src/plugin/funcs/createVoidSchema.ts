@@ -15,7 +15,7 @@ export const createComponentSchema = (
       'x-reactions': {
         fulfill: {
           state: {
-            visible: '{{!!$form.values["x-component"]}}',
+            //visible: '{{!!$form.values["x-component"]}}',
           },
         },
       },

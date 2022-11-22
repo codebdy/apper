@@ -29,6 +29,7 @@ const mapEnum = (dataSource: any[]) => (item: any, index: number) => {
 export const getLocales = (node: TreeNode) => {
   onFieldReact('*', (field: any) => {
     const path = field.path.toString().replace(/\.[\d+]/g, '')
+
     const takeMessage = (prop?: string) => {
       const token = `settings.${path}${prop ? `.${prop}` : ''}`
       return node.getMessage(token) || GlobalRegistry.getDesignerMessage(token)
@@ -41,6 +42,7 @@ export const getLocales = (node: TreeNode) => {
     if (title) {
       field.title = title
     }
+
     if (description) {
       field.description = description
     }

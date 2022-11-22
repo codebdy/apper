@@ -16,6 +16,7 @@ import { RootComponent } from "designable/react/root";
 import { SettingsForm } from "designable/react-settings-form";
 import { SchemaEditorWidget } from "designable/react/widgets/SchemaEditorWidget";
 import { PreviewWidget } from "designable/react/widgets/PreviewWidget";
+import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view";
 
 const PageWorkSpace = (props: {
   pageId: ID,
@@ -86,7 +87,7 @@ const PageWorkSpace = (props: {
             </WorkspacePanel>
           </Workspace>
           <SettingsPanel title={t("Panels.PropertySettings")}>
-            <SettingsForm uploadAction="#" />
+            <SettingsForm uploadAction="#" components={{MultiLangInput}} />
           </SettingsPanel>
         </>
     )

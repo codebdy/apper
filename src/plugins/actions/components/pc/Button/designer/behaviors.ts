@@ -6,6 +6,7 @@ import { createVoidFieldSchema } from "plugin"
 const behaviors: IBehavior[] = [
   {
     name: Name,
+    extends: ['Field'],
     selector: (node) => node.componentName === Name,
     designerProps: {
       droppable: false,
