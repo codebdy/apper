@@ -1,16 +1,10 @@
 import React, { useEffect } from "react";
-import {
-  ViewToolsWidget,
-  ComponentTreeWidget,
-  SchemaEditorWidget,
-  PreviewWidget,
-} from '../../widgets'
 import { Field } from 'components/common/Field'
 import { useTranslation } from "react-i18next";
 import { Spin } from "antd";
 import { ID } from "shared";
 import { useShowError } from "designer/hooks/useShowError";
-import { DesignerToolsWidget, SettingsPanel, ToolbarPanel, useDesigner, ViewPanel, ViewportPanel, Workspace, WorkspacePanel } from 'designable/react'
+import { ComponentTreeWidget, DesignerToolsWidget, SettingsPanel, ToolbarPanel, useDesigner, ViewPanel, ViewportPanel, ViewToolsWidget, Workspace, WorkspacePanel } from 'designable/react'
 import { useLazyQueryPage } from "designer/hooks/useLazyQueryPage";
 import { FormDesigner } from "components/pc/FormDesigner";
 import { useMaterialDesigners } from "material/hooks/useMaterialDesigners";
@@ -20,6 +14,8 @@ import { transformToTreeNode } from "designable/formily-antd/transformer"
 import { ObjectContainer } from "designable/formily-antd";
 import { RootComponent } from "designable/react/root";
 import { SettingsForm } from "designable/react-settings-form";
+import { SchemaEditorWidget } from "designable/react/widgets/SchemaEditorWidget";
+import { PreviewWidget } from "designable/react/widgets/PreviewWidget";
 
 const PageWorkSpace = (props: {
   pageId: ID,

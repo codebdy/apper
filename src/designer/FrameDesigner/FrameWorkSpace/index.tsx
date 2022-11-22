@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Spin } from "antd";
-import { DesignerToolsWidget, SettingsPanel, ToolbarPanel, useDesigner, ViewPanel, ViewportPanel, Workspace, WorkspacePanel } from 'designable/react'
-import { ComponentTreeWidget, PreviewWidget, SchemaEditorWidget, ViewToolsWidget } from "../../UiDesigner/widgets";
+import { ComponentTreeWidget, DesignerToolsWidget, SettingsPanel, ToolbarPanel, useDesigner, ViewPanel, ViewportPanel, ViewToolsWidget, Workspace, WorkspacePanel } from 'designable/react'
 import { useShowError } from "designer/hooks/useShowError";
 import { ID } from "shared";
 import { useMaterialDesigners } from "material/hooks/useMaterialDesigners";
@@ -13,6 +12,8 @@ import { TemplateType } from "model";
 import { transformToTreeNode } from "designable/formily-antd/transformer"
 import { Field, ObjectContainer } from "designable/formily-antd";
 import { SettingsForm } from "designable/react-settings-form";
+import { PreviewWidget } from "designable/react/widgets/PreviewWidget";
+import { SchemaEditorWidget } from "designable/react/widgets/SchemaEditorWidget";
 
 export const FrameWorkSpace = (props: {
   frameId: ID

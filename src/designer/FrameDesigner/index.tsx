@@ -4,7 +4,6 @@ import React, { useCallback, useMemo, useState } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { useShowError } from "designer/hooks/useShowError"
-import { OutlineTreeWidget } from "../UiDesigner/widgets"
 import { MaterialWidget } from "../UiDesigner/widgets/MaterialWidget"
 import { ID } from "shared"
 import { ActionsWidget } from "./ActionsWidget"
@@ -17,7 +16,7 @@ import { useBuildMeta } from "datasource"
 import { useQueryTemplates } from "../UiDesigner/hooks/useQueryTemplates"
 import { TemplateType } from "model"
 import { TemplateWidget } from "../UiDesigner/widgets/TemplateWidget"
-import { CompositePanel, Designer, StudioPanel } from "designable/react"
+import { CompositePanel, Designer, OutlineTreeWidget, StudioPanel } from "designable/react"
 
 const CompositePanelAny = CompositePanel as any;
 

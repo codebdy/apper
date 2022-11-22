@@ -3,9 +3,9 @@ import { MaterialSearchWidget } from "./MaterialSearchWidget";
 import "./style.less"
 import { MaterialDialog } from "./MaterialDialog";
 import { observer } from "@formily/reactive-react";
-import { ResourceWidget } from "../ResourceWidget";
 import { useAppMaterialTabs, usePredefinedMaterialTab } from "material/context";
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
+import { ResourceWidget } from "designable/react";
 const { TabPane } = Tabs;
 
 export const MaterialWidget = observer((

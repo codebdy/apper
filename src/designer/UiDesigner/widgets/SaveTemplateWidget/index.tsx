@@ -1,10 +1,10 @@
 import { observer } from "@formily/reactive-react"
 import { Button, Form, Modal } from "antd"
 import { useCallback, useMemo, useState } from "react"
-import { IconWidget } from "../IconWidget"
 import {
   useTree,
-  useSelected
+  useSelected,
+  IconWidget
 } from 'designable/react'
 import { useTranslation } from "react-i18next"
 import { useUpsertTemplate } from "../../hooks/useUpsertTemplate"
