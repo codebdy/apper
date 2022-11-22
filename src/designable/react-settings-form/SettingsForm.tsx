@@ -54,8 +54,6 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
       })
     }, [node, operation, props])
 
-    console.log("呵呵呵", schema)
-
     const render = () => {
       if (!isEmpty) {
         return (
