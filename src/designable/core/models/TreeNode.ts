@@ -70,7 +70,7 @@ const resetNodesParent = (nodes: TreeNode[], parent: TreeNode) => {
     if (node === parent) return node
     if (!parent.isSourceNode) {
       if (node.isSourceNode) {
-        node = node.clone(parent)
+        node = node.clone(parent) as any
         resetDepth(node)
       } else if (!node.isRoot && node.isInOperation) {
         node.operation?.selection.remove(node)
@@ -82,8 +82,8 @@ const resetNodesParent = (nodes: TreeNode[], parent: TreeNode) => {
     } else {
       deepReset(node)
     }
-    if (!TreeNodes.has(node.id)) {
-      TreeNodes.set(node.id, node)
+    if (!TreeNodes.has(node.id as any)) {
+      TreeNodes.set(node.id as any, node)
       CommonDesignerPropsMap.set(node.componentName, node.designerProps)
     }
     return node
@@ -195,7 +195,7 @@ export class TreeNode {
     return this.parent.children[this.index - 1]
   }
 
-  get next() : ITreeNode | undefined{
+  get next(): ITreeNode | undefined {
     if (this.parent === this || !this.parent) return undefined
     return this.parent.children[this.index + 1]
   }
@@ -213,7 +213,7 @@ export class TreeNode {
   }
 
   get descendants(): TreeNode[] {
-    return this.children.reduce((buf, node:any) => {
+    return this.children.reduce((buf, node: any) => {
       return buf.concat(node).concat(node.descendants)
     }, [])
   }
@@ -255,7 +255,7 @@ export class TreeNode {
   }
 
   getElement(area: 'viewport' | 'outline' = 'viewport') {
-    return this[area]?.findElementById(this.id)
+    return this[area]?.findElementById(this.id as any)
   }
 
   getValidElement(area: 'viewport' | 'outline' = 'viewport') {
@@ -263,7 +263,7 @@ export class TreeNode {
   }
 
   getElementRect(area: 'viewport' | 'outline' = 'viewport') {
-    return this[area]?.getElementRect(this.getElement(area))
+    return this[area]?.getElementRect(this.getElement(area) as any)
   }
 
   getValidElementRect(area: 'viewport' | 'outline' = 'viewport') {
@@ -271,7 +271,7 @@ export class TreeNode {
   }
 
   getElementOffsetRect(area: 'viewport' | 'outline' = 'viewport') {
-    return this[area]?.getElementOffsetRect(this.getElement(area))
+    return this[area]?.getElementOffsetRect(this.getElement(area) as any)
   }
 
   getValidElementOffsetRect(area: 'viewport' | 'outline' = 'viewport') {
@@ -279,15 +279,15 @@ export class TreeNode {
   }
 
   getPrevious(step = 1) {
-    return this.parent.children[this.index - step]
+    return this.parent?.children[this.index - step]
   }
 
   getAfter(step = 1) {
-    return this.parent.children[this.index + step]
+    return this.parent?.children[this.index + step]
   }
 
   getSibling(index = 0) {
-    return this.parent.children[index]
+    return this.parent?.children[index]
   }
 
   getParents(node?: TreeNode): TreeNode[] {
@@ -297,7 +297,7 @@ export class TreeNode {
       : []
   }
 
-  getParentByDepth(depth = 0) {
+  getParentByDepth(depth = 0): TreeNode | undefined {
     let parent = this.parent
     if (parent?.depth === depth) {
       return parent
@@ -336,7 +336,7 @@ export class TreeNode {
     this.operation?.snapshot(type)
   }
 
-  triggerMutation<T>(event: any, callback?: () => T, defaults?: T): T {
+  triggerMutation<T>(event: any, callback?: () => T, defaults?: T): T | undefined {
     if (this.operation) {
       const result = this.operation.dispatch(event, callback) || defaults
       this.takeSnapshot(event?.type)
@@ -344,6 +344,7 @@ export class TreeNode {
     } else if (isFn(callback)) {
       return callback()
     }
+
   }
 
   find(finder: INodeFinder): TreeNode | undefined {
@@ -703,7 +704,7 @@ export class TreeNode {
     newNode.children = resetNodesParent(
       this.children.map((child) => {
         return child.clone(newNode)
-      }),
+      }) as any,
       newNode
     )
     return this.triggerMutation(
@@ -774,7 +775,7 @@ export class TreeNode {
         const next = node.next
         node.remove()
         node.operation?.selection.select(
-          previous ? previous : next ? next : node.parent
+          previous ? previous : next ? next : node.parent as any
         )
         node.operation?.hover.clear()
       }
@@ -822,7 +823,7 @@ export class TreeNode {
           insertPoint.parent?.allowAppend([cloned])
         ) {
           insertPoint.insertAfter(cloned)
-          insertPoint = insertPoint.next
+          insertPoint = insertPoint.next as any
         } else if (node.operation?.selection.length === 1) {
           const targetNode = node.operation?.tree.findById(
             node.operation.selection.first as any
@@ -882,7 +883,7 @@ export class TreeNode {
       if (!node.allowDrop(parent)) return buf
       if (isFn(node.designerProps?.getDropNodes)) {
         const cloned = node.isSourceNode ? node.clone(node.parent) : node
-        const transformed = node.designerProps.getDropNodes(cloned, parent) as any
+        const transformed = node.designerProps.getDropNodes(cloned as any, parent) as any
         return transformed ? buf.concat(transformed as any) : buf
       }
       if (node.componentName === '$$ResourceNode$$')
