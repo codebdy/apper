@@ -25,7 +25,7 @@ const loacales = {
     },
   },
   'en-US': {
-    title: 'Button',
+    title: 'Card',
     settings: {
       type: 'Type',
       title: 'Title',
