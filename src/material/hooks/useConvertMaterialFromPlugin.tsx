@@ -3,10 +3,8 @@ import { IBehavior, IMaterialComponent } from "@rxdrag/appx-plugin-sdk";
 import { DnFC,DnComponent } from "designable/react"
 import { createBehavior, createResource } from '@designable/core'
 import { Material } from "../model";
-import { useCreateFieldSchema } from "./useCreateFieldSchema";
 
 export function useConvertMaterialFromPlugin() {
-  const createFieldSchema = useCreateFieldSchema();
   const convertBehaviors = useCallback((behaviors: IBehavior[]) => {
     return behaviors?.map(behavior => {
       const { schema, ...other } = behavior;
@@ -14,12 +12,12 @@ export function useConvertMaterialFromPlugin() {
         ...other,
         designerProps: {
           ...behavior.designerProps,
-          propsSchema: createFieldSchema(schema),
+          propsSchema: schema,
         },
       }
     }
     ) || []
-  }, [createFieldSchema])
+  }, [])
 
   const transComponment = useCallback((material: IMaterialComponent): Material => {
     const Resource = createResource(...(material.resources || []))
