@@ -27,7 +27,7 @@ export const useWorkspaceEffect = (engine: Engine) => {
   )
   engine.subscribeTo(SelectNodeEvent, (event) => {
     engine.workbench.eachWorkspace((workspace) => {
-      if (workspace !== event.context.workspace) {
+      if (workspace !== event.context?.workspace) {
         workspace.operation.selection.clear()
       }
     })
