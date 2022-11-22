@@ -15,19 +15,19 @@ export const useFreeSelectionEffect = (engine: Engine) => {
     engine.workbench.eachWorkspace((workspace) => {
       const viewport = workspace.viewport
       const dragEndPoint = new Point(
-        event.data.topClientX,
-        event.data.topClientY
+        event.data.topClientX as any,
+        event.data.topClientY as any
       )
       const dragStartOffsetPoint = viewport.getOffsetPoint(
         new Point(
-          engine.cursor.dragStartPosition.topClientX,
-          engine.cursor.dragStartPosition.topClientY
+          engine.cursor.dragStartPosition?.topClientX as any,
+          engine.cursor.dragStartPosition?.topClientY as any
         )
       )
       const dragEndOffsetPoint = viewport.getOffsetPoint(
         new Point(
-          engine.cursor.position.topClientX,
-          engine.cursor.position.topClientY
+          engine.cursor.position.topClientX as any,
+          engine.cursor.position.topClientY as any
         )
       )
       if (!viewport.isPointInViewport(dragEndPoint, false)) return
@@ -42,7 +42,7 @@ export const useFreeSelectionEffect = (engine: Engine) => {
       tree.eachChildren((node) => {
         const nodeRect = viewport.getValidNodeOffsetRect(node)
         if (nodeRect && isCrossRectInRect(selectionRect, nodeRect)) {
-          selected.push([node, nodeRect])
+          selected.push([node, nodeRect as any])
         }
       })
       const selectedNodes: TreeNode[] = selected.reduce(
@@ -52,7 +52,7 @@ export const useFreeSelectionEffect = (engine: Engine) => {
               return buf
             }
           }
-          return buf.concat(node)
+          return buf.concat(node as any)
         },
         []
       )
