@@ -1,6 +1,6 @@
 import { Engine } from './Engine'
 import { action, define, observable } from '@formily/reactive'
-import { globalThisPolyfill, isValidNumber } from '@designable/shared'
+import { globalThisPolyfill, isValidNumber } from 'designable/shared'
 
 export enum CursorStatus {
   Normal = 'NORMAL',
@@ -80,11 +80,11 @@ const calcPositionDelta = (
   end: ICursorPosition,
   start: ICursorPosition
 ): ICursorPosition => {
-  return Object.keys(end || {}).reduce((buf, key) => {
-    if (isValidNumber(end?.[key]) && isValidNumber(start?.[key])) {
-      buf[key] = end[key] - start[key]
+  return Object.keys(end || {}).reduce((buf:any, key:any) => {
+    if (isValidNumber((end as any)?.[key]) && isValidNumber((start as any)?.[key])) {
+      buf[key] = (end as any)[key] - (start as any)[key]
     } else {
-      buf[key] = end[key]
+      buf[key] = (end as any)[key]
     }
     return buf
   }, {})
@@ -101,9 +101,9 @@ export class Cursor {
 
   position: ICursorPosition = DEFAULT_POSITION
 
-  dragStartPosition: ICursorPosition
+  dragStartPosition?: ICursorPosition|null
 
-  dragEndPosition: ICursorPosition
+  dragEndPosition?: ICursorPosition|null
 
   dragAtomDelta: ICursorPosition = DEFAULT_POSITION
 
@@ -139,8 +139,8 @@ export class Cursor {
 
   get speed() {
     return Math.sqrt(
-      Math.pow(this.dragAtomDelta.clientX, 2) +
-        Math.pow(this.dragAtomDelta.clientY, 2)
+      Math.pow(this.dragAtomDelta.clientX as any, 2) +
+        Math.pow(this.dragAtomDelta.clientY as any, 2)
     )
   }
 
@@ -163,12 +163,12 @@ export class Cursor {
   }
 
   setPosition(position?: ICursorPosition) {
-    this.dragAtomDelta = calcPositionDelta(this.position, position)
+    this.dragAtomDelta = calcPositionDelta(this.position, position as any)
     this.position = { ...position }
     if (this.status === CursorStatus.Dragging) {
       this.dragStartToCurrentDelta = calcPositionDelta(
         this.position,
-        this.dragStartPosition
+        this.dragStartPosition as any
       )
     }
   }
@@ -177,7 +177,7 @@ export class Cursor {
     if (position) {
       this.dragStartPosition = { ...position }
     } else {
-      this.dragStartPosition = null
+      this.dragStartPosition = null 
       this.dragStartToCurrentDelta = DEFAULT_POSITION
     }
   }
