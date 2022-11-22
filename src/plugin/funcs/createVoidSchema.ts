@@ -7,7 +7,6 @@ export const createComponentSchema = (
   component: ISchema,
   decorator: ISchema
 ) => {
-  console.log("哈哈", component)
   return {
     'component-group': component && {
       type: 'void',
@@ -20,8 +19,8 @@ export const createComponentSchema = (
         },
       },
       properties: {
-        'props': component,
-      },
+        ...component
+      }
     },
     'decorator-group': decorator && {
       type: 'void',
