@@ -196,7 +196,7 @@ export class TransformHelper {
   get dragNodesRect() {
     if (this.draggingNodesRect) return this.draggingNodesRect
     return calcBoundingRect(
-      this.dragNodes.map((node) => node.getValidElementOffsetRect())
+      this.dragNodes.map((node) => node.getValidElementOffsetRect()) as any
     )
   }
 
@@ -397,8 +397,8 @@ export class TransformHelper {
       const rect = node.getElementOffsetRect()
       this.dragStartTranslateStore[node.id as any] = calcElementTranslate(element as any)
       this.dragStartSizeStore[node.id as any] = {
-        width: rect.width,
-        height: rect.height,
+        width: rect?.width as any,
+        height: rect?.height as any,
       }
     })
   }
@@ -467,8 +467,8 @@ export class TransformHelper {
       const topRect = node.getValidElementRect()
       const offsetRect = node.getValidElementOffsetRect()
       if (this.dragNodes.includes(node)) return
-      if (this.viewport.isRectInViewport(topRect)) {
-        this.viewportRectsStore[node.id as any] = offsetRect
+      if (this.viewport.isRectInViewport(topRect as any)) {
+        this.viewportRectsStore[node.id as any] = offsetRect as any
       }
     })
   }

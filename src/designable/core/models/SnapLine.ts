@@ -59,11 +59,11 @@ export class SnapLine {
     const parent = node.parent
     const dragNodeRect = node.getValidElementOffsetRect()
     const parentRect = parent.getValidElementOffsetRect()
-    const edgeOffset = calcOffsetOfSnapLineSegmentToEdge(this, dragNodeRect)
+    const edgeOffset = calcOffsetOfSnapLineSegmentToEdge(this, dragNodeRect as any)
     if (this.direction === 'h') {
-      translate.y = this.start.y - parentRect.y - edgeOffset.y
+      translate.y = this.start.y - (parentRect?.y as any)- edgeOffset.y
     } else {
-      translate.x = this.start.x - parentRect.x - edgeOffset.x
+      translate.x = this.start.x - (parentRect?.x as any) - edgeOffset.x
     }
   }
 
@@ -72,11 +72,11 @@ export class SnapLine {
     const parent = node.parent
     const dragNodeRect = node.getValidElementOffsetRect()
     const parentRect = parent.getValidElementOffsetRect()
-    const edgeOffset = calcOffsetOfSnapLineSegmentToEdge(this, dragNodeRect)
+    const edgeOffset = calcOffsetOfSnapLineSegmentToEdge(this, dragNodeRect as any)
     const cursorRect = this.helper.cursorDragNodesRect
     const snapEdge = this.snapEdge(rect)
     if (this.direction === 'h') {
-      const y = this.start.y - parentRect.y - edgeOffset.y
+      const y = this.start.y - (parentRect?.y as any) - edgeOffset.y
       switch (this.helper.direction) {
         case 'left-top':
         case 'center-top':
@@ -93,7 +93,7 @@ export class SnapLine {
           break
       }
     } else {
-      const x = this.start.x - parentRect.x - edgeOffset.x
+      const x = this.start.x - (parentRect?.x as any) - edgeOffset.x
       switch (this.helper.direction) {
         case 'left-top':
         case 'left-bottom':
