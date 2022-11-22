@@ -101,17 +101,17 @@ export class TransformHelper {
   }
 
   get deltaX() {
-    return this.cursor.dragStartToCurrentDelta.clientX
+    return this.cursor?.dragStartToCurrentDelta.clientX
   }
 
   get deltaY() {
-    return this.cursor.dragStartToCurrentDelta.clientY
+    return this.cursor?.dragStartToCurrentDelta.clientY
   }
 
   get cursorPosition() {
-    const position = this.cursor.position
+    const position = this.cursor?.position
     return this.operation.workspace.viewport.getOffsetPoint(
-      new Point(position.clientX || 0, position.clientY || 0)
+      new Point(position?.clientX || 0, position?.clientY || 0)
     )
   }
 
@@ -125,8 +125,8 @@ export class TransformHelper {
       )
     } else if (this.type === 'resize') {
       const dragNodesRect = this.dragStartNodesRect
-      const deltaX = this.cursor.dragStartToCurrentDelta.clientX || 0
-      const deltaY = this.cursor.dragStartToCurrentDelta.clientY || 0
+      const deltaX = this.cursor?.dragStartToCurrentDelta.clientX || 0
+      const deltaY = this.cursor?.dragStartToCurrentDelta.clientY || 0
       switch (this.direction) {
         case 'left-top':
           return new Rect(
@@ -212,7 +212,7 @@ export class TransformHelper {
   }
 
   get dragStartCursor() {
-    const position = this.operation.engine.cursor.dragStartPosition
+    const position = this.operation.engine.cursor?.dragStartPosition
     return this.operation.workspace.viewport.getOffsetPoint(
       new Point(position?.clientX as any, position?.clientY as any)
     )
@@ -555,7 +555,7 @@ export class TransformHelper {
         this.direction = direction as any
         this.dragNodes = nodes
         this.calcDragStartStore(nodes)
-        this.cursor.setDragType(CursorDragType.Resize)
+        this.cursor?.setDragType(CursorDragType.Resize)
       }
     } else if (type === 'translate') {
       const nodes = TreeNode.filterTranslatable(dragNodes)
@@ -565,7 +565,7 @@ export class TransformHelper {
         this.direction = direction as any
         this.dragNodes = nodes
         this.calcDragStartStore(nodes)
-        this.cursor.setDragType(CursorDragType.Translate)
+        this.cursor?.setDragType(CursorDragType.Translate)
       }
     } else if (type === 'rotate') {
       const nodes = TreeNode.filterRotatable(dragNodes)
@@ -574,7 +574,7 @@ export class TransformHelper {
         this.type = type
         this.dragNodes = nodes
         this.calcDragStartStore(nodes)
-        this.cursor.setDragType(CursorDragType.Rotate)
+        this.cursor?.setDragType(CursorDragType.Rotate)
       }
     } else if (type === 'scale') {
       const nodes = TreeNode.filterScalable(dragNodes)
@@ -583,7 +583,7 @@ export class TransformHelper {
         this.type = type
         this.dragNodes = nodes
         this.calcDragStartStore(nodes)
-        this.cursor.setDragType(CursorDragType.Scale)
+        this.cursor?.setDragType(CursorDragType.Scale)
       }
     } else if (type === 'round') {
       const nodes = TreeNode.filterRoundable(dragNodes)
@@ -592,7 +592,7 @@ export class TransformHelper {
         this.type = type
         this.dragNodes = nodes
         this.calcDragStartStore(nodes)
-        this.cursor.setDragType(CursorDragType.Round)
+        this.cursor?.setDragType(CursorDragType.Round)
       }
     }
     if (this.dragging) {
@@ -618,7 +618,7 @@ export class TransformHelper {
     this.aroundSpaceBlocks = null
     this.dragStartNodesRect = null
     this.dragNodes = []
-    this.cursor.setDragType(CursorDragType.Move)
+    this.cursor?.setDragType(CursorDragType.Move)
   }
 
   makeObservable() {

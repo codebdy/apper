@@ -167,7 +167,7 @@ export const useContentEditableEffect = (engine: Engine) => {
     const editableElement = target?.closest?.(
       `*[${engine.props.contentEditableAttrName}]`
     ) as HTMLInputElement
-    const workspace = engine.workbench.activeWorkspace
+    const workspace = engine.workbench?.activeWorkspace
     const tree = workspace?.operation.tree
     if (editableElement) {
       const editable = editableElement.getAttribute('contenteditable')

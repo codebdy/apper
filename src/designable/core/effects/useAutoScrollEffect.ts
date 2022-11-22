@@ -15,7 +15,7 @@ export const useAutoScrollEffect = (engine: Engine) => {
   let yScrollerAnimationStop: any = null
 
   const scrolling = (point: IPoint, viewport: Viewport) => {
-    if (engine.cursor.status === CursorStatus.Dragging) {
+    if (engine.cursor?.status === CursorStatus.Dragging) {
       xScroller = calcAutoScrollBasicInfo(point, 'x', viewport.rect as any)
       yScroller = calcAutoScrollBasicInfo(point, 'y', viewport.rect as any)
       if (xScroller) {
@@ -52,13 +52,13 @@ export const useAutoScrollEffect = (engine: Engine) => {
   }
 
   engine.subscribeTo(DragStartEvent, () => {
-    engine.workbench.eachWorkspace((workspace) => {
+    engine.workbench?.eachWorkspace((workspace) => {
       workspace.viewport.takeDragStartSnapshot()
     })
   })
 
   engine.subscribeTo(DragMoveEvent, (event) => {
-    engine.workbench.eachWorkspace((workspace) => {
+    engine.workbench?.eachWorkspace((workspace) => {
       const viewport = workspace.viewport
       const outline = workspace.outline
       const point = new Point(event.data.topClientX as any, event.data.topClientY as any)

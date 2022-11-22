@@ -279,7 +279,7 @@ export class MoveHelper {
         })
       )
       this.viewport.cacheElements()
-      this.cursor.setDragType(CursorDragType.Move)
+      this.cursor?.setDragType(CursorDragType.Move)
       this.dragging = true
     }
   }

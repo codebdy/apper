@@ -5,7 +5,7 @@ export const useTranslateEffect = (engine: Engine) => {
   engine.subscribeTo(DragStartEvent, (event) => {
     const target = event.data.target as HTMLElement
     const currentWorkspace =
-      event.context?.workspace ?? engine.workbench.activeWorkspace
+      event.context?.workspace ?? engine.workbench?.activeWorkspace
     const handler = target?.closest(`*[${engine.props.nodeTranslateAttrName}]`)
     if (!currentWorkspace) return
     const helper = currentWorkspace.operation.transformHelper
@@ -30,9 +30,9 @@ export const useTranslateEffect = (engine: Engine) => {
     }
   })
   engine.subscribeTo(DragMoveEvent, (event) => {
-    if (engine.cursor.dragType !== CursorDragType.Translate) return
+    if (engine.cursor?.dragType !== CursorDragType.Translate) return
     const currentWorkspace =
-      event.context?.workspace ?? engine.workbench.activeWorkspace
+      event.context?.workspace ?? engine.workbench?.activeWorkspace
     const helper = currentWorkspace?.operation.transformHelper
     const dragNodes = helper?.dragNodes
     if (!dragNodes?.length) return
@@ -48,9 +48,9 @@ export const useTranslateEffect = (engine: Engine) => {
     })
   })
   engine.subscribeTo(DragStopEvent, (event) => {
-    if (engine.cursor.dragType !== CursorDragType.Translate) return
+    if (engine.cursor?.dragType !== CursorDragType.Translate) return
     const currentWorkspace =
-      event.context?.workspace ?? engine.workbench.activeWorkspace
+      event.context?.workspace ?? engine.workbench?.activeWorkspace
     const helper = currentWorkspace?.operation.transformHelper
     if (helper) {
       helper.dragEnd()

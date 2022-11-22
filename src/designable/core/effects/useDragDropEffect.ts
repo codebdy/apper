@@ -15,7 +15,7 @@ import { Point } from '@designable/shared'
 
 export const useDragDropEffect = (engine: Engine) => {
   engine.subscribeTo(DragStartEvent, (event) => {
-    if (engine.cursor.type !== CursorType.Normal) return
+    if (engine.cursor?.type !== CursorType.Normal) return
     const target = event.data.target as HTMLElement
     const el = target?.closest(`
        *[${engine.props.nodeIdAttrName}],
@@ -33,7 +33,7 @@ export const useDragDropEffect = (engine: Engine) => {
     const outlineId = el?.getAttribute(engine.props.outlineNodeIdAttrName as any)
     const handlerId = helper?.getAttribute(engine.props.nodeSelectionIdAttrName as any)
     const nodeId = el?.getAttribute(engine.props.nodeIdAttrName as any)
-    engine.workbench.eachWorkspace((currentWorkspace) => {
+    engine.workbench?.eachWorkspace((currentWorkspace) => {
       const operation = currentWorkspace.operation
       const moveHelper = operation.moveHelper
       if (nodeId || outlineId || handlerId) {
@@ -61,7 +61,7 @@ export const useDragDropEffect = (engine: Engine) => {
   })
 
   engine.subscribeTo(DragMoveEvent, (event) => {
-    if (engine.cursor.type !== CursorType.Normal) return
+    if (engine.cursor?.type !== CursorType.Normal) return
     if (engine.cursor.dragType !== CursorDragType.Move) return
     const target = event.data.target as HTMLElement
     const el = target?.closest(`
@@ -71,7 +71,7 @@ export const useDragDropEffect = (engine: Engine) => {
     const point = new Point(event.data.topClientX as any, event.data.topClientY as any)
     const nodeId = el?.getAttribute(engine.props.nodeIdAttrName as any)
     const outlineId = el?.getAttribute(engine.props.outlineNodeIdAttrName as any)
-    engine.workbench.eachWorkspace((currentWorkspace) => {
+    engine.workbench?.eachWorkspace((currentWorkspace) => {
       const operation = currentWorkspace.operation
       const moveHelper = operation.moveHelper
       const dragNodes = moveHelper.dragNodes
@@ -86,14 +86,14 @@ export const useDragDropEffect = (engine: Engine) => {
   })
 
   engine.subscribeTo(ViewportScrollEvent, (event) => {
-    if (engine.cursor.type !== CursorType.Normal) return
+    if (engine.cursor?.type !== CursorType.Normal) return
     if (engine.cursor.dragType !== CursorDragType.Move) return
     const point = new Point(
       engine.cursor.position.topClientX as any,
       engine.cursor.position.topClientY as any
     )
     const currentWorkspace =
-      event?.context?.workspace ?? engine.workbench.activeWorkspace
+      event?.context?.workspace ?? engine.workbench?.activeWorkspace
     if (!currentWorkspace) return
     const operation = currentWorkspace.operation
     const moveHelper = operation.moveHelper
@@ -122,9 +122,9 @@ export const useDragDropEffect = (engine: Engine) => {
   })
 
   engine.subscribeTo(DragStopEvent, () => {
-    if (engine.cursor.type !== CursorType.Normal) return
+    if (engine.cursor?.type !== CursorType.Normal) return
     if (engine.cursor.dragType !== CursorDragType.Move) return
-    engine.workbench.eachWorkspace((currentWorkspace) => {
+    engine.workbench?.eachWorkspace((currentWorkspace) => {
       const operation = currentWorkspace.operation
       const moveHelper = operation.moveHelper
       const dragNodes = moveHelper.dragNodes

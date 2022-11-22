@@ -33,7 +33,7 @@ export const useResizeEffect = (engine: Engine) => {
   engine.subscribeTo(DragStartEvent, (event) => {
     const target = event.data.target as HTMLElement
     const currentWorkspace =
-      event.context?.workspace ?? engine.workbench.activeWorkspace
+      event.context?.workspace ?? engine.workbench?.activeWorkspace
     if (!currentWorkspace) return
     const handler = findStartNodeHandler(target)
     const helper = currentWorkspace.operation.transformHelper
@@ -60,9 +60,9 @@ export const useResizeEffect = (engine: Engine) => {
   })
 
   engine.subscribeTo(DragMoveEvent, (event) => {
-    if (engine.cursor.dragType !== CursorDragType.Resize) return
+    if (engine.cursor?.dragType !== CursorDragType.Resize) return
     const currentWorkspace =
-      event.context?.workspace ?? engine.workbench.activeWorkspace
+      event.context?.workspace ?? engine.workbench?.activeWorkspace
     const helper = currentWorkspace?.operation.transformHelper
     const dragNodes = helper?.dragNodes
     if (!dragNodes?.length) return
@@ -81,9 +81,9 @@ export const useResizeEffect = (engine: Engine) => {
   })
 
   engine.subscribeTo(DragStopEvent, (event) => {
-    if (engine.cursor.dragType !== CursorDragType.Resize) return
+    if (engine.cursor?.dragType !== CursorDragType.Resize) return
     const currentWorkspace =
-      event.context?.workspace ?? engine.workbench.activeWorkspace
+      event.context?.workspace ?? engine.workbench?.activeWorkspace
     const helper = currentWorkspace?.operation.transformHelper
     if (helper) {
       helper.dragEnd()

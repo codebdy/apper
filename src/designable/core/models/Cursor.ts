@@ -157,7 +157,7 @@ export class Cursor {
   }
 
   setStyle(style: string) {
-    this.engine.workbench.eachWorkspace((workspace) => {
+    this.engine.workbench?.eachWorkspace((workspace) => {
       setCursorStyle(workspace.viewport.contentWindow, style)
     })
   }
