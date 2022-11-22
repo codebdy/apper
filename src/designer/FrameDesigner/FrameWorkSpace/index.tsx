@@ -5,7 +5,6 @@ import { DesignerToolsWidget, SettingsPanel, ToolbarPanel, useDesigner, ViewPane
 import { ComponentTreeWidget, PreviewWidget, SchemaEditorWidget, ViewToolsWidget } from "../../UiDesigner/widgets";
 import { useShowError } from "designer/hooks/useShowError";
 import { ID } from "shared";
-import { SettingsForm } from "../../UiDesigner/SettingsForm";
 import { useMaterialDesigners } from "material/hooks/useMaterialDesigners";
 import { useLazyQueryPageFrame } from "../hooks/useLazyQueryPageFrame";
 import { FormDesigner } from "components/pc/FormDesigner";
@@ -13,6 +12,7 @@ import { SaveTemplateWidget } from "designer/UiDesigner/widgets/SaveTemplateWidg
 import { TemplateType } from "model";
 import { transformToTreeNode } from "designable/formily-antd/transformer"
 import { Field, ObjectContainer } from "designable/formily-antd";
+import { SettingsForm } from "designable/react-settings-form";
 
 export const FrameWorkSpace = (props: {
   frameId: ID

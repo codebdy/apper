@@ -2,15 +2,25 @@ import React, { useMemo } from 'react'
 import { createForm } from '@formily/core'
 import { Form } from 'formily/antd4'
 import { observer } from '@formily/react'
-import { SchemaField } from './SchemaField'
-import { ISettingFormProps } from './types'
-import { SettingsFormContext } from './shared/context'
-import { getLocales, getSnapshot } from './effects'
-import { Empty } from 'antd'
+import { requestIdle, cancelIdle } from '@designable/shared'
+import {
+  usePrefix,
+  useSelected,
+  useOperation,
+  useCurrentNode,
+  useWorkbench,
+  IconWidget,
+  NodePathWidget,
+} from 'designable/react'
+import { Empty, Tooltip } from 'antd'
 import cls from 'classnames'
 import './styles.less'
-import { useWorkbench, useOperation, useCurrentNode, useSelected, usePrefix, IconWidget, NodePathWidget } from '../react'
-import { cancelIdle, requestIdle } from '@designable/shared'
+import { ISettingFormProps } from './types'
+import { QuestionCircleOutlined } from '@ant-design/icons'
+import "./locales"
+import { SettingsFormContext } from 'designable/react-settings-form/shared/context'
+import { getLocales, getSnapshot } from 'designable/react-settings-form/effects'
+import { SchemaField } from 'designable/react-settings-form'
 
 const GlobalState = {
   idleRequest: null,
@@ -43,6 +53,8 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
         },
       })
     }, [node, operation, props])
+
+    console.log("呵呵呵", schema)
 
     const render = () => {
       if (!isEmpty) {
@@ -78,11 +90,24 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
         </div>
       )
     }
+
+    const description = useMemo(() => node?.getMessage("description"), [node]);
     const IconWidgetProvider = IconWidget.Provider as any
     return (
       <IconWidgetProvider tooltip>
         <div className={prefix + '-wrapper'}>
-          {!isEmpty && <NodePathWidget workspaceId={currentWorkspaceId} />}
+          {!isEmpty &&
+            <div
+              className='node-path-area'
+            >
+              <NodePathWidget workspaceId={currentWorkspaceId} />
+              {
+                description && <Tooltip placement="left" title={description}>
+                  <QuestionCircleOutlined />
+                </Tooltip>
+              }
+            </div>
+          }
           <div className={prefix + '-content'}>{render()}</div>
         </div>
       </IconWidgetProvider>

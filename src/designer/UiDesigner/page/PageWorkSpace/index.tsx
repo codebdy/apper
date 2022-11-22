@@ -5,7 +5,6 @@ import {
   SchemaEditorWidget,
   PreviewWidget,
 } from '../../widgets'
-import { SettingsForm } from '../../SettingsForm'
 import { Field } from 'components/common/Field'
 import { useTranslation } from "react-i18next";
 import { Spin } from "antd";
@@ -20,6 +19,7 @@ import { TemplateType } from "model";
 import { transformToTreeNode } from "designable/formily-antd/transformer"
 import { ObjectContainer } from "designable/formily-antd";
 import { RootComponent } from "designable/react/root";
+import { SettingsForm } from "designable/react-settings-form";
 
 const PageWorkSpace = (props: {
   pageId: ID,

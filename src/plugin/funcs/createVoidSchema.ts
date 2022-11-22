@@ -7,6 +7,7 @@ export const createComponentSchema = (
   component: ISchema,
   decorator: ISchema
 ) => {
+  console.log("哈哈", component)
   return {
     'component-group': component && {
       type: 'void',
@@ -19,7 +20,7 @@ export const createComponentSchema = (
         },
       },
       properties: {
-        'x-component-props': component,
+        'props': component,
       },
     },
     'decorator-group': decorator && {
@@ -77,7 +78,7 @@ export const createVoidFieldSchema = (
     properties: {
       'field-group': {
         type: 'void',
-        'x-component': 'CollapseItem',
+        'props': 'CollapseItem',
         properties: {
           name: {
             type: 'string',
