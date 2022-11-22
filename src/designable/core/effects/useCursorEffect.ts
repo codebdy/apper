@@ -29,7 +29,7 @@ export const useCursorEffect = (engine: Engine) => {
   engine.subscribeTo(DragStopEvent, (event) => {
     engine.cursor.setStatus(CursorStatus.DragStop)
     engine.cursor.setDragEndPosition(event.data)
-    engine.cursor.setDragStartPosition(null)
+    engine.cursor.setDragStartPosition(null as any)
     requestIdle(() => {
       engine.cursor.setStatus(CursorStatus.Normal)
     })
@@ -50,9 +50,9 @@ export const useCursorEffect = (engine: Engine) => {
     if (!el?.getAttribute) {
       return
     }
-    const nodeId = el.getAttribute(engine.props.nodeIdAttrName)
-    const outlineNodeId = el.getAttribute(engine.props.outlineNodeIdAttrName)
-    const node = operation.tree.findById(nodeId || outlineNodeId)
+    const nodeId = el.getAttribute(engine.props.nodeIdAttrName as any)
+    const outlineNodeId = el.getAttribute(engine.props.outlineNodeIdAttrName as any)
+    const node = operation.tree.findById(nodeId || outlineNodeId as any)
     if (node) {
       operation.hover.setHover(node)
     } else {
