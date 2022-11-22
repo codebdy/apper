@@ -8,7 +8,7 @@ export const useResizeEffect = (engine: Engine) => {
     )
     if (handler) {
       const direction = handler.getAttribute(
-        engine.props.nodeResizeHandlerAttrName
+        engine.props.nodeResizeHandlerAttrName as any
       )
       if (direction) {
         const element = handler.closest(
@@ -16,7 +16,7 @@ export const useResizeEffect = (engine: Engine) => {
         )
         if (element) {
           const nodeId = element.getAttribute(
-            engine.props.nodeSelectionIdAttrName
+            engine.props.nodeSelectionIdAttrName as any
           )
           if (nodeId) {
             const node = engine.findNodeById(nodeId)
@@ -43,7 +43,7 @@ export const useResizeEffect = (engine: Engine) => {
       ) as HTMLElement
       if (selectionElement) {
         const nodeId = selectionElement.getAttribute(
-          engine.props.nodeSelectionIdAttrName
+          engine.props.nodeSelectionIdAttrName as any
         )
         if (nodeId) {
           const node = engine.findNodeById(nodeId)
@@ -68,7 +68,7 @@ export const useResizeEffect = (engine: Engine) => {
     if (!dragNodes.length) return
     helper.dragMove()
     dragNodes.forEach((node) => {
-      const element = node.getElement()
+      const element = node.getElement() as any
       helper.resize(node, (rect) => {
         element.style.width = rect.width + 'px'
         element.style.height = rect.height + 'px'

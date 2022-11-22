@@ -17,7 +17,7 @@ export const useSelectionEffect = (engine: Engine) => {
       event.context?.workspace ?? engine.workbench.activeWorkspace
     if (!currentWorkspace) return
     if (!el?.getAttribute) {
-      const point = new Point(event.data.topClientX, event.data.topClientY)
+      const point = new Point(event.data.topClientX as any, event.data.topClientY as any)
       const operation = currentWorkspace.operation
       const viewport = currentWorkspace.viewport
       const outline = currentWorkspace.outline
@@ -31,12 +31,12 @@ export const useSelectionEffect = (engine: Engine) => {
       }
       return
     }
-    const nodeId = el.getAttribute(engine.props.nodeIdAttrName)
-    const structNodeId = el.getAttribute(engine.props.outlineNodeIdAttrName)
+    const nodeId = el.getAttribute(engine.props.nodeIdAttrName as any)
+    const structNodeId = el.getAttribute(engine.props.outlineNodeIdAttrName as any)
     const operation = currentWorkspace.operation
     const selection = operation.selection
     const tree = operation.tree
-    const node = tree.findById(nodeId || structNodeId)
+    const node = tree.findById(nodeId || structNodeId as any)
     if (node) {
       engine.keyboard.requestClean()
       if (
