@@ -71,7 +71,7 @@ export class TransformHelper {
 
   dragStartSizeStore: Record<string, ISize> = {}
 
-  draggingNodesRect?: Rect|null
+  draggingNodesRect?: Rect | null
 
   cacheDragNodesReact?: Rect
 
@@ -454,7 +454,7 @@ export class TransformHelper {
         })
         if (!closestSpaces[origin.type]) {
           closestSpaces[origin.type] = spaceBlock
-        } else if ((spaceBlock.distance||0) < closestSpaces[origin.type].distance) {
+        } else if ((spaceBlock.distance || 0) < closestSpaces[origin.type].distance) {
           closestSpaces[origin.type] = spaceBlock
         }
       }
@@ -506,7 +506,7 @@ export class TransformHelper {
     this.snapping = false
     this.snapping = false
     for (let line of this.closestSnapLines) {
-      line.resize(node, rect)
+      line.resize(node, rect as any)
       this.snapping = true
       this.snapped = true
     }

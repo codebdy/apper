@@ -4,7 +4,7 @@ import {
   IPoint,
   calcOffsetOfSnapLineSegmentToEdge,
   Rect,
-} from '@designable/shared'
+} from 'designable/shared'
 import { TreeNode } from './TreeNode'
 import { TransformHelper } from './TransformHelper'
 
@@ -28,11 +28,11 @@ export class SnapLine {
   constructor(helper: TransformHelper, line: ISnapLine) {
     this.helper = helper
     this.type = line.type || 'normal'
-    this._id = line.id
-    this.refer = line.refer
+    this._id = line.id as any
+    this.refer = line.refer as any
     this.start = { ...line.start }
     this.end = { ...line.end }
-    this.distance = line.distance
+    this.distance = line.distance as any
   }
 
   get id() {
@@ -83,13 +83,13 @@ export class SnapLine {
         case 'right-top':
           if (snapEdge !== 'ht') return
           rect.y = y
-          rect.height = cursorRect.bottom - y
+          rect.height = cursorRect?.bottom as any - y
           break
         case 'left-bottom':
         case 'center-bottom':
         case 'right-bottom':
           if (snapEdge !== 'hb') return
-          rect.height = this.start.y - cursorRect.top
+          rect.height = this.start.y - (cursorRect?.top as any)
           break
       }
     } else {
@@ -100,13 +100,13 @@ export class SnapLine {
         case 'left-center':
           if (snapEdge !== 'vl') return
           rect.x = x
-          rect.width = cursorRect.right - x
+          rect.width = cursorRect?.right as any - x
           break
         case 'right-center':
         case 'right-top':
         case 'right-bottom':
           if (snapEdge !== 'vr') return
-          rect.width = this.start.x - cursorRect.left
+          rect.width = this.start.x - (cursorRect?.left as any)
           break
       }
     }
