@@ -128,7 +128,7 @@ const Login = observer(() => {
           onAutoSubmit={handleLogin}
         >
           <SchemaField schema={schema} />
-          <Button block size="large" loading={loading}>
+          <Button htmlType="submit" block size="large" loading={loading}>
             {t("Login")}
           </Button>
         </Form>
