@@ -454,7 +454,7 @@ export class TransformHelper {
         })
         if (!closestSpaces[origin.type]) {
           closestSpaces[origin.type] = spaceBlock
-        } else if (spaceBlock.distance < closestSpaces[origin.type].distance) {
+        } else if ((spaceBlock.distance||0) < closestSpaces[origin.type].distance) {
           closestSpaces[origin.type] = spaceBlock
         }
       }
