@@ -3,7 +3,7 @@ import { useMemo } from "react"
 import { createForm } from '@formily/core'
 import { createSchemaField } from '@formily/react'
 import { Checkbox, Form, FormItem, Input, Password, Submit } from 'formily/antd4'
-import { Button, Card, message } from 'antd'
+import { Card, message } from 'antd'
 import * as ICONS from '@ant-design/icons'
 import { observer } from "@formily/reactive-react"
 import { useLogin, useSetToken } from "../enthooks"
@@ -128,9 +128,9 @@ const Login = observer(() => {
           onAutoSubmit={handleLogin}
         >
           <SchemaField schema={schema} />
-          <Button htmlType="submit" block size="large" loading={loading}>
+          <Submit block size="large" loading={loading}>
             {t("Login")}
-          </Button>
+          </Submit>
         </Form>
       </Card>
     </div>
