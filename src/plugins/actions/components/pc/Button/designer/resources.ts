@@ -6,15 +6,10 @@ const resources: IResourceCreator[] = [
     icon: 'ButtonSource',
     elements: [
       {
-        componentName: 'Field',
+        componentName: Name,
         props: {
-          type: 'void',
-          title: 'Button',
-          'x-component': Name,
-          'x-component-props': {
-            type: "primary",
-            title: "Button"
-          },
+          type: "primary",
+          title: "Button"
         },
       },
     ],

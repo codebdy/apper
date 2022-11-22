@@ -33,7 +33,7 @@ import { TemplateWidget } from './widgets/TemplateWidget'
 import { useQueryTemplates } from './hooks/useQueryTemplates'
 import { TemplateType } from 'model'
 import { CompositePanel as CompositePanelDesignable, Designer, StudioPanel } from 'designable/react'
-import "./root"
+import "../../designable/react/root"
 
 const CompositePanel = CompositePanelDesignable as any
 export enum DesignerRoutes {

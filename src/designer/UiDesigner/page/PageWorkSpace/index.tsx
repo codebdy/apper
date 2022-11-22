@@ -19,7 +19,7 @@ import { SaveTemplateWidget } from "../../widgets/SaveTemplateWidget";
 import { TemplateType } from "model";
 import { transformToTreeNode } from "designable/formily-antd/transformer"
 import { ObjectContainer } from "designable/formily-antd";
-import { RootComponent } from "designer/UiDesigner/root";
+import { RootComponent } from "designable/react/root";
 
 const PageWorkSpace = (props: {
   pageId: ID,
