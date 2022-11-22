@@ -64,12 +64,12 @@ export const useResizeEffect = (engine: Engine) => {
     const currentWorkspace =
       event.context?.workspace ?? engine.workbench.activeWorkspace
     const helper = currentWorkspace?.operation.transformHelper
-    const dragNodes = helper.dragNodes
-    if (!dragNodes.length) return
-    helper.dragMove()
+    const dragNodes = helper?.dragNodes
+    if (!dragNodes?.length) return
+    helper?.dragMove()
     dragNodes.forEach((node) => {
       const element = node.getElement() as any
-      helper.resize(node, (rect) => {
+      helper?.resize(node, (rect) => {
         element.style.width = rect.width + 'px'
         element.style.height = rect.height + 'px'
         element.style.position = 'absolute'

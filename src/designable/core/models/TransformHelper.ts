@@ -214,7 +214,7 @@ export class TransformHelper {
   get dragStartCursor() {
     const position = this.operation.engine.cursor.dragStartPosition
     return this.operation.workspace.viewport.getOffsetPoint(
-      new Point(position.clientX as any, position.clientY as any)
+      new Point(position?.clientX as any, position?.clientY as any)
     )
   }
 

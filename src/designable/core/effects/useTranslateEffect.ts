@@ -34,12 +34,12 @@ export const useTranslateEffect = (engine: Engine) => {
     const currentWorkspace =
       event.context?.workspace ?? engine.workbench.activeWorkspace
     const helper = currentWorkspace?.operation.transformHelper
-    const dragNodes = helper.dragNodes
-    if (!dragNodes.length) return
-    helper.dragMove()
+    const dragNodes = helper?.dragNodes
+    if (!dragNodes?.length) return
+    helper?.dragMove()
     dragNodes.forEach((node) => {
       const element = node.getElement()
-      helper.translate(node, (translate) => {
+      helper?.translate(node, (translate) => {
         element?.style?.position && (element.style.position = 'absolute')
         element?.style?.left && (element.style.left = '0px')
         element?.style?.top && (element.style.top = '0px')

@@ -168,13 +168,13 @@ export const useContentEditableEffect = (engine: Engine) => {
       `*[${engine.props.contentEditableAttrName}]`
     ) as HTMLInputElement
     const workspace = engine.workbench.activeWorkspace
-    const tree = workspace.operation.tree
+    const tree = workspace?.operation.tree
     if (editableElement) {
       const editable = editableElement.getAttribute('contenteditable')
       if (editable === 'false' || !editable) {
         const nodeId = findTargetNodeId(editableElement)
         if (nodeId) {
-          const targetNode = tree.findById(nodeId)
+          const targetNode = tree?.findById(nodeId)
           if (targetNode) {
             globalState.activeElements.set(editableElement, targetNode)
             editableElement.setAttribute('spellcheck', 'false')
