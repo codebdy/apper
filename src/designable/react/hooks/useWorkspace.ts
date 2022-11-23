@@ -6,11 +6,12 @@ import { globalThisPolyfill } from 'designable/shared'
 
 export const useWorkspace = (id?: string): Workspace => {
   const designer = useDesigner()
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const workspaceId = id || useContext(WorkspaceContext)?.id
   if (workspaceId) {
-    return designer.workbench.findWorkspaceById(workspaceId)
+    return designer.workbench?.findWorkspaceById(workspaceId) as any
   }
-  if (globalThisPolyfill['__DESIGNABLE_WORKSPACE__'])
-    return globalThisPolyfill['__DESIGNABLE_WORKSPACE__']
-  return designer.workbench.currentWorkspace
+  if ((globalThisPolyfill as any)['__DESIGNABLE_WORKSPACE__'])
+    return (globalThisPolyfill as any)['__DESIGNABLE_WORKSPACE__']
+  return designer.workbench?.currentWorkspace as any
 }

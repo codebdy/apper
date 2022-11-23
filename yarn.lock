@@ -1287,16 +1287,6 @@
     "designable/shared" "1.0.0-beta.45"
     "@juggle/resize-observer" "^3.3.1"
 
-"@designable/react@^1.0.0-beta.45":
-  version "1.0.0-beta.45"
-  resolved "https://registry.npmmirror.com/@designable/react/-/react-1.0.0-beta.45.tgz#d6b592904c55bce969959c14ec846a6dc262556c"
-  integrity sha512-zZQ7cIl+X1ntXCNkeesCeMtLChWbFLsKTNmMVA6gS1wUWIlWb2aFQg/cM3P2JVmu2ovBE5EEEnomC94Nwz390A==
-  dependencies:
-    "designable/core" "1.0.0-beta.45"
-    "designable/shared" "1.0.0-beta.45"
-    "@juggle/resize-observer" "^3.3.1"
-    dateformat "^4.5.1"
-
 "designable/shared@1.0.0-beta.45":
   version "1.0.0-beta.45"
   resolved "https://registry.npmmirror.com/designable/shared/-/shared-1.0.0-beta.45.tgz#b45c7c91ecbe5ec7ee433e7a837175268b209d2c"
@@ -1904,16 +1894,6 @@
   version "1.2.0"
   resolved "https://registry.npmmirror.com/@rushstack/eslint-patch/-/eslint-patch-1.2.0.tgz#8be36a1f66f3265389e90b5f9c9962146758f728"
   integrity sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==
-
-"plugin-sdk@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.npmmirror.com/plugin-sdk/-/appx-plugin-sdk-0.0.4.tgz#aae99abfbe668ea174d4f01fc20b23a4386d451c"
-  integrity sha512-ZFGwZMdqGFsy90FwYCk6qjEr3U2gdxuydh4O/txB4dvSfyXt+mExubctaSuU7+DzKd2L0keIiHEaSWiVRrFI4A==
-  dependencies:
-    "designable/core" "^1.0.0-beta.45"
-    "@designable/react" "^1.0.0-beta.45"
-    "@formily/json-schema" "^2.2.5"
-    prop-types "^15.7.2"
 
 "@sinclair/typebox@^0.24.1":
   version "0.24.51"

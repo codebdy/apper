@@ -17,8 +17,8 @@ export const GhostWidget = observer(() => {
     () =>
       autorun(() => {
         const transform = `perspective(1px) translate3d(${
-          cursor.position?.topClientX - 18
-        }px,${cursor.position?.topClientY - 12}px,0) scale(0.8)`
+          cursor?.position?.topClientX as any - 18
+        }px,${cursor?.position?.topClientY as any - 12}px,0) scale(0.8)`
         if (!ref.current) return
         ref.current.style.transform = transform
       }),
@@ -37,8 +37,8 @@ export const GhostWidget = observer(() => {
     )
   }
   if (!firstNode) return null
-  return cursor.status === CursorStatus.Dragging ? (
-    <div ref={ref} className={prefix}>
+  return cursor?.status === CursorStatus.Dragging ? (
+    <div ref={ref as any} className={prefix}>
       {renderNodes()}
     </div>
   ) : null

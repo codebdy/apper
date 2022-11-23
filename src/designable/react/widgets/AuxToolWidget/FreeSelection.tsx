@@ -12,12 +12,12 @@ export const FreeSelection = observer(() => {
   const prefix = usePrefix('aux-free-selection')
   const createSelectionStyle = () => {
     const startDragPoint = viewport.getOffsetPoint({
-      x: cursor.dragStartPosition.topClientX,
-      y: cursor.dragStartPosition.topClientY,
+      x: cursor?.dragStartPosition?.topClientX as any, 
+      y: cursor?.dragStartPosition?.topClientY as any,
     })
     const currentPoint = viewport.getOffsetPoint({
-      x: cursor.position.topClientX,
-      y: cursor.position.topClientY,
+      x: cursor?.position.topClientX as any,
+      y: cursor?.position.topClientY as any,
     })
     const rect = calcRectByStartEndPoint(
       startDragPoint,
@@ -44,8 +44,8 @@ export const FreeSelection = observer(() => {
 
   if (
     operation.moveHelper.hasDragNodes ||
-    cursor.status !== CursorStatus.Dragging ||
-    cursor.dragType !== CursorDragType.Move
+    cursor?.status !== CursorStatus.Dragging ||
+    cursor?.dragType !== CursorDragType.Move
   )
     return null
 

@@ -42,9 +42,9 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
         )}
         {use?.includes('MARKUP') && (
           <Button
-            disabled={workbench.type === 'MARKUP'}
+            disabled={workbench?.type === 'MARKUP'}
             onClick={() => {
-              workbench.type = 'MARKUP'
+              workbench?.type  && (workbench.type = 'MARKUP')
             }}
             size="small"
           >
@@ -53,9 +53,9 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
         )}
         {use?.includes('PREVIEW') && (
           <Button
-            disabled={workbench.type === 'PREVIEW'}
+            disabled={workbench?.type === 'PREVIEW'}
             onClick={() => {
-              workbench.type = 'PREVIEW'
+              workbench?.type  && (workbench.type = 'PREVIEW')
             }}
             size="small"
           >
