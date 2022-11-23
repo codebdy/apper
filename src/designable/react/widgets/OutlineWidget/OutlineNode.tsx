@@ -57,8 +57,8 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
               request.current = null
             }
             request.current = setTimeout(() => {
-              ref.current.classList.add('expanded')
-            }, 600)
+              ref.current?.classList.add('expanded')
+            }, 600) as any
           }
         } else {
           if (request.current) {
@@ -70,14 +70,14 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
           }
         }
       })
-    }, [node, moveHelper, cursor])
+    }, [node, moveHelper, cursor, engine])
 
     useEffect(() => {
       return autorun(() => {
         const selectedIds = selection?.selected || []
         const id = node.id
         if (!ref.current) return
-        if (selectedIds.includes(id)) {
+        if (selectedIds.includes(id as any)) {
           if (!ref.current.classList.contains('selected')) {
             ref.current.classList.add('selected')
           }
@@ -87,7 +87,7 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
           }
         }
         if (
-          cursor.status === CursorStatus.Dragging &&
+          cursor?.status === CursorStatus.Dragging &&
           moveHelper?.dragNodes?.length
         ) {
           if (ref.current.classList.contains('selected')) {
@@ -95,6 +95,7 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
           }
         }
       })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [node, selection, moveHelper])
 
     if (!node) return null
@@ -113,7 +114,7 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
     }
 
     const renderTitle = (node: TreeNode) => {
-      if (isFn(ctx.renderTitle)) return ctx.renderTitle(node)
+      if (isFn(ctx?.renderTitle)) return ctx?.renderTitle(node)
       return (
         <span>
           <NodeTitleWidget node={node} />
@@ -122,13 +123,13 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
     }
 
     const renderActions = (node: TreeNode) => {
-      if (isFn(ctx.renderActions)) return ctx.renderActions(node)
+      if (isFn(ctx?.renderActions)) return ctx?.renderActions(node)
     }
 
     return (
       <div
         style={style}
-        ref={ref}
+        ref={ref as any}
         className={cls(prefix, className, 'expanded')}
         data-designer-outline-node-id={node.id}
       >

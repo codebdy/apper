@@ -20,7 +20,7 @@ export const SnapLine = observer(() => {
     }
     return baseStyle
   }
-  if (cursor.status !== CursorStatus.Dragging) return null
+  if (cursor?.status !== CursorStatus.Dragging) return null
   return (
     <>
       {transformHelper.closestSnapLines.map((line, key) => {
@@ -29,7 +29,7 @@ export const SnapLine = observer(() => {
           <div
             key={key}
             className={prefix}
-            style={createLineStyle(line.rect)}
+            style={createLineStyle(line.rect as any)}
           ></div>
         )
       })}

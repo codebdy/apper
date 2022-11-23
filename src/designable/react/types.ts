@@ -5,10 +5,12 @@ export interface IDesignerLayoutProps {
   prefixCls?: string
   theme?: 'dark' | 'light' | (string & {})
   variables?: Record<string, string>
-  position?: 'fixed' | 'absolute' | 'relative'
+  position?: 'fixed' | 'absolute' | 'relative',
+  children?: React.ReactNode,
 }
 export interface IDesignerProps extends IDesignerLayoutProps {
-  engine: Engine
+  engine: Engine,
+  children?: React.ReactNode,
 }
 
 export interface IDesignerComponents {

@@ -43,7 +43,7 @@ export const SelectionBox: React.FC<ISelectionBoxProps> = (props) => {
   if (!nodeRect.width || !nodeRect.height) return null
 
   const selectionId = {
-    [designer.props?.nodeSelectionIdAttrName]: props.node.id,
+    [designer.props?.nodeSelectionIdAttrName as any]: props.node.id,
   }
 
   return (
@@ -52,7 +52,7 @@ export const SelectionBox: React.FC<ISelectionBoxProps> = (props) => {
       <ResizeHandler node={props.node} />
       <TranslateHandler node={props.node} />
       {props.showHelpers && (
-        <Helpers {...props} node={props.node} nodeRect={nodeRect} />
+        <Helpers {...props} node={props.node} nodeRect={nodeRect as any} />
       )}
     </div>
   )
@@ -63,13 +63,13 @@ export const Selection = observer(() => {
   const tree = useTree()
   const cursor = useCursor()
   const viewportMoveHelper = useMoveHelper()
-  if (cursor.status !== 'NORMAL' && viewportMoveHelper.touchNode) return null
+  if (cursor?.status !== 'NORMAL' && viewportMoveHelper.touchNode) return null
   return (
     <Fragment>
       {selection.selected.map((id) => {
         const node = tree.findById(id)
-        if (!node) return
-        if (node.hidden) return
+        if (!node) return<></>
+        if (node.hidden) return<></>
         return (
           <SelectionBox
             key={id}

@@ -10,18 +10,18 @@ export const Layout: React.FC<IDesignerLayoutProps> = (props) => {
 
   useLayoutEffect(() => {
     if (ref.current) {
-      each(props.variables, (value, key) => {
-        ref.current.style.setProperty(`--${key}`, value)
+      each(props.variables as any, (value:any, key) => {
+        ref.current?.style.setProperty(`--${key}`, value)
       })
     }
-  }, [])
+  }, [props.variables])
 
   if (layout) {
     return <Fragment>{props.children}</Fragment>
   }
   return (
     <div
-      ref={ref}
+      ref={ref as any}
       className={cls({
         [`${props.prefixCls}app`]: true,
         [`${props.prefixCls}${props.theme}`]: props.theme,
@@ -32,7 +32,7 @@ export const Layout: React.FC<IDesignerLayoutProps> = (props) => {
           theme: props.theme,
           prefixCls: props.prefixCls,
           position: props.position,
-        }}
+        } as any}
       >
         {props.children}
       </DesignerLayoutContext.Provider>

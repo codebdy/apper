@@ -25,7 +25,7 @@ export const AuxToolWidget = () => {
   if (!viewport) return null
 
   return (
-    <div ref={ref} className={prefix}>
+    <div ref={ref as any} className={prefix}>
       <Insertion />
       <SpaceBlock />
       <SnapLine />
