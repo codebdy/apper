@@ -4,7 +4,8 @@ import { WorkspaceContext } from '../context'
 export interface IWorkspaceProps {
   id?: string
   title?: string
-  description?: string
+  description?: string,
+  children?: React.ReactNode,
 }
 
 export const Workspace: React.FC<IWorkspaceProps> = ({
@@ -18,7 +19,7 @@ export const Workspace: React.FC<IWorkspaceProps> = ({
   const workspace = useMemo(() => {
     if (!designer) return
     if (oldId.current && oldId.current !== id) {
-      const old = designer.workbench.findWorkspaceById(oldId.current)
+      const old = designer.workbench?.findWorkspaceById(oldId.current)
       if (old) old.viewport.detachEvents()
     }
     const workspace = {
@@ -26,13 +27,13 @@ export const Workspace: React.FC<IWorkspaceProps> = ({
       title,
       description,
     }
-    designer.workbench.ensureWorkspace(workspace)
+    designer.workbench?.ensureWorkspace(workspace)
     oldId.current = workspace.id
     return workspace
-  }, [id, designer])
+  }, [designer, id, title, description])
   return (
     <Fragment>
-      <WorkspaceContext.Provider value={workspace}>
+      <WorkspaceContext.Provider value={workspace as any}>
         {props.children}
       </WorkspaceContext.Provider>
     </Fragment>

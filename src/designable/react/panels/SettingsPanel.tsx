@@ -6,7 +6,8 @@ import { usePrefix, useWorkbench } from '../hooks'
 import cls from 'classnames'
 export interface ISettingPanelProps {
   title?: React.ReactNode
-  extra?: React.ReactNode
+  extra?: React.ReactNode,
+  children?: React.ReactNode,
 }
 
 export const SettingsPanel: React.FC<ISettingPanelProps> = observer((props) => {
@@ -16,7 +17,7 @@ export const SettingsPanel: React.FC<ISettingPanelProps> = observer((props) => {
   const [pinning, setPinning] = useState(false)
   const [visible, setVisible] = useState(true)
   useEffect(() => {
-    if (visible || workbench.type === 'DESIGNABLE') {
+    if (visible || workbench?.type === 'DESIGNABLE') {
       if (!innerVisible) {
         requestIdle(() => {
           requestAnimationFrame(() => {
@@ -25,8 +26,8 @@ export const SettingsPanel: React.FC<ISettingPanelProps> = observer((props) => {
         })
       }
     }
-  }, [visible, workbench.type])
-  if (workbench.type !== 'DESIGNABLE') {
+  }, [innerVisible, visible, workbench?.type])
+  if (workbench?.type !== 'DESIGNABLE') {
     if (innerVisible) setInnerVisible(false)
     return null
   }

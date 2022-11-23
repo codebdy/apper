@@ -51,7 +51,7 @@ export const Viewport: React.FC<IViewportProps> = ({
   return (
     <div
       {...props}
-      ref={ref}
+      ref={ref as any}
       className={cls(prefix, props.className)}
       style={{
         opacity: !loaded ? 0 : 1,
