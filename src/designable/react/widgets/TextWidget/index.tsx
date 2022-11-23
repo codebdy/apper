@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react'
-import { isStr, isPlainObj } from 'designable/shared'
-import { GlobalRegistry, IDesignerMiniLocales } from 'designable/core'
+import { isStr, isPlainObj } from '@designable/shared'
+import { GlobalRegistry, IDesignerMiniLocales } from '@designable/core'
 import { observer } from '@formily/reactive-react'
 
 export interface ITextWidgetProps {
   componentName?: string
   sourceName?: string
   token?: string | IDesignerMiniLocales
-  defaultMessage?: string | IDesignerMiniLocales,
+  defaultMessage?: string | IDesignerMiniLocales
   children?: React.ReactNode
 }
 

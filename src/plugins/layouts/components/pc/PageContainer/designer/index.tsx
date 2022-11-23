@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import { Row, Tabs } from 'antd'
-import { TreeNode } from 'designable/core'
+import { TreeNode } from '@designable/core'
 import { DnFC, TreeNodeWidget, useTreeNode } from 'designable/react'
 import { HeaderActionsDesigner } from './HeaderActionsDesigner'
 import { HeaderContentDesigner } from './HeaderContentDesigner'

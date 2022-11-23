@@ -1,5 +1,5 @@
 import React from 'react'
-import { TreeNode, ITreeNode } from 'designable/core'
+import { TreeNode, ITreeNode } from '@designable/core'
 import { transformToSchema, transformToTreeNode } from 'designable/formily-antd/transformer'
 import { MonacoInput } from 'designable/react-settings-form'
 

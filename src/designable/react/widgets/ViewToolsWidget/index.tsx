@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'antd'
 import { observer } from '@formily/reactive-react'
-import { WorkbenchTypes } from 'designable/core'
+import { WorkbenchTypes } from '@designable/core'
 import { IconWidget } from '../IconWidget'
 import { usePrefix, useWorkbench } from '../../hooks'
 import cls from 'classnames'
@@ -20,9 +20,9 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
       <Button.Group style={style} className={cls(prefix, className)}>
         {use?.includes('DESIGNABLE') && (
           <Button
-            disabled={workbench?.type === 'DESIGNABLE'}
+            disabled={workbench.type === 'DESIGNABLE'}
             onClick={() => {
-              workbench?.type  && (workbench.type = 'DESIGNABLE')
+              workbench.type = 'DESIGNABLE'
             }}
             size="small"
           >
@@ -31,9 +31,9 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
         )}
         {use?.includes('JSONTREE') && (
           <Button
-            disabled={workbench?.type === 'JSONTREE'}
+            disabled={workbench.type === 'JSONTREE'}
             onClick={() => {
-              workbench?.type  && (workbench.type = 'JSONTREE')
+              workbench.type = 'JSONTREE'
             }}
             size="small"
           >
@@ -42,9 +42,9 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
         )}
         {use?.includes('MARKUP') && (
           <Button
-            disabled={workbench?.type === 'MARKUP'}
+            disabled={workbench.type === 'MARKUP'}
             onClick={() => {
-              workbench?.type  && (workbench.type = 'MARKUP')
+              workbench.type = 'MARKUP'
             }}
             size="small"
           >
@@ -53,9 +53,9 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
         )}
         {use?.includes('PREVIEW') && (
           <Button
-            disabled={workbench?.type === 'PREVIEW'}
+            disabled={workbench.type === 'PREVIEW'}
             onClick={() => {
-              workbench?.type  && (workbench.type = 'PREVIEW')
+              workbench.type = 'PREVIEW'
             }}
             size="small"
           >

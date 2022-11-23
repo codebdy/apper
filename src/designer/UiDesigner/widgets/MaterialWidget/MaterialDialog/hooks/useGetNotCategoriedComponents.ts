@@ -1,6 +1,6 @@
 import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 import { useCallback } from "react";
-import { IMaterialTab, IPlugin } from "plugin-sdk";
+import { IMaterialTab, IPlugin } from "@rxdrag/appx-plugin-sdk";
 
 export function useGetNotCategoriedComponents(tabs: IMaterialTab[]) {
   const { device } = useDesignerParams();

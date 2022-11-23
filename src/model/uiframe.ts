@@ -1,5 +1,5 @@
 import { ISchema } from "@formily/react";
-import { Device } from "plugin-sdk";
+import { Device } from "@rxdrag/appx-plugin-sdk";
 import { ID } from "shared";
 import { IApp, IAppInput } from "./app";
 

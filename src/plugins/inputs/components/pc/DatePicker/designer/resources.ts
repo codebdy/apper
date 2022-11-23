@@ -1,4 +1,4 @@
-import { IResourceCreator } from "designable/core";
+import { IResourceCreator } from "@designable/core";
 import Name, { DateRangePickerName } from "../name";
 
 const resources: IResourceCreator[] = [

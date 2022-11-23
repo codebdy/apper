@@ -28,7 +28,7 @@ export const SaveTemplateWidget = observer((
   const [form] = Form.useForm()
 
   const elements = useMemo(() => {
-    return selected?.map(id => transForm(tree.findById(id) as any))
+    return selected?.map(id => transForm(tree.findById(id)))
   }, [selected, tree])
 
   const [upsert, { error, loading }] = useUpsertTemplate({

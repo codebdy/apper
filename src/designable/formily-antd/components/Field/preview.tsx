@@ -12,8 +12,8 @@ import {
 } from '@formily/react'
 import { FormItem } from 'formily/antd4'
 import { each, reduce } from '@formily/shared'
-import { createBehavior } from 'designable/core'
-import { isArr, isStr } from 'designable/shared'
+import { createBehavior } from '@designable/core'
+import { isArr, isStr } from '@designable/shared'
 import { Container } from '../../common/Container'
 import { AllLocales } from '../../locales'
 import { DnFC, useDesigner, useComponents, useTreeNode } from '../../../react'
@@ -136,7 +136,7 @@ export const Field: DnFC<ISchema> = observer((props) => {
     props,
     components,
     designer.props.nodeIdAttrName as any,
-    node.id as any
+    node.id
   )
   if (props.type === 'object') {
     return (

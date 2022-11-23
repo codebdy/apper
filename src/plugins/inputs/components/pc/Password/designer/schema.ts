@@ -1,4 +1,4 @@
-import { FieldsType, IPropsSchema } from 'plugin-sdk'
+import { FieldsType, IPropsSchema } from '@rxdrag/appx-plugin-sdk'
 import { InputSchema } from '../../Input/designer/schema'
 
 export const PasswordSchema: IPropsSchema = {

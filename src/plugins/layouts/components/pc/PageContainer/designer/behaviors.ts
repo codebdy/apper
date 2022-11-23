@@ -1,4 +1,4 @@
-import { IBehavior } from "plugin-sdk";
+import { IBehavior } from "@rxdrag/appx-plugin-sdk";
 import Name from "../name";
 import FooterToolbarLocales from "./FooterToolbarDesigner/locales";
 import FooterToolbarSchema from "./FooterToolbarDesigner/schema";

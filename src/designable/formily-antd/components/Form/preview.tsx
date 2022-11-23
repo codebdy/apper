@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { createBehavior, createResource } from 'designable/core'
+import { createBehavior, createResource } from '@designable/core'
 import { createForm } from '@formily/core'
 import { observer } from '@formily/react'
 import { Form as FormilyForm } from 'formily/antd4'

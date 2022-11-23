@@ -1,4 +1,4 @@
-import { IPlugin } from "plugin-sdk";
+import { IPlugin } from "@rxdrag/appx-plugin-sdk";
 import { useCallback } from "react";
 import { IPluginInfo, PluginType } from "model";
 import { useDesignerParams } from "plugin-sdk/contexts/desinger";

@@ -1,4 +1,4 @@
-import { Device } from "plugin-sdk";
+import { Device } from "@rxdrag/appx-plugin-sdk";
 import { useMemo } from "react";
 import { IApp } from "model";
 

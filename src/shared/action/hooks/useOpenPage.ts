@@ -6,7 +6,7 @@ import { createId } from "../..";
 import { useInstanceId } from "plugin-sdk/contexts/instance";
 import { IOpenPageAction, OpenPageType } from "plugin-sdk/model/action";
 import { SYSTEM_APP_ID } from "consts";
-import { Device } from "plugin-sdk";
+import { Device } from "@rxdrag/appx-plugin-sdk";
 import { useAppViewKey } from "plugin-sdk/contexts/app";
 
 export function useOpenPage() {

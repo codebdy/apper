@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table, TableProps } from 'antd'
-import { TreeNode } from 'designable/core'
+import { TreeNode } from '@designable/core'
 import {
   useTreeNode,
   TreeNodeWidget,
@@ -312,7 +312,7 @@ export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
                 'ArrayTable.SortHandle',
               ])
               if (sortNode) {
-                sortNode.parent?.insertAfter(tableColumn)
+                sortNode.parent.insertAfter(tableColumn)
               } else {
                 ensureObjectItemsNode(node).prepend(tableColumn)
               }
@@ -345,7 +345,7 @@ export const ArrayTableDesigner: DnFC<TableProps<any>> = observer((props) => {
                 },
               })
               if (operationNode) {
-                operationNode.parent?.insertBefore(tableColumn)
+                operationNode.parent.insertBefore(tableColumn)
               } else {
                 ensureObjectItemsNode(node).append(tableColumn)
               }

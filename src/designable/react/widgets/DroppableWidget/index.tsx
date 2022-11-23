@@ -1,5 +1,5 @@
 import React from 'react'
-import { TreeNode } from 'designable/core'
+import { TreeNode } from '@designable/core'
 import { observer } from '@formily/reactive-react'
 import { useTreeNode, useNodeIdProps } from '../../hooks'
 import { NodeTitleWidget } from '../NodeTitleWidget'
@@ -36,12 +36,12 @@ export const DroppableWidget: React.FC<IDroppableWidgetProps> = observer(
     const target = node ?? currentNode
     const hasChildren = hasChildrenProp ?? (target?.children?.length||0) > 0
     return (
-      <div {...nodeId} {...props} className={className} style={style}>
+      <div {...nodeId} className={className} style={style}>
         {hasChildren ? (
           props.children
         ) : placeholder ? (
           <div style={{ height }} className="dn-droppable-placeholder">
-            <NodeTitleWidget node={target as any} />
+            <NodeTitleWidget node={target} />
           </div>
         ) : (
           props.children

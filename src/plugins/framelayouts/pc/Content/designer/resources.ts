@@ -1,5 +1,5 @@
 import Name from "../name";
-import { IResourceCreator } from "designable/core";
+import { IResourceCreator } from "@designable/core";
 const resources: IResourceCreator[] = [{
   icon: 'CardSource',
   elements: [

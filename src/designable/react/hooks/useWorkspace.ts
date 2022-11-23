@@ -1,17 +1,17 @@
 import { useContext } from 'react'
 import { useDesigner } from './useDesigner'
 import { WorkspaceContext } from '../context'
-import { Workspace } from 'designable/core'
-import { globalThisPolyfill } from 'designable/shared'
+import { Workspace } from '@designable/core'
+import { globalThisPolyfill } from '@designable/shared'
 
 export const useWorkspace = (id?: string): Workspace => {
   const designer = useDesigner()
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const workspaceId = id || useContext(WorkspaceContext)?.id
+  const context = useContext(WorkspaceContext)
+  const workspaceId = id || context?.id
   if (workspaceId) {
-    return designer.workbench?.findWorkspaceById(workspaceId) as any
+    return designer.workbench.findWorkspaceById(workspaceId)
   }
   if ((globalThisPolyfill as any)['__DESIGNABLE_WORKSPACE__'])
     return (globalThisPolyfill as any)['__DESIGNABLE_WORKSPACE__']
-  return designer.workbench?.currentWorkspace as any
+  return designer.workbench.currentWorkspace
 }

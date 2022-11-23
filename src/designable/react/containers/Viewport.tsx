@@ -1,8 +1,8 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
 import { usePrefix, useViewport } from '../hooks'
 import { AuxToolWidget, EmptyWidget } from '../widgets'
-import { Viewport as ViewportType } from 'designable/core'
-import { requestIdle, globalThisPolyfill } from 'designable/shared'
+import { Viewport as ViewportType } from '@designable/core'
+import { requestIdle, globalThisPolyfill } from '@designable/shared'
 import cls from 'classnames'
 export interface IViewportProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'placeholder'> {
@@ -59,11 +59,13 @@ export const Viewport: React.FC<IViewportProps> = ({
         ...props.style,
       }}
     >
-      {props.children}
-      <AuxToolWidget />
-      <EmptyWidget dragTipsDirection={dragTipsDirection}>
-        {placeholder}
-      </EmptyWidget>
+      <>
+        {props.children}
+        <AuxToolWidget />
+        <EmptyWidget dragTipsDirection={dragTipsDirection}>
+          {placeholder}
+        </EmptyWidget>
+      </>
     </div>
   )
 }

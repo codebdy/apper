@@ -1,4 +1,4 @@
-import { createBehavior, createResource } from 'designable/core'
+import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from 'designable/react'
 import { EnumSelectLocales } from './locales'
 import { EnumSelect, IEnumSelectProps } from '../view'

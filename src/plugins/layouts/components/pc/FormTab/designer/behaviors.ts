@@ -1,4 +1,4 @@
-import { IBehavior } from "plugin-sdk";
+import { IBehavior } from "@rxdrag/appx-plugin-sdk";
 import Name, { TabPaneName } from "../name";
 import { FormTabLocales, FormTabPaneLocales } from "./locales";
 import { FormTabSchema, FormTabPaneSchema } from "./schema";

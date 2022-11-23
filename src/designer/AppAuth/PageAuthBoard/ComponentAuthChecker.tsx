@@ -6,7 +6,7 @@ import { useShowError } from "designer/hooks/useShowError";
 import { ID } from "shared";
 import { LoadingOutlined } from "@ant-design/icons";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
-import { Device } from "plugin-sdk";
+import { Device } from "@rxdrag/appx-plugin-sdk";
 import { useUpsertComponentAuthConfig } from "../hooks/useUpsertComponentAuthConfig";
 
 export const ComponentAuthChecker = memo((

@@ -1,7 +1,7 @@
 import React from 'react'
-import { TreeNode } from 'designable/core'
+import { TreeNode } from '@designable/core'
 import { IconWidget } from '../IconWidget'
-import { usePrefix } from '../../hooks'
+import { useOperation, usePrefix } from '../../hooks'
 import { Button } from 'antd'
 
 export interface IDeleteProps {
@@ -10,6 +10,7 @@ export interface IDeleteProps {
 }
 
 export const Delete: React.FC<IDeleteProps> = ({ node, style }) => {
+  const operation = useOperation()
   const prefix = usePrefix('aux-copy')
   if (node === node.root) return null
   return (
@@ -18,7 +19,7 @@ export const Delete: React.FC<IDeleteProps> = ({ node, style }) => {
       style={style}
       type="primary"
       onClick={() => {
-        TreeNode.remove([node])
+        operation.removeNodes([node])
       }}
     >
       <IconWidget infer="Remove" />

@@ -10,22 +10,23 @@ import './styles.less'
 export interface INodeActionsWidgetProps {
   className?: string
   style?: React.CSSProperties
-  activeShown?: boolean,
+  activeShown?: boolean
   children?: React.ReactNode
 }
 
 export interface INodeActionsWidgetActionProps
   extends Omit<React.ComponentProps<'a'>, 'title' | 'type' | 'ref'>,
-    Partial<TypographyProps['Link']> {
+  Partial<TypographyProps['Link']> {
   className?: string
   style?: React.CSSProperties
   title: React.ReactNode
   icon?: React.ReactNode
+  children?: React.ReactNode
 }
 
-export const NodeActionsWidget: React.FC<INodeActionsWidgetProps> & {
-  Action: React.FC<INodeActionsWidgetActionProps>
-} = observer((props:any) => {
+const NodeActionsWidgetInner: React.FC<INodeActionsWidgetProps> & {
+  Action?: React.FC<INodeActionsWidgetActionProps>
+} = observer((props) => {
   const node = useTreeNode()
   const prefix = usePrefix('node-actions')
   const selected = useSelected()
@@ -37,10 +38,9 @@ export const NodeActionsWidget: React.FC<INodeActionsWidgetProps> & {
       </div>
     </div>
   )
-}) as any
+})
 
-NodeActionsWidget.Action = ({ icon, title, ...props }) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+const Action = ({ icon, title, ...props }: any) => {
   const prefix = usePrefix('node-actions-item')
   return (
     <Typography.Link
@@ -55,3 +55,8 @@ NodeActionsWidget.Action = ({ icon, title, ...props }) => {
     </Typography.Link>
   )
 }
+
+NodeActionsWidgetInner.Action = Action
+export const NodeActionsWidget = NodeActionsWidgetInner as React.FC<INodeActionsWidgetProps> & {
+  Action: React.FC<INodeActionsWidgetActionProps>
+} 

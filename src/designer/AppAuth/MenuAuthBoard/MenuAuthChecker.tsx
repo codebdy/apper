@@ -7,7 +7,7 @@ import { ID } from "shared";
 import { LoadingOutlined } from "@ant-design/icons";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
 import { useUpsertMenuAuthConfig } from "../hooks/useUpsertMenuAuthConfig";
-import { Device } from "plugin-sdk";
+import { Device } from "@rxdrag/appx-plugin-sdk";
 
 export const MenuAuthChecker = memo((
   props: {

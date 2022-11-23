@@ -11,7 +11,7 @@ export const DashedBox = observer(() => {
   const hover = useHover()
   const prefix = usePrefix('aux-dashed-box')
   const selection = useSelection()
-  const rect = useValidNodeOffsetRect(hover?.node as any)
+  const rect = useValidNodeOffsetRect(hover?.node)
   const createTipsStyle = () => {
     const baseStyle: React.CSSProperties = {
       top: 0,
@@ -31,7 +31,7 @@ export const DashedBox = observer(() => {
   }
   if (!hover.node) return null
   if (hover.node.hidden) return null
-  if (selection.selected.includes(hover.node.id as any)) return null
+  if (selection.selected.includes(hover.node.id)) return null
   return (
     <div className={prefix} style={createTipsStyle()}>
       <span

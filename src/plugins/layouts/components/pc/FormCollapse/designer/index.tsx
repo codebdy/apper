@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import { observer } from '@formily/react'
 import { Collapse, CollapsePanelProps, CollapseProps } from 'antd'
-import { TreeNode, } from 'designable/core'
+import { TreeNode, } from '@designable/core'
 import {
   useNodeIdProps,
   useTreeNode,
@@ -50,7 +50,7 @@ export const FormCollapseDesigner: DnFC<CollapseProps> & {
   const renderCollapse = () => {
     if (!node?.children?.length) return <DroppableWidget />
     return (
-      <Collapse {...props} activeKey={panels.map((tab) => tab.id) as any}>
+      <Collapse {...props} activeKey={panels.map((tab) => tab.id)}>
         {panels.map((panel) => {
           const props = panel.props?.['x-component-props'] || {}
           return (

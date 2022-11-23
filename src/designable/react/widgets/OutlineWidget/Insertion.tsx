@@ -1,6 +1,6 @@
 import React from 'react'
-import { useMoveHelper, usePrefix } from '../../hooks'
-import { ClosestPosition } from 'designable/core'
+import { useOutlineDragon, usePrefix } from '../../hooks'
+import { ClosestPosition } from '@designable/core'
 import { observer } from '@formily/reactive-react'
 
 export interface IInsertionProps {
@@ -9,11 +9,11 @@ export interface IInsertionProps {
 
 export const Insertion: React.FC<IInsertionProps> = observer(
   ({ workspaceId }) => {
-    const moveHelper = useMoveHelper(workspaceId)
+    const outlineDragon = useOutlineDragon(workspaceId)
     const prefix = usePrefix('outline-tree-insertion')
     const createInsertionStyle = (): React.CSSProperties => {
-      const closestDirection = moveHelper.outlineClosestDirection
-      const closestRect = moveHelper.outlineClosestOffsetRect
+      const closestDirection = outlineDragon.closestDirection
+      const closestRect = outlineDragon.closestOffsetRect
       const baseStyle: React.CSSProperties = {
         position: 'absolute',
         transform: 'perspective(1px) translate3d(0,0,0)',
@@ -46,7 +46,7 @@ export const Insertion: React.FC<IInsertionProps> = observer(
         baseStyle.height = 2
         baseStyle.transform = `perspective(1px) translate3d(${closestRect.x}px,${closestRect.y}px,0)`
       }
-      if (closestDirection?.includes('FORBID')) {
+      if (closestDirection.includes('FORBID')) {
         baseStyle.backgroundColor = 'red'
       } else {
         baseStyle.backgroundColor = ''
@@ -54,7 +54,7 @@ export const Insertion: React.FC<IInsertionProps> = observer(
       return baseStyle
     }
 
-    if (!moveHelper?.closestNode) return null
+    if (!outlineDragon?.closestNode) return null
 
     return <div className={prefix} style={createInsertionStyle()}></div>
   }

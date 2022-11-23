@@ -1,5 +1,5 @@
 import React from 'react'
-import { TreeNode } from 'designable/core'
+import { TreeNode } from '@designable/core'
 import { TreeSelectProps, TreeSelect } from 'antd'
 import { useCurrentNode } from '../../../../react'
 
@@ -26,7 +26,7 @@ const transformDataSource = (node: TreeNode) => {
       if (node && node !== parentNode) {
         path.push(node.props?.name || node.id)
       } else {
-        transform(node.parent as any)
+        transform(node.parent)
       }
     }
     transform(targetNode)
@@ -89,7 +89,7 @@ const transformDataSource = (node: TreeNode) => {
 
 export const PathSelector: React.FC<IPathSelectorProps> = (props) => {
   const baseNode = useCurrentNode()
-  const dataSource = transformDataSource(baseNode as any)
+  const dataSource = transformDataSource(baseNode)
   const findNode: any = (dataSource: any[], value: string) => {
     for (let i = 0; i < dataSource.length; i++) {
       const item = dataSource[i]

@@ -1,6 +1,7 @@
-import { useState, useEffect, useMemo, useCallback } from 'react'
-import { TreeNode, CursorStatus, CursorDragType } from 'designable/core'
-import { LayoutObserver } from 'designable/shared'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { TreeNode, CursorStatus, ScreenStatus } from '@designable/core'
+import { requestIdle, cancelIdle } from '@designable/shared'
+import { ResizeObserver } from '@juggle/resize-observer'
 import { useViewport } from './useViewport'
 import { useDesigner } from './useDesigner'
 
@@ -17,32 +18,55 @@ export const useValidNodeOffsetRect = (node: TreeNode) => {
   const engine = useDesigner()
   const viewport = useViewport()
   const [, forceUpdate] = useState(null)
-  const rectRef = useMemo(
-    () => ({ current: viewport.getValidNodeOffsetRect(node) }),
-    [viewport]
-  )
-
-  const element = viewport.findElementById(node?.id as any)
+  const rectRef = useRef<DOMRect>(viewport.getValidNodeOffsetRect(node))
+  const idleTaskRef = useRef<any>(null)
+  const unmountRef = useRef(false)
+  const observerRef = useRef<any>(null)
+  const element = viewport.findElementById(node?.id)
 
   const compute = useCallback(() => {
+    if (unmountRef.current) return
     if (
-      engine.cursor?.status !== CursorStatus.Normal &&
-      engine.cursor?.dragType === CursorDragType.Move
+      engine.cursor.status !== CursorStatus.Normal &&
+      engine.screen.status === ScreenStatus.Normal
     )
       return
     const nextRect = viewport.getValidNodeOffsetRect(node)
-    if (!isEqualRect(rectRef.current as any, nextRect as any) && nextRect) {
+    if (!isEqualRect(rectRef.current, nextRect) && nextRect) {
       rectRef.current = nextRect
-      forceUpdate([] as any)
+      forceUpdate(nextRect as any)
     }
-  }, [viewport, node])
+  }, [engine.cursor.status, engine.screen.status, viewport, node])
 
   useEffect(() => {
-    const layoutObserver = new LayoutObserver(compute)
-    if (element) layoutObserver.observe(element)
-    return () => {
-      layoutObserver.disconnect()
+    if (!element || !element.isConnected) return
+    if (observerRef.current) {
+      observerRef.current.disconnect()
     }
-  }, [node, viewport, element])
+    observerRef.current = new ResizeObserver(() => {
+      compute()
+    })
+    observerRef.current.observe(element)
+    return () => {
+      observerRef.current.disconnect()
+    }
+  }, [compute, element, viewport])
+
+  useEffect(() => {
+    unmountRef.current = false
+    const requestIdleTask = () => {
+      cancelIdle(idleTaskRef.current)
+      idleTaskRef.current = requestIdle(() => {
+        compute()
+        requestIdleTask()
+      })
+    }
+    requestIdleTask()
+    return () => {
+      unmountRef.current = true
+      cancelIdle(idleTaskRef.current)
+    }
+  }, [compute, node])
+
   return rectRef.current
 }

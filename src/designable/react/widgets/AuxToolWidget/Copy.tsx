@@ -1,6 +1,6 @@
 import React from 'react'
-import { TreeNode } from 'designable/core'
-import { usePrefix } from '../../hooks'
+import { TreeNode } from '@designable/core'
+import { useOperation, usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { Button } from 'antd'
 export interface ICopyProps {
@@ -9,6 +9,7 @@ export interface ICopyProps {
 }
 
 export const Copy: React.FC<ICopyProps> = ({ node, style }) => {
+  const operation = useOperation()
   const prefix = usePrefix('aux-copy')
   if (node === node.root) return null
   return (
@@ -17,7 +18,7 @@ export const Copy: React.FC<ICopyProps> = ({ node, style }) => {
       style={style}
       type="primary"
       onClick={() => {
-        TreeNode.clone([node])
+        operation.cloneNodes([node])
       }}
     >
       <IconWidget infer="Clone" />

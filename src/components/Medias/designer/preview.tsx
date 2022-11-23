@@ -1,5 +1,5 @@
 import { createFieldSchema } from "../../common/Field";
-import { createBehavior, createResource } from 'designable/core'
+import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from 'designable/react'
 import { IMediasProps, Medias } from "../preview/pc";
 import { MediasSchema } from "./schema";

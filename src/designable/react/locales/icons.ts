@@ -1,4 +1,4 @@
-export default {
+const locales = {
   'zh-CN': {
     icons: {
       Image: '图片',
@@ -130,3 +130,5 @@ export default {
     },
   },
 }
+
+export default locales

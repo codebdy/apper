@@ -1,5 +1,5 @@
 import { Tabs } from 'antd';
-import { IMaterialTab } from 'plugin-sdk';
+import { IMaterialTab } from '@rxdrag/appx-plugin-sdk';
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import { TabsEditDialog } from '../TabsEditDialog';
 import { useParseLangMessage } from 'plugin-sdk/hooks/useParseLangMessage';

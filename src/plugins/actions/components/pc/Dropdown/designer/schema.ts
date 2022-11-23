@@ -1,4 +1,4 @@
-import { IPropsSchema } from 'plugin-sdk'
+import { IPropsSchema } from '@rxdrag/appx-plugin-sdk'
 
 const schema: IPropsSchema = {
   actions: ["onClick"],

@@ -1,6 +1,6 @@
 import { useOperation } from './useOperation'
 
-export const useMoveHelper = (workspaceId?: string) => {
+export const useDragon = (workspaceId?: string) => {
   const operation = useOperation(workspaceId)
-  return operation?.moveHelper
+  return operation?.viewportDragon
 }

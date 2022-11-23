@@ -1,4 +1,4 @@
-import { createLocales } from 'designable/core'
+import { createLocales } from '@designable/core'
 import { InputLocales } from '../../Input/designer/locales'
 
 export const PasswordLocales = createLocales(InputLocales, {

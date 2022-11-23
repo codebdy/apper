@@ -1,4 +1,4 @@
-export default {
+const locales = {
   'zh-CN': {
     panels: {
       Component: '组件',
@@ -24,3 +24,5 @@ export default {
     },
   },
 }
+
+export default locales

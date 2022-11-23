@@ -1,4 +1,4 @@
-import { IPropsSchema } from "plugin-sdk";
+import { IPropsSchema } from "@rxdrag/appx-plugin-sdk";
 import { FormGridSchema } from "plugin-sdk";
 
 const QueryFormSchema: IPropsSchema = {

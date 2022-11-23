@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { ISchema } from '@formily/json-schema'
-import { isArr, isObj } from 'designable/shared'
+import { isArr, isObj } from '@designable/shared'
 import { useParseLangMessage } from "plugin-sdk";
 import { IAuthComponent } from "./model";
 

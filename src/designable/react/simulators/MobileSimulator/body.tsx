@@ -2,7 +2,7 @@ import { observer } from '@formily/reactive-react'
 import React from 'react'
 import { useScreen, usePrefix, useTheme } from '../../hooks'
 
-export interface IMobileBodyProps {}
+export interface IMobileBodyProps { }
 
 const MockupImages = {
   dark: [
@@ -13,14 +13,14 @@ const MockupImages = {
     '//img.alicdn.com/imgextra/i4/O1CN01vuXGe31tEy00v2xBx_!!6000000005871-55-tps-946-459.svg',
     '//img.alicdn.com/imgextra/i4/O1CN01ehfzMc1QPqY6HONTJ_!!6000000001969-55-tps-459-945.svg',
   ],
-} as any
+}
 
 export const MobileBody: React.FC<IMobileBodyProps> = observer((props) => {
   const screen = useScreen()
-  const theme = useTheme() as any
+  const theme = useTheme() as "dark" | "light"
   const prefix = usePrefix('mobile-simulator-body')
   const getContentStyles = (): React.CSSProperties => {
-    if (screen?.flip) {
+    if (screen.flip) {
       return {
         position: 'absolute',
         width: 736,
@@ -44,25 +44,25 @@ export const MobileBody: React.FC<IMobileBodyProps> = observer((props) => {
     <div
       className={prefix}
       style={{
-        alignItems: screen?.flip ? 'center' : '',
-        minWidth: screen?.flip ? 1000 : 0,
+        alignItems: screen.flip ? 'center' : '',
+        minWidth: screen.flip ? 1000 : 0,
       }}
     >
       <div
         className={prefix + '-wrapper'}
         style={{
           position: 'relative',
-          minHeight: screen?.flip ? 0 : 1000,
+          minHeight: screen.flip ? 0 : 1000,
         }}
       >
         <img
-          alt = ""
-          src={screen?.flip ? MockupImages[theme][0] : MockupImages[theme][1]}
+          alt =""
+          src={screen.flip ? MockupImages[theme][0] : MockupImages[theme][1]}
           style={{
             display: 'block',
             margin: '20px 0',
-            width: screen?.flip ? 946.667 : 460,
-            height: screen?.flip ? 460 : 946.667,
+            width: screen.flip ? 946.667 : 460,
+            height: screen.flip ? 460 : 946.667,
             boxShadow: '0 0 20px #0000004d',
             borderRadius: 60,
             backfaceVisibility: 'hidden',

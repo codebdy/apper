@@ -1,6 +1,6 @@
 import React from 'react'
 import { FormLayout as FormilyFormLayout } from 'formily/antd4'
-import { createBehavior, createResource } from 'designable/core'
+import { createBehavior, createResource } from '@designable/core'
 import { withContainer } from '../../common/Container'
 import { createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'

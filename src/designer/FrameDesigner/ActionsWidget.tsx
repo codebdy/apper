@@ -23,7 +23,7 @@ export const ActionsWidget = observer((props: {
   useShowError(error);
 
   const handleSave = useCallback(() => {
-    update({ id: templateId, schemaJson: transformToSchema(designer.getCurrentTree() as any) });
+    update({ id: templateId, schemaJson: transformToSchema(designer.getCurrentTree()) });
   }, [designer, templateId, update])
 
   return (

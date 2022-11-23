@@ -4,15 +4,15 @@ import {
   ClosestPosition,
   CursorStatus,
   DragMoveEvent,
-} from 'designable/core'
-import { isFn } from 'designable/shared'
+} from '@designable/core'
+import { isFn } from '@designable/shared'
 import { autorun } from '@formily/reactive'
 import { observer } from '@formily/reactive-react'
 import {
   usePrefix,
   useCursor,
   useSelection,
-  useMoveHelper,
+  useOutlineDragon,
   useDesigner,
 } from '../../hooks'
 import { IconWidget } from '../IconWidget'
@@ -36,12 +36,12 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
     const request = useRef(null)
     const cursor = useCursor()
     const selection = useSelection(workspaceId)
-    const moveHelper = useMoveHelper(workspaceId)
+    const outlineDragon = useOutlineDragon(workspaceId)
 
     useEffect(() => {
       return engine.subscribeTo(DragMoveEvent, () => {
-        const closestNodeId = moveHelper?.closestNode?.id
-        const closestDirection = moveHelper?.outlineClosestDirection
+        const closestNodeId = outlineDragon?.closestNode?.id
+        const closestDirection = outlineDragon?.closestDirection
         const id = node.id
         if (!ref.current) return
         if (
@@ -70,14 +70,14 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
           }
         }
       })
-    }, [node, moveHelper, cursor, engine])
+    }, [node, outlineDragon, cursor, engine])
 
     useEffect(() => {
       return autorun(() => {
         const selectedIds = selection?.selected || []
         const id = node.id
         if (!ref.current) return
-        if (selectedIds.includes(id as any)) {
+        if (selectedIds.includes(id)) {
           if (!ref.current.classList.contains('selected')) {
             ref.current.classList.add('selected')
           }
@@ -87,16 +87,15 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
           }
         }
         if (
-          cursor?.status === CursorStatus.Dragging &&
-          moveHelper?.dragNodes?.length
+          cursor.status === CursorStatus.Dragging &&
+          outlineDragon?.dragNodes?.length
         ) {
           if (ref.current.classList.contains('selected')) {
             ref.current.classList.remove('selected')
           }
         }
       })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [node, selection, moveHelper])
+    }, [node, selection, outlineDragon, cursor.status])
 
     if (!node) return null
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card as AntdCard } from 'antd'
-import { createBehavior, createResource } from 'designable/core'
+import { createBehavior, createResource } from '@designable/core'
 import { createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'

@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Card, CardProps } from 'antd'
-import { TreeNode } from 'designable/core'
+import { TreeNode } from '@designable/core'
 import {
   useTreeNode,
   TreeNodeWidget,
@@ -81,21 +81,21 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
   })
   const renderCard = () => {
     if (node?.children.length === 0) return <DroppableWidget />
-    const additions = queryNodesByComponentPath(node as any, [
+    const additions = queryNodesByComponentPath(node, [
       'ArrayCards',
       'ArrayCards.Addition',
     ])
-    const indexes = queryNodesByComponentPath(node as any, [
+    const indexes = queryNodesByComponentPath(node, [
       'ArrayCards',
       '*',
       'ArrayCards.Index',
     ])
-    const operations = queryNodesByComponentPath(node as any, [
+    const operations = queryNodesByComponentPath(node, [
       'ArrayCards',
       '*',
       isArrayCardsOperation,
     ])
-    const children = queryNodesByComponentPath(node as any, [
+    const children = queryNodesByComponentPath(node, [
       'ArrayCards',
       '*',
       (name) => name.indexOf('ArrayCards.') === -1,
@@ -108,7 +108,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
             title={
               <Fragment>
                 {indexes.map((node, key) => (
-                  <TreeNodeWidget key={key} node={node as any} />
+                  <TreeNodeWidget key={key} node={node} />
                 ))}
                 <span data-content-editable="x-component-props.title">
                   {props.title}
@@ -119,16 +119,16 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
             extra={
               <Fragment>
                 {operations.map((node) => (
-                  <TreeNodeWidget key={node.id} node={node as any} />
+                  <TreeNodeWidget key={node.id} node={node} />
                 ))}
                 {props.extra}
               </Fragment>
             }
           >
-            <div {...createNodeId(designer as any, ensureObjectItemsNode(node as any).id as any)}>
+            <div {...createNodeId(designer, ensureObjectItemsNode(node).id)}>
               {children.length ? (
                 children.map((node) => (
-                  <TreeNodeWidget key={node.id} node={node as any} />
+                  <TreeNodeWidget key={node.id} node={node} />
                 ))
               ) : (
                 <DroppableWidget hasChildren={false} />
@@ -137,7 +137,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
           </Card>
         </ArrayBaseAny.Item>
         {additions.map((node) => (
-          <TreeNodeWidget key={node.id} node={node as any} />
+          <TreeNodeWidget key={node.id} node={node} />
         ))}
       </ArrayBase>
     )
@@ -153,7 +153,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
             icon: 'AddIndex',
             onClick: () => {
               if (
-                hasNodeByComponentPath(node as any, [
+                hasNodeByComponentPath(node, [
                   'ArrayCards',
                   '*',
                   'ArrayCards.Index',
@@ -167,7 +167,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
                   'x-component': 'ArrayCards.Index',
                 },
               })
-              ensureObjectItemsNode(node as any).append(indexNode)
+              ensureObjectItemsNode(node).append(indexNode)
             },
           },
 
@@ -175,7 +175,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
             title: node?.getMessage('addOperation'),
             icon: 'AddOperation',
             onClick: () => {
-              const oldAdditionNode = findNodeByComponentPath(node as any, [
+              const oldAdditionNode = findNodeByComponentPath(node, [
                 'ArrayCards',
                 'ArrayCards.Addition',
               ])
@@ -188,25 +188,25 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
                     'x-component': 'ArrayCards.Addition',
                   },
                 })
-                ensureObjectItemsNode(node as any).insertAfter(additionNode)
+                ensureObjectItemsNode(node).insertAfter(additionNode)
               }
-              const oldRemoveNode = findNodeByComponentPath(node as any, [
+              const oldRemoveNode = findNodeByComponentPath(node, [
                 'ArrayCards',
                 '*',
                 'ArrayCards.Remove',
               ])
-              const oldMoveDownNode = findNodeByComponentPath(node as any, [
+              const oldMoveDownNode = findNodeByComponentPath(node, [
                 'ArrayCards',
                 '*',
                 'ArrayCards.MoveDown',
               ])
-              const oldMoveUpNode = findNodeByComponentPath(node as any, [
+              const oldMoveUpNode = findNodeByComponentPath(node, [
                 'ArrayCards',
                 '*',
                 'ArrayCards.MoveUp',
               ])
               if (!oldRemoveNode) {
-                ensureObjectItemsNode(node as any).append(
+                ensureObjectItemsNode(node).append(
                   new TreeNode({
                     componentName: node?.componentName,
                     props: {
@@ -217,7 +217,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
                 )
               }
               if (!oldMoveDownNode) {
-                ensureObjectItemsNode(node as any).append(
+                ensureObjectItemsNode(node).append(
                   new TreeNode({
                     componentName: node?.componentName,
                     props: {
@@ -228,7 +228,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
                 )
               }
               if (!oldMoveUpNode) {
-                ensureObjectItemsNode(node as any).append(
+                ensureObjectItemsNode(node).append(
                   new TreeNode({
                     componentName: node?.componentName,
                     props: {

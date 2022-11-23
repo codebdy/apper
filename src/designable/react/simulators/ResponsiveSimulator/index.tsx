@@ -5,12 +5,12 @@ import {
   DragStartEvent,
   DragMoveEvent,
   DragStopEvent,
-  CursorDragType,
-} from 'designable/core'
+  ScreenStatus,
+} from '@designable/core'
 import {
   calcSpeedFactor,
   createUniformSpeedAnimation,
-} from 'designable/shared'
+} from '@designable/shared'
 import { useScreen, useDesigner, usePrefix } from '../../hooks'
 import { IconWidget } from '../../widgets'
 import { ResizeHandle, ResizeHandleType } from './handle'
@@ -23,7 +23,7 @@ const useResizeEffect = (
   content: React.MutableRefObject<HTMLDivElement>,
   engine: Engine
 ) => {
-  let status: ResizeHandleType|null = null
+  let status: ResizeHandleType | null = null
   let startX = 0
   let startY = 0
   let startWidth = 0
@@ -40,19 +40,19 @@ const useResizeEffect = (
   const updateSize = (deltaX: number, deltaY: number) => {
     const containerRect = container.current?.getBoundingClientRect()
     if (status === ResizeHandleType.Resize) {
-      engine.screen?.setSize(startWidth + deltaX, startHeight + deltaY)
+      engine.screen.setSize(startWidth + deltaX, startHeight + deltaY)
       container.current.scrollBy(
         containerRect.width + deltaX,
         containerRect.height + deltaY
       )
     } else if (status === ResizeHandleType.ResizeHeight) {
-      engine.screen?.setSize(startWidth, startHeight + deltaY)
+      engine.screen.setSize(startWidth, startHeight + deltaY)
       container.current.scrollBy(
         container.current.scrollLeft,
         containerRect.height + deltaY
       )
     } else if (status === ResizeHandleType.ResizeWidth) {
-      engine.screen?.setSize(startWidth + deltaX, startHeight)
+      engine.screen.setSize(startWidth + deltaX, startHeight)
       container.current.scrollBy(
         containerRect.width + deltaX,
         container.current.scrollTop
@@ -61,30 +61,30 @@ const useResizeEffect = (
   }
 
   engine.subscribeTo(DragStartEvent, (e) => {
-    if (!engine.workbench?.currentWorkspace?.viewport) return
+    if (!engine.workbench.currentWorkspace?.viewport) return
     const target = e.data.target as HTMLElement
-    if (target?.closest(`*[${engine.props.screenResizeHandlerAttrName}]`)) {
+    if (target?.closest('*[data-designer-resize-handle]')) {
       const rect = content.current?.getBoundingClientRect()
       if (!rect) return
       status = target.getAttribute(
-        engine.props.screenResizeHandlerAttrName as any
+        'data-designer-resize-handle'
       ) as ResizeHandleType
-      engine.cursor?.setStyle(getStyle(status) as any)
-      startX = e.data.topClientX as any
-      startY = e.data.topClientY as any
+      engine.cursor.setStyle(getStyle(status) || "")
+      startX = e.data.topClientX || 0
+      startY = e.data.topClientY || 0
       startWidth = rect.width
       startHeight = rect.height
-      engine.cursor?.setDragType(CursorDragType.Resize)
+      engine.screen.setStatus(ScreenStatus.Resizing)
     }
   })
   engine.subscribeTo(DragMoveEvent, (e) => {
-    if (!engine.workbench?.currentWorkspace?.viewport) return
+    if (!engine.workbench.currentWorkspace?.viewport) return
     if (!status) return
-    const deltaX = e.data.topClientX as any - startX
-    const deltaY = e.data.topClientY as any - startY
+    const deltaX = (e.data.topClientX || 0) - startX
+    const deltaY = (e.data.topClientY || 0) - startY
     const containerRect = container.current?.getBoundingClientRect()
-    const distanceX = Math.floor(containerRect.right - (e.data.topClientX as any))
-    const distanceY = Math.floor(containerRect.bottom - (e.data.topClientY as any))
+    const distanceX = Math.floor(containerRect.right - (e.data.topClientX || 0))
+    const distanceY = Math.floor(containerRect.bottom - (e.data.topClientY || 0))
     const factorX = calcSpeedFactor(distanceX, 10)
     const factorY = calcSpeedFactor(distanceY, 10)
     updateSize(deltaX, deltaY)
@@ -115,8 +115,8 @@ const useResizeEffect = (
   engine.subscribeTo(DragStopEvent, () => {
     if (!status) return
     status = null
-    engine.cursor?.setStyle('')
-    engine.cursor?.setDragType(CursorDragType.Move)
+    engine.cursor.setStyle('')
+    engine.screen.setStatus(ScreenStatus.Normal)
     if (animationX) {
       animationX = animationX()
     }
@@ -167,8 +167,8 @@ export const ResponsiveSimulator: React.FC<IResponsiveSimulatorProps> =
           <div
             ref={content as any}
             style={{
-              width: screen?.width,
-              height: screen?.height,
+              width: screen.width,
+              height: screen.height,
               paddingRight: 15,
               paddingBottom: 15,
               position: 'relative',
@@ -176,16 +176,18 @@ export const ResponsiveSimulator: React.FC<IResponsiveSimulatorProps> =
               overflow: 'hidden',
             }}
           >
-            {props.children}
-            <ResizeHandle type={ResizeHandleType.Resize}>
-              <IconWidget infer="DragMove" style={{ pointerEvents: 'none' }} />
-            </ResizeHandle>
-            <ResizeHandle type={ResizeHandleType.ResizeHeight}>
-              <IconWidget infer="Menu" style={{ pointerEvents: 'none' }} />
-            </ResizeHandle>
-            <ResizeHandle type={ResizeHandleType.ResizeWidth}>
-              <IconWidget infer="Menu" style={{ pointerEvents: 'none' }} />
-            </ResizeHandle>
+            <>
+              {props.children}
+              <ResizeHandle type={ResizeHandleType.Resize}>
+                <IconWidget infer="DragMove" style={{ pointerEvents: 'none' }} />
+              </ResizeHandle>
+              <ResizeHandle type={ResizeHandleType.ResizeHeight}>
+                <IconWidget infer="Menu" style={{ pointerEvents: 'none' }} />
+              </ResizeHandle>
+              <ResizeHandle type={ResizeHandleType.ResizeWidth}>
+                <IconWidget infer="Menu" style={{ pointerEvents: 'none' }} />
+              </ResizeHandle>
+            </>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Space as FormilySpace } from 'formily/antd4'
-import { createBehavior, createResource } from 'designable/core'
+import { createBehavior, createResource } from '@designable/core'
 import { createVoidFieldSchema } from '../Field'
 import { withContainer } from '../../common/Container'
 import { AllSchemas } from '../../schemas'

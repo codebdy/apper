@@ -1,18 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { isValid } from 'designable/shared'
+import { isValid } from '@designable/shared'
 import cls from 'classnames'
 import { IconWidget, TextWidget } from '../widgets'
 import { usePrefix } from '../hooks'
 
 export interface ICompositePanelProps {
+  children(children: any): string | number | (() => string | number) 
   direction?: 'left' | 'right'
   showNavTitle?: boolean
   defaultOpen?: boolean
   defaultPinning?: boolean
   defaultActiveKey?: number
   activeKey?: number | string
-  onChange?: (activeKey: number | string) => void,
-  children?: React.ReactNode
+  onChange?: (activeKey: number | string) => void
 }
 export interface ICompositePanelItemProps {
   shape?: 'tab' | 'button' | 'link'
@@ -28,7 +28,7 @@ const parseItems = (
   children: React.ReactNode
 ): React.PropsWithChildren<ICompositePanelItemProps>[] => {
   const items: any[] = []
-  React.Children.forEach(children, (child:any, index) => {
+  React.Children.forEach(children, (child: any, index) => {
     if (child?.['type'] === CompositePanel.Item) {
       items.push({ key: child['key'] ?? index, ...child['props'] })
     }
@@ -53,16 +53,16 @@ const getDefaultKey = (children: React.ReactNode) => {
 }
 
 export const CompositePanel: React.FC<ICompositePanelProps> & {
-  Item: React.FC<ICompositePanelItemProps>
+  Item?: React.FC<ICompositePanelItemProps>
 } = (props) => {
   const prefix = usePrefix('composite-panel')
   const [activeKey, setActiveKey] = useState<string | number>(
-    props.defaultActiveKey ?? getDefaultKey(props.children) as any
+    props.defaultActiveKey ?? getDefaultKey(props.children as any) as any
   )
   const activeKeyRef = useRef<any>(null)
   const [pinning, setPinning] = useState(props.defaultPinning ?? false)
   const [visible, setVisible] = useState(props.defaultOpen ?? true)
-  const items = parseItems(props.children)
+  const items = parseItems(props.children as any)
   const currentItem = findItem(items, activeKey)
   const content = currentItem?.children
 

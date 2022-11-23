@@ -4,7 +4,7 @@ import { TemplateSearchWidget } from "./TemplateSearchWidget";
 import "./style.less"
 import { observer } from "@formily/reactive-react";
 import { useTranslation } from "react-i18next";
-import { createResource } from 'designable/core'
+import { createResource } from '@designable/core'
 import { TemplateNodeWidget } from "./TemplateNodeWidget";
 import { ManageDialog } from "./ManageDialog";
 import { ExportOutlined, ImportOutlined, MoreOutlined, SettingOutlined } from "@ant-design/icons";

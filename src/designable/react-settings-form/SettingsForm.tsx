@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { createForm } from '@formily/core'
 import { Form } from 'formily/antd4'
 import { observer } from '@formily/react'
-import { requestIdle, cancelIdle } from 'designable/shared'
+import { requestIdle, cancelIdle } from '@designable/shared'
 import {
   usePrefix,
   useSelected,
@@ -47,7 +47,7 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
         initialValues: node?.designerProps?.defaultProps,
         values: node?.props,
         effects(form) {
-          getLocales(node as any)
+          getLocales(node)
           getSnapshot(operation)
           props.effects?.(form)
         },

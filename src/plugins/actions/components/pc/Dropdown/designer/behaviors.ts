@@ -1,4 +1,4 @@
-import { IBehavior } from "plugin-sdk";
+import { IBehavior } from "@rxdrag/appx-plugin-sdk";
 import Name from "../name";
 import { ButtonLocales } from "./ButtonDesigner/locales";
 import { ButtonSchema } from "./ButtonDesigner/schema";

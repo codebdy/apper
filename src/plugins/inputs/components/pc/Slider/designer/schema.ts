@@ -1,5 +1,5 @@
-import { FieldsType, IPropsSchema } from 'plugin-sdk'
-import { GlobalRegistry } from 'designable/core'
+import { FieldsType, IPropsSchema } from '@rxdrag/appx-plugin-sdk'
+import { GlobalRegistry } from '@designable/core'
 
 export const SliderSchema: IPropsSchema = {
   display:{

@@ -1,4 +1,4 @@
-import { IBehavior } from "plugin-sdk";
+import { IBehavior } from "@rxdrag/appx-plugin-sdk";
 import Name, { TimeRangePickerName } from "../name";
 import { TimePickerLocales, TimeRangePicker } from "./locales";
 import { TimePickerSchema, TimeRangePickerSchema } from "./schema";

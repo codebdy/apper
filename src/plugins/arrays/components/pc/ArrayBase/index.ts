@@ -1,4 +1,4 @@
-import { IBehavior } from "plugin-sdk"
+import { IBehavior } from "@rxdrag/appx-plugin-sdk"
 import { ArrayAdditionLocales, ArrayRemoveLocales, ArrayIndexLocales, ArrayMoveUpLocales, ArrayMoveDownLocales } from "./locales"
 import { AdditionSchema } from "./schema"
 

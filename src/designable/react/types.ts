@@ -1,5 +1,5 @@
 import React from 'react'
-import { Engine, IResource, IBehavior } from 'designable/core'
+import { Engine, IResource, IBehavior } from '@designable/core'
 
 export interface IDesignerLayoutProps {
   prefixCls?: string
@@ -9,8 +9,7 @@ export interface IDesignerLayoutProps {
   children?: React.ReactNode,
 }
 export interface IDesignerProps extends IDesignerLayoutProps {
-  engine: Engine,
-  children?: React.ReactNode,
+  engine: Engine
 }
 
 export interface IDesignerComponents {
@@ -19,8 +18,8 @@ export interface IDesignerComponents {
 
 export interface IDesignerLayoutContext {
   theme?: 'dark' | 'light' | (string & {})
-  prefixCls: string
-  position: 'fixed' | 'absolute' | 'relative'
+  prefixCls?: string
+  position?: 'fixed' | 'absolute' | 'relative'
 }
 
 export interface IWorkspaceContext {

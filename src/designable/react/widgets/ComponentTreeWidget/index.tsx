@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react'
 import { useTree, usePrefix, useDesigner, useComponents } from '../../hooks'
 import { TreeNodeContext, DesignerComponentsContext } from '../../context'
 import { IDesignerComponents } from '../../types'
-import { TreeNode, GlobalRegistry } from 'designable/core'
+import { TreeNode, GlobalRegistry } from '@designable/core'
 import { observer } from '@formily/reactive-react'
 import cls from 'classnames'
 import './styles.less'
@@ -15,7 +15,7 @@ export interface IComponentTreeWidgetProps {
 
 export interface ITreeNodeWidgetProps {
   node: TreeNode
-  children?: React.ReactChild
+  //children?: React.ReactNode
 }
 
 export const TreeNodeWidget: React.FC<ITreeNodeWidgetProps> = observer(
@@ -41,10 +41,11 @@ export const TreeNodeWidget: React.FC<ITreeNodeWidgetProps> = observer(
       }
       return props
     }
+    
     const renderComponent = () => {
       const componentName = node.componentName
       const Component = components[componentName]
-      const dataId = {} as any
+      const dataId: any = {}
       if (Component) {
         if (designer) {
           dataId[designer?.props?.nodeIdAttrName as any] = node.id
@@ -76,7 +77,7 @@ export const ComponentTreeWidget: React.FC<IComponentTreeWidgetProps> =
     const tree = useTree()
     const prefix = usePrefix('component-tree')
     const designer = useDesigner()
-    const dataId = {} as any
+    const dataId: any = {}
     if (designer && tree) {
       dataId[designer?.props?.nodeIdAttrName as any] = tree.id
     }

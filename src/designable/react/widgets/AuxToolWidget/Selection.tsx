@@ -6,12 +6,12 @@ import {
   useValidNodeOffsetRect,
   useTree,
   useCursor,
-  useMoveHelper,
+  useDragon,
   usePrefix,
   useDesigner,
 } from '../../hooks'
 import { observer } from '@formily/reactive-react'
-import { TreeNode } from 'designable/core'
+import { TreeNode } from '@designable/core'
 import { TranslateHandler } from './TranslateHandler'
 export interface ISelectionBoxProps {
   node: TreeNode
@@ -29,7 +29,6 @@ export const SelectionBox: React.FC<ISelectionBoxProps> = (props) => {
       top: 0,
       left: 0,
       boxSizing: 'border-box',
-      zIndex: 4,
     }
     if (nodeRect) {
       baseStyle.transform = `perspective(1px) translate3d(${nodeRect.x}px,${nodeRect.y}px,0)`
@@ -52,7 +51,7 @@ export const SelectionBox: React.FC<ISelectionBoxProps> = (props) => {
       <ResizeHandler node={props.node} />
       <TranslateHandler node={props.node} />
       {props.showHelpers && (
-        <Helpers {...props} node={props.node} nodeRect={nodeRect as any} />
+        <Helpers {...props} node={props.node} nodeRect={nodeRect} />
       )}
     </div>
   )
@@ -62,8 +61,8 @@ export const Selection = observer(() => {
   const selection = useSelection()
   const tree = useTree()
   const cursor = useCursor()
-  const viewportMoveHelper = useMoveHelper()
-  if (cursor?.status !== 'NORMAL' && viewportMoveHelper.touchNode) return null
+  const viewportDragon = useDragon()
+  if (cursor.status !== 'NORMAL' && viewportDragon.touchNode) return null
   return (
     <Fragment>
       {selection.selected.map((id) => {

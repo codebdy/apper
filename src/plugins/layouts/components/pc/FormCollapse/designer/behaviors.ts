@@ -1,4 +1,4 @@
-import { IBehavior } from "plugin-sdk";
+import { IBehavior } from "@rxdrag/appx-plugin-sdk";
 import Name, { CollapsePanelName } from "../name";
 import { FormCollapse, FormCollapsePanel } from "./locales";
 import { FormCollapseSchema, FormCollapsePaneSchema } from "./schema";

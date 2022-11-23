@@ -1,4 +1,4 @@
-import { IMaterialComponent } from "plugin-sdk";
+import { IMaterialComponent } from "@rxdrag/appx-plugin-sdk";
 import behaviors from "./designer/behaviors";
 import resources from "./designer/resources";
 import Name from "./name";

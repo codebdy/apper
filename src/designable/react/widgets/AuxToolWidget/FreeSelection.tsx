@@ -1,29 +1,28 @@
 import React from 'react'
-import { useCursor, usePrefix, useViewport, useOperation } from '../../hooks'
+import { useCursor, usePrefix, useViewport } from '../../hooks'
 import { observer } from '@formily/reactive-react'
-import { CursorDragType, CursorStatus } from 'designable/core'
-import { calcRectByStartEndPoint } from 'designable/shared'
+import { CursorStatus, CursorType } from '@designable/core'
+import { calcRectByStartEndPoint } from '@designable/shared'
 import cls from 'classnames'
 
 export const FreeSelection = observer(() => {
   const cursor = useCursor()
   const viewport = useViewport()
-  const operation = useOperation()
   const prefix = usePrefix('aux-free-selection')
   const createSelectionStyle = () => {
     const startDragPoint = viewport.getOffsetPoint({
-      x: cursor?.dragStartPosition?.topClientX as any, 
-      y: cursor?.dragStartPosition?.topClientY as any,
+      x: cursor.dragStartPosition.topClientX || 0,
+      y: cursor.dragStartPosition.topClientY || 0,
     })
     const currentPoint = viewport.getOffsetPoint({
-      x: cursor?.position.topClientX as any,
-      y: cursor?.position.topClientY as any,
+      x: cursor.position.topClientX || 0,
+      y: cursor.position.topClientY || 0,
     })
     const rect = calcRectByStartEndPoint(
       startDragPoint,
       currentPoint,
-      viewport.dragScrollXDelta,
-      viewport.dragScrollYDelta
+      viewport.scrollX - (cursor.dragStartScrollOffset.scrollX || 0),
+      viewport.scrollY - (cursor.dragStartScrollOffset.scrollY || 0)
     )
     const baseStyle: React.CSSProperties = {
       position: 'absolute',
@@ -43,11 +42,9 @@ export const FreeSelection = observer(() => {
   }
 
   if (
-    operation.moveHelper.hasDragNodes ||
-    cursor?.status !== CursorStatus.Dragging ||
-    cursor?.dragType !== CursorDragType.Move
+    cursor.status !== CursorStatus.Dragging ||
+    cursor.type !== CursorType.Selection
   )
     return null
-
   return <div className={cls(prefix)} style={createSelectionStyle()}></div>
 })

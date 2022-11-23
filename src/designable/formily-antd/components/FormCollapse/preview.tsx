@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import { observer } from '@formily/react'
 import { Collapse, CollapsePanelProps, CollapseProps } from 'antd'
-import { TreeNode, createBehavior, createResource } from 'designable/core'
+import { TreeNode, createBehavior, createResource } from '@designable/core'
 import { toArr } from '@formily/shared'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { useDropTemplate } from '../../hooks'
@@ -56,7 +56,7 @@ export const FormCollapse: DnFC<CollapseProps> & {
     if (
       tabs.some((node) =>
         Array.isArray(activeKey)
-          ? activeKey.includes(node.id as any)
+          ? activeKey.includes(node.id)
           : node.id === activeKey
       )
     )
@@ -67,7 +67,7 @@ export const FormCollapse: DnFC<CollapseProps> & {
   const renderCollapse = () => {
     if (!node?.children?.length) return <DroppableWidget />
     return (
-      <Collapse {...props} activeKey={getCorrectActiveKey(activeKey, panels) as any}>
+      <Collapse {...props} activeKey={getCorrectActiveKey(activeKey, panels)}>
         {panels.map((panel) => {
           const props = panel.props?.['x-component-props'] || {}
           return (

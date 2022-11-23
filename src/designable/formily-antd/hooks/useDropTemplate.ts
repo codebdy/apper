@@ -1,4 +1,4 @@
-import { AppendNodeEvent, TreeNode } from 'designable/core'
+import { AppendNodeEvent, TreeNode } from '@designable/core'
 import { useDesigner } from '../../react'
 import { matchComponent, matchChildComponent } from '../shared'
 

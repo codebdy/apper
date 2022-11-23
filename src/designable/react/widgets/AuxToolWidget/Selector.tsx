@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { TreeNode } from 'designable/core'
+import { TreeNode } from '@designable/core'
 import { useHover, useSelection, usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { NodeTitleWidget } from '../NodeTitleWidget'
@@ -12,7 +12,7 @@ const useMouseHover = <T extends { current: HTMLElement }>(
   leave?: () => void
 ) => {
   useEffect(() => {
-    let timer = null as any
+    let timer: any = null
     let unmounted = false
     const onMouseOver = (e: MouseEvent) => {
       const target: HTMLElement = e.target as any
@@ -32,7 +32,7 @@ const useMouseHover = <T extends { current: HTMLElement }>(
       unmounted = true
       document.removeEventListener('mouseover', onMouseOver)
     }
-  }, [])
+  }, [enter, leave, ref])
 }
 
 export interface ISelectorProps {
@@ -76,7 +76,7 @@ export const Selector: React.FC<ISelectorProps> = observer(({ node }) => {
               key={parent.id}
               type="primary"
               onClick={() => {
-                selection.select(parent.id as any)
+                selection.select(parent.id)
               }}
               onMouseEnter={() => {
                 hover.setHover(parent)

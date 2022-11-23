@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { TreeNode, ITreeNode, WorkbenchTypes } from 'designable/core'
+import { TreeNode, ITreeNode, WorkbenchTypes } from '@designable/core'
 import { observer } from '@formily/reactive-react'
 import { useTree, useWorkbench } from '../hooks'
 import { Viewport } from '../containers'
-import { requestIdle } from 'designable/shared'
+import { requestIdle } from '@designable/shared'
 
 export interface IViewPanelProps {
   type: WorkbenchTypes
@@ -20,7 +20,7 @@ export const ViewPanel: React.FC<IViewPanelProps> = observer((props) => {
   const workbench = useWorkbench()
   const tree = useTree()
   useEffect(() => {
-    if (workbench?.type === props.type) {
+    if (workbench.type === props.type) {
       requestIdle(() => {
         requestAnimationFrame(() => {
           setVisible(true)
@@ -29,8 +29,8 @@ export const ViewPanel: React.FC<IViewPanelProps> = observer((props) => {
     } else {
       setVisible(false)
     }
-  }, [props.type, workbench?.type])
-  if (workbench?.type !== props.type) return null
+  }, [props.type, workbench.type])
+  if (workbench.type !== props.type) return null
   const render = () => {
     return props.children(tree, (payload) => {
       tree.from(payload)

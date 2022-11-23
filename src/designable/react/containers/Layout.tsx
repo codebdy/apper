@@ -1,16 +1,16 @@
 import React, { useContext, Fragment, useRef, useLayoutEffect } from 'react'
-import { each } from 'designable/shared'
+import { each } from '@designable/shared'
 import { DesignerLayoutContext } from '../context'
 import { IDesignerLayoutProps } from '../types'
 import cls from 'classnames'
 
-export const Layout: React.FC<IDesignerLayoutProps> = (props) => {
+export const Layout: React.FC<IDesignerLayoutProps> = (props: any) => {
   const layout = useContext(DesignerLayoutContext)
   const ref = useRef<HTMLDivElement>()
 
   useLayoutEffect(() => {
     if (ref.current) {
-      each(props.variables as any, (value:any, key) => {
+      each(props.variables, (value, key) => {
         ref.current?.style.setProperty(`--${key}`, value)
       })
     }
@@ -32,7 +32,7 @@ export const Layout: React.FC<IDesignerLayoutProps> = (props) => {
           theme: props.theme,
           prefixCls: props.prefixCls,
           position: props.position,
-        } as any}
+        }}
       >
         {props.children}
       </DesignerLayoutContext.Provider>

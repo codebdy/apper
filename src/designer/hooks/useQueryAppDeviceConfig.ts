@@ -1,4 +1,4 @@
-import { Device } from "plugin-sdk";
+import { Device } from "@rxdrag/appx-plugin-sdk";
 import { gql } from "../../enthooks";
 import { useMemo } from "react";
 import { SYSTEM_APP_ID } from "../../consts";

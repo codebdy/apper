@@ -1,4 +1,4 @@
-import { IBehavior } from "plugin-sdk";
+import { IBehavior } from "@rxdrag/appx-plugin-sdk";
 import Name from "../name";
 import { RateLocales } from "./locales";
 import { RateSchema } from "./schema";

@@ -1,7 +1,7 @@
 import { useCallback } from "react";
-import { IBehavior, IMaterialComponent } from "plugin-sdk";
+import { IBehavior, IMaterialComponent } from "@rxdrag/appx-plugin-sdk";
 import { DnFC,DnComponent } from "designable/react"
-import { createBehavior, createResource } from 'designable/core'
+import { createBehavior, createResource } from '@designable/core'
 import { Material } from "../model";
 
 export function useConvertMaterialFromPlugin() {

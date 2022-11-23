@@ -21,7 +21,7 @@ export const ActionsWidget = observer(() => {
   useShowError(error);
 
   const handleSave = useCallback(() => {
-    update({ id: pageId, schemaJson: transformToSchema(designer.getCurrentTree() as any) });
+    update({ id: pageId, schemaJson: transformToSchema(designer.getCurrentTree()) });
   }, [designer, pageId, update])
 
   return (

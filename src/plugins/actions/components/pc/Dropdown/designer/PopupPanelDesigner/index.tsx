@@ -14,15 +14,15 @@ export const PopupPanelDesigner = observer((props: IPopupPanelProps) => {
   const node = useTreeNode();
 
   const handleClose = useCallback(() => {
-    tree.operation?.selection.clear()
+    tree.operation.selection.clear()
     setVisible && setVisible(false);
   }, [setVisible, tree])
 
   useEffect(() => {
     if (visible) {
-      node?.id && tree.operation?.selection.select(node?.id)
+      node?.id && tree.operation.selection.select(node?.id)
     }
-  }, [visible, node, tree.operation?.selection])
+  }, [visible, node, tree.operation.selection])
 
   return (
     <PopupPanel {...other} className={clx(className)}>

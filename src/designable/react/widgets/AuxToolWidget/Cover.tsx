@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react'
 import {
   useViewport,
-  useMoveHelper,
+  useDragon,
   useCursor,
   useValidNodeOffsetRect,
   usePrefix,
 } from '../../hooks'
 import { observer } from '@formily/reactive-react'
-import { CursorStatus, ClosestPosition, TreeNode } from 'designable/core'
+import { CursorStatus, ClosestPosition, TreeNode } from '@designable/core'
 import cls from 'classnames'
 interface ICoverRectProps {
   node: TreeNode
@@ -45,27 +45,25 @@ const CoverRect: React.FC<ICoverRectProps> = (props) => {
 }
 
 export const Cover = observer(() => {
-  const viewportMoveHelper = useMoveHelper()
+  const viewportDragon = useDragon()
   const viewport = useViewport()
   const cursor = useCursor()
   const renderDropCover = () => {
     if (
-      !viewportMoveHelper.closestNode ||
-      !viewportMoveHelper.closestNode?.allowAppend(
-        viewportMoveHelper.dragNodes
-      ) ||
-      viewportMoveHelper.viewportClosestDirection !== ClosestPosition.Inner
+      !viewportDragon.closestNode ||
+      !viewportDragon.closestNode?.allowAppend(viewportDragon.dragNodes) ||
+      viewportDragon.closestDirection !== ClosestPosition.Inner
     )
       return null
-    return <CoverRect node={viewportMoveHelper.closestNode} dropping />
+    return <CoverRect node={viewportDragon.closestNode} dropping />
   }
-  if (cursor?.status !== CursorStatus.Dragging) return null
+  if (cursor.status !== CursorStatus.Dragging) return null
 
   return (
     <Fragment>
-      {viewportMoveHelper.dragNodes.map((node) => {
+      {viewportDragon.dragNodes.map((node) => {
         if (!node) return<></>
-        if (!viewport.findElementById(node.id as any)) return<></>
+        if (!viewport.findElementById(node.id)) return<></>
         return <CoverRect key={node.id} node={node} dragging />
       })}
       {renderDropCover()}
