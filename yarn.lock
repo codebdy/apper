@@ -1284,7 +1284,7 @@
   resolved "https://registry.npmmirror.com/designable/core/-/core-1.0.0-beta.45.tgz#779010f2f33aa2ea48c11f6ace05744805e85518"
   integrity sha512-zCN2O9HlVaqcd90KCl1OtsWTBMX4+xcWfew9sqxQfOE9GWc2VENw2IpbHcIsGaEDhklmZZ83vnDrivjwhZMMsw==
   dependencies:
-    "@designable/shared" "1.0.0-beta.45"
+    "designable/shared" "1.0.0-beta.45"
     "@juggle/resize-observer" "^3.3.1"
 
 "@designable/react@^1.0.0-beta.45":
@@ -1293,13 +1293,13 @@
   integrity sha512-zZQ7cIl+X1ntXCNkeesCeMtLChWbFLsKTNmMVA6gS1wUWIlWb2aFQg/cM3P2JVmu2ovBE5EEEnomC94Nwz390A==
   dependencies:
     "designable/core" "1.0.0-beta.45"
-    "@designable/shared" "1.0.0-beta.45"
+    "designable/shared" "1.0.0-beta.45"
     "@juggle/resize-observer" "^3.3.1"
     dateformat "^4.5.1"
 
-"@designable/shared@1.0.0-beta.45":
+"designable/shared@1.0.0-beta.45":
   version "1.0.0-beta.45"
-  resolved "https://registry.npmmirror.com/@designable/shared/-/shared-1.0.0-beta.45.tgz#b45c7c91ecbe5ec7ee433e7a837175268b209d2c"
+  resolved "https://registry.npmmirror.com/designable/shared/-/shared-1.0.0-beta.45.tgz#b45c7c91ecbe5ec7ee433e7a837175268b209d2c"
   integrity sha512-gHbTp+LlpIOvKg2QX6iq8BotNn98Dnf2/xc2fXJfWz97YlbSDEqYaPiCAQYHGoucAjj1BWYZQFdNar1FdOfR9g==
   dependencies:
     requestidlecallback "^0.3.0"
