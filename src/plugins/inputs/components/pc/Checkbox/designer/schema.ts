@@ -1,4 +1,4 @@
-import { FieldsType, IPropsSchema } from '@rxdrag/appx-plugin-sdk'
+import { FieldsType, IPropsSchema } from 'plugin-sdk'
 
 export const CheckboxSchema: IPropsSchema = {
   display: {

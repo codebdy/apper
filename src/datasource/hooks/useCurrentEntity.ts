@@ -1,6 +1,6 @@
 
 import { useCurrentNode } from 'designable/react';
-import { TreeNode } from '@designable/core';
+import { TreeNode } from 'designable/core';
 import { useCallback, useMemo } from 'react';
 import { useGetEntity } from './useGetEntity';
 

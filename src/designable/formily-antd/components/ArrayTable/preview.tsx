@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table, TableProps } from 'antd'
-import { TreeNode, createBehavior, createResource } from '@designable/core'
+import { TreeNode, createBehavior, createResource } from 'designable/core'
 import { ArrayBase as ArrayBaseFormily } from 'formily/antd4'
 import { observer } from '@formily/react'
 import { LoadTemplate } from '../../common/LoadTemplate'
@@ -316,7 +316,7 @@ export const ArrayTable: DnFC<TableProps<any> & { className?: string }> = observ
                 'ArrayTable.SortHandle',
               ])
               if (sortNode) {
-                sortNode.parent.insertAfter(tableColumn)
+                sortNode.parent?.insertAfter(tableColumn)
               } else {
                 ensureObjectItemsNode(node).prepend(tableColumn)
               }
@@ -349,7 +349,7 @@ export const ArrayTable: DnFC<TableProps<any> & { className?: string }> = observ
                 },
               })
               if (operationNode) {
-                operationNode.parent.insertBefore(tableColumn)
+                operationNode.parent?.insertBefore(tableColumn)
               } else {
                 ensureObjectItemsNode(node).append(tableColumn)
               }

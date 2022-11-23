@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from 'designable/core'
 import { createFieldSchema } from '../Field'
 import { Container } from '../../common/Container'
 import { AllLocales } from '../../locales'

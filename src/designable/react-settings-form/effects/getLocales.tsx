@@ -1,6 +1,6 @@
 import React from 'react'
 import { isVoidField, onFieldReact } from '@formily/core'
-import { TreeNode, GlobalRegistry } from '@designable/core'
+import { TreeNode, GlobalRegistry } from 'designable/core'
 import { isStr } from 'designable/shared'
 import { IconWidget } from '../../react'
 

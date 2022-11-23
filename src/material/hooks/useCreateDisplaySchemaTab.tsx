@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { DataBindSourceType, FieldsType, IDisplayTabOptions, IPropsSchema } from "@rxdrag/appx-plugin-sdk";
+import { DataBindSourceType, FieldsType, IDisplayTabOptions, IPropsSchema } from "plugin-sdk";
 import { ValidatorSetter, ReactionsSetter } from "designable/formily-antd/setters";
 
 export const createDisplaySchemaTab = (options?: IDisplayTabOptions) => {

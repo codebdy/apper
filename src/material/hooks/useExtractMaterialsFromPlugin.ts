@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { IPlugin } from "@rxdrag/appx-plugin-sdk";
+import { IPlugin } from "plugin-sdk";
 import { useDesignerParams } from "plugin-sdk/contexts/desinger";
 import { useConvertMaterialFromPlugin } from "./useConvertMaterialFromPlugin";
 

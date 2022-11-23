@@ -1,4 +1,4 @@
-import { IMaterialComponent } from "@rxdrag/appx-plugin-sdk";
+import { IMaterialComponent } from "plugin-sdk";
 
 const pcComponents:IMaterialComponent[] = [
 

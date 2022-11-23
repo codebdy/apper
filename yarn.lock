@@ -1279,9 +1279,9 @@
   resolved "https://registry.npmmirror.com/@ctrl/tinycolor/-/tinycolor-3.4.1.tgz#75b4c27948c81e88ccd3a8902047bcd797f38d32"
   integrity sha512-ej5oVy6lykXsvieQtqZxCOaLT+xD4+QNarq78cIYISHmZXshCvROLudpQN3lfL8G0NL7plMSSK+zlyvCaIJ4Iw==
 
-"@designable/core@1.0.0-beta.45", "@designable/core@^1.0.0-beta.45":
+"designable/core@1.0.0-beta.45", "designable/core@^1.0.0-beta.45":
   version "1.0.0-beta.45"
-  resolved "https://registry.npmmirror.com/@designable/core/-/core-1.0.0-beta.45.tgz#779010f2f33aa2ea48c11f6ace05744805e85518"
+  resolved "https://registry.npmmirror.com/designable/core/-/core-1.0.0-beta.45.tgz#779010f2f33aa2ea48c11f6ace05744805e85518"
   integrity sha512-zCN2O9HlVaqcd90KCl1OtsWTBMX4+xcWfew9sqxQfOE9GWc2VENw2IpbHcIsGaEDhklmZZ83vnDrivjwhZMMsw==
   dependencies:
     "@designable/shared" "1.0.0-beta.45"
@@ -1292,7 +1292,7 @@
   resolved "https://registry.npmmirror.com/@designable/react/-/react-1.0.0-beta.45.tgz#d6b592904c55bce969959c14ec846a6dc262556c"
   integrity sha512-zZQ7cIl+X1ntXCNkeesCeMtLChWbFLsKTNmMVA6gS1wUWIlWb2aFQg/cM3P2JVmu2ovBE5EEEnomC94Nwz390A==
   dependencies:
-    "@designable/core" "1.0.0-beta.45"
+    "designable/core" "1.0.0-beta.45"
     "@designable/shared" "1.0.0-beta.45"
     "@juggle/resize-observer" "^3.3.1"
     dateformat "^4.5.1"
@@ -1905,12 +1905,12 @@
   resolved "https://registry.npmmirror.com/@rushstack/eslint-patch/-/eslint-patch-1.2.0.tgz#8be36a1f66f3265389e90b5f9c9962146758f728"
   integrity sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==
 
-"@rxdrag/appx-plugin-sdk@^0.0.4":
+"plugin-sdk@^0.0.4":
   version "0.0.4"
-  resolved "https://registry.npmmirror.com/@rxdrag/appx-plugin-sdk/-/appx-plugin-sdk-0.0.4.tgz#aae99abfbe668ea174d4f01fc20b23a4386d451c"
+  resolved "https://registry.npmmirror.com/plugin-sdk/-/appx-plugin-sdk-0.0.4.tgz#aae99abfbe668ea174d4f01fc20b23a4386d451c"
   integrity sha512-ZFGwZMdqGFsy90FwYCk6qjEr3U2gdxuydh4O/txB4dvSfyXt+mExubctaSuU7+DzKd2L0keIiHEaSWiVRrFI4A==
   dependencies:
-    "@designable/core" "^1.0.0-beta.45"
+    "designable/core" "^1.0.0-beta.45"
     "@designable/react" "^1.0.0-beta.45"
     "@formily/json-schema" "^2.2.5"
     prop-types "^15.7.2"

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { Device } from "@rxdrag/appx-plugin-sdk";
+import { Device } from "plugin-sdk";
 
 export interface IDevice {
   key: string;

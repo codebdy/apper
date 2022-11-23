@@ -3,7 +3,7 @@ import {
   createDesigner,
   Shortcut,
   KeyCode,
-} from '@designable/core'
+} from 'designable/core'
 import {
   NavigationWidget,
   ActionsWidget,

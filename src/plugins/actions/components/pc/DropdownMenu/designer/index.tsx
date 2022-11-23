@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from 'designable/core'
 import {
   DnFC,
   useTreeNode,

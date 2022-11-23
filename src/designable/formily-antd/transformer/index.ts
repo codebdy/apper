@@ -1,5 +1,5 @@
 import { ISchema, Schema } from '@formily/json-schema'
-import { ITreeNode } from '@designable/core'
+import { ITreeNode } from 'designable/core'
 import { clone, uid } from 'designable/shared'
 
 export interface ITransformerOptions {

@@ -1,4 +1,4 @@
-import { createDesigner, KeyCode, Shortcut } from "@designable/core"
+import { createDesigner, KeyCode, Shortcut } from "designable/core"
 import { Space, Spin } from "antd"
 import React, { useCallback, useMemo, useState } from "react"
 import { memo } from "react"

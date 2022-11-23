@@ -1,6 +1,6 @@
 import React from 'react'
 import { Slider as AntdSlider } from 'antd'
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from 'designable/core'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'

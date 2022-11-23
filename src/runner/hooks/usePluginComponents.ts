@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { usePredefinedPlugins } from "../../plugin/contexts";
-import { Device, IPlugin } from "@rxdrag/appx-plugin-sdk";
+import { Device, IPlugin } from "plugin-sdk";
 import { useConvertMaterialFromPlugin } from "../../material/hooks/useConvertMaterialFromPlugin";
 import { useLoadPlugins } from "plugin/hooks";
 import { IApp } from "model";

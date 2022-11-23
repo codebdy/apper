@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table, TableProps } from 'antd'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from 'designable/core'
 import {
   useTreeNode,
   TreeNodeWidget,

@@ -1,4 +1,4 @@
-import { IPlugin } from "@rxdrag/appx-plugin-sdk";
+import { IPlugin } from "plugin-sdk";
 import { rxPlugin } from "./Plugin";
 
 //export * from "./ProLayout"

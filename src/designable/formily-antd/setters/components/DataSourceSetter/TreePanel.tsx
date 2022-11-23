@@ -7,7 +7,7 @@ import { Header } from './Header'
 import { traverseTree } from './shared'
 import { ITreeDataSource, INodeItem } from './types'
 import './styles.less'
-import { GlobalRegistry } from '@designable/core'
+import { GlobalRegistry } from 'designable/core'
 import { usePrefix, TextWidget, IconWidget } from '../../../../react'
 
 const limitTreeDrag = ({ dropPosition }: any) => {

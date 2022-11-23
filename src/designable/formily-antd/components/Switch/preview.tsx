@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch as AntdSwitch } from 'antd'
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from 'designable/core'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'

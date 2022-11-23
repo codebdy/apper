@@ -4,7 +4,7 @@ import { useTree, usePrefix, useOutline, useWorkbench } from '../../hooks'
 import { observer } from '@formily/reactive-react'
 import { OutlineTreeNode } from './OutlineNode'
 import { Insertion } from './Insertion'
-import { TreeNode, Viewport } from '@designable/core'
+import { TreeNode, Viewport } from 'designable/core'
 import { NodeContext } from './context'
 import { globalThisPolyfill } from 'designable/shared'
 

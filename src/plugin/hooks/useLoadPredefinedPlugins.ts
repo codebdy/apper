@@ -1,4 +1,4 @@
-import { IPlugin } from "@rxdrag/appx-plugin-sdk";
+import { IPlugin } from "plugin-sdk";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { IPredefinedPlugins } from "../contexts";

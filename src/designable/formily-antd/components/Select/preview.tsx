@@ -1,6 +1,6 @@
 import React from 'react'
 import { Select as FormilySelect } from 'formily/antd4'
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from 'designable/core'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'

@@ -7,7 +7,7 @@ import {
   Schema,
   ISchema,
 } from '@formily/react'
-import { GlobalRegistry } from '@designable/core'
+import { GlobalRegistry } from 'designable/core'
 import { ArrayItems } from 'formily/antd4'
 import { Select } from 'antd'
 import { FoldItem } from '../../../../react-settings-form'

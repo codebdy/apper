@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import { observer } from '@formily/react'
 import { Collapse, CollapsePanelProps, CollapseProps } from 'antd'
-import { TreeNode, } from '@designable/core'
+import { TreeNode, } from 'designable/core'
 import {
   useNodeIdProps,
   useTreeNode,

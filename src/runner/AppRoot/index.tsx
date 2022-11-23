@@ -1,4 +1,4 @@
-import { Device } from "@rxdrag/appx-plugin-sdk";
+import { Device } from "plugin-sdk";
 import React, { memo, useMemo } from "react"
 import { useParams } from "react-router-dom";
 import { CenterSpin } from "common/CenterSpin";

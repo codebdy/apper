@@ -6,7 +6,7 @@ import {
   DragMoveEvent,
   DragStopEvent,
   ScreenStatus,
-} from '@designable/core'
+} from 'designable/core'
 import {
   calcSpeedFactor,
   createUniformSpeedAnimation,

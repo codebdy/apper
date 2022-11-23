@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { IPropsSchema } from "@rxdrag/appx-plugin-sdk";
+import { IPropsSchema } from "plugin-sdk";
 
 export const createActionSchemaTab = (actions: string[]) => {
 

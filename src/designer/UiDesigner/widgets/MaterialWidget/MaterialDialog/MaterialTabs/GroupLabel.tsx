@@ -1,4 +1,4 @@
-import { IMaterialCollapseItem } from "@rxdrag/appx-plugin-sdk"
+import { IMaterialCollapseItem } from "plugin-sdk"
 import React, { memo, useCallback, useEffect, useState } from "react"
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { Button, Space } from "antd";

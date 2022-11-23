@@ -1,4 +1,4 @@
-import { IPropsSchema } from "@rxdrag/appx-plugin-sdk";
+import { IPropsSchema } from "plugin-sdk";
 
 const HeaderActionsSchema: IPropsSchema = {
   props: {

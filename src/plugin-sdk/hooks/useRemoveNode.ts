@@ -1,4 +1,4 @@
-import { RemoveNodeEvent, TreeNode } from '@designable/core'
+import { RemoveNodeEvent, TreeNode } from 'designable/core'
 import { useDesigner } from 'designable/react'
 
 export const useRemoveNode = (

@@ -11,7 +11,7 @@
     "@formily/reactive": "^2.2.12",
     "@graphiql/toolkit": "^0.6.0",
     "@monaco-editor/react": "^4.4.6",
-    "@rxdrag/appx-plugin-sdk": "^0.0.4",
+    "plugin-sdk": "^0.0.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

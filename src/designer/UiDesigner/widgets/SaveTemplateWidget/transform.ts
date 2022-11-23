@@ -1,4 +1,4 @@
-import { ITreeNode } from '@designable/core'
+import { ITreeNode } from 'designable/core'
 import { clone } from 'designable/shared'
 
 export function transForm(node: ITreeNode): ITreeNode {

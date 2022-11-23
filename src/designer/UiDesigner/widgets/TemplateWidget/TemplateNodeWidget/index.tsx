@@ -1,7 +1,7 @@
 import React from 'react'
 import {
   IResource,
-} from '@designable/core'
+} from 'designable/core'
 import { observer } from '@formily/reactive-react'
 import './styles.less'
 import { Image } from 'plugins/displays/components/pc/Image/view'

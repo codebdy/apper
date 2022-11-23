@@ -1,4 +1,4 @@
-import { IBehavior } from "@rxdrag/appx-plugin-sdk";
+import { IBehavior } from "plugin-sdk";
 import Name, { TextAreaName } from "../name";
 import { InputLocales, TextAreaLocales } from "./locales";
 import { InputSchema, TextAreaSchema } from "./schema";

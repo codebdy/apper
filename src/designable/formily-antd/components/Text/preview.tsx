@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from 'designable/core'
 import { createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'

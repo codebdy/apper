@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Card, CardProps } from 'antd'
-import { TreeNode, createResource } from '@designable/core'
+import { TreeNode, createResource } from 'designable/core'
 import { ArrayBase as ArrayBaseFormily} from 'formily/antd4'
 import { observer } from '@formily/react'
 import { LoadTemplate } from '../../common/LoadTemplate'

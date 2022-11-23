@@ -1,4 +1,4 @@
-import { Device } from "@rxdrag/appx-plugin-sdk";
+import { Device } from "plugin-sdk";
 import { ID } from "shared";
 import { IApp } from "./app";
 

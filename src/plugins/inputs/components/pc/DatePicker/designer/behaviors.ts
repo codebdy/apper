@@ -1,4 +1,4 @@
-import { IBehavior } from "@rxdrag/appx-plugin-sdk";
+import { IBehavior } from "plugin-sdk";
 import Name, { DateRangePickerName } from "../name";
 import { DatePickerLocales, DateRangePicker } from "./locales";
 import { DatePickerSchema, DateRangePickerSchema } from "./schema";

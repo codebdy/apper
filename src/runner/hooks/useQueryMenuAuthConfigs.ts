@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { useQuery } from "enthooks/hooks/useQuery";
 import { IMenuAuthConfig } from "model";
 import { ID } from "shared";
-import { Device } from "@rxdrag/appx-plugin-sdk";
+import { Device } from "plugin-sdk";
 
 const authConfigGql = gql`
 query ($appId:ID!, $device:String!){

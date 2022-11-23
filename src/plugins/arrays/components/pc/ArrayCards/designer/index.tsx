@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Card, CardProps } from 'antd'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from 'designable/core'
 import {
   useTreeNode,
   TreeNodeWidget,

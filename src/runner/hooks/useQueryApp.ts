@@ -5,7 +5,7 @@ import { useQueryOne } from "../../enthooks/hooks/useQueryOne";
 import { IApp } from "../../model";
 import { ID } from "shared";
 import { useParams } from "react-router-dom";
-import { Device } from "@rxdrag/appx-plugin-sdk";
+import { Device } from "plugin-sdk";
 
 const appGql = gql`
 query ($id: ID!, $device:String!) {

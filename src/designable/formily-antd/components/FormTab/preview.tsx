@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import { observer } from '@formily/react'
 import { TabPaneProps, Tabs, TabsProps } from 'antd'
-import { TreeNode, createBehavior, createResource } from '@designable/core'
+import { TreeNode, createBehavior, createResource } from 'designable/core'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { useDropTemplate } from '../../hooks'
 import { createVoidFieldSchema } from '../Field'

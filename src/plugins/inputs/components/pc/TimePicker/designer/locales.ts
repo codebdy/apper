@@ -1,4 +1,4 @@
-import { createLocales } from '@designable/core'
+import { createLocales } from 'designable/core'
 
 export const TimePickerLocales = {
   'zh-CN': {
