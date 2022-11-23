@@ -6,17 +6,13 @@ const resources: IResourceCreator[] = [{
   icon: 'CardSource',
   elements: [
     {
-      componentName: 'Field',
+      componentName: Name,
       props: {
-        type: 'void',
-        'x-component': Name,
-        'x-component-props': {
-          "style": {
-            "alignItems": "center",
-            "display": "flex",
-            "width": "100%",
-          }
-        },
+        "style": {
+          "alignItems": "center",
+          "display": "flex",
+          "width": "100%",
+        }
       },
     },
   ],

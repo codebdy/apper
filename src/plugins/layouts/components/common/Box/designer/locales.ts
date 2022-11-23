@@ -1,20 +1,20 @@
+import { styleLocales } from "plugin-sdk/locales/styleLocales";
+
 const locales = {
   'zh-CN': {
     title: '盒子',
-    settings: {
-      'x-component-props': {
-        cursor: "光标",
-        onClick: '鼠标点击',
-      },
+    props: {
+      cursor: "光标",
+      onClick: '鼠标点击',
+      style: styleLocales['zh-CN']
     },
   },
   'en-US': {
     title: 'Box',
-    settings: {
-      'x-component-props': {
-        cursor: "Cursor",
-        onClick: "on Click",
-      },
+    props: {
+      cursor: "Cursor",
+      onClick: "on Click",
+      style: styleLocales['en-US']
     },
   },
 }

@@ -1,4 +1,3 @@
-export * from "./funcs"
 export * from "./hooks"
 export * from "./model"
 export * from "./PredefinedPluginsRoot"

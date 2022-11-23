@@ -2,7 +2,8 @@ import { IBehavior } from "@rxdrag/appx-plugin-sdk";
 import Name from "../name";
 import locales from "./locales";
 import schema from "./schema";
-import { createVoidFieldSchema } from "plugin"
+import { createVoidFieldSchema } from "plugin-sdk";
+
 const behaviors: IBehavior[] = [
   {
     name: Name,
