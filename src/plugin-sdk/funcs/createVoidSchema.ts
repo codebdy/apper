@@ -29,7 +29,7 @@ export const createComponentSchema = (
       'x-reactions': {
         fulfill: {
           state: {
-            visible: '{{!!$form.values["x-decorator"]}}',
+            //visible: '{{!!$form.values["x-decorator"]}}',
           },
         },
       },
@@ -44,7 +44,7 @@ export const createComponentSchema = (
       'x-reactions': {
         fulfill: {
           state: {
-            visible: '{{!!$form.values["x-component"]}}',
+            //visible: '{{!!$form.values["x-component"]}}',
           },
         },
       },
@@ -59,7 +59,7 @@ export const createComponentSchema = (
       'x-reactions': {
         fulfill: {
           state: {
-            visible: '{{!!$form.values["x-decorator"]}}',
+            //visible: '{{!!$form.values["x-decorator"]}}',
           },
         },
       },
@@ -77,7 +77,7 @@ export const createVoidFieldSchema = (
     properties: {
       'field-group': {
         type: 'void',
-        'props': 'CollapseItem',
+        'x-component': 'CollapseItem',
         properties: {
           name: {
             type: 'string',
@@ -91,7 +91,7 @@ export const createVoidFieldSchema = (
             'x-reactions': {
               fulfill: {
                 state: {
-                  hidden: '{{$form.values["x-decorator"] !== "FormItem"}}',
+                  //hidden: '{{$form.values["x-decorator"] !== "FormItem"}}',
                 },
               },
             },
@@ -103,7 +103,7 @@ export const createVoidFieldSchema = (
             'x-reactions': {
               fulfill: {
                 state: {
-                  hidden: '{{$form.values["x-decorator"] !== "FormItem"}}',
+                  //hidden: '{{$form.values["x-decorator"] !== "FormItem"}}',
                 },
               },
             },
