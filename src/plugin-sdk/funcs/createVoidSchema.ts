@@ -1,5 +1,5 @@
 import { ISchema } from "@formily/react"
-import { AllSchemas } from "designable/formily-antd"
+import { CSSStyleShema } from "plugin-sdk/schemas/cssStyleSchema"
 
 export const createComponentSchema = (
   component: ISchema,
@@ -18,7 +18,7 @@ export const createComponentSchema = (
       'x-component': 'CollapseItem',
       'x-component-props': { defaultExpand: false },
       properties: {
-        'x-component-props.style': AllSchemas.CSSStyle,
+        'style': CSSStyleShema,
       },
     },
   }
@@ -26,7 +26,7 @@ export const createComponentSchema = (
 export const createVoidSchema = (
   component: ISchema,
 ) => {
-  
+
   return {
     type: 'object',
     properties: {
