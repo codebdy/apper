@@ -24,8 +24,8 @@ export interface INodeActionsWidgetActionProps
 }
 
 export const NodeActionsWidget: React.FC<INodeActionsWidgetProps> & {
-  Action?: React.FC<INodeActionsWidgetActionProps>
-} = observer((props) => {
+  Action: React.FC<INodeActionsWidgetActionProps>
+} = observer((props:any) => {
   const node = useTreeNode()
   const prefix = usePrefix('node-actions')
   const selected = useSelected()
@@ -37,7 +37,7 @@ export const NodeActionsWidget: React.FC<INodeActionsWidgetProps> & {
       </div>
     </div>
   )
-})
+}) as any
 
 NodeActionsWidget.Action = ({ icon, title, ...props }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks

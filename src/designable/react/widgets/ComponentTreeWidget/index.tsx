@@ -44,10 +44,10 @@ export const TreeNodeWidget: React.FC<ITreeNodeWidgetProps> = observer(
     const renderComponent = () => {
       const componentName = node.componentName
       const Component = components[componentName]
-      const dataId = {}
+      const dataId = {} as any
       if (Component) {
         if (designer) {
-          dataId[designer?.props?.nodeIdAttrName] = node.id
+          dataId[designer?.props?.nodeIdAttrName as any] = node.id
         }
         return React.createElement(
           Component,
@@ -76,13 +76,13 @@ export const ComponentTreeWidget: React.FC<IComponentTreeWidgetProps> =
     const tree = useTree()
     const prefix = usePrefix('component-tree')
     const designer = useDesigner()
-    const dataId = {}
+    const dataId = {} as any
     if (designer && tree) {
-      dataId[designer?.props?.nodeIdAttrName] = tree.id
+      dataId[designer?.props?.nodeIdAttrName as any] = tree.id
     }
     useEffect(() => {
       GlobalRegistry.registerDesignerBehaviors(props.components)
-    }, [])
+    }, [props.components])
     return (
       <div
         style={{ ...props.style, ...tree?.props?.style }}

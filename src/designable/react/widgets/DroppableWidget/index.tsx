@@ -34,7 +34,7 @@ export const DroppableWidget: React.FC<IDroppableWidgetProps> = observer(
     const currentNode = useTreeNode()
     const nodeId = useNodeIdProps(node)
     const target = node ?? currentNode
-    const hasChildren = hasChildrenProp ?? target.children?.length > 0
+    const hasChildren = hasChildrenProp ?? (target?.children?.length||0) > 0
     return (
       <div {...nodeId} {...props} className={className} style={style}>
         {hasChildren ? (

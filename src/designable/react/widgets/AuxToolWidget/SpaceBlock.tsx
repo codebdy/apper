@@ -9,7 +9,7 @@ export const SpaceBlock = observer(() => {
   const transformHelper = useTransformHelper()
   const prefix = usePrefix('aux-space-block')
 
-  if (cursor.status !== CursorStatus.Dragging) return null
+  if (cursor?.status !== CursorStatus.Dragging) return null
 
   const renderRulerBox = (distance: number, type: string) => {
     if (type === 'top' || type === 'bottom') {
@@ -81,7 +81,7 @@ export const SpaceBlock = observer(() => {
                   zIndex: 3,
                 }}
               >
-                {renderRulerBox(distance, type)}
+                {renderRulerBox(distance as any, type as any)}
               </div>
             </Fragment>
           )
@@ -95,13 +95,13 @@ export const SpaceBlock = observer(() => {
             style={{
               top: 0,
               left: 0,
-              height: rect.height,
-              width: rect.width,
-              transform: `perspective(1px) translate3d(${rect.x}px,${rect.y}px,0)`,
+              height: rect?.height,
+              width: rect?.width,
+              transform: `perspective(1px) translate3d(${rect?.x}px,${rect?.y}px,0)`,
               position: 'absolute',
               background: 'rgba(255, 0, 0, 0.2)',
               zIndex: 1,
-            }}
+            } as any}
           ></div>
         )
       })}

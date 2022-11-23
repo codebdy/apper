@@ -8,7 +8,7 @@ export interface IWorkspaceItemProps {
 }
 
 export const WorkspacePanel: React.FC<any> & {
-  Item?: React.FC<IWorkspaceItemProps>
+  Item: React.FC<IWorkspaceItemProps>
 } = (props) => {
   const prefix = usePrefix('workspace-panel')
   return <div className={prefix}>{props.children}</div>
