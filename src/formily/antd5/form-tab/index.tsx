@@ -1,6 +1,5 @@
-import React, { Fragment, useMemo } from 'react'
+import React, { Fragment } from 'react'
 import { Tabs, Badge } from 'antd'
-import { model, markRaw } from '@formily/reactive'
 import { TabPaneProps, TabsProps } from 'antd/es/tabs'
 import {
   useField,
@@ -10,8 +9,6 @@ import {
   RecursionField,
 } from '@formily/react'
 import { Schema, SchemaKey } from '@formily/json-schema'
-import cls from 'classnames'
-import { usePrefixCls } from '../__builtins__'
 export interface IFormTab {
   activeKey: string
   setActiveKey(key: string): void
@@ -23,6 +20,7 @@ export interface IFormTabProps extends TabsProps {
 
 export interface IFormTabPaneProps extends TabPaneProps {
   key: string | number
+  children: React.ReactNode
 }
 
 interface IFeedbackBadgeProps {
@@ -38,7 +36,7 @@ type ComposedFormTab = React.FC<React.PropsWithChildren<IFormTabProps>> & {
 const useTabs = () => {
   const tabsField = useField()
   const schema = useFieldSchema()
-  const tabs: { name: SchemaKey; props: any; schema: Schema }[] = []
+  const tabs: { name: SchemaKey; props: any; schema: Schema, title?: string }[] = []
   schema.mapProperties((schema, name) => {
     const field = tabsField.query(tabsField.address.concat(name)).take()
     if (field?.display === 'none' || field?.display === 'hidden') return
@@ -49,6 +47,7 @@ const useTabs = () => {
           key: schema?.['x-component-props']?.key || name,
           ...schema?.['x-component-props'],
         },
+        title: field?.title,
         schema,
       })
     }
@@ -72,57 +71,39 @@ const FeedbackBadge: ReactFC<IFeedbackBadgeProps> = observer((props) => {
   return <Fragment>{props.tab}</Fragment>
 })
 
-const createFormTab = (defaultActiveKey?: string) => {
-  const formTab = model({
-    activeKey: defaultActiveKey,
-    setActiveKey(key: string) {
-      formTab.activeKey = key
-    },
-  })
-  return markRaw(formTab)
-}
 
 export const FormTab: ComposedFormTab = observer(
   ({ formTab, ...props }: IFormTabProps) => {
     const tabs = useTabs()
-    const _formTab = useMemo(() => {
-      return formTab ? formTab : createFormTab()
-    }, [])
-    const prefixCls = usePrefixCls('formily-tab', props)
-    const activeKey = props.activeKey || _formTab?.activeKey
-
     return (
       <Tabs
         {...props}
-        className={cls(prefixCls, props.className)}
-        activeKey={activeKey}
+        animated = {false}
         onChange={(key) => {
           props.onChange?.(key)
           formTab?.setActiveKey?.(key)
         }}
+        items={tabs.map(({ props, schema, name, title }, key) => {
+          return {
+            key: key as any,
+            label: <FeedbackBadge name={name} tab={props.tab || title} />,
+            children: <RecursionField schema={schema} name={name} />
+          }
+        })}
       >
-        {tabs.map(({ props, schema, name }, key) => (
-          <Tabs.TabPane
-            key={key}
-            {...props}
-            tab={<FeedbackBadge name={name} tab={props.tab} />}
-            forceRender
-          >
-            <RecursionField schema={schema} name={name} />
-          </Tabs.TabPane>
-        ))}
       </Tabs>
     )
   }
 ) as unknown as ComposedFormTab
 
-const TabPane: React.FC<React.PropsWithChildren<IFormTabPaneProps>> = ({
-  children,
-}) => {
-  return <Fragment>{children}</Fragment>
-}
+const TabPane = observer((
+  props: {
+    key: string | number,
+    children: React.ReactNode
+  }
+) => {
+  return <Fragment>{props.children}</Fragment>
+})
 
 FormTab.TabPane = TabPane
-FormTab.createFormTab = createFormTab as any
-
 export default FormTab

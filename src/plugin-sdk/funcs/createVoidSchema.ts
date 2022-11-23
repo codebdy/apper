@@ -82,9 +82,6 @@ export const createVoidFieldSchema = (
           'component-tab': {
             type: 'void',
             'x-component': 'FormTab.TabPane',
-            'x-component-props': {
-              tab: "SettingsForm.Properties"
-            },
             properties: {
               'field-group': {
                 type: 'void',
