@@ -1,5 +1,5 @@
-import _ from "lodash"
-import { BoxLocales } from "plugins/layouts/components/common/Box/designer/locales";
+import { commonLocales } from "plugin-sdk/locales/commonLocales";
+import {mergeLocalesWithCreate} from "plugin-sdk"
 
 const loacales = {
   'zh-CN': {
@@ -36,7 +36,6 @@ const loacales = {
   }
 }
 
-const temp = _.merge({}, BoxLocales)
-_.merge(temp, loacales)
+const temp = mergeLocalesWithCreate(loacales, commonLocales)
 
 export default temp;
