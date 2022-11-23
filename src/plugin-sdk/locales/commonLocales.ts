@@ -7,7 +7,7 @@ export const commonLocales = {
       onClick: '鼠标点击',
       'component-tab':"组件",
       'component-group': '组件属性',
-      'field-group': '字段属性',
+      'component-style-group': '组件样式',
       style: styleLocales['zh-CN']
     },
   },

@@ -4,6 +4,72 @@ import { FormItemSwitcher } from "designable/formily-antd/common/FormItemSwitche
 import { ReactionsSetter } from "designable/formily-antd/setters"
 import { createComponentSchema } from "./createVoidSchema"
 
+export const createContainerSchema = (
+  component: ISchema,
+  decorator: ISchema
+) => {
+  return {
+    'component-group': component && {
+      type: 'void',
+      'x-component': 'CollapseItem',
+      'x-reactions': {
+        fulfill: {
+          state: {
+            //visible: '{{!!$form.values["x-component"]}}',
+          },
+        },
+      },
+      properties: {
+        ...component
+      }
+    },
+    'decorator-group': decorator && {
+      type: 'void',
+      'x-component': 'CollapseItem',
+      'x-component-props': { defaultExpand: false },
+      'x-reactions': {
+        fulfill: {
+          state: {
+            //visible: '{{!!$form.values["x-decorator"]}}',
+          },
+        },
+      },
+      properties: {
+        'x-decorator-props': decorator,
+      },
+    },
+    'component-style-group': {
+      type: 'void',
+      'x-component': 'CollapseItem',
+      'x-component-props': { defaultExpand: false },
+      'x-reactions': {
+        fulfill: {
+          state: {
+            //visible: '{{!!$form.values["x-component"]}}',
+          },
+        },
+      },
+      properties: {
+        'x-component-props.style': AllSchemas.CSSStyle,
+      },
+    },
+    'decorator-style-group': {
+      type: 'void',
+      'x-component': 'CollapseItem',
+      'x-component-props': { defaultExpand: false },
+      'x-reactions': {
+        fulfill: {
+          state: {
+            //visible: '{{!!$form.values["x-decorator"]}}',
+          },
+        },
+      },
+      properties: {
+        'x-decorator-props.style': AllSchemas.CSSStyle,
+      },
+    },
+  }
+}
 export const createFieldSchema = (
   component: ISchema,
 ) => {
@@ -73,7 +139,7 @@ export const createFieldSchema = (
           },
         },
       },
-      ...createComponentSchema(component, AllSchemas.FormItem),
+      ...createComponentSchema(component),
     },
   }
 }
