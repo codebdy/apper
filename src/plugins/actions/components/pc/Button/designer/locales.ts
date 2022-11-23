@@ -1,3 +1,6 @@
+import _ from "lodash"
+import { BoxLocales } from "plugins/layouts/components/common/Box/designer/locales";
+
 const loacales = {
   'zh-CN': {
     title: '按钮',
@@ -33,4 +36,7 @@ const loacales = {
   }
 }
 
-export default loacales;
+const temp = _.merge({}, BoxLocales)
+_.merge(temp, loacales)
+
+export default temp;

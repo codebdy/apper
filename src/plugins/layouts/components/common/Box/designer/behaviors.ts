@@ -7,7 +7,7 @@ import schema from "./schema";
 const behaviors: IBehavior[] = [
   {
     name: Name,
-    extends: ['Field'],
+    extends: [/*'Box'*/],
     selector: (node) => node.componentName === Name,
     designerProps: {
       droppable: true,

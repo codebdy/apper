@@ -6,6 +6,7 @@ const locales = {
     props: {
       cursor: "光标",
       onClick: '鼠标点击',
+      'component-group': '组件属性',
       style: styleLocales['zh-CN']
     },
   },
@@ -18,5 +19,7 @@ const locales = {
     },
   },
 }
+
+export const BoxLocales = locales
 
 export default locales;
