@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useMemo } from 'react'
 import { Tabs, Badge } from 'antd'
 import { TabPaneProps, TabsProps } from 'antd/es/tabs'
 import {
@@ -36,22 +36,27 @@ type ComposedFormTab = React.FC<React.PropsWithChildren<IFormTabProps>> & {
 const useTabs = () => {
   const tabsField = useField()
   const schema = useFieldSchema()
-  const tabs: { name: SchemaKey; props: any; schema: Schema, title?: string }[] = []
-  schema.mapProperties((schema, name) => {
-    const field = tabsField.query(tabsField.address.concat(name)).take()
-    if (field?.display === 'none' || field?.display === 'hidden') return
-    if (schema['x-component']?.indexOf('TabPane') > -1) {
-      tabs.push({
-        name,
-        props: {
-          key: schema?.['x-component-props']?.key || name,
-          ...schema?.['x-component-props'],
-        },
-        title: field?.title,
-        schema,
-      })
-    }
-  })
+  const tabs = useMemo(()=>{
+    const tabs: { name: SchemaKey; props: any; schema: Schema, title?: string }[] = []
+    schema.mapProperties((schema, name) => {
+      const field = tabsField.query(tabsField.address.concat(name)).take()
+
+      if (field?.display === 'none' || field?.display === 'hidden') return
+      if (schema['x-component']?.indexOf('TabPane') > -1) {
+        tabs.push({
+          name,
+          props: {
+            key: schema?.['x-component-props']?.key || name,
+            ...schema?.['x-component-props'],
+          },
+          title: field?.title,
+          schema,
+        })
+      }
+    })
+    return tabs
+  }, [schema, tabsField])
+
   return tabs
 }
 

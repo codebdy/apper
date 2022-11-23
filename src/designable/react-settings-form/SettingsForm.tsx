@@ -60,7 +60,7 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
           <div
             className={cls(prefix, props.className)}
             style={props.style}
-            key={node.id}
+            //key={node.id}
           >
             <SettingsFormContext.Provider value={props}>
               <Form

@@ -35,11 +35,11 @@ const schema: ISchema = {
     'x-decorator': 'FormItem',
     'x-component': 'Switch',
   },
-  icon: {
-    type: 'string',
-    'x-decorator': 'FormItem',
-    'x-component': 'IconInput',
-  },
+  // icon: {
+  //   type: 'string',
+  //   'x-decorator': 'FormItem',
+  //   'x-component': 'IconInput',
+  // },
   shape: {
     type: 'string',
     enum: ['default', 'circle', 'round'],
