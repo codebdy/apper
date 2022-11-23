@@ -22,18 +22,18 @@ export const useValidNodeOffsetRect = (node: TreeNode) => {
     [viewport]
   )
 
-  const element = viewport.findElementById(node?.id)
+  const element = viewport.findElementById(node?.id as any)
 
   const compute = useCallback(() => {
     if (
-      engine.cursor.status !== CursorStatus.Normal &&
-      engine.cursor.dragType === CursorDragType.Move
+      engine.cursor?.status !== CursorStatus.Normal &&
+      engine.cursor?.dragType === CursorDragType.Move
     )
       return
     const nextRect = viewport.getValidNodeOffsetRect(node)
-    if (!isEqualRect(rectRef.current, nextRect) && nextRect) {
+    if (!isEqualRect(rectRef.current as any, nextRect as any) && nextRect) {
       rectRef.current = nextRect
-      forceUpdate([])
+      forceUpdate([] as any)
     }
   }, [viewport, node])
 

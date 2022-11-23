@@ -267,12 +267,12 @@ export class EventDriver<Engine extends Event = Event, Context = any>
   batchRemoveEventListener(type: any, listener: any, options: any) {
     (this.engine as any)[DRIVER_INSTANCES_SYMBOL] =
       (this.engine as any)[DRIVER_INSTANCES_SYMBOL] || [] as any
-        (this.engine as any)[DRIVER_INSTANCES_SYMBOL].forEach((driver: any) => {
-          const target = driver.eventTarget(type)
-          target[EVENTS_BATCH_SYMBOL] = target[EVENTS_BATCH_SYMBOL] || {}
-          target.removeEventListener(type, listener, options)
-          delete target[EVENTS_BATCH_SYMBOL][type]
-        })
+    (this.engine as any)[DRIVER_INSTANCES_SYMBOL].forEach((driver: any) => {
+      const target = driver.eventTarget(type)
+      target[EVENTS_BATCH_SYMBOL] = target[EVENTS_BATCH_SYMBOL] || {}
+      target.removeEventListener(type, listener, options)
+      delete target[EVENTS_BATCH_SYMBOL][type]
+    })
   }
 }
 /**
@@ -330,6 +330,7 @@ export class Event extends Subscribable<ICustomEvent<any>> {
     if (isWindow(container)) {
       return this.attachEvents(container.document, container, context)
     }
+
     if ((container as any)[ATTACHED_SYMBOL]) return
     (container as any)[ATTACHED_SYMBOL] = this.drivers.map((EventDriver) => {
       const driver = new EventDriver(this, context)
@@ -343,9 +344,9 @@ export class Event extends Subscribable<ICustomEvent<any>> {
     }
   }
 
-  detachEvents(container?: EventContainer): any {
+  detachEvents(this: any, container?: EventContainer): any {
     if (!container) {
-      this.containers.forEach((container) => {
+      this.containers.forEach((container: any) => {
         this.detachEvents(container)
       })
       return
@@ -353,13 +354,18 @@ export class Event extends Subscribable<ICustomEvent<any>> {
     if (isWindow(container)) {
       return this.detachEvents(container.document)
     }
-    if (!(container as any)[ATTACHED_SYMBOL]) return
-    (container as any)[ATTACHED_SYMBOL].forEach((driver: any) => {
-      driver.detach(container)
+
+    if (!((container as any)[ATTACHED_SYMBOL])) {
+      return
+    }
+
+    const containerAny = (container as any)[ATTACHED_SYMBOL]
+    containerAny.forEach((driver: any) => {
+      driver.detach(container);
     })
 
-    (this as any)[DRIVER_INSTANCES_SYMBOL] = (this as any)[DRIVER_INSTANCES_SYMBOL] || [] as any
-    (this as any)[DRIVER_INSTANCES_SYMBOL] = (this as any)[DRIVER_INSTANCES_SYMBOL].reduce(
+    this[DRIVER_INSTANCES_SYMBOL] = this[DRIVER_INSTANCES_SYMBOL] || [] as any
+    this[DRIVER_INSTANCES_SYMBOL] = this[DRIVER_INSTANCES_SYMBOL].reduce(
       (drivers: any, driver: any) => {
         if (driver.container === container) {
           driver.detach(container)
@@ -369,7 +375,7 @@ export class Event extends Subscribable<ICustomEvent<any>> {
       },
       []
     )
-    this.containers = this.containers.filter((item) => item !== container)
+    this.containers = this.containers.filter((item: any) => item !== container)
     delete (container as any)[ATTACHED_SYMBOL]
     delete (container as any)[EVENTS_SYMBOL]
     delete (container as any)[EVENTS_ONCE_SYMBOL]

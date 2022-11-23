@@ -59,13 +59,13 @@ export const Cover = observer(() => {
       return null
     return <CoverRect node={viewportMoveHelper.closestNode} dropping />
   }
-  if (cursor.status !== CursorStatus.Dragging) return null
+  if (cursor?.status !== CursorStatus.Dragging) return null
 
   return (
     <Fragment>
       {viewportMoveHelper.dragNodes.map((node) => {
-        if (!node) return
-        if (!viewport.findElementById(node.id)) return
+        if (!node) return<></>
+        if (!viewport.findElementById(node.id as any)) return<></>
         return <CoverRect key={node.id} node={node} dragging />
       })}
       {renderDropCover()}
