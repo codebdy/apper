@@ -50,7 +50,7 @@ export const FormCollapseDesigner: DnFC<CollapseProps> & {
   const renderCollapse = () => {
     if (!node?.children?.length) return <DroppableWidget />
     return (
-      <Collapse {...props} activeKey={panels.map((tab) => tab.id)}>
+      <Collapse {...props} activeKey={panels.map((tab) => tab.id) as any}>
         {panels.map((panel) => {
           const props = panel.props?.['x-component-props'] || {}
           return (

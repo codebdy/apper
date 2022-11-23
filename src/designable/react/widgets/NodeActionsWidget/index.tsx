@@ -11,26 +11,24 @@ export interface INodeActionsWidgetProps {
   className?: string
   style?: React.CSSProperties
   activeShown?: boolean
-  children?: React.ReactNode
 }
 
 export interface INodeActionsWidgetActionProps
   extends Omit<React.ComponentProps<'a'>, 'title' | 'type' | 'ref'>,
-  Partial<TypographyProps['Link']> {
+    Partial<TypographyProps['Link']> {
   className?: string
   style?: React.CSSProperties
   title: React.ReactNode
   icon?: React.ReactNode
-  children?: React.ReactNode
 }
 
-const NodeActionsWidgetInner: React.FC<INodeActionsWidgetProps> & {
+export const NodeActionsWidget: React.FC<INodeActionsWidgetProps> & {
   Action?: React.FC<INodeActionsWidgetActionProps>
 } = observer((props) => {
   const node = useTreeNode()
   const prefix = usePrefix('node-actions')
   const selected = useSelected()
-  if (selected.indexOf(node?.id as any) === -1 && props.activeShown) return null
+  if (selected.indexOf(node.id) === -1 && props.activeShown) return null
   return (
     <div className={cls(prefix, props.className)} style={props.style}>
       <div className={prefix + '-content'}>
@@ -40,7 +38,7 @@ const NodeActionsWidgetInner: React.FC<INodeActionsWidgetProps> & {
   )
 })
 
-const Action = ({ icon, title, ...props }: any) => {
+NodeActionsWidget.Action = ({ icon, title, ...props }) => {
   const prefix = usePrefix('node-actions-item')
   return (
     <Typography.Link
@@ -55,8 +53,3 @@ const Action = ({ icon, title, ...props }: any) => {
     </Typography.Link>
   )
 }
-
-NodeActionsWidgetInner.Action = Action
-export const NodeActionsWidget = NodeActionsWidgetInner as React.FC<INodeActionsWidgetProps> & {
-  Action: React.FC<INodeActionsWidgetActionProps>
-} 

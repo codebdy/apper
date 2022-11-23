@@ -2,7 +2,7 @@ import { observer } from '@formily/reactive-react'
 import React from 'react'
 import { useScreen, usePrefix, useTheme } from '../../hooks'
 
-export interface IMobileBodyProps { }
+export interface IMobileBodyProps {}
 
 const MockupImages = {
   dark: [
@@ -17,7 +17,7 @@ const MockupImages = {
 
 export const MobileBody: React.FC<IMobileBodyProps> = observer((props) => {
   const screen = useScreen()
-  const theme = useTheme() as "dark" | "light"
+  const theme = useTheme()
   const prefix = usePrefix('mobile-simulator-body')
   const getContentStyles = (): React.CSSProperties => {
     if (screen.flip) {
@@ -56,7 +56,6 @@ export const MobileBody: React.FC<IMobileBodyProps> = observer((props) => {
         }}
       >
         <img
-          alt =""
           src={screen.flip ? MockupImages[theme][0] : MockupImages[theme][1]}
           style={{
             display: 'block',

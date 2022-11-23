@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { usePrefix } from '../hooks'
 
 export interface IWorkspaceItemProps {
   style?: React.CSSProperties
   flexable?: boolean,
-  children?: React.ReactNode,
+  children?: ReactNode
 }
 
-const WorkspacePanelInner: React.FC & {
+export const WorkspacePanel: React.FC<any> & {
   Item?: React.FC<IWorkspaceItemProps>
-} = (props: any) => {
+} = (props) => {
   const prefix = usePrefix('workspace-panel')
   return <div className={prefix}>{props.children}</div>
 }
-const Item = (props:any) => {
+
+WorkspacePanel.Item = (props) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const prefix = usePrefix('workspace-panel-item')
   return (
     <div
@@ -27,9 +29,4 @@ const Item = (props:any) => {
       {props.children}
     </div>
   )
-}
-
-WorkspacePanelInner.Item = Item
-export const WorkspacePanel = WorkspacePanelInner as React.FC<{ children?: React.ReactNode }> & {
-  Item: React.FC<IWorkspaceItemProps>,
 }

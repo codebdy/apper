@@ -1,14 +1,12 @@
-import { useEffect, useRef } from 'react'
-import {
-  useViewport,
-  useDesigner,
-  usePrefix,
-} from '../../hooks'
+import React, { useEffect, useRef } from 'react'
+import { useViewport, useDesigner, usePrefix } from '../../hooks'
 import { Insertion } from './Insertion'
 import { Selection } from './Selection'
 import { FreeSelection } from './FreeSelection'
 import { Cover } from './Cover'
 import { DashedBox } from './DashedBox'
+import { SpaceBlock } from './SpaceBlock'
+import { SnapLine } from './SnapLine'
 import './styles.less'
 
 export const AuxToolWidget = () => {
@@ -27,8 +25,10 @@ export const AuxToolWidget = () => {
   if (!viewport) return null
 
   return (
-    <div ref={ref as any} className={prefix}>
+    <div ref={ref} className={prefix}>
       <Insertion />
+      <SpaceBlock />
+      <SnapLine />
       <DashedBox />
       <Selection />
       <Cover />

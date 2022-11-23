@@ -1,5 +1,5 @@
 import React from 'react'
-import { usePrefix } from '../../hooks'
+import { useDesigner, usePrefix } from '../../hooks'
 import cls from 'classnames'
 export enum ResizeHandleType {
   Resize = 'RESIZE',
@@ -8,16 +8,16 @@ export enum ResizeHandleType {
 }
 
 export interface IResizeHandleProps {
-  type?: ResizeHandleType,
-  children?: React.ReactNode,
+  type?: ResizeHandleType
 }
 
 export const ResizeHandle: React.FC<IResizeHandleProps> = (props) => {
   const prefix = usePrefix('resize-handle')
+  const designer = useDesigner()
   return (
     <div
       {...props}
-      data-designer-resize-handle={props.type}
+      {...{ [designer.props.screenResizeHandlerAttrName]: props.type }}
       className={cls(prefix, {
         [`${prefix}-${props.type}`]: !!props.type,
       })}

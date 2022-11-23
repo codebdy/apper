@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { TreeNode, Engine } from 'designable/core'
+import { TreeNode, Engine } from '@designable/core'
 import {
   IDesignerLayoutContext,
   IWorkspaceContext,
@@ -8,10 +8,10 @@ import {
 
 export const DesignerComponentsContext = createContext<IDesignerComponents>({})
 
-export const DesignerLayoutContext = createContext<IDesignerLayoutContext | null>(null)
+export const DesignerLayoutContext = createContext<IDesignerLayoutContext>(null)
 
-export const DesignerEngineContext = createContext<Engine | null>(null)
+export const DesignerEngineContext = createContext<Engine>(null)
 
-export const TreeNodeContext = createContext<TreeNode | null>(null)
+export const TreeNodeContext = createContext<TreeNode>(null)
 
-export const WorkspaceContext = createContext<IWorkspaceContext | null>(null)
+export const WorkspaceContext = createContext<IWorkspaceContext>(null)

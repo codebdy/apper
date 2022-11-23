@@ -1,4 +1,4 @@
-import { TreeNode } from 'designable/core'
+import { TreeNode } from '@designable/core'
 import React, { createContext } from 'react'
 
 interface INodeContext {
@@ -6,4 +6,4 @@ interface INodeContext {
   renderActions?: (node: TreeNode) => React.ReactNode
 }
 
-export const NodeContext = createContext<INodeContext|null>(null)
+export const NodeContext = createContext<INodeContext>(null)

@@ -5,8 +5,7 @@ import { IconWidget } from '../IconWidget'
 import './styles.less'
 
 export interface IEmptyWidgetProps {
-  dragTipsDirection?: 'left' | 'right',
-  children?: React.ReactNode
+  dragTipsDirection?: 'left' | 'right'
 }
 
 export const EmptyWidget: React.FC<IEmptyWidgetProps> = observer((props) => {

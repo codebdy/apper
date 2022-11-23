@@ -81,21 +81,21 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
   })
   const renderCard = () => {
     if (node?.children.length === 0) return <DroppableWidget />
-    const additions = queryNodesByComponentPath(node, [
+    const additions = queryNodesByComponentPath(node as any, [
       'ArrayCards',
       'ArrayCards.Addition',
     ])
-    const indexes = queryNodesByComponentPath(node, [
+    const indexes = queryNodesByComponentPath(node as any, [
       'ArrayCards',
       '*',
       'ArrayCards.Index',
     ])
-    const operations = queryNodesByComponentPath(node, [
+    const operations = queryNodesByComponentPath(node as any, [
       'ArrayCards',
       '*',
       isArrayCardsOperation,
     ])
-    const children = queryNodesByComponentPath(node, [
+    const children = queryNodesByComponentPath(node as any, [
       'ArrayCards',
       '*',
       (name) => name.indexOf('ArrayCards.') === -1,
@@ -108,7 +108,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
             title={
               <Fragment>
                 {indexes.map((node, key) => (
-                  <TreeNodeWidget key={key} node={node} />
+                  <TreeNodeWidget key={key} node={node as any} />
                 ))}
                 <span data-content-editable="x-component-props.title">
                   {props.title}
@@ -119,16 +119,16 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
             extra={
               <Fragment>
                 {operations.map((node) => (
-                  <TreeNodeWidget key={node.id} node={node} />
+                  <TreeNodeWidget key={node.id} node={node as any} />
                 ))}
                 {props.extra}
               </Fragment>
             }
           >
-            <div {...createNodeId(designer, ensureObjectItemsNode(node).id)}>
+            <div {...createNodeId(designer as any, ensureObjectItemsNode(node as any).id as any)}>
               {children.length ? (
                 children.map((node) => (
-                  <TreeNodeWidget key={node.id} node={node} />
+                  <TreeNodeWidget key={node.id} node={node as any} />
                 ))
               ) : (
                 <DroppableWidget hasChildren={false} />
@@ -137,7 +137,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
           </Card>
         </ArrayBaseAny.Item>
         {additions.map((node) => (
-          <TreeNodeWidget key={node.id} node={node} />
+          <TreeNodeWidget key={node.id} node={node as any} />
         ))}
       </ArrayBase>
     )
@@ -153,7 +153,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
             icon: 'AddIndex',
             onClick: () => {
               if (
-                hasNodeByComponentPath(node, [
+                hasNodeByComponentPath(node as any, [
                   'ArrayCards',
                   '*',
                   'ArrayCards.Index',
@@ -167,7 +167,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
                   'x-component': 'ArrayCards.Index',
                 },
               })
-              ensureObjectItemsNode(node).append(indexNode)
+              ensureObjectItemsNode(node as any).append(indexNode)
             },
           },
 
@@ -175,7 +175,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
             title: node?.getMessage('addOperation'),
             icon: 'AddOperation',
             onClick: () => {
-              const oldAdditionNode = findNodeByComponentPath(node, [
+              const oldAdditionNode = findNodeByComponentPath(node as any, [
                 'ArrayCards',
                 'ArrayCards.Addition',
               ])
@@ -188,25 +188,25 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
                     'x-component': 'ArrayCards.Addition',
                   },
                 })
-                ensureObjectItemsNode(node).insertAfter(additionNode)
+                ensureObjectItemsNode(node as any).insertAfter(additionNode)
               }
-              const oldRemoveNode = findNodeByComponentPath(node, [
+              const oldRemoveNode = findNodeByComponentPath(node as any, [
                 'ArrayCards',
                 '*',
                 'ArrayCards.Remove',
               ])
-              const oldMoveDownNode = findNodeByComponentPath(node, [
+              const oldMoveDownNode = findNodeByComponentPath(node as any, [
                 'ArrayCards',
                 '*',
                 'ArrayCards.MoveDown',
               ])
-              const oldMoveUpNode = findNodeByComponentPath(node, [
+              const oldMoveUpNode = findNodeByComponentPath(node as any, [
                 'ArrayCards',
                 '*',
                 'ArrayCards.MoveUp',
               ])
               if (!oldRemoveNode) {
-                ensureObjectItemsNode(node).append(
+                ensureObjectItemsNode(node as any).append(
                   new TreeNode({
                     componentName: node?.componentName,
                     props: {
@@ -217,7 +217,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
                 )
               }
               if (!oldMoveDownNode) {
-                ensureObjectItemsNode(node).append(
+                ensureObjectItemsNode(node as any).append(
                   new TreeNode({
                     componentName: node?.componentName,
                     props: {
@@ -228,7 +228,7 @@ export const ArrayCardsDesigner: DnFC<CardProps> = observer((props) => {
                 )
               }
               if (!oldMoveUpNode) {
-                ensureObjectItemsNode(node).append(
+                ensureObjectItemsNode(node as any).append(
                   new TreeNode({
                     componentName: node?.componentName,
                     props: {

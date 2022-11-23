@@ -56,7 +56,7 @@ export const FormCollapse: DnFC<CollapseProps> & {
     if (
       tabs.some((node) =>
         Array.isArray(activeKey)
-          ? activeKey.includes(node.id)
+          ? activeKey.includes(node.id as any)
           : node.id === activeKey
       )
     )
@@ -67,7 +67,7 @@ export const FormCollapse: DnFC<CollapseProps> & {
   const renderCollapse = () => {
     if (!node?.children?.length) return <DroppableWidget />
     return (
-      <Collapse {...props} activeKey={getCorrectActiveKey(activeKey, panels)}>
+      <Collapse {...props} activeKey={getCorrectActiveKey(activeKey, panels) as any}>
         {panels.map((panel) => {
           const props = panel.props?.['x-component-props'] || {}
           return (

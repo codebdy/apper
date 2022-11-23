@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useEffect, useRef } from 'react'
+import { isStr, isFn, isObj, isPlainObj } from '@designable/shared'
 import { observer } from '@formily/reactive-react'
 import { Tooltip, TooltipProps } from 'antd'
 import { usePrefix, useRegistry, useTheme } from '../../hooks'
 import cls from 'classnames'
 import './styles.less'
-import { isFn, isObj, isPlainObj, isStr } from 'designable/shared'
 
 const IconContext = createContext<IconProviderProps | null>(null)
 
@@ -16,26 +16,28 @@ export interface IconProviderProps {
 export interface IShadowSVGProps {
   content?: string
   width?: number | string
-  height?: number | string
+  height?: number | string,
+  children?: React.ReactNode,
 }
 export interface IIconWidgetProps extends React.HTMLAttributes<HTMLElement> {
   tooltip?: React.ReactNode | TooltipProps
   infer: React.ReactNode | { shadow: string }
-  size?: number | string
+  size?: number | string,
+  children?: React.ReactNode,
 }
 
 export const IconWidget: React.FC<IIconWidgetProps> & {
   Provider?: React.FC<IconProviderProps>
   ShadowSVG?: React.FC<IShadowSVGProps>
-} = observer((props) => {
-  const theme: any = useTheme()
+} = observer((props: React.PropsWithChildren<IIconWidgetProps>) => {
+  const theme = useTheme()
   const context = useContext(IconContext)
   const registry = useRegistry()
   const prefix = usePrefix('icon')
   const size = props.size || '1em'
   const height = props.style?.height || size
   const width = props.style?.width || size
-  const takeIcon: any = (infer: React.ReactNode) => {
+  const takeIcon = (infer: React.ReactNode): any => {
     if (isStr(infer)) {
       const finded = registry.getDesignerIcon(infer)
       if (finded) {
@@ -74,10 +76,10 @@ export const IconWidget: React.FC<IIconWidgetProps> & {
       }
       return infer
     } else if (isPlainObj(infer)) {
-      if ((infer as any)[theme]) {
-        return takeIcon((infer as any)[theme])
+      if ((infer as any)[theme as any]) {
+        return takeIcon((infer as any)[theme as any])
       } else if ((infer as any)['shadow']) {
-        const IconWidgetShadowSVG = IconWidget.ShadowSVG as any
+        const IconWidgetShadowSVG = IconWidget.ShadowSVG as any;
         return (
           <IconWidgetShadowSVG
             width={width}
@@ -122,28 +124,30 @@ export const IconWidget: React.FC<IIconWidgetProps> & {
         cursor: props.onClick ? 'pointer' : props.style?.cursor,
       }}
     >
-      {takeIcon(props.infer)}
+      {takeIcon(props.infer as any)}
     </span>
   )
 })
 
-const ShadowSVG = (props: any) => {
+IconWidget.ShadowSVG = (props) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const ref = useRef<HTMLDivElement>()
   const width = isNumSize(props.width) ? `${props.width}px` : props.width
   const height = isNumSize(props.height) ? `${props.height}px` : props.height
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    // if (ref.current) {
-    //   const root = ref.current.attachShadow({
-    //     mode: 'open',
-    //   })
-    //   root.innerHTML = `<svg viewBox="0 0 1024 1024" style="width:${width};height:${height}">${props.content}</svg>`
-    // }
+    if (ref.current) {
+      const root = ref.current.attachShadow({
+        mode: 'open',
+      })
+      root.innerHTML = `<svg viewBox="0 0 1024 1024" style="width:${width};height:${height}">${props.content}</svg>`
+    }
   }, [height, props.content, width])
   return <div ref={ref as any}></div>
 }
-IconWidget.ShadowSVG = ShadowSVG
-IconWidget.Provider = (props) => {
+
+IconWidget.Provider = (props: any) => {
   return (
-    <IconContext.Provider value={props}>{(props as any)?.children}</IconContext.Provider>
+    <IconContext.Provider value={props}>{props.children}</IconContext.Provider>
   )
 }

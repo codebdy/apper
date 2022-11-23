@@ -1,5 +1,5 @@
 import React from 'react'
-import { TreeNode } from 'designable/core'
+import { TreeNode } from '@designable/core'
 import { observer } from '@formily/reactive-react'
 import { IconWidget } from '../IconWidget'
 import { useDesigner, usePrefix } from '../../hooks'
@@ -16,7 +16,7 @@ export const DragHandler: React.FC<IDragHandlerProps> = observer(
     const prefix = usePrefix('aux-drag-handler')
     if (node === node.root || !node.allowDrag()) return null
     const handlerProps = {
-      [designer.props.nodeDragHandlerAttrName as any]: 'true',
+      [designer.props.nodeDragHandlerAttrName]: 'true',
     }
     return (
       <Button {...handlerProps} className={prefix} style={style} type="primary">

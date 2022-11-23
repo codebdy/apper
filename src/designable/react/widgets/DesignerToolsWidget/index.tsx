@@ -1,7 +1,7 @@
 import React, { Fragment, useRef } from 'react'
 import { Button, InputNumber } from 'antd'
 import { observer } from '@formily/reactive-react'
-import { CursorType, ScreenType } from 'designable/core'
+import { CursorType, ScreenType } from '@designable/core'
 import {
   useCursor,
   useHistory,
@@ -30,7 +30,7 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
     const sizeRef = useRef<{ width?: any; height?: any }>({})
     const prefix = usePrefix('designer-tools')
     const renderHistoryController = () => {
-      if (!props?.use?.includes('HISTORY')) return null
+      if (!props.use.includes('HISTORY')) return null
       return (
         <Button.Group size="small" style={{ marginRight: 20 }}>
           <Button
@@ -57,14 +57,14 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
 
     const renderCursorController = () => {
       if (workbench.type !== 'DESIGNABLE') return null
-      if (!props?.use?.includes('CURSOR')) return null
+      if (!props.use.includes('CURSOR')) return null
       return (
         <Button.Group size="small" style={{ marginRight: 20 }}>
           <Button
             size="small"
-            disabled={cursor.type === CursorType.Move}
+            disabled={cursor.type === CursorType.Normal}
             onClick={() => {
-              cursor.setType(CursorType.Move)
+              cursor.setType(CursorType.Normal)
             }}
           >
             <IconWidget infer="Move" />
@@ -83,7 +83,7 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
     }
 
     const renderResponsiveController = () => {
-      if (!props?.use?.includes('SCREEN_TYPE')) return null
+      if (!props.use.includes('SCREEN_TYPE')) return null
       if (screen.type !== ScreenType.Responsive) return null
       return (
         <Fragment>
@@ -134,7 +134,7 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
     }
 
     const renderScreenTypeController = () => {
-      if (!props?.use?.includes('SCREEN_TYPE')) return null
+      if (!props.use.includes('SCREEN_TYPE')) return null
       return (
         <Button.Group size="small" style={{ marginRight: 20 }}>
           <Button
@@ -169,7 +169,7 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
     }
 
     const renderMobileController = () => {
-      if (!props?.use?.includes('SCREEN_TYPE')) return null
+      if (!props.use.includes('SCREEN_TYPE')) return null
       if (screen.type !== ScreenType.Mobile) return
       return (
         <Button

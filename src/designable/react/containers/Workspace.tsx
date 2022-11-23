@@ -5,7 +5,6 @@ export interface IWorkspaceProps {
   id?: string
   title?: string
   description?: string
-  children?: React.ReactNode
 }
 
 export const Workspace: React.FC<IWorkspaceProps> = ({
@@ -30,10 +29,10 @@ export const Workspace: React.FC<IWorkspaceProps> = ({
     designer.workbench.ensureWorkspace(workspace)
     oldId.current = workspace.id
     return workspace
-  }, [designer, id, title, description])
+  }, [id, designer])
   return (
     <Fragment>
-      <WorkspaceContext.Provider value={workspace as any}>
+      <WorkspaceContext.Provider value={workspace}>
         {props.children}
       </WorkspaceContext.Provider>
     </Fragment>

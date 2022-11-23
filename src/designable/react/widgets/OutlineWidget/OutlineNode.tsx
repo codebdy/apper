@@ -4,15 +4,15 @@ import {
   ClosestPosition,
   CursorStatus,
   DragMoveEvent,
-} from 'designable/core'
-import { isFn } from 'designable/shared'
+} from '@designable/core'
+import { isFn } from '@designable/shared'
 import { autorun } from '@formily/reactive'
 import { observer } from '@formily/reactive-react'
 import {
   usePrefix,
   useCursor,
   useSelection,
-  useOutlineDragon,
+  useMoveHelper,
   useDesigner,
 } from '../../hooks'
 import { IconWidget } from '../IconWidget'
@@ -36,12 +36,12 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
     const request = useRef(null)
     const cursor = useCursor()
     const selection = useSelection(workspaceId)
-    const outlineDragon = useOutlineDragon(workspaceId)
+    const moveHelper = useMoveHelper(workspaceId)
 
     useEffect(() => {
       return engine.subscribeTo(DragMoveEvent, () => {
-        const closestNodeId = outlineDragon?.closestNode?.id
-        const closestDirection = outlineDragon?.closestDirection
+        const closestNodeId = moveHelper?.closestNode?.id
+        const closestDirection = moveHelper?.outlineClosestDirection
         const id = node.id
         if (!ref.current) return
         if (
@@ -57,8 +57,8 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
               request.current = null
             }
             request.current = setTimeout(() => {
-              ref.current?.classList.add('expanded')
-            }, 600) as any
+              ref.current.classList.add('expanded')
+            }, 600)
           }
         } else {
           if (request.current) {
@@ -70,7 +70,7 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
           }
         }
       })
-    }, [node, outlineDragon, cursor, engine])
+    }, [node, moveHelper, cursor])
 
     useEffect(() => {
       return autorun(() => {
@@ -88,14 +88,14 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
         }
         if (
           cursor.status === CursorStatus.Dragging &&
-          outlineDragon?.dragNodes?.length
+          moveHelper?.dragNodes?.length
         ) {
           if (ref.current.classList.contains('selected')) {
             ref.current.classList.remove('selected')
           }
         }
       })
-    }, [node, selection, outlineDragon, cursor.status])
+    }, [node, selection, moveHelper])
 
     if (!node) return null
 
@@ -113,7 +113,7 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
     }
 
     const renderTitle = (node: TreeNode) => {
-      if (isFn(ctx?.renderTitle)) return ctx?.renderTitle(node)
+      if (isFn(ctx.renderTitle)) return ctx.renderTitle(node)
       return (
         <span>
           <NodeTitleWidget node={node} />
@@ -122,13 +122,13 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
     }
 
     const renderActions = (node: TreeNode) => {
-      if (isFn(ctx?.renderActions)) return ctx?.renderActions(node)
+      if (isFn(ctx.renderActions)) return ctx.renderActions(node)
     }
 
     return (
       <div
         style={style}
-        ref={ref as any}
+        ref={ref}
         className={cls(prefix, className, 'expanded')}
         data-designer-outline-node-id={node.id}
       >

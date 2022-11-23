@@ -136,7 +136,7 @@ export const Field: DnFC<ISchema> = observer((props) => {
     props,
     components,
     designer.props.nodeIdAttrName as any,
-    node.id
+    node.id as any
   )
   if (props.type === 'object') {
     return (

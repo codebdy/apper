@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { isValid } from 'designable/shared'
+import { isValid } from '@designable/shared'
 import cls from 'classnames'
 import { IconWidget, TextWidget } from '../widgets'
 import { usePrefix } from '../hooks'
 
 export interface ICompositePanelProps {
-  children(children: any): string | number | (() => string | number) 
   direction?: 'left' | 'right'
   showNavTitle?: boolean
   defaultOpen?: boolean
@@ -27,8 +26,8 @@ export interface ICompositePanelItemProps {
 const parseItems = (
   children: React.ReactNode
 ): React.PropsWithChildren<ICompositePanelItemProps>[] => {
-  const items: any[] = []
-  React.Children.forEach(children, (child: any, index) => {
+  const items = []
+  React.Children.forEach(children, (child, index) => {
     if (child?.['type'] === CompositePanel.Item) {
       items.push({ key: child['key'] ?? index, ...child['props'] })
     }
@@ -53,16 +52,16 @@ const getDefaultKey = (children: React.ReactNode) => {
 }
 
 export const CompositePanel: React.FC<ICompositePanelProps> & {
-  Item?: React.FC<ICompositePanelItemProps>
+  Item: React.FC<ICompositePanelItemProps>
 } = (props) => {
   const prefix = usePrefix('composite-panel')
   const [activeKey, setActiveKey] = useState<string | number>(
-    props.defaultActiveKey ?? getDefaultKey(props.children as any) as any
+    props.defaultActiveKey ?? getDefaultKey(props.children)
   )
-  const activeKeyRef = useRef<any>(null)
+  const activeKeyRef = useRef(null)
   const [pinning, setPinning] = useState(props.defaultPinning ?? false)
   const [visible, setVisible] = useState(props.defaultOpen ?? true)
-  const items = parseItems(props.children as any)
+  const items = parseItems(props.children)
   const currentItem = findItem(items, activeKey)
   const content = currentItem?.children
 
@@ -71,7 +70,7 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
   useEffect(() => {
     if (isValid(props.activeKey)) {
       if (props.activeKey !== activeKeyRef.current) {
-        setActiveKey(props.activeKey as any)
+        setActiveKey(props.activeKey)
       }
     }
   }, [props.activeKey])
@@ -142,10 +141,10 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
                   props.showNavTitle
                     ? null
                     : {
-                      title: <TextWidget>{item.title}</TextWidget>,
-                      placement:
-                        props.direction === 'right' ? 'left' : 'right',
-                    }
+                        title: <TextWidget>{item.title}</TextWidget>,
+                        placement:
+                          props.direction === 'right' ? 'left' : 'right',
+                      }
                 }
                 infer={item.icon}
               />
@@ -168,10 +167,10 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
                     setVisible(true)
                   }
                   if (!props?.activeKey || !props?.onChange)
-                    setActiveKey(item.key as any)
+                    setActiveKey(item.key)
                 }
                 item.onClick?.(e)
-                props.onChange?.(item.key as any)
+                props.onChange?.(item.key)
               }}
             >
               {takeTab()}

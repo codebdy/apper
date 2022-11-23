@@ -4,8 +4,8 @@ import {
   isResourceList,
   IResourceLike,
   IResource,
-} from 'designable/core'
-import { isFn } from 'designable/shared'
+} from '@designable/core'
+import { isFn } from '@designable/shared'
 import { observer } from '@formily/reactive-react'
 import { usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
@@ -65,9 +65,9 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
       return buf
     }, [])
     const remainItems =
-      (sources?.reduce((length, source) => {
+      sources?.reduce((length:any, source) => {
         return length + (source.span ?? 1)
-      }, 0)||0) % 3
+      }, 0) % 3 
     return (
       <div
         className={cls(prefix, props.className, {

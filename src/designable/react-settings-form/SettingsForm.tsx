@@ -47,7 +47,7 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
         initialValues: node?.designerProps?.defaultProps,
         values: node?.props,
         effects(form) {
-          getLocales(node)
+          getLocales(node as any)
           getSnapshot(operation)
           props.effects?.(form)
         },

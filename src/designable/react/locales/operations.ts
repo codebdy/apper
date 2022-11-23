@@ -1,4 +1,4 @@
-const locales = {
+export default {
   'zh-CN': {
     operations: {
       default_state: '缺省态',
@@ -48,5 +48,3 @@ const locales = {
     },
   },
 }
-
-export default locales

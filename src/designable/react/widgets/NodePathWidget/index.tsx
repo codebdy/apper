@@ -1,6 +1,6 @@
 import React from 'react'
 import { Breadcrumb } from 'antd'
-import { useCurrentNode, useSelection, usePrefix, useHover } from '../../hooks'
+import { useSelectedNode, useSelection, usePrefix, useHover } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { NodeTitleWidget } from '../NodeTitleWidget'
 import { observer } from '@formily/reactive-react'
@@ -11,10 +11,9 @@ export interface INodePathWidgetProps {
   maxItems?: number
 }
 
-const url = ""
 export const NodePathWidget: React.FC<INodePathWidgetProps> = observer(
   (props) => {
-    const selected = useCurrentNode(props.workspaceId)
+    const selected = useSelectedNode(props.workspaceId)
     const selection = useSelection(props.workspaceId)
     const hover = useHover(props.workspaceId)
     const prefix = usePrefix('node-path')
@@ -34,7 +33,7 @@ export const NodePathWidget: React.FC<INodePathWidgetProps> = observer(
                 <IconWidget infer="Position" style={{ marginRight: 3 }} />
               )}
               <a
-                href={url}
+                href=""
                 onMouseEnter={() => {
                   hover.setHover(node)
                 }}

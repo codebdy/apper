@@ -1,28 +1,29 @@
 import React from 'react'
-import { useCursor, usePrefix, useViewport } from '../../hooks'
+import { useCursor, usePrefix, useViewport, useOperation } from '../../hooks'
 import { observer } from '@formily/reactive-react'
-import { CursorStatus, CursorType } from 'designable/core'
-import { calcRectByStartEndPoint } from 'designable/shared'
+import { CursorDragType, CursorStatus } from '@designable/core'
+import { calcRectByStartEndPoint } from '@designable/shared'
 import cls from 'classnames'
 
 export const FreeSelection = observer(() => {
   const cursor = useCursor()
   const viewport = useViewport()
+  const operation = useOperation()
   const prefix = usePrefix('aux-free-selection')
   const createSelectionStyle = () => {
     const startDragPoint = viewport.getOffsetPoint({
-      x: cursor.dragStartPosition.topClientX || 0,
-      y: cursor.dragStartPosition.topClientY || 0,
+      x: cursor.dragStartPosition.topClientX,
+      y: cursor.dragStartPosition.topClientY,
     })
     const currentPoint = viewport.getOffsetPoint({
-      x: cursor.position.topClientX || 0,
-      y: cursor.position.topClientY || 0,
+      x: cursor.position.topClientX,
+      y: cursor.position.topClientY,
     })
     const rect = calcRectByStartEndPoint(
       startDragPoint,
       currentPoint,
-      viewport.scrollX - (cursor.dragStartScrollOffset.scrollX || 0),
-      viewport.scrollY - (cursor.dragStartScrollOffset.scrollY || 0)
+      viewport.dragScrollXDelta,
+      viewport.dragScrollYDelta
     )
     const baseStyle: React.CSSProperties = {
       position: 'absolute',
@@ -42,9 +43,11 @@ export const FreeSelection = observer(() => {
   }
 
   if (
+    operation.moveHelper.hasDragNodes ||
     cursor.status !== CursorStatus.Dragging ||
-    cursor.type !== CursorType.Selection
+    cursor.dragType !== CursorDragType.Move
   )
     return null
+
   return <div className={cls(prefix)} style={createSelectionStyle()}></div>
 })

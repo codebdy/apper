@@ -68,12 +68,12 @@ export const DialogDesigner: DnFC<IDialogProps> & {
 
     const name = designer.props.nodeIdAttrName
     if (!antModelRef.current) {
-      antModelRef.current = dialogContainer.current.querySelector(`div[data-dialog-id='${nodeIdProps[name as any]}'] .ant-modal`) as any
+      antModelRef.current = dialogContainer.current.querySelector(`div[data-dialog-id='${(nodeIdProps as any)[name as any]}'] .ant-modal`) as any
     }
     //tree.operation.selection.clear()
 
     if (visible) {
-      name && antModelRef.current?.setAttribute(name, nodeIdProps[name as any] as any)
+      name && antModelRef.current?.setAttribute(name, (nodeIdProps as any)[name as any] as any)
     } else {
       name && antModelRef.current?.removeAttribute(name)
     }
@@ -125,7 +125,7 @@ export const DialogDesigner: DnFC<IDialogProps> & {
         <AntdModal
           {...dialogProps}
           open={visible}
-          title={dialogTitle && <TreeNodeWidget node={dialogTitle} />}
+          title={dialogTitle && <TreeNodeWidget node={dialogTitle as any} />}
           width = {width}
           centered
           destroyOnClose = {destroyOnClose}
@@ -133,17 +133,17 @@ export const DialogDesigner: DnFC<IDialogProps> & {
           keyboard = {keyboard}
           mask
           closable={true}
-          data-dialog-id={nodeIdProps[designer.props.nodeIdAttrName as any]}
+          data-dialog-id={(nodeIdProps as any)[designer.props.nodeIdAttrName as any]}
           getContainer={() => dialogContainer.current as any}
           maskClosable={false}
           transitionName={''}
           {...other}
-          footer={hasFooter && footer && <TreeNodeWidget node={footer} />}
+          footer={hasFooter && footer && <TreeNodeWidget node={footer as any} />}
           onCancel={() => {
             setVisible(false)
           }}>
           {
-            content && <TreeNodeWidget node={content} />
+            content && <TreeNodeWidget node={content as any} />
           }
         </AntdModal>
       }

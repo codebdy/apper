@@ -35,7 +35,7 @@ const PageWorkSpace = (props: {
 
   useEffect(() => {
     designer.setCurrentTree(
-      transformToTreeNode(page?.schemaJson || {})
+      transformToTreeNode(page?.schemaJson || {}) as any
     )
   }, [designer, page?.schemaJson])
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import cls from 'classnames'
 import { useDesigner, usePrefix } from '../../hooks'
-import { TreeNode } from 'designable/core'
+import { TreeNode } from '@designable/core'
 import { IconWidget } from '../IconWidget'
 
 export interface ITranslateHandlerProps {
@@ -13,7 +13,7 @@ export const TranslateHandler: React.FC<ITranslateHandlerProps> = (props) => {
   const prefix = usePrefix('aux-node-translate-handler')
   const createHandler = (value: string) => {
     return {
-      [designer.props.nodeTranslateAttrName as any]: value,
+      [designer.props.nodeTranslateAttrName]: value,
       className: cls(prefix, value),
     }
   }

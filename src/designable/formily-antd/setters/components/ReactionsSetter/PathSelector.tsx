@@ -26,7 +26,7 @@ const transformDataSource = (node: TreeNode) => {
       if (node && node !== parentNode) {
         path.push(node.props?.name || node.id)
       } else {
-        transform(node.parent)
+        transform(node.parent as any)
       }
     }
     transform(targetNode)
@@ -89,7 +89,7 @@ const transformDataSource = (node: TreeNode) => {
 
 export const PathSelector: React.FC<IPathSelectorProps> = (props) => {
   const baseNode = useCurrentNode()
-  const dataSource = transformDataSource(baseNode)
+  const dataSource = transformDataSource(baseNode as any)
   const findNode: any = (dataSource: any[], value: string) => {
     for (let i = 0; i < dataSource.length; i++) {
       const item = dataSource[i]

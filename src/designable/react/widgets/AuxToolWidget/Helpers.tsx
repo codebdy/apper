@@ -1,12 +1,12 @@
 import React, { useRef, useState, useLayoutEffect } from 'react'
-import { TreeNode } from 'designable/core'
+import { TreeNode } from '@designable/core'
 import { reaction } from '@formily/reactive'
-import cls from 'classnames'
 import { usePrefix, useViewport } from '../../hooks'
 import { Selector } from './Selector'
 import { Copy } from './Copy'
 import { Delete } from './Delete'
 import { DragHandler } from './DragHandler'
+import cls from 'classnames'
 
 const HELPER_DEBOUNCE_TIMEOUT = 100
 
@@ -31,7 +31,7 @@ export const Helpers: React.FC<IHelpersProps> = ({ node, nodeRect }) => {
   const [position, setPosition] = useState('top-right')
 
   useLayoutEffect(() => {
-    let request:any = null
+    let request = null
 
     const getYInViewport = (nodeRect: DOMRect, helpersRect: DOMRect) => {
       if (nodeRect.top - viewport.scrollY > helpersRect.height) {
@@ -42,7 +42,7 @@ export const Helpers: React.FC<IHelpersProps> = ({ node, nodeRect }) => {
       ) {
         return 'inner-top'
       } else if (
-        viewport.isScrollBottom &&
+        nodeRect.bottom >= viewport.scrollY + viewport.height &&
         nodeRect.height + helpersRect.height > viewport.height
       ) {
         return 'inner-bottom'
@@ -101,7 +101,7 @@ export const Helpers: React.FC<IHelpersProps> = ({ node, nodeRect }) => {
       className={cls(prefix, {
         [position]: true,
       })}
-      ref={ref as any}
+      ref={ref}
     >
       <div className={cls(prefix + '-content')}>
         <Selector node={node} />

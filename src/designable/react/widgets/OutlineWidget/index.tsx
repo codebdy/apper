@@ -4,9 +4,9 @@ import { useTree, usePrefix, useOutline, useWorkbench } from '../../hooks'
 import { observer } from '@formily/reactive-react'
 import { OutlineTreeNode } from './OutlineNode'
 import { Insertion } from './Insertion'
-import { TreeNode, Viewport } from 'designable/core'
+import { TreeNode, Viewport } from '@designable/core'
 import { NodeContext } from './context'
-import { globalThisPolyfill } from 'designable/shared'
+import { globalThisPolyfill } from '@designable/shared'
 
 export interface IOutlineTreeWidgetProps {
   className?: string
@@ -48,7 +48,7 @@ export const OutlineTreeWidget: React.FC<IOutlineTreeWidgetProps> = observer(
           className={cls(prefix + '-container', className)}
           style={style}
         >
-          <div className={prefix + '-content'} ref={ref as any}>
+          <div className={prefix + '-content'} ref={ref}>
             <OutlineTreeNode node={tree} workspaceId={workspaceId} />
             <div
               className={prefix + '-aux'}

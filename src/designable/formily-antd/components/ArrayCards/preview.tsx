@@ -125,7 +125,7 @@ export const ArrayCards: DnFC<CardProps> = observer((props) => {
               </Fragment>
             }
           >
-            <div {...createNodeId(designer, ensureObjectItemsNode(node as any).id)}>
+            <div {...createNodeId(designer, ensureObjectItemsNode(node as any).id as any)}>
               {children.length ? (
                 children.map((node) => (
                   <TreeNodeWidget key={node.id} node={node} />

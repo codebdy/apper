@@ -9,8 +9,7 @@ export interface IStudioPanelProps {
   actions?: React.ReactNode
   prefixCls?: string
   theme?: string
-  position?: React.ComponentProps<typeof Layout>['position'],
-  children?: React.ReactNode
+  position?: React.ComponentProps<typeof Layout>['position']
 }
 
 const StudioPanelInternal: React.FC<IStudioPanelProps> = ({
@@ -23,10 +22,7 @@ const StudioPanelInternal: React.FC<IStudioPanelProps> = ({
   const classNameBase = cls('root', position, props.className)
   if (logo || actions) {
     return (
-      <div
-        {...props}
-        className={cls(`${prefix}-container`, classNameBase)}
-      >
+      <div {...props} className={cls(`${prefix}-container`, classNameBase)}>
         <div className={prefix + '-header'}>
           <div className={prefix + '-header-logo'}>{logo}</div>
           <div className={prefix + '-header-actions'}>{actions}</div>
