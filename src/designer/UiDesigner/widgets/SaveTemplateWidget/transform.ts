@@ -1,5 +1,5 @@
 import { ITreeNode } from '@designable/core'
-import { clone } from '@designable/shared'
+import { clone } from 'designable/shared'
 
 export function transForm(node: ITreeNode): ITreeNode {
   const newNode = {

@@ -4,7 +4,7 @@ import { Tooltip, TooltipProps } from 'antd'
 import { usePrefix, useRegistry, useTheme } from '../../hooks'
 import cls from 'classnames'
 import './styles.less'
-import { isFn, isObj, isPlainObj, isStr } from '@designable/shared'
+import { isFn, isObj, isPlainObj, isStr } from 'designable/shared'
 
 const IconContext = createContext<IconProviderProps | null>(null)
 

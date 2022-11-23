@@ -10,7 +10,7 @@ import {
 import {
   calcSpeedFactor,
   createUniformSpeedAnimation,
-} from '@designable/shared'
+} from 'designable/shared'
 import { useScreen, useDesigner, usePrefix } from '../../hooks'
 import { IconWidget } from '../../widgets'
 import { ResizeHandle, ResizeHandleType } from './handle'

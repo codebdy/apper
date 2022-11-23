@@ -12,7 +12,7 @@ import {
 import { FormItem } from 'formily/antd4'
 import { each, reduce } from '@formily/shared'
 import { createBehavior } from '@designable/core'
-import { isArr, isStr } from '@designable/shared'
+import { isArr, isStr } from 'designable/shared'
 import { AllLocales } from 'designable/formily-antd'
 import { DnFC, useDesigner, useComponents, useTreeNode } from 'designable/react'
 import { Container } from 'designable/formily-antd/common/Container'

@@ -3,7 +3,7 @@ import { clone, uid } from '@formily/shared'
 import { createForm, isVoidField } from '@formily/core'
 import { createSchemaField } from '@formily/react'
 import { GlobalRegistry } from '@designable/core'
-import { requestIdle } from '@designable/shared'
+import { requestIdle } from 'designable/shared'
 import {
   Form,
   ArrayTable,

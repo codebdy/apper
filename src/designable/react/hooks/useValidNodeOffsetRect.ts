@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { TreeNode, CursorStatus, ScreenStatus } from '@designable/core'
-import { requestIdle, cancelIdle } from '@designable/shared'
+import { requestIdle, cancelIdle } from 'designable/shared'
 import { ResizeObserver } from '@juggle/resize-observer'
 import { useViewport } from './useViewport'
 import { useDesigner } from './useDesigner'

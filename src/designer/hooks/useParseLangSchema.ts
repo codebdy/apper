@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { ISchema } from '@formily/json-schema'
-import { isArr, isObj } from '@designable/shared'
+import { isArr, isObj } from 'designable/shared'
 
 export const LANG_RESOURCE_PREFIX = "$src:";
 export const LANG_INLINE_PREFIX = "$inline:"
