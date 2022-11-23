@@ -344,7 +344,8 @@ export class Event extends Subscribable<ICustomEvent<any>> {
     }
   }
 
-  detachEvents(this: any, container?: EventContainer): any {
+  detachEvents(container?: EventContainer): any {
+    const self = this as any
     if (!container) {
       this.containers.forEach((container: any) => {
         this.detachEvents(container)
@@ -364,8 +365,8 @@ export class Event extends Subscribable<ICustomEvent<any>> {
       driver.detach(container);
     })
 
-    this[DRIVER_INSTANCES_SYMBOL] = this[DRIVER_INSTANCES_SYMBOL] || [] as any
-    this[DRIVER_INSTANCES_SYMBOL] = this[DRIVER_INSTANCES_SYMBOL].reduce(
+    self[DRIVER_INSTANCES_SYMBOL] = self[DRIVER_INSTANCES_SYMBOL] || [] as any
+    self[DRIVER_INSTANCES_SYMBOL] = self[DRIVER_INSTANCES_SYMBOL].reduce(
       (drivers: any, driver: any) => {
         if (driver.container === container) {
           driver.detach(container)
@@ -375,7 +376,7 @@ export class Event extends Subscribable<ICustomEvent<any>> {
       },
       []
     )
-    this.containers = this.containers.filter((item: any) => item !== container)
+    self.containers = self.containers.filter((item: any) => item !== container)
     delete (container as any)[ATTACHED_SYMBOL]
     delete (container as any)[EVENTS_SYMBOL]
     delete (container as any)[EVENTS_ONCE_SYMBOL]
