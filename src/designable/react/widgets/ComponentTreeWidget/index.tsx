@@ -6,6 +6,7 @@ import { TreeNode, GlobalRegistry } from '@designable/core'
 import { observer } from '@formily/reactive-react'
 import cls from 'classnames'
 import './styles.less'
+import { toJS } from '@formily/reactive'
 
 export interface IComponentTreeWidgetProps {
   style?: React.CSSProperties
@@ -33,7 +34,7 @@ export const TreeNodeWidget: React.FC<ITreeNodeWidgetProps> = observer(
       const props = {
         ...node.designerProps?.defaultProps,
         ...extendsProps,
-        ...node.props,
+        ...toJS(node.props||{}),
         ...node.designerProps?.getComponentProps?.(node),
       }
       if (node.depth === 0) {

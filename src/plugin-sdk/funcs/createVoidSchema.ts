@@ -21,6 +21,14 @@ export const createComponentSchema = (
         'style': CSSStyleShema,
       },
     },
+    // 'component-style-group2': {
+    //   type: 'void',
+    //   'x-component': 'CollapseItem',
+    //   'x-component-props': { defaultExpand: false },
+    //   properties: {
+    //     'style2': CSSStyleShema,
+    //   },
+    // },
   }
 }
 export const createVoidSchema = (
