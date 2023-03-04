@@ -40,7 +40,20 @@ import { OrchestrationLabel } from "./OrchestrationLabel";
 import { useSelectedOrcherstration } from "../hooks/useSelectedOrcherstration";
 import { useIsOrchestration } from "../hooks/useIsOrchestration";
 import { DataNode } from "antd/es/tree";
+import styled from "styled-components";
 const { DirectoryTree } = Tree;
+
+const Container = styled.div`
+  flex: 1;
+  overflow: auto;
+  padding: 8;
+  .ant-tree-node-content-wrapper{
+    display: flex;
+    .ant-tree-title{
+      flex:1;
+  }
+}
+`
 
 export const EntityTree = memo((props: { graph?: Graph }) => {
   const { graph } = props;
@@ -364,19 +377,13 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
   const selectedCode = useSelectedCode(appId);
   const selectedOrches = useSelectedOrcherstration(appId);
   return (
-    <div
-      style={{
-        flex: 1,
-        overflow: "auto",
-        padding: 8,
-      }}
-    >
+    <Container>
       <DirectoryTree
         defaultExpandedKeys={["0"]}
         selectedKeys={[selectedDiagramId || selectedCode?.uuid || selectedOrches?.uuid] as any}
         onSelect={handleSelect as any}
         treeData={treeData}
       />
-    </div>
+    </Container>
   );
 });

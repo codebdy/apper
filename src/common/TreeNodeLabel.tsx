@@ -1,5 +1,20 @@
 import React, { useCallback, useState } from "react"
 import { memo } from "react"
+import styled from "styled-components";
+
+const Label = styled.div`
+  position: relative;
+  display: flex;
+  flex:1;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 8px;
+  .node-actions{
+    position: absolute;
+    right:0;
+    z-index: 1;
+  }
+`
 
 const TreeNodeLabel = memo((
   props: {
@@ -20,7 +35,7 @@ const TreeNodeLabel = memo((
   }, []);
 
   return (
-    <div className='tree-node-label'
+    <Label
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
@@ -32,7 +47,7 @@ const TreeNodeLabel = memo((
           {action}
         </div>
       }
-    </div>
+    </Label>
   )
 })
 
