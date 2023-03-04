@@ -1,6 +1,6 @@
 import { QuestionCircleOutlined, GithubOutlined, HomeOutlined, DownOutlined, ApiOutlined, SettingOutlined, DesktopOutlined, LayoutOutlined } from "@ant-design/icons"
 import { Button, Divider, Menu, Space } from "antd"
-import React, { useCallback } from "react"
+import { useCallback } from "react"
 import { memo } from "react"
 import { useMatch, useNavigate } from "react-router-dom"
 import { IApp } from "model"
@@ -13,7 +13,14 @@ import SvgIcon from "common/SvgIcon"
 import { DESIGN, DESIGN_BOARD } from "consts"
 import { useEdittingAppId } from "designer/hooks/useEdittingAppUuid"
 import { Operate } from "./Operate"
-import { Header } from "antd/es/layout/layout"
+import styled from "styled-components"
+import { useToken } from "antd/es/theme"
+
+
+const StyledHeader = styled.div`
+  display: flex;
+  align-items: center;
+`
 
 const DesignerHeader = memo((props: {
   app?: IApp,
@@ -25,6 +32,7 @@ const DesignerHeader = memo((props: {
   }, [navigate]);
 
   const { t } = useTranslation();
+  const [, token] = useToken()
 
   const appId = useEdittingAppId();
   const match = useMatch(`/${DESIGN}/${appId}/${DESIGN_BOARD}/*`)
@@ -34,7 +42,7 @@ const DesignerHeader = memo((props: {
   }, [appId, navigate]);
 
   return (
-    <Header className="header">
+    <StyledHeader style={{ backgroundColor: token.colorBgContainer }}>
       <Button className="no-border" shape="circle" onClick={handleBack}><HomeOutlined /></Button>
       <Divider type='vertical' />
       <div className="app-title" style={{ marginLeft: "4px" }}>{parse(app?.title)}</div>
@@ -142,6 +150,7 @@ const DesignerHeader = memo((props: {
           },
         ]}
       />
+      <div style={{ flex: 1 }}></div>
       <Space>
         {/* <span style={{ fontSize: 13 }}>
           {t("Designer.Version")} 1.0
@@ -159,7 +168,7 @@ const DesignerHeader = memo((props: {
         <AvatarMenu />
         <SelectLang />
       </Space>
-    </Header >
+    </StyledHeader >
   )
 })
 

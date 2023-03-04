@@ -111,12 +111,12 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
       </IconWidgetProvider>
     )
   },
-  // {
-  //   scheduler: (update) => {
-  //     cancelIdle(GlobalState.idleRequest as any)
-  //     GlobalState.idleRequest = requestIdle(update, {
-  //       timeout: 500,
-  //     }) as any
-  //   },
-  // }
+  {
+    scheduler: (update) => {
+      cancelIdle(GlobalState.idleRequest as any)
+      GlobalState.idleRequest = requestIdle(update, {
+        timeout: 500,
+      }) as any
+    },
+  }
 )

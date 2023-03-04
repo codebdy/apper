@@ -9,9 +9,9 @@ const { Content } = Layout;
 export const AppDesignBoard = memo(() => {
   const { app } = useDesignerParams();
   return (
-    <Layout className="rx-studio">
+    <Layout>
       <DesignerHeader app={app} />
-      <Content className='content'>
+      <Content>
         <Outlet />
       </Content>
     </Layout>
