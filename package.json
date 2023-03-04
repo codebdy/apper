@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@antv/x6": "^1.32.10",
-    "@antv/x6-react-shape": "^1.6.1",
+    "@antv/x6": "^2.5.2",
+    "@antv/x6-plugin-dnd": "^2.0.4",
+    "@antv/x6-plugin-minimap": "^2.0.2",
+    "@antv/x6-plugin-selection": "^2.1.5",
+    "@antv/x6-react-shape": "2.1.0",
     "@designable/core": "^1.0.0-beta.45",
     "@designable/shared": "^1.0.0-beta.45",
     "@formily/core": "^2.2.12",

@@ -1,5 +1,5 @@
-import { Addon, Graph } from "@antv/x6"
-import React, { useCallback, useEffect } from "react"
+import { Graph } from "@antv/x6"
+import React, { useCallback } from "react"
 import { memo } from "react"
 import { ClassMeta } from "../meta/ClassMeta"
 import TreeNodeLabel from "common/TreeNodeLabel"
@@ -7,13 +7,13 @@ import { PRIMARY_COLOR } from "consts";
 import { NODE_INIT_SIZE } from "../GraphCanvas/nodeInitSize";
 import { ClassView } from "../GraphCanvas/ClassView";
 import { useRecoilValue } from 'recoil';
-import { selectedElementState, classesState } from './../recoil/atoms';
+import { selectedElementState } from './../recoil/atoms';
 import { Button } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
 import { useDeleteClass } from "../hooks/useDeleteClass"
 import { useEdittingAppId } from "designer/hooks/useEdittingAppUuid"
+import { useDnd } from "../GraphCanvas/useDnd"
 
-const { Dnd } = Addon;
 
 const ClassLabel = memo((
   props: {
@@ -22,22 +22,22 @@ const ClassLabel = memo((
   }
 ) => {
   const { cls, graph } = props;
-  const [dnd, setDnd] = React.useState<any>();
+  const dnd = useDnd(graph)
   const appId = useEdittingAppId();
-  const classes = useRecoilValue(classesState(appId));
+  //const classes = useRecoilValue(classesState(appId));
   const selectedElement = useRecoilValue(selectedElementState(appId));
   const deleteClass = useDeleteClass(appId);
 
-  useEffect(() => {
-    const theDnd = graph
-      ? new Dnd({
-        target: graph,
-        scaled: false,
-        animation: true,
-      })
-      : undefined;
-    setDnd(theDnd);
-  }, [graph, classes]);
+  // useEffect(() => {
+  //   const theDnd = graph
+  //     ? new Dnd({
+  //       target: graph,
+  //       scaled: false,
+  //       animation: true,
+  //     })
+  //     : undefined;
+  //   setDnd(theDnd);
+  // }, [graph, classes]);
 
   const startDragHandle = useCallback(
     (e: React.MouseEvent<HTMLDivElement, MouseEvent>, cls: ClassMeta) => {

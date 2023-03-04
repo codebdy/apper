@@ -1,6 +1,5 @@
 import React, { memo, useCallback } from "react";
-import { Addon, Graph } from "@antv/x6";
-import { useEffect } from "react";
+import { Graph } from "@antv/x6";
 import { ClassView } from "../GraphCanvas/ClassView";
 import {
   svgInherit,
@@ -20,8 +19,8 @@ import "./index.less";
 import { PRIMARY_COLOR } from "consts";
 import { useTranslation } from "react-i18next";
 import { useEdittingAppId } from "designer/hooks/useEdittingAppUuid";
+import { useDnd } from "../GraphCanvas/useDnd";
 
-const { Dnd } = Addon;
 const { Panel } = Collapse;
 
 export const ToolItem = memo(
@@ -55,7 +54,7 @@ export const ToolItem = memo(
 
 export const Toolbox = memo((props: { graph?: Graph }) => {
   const { graph } = props;
-  const [dnd, setDnd] = React.useState<any>();
+  const dnd = useDnd(graph)
   const { t } = useTranslation();
   const appId = useEdittingAppId();
   const setSelemedElement = useSetRecoilState(selectedElementState(appId))
@@ -64,16 +63,16 @@ export const Toolbox = memo((props: { graph?: Graph }) => {
   );
   const createTempClassNodeForNew = useCreateTempClassNodeForNew(appId);
 
-  useEffect(() => {
-    const theDnd = graph
-      ? new Dnd({
-        target: graph,
-        scaled: false,
-        animation: true,
-      })
-      : undefined;
-    setDnd(theDnd);
-  }, [graph]);
+  // useEffect(() => {
+  //   const theDnd = graph
+  //     ? new Dnd({
+  //       target: graph,
+  //       scaled: false,
+  //       animation: true,
+  //     })
+  //     : undefined;
+  //   setDnd(theDnd);
+  // }, [graph]);
 
   const startDragFn = (stereoType: StereoType) => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {

@@ -1,19 +1,20 @@
+import { Options } from "@antv/x6/lib/graph/options";
 import { getGraphSize } from "./getGraphSize";
 
-export const getGraphConfig = ()=>{
+export const getGraphConfig = ():Partial<Options.Manual>=>{
   const containerDiv = document.getElementById('container')||undefined;
   containerDiv?.getBoundingClientRect()
   const graphSize = getGraphSize();
   return {
     container: containerDiv,
     interacting: true,
-    selecting: true,
-    snapline: true,
-    resizing: {
-      enabled: true,
-      minWidth: 160,
-      minHeight: 50,
-    },
+    //selecting: true,
+    //snapline: true,
+    // resizing: {
+    //   enabled: true,
+    //   minWidth: 160,
+    //   minHeight: 50,
+    // },
     //autoResize:true,
     width: graphSize.width,
     height: graphSize.height,
@@ -33,21 +34,21 @@ export const getGraphConfig = ()=>{
         },
       ],
     },
-    scroller: {
-      enabled: true,
-      pannable: true,
-      pageVisible: false,
-      pageBreak: false,
-    },
+    // scroller: {
+    //   enabled: true,
+    //   pannable: true,
+    //   pageVisible: false,
+    //   pageBreak: false,
+    // },
     mousewheel: {
       enabled: true,
       modifiers: ['ctrl', 'meta'],
     },
-    minimap: {
-      enabled: true,
-      container: document.getElementById('mini-map')||undefined,
-      width:140,
-      height:110
-    }
+    // minimap: {
+    //   enabled: true,
+    //   container: document.getElementById('mini-map')||undefined,
+    //   width:140,
+    //   height:110
+    // }
   }
 }

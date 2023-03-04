@@ -14,6 +14,7 @@ import { useTriggerSelectedEvent } from "./useTriggerSelectedEvent";
 import { useEdgeHover } from "./useEdgeHover";
 import { useTriggerPressedLineTypeEvent } from "./useTriggerPressedLineTypeEvent";
 import { useEdittingAppId } from "designer/hooks/useEdittingAppUuid";
+import { Selection } from '@antv/x6-plugin-selection'
 
 export const GraphCanvas = memo(
   (props: {
@@ -25,7 +26,14 @@ export const GraphCanvas = memo(
 
     useEffect(() => {
       const config = getGraphConfig();
-      const aGraph = new Graph(config as any);
+      const aGraph = new Graph(config);
+      aGraph.use(new Selection({
+        enabled: true,
+        multiple: false,
+        rubberband: false,
+        movable: true,
+        //showNodeSelectionBox: true,
+      }))
       onSetGraph(aGraph);
       return () => {
         aGraph?.dispose();
