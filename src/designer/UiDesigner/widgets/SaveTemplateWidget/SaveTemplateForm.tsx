@@ -1,9 +1,7 @@
 import { Form, FormInstance } from "antd"
-import React from "react"
+import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view";
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
-import ImageUploader from "plugins/inputs/components/pc/ImageUploader/view"
-import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view"
 
 export const SaveTemplateForm = memo((
   props: {
@@ -31,7 +29,7 @@ export const SaveTemplateForm = memo((
         label={t("Designer.TemplateImage")}
         name="imageUrl"
       >
-        <ImageUploader title={t("Upload")} maxCount={1} />
+        {/* <ImageUploader title={t("Upload")} maxCount={1} /> */}
       </Form.Item>
     </Form>
   )

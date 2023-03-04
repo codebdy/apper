@@ -1,7 +1,4 @@
 import { ISchema } from "@formily/react"
-import { AllSchemas } from "designable/formily-antd"
-import { FormItemSwitcher } from "designable/formily-antd/common/FormItemSwitcher"
-import { ReactionsSetter } from "designable/formily-antd/setters"
 import { createComponentSchema } from "./createVoidSchema"
 
 export const createContainerSchema = (
@@ -50,7 +47,7 @@ export const createContainerSchema = (
         },
       },
       properties: {
-        'x-component-props.style': AllSchemas.CSSStyle,
+        //'x-component-props.style': AllSchemas.CSSStyle,
       },
     },
     'decorator-style-group': {
@@ -65,7 +62,7 @@ export const createContainerSchema = (
         },
       },
       properties: {
-        'x-decorator-props.style': AllSchemas.CSSStyle,
+        //'x-decorator-props.style': AllSchemas.CSSStyle,
       },
     },
   }
@@ -130,12 +127,12 @@ export const createFieldSchema = (
           },
           'x-reactions': {
             'x-decorator': 'FormItem',
-            'x-component': ReactionsSetter,
+            //'x-component': ReactionsSetter,
           },
           'x-decorator': {
             type: 'string',
             'x-decorator': 'FormItem',
-            'x-component': FormItemSwitcher,
+            //'x-component': FormItemSwitcher,
           },
         },
       },

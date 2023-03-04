@@ -1,40 +1,28 @@
-import React, { memo, useCallback, useEffect, useMemo, useState } from 'react'
+import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import {
   createDesigner,
   Shortcut,
   KeyCode,
 } from '@designable/core'
 import {
-  NavigationWidget,
   ActionsWidget,
 } from './widgets'
-import { MaterialWidget } from './widgets/MaterialWidget'
-import PageListWidget from './page/PageListWidget'
 import { useTranslation } from 'react-i18next'
-import PageWorkSpace from './page/PageWorkSpace'
-import MenuComponentsWidget from './menu/MenuComponentsWidget'
-import MenuWorkSpace from './menu/MenuWorkSpace'
 import { MenuActionsWidget } from './menu/MenuActionsWidget'
 import { useShowError } from 'designer/hooks/useShowError'
-import { Button, Space, Spin } from 'antd'
+import { Spin } from 'antd'
 import { useSelectedPageId } from './hooks/useSelectedPageId'
 import MenuDragRoot from './menu/MenuDragRoot'
 import { useDesignerParams, useDesignerViewKey } from 'plugin-sdk/contexts/desinger'
 import { useQueryCagegories } from './hooks/useQueryCagegories'
 import { useQueryPages } from './hooks/useQueryPages'
-import { SettingOutlined } from '@ant-design/icons'
 import { useBuildMeta } from 'datasource/hooks'
 import { useSetRecoilState } from 'recoil'
 import { categoriesState, pagesState } from './recoil/atom'
-import ConfigWorkSpace from './config/ConfigWorkSpace'
 import { ConfigActionsWidget } from './config/ConfigActionsWidget'
-import { TemplateWidget } from './widgets/TemplateWidget'
 import { useQueryTemplates } from './hooks/useQueryTemplates'
 import { TemplateType } from 'model'
-import { CompositePanel as CompositePanelDesignable, Designer, OutlineTreeWidget, StudioPanel } from 'designable/react'
-import "../../designable/react/root"
 
-const CompositePanel = CompositePanelDesignable as any
 export enum DesignerRoutes {
   Templates = "Templates",
   Pages = "pages",
@@ -108,7 +96,7 @@ export const UiDesigner = memo(() => {
   return (
     <Spin style={{ height: "100vh" }} spinning={loading || pagesLoading || metaLoading || templateLoading}>
       <MenuDragRoot>
-        <Designer engine={engine}>
+        {/* <Designer engine={engine}>
           <StudioPanel logo={<NavigationWidget app={app} activeKey={activeKey as any} />}
             actions={
               <Space style={{ marginRight: 10 }}>
@@ -195,7 +183,7 @@ export const UiDesigner = memo(() => {
               <ConfigWorkSpace />
             }
           </StudioPanel>
-        </Designer >
+        </Designer > */}
       </MenuDragRoot>
     </Spin>
   )

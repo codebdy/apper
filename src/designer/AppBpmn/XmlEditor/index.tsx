@@ -1,4 +1,3 @@
-import { MonacoInput } from "designable/react-settings-form";
 import { memo } from "react"
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -36,20 +35,20 @@ export const XmlEditor = memo((
   const { value, onChange } = props;
 
   return (
-    <MonacoInput
-      className="gql-input-area"
-      options={{
-        readOnly: false,
-        lineDecorationsWidth: 0,
-        lineNumbersMinChars: 0,
-        minimap: {
-          enabled: false,
-        }
-      }}
-      language="xml"
-      value={value}
-      onChange={onChange}
-    />
-
+    // <MonacoInput
+    //   className="gql-input-area"
+    //   options={{
+    //     readOnly: false,
+    //     lineDecorationsWidth: 0,
+    //     lineNumbersMinChars: 0,
+    //     minimap: {
+    //       enabled: false,
+    //     }
+    //   }}
+    //   language="xml"
+    //   value={value}
+    //   onChange={onChange}
+    // />
+    <></>
   )
 })

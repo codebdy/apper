@@ -1,7 +1,6 @@
 
 import { memo, useState } from 'react';
 import { IMenuItem } from 'plugin-sdk/model/IMenuNode';
-import { FormItem } from "formily/antd4";
 import { useMemo } from "react";
 import { useParseLangSchema } from "../../designer/hooks/useParseLangSchema";
 import { IUser } from "enthooks/hooks/useQueryMe";
@@ -34,7 +33,6 @@ const RunnerEngine = memo(() => {
   const $me = useMemo(() => new Me(me), [me]);
   const SchemaField = useMemo(() => createSchemaField({
     components: {
-      FormItem,
       ...components
     },
   }), [components])

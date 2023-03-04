@@ -6,7 +6,6 @@ import { useShowError } from 'designer/hooks/useShowError';
 import { useQueryPageFrames } from '../../../FrameDesigner/hooks/useQueryPageFrames';
 import { useDesignerParams, useDesignerViewKey } from 'plugin-sdk/contexts/desinger';
 import { deviceConfigChangedState, deviceConfigState } from '../../recoil/atom';
-import { PageSelect } from '../../SettingsForm/components/PageSelect';
 import { useParseLangMessage } from 'plugin-sdk/hooks/useParseLangMessage';
 const { Option } = Select
 
@@ -73,7 +72,7 @@ export const BaseConfigForm = memo(() => {
         label={t("Designer.EntryPage")}
         name="entryUuid"
       >
-        <PageSelect />
+        {/* <PageSelect /> */}
       </Form.Item>
     </Form>
   );

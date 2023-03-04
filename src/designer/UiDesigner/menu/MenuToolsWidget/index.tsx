@@ -1,9 +1,5 @@
 import React, { memo, useCallback } from 'react'
 import { Button } from 'antd'
-import {
-  usePrefix,
-  IconWidget,
-} from "designable/react"
 import cls from 'classnames'
 import './styles.less'
 import { useDesignerViewKey } from 'plugin-sdk/contexts/desinger'
@@ -28,7 +24,6 @@ export const MenuToolsWidget: React.FC<IMenuToolsWidgetProps> =
     const selectedId = useRecoilValue(
       navigationSelectedIdState(key)
     );
-    const prefix = usePrefix('menu-tools')
 
     const handleUndo = useCallback(() => {
       undo();
@@ -43,21 +38,21 @@ export const MenuToolsWidget: React.FC<IMenuToolsWidgetProps> =
     }, [remove, selectedId]);
 
     return (
-      <div style={props.style} className={cls(prefix, props.className)}>
+      <div style={props.style} className={cls(props.className)}>
         <Button.Group size="small" style={{ marginRight: 20 }}>
           <Button
             size="small"
             disabled={undoDisabled}
             onClick={handleUndo}
           >
-            <IconWidget infer="Undo" />
+            {/* <IconWidget infer="Undo" /> */}
           </Button>
           <Button
             size="small"
             disabled={redoDisabled}
             onClick={handleRedo}
           >
-            <IconWidget infer="Redo" />
+            {/* <IconWidget infer="Redo" /> */}
           </Button>
         </Button.Group>
         <Button.Group size="small" style={{ marginRight: 20 }}>
@@ -66,7 +61,7 @@ export const MenuToolsWidget: React.FC<IMenuToolsWidgetProps> =
             disabled={!selectedId}
             onClick={handleRemove}
           >
-            <IconWidget infer="Remove" />
+            {/* <IconWidget infer="Remove" /> */}
           </Button>
         </Button.Group>
       </div>

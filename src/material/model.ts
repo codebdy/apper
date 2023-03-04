@@ -1,10 +1,9 @@
-import { DnFC, DnComponent } from "designable/react"
 import React from "react";
 
 export interface Material {
   name: string;
-  designer: DnFC<any> | DnComponent<any>;
-  component: React.FC<any> | React.Component;
+  designer: any;
+  component: any;
 }
 
 export interface MaterialGroup {  

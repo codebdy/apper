@@ -1,4 +1,4 @@
-import { Form, message, Modal, Select } from "antd";
+import { Form, Input, message, Modal, Select } from "antd";
 import { memo, useCallback, useRef, useState } from "react"
 import { useTranslation } from "react-i18next";
 import { useEdittingAppId } from "designer/hooks/useEdittingAppUuid";
@@ -8,10 +8,8 @@ import { useDesignerParams, useParseLangMessage } from "plugin-sdk";
 import { useExportApp } from "enthooks/hooks/useExportApp";
 import { ID } from "shared";
 import { useSave } from "designer/UiDesigner/widgets/TemplateWidget/ExportDialog/useSave";
-import { Input } from "formily/antd4";
 const { Option } = Select;
 
-const TextArea = Input.TextArea as any
 
 export const ExportDialog = memo((
   props: {
@@ -122,7 +120,7 @@ export const ExportDialog = memo((
           label={t("Description")}
           name="description"
         >
-          <TextArea readOnly />
+          <Input.TextArea readOnly />
         </Form.Item>
       </Form>
     </Modal>

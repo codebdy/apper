@@ -1,27 +1,20 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Spin } from "antd";
-import { ComponentTreeWidget, DesignerToolsWidget, SettingsPanel, ToolbarPanel, useDesigner, ViewPanel, ViewportPanel, ViewToolsWidget, Workspace, WorkspacePanel } from 'designable/react'
 import { useShowError } from "designer/hooks/useShowError";
 import { ID } from "shared";
-import { useMaterialDesigners } from "material/hooks/useMaterialDesigners";
 import { useLazyQueryPageFrame } from "../hooks/useLazyQueryPageFrame";
-import { FormDesigner } from "components/pc/FormDesigner";
 import { SaveTemplateWidget } from "designer/UiDesigner/widgets/SaveTemplateWidget";
 import { TemplateType } from "model";
-import { transformToTreeNode } from "designable/formily-antd/transformer"
-import { Field, ObjectContainer } from "designable/formily-antd";
-import { SettingsForm } from "designable/react-settings-form";
-import { PreviewWidget } from "designable/react/widgets/PreviewWidget";
-import { SchemaEditorWidget } from "designable/react/widgets/SchemaEditorWidget";
+
 
 export const FrameWorkSpace = (props: {
   frameId: ID
 }) => {
   const { frameId } = props;
-  const designer = useDesigner();
+
   const [query, { pageFrame, loading, error }] = useLazyQueryPageFrame();
-  const materailDesigners = useMaterialDesigners();
+
 
   useEffect(() => {
     query(frameId)
@@ -30,10 +23,10 @@ export const FrameWorkSpace = (props: {
   const { t } = useTranslation();
 
   useEffect(() => {
-    designer.setCurrentTree(
-      transformToTreeNode(pageFrame?.schemaJson || {})
-    )
-  }, [designer, pageFrame?.schemaJson])
+    // designer.setCurrentTree(
+    //   transformToTreeNode(pageFrame?.schemaJson || {})
+    // )
+  }, [pageFrame?.schemaJson])
 
   useShowError(error);
 
@@ -45,44 +38,7 @@ export const FrameWorkSpace = (props: {
       </Spin>
       :
       <>
-        <Workspace id="form">
-          <WorkspacePanel>
-            <ToolbarPanel>
-              <DesignerToolsWidget />
-              <div>
-                <SaveTemplateWidget templateType={TemplateType.Frame} />
-                <ViewToolsWidget
-                  use={['DESIGNABLE', 'JSONTREE', 'PREVIEW']}
-                />
-              </div>
-            </ToolbarPanel>
-            <ViewportPanel style={{ height: '100%' }}>
-              <ViewPanel type="DESIGNABLE">
-                {() => (
-                  <ComponentTreeWidget
-                    components={{
-                      Form: FormDesigner,
-                      Field,
-                      ObjectContainer,
-                      ...materailDesigners,
-                    }}
-                  />
-                )}
-              </ViewPanel>
-              <ViewPanel type="JSONTREE" scrollable={false}>
-                {(tree:any, onChange:any) => (
-                  <SchemaEditorWidget tree={tree} onChange={onChange} />
-                )}
-              </ViewPanel>
-              <ViewPanel type="PREVIEW">
-                {(tree:any) => <PreviewWidget tree={tree} />}
-              </ViewPanel>
-            </ViewportPanel>
-          </WorkspacePanel>
-        </Workspace>
-        <SettingsPanel title={t("Panels.PropertySettings")}>
-          <SettingsForm uploadAction="#" />
-        </SettingsPanel>
+        FrameWorkSpace
       </>
   )
 }

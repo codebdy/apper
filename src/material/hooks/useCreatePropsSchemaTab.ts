@@ -1,11 +1,8 @@
 import { useCallback } from "react"
-import { IPropsSchema } from "@rxdrag/appx-plugin-sdk"
-import { ISchema } from '@formily/json-schema'
-import { AllSchemas } from "designable/formily-antd"
 
 export const createComponentSchemaTab = (
-  component: ISchema,
-  decorator: ISchema
+  component: any,
+  decorator: any
 ) => {
   return {
     'component-tab': {
@@ -43,11 +40,11 @@ export const createComponentSchemaTab = (
 }
 
 export function useCreatePropsSchemaTab() {
-  const create = useCallback((propsSchema?: IPropsSchema) => {
+  const create = useCallback((propsSchema?: any/*IPropsSchema*/) => {
     if (!propsSchema?.props || Object.keys(propsSchema.props).length === 0) {
       return {}
     }
-    return createComponentSchemaTab(propsSchema.props as any, propsSchema.decorator === true && AllSchemas.FormItem as any)
+    return createComponentSchemaTab(propsSchema.props as any, propsSchema.decorator === true /*&& AllSchemas.FormItem*/ as any)
   }, [])
 
   return create

@@ -9,7 +9,6 @@ import { navigationSelectedIdState } from "../atoms";
 import { useDesignerViewKey } from "plugin-sdk/contexts/desinger";
 import MenuSettingsForm from "./MenuSettingsForm";
 import { Empty } from "antd";
-import { SettingsPanel, ToolbarPanel, ViewportPanel, WorkspacePanel } from "designable/react";
 
 const MenuWorkSpace = memo((
   props: {
@@ -29,19 +28,8 @@ const MenuWorkSpace = memo((
 
   return (
     <>
-      <WorkspacePanel>
-        <ToolbarPanel>
-          <MenuToolsWidget />
-        </ToolbarPanel>
-        <ViewportPanel style={{ height: '100%' }}>
-          <div className="menu-design-view-container"
-            onClick={handleClick}
-          >
-            <MenuDesignView app={app} />
-          </div>
-        </ViewportPanel>
-      </WorkspacePanel>
-      <SettingsPanel title={t("Panels.PropertySettings")}>
+      <MenuDesignView app={app} />
+      {/* <SettingsPanel title={t("Panels.PropertySettings")}>
         {
           selectedId
             ?
@@ -49,7 +37,7 @@ const MenuWorkSpace = memo((
             :
             <Empty />
         }
-      </SettingsPanel>
+      </SettingsPanel> */}
     </>
   )
 })

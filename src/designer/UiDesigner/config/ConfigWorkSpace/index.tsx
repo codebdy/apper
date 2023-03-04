@@ -2,7 +2,6 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { Collapse } from "antd";
 import { BaseConfigForm } from "./BaseConfigForm";
-import { ViewportPanel, WorkspacePanel } from "designable/react";
 const { Panel } = Collapse;
 
 const MenuWorkSpace = memo(() => {
@@ -11,26 +10,23 @@ const MenuWorkSpace = memo(() => {
 
   return (
     <>
-      <WorkspacePanel>
-        <ViewportPanel style={{ height: '100%' }}>
-          <div
-            style={{ display: "flex", justifyContent: "center" }}
-          >
-            <div
-              style={{
-                width: 800,
-                marginTop: 16,
-              }}
-            >
-              <Collapse defaultActiveKey={['base']}>
-                <Panel header={t("Designer.BaseConfig")} key="base">
-                  <BaseConfigForm />
-                </Panel>
-              </Collapse>
-            </div>
-          </div>
-        </ViewportPanel>
-      </WorkspacePanel>
+      <div
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        <div
+          style={{
+            width: 800,
+            marginTop: 16,
+          }}
+        >
+          <Collapse defaultActiveKey={['base']}>
+            <Panel header={t("Designer.BaseConfig")} key="base">
+              <BaseConfigForm />
+            </Panel>
+          </Collapse>
+        </div>
+      </div>
+
     </>
   )
 })

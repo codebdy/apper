@@ -1,6 +1,5 @@
 import { PlayCircleOutlined } from "@ant-design/icons";
 import { Button, Modal, Space } from "antd"
-import { MonacoInput } from "designable/react-settings-form";
 import { useCallback, useState } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
@@ -63,7 +62,7 @@ export const ScriptInput = memo((
         }
       >
         <div className="input-modal-body">
-          <MonacoInput
+          {/* <MonacoInput
             className="script-input-area"
             options={{
               readOnly: false,
@@ -78,7 +77,7 @@ export const ScriptInput = memo((
             helpLink=""
             value={value}
             onChange={handleChange}
-          />
+          /> */}
         </div>
       </Modal>
     </>

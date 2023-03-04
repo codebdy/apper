@@ -33,25 +33,25 @@ export function useLoadPredefinedPlugins() {
   const [frameworkPlugins, setFrameworkPlugins] = useState<IPlugin[]>();
   const { t } = useTranslation();
 
-  useEffect(() => {
-    console.log("加载预定义插件")
-    loadList([
-      () => import("plugins/inputs/index"),
-      () => import("plugins/layouts/index"),
-      () => import("plugins/arrays/index"),
-      () => import("plugins/displays/index"),
-      () => import("plugins/actions/index"),
-      () => import("plugins/processes/index"),
-    ]).then((basicPlugs) => {
-      setBasicPlugins(basicPlugs);
-      loadList([
-        () => import("plugins/framelayouts/index"),
-        () => import("plugins/framewidgets/index"),
-      ]).then((framePlugins) => {
-        setFrameworkPlugins(framePlugins)
-      })
-    })
-  }, [t])
+  // useEffect(() => {
+  //   console.log("加载预定义插件")
+  //   loadList([
+  //     () => import("plugins/inputs/index"),
+  //     () => import("plugins/layouts/index"),
+  //     () => import("plugins/arrays/index"),
+  //     () => import("plugins/displays/index"),
+  //     () => import("plugins/actions/index"),
+  //     () => import("plugins/processes/index"),
+  //   ]).then((basicPlugs) => {
+  //     setBasicPlugins(basicPlugs);
+  //     loadList([
+  //       () => import("plugins/framelayouts/index"),
+  //       () => import("plugins/framewidgets/index"),
+  //     ]).then((framePlugins) => {
+  //       setFrameworkPlugins(framePlugins)
+  //     })
+  //   })
+  // }, [t])
 
   const predefinedPlugins: IPredefinedPlugins = useMemo(() => ({
     basicPlugins,

@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react'
 import { Button, message } from 'antd'
-import { TextWidget } from 'designable/react'
 import { observer } from '@formily/react'
 import { useShowError } from 'designer/hooks/useShowError'
 import { useTranslation } from 'react-i18next'
@@ -47,7 +46,7 @@ export const ConfigActionsWidget = observer(() => {
       disabled={!changed}
       onClick={handleSave}
     >
-      <TextWidget>Save</TextWidget>
+      Save
     </Button>
   )
 })

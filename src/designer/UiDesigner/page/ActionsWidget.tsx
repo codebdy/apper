@@ -1,15 +1,12 @@
 import React, { useCallback } from 'react'
 import { Button, message } from 'antd'
-import { useDesigner, TextWidget } from 'designable/react'
 import { observer } from '@formily/react'
 import { useUpdatePage } from 'designer/hooks/useUpdatePage'
 import { useSelectedPageId } from '../hooks/useSelectedPageId'
 import { useShowError } from 'designer/hooks/useShowError'
 import { useTranslation } from 'react-i18next'
-import { transformToSchema } from 'designable/formily-antd/transformer'
 
 export const ActionsWidget = observer(() => {
-  const designer = useDesigner();
   const pageId = useSelectedPageId();
   const { t } = useTranslation();
   const [update, { loading, error }] = useUpdatePage({
@@ -21,8 +18,8 @@ export const ActionsWidget = observer(() => {
   useShowError(error);
 
   const handleSave = useCallback(() => {
-    update({ id: pageId, schemaJson: transformToSchema(designer.getCurrentTree()) });
-  }, [designer, pageId, update])
+    // update({ id: pageId, schemaJson: transformToSchema(designer.getCurrentTree()) });
+  }, [])
 
   return (
     <Button
@@ -31,7 +28,7 @@ export const ActionsWidget = observer(() => {
       loading={loading}
       onClick={handleSave}
     >
-      <TextWidget>Save</TextWidget>
+      Save
     </Button>
   )
 })

@@ -1,28 +1,10 @@
-import React, { memo, useCallback, useMemo } from "react"
-import * as ICONS from '@ant-design/icons'
-import { createForm } from "@formily/core";
-import { createSchemaField } from '@formily/react'
+import { memo, useCallback, useMemo } from "react"
 import { useChangePassword } from "enthooks/hooks/useChangePassword";
-import { Form, FormButtonGroup, FormItem, Password, Submit } from "formily/antd4";
 import { useShowError } from "designer/hooks/useShowError";
-import { Button, message } from "antd";
+import { Button, Form, Input, message } from "antd";
 import { useSetToken } from "enthooks";
 import { DESIGNER_TOKEN_NAME } from "consts";
 import { useTranslation } from "react-i18next";
-
-const SchemaField = createSchemaField({
-  components: {
-    FormItem,
-    Password,
-  },
-  scope: {
-    icon(name: string | number) {
-      return React.createElement((ICONS as any)[name])
-    },
-  },
-})
-
-
 
 const ChangePasswordForm = memo((
   props: {
@@ -48,13 +30,7 @@ const ChangePasswordForm = memo((
 
   useShowError(error)
 
-  const form = useMemo(
-    () =>
-      createForm({
-        values: {},
-      }),
-    []
-  )
+  const [form] = Form.useForm()
 
   const handleSubmit = useCallback((values: { oldPassword: string, newPassword: string }) => {
     const { oldPassword, newPassword } = values;
@@ -65,78 +41,38 @@ const ChangePasswordForm = memo((
     })
   }, [change, loginName])
   const confirmMessage = useMemo(() => t("PasswordDisaccord"), [t]);
-  const schema = useMemo(() => ({
-    type: 'object',
-    properties: {
-      oldPassword: {
-        type: 'string',
-        title: t("OldPassword"),
-        required: true,
-        'x-decorator': 'FormItem',
-        'x-component': 'Password',
-        'x-component-props': {
-          prefix: "{{icon('LockOutlined')}}",
-        },
-      },
-      newPassword: {
-        type: 'string',
-        title: t("NewPassword"),
-        required: true,
-        'x-decorator': 'FormItem',
-        'x-component': 'Password',
-        'x-component-props': {
-          checkStrength: true,
-        },
-        'x-reactions': [
-          {
-            dependencies: ['.confirmPassword'],
-            fulfill: {
-              state: {
-                selfErrors:
-                  `{{$deps[0] && $self.value && $self.value !== $deps[0] ? "${confirmMessage}" : ""}}`,
-              },
-            },
-          },
-        ],
-      },
-      confirmPassword: {
-        type: 'string',
-        title: t("ConfirmPassword"),
-        required: true,
-        'x-decorator': 'FormItem',
-        'x-component': 'Password',
-        'x-component-props': {
-          checkStrength: true,
-        },
-        'x-reactions': [
-          {
-            dependencies: ['.newPassword'],
-            fulfill: {
-              state: {
-                selfErrors:
-                  `{{$deps[0] && $self.value && $self.value !== $deps[0] ? "${confirmMessage}" : ""}}`,
-              },
-            },
-          },
-        ],
-      },
-    },
-  }), [confirmMessage, t])
 
   return (
     <Form
       form={form}
-      labelCol={6}
-      wrapperCol={16}
       size="large"
-      onAutoSubmit={handleSubmit}
     >
-      <SchemaField schema={schema} />
-      <FormButtonGroup.FormItem>
-        <Button size= "large" loading={loading}>
+      <Form.Item
+        label={t("OldPassword")}
+        name={"oldPassword"}
+        rules={[{ required: true, message: 'Please input your password!' }]}
+      >
+        <Input.Password />
+      </Form.Item>
+      <Form.Item
+        label={t("NewPassword")}
+        name="newPassword"
+        rules={[{ required: true, message: 'Please input your password!' }]}
+      >
+        <Input.Password />
+      </Form.Item>
+      <Form.Item
+        label={t("ConfirmPassword")}
+        name="confirmPassword"
+        rules={[{ required: true, message: 'Please input your password!' }]}
+      >
+        <Input.Password />
+      </Form.Item>
+      <Form.Item>
+        <Button size="large" loading={loading}>
           {t("ConfirmChange")}
         </Button>
-      </FormButtonGroup.FormItem>
+      </Form.Item>
     </Form>
   )
 })

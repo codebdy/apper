@@ -1,11 +1,10 @@
 
-import { useCurrentNode } from 'designable/react';
 import { TreeNode } from '@designable/core';
 import { useCallback, useMemo } from 'react';
 import { useGetEntity } from './useGetEntity';
 
 export function useCurrentEntity() {
-  const currentNode = useCurrentNode();
+ // const currentNode = useCurrentNode();
   const getEntity = useGetEntity();
   const getRecentDataSourceUuid = useCallback((node?: TreeNode): any => {
     const fieldSource = node?.parent?.props?.["x-field-source"];
@@ -21,9 +20,9 @@ export function useCurrentEntity() {
   }, [])
 
   const entity = useMemo(() => {
-    const entityUuid = getRecentDataSourceUuid(currentNode);
-    return getEntity(entityUuid);
-  }, [currentNode, getEntity, getRecentDataSourceUuid])
+    //const entityUuid = getRecentDataSourceUuid(currentNode);
+    return getEntity('entityUuid');
+  }, [getEntity])
 
   return entity;
 }

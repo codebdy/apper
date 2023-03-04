@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { IBehavior, IMaterialComponent } from "@rxdrag/appx-plugin-sdk";
-import { DnFC,DnComponent } from "designable/react"
+//import { DnFC,DnComponent } from "designable/react"
 import { createBehavior, createResource } from '@designable/core'
 import { Material } from "../model";
 
@@ -22,7 +22,7 @@ export function useConvertMaterialFromPlugin() {
   const transComponment = useCallback((material: IMaterialComponent): Material => {
     const Resource = createResource(...(material.resources || []))
 
-    const dnfc: DnFC<any> | DnComponent<any> = material.designer;
+    const dnfc: any = material.designer;
 
     if (material.behaviors) {
       const Behavior = createBehavior(...(convertBehaviors(material.behaviors) as any))

@@ -1,4 +1,3 @@
-import { MonacoInput } from "designable/react-settings-form";
 import React, { useCallback } from "react";
 import { memo } from "react"
 
@@ -17,7 +16,7 @@ export const CodeInput = memo((
   }, [onChange, value])
   return (
     <div style={{ height: "100%" }}>
-      <MonacoInput
+      {/* <MonacoInput
         className="gql-input-area"
         options={{
           readOnly: false,
@@ -31,7 +30,7 @@ export const CodeInput = memo((
         theme="dark"
         value={value}
         onChange={handleChange}
-      />
+      /> */}
     </div>
   )
 })

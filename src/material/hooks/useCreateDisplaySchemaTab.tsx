@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 import { DataBindSourceType, FieldsType, IDisplayTabOptions, IPropsSchema } from "@rxdrag/appx-plugin-sdk";
-import { ValidatorSetter, ReactionsSetter } from "designable/formily-antd/setters";
 
 export const createDisplaySchemaTab = (options?: IDisplayTabOptions) => {
   const { dataBindSourceType, fieldSourceType, hasPropTitle } = options || {}
@@ -84,7 +83,7 @@ export const createDisplaySchemaTab = (options?: IDisplayTabOptions) => {
       },
       'x-validator': {
         type: 'array',
-        'x-component': ValidatorSetter,
+        //'x-component': ValidatorSetter,
       },
       required: {
         type: 'boolean',
@@ -187,7 +186,7 @@ export const createDisplaySchemaTab = (options?: IDisplayTabOptions) => {
             },
             'x-reactions': {
               'x-decorator': 'FormItem',
-              'x-component': ReactionsSetter,
+              //'x-component': ReactionsSetter,
             },
             ...dataFieids
           }

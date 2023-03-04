@@ -10,7 +10,6 @@ import { useDesignerViewKey } from 'plugin-sdk/contexts/desinger';
 import { MenuItemType } from 'plugin-sdk/model/IMenuNode';
 import { useGetPage } from '../../../hooks/useGetPage';
 import { MultiLangInput } from 'plugins/inputs/components/pc/MultiLangInput/view';
-import { PageSelect } from '../../../SettingsForm/components/PageSelect';
 
 const { Option } = Select;
 
@@ -108,7 +107,7 @@ const MenuSettingsForm = memo((
               label={t("Menu.Page")}
               name="route.pageUuid"
             >
-              <PageSelect />
+              {/* <PageSelect /> */}
             </Form.Item>
             <Form.Item
               label={t("Menu.RouteParams")}

@@ -1,5 +1,4 @@
 import { Modal } from "antd"
-import { MonacoInput } from "designable/react-settings-form";
 import React, { useCallback, useEffect, useState } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
@@ -51,7 +50,7 @@ export const ExpressionModal = memo((
       }}
     >
       <div className="input-modal-body">
-        <MonacoInput
+        {/* <MonacoInput
           className="expression-input-area"
           options={{
             readOnly: false,
@@ -64,7 +63,7 @@ export const ExpressionModal = memo((
           language="json"
           value={expression}
           onChange={handleChange}
-        />
+        /> */}
       </div>
     </Modal>
   )

@@ -1,10 +1,7 @@
-import { observer } from "@formily/reactive-react"
-import { Input, message } from "antd"
-import React, { useCallback, useMemo } from "react"
+import { Input } from "antd"
+import React, { memo, useCallback, useMemo } from "react"
 import { useFieldSchema } from "@formily/react"
-import { IFieldSource } from "datasource/model/IFieldSource"
-import { isArr } from "@formily/shared"
-import { useDoActions } from "shared/action"
+
 import { IAppxAction } from "plugin-sdk/model/action"
 
 export interface ISearchText {
@@ -22,15 +19,15 @@ export interface IComponentProps {
   onSearch?: IAppxAction[],
 }
 
-const Component = observer((props: IComponentProps) => {
+const Component = memo((props: IComponentProps) => {
   const { searchStyle, isFuzzy, value, onChange, onSearch, ...other } = props;
-  const doActions = useDoActions();
+  //const doActions = useDoActions();
   const fieldSchema = useFieldSchema();
   const fields = useMemo(() => {
     const fieldSource = fieldSchema?.["x-field-source"];
-    return isArr(fieldSource)
-      ? (fieldSource as IFieldSource[]).map(subField => subField.name)
-      : ((fieldSource as IFieldSource)?.name && [(fieldSource as IFieldSource).name])
+    // return isArr(fieldSource)
+    //   ? (fieldSource as IFieldSource[]).map(subField => subField.name)
+    //   : ((fieldSource as IFieldSource)?.name && [(fieldSource as IFieldSource).name])
   }, [fieldSchema])
 
   const handleChange = useCallback((event?: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,31 +39,31 @@ const Component = observer((props: IComponentProps) => {
     })
   }, [fields, isFuzzy, onChange]);
 
-  const handleSearch =  useCallback(() => {
-    return doActions(onSearch)
-      .then(() => {
-      })
-      .catch((error) => {
-        message.error(error?.message)
-        console.error(error)
-      })
-  }, [doActions, onSearch])
+  // const handleSearch =  useCallback(() => {
+  //   return doActions(onSearch)
+  //     .then(() => {
+  //     })
+  //     .catch((error) => {
+  //       message.error(error?.message)
+  //       console.error(error)
+  //     })
+  // }, [doActions, onSearch])
 
-  const handleKeyEnter = useCallback((event: React.KeyboardEvent<HTMLElement>) => {
-    if (event.key !== "Enter") {
-      return;
-    }
-    if (!onSearch) {
-      return;
-    }
-    handleSearch();
-  }, [handleSearch, onSearch])
+  // const handleKeyEnter = useCallback((event: React.KeyboardEvent<HTMLElement>) => {
+  //   if (event.key !== "Enter") {
+  //     return;
+  //   }
+  //   if (!onSearch) {
+  //     return;
+  //   }
+  //   handleSearch();
+  // }, [handleSearch, onSearch])
   return (
     searchStyle
       ?
-      <Input.Search value={value?.keyword} onChange={handleChange} onSearch = {handleSearch}  {...other} />
+      <Input.Search value={value?.keyword} onChange={handleChange}  {...other} />
       :
-      <Input value={value?.keyword} onChange={handleChange} onKeyUp={handleKeyEnter} {...other} />
+      <Input value={value?.keyword} onChange={handleChange} {...other} />
   )
 })
 

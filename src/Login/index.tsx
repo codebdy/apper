@@ -1,81 +1,17 @@
-import React, { useCallback, useRef } from "react"
-import { useMemo } from "react"
-import { createForm } from '@formily/core'
-import { createSchemaField } from '@formily/react'
-import { Checkbox, Form, FormItem, Input, Password, Submit } from 'formily/antd4'
-import { Card, message } from 'antd'
-import * as ICONS from '@ant-design/icons'
-import { observer } from "@formily/reactive-react"
+import React, { memo, useCallback, useRef } from "react"
+import { Button, Card, Checkbox, Form, Input, message } from 'antd'
 import { useLogin, useSetToken } from "../enthooks"
 import { INDEX_URL, DESIGNER_TOKEN_NAME } from "../consts"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 
-const SchemaField = createSchemaField({
-  components: {
-    FormItem,
-    Input,
-    Password,
-    Checkbox
-  },
-  scope: {
-    icon(name: string | number) {
-      return React.createElement((ICONS as any)[name])
-    },
-  },
-})
-
-const Login = observer(() => {
+const Login = memo(() => {
   const rememberMeRef = useRef(true);
   const setToken = useSetToken();
   const navigate = useNavigate()
   const { t } = useTranslation();
-  const schema = useMemo(() => ({
-    type: 'object',
-    properties: {
-      loginName: {
-        type: 'string',
-        title: t("UserName"),
-        required: true,
-        'x-decorator': 'FormItem',
-        'x-component': 'Input',
-        'x-component-props': {
-          prefix: "{{icon('UserOutlined')}}",
-        },
-      },
-      password: {
-        type: 'string',
-        title: t("Password"),
-        required: true,
-        'x-decorator': 'FormItem',
-        'x-component': 'Password',
-        'x-component-props': {
-          prefix: "{{icon('LockOutlined')}}",
-        },
-      },
-      rememberMe: {
-        type: 'string',
-        'x-decorator': 'FormItem',
-        'x-component': 'Checkbox',
-        "x-component-props": {
-          children: t("RememberMe"),
-        }
-      }
-    },
-  }), [t])
 
-  const form = useMemo(
-    () =>
-      createForm({
-        values: {
-          loginName: "admin",
-          password: "123456",
-          rememberMe: false,
-        },
-      }),
-    []
-  )
-
+  const [form] = Form.useForm()
   const [login, { loading }] = useLogin({
     onCompleted(atoken: string) {
       if (atoken) {
@@ -125,12 +61,30 @@ const Login = observer(() => {
           form={form}
           layout="vertical"
           size="large"
-          onAutoSubmit={handleLogin}
         >
-          <SchemaField schema={schema} />
-          <Submit block size="large" loading={loading}>
-            {t("Login")}
-          </Submit>
+          <Form.Item
+            label={t("UserName")}
+            name="loginName"
+            rules={[{ required: true, message: 'Please input your username!' }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label={t("Password")}
+            name="password"
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input.Password />
+          </Form.Item>
+          <Form.Item name="rememberMe" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
+            <Checkbox>{t("RememberMe")}</Checkbox>
+          </Form.Item>
+          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+            <Button type="primary" htmlType="submit">
+              {t("login")}
+            </Button>
+          </Form.Item>
         </Form>
       </Card>
     </div>
