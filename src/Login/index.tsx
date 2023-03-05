@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef } from "react"
+import { memo, useCallback, useRef } from "react"
 import { Button, Card, Checkbox, Form, Input, message } from 'antd'
 import { useLogin, useSetToken } from "../enthooks"
 import { INDEX_URL, DESIGNER_TOKEN_NAME } from "../consts"
@@ -34,14 +34,15 @@ const Login = memo(() => {
     },
   });
 
-  const handleLogin = useCallback((values: {
-    loginName: string;
-    password: string;
-    rememberMe: boolean;
-  }) => {
+  const onFinish = useCallback((values: any) => {
     rememberMeRef.current = values.rememberMe;
     login(values)
   }, [login]);
+
+  const onFinishFailed = useCallback((errorInfo: any) => {
+    message.error(errorInfo)
+  }, []);
+
 
   return (
     <div style={{
@@ -55,14 +56,20 @@ const Login = memo(() => {
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
     }}>
-      <Card style={{ width: 400 }}>
-        <h3>{t("Login")}</h3>
+      <Card style={{ width: 400 }} title={<span style={{ fontSize: 20 }}>{'APPER'}</span>}>
         <Form
           form={form}
           size="large"
           labelCol={{ span: 6 }}
           labelAlign="left"
           wrapperCol={{ span: 16 }}
+          initialValues={{
+            loginName: "admin",
+            password: "123456",
+            rememberMe: true,
+          }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
         >
           <Form.Item
             label={t("UserName")}
@@ -81,7 +88,7 @@ const Login = memo(() => {
             <Checkbox>{t("RememberMe")}</Checkbox>
           </Form.Item>
           <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
-            <Button type="primary" htmlType="submit">
+            <Button loading={loading} type="primary" htmlType="submit">
               {t("Login")}
             </Button>
           </Form.Item>
