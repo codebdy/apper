@@ -15,6 +15,12 @@ export function useNodeSelect(graph: Graph | undefined, appId: ID) {
   useEffect(() => {
     if (selectedElement) {
       graph?.cleanSelection();
+
+      console.log("哈哈哈 transform", graph?.getPlugin('transform'));
+      (graph?.getPlugin('transform') as any)?.onBlankMouseDown();
+      const node = graph?.getNodes().find(nd => nd.id === selectedElement);
+      node && (graph?.getPlugin('transform') as any)?.onNodeClick({ node: node })
+
       graph?.select(graph?.getCellById(selectedElement));
     }
   }, [graph, selectedElement]);
