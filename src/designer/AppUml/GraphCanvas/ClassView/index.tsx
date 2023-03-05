@@ -28,29 +28,25 @@ import ClassActions from "./ClassActions";
 import PlugIcon from "icons/PlugIcon";
 import { useParseLangMessage } from "plugin-sdk";
 import { CLASS_BACKGROUND_COLOR } from "../../consts";
+import { Node } from "@antv/x6"
+
+export enum ClassEvent {
+  attributeSelect = "class:attribute-select",
+  attributeDelete = "class:attribute-delete",
+  attributeCreate = "class:attribute-create",
+  methodSelect = "class:method-select",
+  methodDelete = "class:method-delete",
+  methodCreate = "class:method-create",
+  hide = "class:hide",
+  delete = "class:delete",
+}
 
 export const ClassView = memo(
   (props: {
-    onAttributeSelect?: (attrId: string) => void;
-    onAttributeDelete?: (clsId: string, attrId: string) => void;
-    onAttributeCreate?: (clsId: string) => void;
-    onMethodSelect?: (methodId: string) => void;
-    onMethodDelete?: (clsId: string, methodId: string) => void;
-    onMethodCreate?: (clsId: string) => void;
-    onHide?: (clsId: string) => void;
-    onDelete?: (uuid: string) => void;
-    node?: any;
+    node: Node;
   }) => {
     const {
       node,
-      onAttributeSelect,
-      onAttributeDelete,
-      onAttributeCreate,
-      onMethodSelect,
-      onMethodDelete,
-      onMethodCreate,
-      onDelete,
-      onHide,
     } = props;
     const [hover, setHover] = useState(false);
     const [showLinkTo, setShowLinkTo] = React.useState(false);
@@ -127,43 +123,43 @@ export const ClassView = memo(
     const disableHover = useMemo(() => !!pressedLineType, [pressedLineType]);
 
     const handleHidden = useCallback(() => {
-      onHide && onHide(node.id);
-    }, [node.id, onHide]);
+      node.trigger(ClassEvent.hide, { classId: node.id })
+    }, [node]);
 
     const handleAttributeClick = useCallback(
       (id: string) => {
-        onAttributeSelect && onAttributeSelect(id);
+        node.trigger(ClassEvent.attributeSelect, { classId: id, attrId: id })
       },
-      [onAttributeSelect]
+      [node]
     );
 
     const handleAttributeDelete = useCallback(
       (id: string) => {
-        onAttributeDelete && onAttributeDelete(node.id, id);
+        node.trigger(ClassEvent.attributeDelete, { classId: node.id, attrId: id })
       },
-      [node.id, onAttributeDelete]
+      [node]
     );
 
     const handleAttributeCreate = useCallback(() => {
-      onAttributeCreate && onAttributeCreate(node.id);
-    }, [node.id, onAttributeCreate]);
+      node.trigger(ClassEvent.attributeCreate, { classId: node.id })
+    }, [node]);
 
     const handleMethodClick = useCallback(
       (id: string) => {
-        onMethodSelect && onMethodSelect(id);
+        node.trigger(ClassEvent.methodSelect, { classId: node.id, attrId: id })
       },
-      [onMethodSelect]
+      [node]
     );
 
     const handleMethodDelete = useCallback(
       (id: string) => {
-        onMethodDelete && onMethodDelete(node.id, id);
+        node.trigger(ClassEvent.methodDelete, { classId: node.id, attrId: id })
       },
-      [node.id, onMethodDelete]
+      [node]
     );
     const handleMethodCreate = useCallback(() => {
-      onMethodCreate && onMethodCreate(node.id);
-    }, [node.id, onMethodCreate]);
+      node.trigger(ClassEvent.methodCreate, { classId: node.id })
+    }, [node]);
 
     const handleMouseOver = useCallback(() => {
       setHover(true);
@@ -174,8 +170,8 @@ export const ClassView = memo(
     }, []);
 
     const handleDelete = useCallback(() => {
-      onDelete && onDelete(data?.uuid || "");
-    }, [data?.uuid, onDelete]);
+      node.trigger(ClassEvent.delete, { classId: data?.uuid })
+    }, [data?.uuid, node]);
 
     const handleMenuVisible = useCallback((visable: boolean) => {
       setMenuOpend(visable)
@@ -278,7 +274,7 @@ export const ClassView = memo(
                 <em>{p(data?.packageName)}</em>
               </div>
             )}
-            {((hover && !disableHover) || menuOpened) && data &&(
+            {((hover && !disableHover) || menuOpened) && data && (
               <ClassActions
                 cls={data}
                 onAddAttribute={handleAttributeCreate}
