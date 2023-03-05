@@ -17,6 +17,7 @@ import { useEdittingAppId } from "designer/hooks/useEdittingAppUuid";
 import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
 import { Transform } from '@antv/x6-plugin-transform'
+import { useClassAction } from "./useClassAction";
 
 export const GraphCanvas = memo(
   (props: {
@@ -68,7 +69,8 @@ export const GraphCanvas = memo(
     useEdgeChange(graph, appId);
     useNodeAdd(graph, appId);
     useEdgeHover(graph, appId);
-
+    useClassAction(graph, appId);
+    
     return (
       <div
         id="container"
