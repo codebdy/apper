@@ -44,7 +44,9 @@ export default function AttributeView(props: {
     };
   }, [handleChangeSelected]);
 
-  const handleClick = useCallback(() => {
+  const handleClick = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     onClick(attr.uuid);
   }, [attr.uuid, onClick]);
 

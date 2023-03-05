@@ -31,7 +31,7 @@ import { CLASS_BACKGROUND_COLOR } from "../../consts";
 import { Node } from "@antv/x6"
 
 export enum ClassEvent {
-  attributeSelect = "class:attribute-select",
+  attributeSelect = "attribute-select",
   attributeDelete = "class:attribute-delete",
   attributeCreate = "class:attribute-create",
   methodSelect = "class:method-select",
@@ -39,6 +39,12 @@ export enum ClassEvent {
   methodCreate = "class:method-create",
   hide = "class:hide",
   delete = "class:delete",
+}
+
+export interface IClassEventData {
+  classId: string,
+  attrId?: string,
+  methodId?: string,
 }
 
 export const ClassView = memo(
@@ -123,42 +129,42 @@ export const ClassView = memo(
     const disableHover = useMemo(() => !!pressedLineType, [pressedLineType]);
 
     const handleHidden = useCallback(() => {
-      node.trigger(ClassEvent.hide, { classId: node.id })
+      document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.hide, { detail: { classId: node.id } }))
     }, [node]);
 
     const handleAttributeClick = useCallback(
       (id: string) => {
-        node.trigger(ClassEvent.attributeSelect, { classId: id, attrId: id })
+        document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.attributeSelect, { detail: { classId: node.id, attrId: id } }))
       },
-      [node]
+      [node.id]
     );
 
     const handleAttributeDelete = useCallback(
       (id: string) => {
-        node.trigger(ClassEvent.attributeDelete, { classId: node.id, attrId: id })
+        document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.attributeDelete, { detail: { classId: node.id, attrId: id } }))
       },
       [node]
     );
 
     const handleAttributeCreate = useCallback(() => {
-      node.trigger(ClassEvent.attributeCreate, { classId: node.id })
+      document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.attributeCreate, { detail: { classId: node.id } }))
     }, [node]);
 
     const handleMethodClick = useCallback(
       (id: string) => {
-        node.trigger(ClassEvent.methodSelect, { classId: node.id, attrId: id })
+        document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.methodSelect, { detail: { classId: node.id, methodId: id } }))
       },
       [node]
     );
 
     const handleMethodDelete = useCallback(
       (id: string) => {
-        node.trigger(ClassEvent.methodDelete, { classId: node.id, attrId: id })
+        document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.methodDelete, { detail: { classId: node.id, methodId: id } }))
       },
       [node]
     );
     const handleMethodCreate = useCallback(() => {
-      node.trigger(ClassEvent.methodCreate, { classId: node.id })
+      document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.methodCreate, { detail: { classId: node.id } }))
     }, [node]);
 
     const handleMouseOver = useCallback(() => {
@@ -170,8 +176,8 @@ export const ClassView = memo(
     }, []);
 
     const handleDelete = useCallback(() => {
-      node.trigger(ClassEvent.delete, { classId: data?.uuid })
-    }, [data?.uuid, node]);
+      document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.delete, { detail: { classId: data!.uuid } }))
+    }, [data]);
 
     const handleMenuVisible = useCallback((visable: boolean) => {
       setMenuOpend(visable)
