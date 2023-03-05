@@ -5,7 +5,6 @@ import { ClassMeta } from "../meta/ClassMeta"
 import TreeNodeLabel from "common/TreeNodeLabel"
 import { PRIMARY_COLOR } from "consts";
 import { NODE_INIT_SIZE } from "../GraphCanvas/nodeInitSize";
-import { ClassView } from "../GraphCanvas/ClassView";
 import { useRecoilValue } from 'recoil';
 import { selectedElementState } from './../recoil/atoms';
 import { Button } from "antd"
@@ -48,8 +47,7 @@ const ClassLabel = memo((
         ...NODE_INIT_SIZE,
         height: 70 + (cls?.attributes.length || 0) * 26,
         isTempForDrag: true,
-        shape: "react-shape",
-        component: <ClassView />,
+        shape: "class-node",
         data: { ...cls, isTempForDrag: true },
       });
       dnd?.start(node, e.nativeEvent as any);

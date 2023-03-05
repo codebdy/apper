@@ -1,6 +1,5 @@
 import React, { memo, useCallback } from "react";
 import { Graph } from "@antv/x6";
-import { ClassView } from "../GraphCanvas/ClassView";
 import {
   svgInherit,
   svgOneWayAssociation,
@@ -81,7 +80,7 @@ export const Toolbox = memo((props: { graph?: Graph }) => {
       }
       setSelemedElement(undefined);
       const nodeConfig = createTempClassNodeForNew(stereoType) as any;
-      nodeConfig.component = <ClassView />;
+      //nodeConfig.component = <ClassView />;
       const node = graph.createNode(nodeConfig);
       dnd?.start(node, e.nativeEvent as any);
     };

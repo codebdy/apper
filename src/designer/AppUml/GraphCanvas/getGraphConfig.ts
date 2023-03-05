@@ -1,5 +1,16 @@
 import { Options } from "@antv/x6/lib/graph/options";
 import { getGraphSize } from "./getGraphSize";
+import { register } from "@antv/x6-react-shape";
+import { NODE_INIT_SIZE } from "./nodeInitSize";
+import { ClassView } from "./ClassView";
+import { CellView } from "@antv/x6";
+
+register({
+  shape: 'class-node',
+  ...NODE_INIT_SIZE,
+  component: ClassView,
+})
+
 
 export const getGraphConfig = ():Partial<Options.Manual>=>{
   const containerDiv = document.getElementById('container')||undefined;
@@ -7,15 +18,10 @@ export const getGraphConfig = ():Partial<Options.Manual>=>{
   const graphSize = getGraphSize();
   return {
     container: containerDiv,
-    interacting: true,
-    //selecting: true,
-    //snapline: true,
-    // resizing: {
-    //   enabled: true,
-    //   minWidth: 160,
-    //   minHeight: 50,
-    // },
-    //autoResize:true,
+    interacting: (cellView: CellView) => {
+      return { nodeMovable: true, edgeLabelMovable: false };
+    },
+    autoResize:true,
     width: graphSize.width,
     height: graphSize.height,
     grid: {

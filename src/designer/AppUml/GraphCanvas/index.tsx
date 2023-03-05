@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import { memo, useEffect } from "react";
 import { useExplorerScrollbarHide } from "./useExplorerScrollbarHide";
 import { useEdgeLineDraw } from "./useEdgeLineDraw";
 import { useEdgeChange } from "./useEdgeChange";
@@ -15,6 +15,7 @@ import { useEdgeHover } from "./useEdgeHover";
 import { useTriggerPressedLineTypeEvent } from "./useTriggerPressedLineTypeEvent";
 import { useEdittingAppId } from "designer/hooks/useEdittingAppUuid";
 import { Selection } from '@antv/x6-plugin-selection'
+import { MiniMap } from "@antv/x6-plugin-minimap";
 
 export const GraphCanvas = memo(
   (props: {
@@ -27,6 +28,13 @@ export const GraphCanvas = memo(
     useEffect(() => {
       const config = getGraphConfig();
       const aGraph = new Graph(config);
+      aGraph.use(
+        new MiniMap({
+          container: document.getElementById("mini-map")!,
+          width: 140,
+          height: 110
+        })
+      );
       aGraph.use(new Selection({
         enabled: true,
         multiple: false,

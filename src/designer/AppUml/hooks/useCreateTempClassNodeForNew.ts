@@ -24,7 +24,7 @@ export function useCreateTempClassNodeForNew(appId: ID) {
         uuid: "entityMeta.uuid",
         ...NODE_INIT_SIZE,
 
-        shape: "react-shape",
+        shape: "class-node",
         data: {
           ...classMeta,
           //root: stereoType === StereoType.Partial,

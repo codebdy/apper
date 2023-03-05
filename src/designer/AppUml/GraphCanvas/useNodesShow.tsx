@@ -1,7 +1,6 @@
 import "@antv/x6-react-shape";
 import { Graph, Node } from "@antv/x6";
 import { useCallback, useEffect, useRef } from "react";
-import { ClassView } from "./ClassView";
 import _ from "lodash";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
@@ -20,7 +19,6 @@ import { ClassNodeData } from "./ClassView/ClassNodeData";
 import { useDeleteClass } from "../hooks/useDeleteClass";
 import { useCreateClassMethod } from "../hooks/useCreateClassMethod";
 import { ID } from "shared";
-import React from "react";
 import { useGetPackage } from "../hooks/useGetPackage";
 import { useSelectedDiagramPackageUuid } from "../hooks/useSelectedDiagramPackageUuid";
 import { useHideClassFromDiagram } from "../hooks/useHideClassFromDiagram";
@@ -172,20 +170,20 @@ export function useNodesShow(graph: Graph | undefined, appId: ID) {
       } else {
         graph?.addNode({
           ...node,
-          shape: "react-shape",
+          shape: "class-node",
           data,
-          component: (
-            <ClassView
-              onAttributeSelect={handleAttributeSelect}
-              onAttributeDelete={handleAttributeDelete}
-              onAttributeCreate={handleAttributeCreate}
-              onMethodSelect={handleMethodSelect}
-              onMethodDelete={handleMothodDelete}
-              onMethodCreate={handleMethodCreate}
-              onDelete={handelDeleteClass}
-              onHide={handleHideClass}
-            />
-          ),
+          // component: (
+          //   <ClassView
+          //     onAttributeSelect={handleAttributeSelect}
+          //     onAttributeDelete={handleAttributeDelete}
+          //     onAttributeCreate={handleAttributeCreate}
+          //     onMethodSelect={handleMethodSelect}
+          //     onMethodDelete={handleMothodDelete}
+          //     onMethodCreate={handleMethodCreate}
+          //     onDelete={handelDeleteClass}
+          //     onHide={handleHideClass}
+          //   />
+          // ),
         });
       }
     });
