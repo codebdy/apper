@@ -59,13 +59,14 @@ const Login = memo(() => {
         <h3>{t("Login")}</h3>
         <Form
           form={form}
-          layout="vertical"
           size="large"
+          labelCol={{ span: 6 }}
+          labelAlign="left"
+          wrapperCol={{ span: 16 }}
         >
           <Form.Item
             label={t("UserName")}
             name="loginName"
-            rules={[{ required: true, message: 'Please input your username!' }]}
           >
             <Input />
           </Form.Item>
@@ -73,16 +74,15 @@ const Login = memo(() => {
           <Form.Item
             label={t("Password")}
             name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
           >
             <Input.Password />
           </Form.Item>
-          <Form.Item name="rememberMe" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
+          <Form.Item name="rememberMe" valuePropName="checked" wrapperCol={{ offset: 6, span: 16 }}>
             <Checkbox>{t("RememberMe")}</Checkbox>
           </Form.Item>
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
             <Button type="primary" htmlType="submit">
-              {t("login")}
+              {t("Login")}
             </Button>
           </Form.Item>
         </Form>
