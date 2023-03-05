@@ -16,6 +16,7 @@ import { useTriggerPressedLineTypeEvent } from "./useTriggerPressedLineTypeEvent
 import { useEdittingAppId } from "designer/hooks/useEdittingAppUuid";
 import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
+import { Transform } from '@antv/x6-plugin-transform'
 
 export const GraphCanvas = memo(
   (props: {
@@ -42,6 +43,12 @@ export const GraphCanvas = memo(
         movable: true,
         //showNodeSelectionBox: true,
       }))
+      aGraph.use(
+        new Transform({
+          resizing: true,
+          rotating: false,
+        }),
+      )
       onSetGraph(aGraph);
       return () => {
         aGraph?.dispose();

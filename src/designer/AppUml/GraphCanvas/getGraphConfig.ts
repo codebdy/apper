@@ -12,8 +12,8 @@ register({
 })
 
 
-export const getGraphConfig = ():Partial<Options.Manual>=>{
-  const containerDiv = document.getElementById('container')||undefined;
+export const getGraphConfig = (): Partial<Options.Manual> => {
+  const containerDiv = document.getElementById('container') || undefined;
   containerDiv?.getBoundingClientRect()
   const graphSize = getGraphSize();
   return {
@@ -21,7 +21,7 @@ export const getGraphConfig = ():Partial<Options.Manual>=>{
     interacting: (cellView: CellView) => {
       return { nodeMovable: true, edgeLabelMovable: false };
     },
-    autoResize:true,
+    autoResize: true,
     width: graphSize.width,
     height: graphSize.height,
     grid: {
@@ -29,32 +29,24 @@ export const getGraphConfig = ():Partial<Options.Manual>=>{
       visible: true, // 渲染网格背景
       type: 'doubleMesh',
       args: [
-        { 
+        {
           //color: alpha(theme.palette.divider, 0.2), // 主网格线颜色
           thickness: 1,     // 主网格线宽度
         },
-        { 
+        {
           //color: alpha(theme.palette.divider, 0.1), // 次网格线颜色
           thickness: 1,     // 次网格线宽度
           factor: 4,        // 主次网格线间隔
         },
       ],
     },
-    // scroller: {
-    //   enabled: true,
-    //   pannable: true,
-    //   pageVisible: false,
-    //   pageBreak: false,
-    // },
+    panning: {
+      enabled: true,
+      eventTypes: ['leftMouseDown', 'mouseWheel'],
+    },
     mousewheel: {
       enabled: true,
       modifiers: ['ctrl', 'meta'],
     },
-    // minimap: {
-    //   enabled: true,
-    //   container: document.getElementById('mini-map')||undefined,
-    //   width:140,
-    //   height:110
-    // }
   }
 }
