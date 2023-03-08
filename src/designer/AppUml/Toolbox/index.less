@@ -1,6 +1,6 @@
 @import "../../../variables.less";
 
-.appx-model-toolbox{
+.appx-model-toolbox {
   display: flex;
   flex-flow: column;
   border-right: solid 1px @borderColor;
@@ -8,5 +8,23 @@
   align-items: center;
   overflow-y: auto;
   overflow-x: hidden;
+
   //background-color: @backgrounColor;
+  .ant-collapse {
+    border: 0;
+    //border-radius: 0;
+    width: 100px;
+
+    .ant-collapse-item {
+      border-radius: 0px !important;
+
+      .ant-collapse-header {
+        border-radius: 0px !important;
+      }
+
+      .ant-collapse-content{
+        border-radius: 0px !important;
+      }
+    }
+  }
 }

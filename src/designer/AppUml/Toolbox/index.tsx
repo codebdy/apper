@@ -107,7 +107,7 @@ export const Toolbox = memo((props: { graph?: Graph }) => {
   return (
     <div className="appx-model-toolbox">
       <Collapse
-        className="full-width no-border"
+        className=" no-border"
         accordion
         defaultActiveKey={["1"]}
       >
