@@ -16,10 +16,21 @@ import { Operate } from "./Operate"
 import styled from "styled-components"
 import { useToken } from "antd/es/theme/internal"
 
-
 const StyledHeader = styled.div`
   display: flex;
   align-items: center;
+  padding: 0px 16px;
+  border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
+`
+
+const StyleMenu = styled(Menu)`
+  flex: 1;
+  display: flex;
+  min-width: 400px;
+  justify-content: start;
+  margin-left: 24px;
+  border-bottom: 0;
+  margin-left: 100px;
 `
 
 const DesignerHeader = memo((props: {
@@ -43,11 +54,10 @@ const DesignerHeader = memo((props: {
 
   return (
     <StyledHeader style={{ backgroundColor: token.colorBgContainer }}>
-      <Button className="no-border" shape="circle" onClick={handleBack}><HomeOutlined /></Button>
+      <Button type="text" shape="circle" size="large" onClick={handleBack}><HomeOutlined /></Button>
       <Divider type='vertical' />
       <div className="app-title" style={{ marginLeft: "4px" }}>{parse(app?.title)}</div>
-      <Menu
-        className="app-entry-menu"
+      <StyleMenu
         mode="horizontal"
         defaultSelectedKeys={[match?.params?.["*"]?.split("/")?.[0] || AppEntryRouts.AppUis]}
         onSelect={handleSelect}
@@ -156,11 +166,11 @@ const DesignerHeader = memo((props: {
           {t("Designer.Version")} 1.0
         </span> */}
         <Operate />
-        <Button className='min-button' size='large' shape="circle" icon={<QuestionCircleOutlined />} />
+        <Button type="text" size='large' shape="circle" icon={<QuestionCircleOutlined />} />
         <Button
-          className='min-button'
-          size='large'
+          type="text"
           shape="circle"
+          size='large'
           icon={<GithubOutlined />}
           href="https://github.com/rxdrag/apper"
           target="_blank"
