@@ -14,7 +14,7 @@ import { DESIGN, DESIGN_BOARD } from "consts"
 import { useEdittingAppId } from "designer/hooks/useEdittingAppUuid"
 import { Operate } from "./Operate"
 import styled from "styled-components"
-import { useToken } from "antd/es/theme"
+import { useToken } from "antd/es/theme/internal"
 
 
 const StyledHeader = styled.div`

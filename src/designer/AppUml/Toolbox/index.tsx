@@ -14,13 +14,40 @@ import { useCreateTempClassNodeForNew } from "../hooks/useCreateTempClassNodeFor
 import { ClassRect } from "./ClassRect";
 import { StereoType } from "../meta/ClassMeta";
 import { Collapse } from "antd";
-import "./index.less";
 import { PRIMARY_COLOR } from "consts";
 import { useTranslation } from "react-i18next";
 import { useEdittingAppId } from "designer/hooks/useEdittingAppUuid";
 import { useDnd } from "../GraphCanvas/useDnd";
+import styled from "styled-components";
 
 const { Panel } = Collapse;
+const Container = styled.div`
+  display: flex;
+  flex-flow: column;
+  border-right: solid 1px ${props=>props.theme.token?.colorBorder};
+  width: 100px;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  //background-color: @backgrounColor;
+  .ant-collapse {
+    border: 0;
+    //border-radius: 0;
+    width: 100px;
+
+    .ant-collapse-item {
+      border-radius: 0px !important;
+
+      .ant-collapse-header {
+        border-radius: 0px !important;
+      }
+      .ant-collapse-content{
+        border-radius: 0px !important;
+      }
+    }
+  }
+`
 
 export const ToolItem = memo(
   (props: {
@@ -105,9 +132,8 @@ export const Toolbox = memo((props: { graph?: Graph }) => {
   );
 
   return (
-    <div className="appx-model-toolbox">
+    <Container>
       <Collapse
-        className=" no-border"
         accordion
         defaultActiveKey={["1"]}
       >
@@ -213,6 +239,6 @@ export const Toolbox = memo((props: { graph?: Graph }) => {
           {intl.get("link-line")}
         </ToolItem>
       </CategoryCollapse> */}
-    </div>
+    </Container>
   );
 });

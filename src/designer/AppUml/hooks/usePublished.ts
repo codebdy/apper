@@ -1,7 +1,7 @@
-import moment from "moment";
 import { useMemo } from "react";
 import { useQueryApp } from "designer/hooks/useQueryApp";
 import { ID } from "shared";
+import dayjs from "dayjs";
 
 export function usePublished(appId: ID) {
   const { app } = useQueryApp(appId)
@@ -11,7 +11,7 @@ export function usePublished(appId: ID) {
       return false;
     }
 
-    if (app.publishMetaAt && (moment(app?.saveMetaAt).diff(moment(app?.publishMetaAt)) <= 0)) {
+    if (app.publishMetaAt && (dayjs(app?.saveMetaAt).diff(dayjs(app?.publishMetaAt)) <= 0)) {
       return true;
     }
 

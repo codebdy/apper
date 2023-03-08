@@ -3,6 +3,7 @@ import { DESIGNER_TOKEN_NAME, SERVER_URL } from 'consts'
 import { EntiRoot, useToken } from 'enthooks'
 import { IApp } from 'model'
 import { DesignerRootInner } from './DesignerRootInner'
+import { ThemeRoot } from 'designer/ThemeRoot'
 
 const AppDesignerRoot = memo((
   props: {
@@ -23,11 +24,13 @@ const AppDesignerRoot = memo((
   }, [app, token])
 
   return (
-    <EntiRoot config={config as any} >
-      <DesignerRootInner app={app}>
-        {props.children}
-      </DesignerRootInner>
-    </EntiRoot>
+    <ThemeRoot>
+      <EntiRoot config={config as any} >
+        <DesignerRootInner app={app}>
+          {props.children}
+        </DesignerRootInner>
+      </EntiRoot>
+    </ThemeRoot>
   )
 })
 
