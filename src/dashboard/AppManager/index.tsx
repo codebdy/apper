@@ -13,17 +13,34 @@ const StyledRow = styled(Row)`
   padding: 16px 0;
 `
 
+const StyleCol = styled(Col)`
+  padding-bottom: 32px;
+`
+
+
 export const AppManager = memo(() => {
   return (
     <Container>
       <AppManagerHeader />
       <StyledRow gutter={32}>
-        <Col span={6}>
+        <StyleCol span={6}>
           <AppCard />
-        </Col>
-        <Col span={6}>
+        </StyleCol>
+        <StyleCol span={6}>
           <AppCard />
-        </Col>
+        </StyleCol>
+        <StyleCol span={6}>
+          <AppCard />
+        </StyleCol>
+        <StyleCol span={6}>
+          <AppCard />
+        </StyleCol>
+        <StyleCol span={6}>
+          <AppCard />
+        </StyleCol>
+        <StyleCol span={6}>
+          <AppCard />
+        </StyleCol>
       </StyledRow>
     </Container>
   )
