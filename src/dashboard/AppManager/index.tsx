@@ -7,10 +7,14 @@ import { AppCard } from "./AppCard"
 const Container = styled.div`
   display:flex;
   flex-flow: column;
+  flex:1;
 `
 
 const StyledRow = styled(Row)`
+
+  height: 0;
   padding: 16px 0;
+
 `
 
 const StyleCol = styled(Col)`
