@@ -21,6 +21,7 @@ const Toolbar = styled.div`
 `
 const StyledDivider = styled(Divider)`
   height: 16px;
+  margin: 0 24px;
 `
 
 const Spring = styled.div`

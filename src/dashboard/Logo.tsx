@@ -11,7 +11,6 @@ const Container = styled.div`
     width: 40px;
     height: 40px;
   }
-  margin-right: 16px;
 `
 export const Logo = memo(() => {
   return (
