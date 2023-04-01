@@ -9,15 +9,22 @@ const Container = styled.div`
   flex-flow: column;
 `
 
+const StyledRow = styled(Row)`
+  padding: 16px 0;
+`
+
 export const AppManager = memo(() => {
   return (
     <Container>
       <AppManagerHeader />
-      <Row gutter={16}>
+      <StyledRow gutter={32}>
         <Col span={6}>
           <AppCard />
         </Col>
-      </Row>
+        <Col span={6}>
+          <AppCard />
+        </Col>
+      </StyledRow>
     </Container>
   )
 })
