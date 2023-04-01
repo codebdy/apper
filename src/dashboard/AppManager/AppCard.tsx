@@ -1,12 +1,13 @@
-import { Avatar, Card } from "antd"
+import { Card } from "antd"
 import { memo } from "react"
-import { EditOutlined,EllipsisOutlined,SettingOutlined } from '@ant-design/icons';
+import { EditOutlined, EllipsisOutlined, SettingOutlined, SendOutlined } from '@ant-design/icons';
 
 const { Meta } = Card;
 export const AppCard = memo(() => {
   return (
     <Card
       style={{ width: "100%" }}
+      hoverable
       cover={
         <img
           alt="example"
@@ -14,8 +15,9 @@ export const AppCard = memo(() => {
         />
       }
       actions={[
-        <SettingOutlined key="setting" />,
+        <SendOutlined key="preview" />,
         <EditOutlined key="edit" />,
+        <SettingOutlined key="setting" />,
         <EllipsisOutlined key="ellipsis" />,
       ]}
     >
