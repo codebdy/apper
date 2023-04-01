@@ -3,8 +3,6 @@ import React, { memo, useMemo } from "react"
 
 import { ThemeProvider } from "styled-components"
 
-
-
 export const ThemeRoot = memo((
   props: {
     children?: React.ReactNode

@@ -6,7 +6,6 @@ import Install from './Install';
 import { DESIGN, DESIGNER_TOKEN_NAME, DESIGN_BOARD, DESIGN_FRAME, DESIGN_UI, INDEX_URL, INSTALL_URL, LOGIN_URL, SERVER_URL, SYSTEM_APP_ID } from './consts';
 import { AppEntryRouts } from './designer/DesignerHeader/AppEntryRouts';
 import AppUis from './designer/DesignerHeader/AppUis';
-import AppRunner from './runner';
 import { LoggedInPanel } from './Login/LoggedInPanel';
 import { AppFrames } from './designer/DesignerHeader/AppFrames';
 import { AppBpmn } from './designer/AppBpmn';
@@ -23,23 +22,14 @@ import { PageAuthBoard } from './designer/AppAuth/PageAuthBoard';
 import { EntiRoot } from './enthooks';
 import { UiDesigner } from './designer/UiDesigner';
 import { AppDesignBoard } from './designer/AppDesignBoard/inex';
+import { Dashbord } from 'dashboard/inex';
 
 const App = memo(() => {
   return (
     <EntiRoot config={{ endpoint: SERVER_URL, appId: SYSTEM_APP_ID, tokenName: DESIGNER_TOKEN_NAME }} >
       <Routes>
         <Route path={INDEX_URL} element={<LoggedInPanel />}>
-          <Route path={INDEX_URL} element={<AppRunner />}>
-            <Route path={"/:device/:appId"} >
-              <Route path=":menuUuid" element={<></>}>
-                <Route path=":pageUuid" element={<></>}>
-                  <Route path=":dataId" element={<></>} />
-                  <Route path="" element={<></>} />
-                </Route>
-                <Route path="" element={<></>} />
-              </Route>
-              <Route path="" element={<></>} />
-            </Route>
+          <Route path={INDEX_URL} element={<Dashbord />}>
           </Route>
           <Route path={`/${DESIGN}`} element={<AppDesigner />}>
             <Route path=":appId">
