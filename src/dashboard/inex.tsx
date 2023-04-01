@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from "styled-components"
 import { Logo } from "./Logo"
 import { Avatar, Badge, Button, Divider, Space } from "antd"
 import { AppstoreOutlined, CloudServerOutlined, SettingOutlined, BellOutlined, UserOutlined } from "@ant-design/icons"
+import { AppManager } from "./AppManager"
 
 const Container = styled.div`
   width: 100%;
@@ -27,6 +28,11 @@ const StyledDivider = styled(Divider)`
 const Spring = styled.div`
   flex:1;
 `
+const Content = styled.div`
+  flex: 1;
+  padding: 0 64px;
+`
+
 
 export const Dashbord = memo(() => {
   const [, token] = useToken()
@@ -66,6 +72,9 @@ export const Dashbord = memo(() => {
             <Avatar style={{ marginLeft: 16 }} icon={<UserOutlined />} />
           </Space>
         </Toolbar>
+        <Content>
+          <AppManager />
+        </Content>
       </Container>
     </ThemeProvider>
   )
