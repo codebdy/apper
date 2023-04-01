@@ -20,6 +20,7 @@ const Toolbar = styled.div`
   align-items: center;
   padding: 0 64px;
   border-bottom: ${props => props.theme.token?.colorBorder} solid 1px;
+  flex-shrink:0;
 `
 const StyledDivider = styled(Divider)`
   height: 16px;

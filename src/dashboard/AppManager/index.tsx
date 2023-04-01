@@ -2,6 +2,7 @@ import { Col, Row } from "antd"
 import { memo } from "react"
 import styled from "styled-components"
 import { AppManagerHeader } from "./AppManagerHeader"
+import { AppCard } from "./AppCard"
 
 const Container = styled.div`
   display:flex;
@@ -13,8 +14,8 @@ export const AppManager = memo(() => {
     <Container>
       <AppManagerHeader />
       <Row gutter={16}>
-        <Col>
-          AppManager
+        <Col span={6}>
+          <AppCard />
         </Col>
       </Row>
     </Container>
