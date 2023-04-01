@@ -9,6 +9,7 @@ import {
   DeleteOutlined,
   CloudUploadOutlined
 } from '@ant-design/icons';
+import { IApp } from "model";
 
 const { Meta } = Card;
 const items: MenuProps['items'] = [
@@ -32,15 +33,18 @@ const items: MenuProps['items'] = [
   },
 ];
 
-export const AppCard = memo(() => {
+export const AppCard = memo((props: {
+  app: IApp,
+}) => {
+  const { app } = props;
   return (
     <Card
       style={{ width: "100%" }}
       hoverable
       cover={
         <img
-          alt="example"
-          src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+          alt={app.title}
+          src={app.imageUrl}
         />
       }
       actions={[
@@ -51,7 +55,7 @@ export const AppCard = memo(() => {
       ]}
     >
       <Meta
-        title="Card title"
+        title={app.title}
       />
     </Card>
   )

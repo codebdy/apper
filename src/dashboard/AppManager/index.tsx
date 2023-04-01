@@ -3,6 +3,7 @@ import { memo } from "react"
 import styled from "styled-components"
 import { AppManagerHeader } from "./AppManagerHeader"
 import { AppCard } from "./AppCard"
+import { useQueryApps } from "hooks/useQueryApps"
 
 const Container = styled.div`
   display:flex;
@@ -23,28 +24,18 @@ const StyleCol = styled(Col)`
 
 
 export const AppManager = memo(() => {
+  const { apps, error, loading } = useQueryApps()
   return (
     <Container>
       <AppManagerHeader />
       <StyledRow gutter={32}>
-        <StyleCol span={6}>
-          <AppCard />
-        </StyleCol>
-        <StyleCol span={6}>
-          <AppCard />
-        </StyleCol>
-        <StyleCol span={6}>
-          <AppCard />
-        </StyleCol>
-        <StyleCol span={6}>
-          <AppCard />
-        </StyleCol>
-        <StyleCol span={6}>
-          <AppCard />
-        </StyleCol>
-        <StyleCol span={6}>
-          <AppCard />
-        </StyleCol>
+        {
+          apps?.map(app => {
+            return (<StyleCol span={6} key = {app.id}>
+              <AppCard app={app} />
+            </StyleCol>)
+          })
+        }
       </StyledRow>
     </Container>
   )

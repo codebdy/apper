@@ -1,6 +1,5 @@
-import { gql } from "../../enthooks";
-import { IApp } from "../../model";
-import { useQuery } from "../../enthooks/hooks/useQuery";
+import { gql, useQuery } from "enthooks";
+import { IApp } from "model";
 import { useMemo } from "react";
 
 const appsGql = gql`
