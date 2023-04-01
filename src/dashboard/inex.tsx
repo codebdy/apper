@@ -2,8 +2,8 @@ import { useToken } from "antd/es/theme/internal"
 import { memo, useMemo } from "react"
 import styled, { ThemeProvider } from "styled-components"
 import { Logo } from "./Logo"
-import { Button, Divider, Space } from "antd"
-import { AppstoreOutlined, CloudServerOutlined, SettingOutlined } from "@ant-design/icons"
+import { Avatar, Badge, Button, Divider, Space } from "antd"
+import { AppstoreOutlined, CloudServerOutlined, SettingOutlined, BellOutlined, UserOutlined } from "@ant-design/icons"
 
 const Container = styled.div`
   width: 100%;
@@ -14,7 +14,7 @@ const Container = styled.div`
 
 const Toolbar = styled.div`
   display: flex;
-  height: 48px;
+  height: 56px;
   align-items: center;
   padding: 0 16px;
   border-bottom: ${props => props.theme.token?.colorBorder} solid 1px;
@@ -42,7 +42,7 @@ export const Dashbord = memo(() => {
           <Logo />
           <StyledDivider type="vertical" />
           <Space>
-            <Button type="text" icon={<AppstoreOutlined />}>
+            <Button type="primary" icon={<AppstoreOutlined />}>
               应用中心
             </Button>
             <Button type="text" icon={<CloudServerOutlined />}>
@@ -53,7 +53,12 @@ export const Dashbord = memo(() => {
             </Button>
           </Space>
           <Spring />
-          notication
+          <Space>
+            <Badge count={5} offset={[-6, 2]}>
+              <Button type="text" icon={<BellOutlined />} />
+            </Badge>
+            <Avatar icon={<UserOutlined />} />
+          </Space>
         </Toolbar>
       </Container>
     </ThemeProvider>
