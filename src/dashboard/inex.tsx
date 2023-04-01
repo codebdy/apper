@@ -5,6 +5,7 @@ import { Logo } from "./Logo"
 import { Avatar, Badge, Button, Divider, Space } from "antd"
 import { AppstoreOutlined, CloudServerOutlined, SettingOutlined, BellOutlined, UserOutlined } from "@ant-design/icons"
 import { AppManager } from "./AppManager"
+import { Spring } from "./Spring"
 
 const Container = styled.div`
   width: 100%;
@@ -25,9 +26,6 @@ const StyledDivider = styled(Divider)`
   margin: 0 24px;
 `
 
-const Spring = styled.div`
-  flex:1;
-`
 const Content = styled.div`
   flex: 1;
   padding: 0 64px;

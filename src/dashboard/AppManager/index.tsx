@@ -1,9 +1,22 @@
+import { Col, Row } from "antd"
 import { memo } from "react"
+import styled from "styled-components"
+import { AppManagerHeader } from "./AppManagerHeader"
 
-export const AppManager = memo(()=>{
+const Container = styled.div`
+  display:flex;
+  flex-flow: column;
+`
+
+export const AppManager = memo(() => {
   return (
-    <div>
-      AppManager
-    </div>
+    <Container>
+      <AppManagerHeader />
+      <Row gutter={16}>
+        <Col>
+          AppManager
+        </Col>
+      </Row>
+    </Container>
   )
 })
