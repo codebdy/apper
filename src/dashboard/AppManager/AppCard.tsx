@@ -18,7 +18,7 @@ const items: MenuProps['items'] = [
     icon: <DownloadOutlined />
   },
   {
-    label: "部署",
+    label: "发布",
     key: '1',
     icon: <CloudUploadOutlined />
   },

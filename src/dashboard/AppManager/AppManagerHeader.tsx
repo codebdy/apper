@@ -14,7 +14,7 @@ const { Search } = Input;
 export const AppManagerHeader = memo(() => {
   return (
     <Container>
-      <Search placeholder="input search text" style={{ width: 300 }} />
+      <Search placeholder="" style={{ width: 300 }} />
       <Spring />
       <Space>
         <Button type="primary" icon={<PlusOutlined />}>

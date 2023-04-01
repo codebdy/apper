@@ -29,7 +29,7 @@ const StyledDivider = styled(Divider)`
 
 const Content = styled.div`
   flex: 1;
-  padding: 0 64px;
+  padding: 0 112px;
   display: flex;
   flex-flow: column;
   box-sizing: border-box;
