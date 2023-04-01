@@ -1,23 +1,34 @@
 import { Card, Dropdown, MenuProps } from "antd"
 import { memo } from "react"
-import { EditOutlined, EllipsisOutlined, SettingOutlined, SendOutlined } from '@ant-design/icons';
+import {
+  EditOutlined,
+  EllipsisOutlined,
+  SettingOutlined,
+  SendOutlined,
+  DownloadOutlined,
+  DeleteOutlined,
+  CloudUploadOutlined
+} from '@ant-design/icons';
 
 const { Meta } = Card;
 const items: MenuProps['items'] = [
   {
-    label: <a href="https://www.antgroup.com">1st menu item</a>,
+    label: "导出",
     key: '0',
+    icon: <DownloadOutlined />
   },
   {
-    label: <a href="https://www.aliyun.com">2nd menu item</a>,
+    label: "部署",
     key: '1',
+    icon: <CloudUploadOutlined />
   },
   {
     type: 'divider',
   },
   {
-    label: '3rd menu item',
+    label: '删除',
     key: '3',
+    icon: <DeleteOutlined />
   },
 ];
 
