@@ -30,8 +30,8 @@ export const AppManager = memo(() => {
       <AppManagerHeader />
       <StyledRow gutter={32}>
         {
-          apps?.map(app => {
-            return (<StyleCol span={6} key = {app.id}>
+          apps?.filter(app => app.id !== "1")?.map(app => {
+            return (<StyleCol span={6} key={app.id}>
               <AppCard app={app} />
             </StyleCol>)
           })
