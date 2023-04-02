@@ -11,8 +11,14 @@ import {
 } from '@ant-design/icons';
 import { IApp } from "model";
 import { Image } from "common/Image"
+import styled from "styled-components";
 
 const { Meta } = Card;
+
+const StyledCard = styled(Card)`
+  width:100%;
+  overflow: hidden;
+`
 const items: MenuProps['items'] = [
   {
     label: "导出",
@@ -39,8 +45,7 @@ export const AppCard = memo((props: {
 }) => {
   const { app } = props;
   return (
-    <Card
-      style={{ width: "100%" }}
+    <StyledCard
       hoverable
       cover={
         <Image
@@ -57,6 +62,6 @@ export const AppCard = memo((props: {
       <Meta
         title={app.title}
       />
-    </Card>
+    </StyledCard>
   )
 })
