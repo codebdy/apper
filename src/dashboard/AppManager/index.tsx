@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { AppManagerHeader } from "./AppManagerHeader"
 import { AppCard } from "./AppCard"
 import { useQueryApps } from "hooks/useQueryApps"
+import { useShowError } from "designer/hooks/useShowError"
 
 const Container = styled.div`
   display:flex;
@@ -25,12 +26,13 @@ const StyleCol = styled(Col)`
 
 export const AppManager = memo(() => {
   const { apps, error, loading } = useQueryApps()
+  useShowError(error)
   return (
     <Container>
       <AppManagerHeader />
       <StyledRow gutter={32}>
         {
-          apps?.filter(app => app.id !== "1")?.map(app => {
+          apps?.map(app => {
             return (<StyleCol span={6} key={app.id}>
               <AppCard app={app} />
             </StyleCol>)

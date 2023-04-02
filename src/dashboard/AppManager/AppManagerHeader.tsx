@@ -17,11 +17,11 @@ export const AppManagerHeader = memo(() => {
       <Search placeholder="" style={{ width: 300 }} />
       <Spring />
       <Space>
-        <Button type="primary" icon={<PlusOutlined />}>
+        <Button >
           导入应用
         </Button>
-        <Button type="primary" danger disabled icon={<ShoppingOutlined />}>
-          应用市场
+        <Button type="primary" icon={<PlusOutlined />}>
+          新建应用
         </Button>
       </Space>
     </Container>
