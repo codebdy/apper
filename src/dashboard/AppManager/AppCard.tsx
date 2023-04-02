@@ -10,6 +10,7 @@ import {
   CloudUploadOutlined
 } from '@ant-design/icons';
 import { IApp } from "model";
+import { Image } from "common/Image"
 
 const { Meta } = Card;
 const items: MenuProps['items'] = [
@@ -42,9 +43,8 @@ export const AppCard = memo((props: {
       style={{ width: "100%" }}
       hoverable
       cover={
-        <img
-          alt={app.title}
-          src={app.imageUrl}
+        <Image
+          value={app.imageUrl}
         />
       }
       actions={[
