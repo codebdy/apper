@@ -2,7 +2,7 @@ import { Button, Input, Space } from "antd";
 import { Spring } from "../Spring";
 import { memo } from "react"
 import styled from "styled-components"
-import { PlusOutlined, ShoppingOutlined } from "@ant-design/icons"
+import { PlusOutlined } from "@ant-design/icons"
 
 const Container = styled.div`
   height: 64px;
