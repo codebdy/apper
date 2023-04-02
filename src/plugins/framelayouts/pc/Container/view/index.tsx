@@ -1,5 +1,4 @@
-import { observer } from "@formily/reactive-react"
-import React, { CSSProperties } from "react"
+import React, { CSSProperties, memo } from "react"
 import cls from "classnames"
 import "./style.less"
 
@@ -10,7 +9,7 @@ export interface IComponentProps {
   style?: CSSProperties,
 }
 
-const Component = observer((props: IComponentProps) => {
+const Component = memo((props: IComponentProps) => {
   const { className, maxWidth="xl", ...other } = props
   let maxWidthClass = "";
   if (maxWidth === "xs" ||

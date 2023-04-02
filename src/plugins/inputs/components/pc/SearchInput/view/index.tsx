@@ -1,7 +1,5 @@
 import { Input } from "antd"
 import React, { memo, useCallback, useMemo } from "react"
-import { useFieldSchema } from "@formily/react"
-
 import { IAppxAction } from "plugin-sdk/model/action"
 
 export interface ISearchText {
@@ -22,13 +20,13 @@ export interface IComponentProps {
 const Component = memo((props: IComponentProps) => {
   const { searchStyle, isFuzzy, value, onChange, onSearch, ...other } = props;
   //const doActions = useDoActions();
-  const fieldSchema = useFieldSchema();
+  //const fieldSchema = useFieldSchema();
   const fields = useMemo(() => {
-    const fieldSource = fieldSchema?.["x-field-source"];
+    //const fieldSource = fieldSchema?.["x-field-source"];
     // return isArr(fieldSource)
     //   ? (fieldSource as IFieldSource[]).map(subField => subField.name)
     //   : ((fieldSource as IFieldSource)?.name && [(fieldSource as IFieldSource).name])
-  }, [fieldSchema])
+  }, [])
 
   const handleChange = useCallback((event?: React.ChangeEvent<HTMLInputElement>) => {
     onChange && onChange({

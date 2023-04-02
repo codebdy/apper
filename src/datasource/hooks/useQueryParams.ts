@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { Schema as JsonSchema } from '@formily/json-schema';
-import { Schema, useExpressionScope } from "@formily/react";
 import { IDataBindSource } from "../model";
 import { parse, OperationTypeNode, print, Kind, visit, ObjectValueNode, ListValueNode } from "graphql";
 import { message } from "antd";
@@ -43,7 +42,7 @@ export function useQueryParams(
   const { queryForm, orderBys, current, pageSize, refreshFlag } = options || {}
   const { t } = useTranslation();
   const fragmentFromSchema = useQueryFragmentFromSchema(schema);
-  const expScope = useExpressionScope()
+  //const expScope = useExpressionScope()
   const convertQueryForm = useConvertQueryFormToGqlNodes();
   const params = useMemo(() => {
     const pms: IQueryParams = { refreshFlag }
@@ -243,7 +242,7 @@ export function useQueryParams(
             }
 
             if (node.kind === Kind.STRING) {
-              const newValue = Schema.shallowCompile(node.value, expScope);
+              const newValue = node.value//Schema.shallowCompile(node.value, expScope);
               if (newValue === undefined) {
                 return {
                   kind: Kind.NULL
@@ -267,20 +266,7 @@ export function useQueryParams(
     }
 
     return pms;
-  }, [convertQueryForm,
-    current,
-    dataBind?.entityName,
-    dataBind?.expression,
-    dataBind?.variables,
-    expScope,
-    fragmentFromSchema,
-    orderBys,
-    pageSize,
-    queryForm,
-    queryType,
-    refreshFlag,
-    t
-  ]);
+  }, [convertQueryForm, current, dataBind?.entityName, dataBind?.expression, dataBind?.variables, fragmentFromSchema, orderBys, pageSize, queryForm, queryType, refreshFlag, t]);
   //console.log("Query GQL:", params?.gql, params?.variables);
   return params
 }

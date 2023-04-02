@@ -10,17 +10,14 @@ import { LoggedInPanel } from './Login/LoggedInPanel';
 import { AppFrames } from './designer/DesignerHeader/AppFrames';
 import { AppBpmn } from './designer/AppBpmn';
 import { AppDmn } from './designer/AppDmn';
-import { AppPlugins } from './designer/AppPlugins';
 import AppConfig from './designer/AppConfig';
 import AppUml from './designer/AppUml';
 import ApiBoard from './designer/ApiBoard';
-import { FrameDesigner } from './designer/FrameDesigner';
 import { AuthBoard, AuthRoutes } from './designer/AppAuth';
 import { MenuAuthBoard } from './designer/AppAuth/MenuAuthBoard';
 import { ModelAuthBoard } from './designer/AppAuth/ModelAuthBoard';
 import { PageAuthBoard } from './designer/AppAuth/PageAuthBoard';
 import { EntiRoot } from './enthooks';
-import { UiDesigner } from './designer/UiDesigner';
 import { AppDesignBoard } from './designer/AppDesignBoard/inex';
 import { Dashbord } from 'dashboard/inex';
 
@@ -33,15 +30,12 @@ const App = memo(() => {
           </Route>
           <Route path={`/${DESIGN}`} element={<AppDesigner />}>
             <Route path=":appId">
-              <Route path={`${DESIGN_UI}/:device`} element={<UiDesigner />} />
-              <Route path={`${DESIGN_FRAME}/:device`} element={<FrameDesigner />} />
               <Route path={DESIGN_BOARD} element={<AppDesignBoard />}>
                 <Route path={AppEntryRouts.AppUis} element={<AppUis />} />
                 <Route path={AppEntryRouts.Bpmn} element={<AppBpmn />} />
                 <Route path={AppEntryRouts.Dmn} element={<AppDmn />} />
                 <Route path={AppEntryRouts.Uml} element={<AppUml />} />
                 <Route path={AppEntryRouts.Api} element={<ApiBoard />} />
-                <Route path={AppEntryRouts.Plugins} element={<AppPlugins />} />
                 <Route path={AppEntryRouts.Frame} element={<AppFrames />} />
                 <Route path={AppEntryRouts.Auth} element={<AuthBoard />}>
                   <Route path={AuthRoutes.MenuAuth} element={<MenuAuthBoard />} />

@@ -10,8 +10,8 @@ import {
   CloudUploadOutlined
 } from '@ant-design/icons';
 import { IApp } from "model";
-import { Image } from "common/Image"
 import styled from "styled-components";
+import {Image} from "components/Image";
 
 const { Meta } = Card;
 

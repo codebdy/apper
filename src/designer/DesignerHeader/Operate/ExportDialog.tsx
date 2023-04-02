@@ -7,7 +7,7 @@ import { useQueryVersions } from "enthooks/hooks/useQueryVersions";
 import { useDesignerParams, useParseLangMessage } from "plugin-sdk";
 import { useExportApp } from "enthooks/hooks/useExportApp";
 import { ID } from "shared";
-import { useSave } from "designer/UiDesigner/widgets/TemplateWidget/ExportDialog/useSave";
+
 const { Option } = Select;
 
 
@@ -27,11 +27,11 @@ export const ExportDialog = memo((
   const [exporting, setExporting] = useState(false);
   const snapshotIdRef = useRef<ID>();
 
-  const save = useSave(() => {
-    message.success(t("OperateSuccess"));
-    setExporting(false)
-    onOpenChange && onOpenChange(false);
-  })
+  // const save = useSave(() => {
+  //   message.success(t("OperateSuccess"));
+  //   setExporting(false)
+  //   onOpenChange && onOpenChange(false);
+  // })
 
 
   const [exportApp, { loading, error }] = useExportApp({
@@ -42,7 +42,7 @@ export const ExportDialog = memo((
       if (data?.exportApp) {
         fetch(data?.exportApp).then((resp => {
           resp.arrayBuffer().then((buffer) => {
-            save((p(app.title) || ("app" + appId)) + (snapshots?.find(sn => sn.id === snapshotIdRef.current)?.version || ""), buffer);
+            //save((p(app.title) || ("app" + appId)) + (snapshots?.find(sn => sn.id === snapshotIdRef.current)?.version || ""), buffer);
           }).catch(err => {
             message.error(err?.message)
             console.error(err)

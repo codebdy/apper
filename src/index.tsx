@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RecoilRoot } from 'recoil';
-import { PredefinedPluginsRoot } from 'plugin/PredefinedPluginsRoot';
 import { BrowserRouter } from 'react-router-dom';
 import './i18n';
 
@@ -13,13 +12,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-      <RecoilRoot>
-        <PredefinedPluginsRoot>
-          <BrowserRouter basename={process.env.PUBLIC_URL}>
-            <App />
-          </BrowserRouter>
-        </PredefinedPluginsRoot>
-      </RecoilRoot>
+    <RecoilRoot>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <App />
+      </BrowserRouter>
+    </RecoilRoot>
   </React.StrictMode>
 );
 

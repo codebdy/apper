@@ -1,4 +1,3 @@
-import { ISchema } from "@formily/react";
 import { Device } from "@rxdrag/appx-plugin-sdk";
 import { ID } from "shared";
 import { IApp, IAppInput } from "./app";
@@ -15,7 +14,7 @@ export interface IPageCategory {
 export interface IPage {
   id: ID;
   title: string;
-  schemaJson: { form: any, schema: ISchema };
+  schemaJson: { form: any, schema: any/* ISchema */ };
   device: Device;
   app?: IApp;
   categoryUuid?: string;

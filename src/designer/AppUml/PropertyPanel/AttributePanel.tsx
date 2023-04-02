@@ -8,7 +8,7 @@ import { useGetTypeLabel } from "../hooks/useGetTypeLabel";
 import { Form, Input, Switch } from "antd";
 import { useTranslation } from "react-i18next";
 import { AttributeTypeInput } from "./AttributeTypeInput";
-import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view";
+import { MultiLangInput } from "components/MultiLangInput";
 import { isStr } from "@formily/shared";
 import { useEdittingAppId } from "designer/hooks/useEdittingAppUuid";
 

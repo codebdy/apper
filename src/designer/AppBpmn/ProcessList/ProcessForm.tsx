@@ -3,7 +3,7 @@ import React, { useCallback } from "react";
 import { memo } from "react";
 import { IPageInput, IProcess, IProcessCategory } from "model";
 import { useTranslation } from "react-i18next";
-import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view";
+import { MultiLangInput } from "components/MultiLangInput";
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 const { Option } = Select;
 

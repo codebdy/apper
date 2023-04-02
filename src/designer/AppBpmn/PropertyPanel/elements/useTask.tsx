@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { useParseLangMessage } from "plugin-sdk";
+import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { IElement } from "./IElement";
 import { useElementName } from "./useElementName";
 

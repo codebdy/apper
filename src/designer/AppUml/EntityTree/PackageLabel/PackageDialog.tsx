@@ -2,7 +2,7 @@ import { Form, Modal, Select } from "antd"
 import { memo, useCallback, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { PackageMeta, PackageStereoType } from "../../meta/PackageMeta"
-import { MultiLangInput } from "plugins/inputs/components/pc/MultiLangInput/view"
+import { MultiLangInput } from "components/MultiLangInput"
 const { Option } = Select;
 
 export const PackageDialog = memo((
