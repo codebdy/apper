@@ -8,7 +8,7 @@ import { Spring } from "./Spring"
 import { useTranslation } from "react-i18next"
 import { StyledThemeRoot } from "./StyledThemeRoot"
 import { ConfigRoot } from "./ConfigRoot"
-import { useRecoilState, useRecoilValue } from "recoil"
+import { useRecoilState } from "recoil"
 import { themeModeState } from "recoil/atoms"
 
 const Container = styled.div`
