@@ -1,8 +1,8 @@
 import { memo, useCallback } from "react"
 import styled from "styled-components"
 import { Logo } from "./Logo"
-import { Avatar, Badge, Button, Divider, Space } from "antd"
-import { AppstoreOutlined, CloudServerOutlined, SettingOutlined, BellOutlined, UserOutlined } from "@ant-design/icons"
+import { Badge, Button, Divider, Space } from "antd"
+import { AppstoreOutlined, CloudServerOutlined, SettingOutlined, BellOutlined } from "@ant-design/icons"
 import { AppManager } from "./AppManager"
 import { Spring } from "./Spring"
 import { useTranslation } from "react-i18next"
@@ -10,6 +10,8 @@ import { StyledThemeRoot } from "./StyledThemeRoot"
 import { ConfigRoot } from "./ConfigRoot"
 import { useRecoilState } from "recoil"
 import { themeModeState } from "recoil/atoms"
+import AvatarMenu from "components/AvatarMenu"
+import LangSelect from "components/LangSelect"
 
 const Container = styled.div`
   width: 100%;
@@ -80,7 +82,8 @@ export const Dashbord = memo(() => {
               <Badge count={5} offset={[-6, 2]}>
                 <Button type="text" icon={<BellOutlined />} />
               </Badge>
-              <Avatar style={{ marginLeft: 16 }} icon={<UserOutlined />} />
+              <AvatarMenu />
+              <LangSelect />
             </Space>
           </Toolbar>
           <Content>

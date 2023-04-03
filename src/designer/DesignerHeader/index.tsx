@@ -6,15 +6,15 @@ import { useMatch, useNavigate } from "react-router-dom"
 import { IApp } from "model"
 import { AppEntryRouts } from "./AppEntryRouts"
 import { useTranslation } from "react-i18next"
-import SelectLang from "plugins/framewidgets/pc/LangSelect/view"
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage"
-import AvatarMenu from "plugins/framewidgets/pc/AvatarMenu/view"
 import SvgIcon from "common/SvgIcon"
 import { DESIGN, DESIGN_BOARD } from "consts"
 import { useEdittingAppId } from "designer/hooks/useEdittingAppUuid"
 import { Operate } from "./Operate"
 import styled from "styled-components"
 import { useToken } from "antd/es/theme/internal"
+import AvatarMenu from "components/AvatarMenu"
+import SelectLang from "components/LangSelect"
 
 const StyledHeader = styled.div`
   display: flex;

@@ -42,6 +42,7 @@ const ChangePasswordForm = memo((
   }, [change, loginName])
   const confirmMessage = useMemo(() => t("PasswordDisaccord"), [t]);
 
+
   return (
     <Form
       form={form}
@@ -69,7 +70,7 @@ const ChangePasswordForm = memo((
         <Input.Password />
       </Form.Item>
       <Form.Item>
-        <Button size="large" loading={loading}>
+        <Button type="primary" size="large" loading={loading}>
           {t("ConfirmChange")}
         </Button>
       </Form.Item>
