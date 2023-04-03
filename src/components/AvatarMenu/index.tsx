@@ -1,5 +1,5 @@
 import { LockOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons"
-import { Avatar, Dropdown, Menu, Modal } from "antd"
+import { Avatar, Dropdown, MenuProps, Modal } from "antd"
 import React, { memo, useCallback, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -7,11 +7,15 @@ import { useMe } from "plugin-sdk/contexts/login";
 import { LOGIN_URL, DESIGNER_TOKEN_NAME } from "consts";
 import { useLogout, useSetToken } from "enthooks";
 import ChangePasswordForm from "./ChangePasswordForm";
-import "./style.less"
+import styled from "styled-components";
 
 export interface IComponentProps {
   trigger?: ("click" | "hover" | "contextMenu")[]
 }
+
+const StyledAvatar = styled(Avatar)`
+  cursor: pointer;
+`
 
 const AvatarMenu = memo((props: IComponentProps) => {
   const { trigger, ...other } = props;
@@ -39,30 +43,33 @@ const AvatarMenu = memo((props: IComponentProps) => {
   }, []);
 
 
-  const menu = useMemo(() => (
-    <Menu>
-      <Menu.Item key="changepPassword"
-        icon={<LockOutlined />}
-        onClick={showModal}
-      >
-        {t("ChangePassword")}
-      </Menu.Item>
-      <Menu.Item key="logout" icon={<LogoutOutlined />} onClick={handleLogout}>
-        {t("Logout")}
-      </Menu.Item>
-    </Menu>
+  const items: MenuProps['items'] = useMemo(() => (
+    [
+      {
+        key: 'changepPassword',
+        icon: <LockOutlined />,
+        label: t("ChangePassword"),
+        onClick: showModal,
+      },
+      {
+        key: 'logout',
+        icon: <LogoutOutlined />,
+        label: t("Logout"),
+        onClick: handleLogout,
+      },
+    ]
   ), [handleLogout, showModal, t]);
 
   return (
     <>
-      <Dropdown overlay={menu} placement="bottomRight" arrow trigger={trigger || ['click']}>
-        <Avatar className="appx-avatar-menu" icon={!me && <UserOutlined />} {...other}>
+      <Dropdown menu={{ items }} placement="bottomRight" arrow trigger={trigger || ['click']} >
+        <StyledAvatar icon={!me && <UserOutlined />} {...other}>
           {me?.name?.substring(0, 1)?.toUpperCase()}
-        </Avatar>
+        </StyledAvatar>
       </Dropdown>
       <Modal
         title={t("ChangePassword")}
-        visible={isModalVisible}
+        open={isModalVisible}
         footer={null}
         width={460}
         onCancel={handleCancel}
