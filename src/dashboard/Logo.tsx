@@ -19,8 +19,7 @@ export const Logo = memo(() => {
   const { t } = useTranslation()
   return (
     <Container>
-      <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-        viewBox="0 0 140 140">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140">
         <defs>
           <linearGradient id="logo_color" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#3ca9f2" />
