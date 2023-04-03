@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo } from "react"
+import { memo, useCallback, useMemo, useState } from "react"
 import { useChangePassword } from "enthooks/hooks/useChangePassword";
 import { useShowError } from "designer/hooks/useShowError";
 import { Button, Form, Input, message } from "antd";
@@ -13,6 +13,7 @@ const ChangePasswordForm = memo((
   }
 ) => {
   const { loginName, onClose } = props;
+  const [isError, setIsError] = useState(false);
   const setToken = useSetToken();
   const { t } = useTranslation();
   const [change, { error, loading }] = useChangePassword({
@@ -42,13 +43,24 @@ const ChangePasswordForm = memo((
   }, [change, loginName])
   const confirmMessage = useMemo(() => t("PasswordDisaccord"), [t]);
 
-
+  const handleChange = useCallback((values: any) => {
+    if (values?.['oldPassword']) {
+      return;
+    }
+    const value = form.getFieldsValue()
+    if (value?.['confirmPassword'] !== value?.['newPassword'] && value?.['confirmPassword']) {
+      setIsError(true);
+    } else {
+      setIsError(false);
+    }
+  }, [form])
   return (
     <Form
       form={form}
-      size="large"
       labelCol={{ span: 6 }}
       wrapperCol={{ span: 16 }}
+      onValuesChange={handleChange}
+      onFinish={handleSubmit}
     >
       <Form.Item
         label={t("OldPassword")}
@@ -68,11 +80,13 @@ const ChangePasswordForm = memo((
         label={t("ConfirmPassword")}
         name="confirmPassword"
         rules={[{ required: true, message: 'Please input your password!' }]}
+        help={isError ? confirmMessage : undefined}
+        validateStatus={isError ? "error" : undefined}
       >
         <Input.Password />
       </Form.Item>
       <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
-        <Button type="primary" loading={loading}>
+        <Button type="primary" htmlType="submit" loading={loading}>
           {t("ConfirmChange")}
         </Button>
       </Form.Item>
