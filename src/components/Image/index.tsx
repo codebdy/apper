@@ -23,8 +23,8 @@ const ImageContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #eee;
-    color: #ddd;
+    background-color: ${props => props.theme.token?.colorBorderSecondary};
+    color: ${props => props.theme.token?.colorBorder};
   }
 `
 

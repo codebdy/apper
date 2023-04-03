@@ -7,6 +7,7 @@ const Container = styled.div`
   align-items: center;
   font-weight: bold;
   font-size: 18px;
+  color: ${props=>props.theme.token?.colorText};
   svg{
     margin-right: 8px;
     width: 48px;
