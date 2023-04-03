@@ -1,4 +1,5 @@
 {
+  "Leda": "乐搭",
   "Edit": "编辑",
   "Delete": "删除",
   "Share": "共享",
@@ -18,6 +19,8 @@
   "Hidden": "隐藏",
   "Properties": "属性",
   "App": "应用",
+  "Apps": "应用中心",
+  "Services": "服务中心",
   "AppTemplates": "应用模板",
   "Template": "模板",
   "SystemConfig": "系统管理",
@@ -179,7 +182,7 @@
     "Menu": "菜单",
     "MenuComponents": "菜单组件",
     "Model": "模型",
-    "Entities" :"实体",
+    "Entities": "实体",
     "Flow": "流程",
     "PageFrames": "框架",
     "Fragments": "片段",

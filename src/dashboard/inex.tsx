@@ -6,6 +6,7 @@ import { Avatar, Badge, Button, Divider, Space } from "antd"
 import { AppstoreOutlined, CloudServerOutlined, SettingOutlined, BellOutlined, UserOutlined } from "@ant-design/icons"
 import { AppManager } from "./AppManager"
 import { Spring } from "./Spring"
+import { useTranslation } from "react-i18next"
 
 const Container = styled.div`
   width: 100%;
@@ -39,6 +40,7 @@ const Content = styled.div`
 
 
 export const Dashbord = memo(() => {
+  const { t } = useTranslation();
   const [, token] = useToken()
   const theme = useMemo(() => {
     return {
@@ -54,13 +56,13 @@ export const Dashbord = memo(() => {
           <StyledDivider type="vertical" />
           <Space>
             <Button type="primary" icon={<AppstoreOutlined />}>
-              应用中心
+              {t("Apps")}
             </Button>
             <Button type="text" icon={<CloudServerOutlined />}>
-              服务中心
+              {t("Services")}
             </Button>
             <Button type="text" icon={<SettingOutlined />}>
-              配置中心
+              {t("Configs.Title")}
             </Button>
           </Space>
           <Spring />

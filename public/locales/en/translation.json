@@ -1,4 +1,5 @@
 {
+  "Leda": "LEDA",
   "Edit": "Edit",
   "Delete": "Delete",
   "Share": "Share",
@@ -12,6 +13,8 @@
   "Add": "Add",
   "Hidden": "Hidden",
   "App": "App",
+  "Apps": "Apps",
+  "Services": "Services",
   "AppTemplates": "App Templates",
   "Model": "Mode",
   "Template": "Template",
@@ -206,7 +209,7 @@
       "Resources": "语言资源",
       "LangResourcesList": "语言资源列表",
       "LangResourcesEdit": "编辑语言资源",
-      "NewLangResource":"新建语言资源"
+      "NewLangResource": "新建语言资源"
     },
     "Other": "其他配置"
   },
