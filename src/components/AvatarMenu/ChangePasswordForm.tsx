@@ -47,6 +47,8 @@ const ChangePasswordForm = memo((
     <Form
       form={form}
       size="large"
+      labelCol={{ span: 6 }}
+      wrapperCol={{ span: 16 }}
     >
       <Form.Item
         label={t("OldPassword")}
@@ -69,8 +71,8 @@ const ChangePasswordForm = memo((
       >
         <Input.Password />
       </Form.Item>
-      <Form.Item>
-        <Button type="primary" size="large" loading={loading}>
+      <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
+        <Button type="primary" loading={loading}>
           {t("ConfirmChange")}
         </Button>
       </Form.Item>
