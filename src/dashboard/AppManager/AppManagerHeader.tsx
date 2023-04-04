@@ -3,6 +3,7 @@ import { Spring } from "../Spring";
 import { memo } from "react"
 import styled from "styled-components"
 import { PlusOutlined } from "@ant-design/icons"
+import { useTranslation } from "react-i18next";
 
 const Container = styled.div`
   height: 64px;
@@ -12,16 +13,17 @@ const Container = styled.div`
 const { Search } = Input;
 
 export const AppManagerHeader = memo(() => {
+  const { t } = useTranslation();
   return (
     <Container>
       <Search placeholder="" style={{ width: 300 }} />
       <Spring />
       <Space>
         <Button >
-          导入应用
+          {t('AppManager.ImportApp')}
         </Button>
         <Button type="primary" icon={<PlusOutlined />}>
-          新建应用
+          {t('AppManager.CreateApp')}
         </Button>
       </Space>
     </Container>
