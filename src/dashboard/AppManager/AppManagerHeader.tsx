@@ -2,11 +2,11 @@ import { Button, Input, Space } from "antd";
 import { Spring } from "../Spring";
 import { memo, useCallback } from "react"
 import styled from "styled-components"
-import { PlusOutlined } from "@ant-design/icons"
 import { useTranslation } from "react-i18next";
 import { useImportApp } from "enthooks/hooks/useImportApp";
 import { useAppOpenFile } from "./hooks/useAppOpenFile";
 import { useShowError } from "designer/hooks/useShowError";
+import { CreateAppDialog } from "./AppModal/CreateAppDialog";
 
 const Container = styled.div`
   height: 64px;
@@ -24,7 +24,6 @@ export const AppManagerHeader = memo(() => {
 
   const handleImport = useCallback(() => {
     openFile().then((file: File) => {
-      console.log("哈哈", file)
       importApp(file)
     })
   }, [importApp, openFile])
@@ -37,9 +36,7 @@ export const AppManagerHeader = memo(() => {
         <Button onClick={handleImport} loading={loading}>
           {t('AppManager.ImportApp')}
         </Button>
-        <Button type="primary" icon={<PlusOutlined />}>
-          {t('AppManager.CreateApp')}
-        </Button>
+        <CreateAppDialog />
       </Space>
     </Container>
   )
