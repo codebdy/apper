@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from './Login';
 import AppDesigner from './designer/index';
 import Install from './Install';
-import { DESIGN, DESIGNER_TOKEN_NAME, DESIGN_BOARD, DESIGN_FRAME, DESIGN_UI, INDEX_URL, INSTALL_URL, LOGIN_URL, SERVER_URL, SYSTEM_APP_ID } from './consts';
+import { DESIGN, DESIGNER_TOKEN_NAME, DESIGN_BOARD, INDEX_URL, INSTALL_URL, LOGIN_URL, SERVER_URL, SYSTEM_APP_ID } from './consts';
 import { AppEntryRouts } from './designer/DesignerHeader/AppEntryRouts';
 import AppUis from './designer/DesignerHeader/AppUis';
 import { LoggedInPanel } from './Login/LoggedInPanel';
