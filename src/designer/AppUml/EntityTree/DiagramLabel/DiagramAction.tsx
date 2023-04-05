@@ -1,6 +1,6 @@
 import { MoreOutlined, EditOutlined, DeleteOutlined, LockOutlined } from "@ant-design/icons";
-import { Menu, Dropdown, Button } from "antd";
-import React, { memo, useCallback, useMemo } from "react"
+import { Dropdown, Button } from "antd";
+import { memo, useCallback } from "react"
 import { useTranslation } from "react-i18next";
 import { DiagramMeta } from "../../meta/DiagramMeta";
 import { useGetPackage } from "../../hooks/useGetPackage";
@@ -26,34 +26,6 @@ const DiagramAction = memo((
     onVisibleChange(false);
   }, [deleteDiagram, onVisibleChange, diagram.uuid]);
 
-  const menu = useMemo(() => (
-    <div style={{ backgroundColor: "#000" }}>
-      <Menu
-        items={[
-          {
-            icon: <EditOutlined />,
-            label: t("Edit"),
-            key: '6',
-            onClick: e => {
-              e.domEvent.stopPropagation();
-              onEdit();
-              onVisibleChange(false);
-            }
-          },
-          {
-            icon: <DeleteOutlined />,
-            label: t("Delete"),
-            key: '7',
-            onClick: e => {
-              e.domEvent.stopPropagation();
-              handleDelete();
-              onVisibleChange(false);
-            }
-          },
-        ]}
-      />
-    </div>
-  ), [handleDelete, onEdit, onVisibleChange, t]);
 
   return (
     getPagcage(diagram.packageUuid)?.sharable && appId !== SYSTEM_APP_ID ?
@@ -62,7 +34,30 @@ const DiagramAction = memo((
       </Button>
       :
       <Dropdown
-        overlay={menu}
+        menu={{
+          items: [
+            {
+              icon: <EditOutlined />,
+              label: t("Edit"),
+              key: '6',
+              onClick: e => {
+                e.domEvent.stopPropagation();
+                onEdit();
+                onVisibleChange(false);
+              }
+            },
+            {
+              icon: <DeleteOutlined />,
+              label: t("Delete"),
+              key: '7',
+              onClick: e => {
+                e.domEvent.stopPropagation();
+                handleDelete();
+                onVisibleChange(false);
+              }
+            },
+          ]
+        }}
         onOpenChange={onVisibleChange}
         trigger={['click']}
       >

@@ -1,6 +1,6 @@
 import { MoreOutlined, EditOutlined, DeleteOutlined, LoadingOutlined } from "@ant-design/icons";
-import { Menu, Dropdown, Button } from "antd";
-import React, { memo, useCallback, useMemo } from "react"
+import { Dropdown, Button } from "antd";
+import React, { memo, useCallback } from "react"
 import { ID } from "shared";
 import { IProcess } from "model";
 import { useShowError } from "designer/hooks/useShowError";
@@ -33,35 +33,31 @@ const ProcessActions = memo((
     remove(pageId);
   }, [pageId, remove]);
 
-  const menu = useMemo(() => (
-    <Menu
-      onClick={e => e.domEvent.stopPropagation()}
-      items={[
-        {
-          icon: <EditOutlined />,
-          label: t("Edit"),
-          key: '1',
-          onClick: (e => {
-            e.domEvent.stopPropagation();
-            handleEdit();
-          })
-        },
-        {
-          icon: <DeleteOutlined />,
-          label: t("Delete"),
-          key: '2',
-          onClick: (e => {
-            e.domEvent.stopPropagation();
-            handleDelete();
-          })
-        },
-      ]}
-    />
-  ), [handleDelete, handleEdit, t]);
 
   return (
     <Dropdown
-      overlay={menu}
+      menu={{
+        items: [
+          {
+            icon: <EditOutlined />,
+            label: t("Edit"),
+            key: '1',
+            onClick: (e => {
+              e.domEvent.stopPropagation();
+              handleEdit();
+            })
+          },
+          {
+            icon: <DeleteOutlined />,
+            label: t("Delete"),
+            key: '2',
+            onClick: (e => {
+              e.domEvent.stopPropagation();
+              handleDelete();
+            })
+          },
+        ]
+      }}
       trigger={['click']}
       onOpenChange={onVisibleChange}
       disabled={loading}

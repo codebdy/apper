@@ -1,6 +1,6 @@
 import { MoreOutlined, FileAddOutlined, EditOutlined, DeleteOutlined, LoadingOutlined } from "@ant-design/icons";
-import { Menu, Dropdown, Button } from "antd";
-import React, { memo, useCallback, useMemo } from "react"
+import { Dropdown, Button } from "antd";
+import React, { memo, useCallback } from "react"
 import { useShowError } from "designer/hooks/useShowError";
 import { useTranslation } from "react-i18next";
 import { ID } from "shared";
@@ -39,44 +39,40 @@ const CategoryActions = memo((
     remove(id)
   }, [remove, id]);
 
-  const menu = useMemo(() => (
-    <Menu
-      items={[
-        {
-          icon: <FileAddOutlined />,
-          label: t("AppBpmn.NewProcess"),
-          key: '0',
-          onClick: (e => {
-            e.domEvent.stopPropagation();
-            onVisibleChange(false);
-            handleAdd();
-          })
-        },
-        {
-          icon: <EditOutlined />,
-          label: t("Edit"),
-          key: '1',
-          onClick: (e => {
-            e.domEvent.stopPropagation();
-            handleEdit();
-          })
-        },
-        {
-          icon: <DeleteOutlined />,
-          label: t("Delete"),
-          key: '2',
-          onClick: (e => {
-            e.domEvent.stopPropagation();
-            handleDelete();
-          })
-        },
-      ]}
-    />
-  ), [handleAdd, handleDelete, handleEdit, onVisibleChange, t]);
-
   return (
     <Dropdown
-      overlay={menu}
+      menu={{
+        items: [
+          {
+            icon: <FileAddOutlined />,
+            label: t("AppBpmn.NewProcess"),
+            key: '0',
+            onClick: (e => {
+              e.domEvent.stopPropagation();
+              onVisibleChange(false);
+              handleAdd();
+            })
+          },
+          {
+            icon: <EditOutlined />,
+            label: t("Edit"),
+            key: '1',
+            onClick: (e => {
+              e.domEvent.stopPropagation();
+              handleEdit();
+            })
+          },
+          {
+            icon: <DeleteOutlined />,
+            label: t("Delete"),
+            key: '2',
+            onClick: (e => {
+              e.domEvent.stopPropagation();
+              handleDelete();
+            })
+          },
+        ]
+      }}
       trigger={['click']}
       onOpenChange={onVisibleChange}
       disabled={loading}

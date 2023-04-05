@@ -1,5 +1,5 @@
 import { MoreOutlined, EditOutlined, DeleteOutlined, FileAddOutlined, PlusSquareOutlined, ShareAltOutlined, LockOutlined, StopOutlined } from "@ant-design/icons";
-import { Menu, Dropdown, Button } from "antd";
+import { Dropdown, Button } from "antd";
 import { memo, useCallback, useMemo, useState } from "react"
 import { useSetRecoilState } from 'recoil';
 import { classesState, diagramsState, selectedUmlDiagramState } from "../../recoil/atoms";
@@ -93,7 +93,7 @@ const PackageAction = memo((
             icon: <StopOutlined />,
             label: t("CancelShare"),
             key: '5',
-            onClick: (e:any) => {
+            onClick: (e: any) => {
               e.domEvent.stopPropagation();
               onVisibleChange(false);
               handleCancelShare();
@@ -104,7 +104,7 @@ const PackageAction = memo((
             icon: <ShareAltOutlined />,
             label: t("Share"),
             key: '5',
-            onClick: (e:any) => {
+            onClick: (e: any) => {
               e.domEvent.stopPropagation();
               onVisibleChange(false);
               handleShare();
@@ -115,100 +115,6 @@ const PackageAction = memo((
       : []
   }, [appId, pkg?.sharable, t, onVisibleChange, handleCancelShare, handleShare])
 
-  const menu = useMemo(() => (
-    <div style={{ backgroundColor: "#000" }}>
-      <Menu
-        items={[
-          {
-            icon: <FileAddOutlined />,
-            label: t("AppUml.AddDiagram"),
-            key: '0',
-            onClick: e => {
-              e.domEvent.stopPropagation();
-              handleAddDiagram();
-            }
-          },
-          {
-            icon: <PlusSquareOutlined />,
-            label: t("AppUml.AddClass"),
-            key: '1',
-            onClick: e => e.domEvent.stopPropagation(),
-            children: [
-              {
-                label: t("AppUml.AddEntity"),
-                key: '1',
-                onClick: e => {
-                  e.domEvent.stopPropagation();
-                  addClass(StereoType.Entity);
-                },
-              },
-              {
-                label: t("AppUml.AddAbstract"),
-                key: '2',
-                onClick: e => {
-                  e.domEvent.stopPropagation();
-                  addClass(StereoType.Abstract);
-                },
-              },
-              {
-                label: t("AppUml.AddEnum"),
-                key: '3',
-                onClick: e => {
-                  e.domEvent.stopPropagation();
-                  addClass(StereoType.Enum);
-                },
-              },
-              {
-                label: t("AppUml.AddValueObject"),
-                key: '4',
-                onClick: e => {
-                  e.domEvent.stopPropagation();
-                  addClass(StereoType.ValueObject);
-                },
-              },
-              // {
-              //   label: t("AppUml.AddThirdParty"),
-              //   key: '5',
-              //   onClick: e => {
-              //     e.domEvent.stopPropagation();
-              //     addClass(StereoType.ThirdParty);
-              //   },
-              // },
-              // {
-              //   label: t("AppUml.AddService"),
-              //   key: '6',
-              //   onClick: e => {
-              //     e.domEvent.stopPropagation();
-              //     addClass(StereoType.Service);
-              //   },
-              // },
-            ]
-          },
-          ...shareItems,
-          {
-            icon: <EditOutlined />,
-            label: t("Edit"),
-            key: '6',
-            onClick: e => {
-              e.domEvent.stopPropagation();
-              onEdit();
-              onVisibleChange(false);
-            }
-          },
-          {
-            icon: <DeleteOutlined />,
-            label: t("Delete"),
-            key: '7',
-            onClick: e => {
-              e.domEvent.stopPropagation();
-              handleDelete();
-              onVisibleChange(false);
-            }
-          },
-        ]}
-      />
-    </div>
-  ), [addClass, handleAddDiagram, handleDelete, onEdit, onVisibleChange, shareItems, t]);
 
   return (
     pkg.sharable && appId !== SYSTEM_APP_ID ?
@@ -218,7 +124,96 @@ const PackageAction = memo((
       :
       <>
         <Dropdown
-          overlay={menu}
+          menu={{
+            items: [
+              {
+                icon: <FileAddOutlined />,
+                label: t("AppUml.AddDiagram"),
+                key: '0',
+                onClick: e => {
+                  e.domEvent.stopPropagation();
+                  handleAddDiagram();
+                }
+              },
+              {
+                icon: <PlusSquareOutlined />,
+                label: t("AppUml.AddClass"),
+                key: '1',
+                onClick: e => e.domEvent.stopPropagation(),
+                children: [
+                  {
+                    label: t("AppUml.AddEntity"),
+                    key: '1',
+                    onClick: e => {
+                      e.domEvent.stopPropagation();
+                      addClass(StereoType.Entity);
+                    },
+                  },
+                  {
+                    label: t("AppUml.AddAbstract"),
+                    key: '2',
+                    onClick: e => {
+                      e.domEvent.stopPropagation();
+                      addClass(StereoType.Abstract);
+                    },
+                  },
+                  {
+                    label: t("AppUml.AddEnum"),
+                    key: '3',
+                    onClick: e => {
+                      e.domEvent.stopPropagation();
+                      addClass(StereoType.Enum);
+                    },
+                  },
+                  {
+                    label: t("AppUml.AddValueObject"),
+                    key: '4',
+                    onClick: e => {
+                      e.domEvent.stopPropagation();
+                      addClass(StereoType.ValueObject);
+                    },
+                  },
+                  // {
+                  //   label: t("AppUml.AddThirdParty"),
+                  //   key: '5',
+                  //   onClick: e => {
+                  //     e.domEvent.stopPropagation();
+                  //     addClass(StereoType.ThirdParty);
+                  //   },
+                  // },
+                  // {
+                  //   label: t("AppUml.AddService"),
+                  //   key: '6',
+                  //   onClick: e => {
+                  //     e.domEvent.stopPropagation();
+                  //     addClass(StereoType.Service);
+                  //   },
+                  // },
+                ]
+              },
+              ...shareItems,
+              {
+                icon: <EditOutlined />,
+                label: t("Edit"),
+                key: '6',
+                onClick: e => {
+                  e.domEvent.stopPropagation();
+                  onEdit();
+                  onVisibleChange(false);
+                }
+              },
+              {
+                icon: <DeleteOutlined />,
+                label: t("Delete"),
+                key: '7',
+                onClick: e => {
+                  e.domEvent.stopPropagation();
+                  handleDelete();
+                  onVisibleChange(false);
+                }
+              },
+            ]
+          }}
           onOpenChange={onVisibleChange}
           trigger={['click']}
         >

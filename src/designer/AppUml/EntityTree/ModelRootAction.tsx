@@ -1,6 +1,6 @@
 import { FolderAddOutlined, DownloadOutlined, ImportOutlined, MoreOutlined } from "@ant-design/icons";
-import { Menu, Dropdown, Button } from "antd";
-import React, { memo, useCallback, useMemo, useState } from "react"
+import { Dropdown, Button } from "antd";
+import React, { memo, useCallback, useState } from "react"
 import { useCreateNewPackage } from '../hooks/useCreateNewPackage';
 import { useSetRecoilState } from 'recoil';
 import { packagesState } from "../recoil/atoms";
@@ -43,38 +43,36 @@ export const ModelRootAction = memo(() => {
     setNewPackage(undefined);
   }, [backup, setPackages])
 
-  const menu = useMemo(() => (
-    <Menu
-      onClick={(info) => info.domEvent.stopPropagation()}
-      items={[
-        {
-          icon: <FolderAddOutlined />,
-          label: t("AppUml.AddPackage"),
-          key: '0',
-          onClick: e => {
-            e.domEvent.stopPropagation();
-            handleAddPackage();
-          }
-        },
-        {
-          icon: <DownloadOutlined />,
-          label: t("AppUml.ExportModel"),
-          key: '1',
-          onClick: expotJson
-        },
-        {
-          icon: <ImportOutlined />,
-          label: t("AppUml.ImportModel"),
-          key: '2',
-          onClick: importJson,
-        },
-      ]}
-    />
-  ), [expotJson, importJson, handleAddPackage, t]);
-
   return (
     <>
-      <Dropdown overlay={menu} trigger={['click']}>
+      <Dropdown
+        menu={{
+          onClick: (info) => info.domEvent.stopPropagation(),
+          items: [
+            {
+              icon: <FolderAddOutlined />,
+              label: t("AppUml.AddPackage"),
+              key: '0',
+              onClick: e => {
+                e.domEvent.stopPropagation();
+                handleAddPackage();
+              }
+            },
+            {
+              icon: <DownloadOutlined />,
+              label: t("AppUml.ExportModel"),
+              key: '1',
+              onClick: expotJson
+            },
+            {
+              icon: <ImportOutlined />,
+              label: t("AppUml.ImportModel"),
+              key: '2',
+              onClick: importJson,
+            },
+          ]
+        }}
+        trigger={['click']}>
         <Button shape='circle' type="text" size='small' onClick={handleNoneAction}>
           <MoreOutlined />
         </Button>

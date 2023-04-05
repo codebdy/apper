@@ -1,6 +1,6 @@
 import { DownloadOutlined, ImportOutlined, MoreOutlined, PlusSquareOutlined } from "@ant-design/icons";
-import { Menu, Dropdown, Button } from "antd";
-import React, { memo, useCallback, useMemo } from "react"
+import { Dropdown, Button } from "antd";
+import React, { memo, useCallback } from "react"
 import { useTranslation } from "react-i18next";
 import { useEdittingAppId } from "designer/hooks/useEdittingAppUuid";
 import { useCreateNewCode } from "../hooks/useCreateNewCode";
@@ -22,10 +22,10 @@ export const OrchestrationRootAction = memo(() => {
     e.stopPropagation()
   }, [])
 
-  const menu = useMemo(() => (
-    <Menu
-      onClick={(info) => info.domEvent.stopPropagation()}
-      items={[
+  return (
+    <Dropdown menu={{
+      onClick: (info) => info.domEvent.stopPropagation(),
+      items: [
         {
           icon: <PlusSquareOutlined />,
           label: t("AppUml.Add"),
@@ -67,12 +67,8 @@ export const OrchestrationRootAction = memo(() => {
           key: '3',
           onClick: importJson,
         },
-      ]}
-    />
-  ), [expotJson, importJson, addOrchestration, createNewCode, t]);
-
-  return (
-    <Dropdown overlay={menu} trigger={['click']}>
+      ]
+    }} trigger={['click']}>
       <Button shape='circle' type="text" size='small' onClick={handleNoneAction}>
         <MoreOutlined />
       </Button>

@@ -1,6 +1,6 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Button, Dropdown, Menu, message, Space } from 'antd';
-import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
+import { Button, Dropdown, message, Space } from 'antd';
+import React, { memo, useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useImportApp } from 'enthooks/hooks/useImportApp';
 import { useEdittingAppId } from 'designer/hooks/useEdittingAppUuid';
@@ -58,29 +58,6 @@ export const Operate = memo(() => {
     }
   }, [fileInputRef, appId, upsert])
 
-  const menu = useMemo(() => (
-    <Menu
-      onClick={handleMenuClick}
-      items={[
-        {
-          key: OperateEnum.createVaresion,
-          label: t("Designer.CreateVersion"),
-        },
-        {
-          key: OperateEnum.export,
-          label: t("Designer.Export"),
-        },
-        {
-          key: OperateEnum.import,
-          label: t("Designer.Import"),
-        },
-        {
-          key: OperateEnum.publish,
-          label: t("Designer.Publish"),
-        },
-      ]}
-    />
-  ), [handleMenuClick, t]);
 
   const handleMakeVersionOpenChange = useCallback((open?: boolean) => {
     setMakeVersionOpen(open);
@@ -103,7 +80,27 @@ export const Operate = memo(() => {
 
   return (
     <>
-      <Dropdown overlay={menu}>
+      <Dropdown menu={{
+        onClick: handleMenuClick,
+        items: [
+          {
+            key: OperateEnum.createVaresion,
+            label: t("Designer.CreateVersion"),
+          },
+          {
+            key: OperateEnum.export,
+            label: t("Designer.Export"),
+          },
+          {
+            key: OperateEnum.import,
+            label: t("Designer.Import"),
+          },
+          {
+            key: OperateEnum.publish,
+            label: t("Designer.Publish"),
+          },
+        ]
+      }}>
         <Button type="text" onClick={e => e.preventDefault()} loading={loading || publishing}>
           <Space>
             {t("Designer.Operate")}

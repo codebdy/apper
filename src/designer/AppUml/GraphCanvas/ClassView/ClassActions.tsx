@@ -1,5 +1,5 @@
 import { DeleteOutlined, EyeInvisibleOutlined, MoreOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, Dropdown, Menu } from 'antd';
+import { Button, Dropdown } from 'antd';
 import React, { memo, useState } from 'react';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -41,35 +41,6 @@ const ClassActions = memo((
     onVisible(flag);
   }, [onVisible]);
 
-  const menu = (
-    <Menu
-      onClick={handleMenuClick}
-      items={[
-        {
-          icon: <PlusOutlined />,
-          label: t("AppUml.AddAttribute"),
-          key: 'addAttribute',
-          disabled: cls.stereoType === StereoType.Service,
-        },
-        {
-          icon: <PlusOutlined />,
-          label: t("AppUml.AddMethod"),
-          key: 'addMethod',
-          disabled: cls.stereoType === StereoType.Enum || cls.stereoType === StereoType.ValueObject,
-        },
-        {
-          icon: <EyeInvisibleOutlined />,
-          label: t("Hidden"),
-          key: 'hidden',
-        },
-        {
-          icon: <DeleteOutlined />,
-          label: t("Delete"),
-          key: 'delete',
-        },
-      ]}
-    />
-  );
   return (
     <div>
       <div
@@ -89,9 +60,35 @@ const ClassActions = memo((
       </div>
       <Dropdown
         trigger={["click"]}
-        overlay={menu}
-        onVisibleChange={handleVisibleChange}
-        visible={visible}
+        menu={{
+          onClick: handleMenuClick,
+          items: [
+            {
+              icon: <PlusOutlined />,
+              label: t("AppUml.AddAttribute"),
+              key: 'addAttribute',
+              disabled: cls.stereoType === StereoType.Service,
+            },
+            {
+              icon: <PlusOutlined />,
+              label: t("AppUml.AddMethod"),
+              key: 'addMethod',
+              disabled: cls.stereoType === StereoType.Enum || cls.stereoType === StereoType.ValueObject,
+            },
+            {
+              icon: <EyeInvisibleOutlined />,
+              label: t("Hidden"),
+              key: 'hidden',
+            },
+            {
+              icon: <DeleteOutlined />,
+              label: t("Delete"),
+              key: 'delete',
+            },
+          ]
+        }}
+        onOpenChange={handleVisibleChange}
+        open={visible}
       >
         <div
           style={{
