@@ -11,7 +11,8 @@ import { useRecoilState } from "recoil"
 import { themeModeState } from "recoil/atoms"
 import AvatarMenu from "components/AvatarMenu"
 import LangSelect from "components/LangSelect"
-import { Outlet } from "react-router-dom"
+import { Outlet, useMatch, useNavigate } from "react-router-dom"
+import { DashboardRoutes } from "./Routes"
 
 const Container = styled.div`
   width: 100%;
@@ -48,10 +49,22 @@ const Content = styled.div`
 export const Dashbord = memo(() => {
   const { t } = useTranslation();
   const [themeMode, setThemeMode] = useRecoilState(themeModeState)
+  const navigate = useNavigate();
+
+  const match = useMatch(`/*`)
 
   const handleToggleTheme = useCallback(() => {
     setThemeMode(mode => mode === 'light' ? 'dark' : 'light')
   }, [setThemeMode])
+
+  const handleToAppManager = useCallback(() => {
+    navigate(`/${DashboardRoutes.AppManager}`)
+  }, [navigate])
+
+  const handleToServices = useCallback(() => {
+    navigate(`/${DashboardRoutes.Services}`)
+  }, [navigate])
+
   return (
     <ConfigRoot>
       <StyledThemeRoot>
@@ -60,10 +73,18 @@ export const Dashbord = memo(() => {
             <Logo />
             <StyledDivider type="vertical" />
             <Space>
-              <Button type="primary" icon={<AppstoreOutlined />}>
+              <Button
+                type={match?.pathname === `/${DashboardRoutes.AppManager}` || match?.pathname === "/" ? "primary" : "text"}
+                icon={<AppstoreOutlined />}
+                onClick={handleToAppManager}
+              >
                 {t("Apps")}
               </Button>
-              <Button type="text" icon={<CloudServerOutlined />}>
+              <Button
+                type={match?.pathname === `/${DashboardRoutes.Services}` ? "primary" : "text"}
+                icon={<CloudServerOutlined />}
+                onClick={handleToServices}
+              >
                 {t("Services")}
               </Button>
               <Button type="text" icon={<SettingOutlined />}>
