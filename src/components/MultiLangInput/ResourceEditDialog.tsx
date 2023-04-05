@@ -162,6 +162,7 @@ const ResourceEditDialog = memo((
       okText={t("Confirm")}
       width={600}
       cancelText={t("Cancel")}
+      forceRender
       okButtonProps={{
         loading: loading
       }}

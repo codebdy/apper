@@ -52,6 +52,7 @@ export const UpsertAppModel = memo((
       title={app ? t("AppManager.UpdateApp") : t("AppManager.CreateApp")}
       okText={t("Confirm")}
       cancelText={t("Cancel")}
+      forceRender
       okButtonProps={{
         loading: loading
       }}
@@ -74,13 +75,6 @@ export const UpsertAppModel = memo((
         >
           <MultiLangInput inline title={t("AppName")} />
         </Form.Item>
-
-        {/* <Form.Item
-        label={t("Description")}
-        name="description"
-      >
-        <Input.TextArea />
-      </Form.Item> */}
 
         < Form.Item
           label={t("Image")}
