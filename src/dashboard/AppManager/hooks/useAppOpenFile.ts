@@ -1,5 +1,4 @@
 import { useCallback } from "react";
-import { IOpenFileAction } from "plugin-sdk";
 
 export async function getTheFiles(accept: string, multiple?: boolean) {
   // open file picker
@@ -16,17 +15,13 @@ export async function getTheFiles(accept: string, multiple?: boolean) {
   return fileHandles;
 }
 
-export function useOpenFile() {
+export function useAppOpenFile() {
   const open = useCallback(async () => {
-    const allFiles = await Promise.all(
-      (await getTheFiles("*.json", false)).map(async (fileHandle: any) => {
-        const file = await fileHandle.getFile();
-        return file;
-      })
-    );
-
-    return allFiles?.[0];
-
+    const fileHandles = await getTheFiles(".zip", false)
+    const files = await fileHandles.map(async (fileHandle: any) => {
+      return await fileHandle.getFile();
+    })
+    return files?.[0]
   }, [])
 
   return open;
