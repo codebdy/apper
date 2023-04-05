@@ -12,6 +12,8 @@ import {
 import { IApp } from "model";
 import styled from "styled-components";
 import { Image } from "components/Image";
+import { useNavigate } from "react-router-dom";
+import { DESIGN, DESIGN_BOARD } from "consts";
 
 const { Meta } = Card;
 
@@ -45,10 +47,11 @@ export const AppCard = memo((props: {
   app: IApp,
 }) => {
   const { app } = props;
+  const navigate = useNavigate();
 
   const hanldeEdit = useCallback(() => {
-
-  }, [])
+    navigate(`/${DESIGN}/${app.id}/${DESIGN_BOARD}`)
+  }, [app.id, navigate])
 
   return (
     <StyledCard
