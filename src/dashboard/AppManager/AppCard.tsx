@@ -1,5 +1,5 @@
 import { Button, Card, Dropdown, MenuProps } from "antd"
-import { memo, useCallback } from "react"
+import { memo, useCallback, useState } from "react"
 import {
   EditOutlined,
   EllipsisOutlined,
@@ -14,6 +14,7 @@ import styled from "styled-components";
 import { Image } from "components/Image";
 import { useNavigate } from "react-router-dom";
 import { DESIGN, DESIGN_BOARD } from "consts";
+import { UpsertAppModel } from "./AppModal/UpsertAppModel";
 
 const { Meta } = Card;
 
@@ -47,11 +48,20 @@ export const AppCard = memo((props: {
   app: IApp,
 }) => {
   const { app } = props;
+  const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
 
   const hanldeEdit = useCallback(() => {
     navigate(`/${DESIGN}/${app.id}/${DESIGN_BOARD}`)
   }, [app.id, navigate])
+
+  const handleClose = useCallback(() => {
+    setVisible(false);
+  }, [])
+
+  const handleOpen = useCallback(() => {
+    setVisible(true);
+  }, [])
 
   return (
     <StyledCard
@@ -77,13 +87,23 @@ export const AppCard = memo((props: {
           icon={<EditOutlined />}
           onClick={hanldeEdit}
         ></Button>,
-        <Button size="small" type="text" key="setting" icon={<SettingOutlined />}></Button>,
-        <Dropdown menu={{ items }} trigger={['click', 'hover']}><EllipsisOutlined key="ellipsis" /></Dropdown>,
+        <Button
+          size="small"
+          type="text"
+          key="setting"
+          icon={<SettingOutlined />}
+          onClick={handleOpen}
+        ></Button>,
+        <Dropdown menu={{ items }} trigger={['click']}><EllipsisOutlined key="ellipsis" /></Dropdown>,
       ]}
     >
       <Meta
         title={app.title}
       />
+      {
+        visible && <UpsertAppModel app={app} visible={visible} onClose={handleClose} />
+      }
+
     </StyledCard>
   )
 })
