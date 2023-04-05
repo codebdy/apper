@@ -83,19 +83,19 @@ export const AppCard = memo((props: {
         />
       }
       actions={[
-        <Tooltip key="preview" title={t("AppManager.ToPreview")}>
-          <Button
-            size="small"
-            type="text"
-            icon={<SendOutlined />}
-          ></Button>
-        </Tooltip>,
         <Tooltip key="design" title={t("AppManager.ToDesign")}>
           <Button
             size="small"
             type="text"
             icon={designIcon}
             onClick={hanldeEdit}
+          ></Button>
+        </Tooltip>,
+        <Tooltip key="preview" title={t("AppManager.ToPreview")}>
+          <Button
+            size="small"
+            type="text"
+            icon={<SendOutlined />}
           ></Button>
         </Tooltip>,
         <Dropdown menu={{ items }} trigger={['click']}>

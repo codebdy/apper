@@ -29,7 +29,7 @@ const AppUis = memo((props: {
                 {
                   devices.map((device) => {
                     return (
-                      <Col span={8}>
+                      <Col key={device.key} span={8}>
                         <Card
                           className="hover-float"
                           cover={
