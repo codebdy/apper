@@ -5,6 +5,7 @@ export interface IImageProps {
   empertyIconSize?: number,
   value?: string,
   style?: CSSProperties,
+  onClick?: (e: React.MouseEvent) => void,
 }
 
 const ImageContainer = styled.div`
