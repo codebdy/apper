@@ -1,4 +1,4 @@
-import { Col, Row } from "antd"
+import { Col, Row, Spin } from "antd"
 import { memo } from "react"
 import styled from "styled-components"
 import { AppManagerHeader } from "./AppManagerHeader"
@@ -28,17 +28,19 @@ export const AppManager = memo(() => {
   const { apps, error, loading } = useQueryApps()
   useShowError(error)
   return (
-    <Container>
-      <AppManagerHeader />
-      <StyledRow gutter={32}>
-        {
-          apps?.map(app => {
-            return (<StyleCol span={6} key={app.id}>
-              <AppCard app={app} />
-            </StyleCol>)
-          })
-        }
-      </StyledRow>
-    </Container>
+    <Spin spinning={loading}>
+      <Container>
+        <AppManagerHeader />
+        <StyledRow gutter={32}>
+          {
+            apps?.map(app => {
+              return (<StyleCol span={6} key={app.id}>
+                <AppCard app={app} />
+              </StyleCol>)
+            })
+          }
+        </StyledRow>
+      </Container>
+    </Spin>
   )
 })
