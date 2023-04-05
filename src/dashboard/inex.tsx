@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { Logo } from "./Logo"
 import { Badge, Button, Divider, Space } from "antd"
 import { AppstoreOutlined, CloudServerOutlined, SettingOutlined, BellOutlined } from "@ant-design/icons"
-import { AppManager } from "./AppManager"
 import { Spring } from "./Spring"
 import { useTranslation } from "react-i18next"
 import { StyledThemeRoot } from "./StyledThemeRoot"
@@ -12,6 +11,7 @@ import { useRecoilState } from "recoil"
 import { themeModeState } from "recoil/atoms"
 import AvatarMenu from "components/AvatarMenu"
 import LangSelect from "components/LangSelect"
+import { Outlet } from "react-router-dom"
 
 const Container = styled.div`
   width: 100%;
@@ -87,7 +87,7 @@ export const Dashbord = memo(() => {
             </Space>
           </Toolbar>
           <Content>
-            <AppManager />
+            <Outlet />
           </Content>
         </Container>
       </StyledThemeRoot>

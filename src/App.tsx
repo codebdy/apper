@@ -20,6 +20,9 @@ import { PageAuthBoard } from './designer/AppAuth/PageAuthBoard';
 import { EntiRoot } from './enthooks';
 import { AppDesignBoard } from './designer/AppDesignBoard/inex';
 import { Dashbord } from 'dashboard/inex';
+import { DashboardRoutes } from 'dashboard/Routes';
+import { AppManager } from 'dashboard/AppManager';
+import { Services } from 'dashboard/Services';
 
 const App = memo(() => {
   return (
@@ -27,6 +30,9 @@ const App = memo(() => {
       <Routes>
         <Route path={INDEX_URL} element={<LoggedInPanel />}>
           <Route path={INDEX_URL} element={<Dashbord />}>
+            <Route path={""} element={<AppManager />} />
+            <Route path={DashboardRoutes.AppManager} element={<AppManager />} />
+            <Route path={DashboardRoutes.Services} element={<Services />} />
           </Route>
           <Route path={`/${DESIGN}`} element={<AppDesigner />}>
             <Route path=":appId">
