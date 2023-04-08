@@ -17,6 +17,12 @@ const StyledHeader = styled.div`
   padding: 0px 16px;
   border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
   height: 56px;
+  color: ${props => props.theme.token?.colorText}
+`
+
+const StyledDivider = styled(Divider)`
+  height: 16px;
+  margin-top: 6px;
 `
 
 export const ServiceDesignerHeader = memo((props: {
@@ -24,7 +30,7 @@ export const ServiceDesignerHeader = memo((props: {
 
   const navigate = useNavigate()
   const handleBack = useCallback(() => {
-    navigate("/")
+    navigate("/services")
   }, [navigate]);
 
   const { t } = useTranslation();
@@ -34,7 +40,7 @@ export const ServiceDesignerHeader = memo((props: {
   return (
     <StyledHeader style={{ backgroundColor: token.colorBgContainer }}>
       <Button type="text" icon={<HomeOutlined />} onClick={handleBack}></Button>
-      <Divider type='vertical' />
+      <StyledDivider type='vertical' />
       <div className="app-title" style={{ marginLeft: "4px" }}>服务名称</div>
       <div>Button</div>
       <div style={{ flex: 1 }}></div>
