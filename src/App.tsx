@@ -22,7 +22,7 @@ import { AppDesignBoard } from './designer/AppDesignBoard/inex';
 import { Dashbord } from 'dashboard/inex';
 import { DashboardRoutes } from 'dashboard/Routes';
 import { AppManager } from 'dashboard/AppManager';
-import { Services } from 'dashboard/ServiceManager';
+import { ServiceManager } from 'dashboard/ServiceManager';
 
 const App = memo(() => {
   return (
@@ -32,7 +32,7 @@ const App = memo(() => {
           <Route path={INDEX_URL} element={<Dashbord />}>
             <Route path={""} element={<AppManager />} />
             <Route path={DashboardRoutes.AppManager} element={<AppManager />} />
-            <Route path={DashboardRoutes.Services} element={<Services />} />
+            <Route path={DashboardRoutes.Services} element={<ServiceManager />} />
           </Route>
           <Route path={`/${DESIGN}`} element={<AppDesigner />}>
             <Route path=":appId">
