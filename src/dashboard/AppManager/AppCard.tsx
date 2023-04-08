@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { DESIGN, DESIGN_BOARD } from "consts";
 import { UpsertAppModel } from "./AppModal/UpsertAppModel";
 import { useTranslation } from "react-i18next";
-import { useRemoveApp } from "designer/hooks/useRemoveApp";
+import { useRemoveApp } from "hooks/useRemoveApp";
 import { useShowError } from "designer/hooks/useShowError";
 
 const { Meta } = Card;

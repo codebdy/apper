@@ -253,7 +253,8 @@
   "ServiceManager": {
     "CreateService": "创建服务",
     "UpdateService": "修改服务",
-    "ImportService": "导入服务"
+    "ImportService": "导入服务",
+    "Design": "设计"
   },
   "Templates": {
     "Title": "模板",

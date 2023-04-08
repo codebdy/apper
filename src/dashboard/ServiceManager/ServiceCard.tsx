@@ -1,21 +1,17 @@
-import { Button, Card, Dropdown, MenuProps, Tooltip } from "antd"
-import { memo, useCallback, useMemo, useState } from "react"
+import { Button, Card, Tooltip } from "antd"
+import { memo, useCallback, useState } from "react"
 import {
   EditOutlined,
-  EllipsisOutlined,
-  SendOutlined,
-  DeleteOutlined,
-  CloudUploadOutlined
-} from '@ant-design/icons';
+  DeleteOutlined} from '@ant-design/icons';
 import styled from "styled-components";
 import { Image } from "components/Image";
 import { useNavigate } from "react-router-dom";
 import { DESIGN, DESIGN_BOARD } from "consts";
 import { UpsertServiceModel } from "./ServiceModal/UpsertServiceModel";
 import { useTranslation } from "react-i18next";
-import { useRemoveApp } from "designer/hooks/useRemoveApp";
 import { useShowError } from "designer/hooks/useShowError";
 import { IService } from "model/service";
+import { useRemoveService } from "hooks/useRemoveService";
 
 const { Meta } = Card;
 
@@ -33,33 +29,9 @@ export const ServiceCard = memo((props: {
   const { service } = props;
   const [visible, setVisible] = useState(false);
   const { t } = useTranslation();
-  const [remove, { loading, error }] = useRemoveApp();
+  const [remove, { loading, error }] = useRemoveService();
 
   useShowError(error)
-
-  const items: MenuProps['items'] = useMemo(() => [
-    {
-      label: t("Edit"),
-      key: 'settings',
-      icon: <EditOutlined />,
-      onClick: () => setVisible(true)
-    },
-    {
-      label: t("AppManager.Publish"),
-      key: 'publish',
-      icon: <CloudUploadOutlined />
-    },
-    {
-      type: 'divider',
-    },
-    {
-      label: t('Delete'),
-      key: 'delete',
-      icon: <DeleteOutlined />,
-      onClick: () => remove(service.id),
-      disabled: service.id === '1',
-    },
-  ], [service.id, remove, t]);
 
   const navigate = useNavigate();
 
@@ -83,7 +55,7 @@ export const ServiceCard = memo((props: {
         />
       }
       actions={[
-        <Tooltip key="design" title={t("AppManager.ToDesign")}>
+        <Tooltip key="design" title={t("ServiceManager.Design")}>
           <Button
             size="small"
             type="text"
@@ -91,22 +63,21 @@ export const ServiceCard = memo((props: {
             onClick={hanldeEdit}
           ></Button>
         </Tooltip>,
-        <Tooltip key="preview" title={t("AppManager.ToPreview")}>
+        <Tooltip key="edit" title={t("Edit")}>
           <Button
             size="small"
             type="text"
-            icon={<SendOutlined />}
+            icon={<EditOutlined />}
           ></Button>
         </Tooltip>,
-        <Dropdown menu={{ items }} trigger={['click']}>
+        <Tooltip key="delete" title={t("Delete")}>
           <Button
             size="small"
             type="text"
-            key="setting"
-            icon={<EllipsisOutlined />}
-            loading={loading}
+            icon={<DeleteOutlined />}
           ></Button>
-        </Dropdown>,
+        </Tooltip>,
+
       ]}
     >
       <Meta

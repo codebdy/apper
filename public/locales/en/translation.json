@@ -140,7 +140,8 @@
   "ServiceManager": {
     "CreateService": "Create Service",
     "UpdateService": "Update Service",
-    "ImportService": "Import Service"
+    "ImportService": "Import Service",
+    "Design": "Design"
   },
   "AppUml": {
     "DomainModel": "业务模型",
