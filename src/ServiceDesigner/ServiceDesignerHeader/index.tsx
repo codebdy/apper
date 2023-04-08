@@ -11,6 +11,7 @@ import AvatarMenu from "components/AvatarMenu"
 import SelectLang from "components/LangSelect"
 import { ThemeSwitchButton } from "common/ThemeSwitchButton"
 import { Operate } from "./Operate"
+import { IService } from "model"
 
 const StyledHeader = styled.div`
   display: flex;
@@ -49,8 +50,9 @@ const StyledDivider = styled(Divider)`
 // ];
 
 export const ServiceDesignerHeader = memo((props: {
+  service?: IService
 }) => {
-
+  const { service } = props;
   const navigate = useNavigate()
   const handleBack = useCallback(() => {
     navigate("/services")
@@ -70,7 +72,7 @@ export const ServiceDesignerHeader = memo((props: {
     <StyledHeader style={{ backgroundColor: token.colorBgContainer }}>
       <Button type="text" icon={<HomeOutlined />} onClick={handleBack}></Button>
       <StyledDivider type='vertical' />
-      <Title>服务名称</Title>
+      <Title>{service?.title}</Title>
       <MenuContainer>
         {/* <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} /> */}
       </MenuContainer>
