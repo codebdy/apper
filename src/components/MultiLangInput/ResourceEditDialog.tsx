@@ -213,6 +213,7 @@ const ResourceEditDialog = memo((
             appConfig?.schemaJson?.multiLang?.langs?.map((lang) => {
               return (
                 <Form.Item
+                  key = {lang.key}
                   label={t("Lang." + lang.key)}
                   name={lang.key}
                 >
