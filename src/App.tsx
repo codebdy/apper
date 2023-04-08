@@ -22,7 +22,7 @@ import { AppDesignBoard } from './designer/AppDesignBoard/inex';
 import { Dashbord } from 'dashboard/inex';
 import { DashboardRoutes } from 'dashboard/Routes';
 import { AppManager } from 'dashboard/AppManager';
-import { Services } from 'dashboard/Services';
+import { Services } from 'dashboard/ServiceManager';
 
 const App = memo(() => {
   return (

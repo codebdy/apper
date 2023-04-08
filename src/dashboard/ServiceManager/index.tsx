@@ -1,6 +1,6 @@
 import { memo } from "react"
 
-export const Services = memo(() => {
+export const ServiceManager = memo(() => {
   return (<div>
     Services
   </div>)
