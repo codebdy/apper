@@ -3,7 +3,6 @@ import { Button, Divider, Space } from "antd"
 import { useCallback } from "react"
 import { memo } from "react"
 import { useNavigate } from "react-router-dom"
-import { IApp } from "model"
 import { useTranslation } from "react-i18next"
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage"
 import styled from "styled-components"
@@ -19,9 +18,8 @@ const StyledHeader = styled.div`
 `
 
 export const ServiceDesignerHeader = memo((props: {
-  app?: IApp,
 }) => {
-  const { app } = props;
+
   const navigate = useNavigate()
   const handleBack = useCallback(() => {
     navigate("/")
@@ -35,7 +33,7 @@ export const ServiceDesignerHeader = memo((props: {
     <StyledHeader style={{ backgroundColor: token.colorBgContainer }}>
       <Button type="text" shape="circle" size="large" onClick={handleBack}><HomeOutlined /></Button>
       <Divider type='vertical' />
-      <div className="app-title" style={{ marginLeft: "4px" }}>{parse(app?.title)}</div>
+      <div className="app-title" style={{ marginLeft: "4px" }}>服务名称</div>
       <div>Button</div>
       <div style={{ flex: 1 }}></div>
       <Space>

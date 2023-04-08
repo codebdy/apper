@@ -1,7 +1,17 @@
+import { Layout } from "antd";
 import { memo } from "react"
+import { ServiceDesignerHeader } from "./ServiceDesignerHeader";
+import { Outlet } from "react-router-dom";
 
+const { Content } = Layout;
 export const ServiceDesigner = memo(()=>{
+  
   return (
-    <div>哈哈</div>
+    <Layout>
+      <ServiceDesignerHeader />
+      <Content>
+        <Outlet />
+      </Content>
+    </Layout>
   )
 })
