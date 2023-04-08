@@ -20,8 +20,8 @@ export const UpsertServiceModel = memo((
   const { t } = useTranslation();
 
   const reset = useCallback(() => {
-    form.setFieldsValue({ title: service?.title || "", imageUrl: service?.imageUrl || "" })
-  }, [service?.imageUrl, service?.title, form])
+    form.setFieldsValue({ name: service?.name || "", title: service?.title || "", imageUrl: service?.imageUrl || "" })
+  }, [form, service?.name, service?.title, service?.imageUrl])
 
   useEffect(() => {
     reset();
@@ -69,7 +69,7 @@ export const UpsertServiceModel = memo((
       >
         <Form.Item
           label={t("Name")}
-          name="title"
+          name="name"
           rules={[{ required: true, message: t("Required") }]}
         >
           <Input title={t("Name")} />
