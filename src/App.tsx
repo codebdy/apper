@@ -1,35 +1,35 @@
 import { memo } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Login from './Login';
-import AppDesigner from './designer/index';
+import AppDesigner from './AppDesigner/index';
 import Install from './Install';
 import { DESIGN, DESIGNER_TOKEN_NAME, DESIGN_BOARD, INDEX_URL, INSTALL_URL, LOGIN_URL, SERVER_URL, SYSTEM_APP_ID } from './consts';
-import { AppEntryRouts } from './designer/DesignerHeader/AppEntryRouts';
-import AppUis from './designer/DesignerHeader/AppUis';
+import { AppEntryRouts } from './AppDesigner/DesignerHeader/AppEntryRouts';
+import AppUis from './AppDesigner/DesignerHeader/AppUis';
 import { LoggedInPanel } from './Login/LoggedInPanel';
-import { AppFrames } from './designer/DesignerHeader/AppFrames';
-import { AppBpmn } from './designer/AppBpmn';
-import { AppDmn } from './designer/AppDmn';
-import AppConfig from './designer/AppConfig';
-import AppUml from './designer/AppUml';
-import ApiBoard from './designer/ApiBoard';
-import { AuthBoard, AuthRoutes } from './designer/AppAuth';
-import { MenuAuthBoard } from './designer/AppAuth/MenuAuthBoard';
-import { ModelAuthBoard } from './designer/AppAuth/ModelAuthBoard';
-import { PageAuthBoard } from './designer/AppAuth/PageAuthBoard';
+import { AppFrames } from './AppDesigner/DesignerHeader/AppFrames';
+import { AppBpmn } from './AppDesigner/AppBpmn';
+import { AppDmn } from './AppDesigner/AppDmn';
+import AppConfig from './AppDesigner/AppConfig';
+import AppUml from './AppDesigner/AppUml';
+import ApiBoard from './AppDesigner/ApiBoard';
+import { AuthBoard, AuthRoutes } from './AppDesigner/AppAuth';
+import { MenuAuthBoard } from './AppDesigner/AppAuth/MenuAuthBoard';
+import { ModelAuthBoard } from './AppDesigner/AppAuth/ModelAuthBoard';
+import { PageAuthBoard } from './AppDesigner/AppAuth/PageAuthBoard';
 import { EntiRoot } from './enthooks';
-import { AppDesignBoard } from './designer/AppDesignBoard/inex';
-import { Dashbord } from 'dashboard/inex';
-import { DashboardRoutes } from 'dashboard/Routes';
-import { AppManager } from 'dashboard/AppManager';
-import { ServiceManager } from 'dashboard/ServiceManager';
+import { AppDesignBoard } from './AppDesigner/AppDesignBoard/inex';
+import { Studio } from 'Studio';
+import { DashboardRoutes } from 'Studio/Routes';
+import { AppManager } from 'Studio/AppManager';
+import { ServiceManager } from 'Studio/ServiceManager';
 
 const App = memo(() => {
   return (
     <EntiRoot config={{ endpoint: SERVER_URL, appId: SYSTEM_APP_ID, tokenName: DESIGNER_TOKEN_NAME }} >
       <Routes>
         <Route path={INDEX_URL} element={<LoggedInPanel />}>
-          <Route path={INDEX_URL} element={<Dashbord />}>
+          <Route path={INDEX_URL} element={<Studio />}>
             <Route path={""} element={<AppManager />} />
             <Route path={DashboardRoutes.AppManager} element={<AppManager />} />
             <Route path={DashboardRoutes.Services} element={<ServiceManager />} />

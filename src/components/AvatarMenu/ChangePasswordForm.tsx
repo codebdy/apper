@@ -1,6 +1,6 @@
 import { memo, useCallback, useMemo, useState } from "react"
 import { useChangePassword } from "enthooks/hooks/useChangePassword";
-import { useShowError } from "designer/hooks/useShowError";
+import { useShowError } from "AppDesigner/hooks/useShowError";
 import { Button, Form, Input, message } from "antd";
 import { useSetToken } from "enthooks";
 import { DESIGNER_TOKEN_NAME } from "consts";

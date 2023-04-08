@@ -1,9 +1,9 @@
 import { Device } from "@rxdrag/appx-plugin-sdk";
-import { MetaContent } from "designer/AppUml/meta";
 import { ID } from "shared";
 import { ILang, ILangLocal } from "./lang";
 import { IMenu } from "./menu";
 import { IPluginInfo } from "./plugin";
+import { MetaContent } from "AppDesigner/AppUml/meta";
 
 export interface IAppConfig {
   id: ID;

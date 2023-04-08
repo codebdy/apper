@@ -1,5 +1,4 @@
-import { ClassMeta, RelationMeta, RelationType, StereoType } from "designer/AppUml/meta";
-
+import { ClassMeta, RelationMeta, RelationType, StereoType } from "AppDesigner/AppUml/meta";
 
 export const getChildEntities = (classUuid: string, classMetas: ClassMeta[], relations: RelationMeta[]) => {
   const classes: ClassMeta[] = [];

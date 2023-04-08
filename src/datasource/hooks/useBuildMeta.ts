@@ -9,9 +9,9 @@ import _ from "lodash";
 import { AssociationMeta } from "../model";
 import { AssociationType } from "../model/IFieldSource";
 import { getParentClasses } from "./getParentClasses";
-import { AttributeMeta, ClassMeta, MethodMeta, RelationMeta, RelationMultiplicity, RelationType, StereoType } from "designer/AppUml/meta";
 import { IApp } from "model";
 import { getChildEntities } from "./getChildEntities";
+import { ClassMeta, RelationMeta, RelationType, RelationMultiplicity, StereoType, AttributeMeta, MethodMeta } from "AppDesigner/AppUml/meta";
 
 export const sort = (array: { name: string }[]) => {
   return array.sort((a, b) => {
