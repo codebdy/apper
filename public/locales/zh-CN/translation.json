@@ -124,10 +124,11 @@
     "UIDesign": "界面",
     "PageDesign": "页面设计",
     "FrameDesign": "框架设计",
-    "Model": "模型",
+    "Business": "业务",
     "UMLModel": "领域模型",
     "BPMNFlow": "工作流模型",
     "DMN": "决策模型",
+    "LogicFlow": "业务逻辑",
     "AppApi": "接口",
     "ModelAuth": "权限",
     "Plugins": "插件"
@@ -244,7 +245,7 @@
     "AppDesign": "应用设计",
     "ToDesign": "去设计",
     "ToPreview": "去预览",
-    "Publish":"发布",
+    "Publish": "发布",
     "Design": "设计",
     "TemplateSelect": "{{name}}模板",
     "AtLeastOneTemplate": "请至少选择一个应用模板"

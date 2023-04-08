@@ -61,6 +61,22 @@
     "Auth": "Auth",
     "Config": "Config"
   },
+  "AppEntry": {
+    "BaseConfig": "Config",
+    "UI": "UI",
+    "UIDesign": "UI Design",
+    "PageDesign": "Page Design",
+    "FrameDesign": "Frame Design",
+    "Business": "Business",
+    "UMLModel": "UML Model",
+    "BPMNFlow": "Workflow",
+    "DMN": "DMN",
+    "LogicFlow":"LogicFlow",
+    "AppApi": "API",
+    "ModelAuth": "Authority",
+    "Plugins": "Plugins"
+  },
+
   "AppConfig": {
     "BaseConfig": "基础配置",
     "UIDesign": "界面设计",
