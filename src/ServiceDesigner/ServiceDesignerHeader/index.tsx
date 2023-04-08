@@ -1,6 +1,6 @@
-import { QuestionCircleOutlined, GithubOutlined, HomeOutlined } from "@ant-design/icons"
-import { Button, Divider, Space } from "antd"
-import { useCallback } from "react"
+import { QuestionCircleOutlined, GithubOutlined, HomeOutlined, MailOutlined, AppstoreOutlined, SettingOutlined } from "@ant-design/icons"
+import { Button, Divider, Menu, MenuProps, Space } from "antd"
+import { useCallback, useState } from "react"
 import { memo } from "react"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
@@ -16,14 +16,31 @@ const StyledHeader = styled.div`
   align-items: center;
   padding: 0px 16px;
   border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
-  height: 56px;
   color: ${props => props.theme.token?.colorText};
+`
+
+const Title = styled.div`
+  width: 160px;
+  margin-left: 4px;
 `
 
 const StyledDivider = styled(Divider)`
   height: 16px;
   margin-top: 6px;
 `
+
+const items: MenuProps['items'] = [
+  {
+    label: '模型定义',
+    key: 'mail',
+    icon: <MailOutlined />,
+  },
+  {
+    label: '接口定义',
+    key: 'app',
+    icon: <AppstoreOutlined />,
+  },
+];
 
 export const ServiceDesignerHeader = memo((props: {
 }) => {
@@ -36,19 +53,20 @@ export const ServiceDesignerHeader = memo((props: {
   const { t } = useTranslation();
   const [, token] = useToken()
   const parse = useParseLangMessage();
+  const [current, setCurrent] = useState('mail');
 
+  const onClick: MenuProps['onClick'] = (e) => {
+    console.log('click ', e);
+    setCurrent(e.key);
+  };
   return (
     <StyledHeader style={{ backgroundColor: token.colorBgContainer }}>
       <Button type="text" icon={<HomeOutlined />} onClick={handleBack}></Button>
       <StyledDivider type='vertical' />
-      <div className="app-title" style={{ marginLeft: "4px" }}>服务名称</div>
-      <div>
-        <Space>
-          <Button type="primary">领域模型</Button>
-          <Button type="text">接口定义</Button>
-        </Space>
+      <Title>服务名称</Title>
+      <div style={{ flex: 1 }}>
+        <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
       </div>
-      <div style={{ flex: 1 }}></div>
       <Space>
         <ThemeSwitchButton />
         <Button type="text" icon={<QuestionCircleOutlined />} />
