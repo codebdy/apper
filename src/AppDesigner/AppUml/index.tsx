@@ -2,7 +2,6 @@ import React, { memo, useState } from "react";
 import { EntityTree } from "./EntityTree";
 import { Graph } from "@antv/x6";
 import "@antv/x6-react-shape";
-import "./style.less"
 import { useReadMeta } from "./hooks/useReadMeta";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { Spin } from "antd";
@@ -18,6 +17,24 @@ import { CodeScriptEditor } from "./CodeEditor/CodeScriptEditor";
 import { useIsCode } from "./hooks/useIsCode";
 import { useIsOrchestration } from "./hooks/useIsOrchestration";
 import { OrchestrationScriptEditor } from "./CodeEditor/OrchestrationScriptEditor";
+import styled from "styled-components";
+
+const MapContianer = styled.div`
+  position: absolute;
+  z-index: 1;
+  bottom: 3px;
+  left: 3px;
+  width: 140px;
+  height: 110px;
+  border-radius: 5px;
+  overflow: hidden;
+  .x6-widget-minimap{
+    background-color: ${props=>props.theme.token?.colorBgBase};
+  }
+  .x6-graph{
+    box-shadow: none;
+  }
+`
 
 const AppUml = memo((
   props: {
@@ -56,13 +73,13 @@ const AppUml = memo((
               graph={graph}
               onSetGraph={setGraph}
             ></GraphCanvas>
-            <div
+            <MapContianer
               className="model-minimap"
               style={{
                 display: minMap ? "block" : "none"
               }}
               id="mini-map"
-            ></div>
+            ></MapContianer>
           </div>
         }
         {
