@@ -2,7 +2,43 @@ import React from "react"
 import { memo } from "react"
 import { ResizableColumn } from "../ResizableColumn"
 import { ModelContent } from "./ModelContent"
-import "./style.less"
+import styled from "styled-components"
+
+const Container = styled.div`
+  flex: 1;
+  display: flex;
+  flex-flow: row;
+  height: calc(100vh - 64px);
+  background-color: ${props=>props.theme.token?.colorBgBase};
+  .model-tree-shell{
+    display: flex;
+    flex-flow: column;
+    background-color: ${props=>props.theme.token?.colorBgBase};
+    border-right: solid 1px ${props=>props.theme.token?.colorBorder};
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+  .property-box-area{
+    display: flex;
+    height: 100%;
+    flex-flow: column;
+    width: 260px;
+    background-color:${props=>props.theme.token?.colorBgBase};
+    .property-box{
+      flex:1;
+      display: flex;
+      flex-flow: column;
+      height: 0;
+      overflow: auto;
+      width: 100%;
+      .property-pannel{
+        padding: 8px 16px;
+      }
+    }
+  }
+
+`
 
 export const ModelBoard = memo((
   props: {
@@ -16,7 +52,7 @@ export const ModelBoard = memo((
 ) => {
   const { listWidth, modelList, toolbox, toolbar, children, propertyBox } = props;
   return (
-    <div className="appx-model-board">
+    <Container className="appx-model-board">
       {
         modelList && <ResizableColumn minWidth={50} maxWidth={500} width={listWidth}>
           <div className="model-tree-shell">
@@ -28,6 +64,6 @@ export const ModelBoard = memo((
       <ModelContent toolbox={toolbox} toolbar={toolbar} propertyBox={propertyBox}>
         {children}
       </ModelContent>
-    </div>
+    </Container>
   )
 })
