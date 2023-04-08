@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { SaveOutlined } from "@ant-design/icons";
 import { ID } from "shared";
 import { IApp } from "model";
-import { useUpsertApp } from "designer/hooks/useUpsertApp";
+import { useUpsertApp } from "hooks/useUpsertApp";
 
 const SaveActions = memo((props: {
   appId: ID

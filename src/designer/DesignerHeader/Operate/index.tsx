@@ -7,7 +7,7 @@ import { useEdittingAppId } from 'designer/hooks/useEdittingAppUuid';
 import { useShowError } from 'designer/hooks/useShowError';
 import { ExportDialog } from './ExportDialog';
 import { MakeVersionDialog } from './MakeVersionDialog';
-import { useUpsertApp } from 'designer/hooks/useUpsertApp';
+import { useUpsertApp } from 'hooks/useUpsertApp';
 
 enum OperateEnum {
   createVaresion = "createVaresion",

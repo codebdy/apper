@@ -2,7 +2,7 @@ import { Form, message, Modal } from "antd"
 import ImageUploader from "components/ImageUploader";
 import { MultiLangInput } from "components/MultiLangInput";
 import { useShowError } from "designer/hooks/useShowError";
-import { useUpsertApp } from "designer/hooks/useUpsertApp";
+import { useUpsertApp } from "hooks/useUpsertApp";
 import { IApp, IAppInput } from "model";
 import React, { useCallback, useEffect } from "react";
 import { memo } from "react"
