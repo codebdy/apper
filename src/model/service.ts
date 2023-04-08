@@ -11,12 +11,14 @@ export interface IService {
   title?: string;
   meta?: MetaContent;
   status?: ServiceStatus;
+  imageUrl?: string;
 }
 
 export interface IServiceInput {
-  id: ID;
+  id?: ID;
   name: string;
   title?: string;
   meta?: MetaContent;
   status?: ServiceStatus;
+  imageUrl?: string;
 }

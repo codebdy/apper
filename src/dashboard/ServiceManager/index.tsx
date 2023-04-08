@@ -1,10 +1,10 @@
 import { Col, Row, Spin } from "antd"
 import { useShowError } from "designer/hooks/useShowError"
-import { useQueryApps } from "hooks/useQueryApps"
 import { memo } from "react"
 import styled from "styled-components"
 import { ServiceManagerHeader } from "./ServiceManagerHeader"
 import { ServiceCard } from "./ServiceCard"
+import { useQueryServices } from "hooks/useQueryServices"
 
 const Container = styled.div`
   display:flex;
@@ -24,7 +24,7 @@ const StyleCol = styled(Col)`
 `
 
 export const ServiceManager = memo(() => {
-  const { apps, error, loading } = useQueryApps()
+  const { services, error, loading } = useQueryServices()
   useShowError(error)
   return (
     <Spin spinning={loading}>
@@ -32,9 +32,9 @@ export const ServiceManager = memo(() => {
         <ServiceManagerHeader />
         <StyledRow gutter={32}>
           {
-            apps?.map(app => {
-              return (<StyleCol span={6} key={app.id}>
-                <ServiceCard service={app} />
+            services?.map(service => {
+              return (<StyleCol span={6} key={service.id}>
+                <ServiceCard service={service} />
               </StyleCol>)
             })
           }

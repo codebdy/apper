@@ -1,34 +1,33 @@
-import { Form, message, Modal } from "antd"
+import { Form, Input, message, Modal } from "antd"
 import ImageUploader from "components/ImageUploader";
 import { MultiLangInput } from "components/MultiLangInput";
 import { useShowError } from "designer/hooks/useShowError";
-import { useUpsertApp } from "hooks/useUpsertApp";
-import { IApp, IAppInput } from "model";
-import React, { useCallback, useEffect } from "react";
+import { useUpsertService } from "hooks/useUpsertService";
+import { IService, IServiceInput } from "model/service";
+import { useCallback, useEffect } from "react";
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
-import { createUuid } from "shared";
 
 export const UpsertServiceModel = memo((
   props: {
-    app?: IApp,
+    service?: IService,
     visible?: boolean,
     onClose?: () => void,
   }
 ) => {
-  const { app, visible, onClose } = props;
-  const [form] = Form.useForm<IAppInput>();
+  const { service, visible, onClose } = props;
+  const [form] = Form.useForm<IServiceInput>();
   const { t } = useTranslation();
 
   const reset = useCallback(() => {
-    form.setFieldsValue({ title: app?.title || "", imageUrl: app?.imageUrl || "" })
-  }, [app?.imageUrl, app?.title, form])
+    form.setFieldsValue({ title: service?.title || "", imageUrl: service?.imageUrl || "" })
+  }, [service?.imageUrl, service?.title, form])
 
   useEffect(() => {
     reset();
   }, [form, reset])
 
-  const [upsert, { loading, error }] = useUpsertApp({
+  const [upsert, { loading, error }] = useUpsertService({
     onCompleted: () => {
       message.success(t("OperateSuccess"))
       onClose?.();
@@ -39,17 +38,17 @@ export const UpsertServiceModel = memo((
 
   const handleOk = useCallback(() => {
     form.validateFields().then((formData) => {
-      const { title, imageUrl } = formData;
-      upsert({ title, imageUrl, uuid: app?.uuid || createUuid(), id: app?.id })
-      !app && reset();
+      const { title, imageUrl, name } = formData;
+      upsert({ title, imageUrl, name, id: service?.id })
+      !service && reset();
     }).catch((err) => {
       console.error("form validate error", err);
     });
-  }, [app, upsert, form, reset]);
+  }, [service, upsert, form, reset]);
 
   return (
     <Modal
-      title={app ? t("ServiceManager.UpdateService") : t("ServiceManager.CreateService")}
+      title={service ? t("ServiceManager.UpdateService") : t("ServiceManager.CreateService")}
       okText={t("Confirm")}
       cancelText={t("Cancel")}
       forceRender
@@ -69,13 +68,19 @@ export const UpsertServiceModel = memo((
         autoComplete="off"
       >
         <Form.Item
-          label={t("AppName")}
+          label={t("Name")}
           name="title"
           rules={[{ required: true, message: t("Required") }]}
         >
-          <MultiLangInput inline title={t("AppName")} />
+          <Input title={t("Name")} />
         </Form.Item>
-
+        <Form.Item
+          label={t("Title")}
+          name="title"
+          rules={[{ required: true, message: t("Required") }]}
+        >
+          <MultiLangInput inline title={t("Title")} />
+        </Form.Item>
         < Form.Item
           label={t("Image")}
           name="imageUrl"

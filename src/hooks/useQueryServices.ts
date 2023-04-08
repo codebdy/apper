@@ -2,9 +2,9 @@ import { gql, useQuery } from "enthooks";
 import { IService } from "model/service";
 import { useMemo } from "react";
 
-const serivcesGql = gql`
+const servicesGql = gql`
 query {
-  serivces{
+  services{
     nodes{
       id
       name
@@ -19,11 +19,11 @@ query {
 export function useQueryServices() {
   const queryParams = useMemo(() => {
     return {
-      gql: serivcesGql,
+      gql: servicesGql,
       depEntityNames: ["Service"]
     }
   }, [])
   const { data, error, loading } = useQuery<IService>(queryParams)
 
-  return { serivces: data?.serivces?.nodes, error, loading }
+  return { services: data?.services?.nodes, error, loading }
 }
