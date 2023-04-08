@@ -49,7 +49,7 @@ export const UpsertServiceModel = memo((
 
   return (
     <Modal
-      title={app ? t("AppManager.UpdateApp") : t("AppManager.CreateApp")}
+      title={app ? t("ServiceManager.UpdateService") : t("ServiceManager.CreateService")}
       okText={t("Confirm")}
       cancelText={t("Cancel")}
       forceRender

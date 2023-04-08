@@ -250,6 +250,11 @@
     "TemplateSelect": "{{name}}模板",
     "AtLeastOneTemplate": "请至少选择一个应用模板"
   },
+  "ServiceManager": {
+    "CreateService": "创建服务",
+    "UpdateService": "修改服务",
+    "ImportService": "导入服务"
+  },
   "Templates": {
     "Title": "模板",
     "NewTemplate": "新建模板",

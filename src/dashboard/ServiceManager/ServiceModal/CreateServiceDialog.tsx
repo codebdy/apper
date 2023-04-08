@@ -25,7 +25,7 @@ export const CreateServiceDialog = memo(() => {
         icon={<PlusOutlined />}
         onClick={showModal}
       >
-        {t("AppManager.CreateApp")}
+        {t("ServiceManager.CreateService")}
       </Button>
       <UpsertServiceModel visible={isModalVisible} onClose={handleCancel} />
     </>

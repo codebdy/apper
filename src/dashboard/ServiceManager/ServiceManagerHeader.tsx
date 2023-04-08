@@ -32,7 +32,7 @@ export const ServiceManagerHeader = memo(() => {
       <Spring />
       <Space>
         <Button onClick={handleImport} loading={loading}>
-          {t('AppManager.ImportApp')}
+          {t('ServiceManager.ImportService')}
         </Button>
         <CreateServiceDialog />
       </Space>
