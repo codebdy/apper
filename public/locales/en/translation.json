@@ -44,6 +44,9 @@
   "Operation": "操作",
   "AuthPoints": "权限点",
   "ErrorNameRepeat": "名称重复",
+  "Export": "Export",
+  "ConfirmDelete":"Confirm Delete",
+  "ConfirmDeleteDetail":"Are you sure to delete?",
   "install": {
     "Title": "安装Appx",
     "Next": "下一步",

@@ -66,6 +66,8 @@
   "GoEdit": "去编辑",
   "OfCopy": "的副本",
   "Export": "导出",
+  "ConfirmDelete":"删除确认",
+  "ConfirmDeleteDetail":"您确定要删除吗？",
   "Model": {
     "Title": "模型"
   },

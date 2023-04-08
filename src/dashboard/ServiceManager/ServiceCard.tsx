@@ -1,8 +1,9 @@
-import { Button, Card, Tooltip } from "antd"
+import { Button, Card, Popconfirm, Tooltip } from "antd"
 import { memo, useCallback, useState } from "react"
 import {
   EditOutlined,
-  DeleteOutlined} from '@ant-design/icons';
+  DeleteOutlined
+} from '@ant-design/icons';
 import styled from "styled-components";
 import { Image } from "components/Image";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +30,7 @@ export const ServiceCard = memo((props: {
   const { service } = props;
   const [visible, setVisible] = useState(false);
   const { t } = useTranslation();
-  const [remove, { loading, error }] = useRemoveService();
+  const [remove, { loading: deleting, error }] = useRemoveService();
 
   useShowError(error)
 
@@ -42,6 +43,10 @@ export const ServiceCard = memo((props: {
   const handleClose = useCallback(() => {
     setVisible(false);
   }, [])
+
+  const handleDelete = useCallback(() => {
+    remove(service.id)
+  }, [remove, service.id])
 
 
   return (
@@ -70,14 +75,20 @@ export const ServiceCard = memo((props: {
             icon={<EditOutlined />}
           ></Button>
         </Tooltip>,
-        <Tooltip key="delete" title={t("Delete")}>
+        <Popconfirm
+          title={t("ConfirmDelete")}
+          description={t("ConfirmDeleteDetail")}
+          onConfirm={handleDelete}
+          okText={t("Delete")}
+          cancelText={t("Cancel")}
+        >
           <Button
             size="small"
             type="text"
             icon={<DeleteOutlined />}
+            loading={deleting}
           ></Button>
-        </Tooltip>,
-
+        </Popconfirm>,
       ]}
     >
       <Meta
