@@ -4,7 +4,7 @@ import { memo, useCallback } from "react"
 import styled from "styled-components"
 import { useTranslation } from "react-i18next";
 import { useImportApp } from "enthooks/hooks/useImportApp";
-import { useAppOpenFile } from "./hooks/useAppOpenFile";
+import { useOpenFile } from "../../hooks/useAppOpenFile";
 import { useShowError } from "designer/hooks/useShowError";
 import { CreateAppDialog } from "./AppModal/CreateAppDialog";
 
@@ -18,7 +18,7 @@ const { Search } = Input;
 export const AppManagerHeader = memo(() => {
   const { t } = useTranslation();
   const [importApp, { loading, error }] = useImportApp();
-  const openFile = useAppOpenFile();
+  const openFile = useOpenFile();
 
   useShowError(error);
 

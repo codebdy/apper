@@ -3,10 +3,8 @@ import { Spring } from "../Spring";
 import { memo, useCallback } from "react"
 import styled from "styled-components"
 import { useTranslation } from "react-i18next";
-import { useImportApp } from "enthooks/hooks/useImportApp";
-import { useAppOpenFile } from "./hooks/useAppOpenFile";
-import { useShowError } from "designer/hooks/useShowError";
 import { CreateServiceDialog } from "./ServiceModal/CreateServiceDialog";
+import { useOpenFile } from "hooks/useAppOpenFile";
 
 const Container = styled.div`
   height: 64px;
@@ -16,22 +14,22 @@ const Container = styled.div`
 
 export const ServiceManagerHeader = memo(() => {
   const { t } = useTranslation();
-  const [importApp, { loading, error }] = useImportApp();
-  const openFile = useAppOpenFile();
+  //const [importApp, { loading, error }] = useImportApp();
+  const openFile = useOpenFile(".json");
 
-  useShowError(error);
+  //useShowError(error);
 
   const handleImport = useCallback(() => {
     openFile().then((file: File) => {
-      importApp(file)
+      //importApp(file)
     })
-  }, [importApp, openFile])
+  }, [openFile])
 
   return (
     <Container>
       <Spring />
       <Space>
-        <Button onClick={handleImport} loading={loading}>
+        <Button onClick={handleImport} loading={false}>
           {t('ServiceManager.ImportService')}
         </Button>
         <CreateServiceDialog />

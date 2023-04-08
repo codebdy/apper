@@ -15,14 +15,14 @@ export async function getTheFiles(accept: string, multiple?: boolean) {
   return fileHandles;
 }
 
-export function useAppOpenFile() {
+export function useOpenFile(accept: string = ".zip") {
   const open = useCallback(async () => {
-    const fileHandles = await getTheFiles(".zip", false)
+    const fileHandles = await getTheFiles(accept, false)
     const files = await fileHandles.map(async (fileHandle: any) => {
       return await fileHandle.getFile();
     })
     return files?.[0]
-  }, [])
+  }, [accept])
 
   return open;
 }
