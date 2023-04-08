@@ -4,6 +4,7 @@ import { register } from "@antv/x6-react-shape";
 import { NODE_INIT_SIZE } from "./nodeInitSize";
 import { ClassView } from "./ClassView";
 import { CellView } from "@antv/x6";
+import { GlobalToken } from "antd/es/theme/interface";
 
 register({
   shape: 'class-node',
@@ -12,7 +13,7 @@ register({
 })
 
 
-export const getGraphConfig = (): Partial<Options.Manual> => {
+export const getGraphConfig = (token: GlobalToken): Partial<Options.Manual> => {
   const containerDiv = document.getElementById('container') || undefined;
   containerDiv?.getBoundingClientRect()
   const graphSize = getGraphSize();
@@ -30,11 +31,11 @@ export const getGraphConfig = (): Partial<Options.Manual> => {
       type: 'doubleMesh',
       args: [
         {
-          //color: alpha(theme.palette.divider, 0.2), // 主网格线颜色
+          color: token.colorBorder, // 主网格线颜色
           thickness: 1,     // 主网格线宽度
         },
         {
-          //color: alpha(theme.palette.divider, 0.1), // 次网格线颜色
+          color: token.colorBorderSecondary, // 次网格线颜色
           thickness: 1,     // 次网格线宽度
           factor: 4,        // 主次网格线间隔
         },

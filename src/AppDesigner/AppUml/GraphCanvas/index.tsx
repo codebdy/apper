@@ -18,6 +18,7 @@ import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
 import { Transform } from '@antv/x6-plugin-transform'
 import { useClassAction } from "./useClassAction";
+import { useToken } from "antd/es/theme/internal";
 
 export const GraphCanvas = memo(
   (props: {
@@ -26,9 +27,10 @@ export const GraphCanvas = memo(
   }) => {
     const { graph, onSetGraph } = props;
     const appId = useEdittingAppId();
+    const [, token] = useToken();
 
     useEffect(() => {
-      const config = getGraphConfig();
+      const config = getGraphConfig(token);
       const aGraph = new Graph(config);
       aGraph.use(
         new MiniMap({
@@ -55,7 +57,7 @@ export const GraphCanvas = memo(
         aGraph?.dispose();
         onSetGraph(undefined);
       };
-    }, [onSetGraph]);
+    }, [onSetGraph, token]);
 
     useExplorerScrollbarHide();
     useTriggerSelectedEvent(appId);
