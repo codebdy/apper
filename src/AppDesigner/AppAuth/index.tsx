@@ -10,7 +10,7 @@ import "./style.less";
 import SvgIcon from "common/SvgIcon";
 import { useReadMeta } from "../AppUml/hooks/useReadMeta";
 import { useQueryRoles } from "./hooks/useQueryRoles";
-import { DESIGN, DESIGN_BOARD } from "consts";
+import { APP_DESIGN, DESIGN_BOARD } from "consts";
 import { AppEntryRouts } from "../DesignerHeader/AppEntryRouts";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useShowError } from "AppDesigner/hooks/useShowError";
@@ -48,7 +48,7 @@ export const AuthBoard = memo(() => {
   const { loading, error } = useReadMeta(appId);
   const { loading: rolesLoading, error: rolesError } = useQueryRoles();
   const matchString = useMemo(() => {
-    return `/${DESIGN}/${appId}/${DESIGN_BOARD}/${AppEntryRouts.Auth}/*`
+    return `/${APP_DESIGN}/${appId}/${DESIGN_BOARD}/${AppEntryRouts.Auth}/*`
   }, [appId])
 
   const match = useMatch(matchString)

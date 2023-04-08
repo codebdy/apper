@@ -3,7 +3,7 @@ import { useCallback } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { DESIGN, DESIGN_FRAME } from "consts";
+import { APP_DESIGN, DESIGN_FRAME } from "consts";
 import Container from "plugins/framelayouts/pc/Container/view";
 import { useDevices } from "../hooks/useDevices";
 import { useEdittingAppId } from "../hooks/useEdittingAppUuid";
@@ -16,7 +16,7 @@ export const AppFrames = memo(() => {
   const appId = useEdittingAppId();
 
   const handleClick = useCallback((key: string) => {
-    navigate(`/${DESIGN}/${appId}/${DESIGN_FRAME}/${key}`)
+    navigate(`/${APP_DESIGN}/${appId}/${DESIGN_FRAME}/${key}`)
   }, [appId, navigate]);
 
   return (

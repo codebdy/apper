@@ -11,7 +11,7 @@ import { IApp } from "model";
 import styled from "styled-components";
 import { Image } from "components/Image";
 import { useNavigate } from "react-router-dom";
-import { DESIGN, DESIGN_BOARD } from "consts";
+import { APP_DESIGN, DESIGN_BOARD } from "consts";
 import { UpsertAppModel } from "./AppModal/UpsertAppModel";
 import { useTranslation } from "react-i18next";
 import { useRemoveApp } from "hooks/useRemoveApp";
@@ -64,7 +64,7 @@ export const AppCard = memo((props: {
   const navigate = useNavigate();
 
   const hanldeEdit = useCallback(() => {
-    navigate(`/${DESIGN}/${app.id}/${DESIGN_BOARD}`)
+    navigate(`/${APP_DESIGN}/${app.id}/${DESIGN_BOARD}`)
   }, [app.id, navigate])
 
   const handleClose = useCallback(() => {

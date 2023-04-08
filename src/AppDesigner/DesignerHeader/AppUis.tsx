@@ -2,7 +2,7 @@ import { Row, Col, Card, Button, Skeleton } from "antd"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
-import { DESIGN, DESIGN_UI } from "consts"
+import { APP_DESIGN, DESIGN_UI } from "consts"
 import { useDevices } from "../hooks/useDevices"
 import Container from "plugins/framelayouts/pc/Container/view"
 import { useEdittingAppId } from "../hooks/useEdittingAppUuid"
@@ -43,7 +43,7 @@ const AppUis = memo((props: {
                               key="design"
                               shape="round"
                               type="primary"
-                              onClick={() => { navigate(`/${DESIGN}/${appId}/${DESIGN_UI}/${device.key}`) }}
+                              onClick={() => { navigate(`/${APP_DESIGN}/${appId}/${DESIGN_UI}/${device.key}`) }}
                             >
                               {t("AppManager.ToDesign")}
                             </Button>,

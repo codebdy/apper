@@ -7,7 +7,7 @@ import {
 import styled from "styled-components";
 import { Image } from "components/Image";
 import { useNavigate } from "react-router-dom";
-import { DESIGN, DESIGN_BOARD } from "consts";
+import { APP_DESIGN, DESIGN_BOARD, SERVICE_DESIGN } from "consts";
 import { UpsertServiceModel } from "./ServiceModal/UpsertServiceModel";
 import { useTranslation } from "react-i18next";
 import { IService } from "model/service";
@@ -37,7 +37,7 @@ export const ServiceCard = memo((props: {
   const navigate = useNavigate();
 
   const hanldeDesign = useCallback(() => {
-    navigate(`/${DESIGN}/${service.id}/${DESIGN_BOARD}`)
+    navigate(`/${SERVICE_DESIGN}/${service.id}`)
   }, [service.id, navigate])
 
   const handleClose = useCallback(() => {

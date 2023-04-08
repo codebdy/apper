@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from './Login';
 import AppDesigner from './AppDesigner/index';
 import Install from './Install';
-import { DESIGN, DESIGNER_TOKEN_NAME, DESIGN_BOARD, INDEX_URL, INSTALL_URL, LOGIN_URL, SERVER_URL, SYSTEM_APP_ID } from './consts';
+import { APP_DESIGN, DESIGNER_TOKEN_NAME, DESIGN_BOARD, INDEX_URL, INSTALL_URL, LOGIN_URL, SERVER_URL, SERVICE_DESIGN, SYSTEM_APP_ID } from './consts';
 import { AppEntryRouts } from './AppDesigner/DesignerHeader/AppEntryRouts';
 import AppUis from './AppDesigner/DesignerHeader/AppUis';
 import { LoggedInPanel } from './Login/LoggedInPanel';
@@ -23,6 +23,7 @@ import { Studio } from 'Studio';
 import { DashboardRoutes } from 'Studio/Routes';
 import { AppManager } from 'Studio/AppManager';
 import { ServiceManager } from 'Studio/ServiceManager';
+import { ServiceDesigner } from 'ServiceDesigner';
 
 const App = memo(() => {
   return (
@@ -34,7 +35,9 @@ const App = memo(() => {
             <Route path={DashboardRoutes.AppManager} element={<AppManager />} />
             <Route path={DashboardRoutes.Services} element={<ServiceManager />} />
           </Route>
-          <Route path={`/${DESIGN}`} element={<AppDesigner />}>
+          <Route path={`/${SERVICE_DESIGN}/:serviceId`} element={<ServiceDesigner />}>
+          </Route>
+          <Route path={`/${APP_DESIGN}`} element={<AppDesigner />}>
             <Route path=":appId">
               <Route path={DESIGN_BOARD} element={<AppDesignBoard />}>
                 <Route path={AppEntryRouts.AppUis} element={<AppUis />} />

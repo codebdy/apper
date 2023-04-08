@@ -8,7 +8,7 @@ import { AppEntryRouts } from "./AppEntryRouts"
 import { useTranslation } from "react-i18next"
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage"
 import SvgIcon from "common/SvgIcon"
-import { DESIGN, DESIGN_BOARD } from "consts"
+import { APP_DESIGN, DESIGN_BOARD } from "consts"
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid"
 import { Operate } from "./Operate"
 import styled from "styled-components"
@@ -46,10 +46,10 @@ const DesignerHeader = memo((props: {
   const [, token] = useToken()
 
   const appId = useEdittingAppId();
-  const match = useMatch(`/${DESIGN}/${appId}/${DESIGN_BOARD}/*`)
+  const match = useMatch(`/${APP_DESIGN}/${appId}/${DESIGN_BOARD}/*`)
   const parse = useParseLangMessage();
   const handleSelect = useCallback((info: any) => {
-    navigate(`/${DESIGN}/${appId}/${DESIGN_BOARD}/${info.key}`)
+    navigate(`/${APP_DESIGN}/${appId}/${DESIGN_BOARD}/${info.key}`)
   }, [appId, navigate]);
 
   return (
