@@ -33,7 +33,7 @@ const StyleMenu = styled(Menu)`
   margin-left: 100px;
 `
 
-const DesignerHeader = memo((props: {
+const AppDesignerHeader = memo((props: {
   app?: IApp,
 }) => {
   const { app } = props;
@@ -187,5 +187,5 @@ const DesignerHeader = memo((props: {
   )
 })
 
-export default DesignerHeader
+export default AppDesignerHeader
 

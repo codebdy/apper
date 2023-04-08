@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 import React, { memo } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useDesignerParams } from 'plugin-sdk';
-import DesignerHeader from "../DesignerHeader";
+import DesignerHeader from "../AppDesignerHeader";
 
 const { Content } = Layout;
 export const AppDesignBoard = memo(() => {

@@ -4,10 +4,7 @@ import Login from './Login';
 import AppDesigner from './AppDesigner/index';
 import Install from './Install';
 import { APP_DESIGN, DESIGNER_TOKEN_NAME, DESIGN_BOARD, INDEX_URL, INSTALL_URL, LOGIN_URL, SERVER_URL, SERVICE_DESIGN, SYSTEM_APP_ID } from './consts';
-import { AppEntryRouts } from './AppDesigner/DesignerHeader/AppEntryRouts';
-import AppUis from './AppDesigner/DesignerHeader/AppUis';
 import { LoggedInPanel } from './Login/LoggedInPanel';
-import { AppFrames } from './AppDesigner/DesignerHeader/AppFrames';
 import { AppBpmn } from './AppDesigner/AppBpmn';
 import { AppDmn } from './AppDesigner/AppDmn';
 import AppConfig from './AppDesigner/AppConfig';
@@ -24,6 +21,9 @@ import { DashboardRoutes } from 'Studio/Routes';
 import { AppManager } from 'Studio/AppManager';
 import { ServiceManager } from 'Studio/ServiceManager';
 import { ServiceDesigner } from 'ServiceDesigner';
+import { AppEntryRouts } from 'AppDesigner/AppDesignerHeader/AppEntryRouts';
+import { AppFrames } from 'AppDesigner/AppDesignerHeader/AppFrames';
+import AppUis from 'AppDesigner/AppDesignerHeader/AppUis';
 
 const App = memo(() => {
   return (

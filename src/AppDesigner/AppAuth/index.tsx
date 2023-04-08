@@ -11,7 +11,7 @@ import SvgIcon from "common/SvgIcon";
 import { useReadMeta } from "../AppUml/hooks/useReadMeta";
 import { useQueryRoles } from "./hooks/useQueryRoles";
 import { APP_DESIGN, DESIGN_BOARD } from "consts";
-import { AppEntryRouts } from "../DesignerHeader/AppEntryRouts";
+import { AppEntryRouts } from "../AppDesignerHeader/AppEntryRouts";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 
