@@ -3,7 +3,6 @@ import { Button, Divider, Space } from "antd"
 import { useCallback } from "react"
 import { memo } from "react"
 import { useNavigate } from "react-router-dom"
-import { useTranslation } from "react-i18next"
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage"
 import styled from "styled-components"
 import { useToken } from "antd/es/theme/internal"
@@ -36,19 +35,6 @@ const StyledDivider = styled(Divider)`
   margin-top: 6px;
 `
 
-// const items: MenuProps['items'] = [
-//   {
-//     label: '模型定义',
-//     key: 'mail',
-//     icon: <MailOutlined />,
-//   },
-//   {
-//     label: '接口定义',
-//     key: 'app',
-//     icon: <AppstoreOutlined />,
-//   },
-// ];
-
 export const ServiceDesignerHeader = memo((props: {
   service?: IService
 }) => {
@@ -58,21 +44,14 @@ export const ServiceDesignerHeader = memo((props: {
     navigate("/services")
   }, [navigate]);
 
-  const { t } = useTranslation();
   const [, token] = useToken()
   const parse = useParseLangMessage();
-  // const [current, setCurrent] = useState('mail');
-
-  // const onClick: MenuProps['onClick'] = (e) => {
-  //   console.log('click ', e);
-  //   setCurrent(e.key);
-  // };
 
   return (
     <StyledHeader style={{ backgroundColor: token.colorBgContainer }}>
       <Button type="text" icon={<HomeOutlined />} onClick={handleBack}></Button>
       <StyledDivider type='vertical' />
-      <Title>{service?.title}</Title>
+      <Title>{parse(service?.title)}</Title>
       <MenuContainer>
         {/* <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} /> */}
       </MenuContainer>
