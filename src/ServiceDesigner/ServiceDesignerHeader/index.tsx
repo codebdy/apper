@@ -17,7 +17,7 @@ const StyledHeader = styled.div`
   padding: 0px 16px;
   border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
   height: 56px;
-  color: ${props => props.theme.token?.colorText}
+  color: ${props => props.theme.token?.colorText};
 `
 
 const StyledDivider = styled(Divider)`
@@ -42,7 +42,12 @@ export const ServiceDesignerHeader = memo((props: {
       <Button type="text" icon={<HomeOutlined />} onClick={handleBack}></Button>
       <StyledDivider type='vertical' />
       <div className="app-title" style={{ marginLeft: "4px" }}>服务名称</div>
-      <div>Button</div>
+      <div>
+        <Space>
+          <Button type="primary">领域模型</Button>
+          <Button type="text">接口定义</Button>
+        </Space>
+      </div>
       <div style={{ flex: 1 }}></div>
       <Space>
         <ThemeSwitchButton />
