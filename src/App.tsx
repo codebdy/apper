@@ -24,47 +24,54 @@ import { ServiceDesigner } from 'ServiceDesigner';
 import { AppEntryRouts } from 'AppDesigner/AppDesignerHeader/AppEntryRouts';
 import { AppFrames } from 'AppDesigner/AppDesignerHeader/AppFrames';
 import AppUis from 'AppDesigner/AppDesignerHeader/AppUis';
+import { ConfigRoot } from 'common/ConfigRoot';
+import { StyledThemeRoot } from 'common/StyledThemeRoot';
 
 const App = memo(() => {
   return (
     <EntiRoot config={{ endpoint: SERVER_URL, appId: SYSTEM_APP_ID, tokenName: DESIGNER_TOKEN_NAME }} >
-      <Routes>
-        <Route path={INDEX_URL} element={<LoggedInPanel />}>
-          <Route path={INDEX_URL} element={<Studio />}>
-            <Route path={""} element={<AppManager />} />
-            <Route path={DashboardRoutes.AppManager} element={<AppManager />} />
-            <Route path={DashboardRoutes.Services} element={<ServiceManager />} />
-          </Route>
-          <Route path={`/${SERVICE_DESIGN}/:serviceId`} element={<ServiceDesigner />}>
-          </Route>
-          <Route path={`/${APP_DESIGN}`} element={<AppDesigner />}>
-            <Route path=":appId">
-              <Route path={DESIGN_BOARD} element={<AppDesignBoard />}>
-                <Route path={AppEntryRouts.AppUis} element={<AppUis />} />
-                <Route path={AppEntryRouts.Bpmn} element={<AppBpmn />} />
-                <Route path={AppEntryRouts.Dmn} element={<AppDmn />} />
-                <Route path={AppEntryRouts.Uml} element={<AppUml />} />
-                <Route path={AppEntryRouts.Api} element={<ApiBoard />} />
-                <Route path={AppEntryRouts.Frame} element={<AppFrames />} />
-                <Route path={AppEntryRouts.Auth} element={<AuthBoard />}>
-                  <Route path={AuthRoutes.MenuAuth} element={<MenuAuthBoard />} />
-                  <Route path={AuthRoutes.ComponentAuth} element={<PageAuthBoard />} />
-                  <Route path={AuthRoutes.ModelAuth} element={<ModelAuthBoard />} />
-                  <Route path="" element={<MenuAuthBoard />} />
+      <ConfigRoot>
+        <StyledThemeRoot>
+          <Routes>
+            <Route path={INDEX_URL} element={<LoggedInPanel />}>
+              <Route path={INDEX_URL} element={<Studio />}>
+                <Route path={""} element={<AppManager />} />
+                <Route path={DashboardRoutes.AppManager} element={<AppManager />} />
+                <Route path={DashboardRoutes.Services} element={<ServiceManager />} />
+              </Route>
+              <Route path={`/${SERVICE_DESIGN}/:serviceId`} element={<ServiceDesigner />}>
+              </Route>
+              <Route path={`/${APP_DESIGN}`} element={<AppDesigner />}>
+                <Route path=":appId">
+                  <Route path={DESIGN_BOARD} element={<AppDesignBoard />}>
+                    <Route path={AppEntryRouts.AppUis} element={<AppUis />} />
+                    <Route path={AppEntryRouts.Bpmn} element={<AppBpmn />} />
+                    <Route path={AppEntryRouts.Dmn} element={<AppDmn />} />
+                    <Route path={AppEntryRouts.Uml} element={<AppUml />} />
+                    <Route path={AppEntryRouts.Api} element={<ApiBoard />} />
+                    <Route path={AppEntryRouts.Frame} element={<AppFrames />} />
+                    <Route path={AppEntryRouts.Auth} element={<AuthBoard />}>
+                      <Route path={AuthRoutes.MenuAuth} element={<MenuAuthBoard />} />
+                      <Route path={AuthRoutes.ComponentAuth} element={<PageAuthBoard />} />
+                      <Route path={AuthRoutes.ModelAuth} element={<ModelAuthBoard />} />
+                      <Route path="" element={<MenuAuthBoard />} />
+                    </Route>
+                    <Route path={AppEntryRouts.Config} element={<AppConfig />}></Route>
+                    <Route path="" element={<AppUis />}></Route>
+                  </Route>
                 </Route>
-                <Route path={AppEntryRouts.Config} element={<AppConfig />}></Route>
-                <Route path="" element={<AppUis />}></Route>
+                <Route path="" element={<AppDesignBoard />} >
+                  <Route path="" element={<AppUis />}></Route>
+                </Route>
               </Route>
             </Route>
-            <Route path="" element={<AppDesignBoard />} >
-              <Route path="" element={<AppUis />}></Route>
-            </Route>
-          </Route>
-        </Route>
-        <Route path={LOGIN_URL} element={<Login />} />
-        <Route path={INSTALL_URL} element={<Install />} />
-      </Routes>
+            <Route path={LOGIN_URL} element={<Login />} />
+            <Route path={INSTALL_URL} element={<Install />} />
+          </Routes>
+        </StyledThemeRoot>
+      </ConfigRoot>
     </EntiRoot>
+
   )
 });
 
