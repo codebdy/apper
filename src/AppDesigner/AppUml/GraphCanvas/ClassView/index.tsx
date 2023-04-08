@@ -27,7 +27,6 @@ import { CONST_ID } from "../../meta/Meta";
 import ClassActions from "./ClassActions";
 import PlugIcon from "icons/PlugIcon";
 import { useParseLangMessage } from "plugin-sdk";
-import { CLASS_BACKGROUND_COLOR } from "../../consts";
 import { Node } from "@antv/x6"
 
 export enum ClassEvent {
@@ -61,7 +60,6 @@ export const ClassView = memo(
     const [menuOpened, setMenuOpend] = useState(false);
     const [pressedLineType, setPressedLineType] = useState<RelationType>();
     const p = useParseLangMessage();
-
     useEffect(() => {
       setData(node?.data);
     }, [node?.data]);
@@ -185,10 +183,10 @@ export const ClassView = memo(
 
     const boxShadow = useMemo(() => {
       const shadowConst = "0 0 0 3px ";
-      const greenShadow = shadowConst + "rgba(93, 120, 255, 0.2)";
+      const greenShadow = shadowConst + "rgba(93, 120, 255, 0.5)";
       if (hover) {
         if (!pressedLineType) {
-          return (shadowConst + "rgba(93, 120, 255, 0.2)");
+          return (shadowConst + "rgba(93, 120, 255, 0.5)");
         } else {
           return canLinkFrom ? greenShadow : "";
         }
@@ -214,7 +212,8 @@ export const ClassView = memo(
           width: "100%",
           display: "flex",
           flexFlow: "column",
-          //background: theme.palette.background.paper,
+          background: data?.backgroundColor,
+          color: data?.textColor,
           overflow: "hidden",
           cursor: canLinkFrom ? "crosshair" : undefined,
           boxShadow: boxShadow,
@@ -230,7 +229,8 @@ export const ClassView = memo(
             borderRadius: "5px",
             display: "flex",
             flexFlow: "column",
-            background: CLASS_BACKGROUND_COLOR,
+            background: data?.backgroundColor,
+            color: data?.textColor,
             // color: data?.root
             //   ? theme.palette.primary.main
             //   : theme.palette.text.primary,
