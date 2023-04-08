@@ -36,7 +36,7 @@ export const ServiceCard = memo((props: {
 
   const navigate = useNavigate();
 
-  const hanldeEdit = useCallback(() => {
+  const hanldeDesign = useCallback(() => {
     navigate(`/${DESIGN}/${service.id}/${DESIGN_BOARD}`)
   }, [service.id, navigate])
 
@@ -48,6 +48,9 @@ export const ServiceCard = memo((props: {
     remove(service.id)
   }, [remove, service.id])
 
+  const handleEdit = useCallback(() => {
+    setVisible(true)
+  }, [])
 
   return (
     <StyledCard
@@ -56,7 +59,7 @@ export const ServiceCard = memo((props: {
         <Image
           style={{ cursor: "pointer" }}
           value={service.imageUrl}
-          onClick={hanldeEdit}
+          onClick={hanldeDesign}
         />
       }
       actions={[
@@ -65,7 +68,7 @@ export const ServiceCard = memo((props: {
             size="small"
             type="text"
             icon={designIcon}
-            onClick={hanldeEdit}
+            onClick={hanldeDesign}
           ></Button>
         </Tooltip>,
         <Tooltip key="edit" title={t("Edit")}>
@@ -73,6 +76,7 @@ export const ServiceCard = memo((props: {
             size="small"
             type="text"
             icon={<EditOutlined />}
+            onClick={handleEdit}
           ></Button>
         </Tooltip>,
         <Popconfirm
