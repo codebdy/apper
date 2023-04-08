@@ -24,6 +24,10 @@ const Title = styled.div`
   margin-left: 4px;
 `
 
+const MenuContainer = styled.div`
+  flex:1;
+`
+
 const StyledDivider = styled(Divider)`
   height: 16px;
   margin-top: 6px;
@@ -64,9 +68,9 @@ export const ServiceDesignerHeader = memo((props: {
       <Button type="text" icon={<HomeOutlined />} onClick={handleBack}></Button>
       <StyledDivider type='vertical' />
       <Title>服务名称</Title>
-      <div style={{ flex: 1 }}>
+      <MenuContainer>
         <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
-      </div>
+      </MenuContainer>
       <Space>
         <ThemeSwitchButton />
         <Button type="text" icon={<QuestionCircleOutlined />} />
