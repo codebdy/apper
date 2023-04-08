@@ -7,7 +7,7 @@ import {
 import styled from "styled-components";
 import { Image } from "components/Image";
 import { useNavigate } from "react-router-dom";
-import { APP_DESIGN, DESIGN_BOARD, SERVICE_DESIGN } from "consts";
+import { SERVICE_DESIGN } from "consts";
 import { UpsertServiceModel } from "./ServiceModal/UpsertServiceModel";
 import { useTranslation } from "react-i18next";
 import { IService } from "model/service";
