@@ -1,4 +1,4 @@
-import { FolderAddOutlined, DownloadOutlined, ImportOutlined, MoreOutlined } from "@ant-design/icons";
+import { FolderAddOutlined, DownloadOutlined, ImportOutlined, MoreOutlined, AppstoreAddOutlined } from "@ant-design/icons";
 import { Dropdown, Button } from "antd";
 import React, { memo, useCallback, useState } from "react"
 import { useCreateNewPackage } from '../hooks/useCreateNewPackage';
@@ -67,7 +67,7 @@ export const ModelRootAction = memo(() => {
               }
             },
             {
-              icon: <FolderAddOutlined />,
+              icon: <AppstoreAddOutlined />,
               label: t("AppUml.AddService"),
               key: '1',
               onClick: e => {
