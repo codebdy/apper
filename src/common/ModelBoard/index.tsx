@@ -8,7 +8,7 @@ const Container = styled.div`
   flex: 1;
   display: flex;
   flex-flow: row;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 48px);
   background-color: ${props=>props.theme.token?.colorBgBase};
   .model-tree-shell{
     display: flex;

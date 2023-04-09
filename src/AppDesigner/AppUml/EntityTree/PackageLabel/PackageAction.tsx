@@ -143,7 +143,7 @@ const PackageAction = memo((
                 children: [
                   {
                     label: t("AppUml.AddEntity"),
-                    key: '1',
+                    key: '1-1',
                     onClick: e => {
                       e.domEvent.stopPropagation();
                       addClass(StereoType.Entity);
@@ -151,7 +151,7 @@ const PackageAction = memo((
                   },
                   {
                     label: t("AppUml.AddAbstract"),
-                    key: '2',
+                    key: '1-2',
                     onClick: e => {
                       e.domEvent.stopPropagation();
                       addClass(StereoType.Abstract);

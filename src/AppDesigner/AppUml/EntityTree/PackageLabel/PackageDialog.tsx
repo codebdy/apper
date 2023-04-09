@@ -21,7 +21,7 @@ export const PackageDialog = memo((
 
   const handleConfirm = useCallback(() => {
     form.validateFields().then(changeValues => {
-      onConfirm({ ...pkg, ...changeValues, stereoType: PackageStereoType.Normal })
+      onConfirm({ ...pkg, ...changeValues })
     })
   }, [form, onConfirm, pkg])
 

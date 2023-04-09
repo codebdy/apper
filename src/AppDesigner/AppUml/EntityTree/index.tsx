@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { packagesState, diagramsState, classesState, selectedUmlDiagramState, selectedElementState } from './../recoil/atoms';
 import TreeNodeLabel from "common/TreeNodeLabel";
 import PackageLabel from "./PackageLabel";
-import { PackageMeta } from "../meta/PackageMeta";
+import { PackageMeta, PackageStereoType } from "../meta/PackageMeta";
 import { ClassMeta, StereoType } from "../meta/ClassMeta";
 import { ClassIcon } from "./svgs";
 import { useIsDiagram } from "../hooks/useIsDiagram";
@@ -252,7 +252,7 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
 
   const getModelPackageNodes = useCallback(() => {
 
-    return packages.map((pkg) => {
+    return packages.filter(pkg=>pkg.stereoType !== PackageStereoType.Service).map((pkg) => {
       return {
         title: <PackageLabel pkg={pkg} />,
         key: pkg.uuid,
@@ -266,13 +266,17 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     })
   }, [packages, getPackageChildren]);
 
-
   const getServiceNodes = useCallback(() => {
-    const services: DataNode[] = []
 
-    return services
-  }, []);
-
+    return packages.filter(pkg=>pkg.stereoType === PackageStereoType.Service).map((pkg) => {
+      return {
+        title: <PackageLabel pkg={pkg} />,
+        key: pkg.uuid,
+        //icon: <CloudServerOutlined />,
+        children: getPackageChildren(pkg),
+      }
+    })
+  }, [packages, getPackageChildren]);
 
   const treeData: DataNode[] = useMemo(() => [
     {

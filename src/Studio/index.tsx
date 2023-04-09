@@ -2,7 +2,7 @@ import { memo, useCallback } from "react"
 import styled from "styled-components"
 import { Logo } from "./Logo"
 import { Badge, Button, Divider, Space } from "antd"
-import { AppstoreOutlined, CloudServerOutlined, SettingOutlined, BellOutlined } from "@ant-design/icons"
+import { AppstoreOutlined, SettingOutlined, BellOutlined } from "@ant-design/icons"
 import { Spring } from "./Spring"
 import { useTranslation } from "react-i18next"
 import AvatarMenu from "components/AvatarMenu"
@@ -54,9 +54,9 @@ export const Studio = memo(() => {
     navigate(`/${DashboardRoutes.AppManager}`)
   }, [navigate])
 
-  const handleToServices = useCallback(() => {
-    navigate(`/${DashboardRoutes.Services}`)
-  }, [navigate])
+  // const handleToServices = useCallback(() => {
+  //   navigate(`/${DashboardRoutes.Services}`)
+  // }, [navigate])
 
   return (
     <Container>
@@ -71,13 +71,13 @@ export const Studio = memo(() => {
           >
             {t("Apps")}
           </Button>
-          <Button
+          {/* <Button
             type={match?.pathname === `/${DashboardRoutes.Services}` ? "primary" : "text"}
             icon={<CloudServerOutlined />}
             onClick={handleToServices}
           >
             {t("Services")}
-          </Button>
+          </Button> */}
           <Button type="text" icon={<SettingOutlined />}>
             {t("Configs.Title")}
           </Button>
