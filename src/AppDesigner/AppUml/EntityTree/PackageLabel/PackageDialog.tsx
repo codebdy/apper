@@ -28,7 +28,7 @@ export const PackageDialog = memo((
 
   return (
     <Modal
-      title={t("AppUml.PackageInfo")}
+      title={t(pkg.stereoType === PackageStereoType.Service ? "AppUml.ServiceInfo" : "AppUml.PackageInfo")}
       open={open}
       cancelText={t("Cancel")}
       okText={t("Confirm")}

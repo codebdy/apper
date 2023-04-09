@@ -8,8 +8,8 @@ import { packagesState } from './../recoil/atoms';
 export function useCreateNewPackage(appId: ID) {
   const packages = useRecoilValue(packagesState(appId));
   const { t } = useTranslation();
-  const getNewPackageName = useCallback(() => {
-    const prefix = t("AppUml.NewPackage");
+  const getNewPackageName = useCallback((stereoType: PackageStereoType) => {
+    const prefix = stereoType === PackageStereoType.Service ? t("AppUml.NewService") : t("AppUml.NewPackage");
     let index = 1;
     // eslint-disable-next-line no-loop-func
     while (packages.find((pkg) => pkg.name === (prefix + index))) {
@@ -20,11 +20,11 @@ export function useCreateNewPackage(appId: ID) {
   }, [packages, t]);
 
   const createNewPackage = useCallback(
-    () => {
+    (stereoType: PackageStereoType) => {
       const newPackage: PackageMeta = {
         uuid: createUuid(),
-        name: getNewPackageName(),
-        stereoType: PackageStereoType.Normal,
+        name: getNewPackageName(stereoType),
+        stereoType: stereoType,
       };
       return newPackage;
     },

@@ -9,7 +9,7 @@ import { useExportModelJson } from "../hooks/useExportModelJson";
 import { useTranslation } from "react-i18next";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { PackageDialog } from "./PackageLabel/PackageDialog";
-import { PackageMeta } from "../meta/PackageMeta";
+import { PackageMeta, PackageStereoType } from "../meta/PackageMeta";
 import { useImportModelJson } from "../hooks/useImportModelJson";
 
 export const ModelRootAction = memo(() => {
@@ -28,10 +28,18 @@ export const ModelRootAction = memo(() => {
 
   const handleAddPackage = useCallback(
     () => {
-      setNewPackage(createNewPackage());
+      setNewPackage(createNewPackage(PackageStereoType.Normal));
     },
     [createNewPackage],
   );
+
+  const handleAddService = useCallback(
+    () => {
+      setNewPackage(createNewPackage(PackageStereoType.Service));
+    },
+    [createNewPackage],
+  );
+
 
   const handleClose = useCallback(() => {
     setNewPackage(undefined);
@@ -59,15 +67,24 @@ export const ModelRootAction = memo(() => {
               }
             },
             {
+              icon: <FolderAddOutlined />,
+              label: t("AppUml.AddService"),
+              key: '1',
+              onClick: e => {
+                e.domEvent.stopPropagation();
+                handleAddService();
+              }
+            },
+            {
               icon: <DownloadOutlined />,
               label: t("AppUml.ExportModel"),
-              key: '1',
+              key: '2',
               onClick: expotJson
             },
             {
               icon: <ImportOutlined />,
               label: t("AppUml.ImportModel"),
-              key: '2',
+              key: '3',
               onClick: importJson,
             },
           ]
