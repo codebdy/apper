@@ -1,10 +1,9 @@
 import { memo, useCallback, useMemo, } from "react";
 import { Graph } from "@antv/x6";
-import { Button, Tree } from "antd";
+import { Tree } from "antd";
 import SvgIcon from "common/SvgIcon";
-import { ModelRootAction } from "./ModelRootAction";
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { packagesState, diagramsState, classesState, selectedUmlDiagramState, selectedElementState, codesState, orchestrationsState } from './../recoil/atoms';
+import { packagesState, diagramsState, classesState, selectedUmlDiagramState, selectedElementState } from './../recoil/atoms';
 import TreeNodeLabel from "common/TreeNodeLabel";
 import PackageLabel from "./PackageLabel";
 import { PackageMeta } from "../meta/PackageMeta";
@@ -18,7 +17,7 @@ import { useParseRelationUuid } from "../hooks/useParseRelationUuid";
 import { useGetSourceRelations } from './../hooks/useGetSourceRelations';
 import { useGetTargetRelations } from './../hooks/useGetTargetRelations';
 import { useGetClass } from "../hooks/useGetClass";
-import { MethodMeta, MethodOperateType } from "../meta/MethodMeta";
+import { MethodMeta } from "../meta/MethodMeta";
 import AttributeLabel from "./AttributeLabel";
 import { PRIMARY_COLOR, SYSTEM_APP_ID } from "consts";
 import MethodLabel from "./MethodLabel";
@@ -29,19 +28,9 @@ import { useTranslation } from "react-i18next";
 import PlugIcon from "icons/PlugIcon";
 import DiagramLabel from "./DiagramLabel";
 import { useParams } from "react-router-dom";
-import { CodeMeta } from "../meta/CodeMeta";
-import CodeLabel from "./CodeLabel";
-import { CodeOutlined, FunctionOutlined } from "@ant-design/icons";
-import { useIsCode } from "../hooks/useIsCode";
-import { ServicesRootAction } from "./ServicesRootAction";
-import { useSelectedCode } from "../hooks/useSelectedCode";
-import { OrchestrationMeta } from "../meta/OrchestrationMeta";
-import { OrchestrationLabel } from "./OrchestrationLabel";
-import { useSelectedOrcherstration } from "../hooks/useSelectedOrcherstration";
-import { useIsOrchestration } from "../hooks/useIsOrchestration";
-import {MoreOutlined} from "@ant-design/icons"
 import { DataNode } from "antd/es/tree";
 import styled from "styled-components";
+import { ModelRootAction } from "./ModelRootAction";
 const { DirectoryTree } = Tree;
 
 
@@ -59,10 +48,15 @@ const Container = styled.div`
 }
 `
 
+const StyledDirectoryTree = styled(DirectoryTree)`
+  padding-top: 16px;
+  flex: 1;
+`
+
 const Title = styled.div`
   height: 48px;
-  color: ${props=>props.theme.token?.colorText};
-  border-bottom: ${props=>props.theme.token?.colorBorder} solid 1px;
+  color: ${props => props.theme.token?.colorText};
+  border-bottom: ${props => props.theme.token?.colorBorder} solid 1px;
   display: flex;
   align-items: center;
   padding: 0 8px;
@@ -75,12 +69,8 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
   const packages = useRecoilValue(packagesState(appId));
   const diagrams = useRecoilValue(diagramsState(appId));
   const classes = useRecoilValue(classesState(appId));
-  const codes = useRecoilValue(codesState(appId));
-  const orchestrations = useRecoilValue(orchestrationsState(appId));
   const isDiagram = useIsDiagram(appId);
   const isElement = useIsElement(appId);
-  const isCode = useIsCode(appId);
-  const isOrches = useIsOrchestration(appId);
   const parseRelationUuid = useParseRelationUuid(appId);
   const [selectedDiagramId, setSelecteDiagramId] = useRecoilState(selectedUmlDiagramState(appId));
   const [selectedElement, setSelectedElement] = useRecoilState(selectedElementState(appId));
@@ -214,22 +204,6 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     }
   }, [getClassNode])
 
-  const getCodeNode = useCallback((code: CodeMeta) => {
-    return {
-      title: <CodeLabel code={code} />,
-      key: code.uuid,
-      isLeaf: true,
-      icon: <CodeOutlined />
-    }
-  }, [])
-
-  const getCodesNode = useCallback((title: string, key: string) => {
-    return {
-      title: title,
-      key: key,
-      children: codes.map(code => getCodeNode(code))
-    }
-  }, [getCodeNode, codes])
 
   const getPackageChildren = useCallback((pkg: PackageMeta) => {
     const packageChildren: DataNode[] = []
@@ -291,50 +265,12 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     })
   }, [packages, getPackageChildren]);
 
-  const getOrchestrationNode = useCallback((orchestration: OrchestrationMeta) => {
-    return {
-      title: <OrchestrationLabel orchestration={orchestration} />,
-      key: orchestration.uuid,
-      isLeaf: true,
-      icon: <FunctionOutlined />
-    }
-  }, [])
 
+  const getServiceNodes = useCallback(() => {
+    const services: DataNode[] = []
 
-  const getQueryNodes = useCallback((title: string, key: string) => {
-    return {
-      title: title,
-      key: key,
-      children: orchestrations.filter(orches => orches.operateType === MethodOperateType.Query).map(orchestration => getOrchestrationNode(orchestration))
-    }
-  }, [getOrchestrationNode, orchestrations])
-
-  const getMutationNodes = useCallback((title: string, key: string) => {
-    return {
-      title: title,
-      key: key,
-      children: orchestrations.filter(orches => orches.operateType === MethodOperateType.Mutation).map(orchestration => getOrchestrationNode(orchestration))
-    }
-  }, [getOrchestrationNode, orchestrations])
-
-  const getOrchestrationNodes = useCallback(() => {
-    const orchestrationChildren: DataNode[] = []
-    const queryNodes = getQueryNodes(t("AppUml.Querys"), "querys");
-    const mutationNodes = getMutationNodes(t("AppUml.Mutations"), "mutations");
-
-    if (queryNodes?.children?.length) {
-      orchestrationChildren.push(queryNodes)
-    }
-
-    if (mutationNodes?.children?.length) {
-      orchestrationChildren.push(mutationNodes)
-    }
-
-    if (codes.length > 0) {
-      orchestrationChildren.push(getCodesNode(t("AppUml.CustomCode"), "codes"))
-    }
-    return orchestrationChildren
-  }, [getQueryNodes, t, getMutationNodes, codes.length, getCodesNode]);
+    return services
+  }, []);
 
 
   const treeData: DataNode[] = useMemo(() => [
@@ -345,7 +281,7 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
         </svg>
       </SvgIcon>,
       title:
-        <TreeNodeLabel fixedAction action={<ModelRootAction />}>
+        <TreeNodeLabel>
           <div>{t("AppUml.DomainModel")}</div>
         </TreeNodeLabel>,
       key: "0",
@@ -358,27 +294,21 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
         </svg>
       </SvgIcon>,
       title:
-        <TreeNodeLabel fixedAction action={<ServicesRootAction />}>
+        <TreeNodeLabel fixedAction>
           <div>{t("AppUml.ServiceModels")}</div>
         </TreeNodeLabel>,
       key: "1",
-      children: getOrchestrationNodes()
+      children: getServiceNodes()
     },
 
-  ], [getModelPackageNodes, getOrchestrationNodes, t]);
+  ], [getModelPackageNodes, getServiceNodes, t]);
 
   const handleSelect = useCallback((keys: string[]) => {
     for (const uuid of keys) {
       if (isDiagram(uuid)) {
         setSelecteDiagramId(uuid);
-        if (isCode(selectedElement) || isOrches(selectedElement)) {
-          setSelectedElement(undefined);
-        }
       } else if (isElement(uuid)) {
         setSelectedElement(uuid);
-      } else if (isCode(uuid) || isOrches(uuid)) {
-        setSelectedElement(uuid);
-        setSelecteDiagramId(undefined);
       } else {
         const relationUuid = parseRelationUuid(uuid);
         if (relationUuid) {
@@ -386,19 +316,18 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
         }
       }
     }
-  }, [isDiagram, isElement, isCode, isOrches, parseRelationUuid, setSelecteDiagramId, selectedElement, setSelectedElement])
+  }, [isDiagram, isElement, parseRelationUuid, setSelecteDiagramId, setSelectedElement])
 
-  const selectedCode = useSelectedCode(appId);
-  const selectedOrches = useSelectedOrcherstration(appId);
+
   return (
     <Container>
       <Title>
-        <span>模型</span>
-        <Button type="text" shape="circle" icon = {<MoreOutlined />} />
+        <span>{t("Model.Title")}</span>
+        <ModelRootAction />
       </Title>
-      <DirectoryTree
+      <StyledDirectoryTree
         defaultExpandedKeys={["0"]}
-        selectedKeys={[selectedDiagramId || selectedCode?.uuid || selectedOrches?.uuid] as any}
+        selectedKeys={[selectedDiagramId] as any}
         onSelect={handleSelect as any}
         treeData={treeData}
       />

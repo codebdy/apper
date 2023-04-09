@@ -14,8 +14,6 @@ import {
   x6EdgesState,
   x6NodesState,
   packagesState,
-  codesState,
-  orchestrationsState,
 } from "../recoil/atoms";
 
 export function useRedo(appId: ID) {
@@ -23,8 +21,6 @@ export function useRedo(appId: ID) {
   const [redoList, setRedoList] = useRecoilState(redoListState(appId));
   const [packages, setPackages] = useRecoilState(packagesState(appId))
   const [diagrams, setDiagrams] = useRecoilState(diagramsState(appId));
-  const [codes, setCodes] = useRecoilState(codesState(appId));
-  const [orchestrations, setOrchestrations] = useRecoilState(orchestrationsState(appId))
   const [entities, setEntities] = useRecoilState(classesState(appId));
   const [relations, setRelations] = useRecoilState(relationsState(appId));
   const [x6Nodes, setX6Nodes] = useRecoilState(x6NodesState(appId));
@@ -47,8 +43,6 @@ export function useRedo(appId: ID) {
       {
         packages,
         diagrams,
-        codes,
-        orchestrations,
         classes: entities,
         relations,
         x6Nodes,
@@ -60,8 +54,6 @@ export function useRedo(appId: ID) {
     setRedoList((snapshots) => snapshots.slice(0, snapshots.length - 1));
     setPackages(snapshot.packages);
     setDiagrams(snapshot.diagrams);
-    setCodes(snapshot.codes);
-    setOrchestrations(snapshot.orchestrations);
     setEntities(snapshot.classes);
     setRelations(snapshot.relations);
     setX6Nodes(snapshot.x6Nodes);
@@ -71,31 +63,6 @@ export function useRedo(appId: ID) {
     triggerCanvasEvent({
       name: EVENT_UNDO_REDO,
     });
-  }, [
-    redoList,
-    setChanged,
-    setUndoList,
-    setRedoList,
-    setPackages,
-    setDiagrams,
-    setCodes,
-    setOrchestrations,
-    setEntities,
-    setRelations,
-    setX6Nodes,
-    setX6Edges,
-    setSelectedDiagram,
-    setSelectedElement,
-    packages,
-    diagrams,
-    codes,
-    orchestrations,
-    entities,
-    relations,
-    x6Nodes,
-    x6Edges,
-    selectedDiagram,
-    selectedElement,
-  ]);
+  }, [redoList, setChanged, setUndoList, setRedoList, setPackages, setDiagrams, setEntities, setRelations, setX6Nodes, setX6Edges, setSelectedDiagram, setSelectedElement, packages, diagrams, entities, relations, x6Nodes, x6Edges, selectedDiagram, selectedElement]);
   return undo;
 }

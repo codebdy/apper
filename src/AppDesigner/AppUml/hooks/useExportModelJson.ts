@@ -11,8 +11,6 @@ export function useExportModelJson(appId: string) {
   const doExport = useCallback(() => {
 
     const data: MetaContent = getMeta();
-    delete data.codes;
-    delete data.orchestrations;
     saveFile(appId + '-model', JSON.stringify(data, null, 2)).then(
       (savedName) => {
         if (savedName) {

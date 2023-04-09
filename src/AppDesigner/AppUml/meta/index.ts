@@ -1,6 +1,5 @@
 export * from "./AttributeMeta";
 export * from "./ClassMeta";
-export * from "./CodeMeta";
 export * from "./DiagramMeta";
 export * from "./Meta";
 export * from "./MethodMeta";

@@ -7,13 +7,9 @@ import { X6NodeMeta } from "../meta/X6NodeMeta";
 import { LineAction } from "./LineAction";
 import { ID } from "shared";
 import { PackageMeta } from "../meta/PackageMeta";
-import { CodeMeta } from "../meta/CodeMeta";
-import { OrchestrationMeta } from "../meta/OrchestrationMeta";
 
 export interface Snapshot {
   diagrams: DiagramMeta[];
-  codes: CodeMeta[];
-  orchestrations: OrchestrationMeta[];
   packages: PackageMeta[];
   classes: ClassMeta[];
   relations: RelationMeta[];
@@ -29,11 +25,6 @@ export const minMapState = atomFamily<boolean, string>({
   default: true,
 });
 
-// export const publishedIdState = atomFamily<ID | undefined, string>({
-//   key: "uml.publishedId",
-//   default: undefined,
-// });
-
 export const changedState = atomFamily<boolean, string>({
   key: "uml.changed",
   default: false,
@@ -41,16 +32,6 @@ export const changedState = atomFamily<boolean, string>({
 
 export const diagramsState = atomFamily<DiagramMeta[], string>({
   key: "uml.diagrams",
-  default: [],
-});
-
-export const codesState = atomFamily<CodeMeta[], string>({
-  key: "uml.codes",
-  default: [],
-});
-
-export const orchestrationsState = atomFamily<OrchestrationMeta[], string>({
-  key: "uml.orchestrations",
   default: [],
 });
 

@@ -6,17 +6,13 @@ import { useReadMeta } from "./hooks/useReadMeta";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { Spin } from "antd";
 import { ModelBoard } from "common/ModelBoard";
-import { minMapState, selectedElementState, selectedUmlDiagramState } from "./recoil/atoms";
+import { minMapState, selectedUmlDiagramState } from "./recoil/atoms";
 import { useRecoilValue } from "recoil";
 import { Toolbox } from "./Toolbox";
 import { UmlToolbar } from "./UmlToolbar";
 import { GraphCanvas } from "./GraphCanvas";
 import { PropertyPanel } from "./PropertyPanel";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
-import { CodeScriptEditor } from "./CodeEditor/CodeScriptEditor";
-import { useIsCode } from "./hooks/useIsCode";
-import { useIsOrchestration } from "./hooks/useIsOrchestration";
-import { OrchestrationScriptEditor } from "./CodeEditor/OrchestrationScriptEditor";
 import styled from "styled-components";
 
 const MapContianer = styled.div`
@@ -46,9 +42,6 @@ const AppUml = memo((
   const { loading, error } = useReadMeta(appId);
   const minMap = useRecoilValue(minMapState(appId));
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(appId));
-  const selectedElement = useRecoilValue(selectedElementState(appId));
-  const isCode = useIsCode(appId);
-  const iseOrches = useIsOrchestration(appId);
   useShowError(error);
 
   return (
@@ -81,14 +74,6 @@ const AppUml = memo((
               id="mini-map"
             ></MapContianer>
           </div>
-        }
-        {
-          isCode(selectedElement) &&
-          <CodeScriptEditor />
-        }
-        {
-          iseOrches(selectedElement) &&
-          <OrchestrationScriptEditor />
         }
       </ModelBoard>
     </Spin>

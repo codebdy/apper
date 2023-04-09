@@ -18,8 +18,6 @@ import { PRIMARY_COLOR } from "consts";
 import SaveActions from "../SaveActions";
 import { ModelToolbar } from "common/ModelBoard/ModelToolbar";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
-import { useIsCode } from "../hooks/useIsCode";
-import { useIsOrchestration } from "../hooks/useIsOrchestration";
 
 export const UmlToolbar = memo(() => {
   const appId = useEdittingAppId();
@@ -27,8 +25,7 @@ export const UmlToolbar = memo(() => {
   const redoList = useRecoilValue(redoListState(appId));
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(appId));
   const selectedElement = useRecoilValue(selectedElementState(appId));
-  const isCode = useIsCode(appId);
-  const isOrchestration = useIsOrchestration(appId);
+
   const { attribute } = useAttribute(selectedElement || "", appId);
   const undo = useUndo(appId);
   const redo = useRedo(appId);
@@ -87,7 +84,7 @@ export const UmlToolbar = memo(() => {
       </Button>
       <Button
         disabled={
-          (attribute && attribute.name === CONST_ID) || !selectedElement || isCode(selectedElement) || isOrchestration(selectedElement)
+          (attribute && attribute.name === CONST_ID) || !selectedElement
         }
         type="text"
         shape="circle"
