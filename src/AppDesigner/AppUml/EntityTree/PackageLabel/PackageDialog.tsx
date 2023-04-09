@@ -1,9 +1,8 @@
-import { Form, Modal, Select } from "antd"
+import { Form, Modal } from "antd"
 import { memo, useCallback, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { PackageMeta, PackageStereoType } from "../../meta/PackageMeta"
 import { MultiLangInput } from "components/MultiLangInput"
-const { Option } = Select;
 
 export const PackageDialog = memo((
   props: {
@@ -22,7 +21,7 @@ export const PackageDialog = memo((
 
   const handleConfirm = useCallback(() => {
     form.validateFields().then(changeValues => {
-      onConfirm({ ...pkg, ...changeValues })
+      onConfirm({ ...pkg, ...changeValues, stereoType: PackageStereoType.Normal })
     })
   }, [form, onConfirm, pkg])
 
@@ -59,16 +58,6 @@ export const PackageDialog = memo((
           rules={[{ required: true, message: t("Required") }]}
         >
           <MultiLangInput inline title={t("Name")} />
-        </Form.Item>
-
-        < Form.Item
-          label={t("AppUml.StereoType")}
-          name="stereoType"
-        >
-          <Select defaultValue={PackageStereoType.Normal}>
-            <Option value={PackageStereoType.Normal}>{t("AppUml.NormPackage")}</Option>
-            <Option value={PackageStereoType.ThirdParty}>{t("AppUml.ThirdPartyPackage")}</Option>
-          </Select>
         </Form.Item>
       </Form>
     </Modal>

@@ -1,6 +1,6 @@
 import { memo, useCallback, useMemo, } from "react";
 import { Graph } from "@antv/x6";
-import { Tree } from "antd";
+import { Button, Tree } from "antd";
 import SvgIcon from "common/SvgIcon";
 import { ModelRootAction } from "./ModelRootAction";
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -39,12 +39,16 @@ import { OrchestrationMeta } from "../meta/OrchestrationMeta";
 import { OrchestrationLabel } from "./OrchestrationLabel";
 import { useSelectedOrcherstration } from "../hooks/useSelectedOrcherstration";
 import { useIsOrchestration } from "../hooks/useIsOrchestration";
+import {MoreOutlined} from "@ant-design/icons"
 import { DataNode } from "antd/es/tree";
 import styled from "styled-components";
 const { DirectoryTree } = Tree;
 
+
 const Container = styled.div`
   flex: 1;
+  display: flex;
+  flex-flow: column;
   overflow: auto;
   padding: 8;
   .ant-tree-node-content-wrapper{
@@ -53,6 +57,16 @@ const Container = styled.div`
       flex:1;
   }
 }
+`
+
+const Title = styled.div`
+  height: 48px;
+  color: ${props=>props.theme.token?.colorText};
+  border-bottom: ${props=>props.theme.token?.colorBorder} solid 1px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  justify-content: space-between;
 `
 
 export const EntityTree = memo((props: { graph?: Graph }) => {
@@ -378,6 +392,10 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
   const selectedOrches = useSelectedOrcherstration(appId);
   return (
     <Container>
+      <Title>
+        <span>模型</span>
+        <Button type="text" shape="circle" icon = {<MoreOutlined />} />
+      </Title>
       <DirectoryTree
         defaultExpandedKeys={["0"]}
         selectedKeys={[selectedDiagramId || selectedCode?.uuid || selectedOrches?.uuid] as any}

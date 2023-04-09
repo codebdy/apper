@@ -1,6 +1,6 @@
 export enum PackageStereoType{
   Normal = 'Normal',
-  ThirdParty = 'ThirdParty'
+  Service = 'Service'
 }
 
 /**
