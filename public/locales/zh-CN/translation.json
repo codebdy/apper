@@ -269,7 +269,7 @@
   },
   "AppUml": {
     "DomainModel": "领域模型",
-    "ServiceOrchestration": "业务编排",
+    "ServiceModels": "服务模型",
     "AddPackage": "添加包",
     "ExportModel": "导出模型",
     "ImportModel": "导入模型",
