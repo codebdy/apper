@@ -1,9 +1,9 @@
-import { MoreOutlined, EditOutlined, DeleteOutlined, FileAddOutlined, PlusSquareOutlined, ShareAltOutlined, LockOutlined, StopOutlined } from "@ant-design/icons";
+import { MoreOutlined, EditOutlined, DeleteOutlined, FileAddOutlined, PlusSquareOutlined, LockOutlined } from "@ant-design/icons";
 import { Dropdown, Button } from "antd";
-import { memo, useCallback, useMemo, useState } from "react"
+import { memo, useCallback, useState } from "react"
 import { useSetRecoilState } from 'recoil';
 import { classesState, diagramsState, selectedUmlDiagramState } from "../../recoil/atoms";
-import { PackageMeta } from "../../meta/PackageMeta";
+import { PackageMeta, PackageStereoType } from "../../meta/PackageMeta";
 import { useDeletePackage } from '../../hooks/useDeletePackage';
 import { useCreateNewClass } from "../../hooks/useCreateNewClass";
 import { useCreateNewDiagram } from "../../hooks/useCreateNewDiagram";
@@ -62,15 +62,6 @@ const PackageAction = memo((
     [createNewDiagram, pkg.uuid]
   );
 
-  const handleShare = useCallback(() => {
-    backupSnapshot();
-    updatePackage({ ...pkg, sharable: true });
-  }, [backupSnapshot, pkg, updatePackage]);
-
-  const handleCancelShare = useCallback(() => {
-    backupSnapshot();
-    updatePackage({ ...pkg, sharable: false });
-  }, [backupSnapshot, pkg, updatePackage]);
 
   const handleClose = useCallback(() => {
     setNewDiagram(undefined)
@@ -84,40 +75,8 @@ const PackageAction = memo((
   }, [backupSnapshot, setDiagrams, setSelectedDiagram]);
 
 
-  const shareItems = useMemo(() => {
-    return appId === SYSTEM_APP_ID
-      ? [
-        pkg?.sharable
-          ?
-          {
-            icon: <StopOutlined />,
-            label: t("CancelShare"),
-            key: '5',
-            onClick: (e: any) => {
-              e.domEvent.stopPropagation();
-              onVisibleChange(false);
-              handleCancelShare();
-            }
-          }
-          :
-          {
-            icon: <ShareAltOutlined />,
-            label: t("Share"),
-            key: '5',
-            onClick: (e: any) => {
-              e.domEvent.stopPropagation();
-              onVisibleChange(false);
-              handleShare();
-            }
-          }
-        ,
-      ]
-      : []
-  }, [appId, pkg?.sharable, t, onVisibleChange, handleCancelShare, handleShare])
-
-
   return (
-    pkg.sharable && appId !== SYSTEM_APP_ID ?
+    pkg.stereoType === PackageStereoType.Service && appId !== SYSTEM_APP_ID ?
       <Button type="text" shape='circle' size='small'>
         <LockOutlined />
       </Button>
@@ -191,7 +150,6 @@ const PackageAction = memo((
                   // },
                 ]
               },
-              ...shareItems,
               {
                 icon: <EditOutlined />,
                 label: t("Edit"),

@@ -6,6 +6,7 @@ import { useQueryOne } from "enthooks/hooks/useQueryOne";
 import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState } from "../recoil/atoms";
 import { IApp } from "model";
 import { ID } from "shared";
+import { PackageStereoType } from "../meta";
 
 const queryGql = gql`
 query ($appId:ID!) {
@@ -53,8 +54,8 @@ export function useReadMeta(appId: ID): { error?: GraphQLRequestError; loading?:
       const getPackage = (packageUuid: string) => {
         return systemMeta?.packages?.find(pkg => pkg.uuid === packageUuid);
       }
-      const systemPackages = systemMeta?.packages?.filter(pkg => pkg.sharable) || [];
-      const systemClasses = systemMeta?.classes?.filter(cls => getPackage(cls.packageUuid)?.sharable) || []
+      const systemPackages = systemMeta?.packages?.filter(pkg => pkg.stereoType === PackageStereoType.Service) || [];
+      const systemClasses = systemMeta?.classes?.filter(cls => getPackage(cls.packageUuid)?.stereoType === PackageStereoType.Service) || []
       setPackages([...systemPackages, ...meta?.packages || []]);
       setClasses([...systemClasses, ...meta?.classes || []]);
       setRelations(meta?.relations || []);

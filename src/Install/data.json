@@ -5,14 +5,12 @@
       {
         "appUuid": "SYSTEM",
         "name": "System",
-        "sharable": true,
         "system": true,
         "uuid": "PACKAGE_SYSTEM_UUID"
       },
       {
         "appUuid": "SYSTEM",
         "name": "Appx",
-        "sharable": false,
         "system": true,
         "uuid": "PACKAGE_APPX_UUID"
       }

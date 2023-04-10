@@ -11,7 +11,7 @@ import { AssociationType } from "../model/IFieldSource";
 import { getParentClasses } from "./getParentClasses";
 import { IApp } from "model";
 import { getChildEntities } from "./getChildEntities";
-import { ClassMeta, RelationMeta, RelationType, RelationMultiplicity, StereoType, AttributeMeta, MethodMeta } from "AppDesigner/AppUml/meta";
+import { ClassMeta, RelationMeta, RelationType, RelationMultiplicity, StereoType, AttributeMeta, MethodMeta, PackageStereoType } from "AppDesigner/AppUml/meta";
 
 export const sort = (array: { name: string }[]) => {
   return array.sort((a, b) => {
@@ -182,8 +182,8 @@ export function useBuildMeta(): { error?: GraphQLRequestError; loading?: boolean
       const getPackage = (packageUuid: string) => {
         return systemMeta?.publishedMeta?.packages?.find(pkg => pkg.uuid === packageUuid);
       }
-      const systemPackages = systemMeta?.publishedMeta?.packages?.filter(pkg => pkg.sharable) || [];
-      const systemClasses = systemMeta?.publishedMeta?.classes?.filter(cls => getPackage(cls.packageUuid)?.sharable) || []
+      const systemPackages = systemMeta?.publishedMeta?.packages?.filter(pkg => pkg.stereoType === PackageStereoType.Service) || [];
+      const systemClasses = systemMeta?.publishedMeta?.classes?.filter(cls => getPackage(cls.packageUuid)?.stereoType === PackageStereoType.Service) || []
       const allClasses: ClassMeta[] = [...systemClasses, ...meta?.publishedMeta?.classes || []];
       const allRelations: RelationMeta[] = makeRelations(allClasses, [...systemMeta?.publishedMeta?.relations || [], ...meta?.publishedMeta?.relations || []]);
       setPackages([...systemPackages, ...meta?.publishedMeta?.packages || []]);

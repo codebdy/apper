@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { memo } from "react";
 import { useBackupSnapshot } from "../../hooks/useBackupSnapshot";
-import { PackageMeta } from "../../meta/PackageMeta";
+import { PackageMeta, PackageStereoType } from "../../meta/PackageMeta";
 import PackageAction from "./PackageAction";
 import TreeNodeLabel from "common/TreeNodeLabel";
 import { useSetRecoilState } from 'recoil';
@@ -53,7 +53,7 @@ const PackageLabel = memo((
 
   return (
     <TreeNodeLabel
-      fixedAction={visible || (pkg.sharable && appId !== SYSTEM_APP_ID)}
+      fixedAction={visible || (pkg.stereoType === PackageStereoType.Service && appId !== SYSTEM_APP_ID)}
       action={!editing ?
         <PackageAction pkg={pkg}
           onEdit={handleEdit}

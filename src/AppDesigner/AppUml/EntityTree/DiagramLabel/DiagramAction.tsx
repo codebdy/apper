@@ -7,6 +7,7 @@ import { useGetPackage } from "../../hooks/useGetPackage";
 import { useDeleteDiagram } from "../../hooks/useDeleteDiagram";
 import { SYSTEM_APP_ID } from "consts";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { PackageStereoType } from "AppDesigner/AppUml/meta";
 
 const DiagramAction = memo((
   props: {
@@ -28,7 +29,7 @@ const DiagramAction = memo((
 
 
   return (
-    getPagcage(diagram.packageUuid)?.sharable && appId !== SYSTEM_APP_ID ?
+    getPagcage(diagram.packageUuid)?.stereoType === PackageStereoType.Service && appId !== SYSTEM_APP_ID ?
       <Button type="text" shape='circle' size='small' style={{ color: "inherit" }}>
         <LockOutlined />
       </Button>

@@ -11,6 +11,7 @@ import { SYSTEM_APP_ID } from "consts";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useParseLangMessage } from "plugin-sdk";
 import { DiagramDialog } from "./DiagramDialog";
+import { PackageStereoType } from "AppDesigner/AppUml/meta";
 
 const DiagramLabel = memo((
   props: {
@@ -52,7 +53,7 @@ const DiagramLabel = memo((
 
   return (
     <TreeNodeLabel
-      fixedAction={visible || (getPagcage(diagram.packageUuid)?.sharable && appId !== SYSTEM_APP_ID)}
+      fixedAction={visible || (getPagcage(diagram.packageUuid)?.stereoType === PackageStereoType.Service && appId !== SYSTEM_APP_ID)}
       action={
         !editing ?
           <DiagramAction diagram={diagram}

@@ -3,7 +3,7 @@ import { useCallback } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { SYSTEM_APP_ID } from "consts";
 import { getTheFiles } from "shared/action/hooks/useOpenFile";
-import { MetaContent } from "../meta";
+import { MetaContent, PackageStereoType } from "../meta";
 import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";
 
@@ -28,8 +28,8 @@ export function useImportModelJson(appId: string) {
               return packages?.find(pkg => pkg.uuid === packageUuid);
             }
 
-            const systemPackages = appId === SYSTEM_APP_ID ? [] : packages?.filter(pkg => pkg.sharable) || [];
-            const systemClasses = appId === SYSTEM_APP_ID ? [] : classes?.filter(cls => getPackage(cls.packageUuid)?.sharable) || []
+            const systemPackages = appId === SYSTEM_APP_ID ? [] : packages?.filter(pkg => pkg.stereoType === PackageStereoType.Service) || [];
+            const systemClasses = appId === SYSTEM_APP_ID ? [] : classes?.filter(cls => getPackage(cls.packageUuid)?.stereoType === PackageStereoType.Service) || []
             setPackages([...systemPackages, ...meta?.packages || []]);
             setClasses([...systemClasses, ...meta?.classes || []]);
             setRelations(meta?.relations || []);
