@@ -1,4 +1,4 @@
-import { Col, Spin } from "antd"
+import { Spin } from "antd"
 import { memo } from "react"
 import styled from "styled-components"
 
@@ -7,10 +7,6 @@ const Container = styled.div`
   flex-flow: column;
   flex:1;
   color:${props=>props.theme.token?.colorText};
-`
-
-const StyleCol = styled(Col)`
-  padding-bottom: 32px;
 `
 
 export const ServiceManager = memo(() => {
