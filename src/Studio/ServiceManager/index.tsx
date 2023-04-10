@@ -1,22 +1,12 @@
-import { Col, Row, Spin } from "antd"
+import { Col, Spin } from "antd"
 import { memo } from "react"
 import styled from "styled-components"
-import { ServiceManagerHeader } from "./ServiceManagerHeader"
-import { ServiceCard } from "./ServiceCard"
-import { useQueryServices } from "hooks/useQueryServices"
-import { useShowError } from "AppDesigner/hooks/useShowError"
 
 const Container = styled.div`
   display:flex;
   flex-flow: column;
   flex:1;
-`
-
-const StyledRow = styled(Row)`
-
-  height: 0;
-  padding: 16px 0;
-
+  color:${props=>props.theme.token?.colorText};
 `
 
 const StyleCol = styled(Col)`
@@ -24,21 +14,12 @@ const StyleCol = styled(Col)`
 `
 
 export const ServiceManager = memo(() => {
-  const { services, error, loading } = useQueryServices()
-  useShowError(error)
+  /* const { services, error, loading } = useQueryServices()
+  useShowError(error) */
   return (
-    <Spin spinning={loading}>
+    <Spin spinning={false}>
       <Container>
-        <ServiceManagerHeader />
-        <StyledRow gutter={32}>
-          {
-            services?.map(service => {
-              return (<StyleCol span={6} key={service.id}>
-                <ServiceCard service={service} />
-              </StyleCol>)
-            })
-          }
-        </StyledRow>
+        <div>服务配置:比如逻辑编排的物料管理等</div>
       </Container>
     </Spin>
   )
