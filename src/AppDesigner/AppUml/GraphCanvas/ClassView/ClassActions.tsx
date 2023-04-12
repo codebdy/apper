@@ -55,7 +55,7 @@ const ClassActions = memo((
           type="text"
           onClick={onHidden}
         >
-          <EyeInvisibleOutlined />
+          <EyeInvisibleOutlined  />
         </Button>
       </div>
       <Dropdown

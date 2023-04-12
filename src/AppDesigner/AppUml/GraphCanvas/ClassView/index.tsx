@@ -28,6 +28,7 @@ import ClassActions from "./ClassActions";
 import PlugIcon from "icons/PlugIcon";
 import { useParseLangMessage } from "plugin-sdk";
 import { Node } from "@antv/x6"
+import { ConfigProvider, theme } from "antd";
 
 export enum ClassEvent {
   attributeSelect = "attribute-select",
@@ -205,154 +206,158 @@ export const ClassView = memo(
     ]);
 
     return (
-      <div
-        className="model-class-view"
-        style={{
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          flexFlow: "column",
-          background: data?.backgroundColor,
-          color: data?.textColor,
-          overflow: "hidden",
-          cursor: canLinkFrom ? "crosshair" : undefined,
-          boxShadow: boxShadow,
-          borderRadius: "5px",
-        }}
-        onMouseOver={handleMouseOver}
-        onMouseLeave={handleMouseLeave}
-      >
+      <ConfigProvider theme={{
+        algorithm: data?.themeMode === "dark" ? theme.darkAlgorithm : theme.defaultAlgorithm
+      }}>
         <div
+          className="model-class-view"
           style={{
-            flex: 1,
-            border: "solid 2px",
-            borderRadius: "5px",
+            height: "100%",
+            width: "100%",
             display: "flex",
             flexFlow: "column",
             background: data?.backgroundColor,
             color: data?.textColor,
-            // color: data?.root
-            //   ? theme.palette.primary.main
-            //   : theme.palette.text.primary,
-            fontStyle:
-              data?.stereoType === StereoType.Abstract ? "italic" : undefined,
             overflow: "hidden",
+            cursor: canLinkFrom ? "crosshair" : undefined,
+            boxShadow: boxShadow,
+            borderRadius: "5px",
           }}
+          onMouseOver={handleMouseOver}
+          onMouseLeave={handleMouseLeave}
         >
-          {
-            data?.root &&
-            <div style={{
-              position: "absolute",
-              left: "4px",
-              top: "4px",
-              color: "#5d78ff"
-            }}>
-              <PlugIcon size="20px" />
-            </div>
-          }
-
           <div
             style={{
-              width: "100%",
-              padding: "2px 0",
-              display: "flex",
-              flexFlow: "column",
-              position: "relative",
-            }}
-          >
-            {data?.stereoType !== StereoType.Entity && (
-              <div
-                style={{
-                  display: "flex",
-                  width: "100%",
-                  justifyContent: "center",
-                  fontSize: "0.9rem",
-                  opacity: 0.8,
-                }}
-              >
-                &lt;&lt; {data?.stereoType} &gt;&gt;
-              </div>
-            )}
-
-            <div className={"nameItem"}>{data?.name}</div>
-            {data?.packageName && (
-              <div className={classNames("nameItem", "smFont")}>
-                <em>{p(data?.packageName)}</em>
-              </div>
-            )}
-            {((hover && !disableHover) || menuOpened) && data && (
-              <ClassActions
-                cls={data}
-                onAddAttribute={handleAttributeCreate}
-                onAddMethod={handleMethodCreate}
-                onHidden={handleHidden}
-                onDelete={handleDelete}
-                onVisible={handleMenuVisible}
-              />
-            )}
-          </div>
-
-          <div
-            style={{
-              display: "flex",
               flex: 1,
+              border: "solid 2px",
+              borderRadius: "5px",
+              display: "flex",
               flexFlow: "column",
-              cursor: canLinkFrom ? "crosshair" : "default",
+              background: data?.backgroundColor,
+              color: data?.textColor,
+              // color: data?.root
+              //   ? theme.palette.primary.main
+              //   : theme.palette.text.primary,
+              fontStyle:
+                data?.stereoType === StereoType.Abstract ? "italic" : undefined,
+              overflow: "hidden",
             }}
           >
+            {
+              data?.root &&
+              <div style={{
+                position: "absolute",
+                left: "4px",
+                top: "4px",
+                color: "#5d78ff"
+              }}>
+                <PlugIcon size="20px" />
+              </div>
+            }
+
+            <div
+              style={{
+                width: "100%",
+                padding: "2px 0",
+                display: "flex",
+                flexFlow: "column",
+                position: "relative",
+              }}
+            >
+              {data?.stereoType !== StereoType.Entity && (
+                <div
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    justifyContent: "center",
+                    fontSize: "0.9rem",
+                    opacity: 0.8,
+                  }}
+                >
+                  &lt;&lt; {data?.stereoType} &gt;&gt;
+                </div>
+              )}
+
+              <div className={"nameItem"}>{data?.name}</div>
+              {data?.packageName && (
+                <div className={classNames("nameItem", "smFont")}>
+                  <em>{p(data?.packageName)}</em>
+                </div>
+              )}
+              {((hover && !disableHover) || menuOpened) && data && (
+                <ClassActions
+                  cls={data}
+                  onAddAttribute={handleAttributeCreate}
+                  onAddMethod={handleMethodCreate}
+                  onHidden={handleHidden}
+                  onDelete={handleDelete}
+                  onVisible={handleMenuVisible}
+                />
+              )}
+            </div>
 
             <div
               style={{
                 display: "flex",
+                flex: 1,
                 flexFlow: "column",
-                borderTop: "solid 1px",
-                minHeight: "8px",
+                cursor: canLinkFrom ? "crosshair" : "default",
               }}
             >
-              {data?.attributes?.map((attr) => {
-                return attr.name === CONST_ID &&
-                  data?.stereoType === StereoType.Abstract &&
-                  !data?.root ? (
-                  <Fragment key={attr.uuid}></Fragment>
-                ) : (
-                  <AttributeView
-                    key={attr.uuid}
-                    attr={attr}
-                    stereoType={data.stereoType}
-                    onClick={handleAttributeClick}
-                    onDelete={handleAttributeDelete}
-                    readOnly={disableHover}
-                  />
-                );
-              })}
+
+              <div
+                style={{
+                  display: "flex",
+                  flexFlow: "column",
+                  borderTop: "solid 1px",
+                  minHeight: "8px",
+                }}
+              >
+                {data?.attributes?.map((attr) => {
+                  return attr.name === CONST_ID &&
+                    data?.stereoType === StereoType.Abstract &&
+                    !data?.root ? (
+                    <Fragment key={attr.uuid}></Fragment>
+                  ) : (
+                    <AttributeView
+                      key={attr.uuid}
+                      attr={attr}
+                      stereoType={data.stereoType}
+                      onClick={handleAttributeClick}
+                      onDelete={handleAttributeDelete}
+                      readOnly={disableHover}
+                    />
+                  );
+                })}
+              </div>
+
+
+              {data?.stereoType !== StereoType.Enum &&
+                data?.stereoType !== StereoType.ValueObject && (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexFlow: "column",
+                      borderTop: "solid 1px",
+                      minHeight: "24px",
+                    }}
+                  >
+                    {data?.methods?.map((method) => {
+                      return (
+                        <MethodView
+                          key={method.uuid}
+                          method={method}
+                          onClick={handleMethodClick}
+                          onDelete={handleMethodDelete}
+                        />
+                      );
+                    })}
+                  </div>
+                )}
             </div>
-
-
-            {data?.stereoType !== StereoType.Enum &&
-              data?.stereoType !== StereoType.ValueObject && (
-                <div
-                  style={{
-                    display: "flex",
-                    flexFlow: "column",
-                    borderTop: "solid 1px",
-                    minHeight: "24px",
-                  }}
-                >
-                  {data?.methods?.map((method) => {
-                    return (
-                      <MethodView
-                        key={method.uuid}
-                        method={method}
-                        onClick={handleMethodClick}
-                        onDelete={handleMethodDelete}
-                      />
-                    );
-                  })}
-                </div>
-              )}
           </div>
         </div>
-      </div>
+      </ConfigProvider>
     );
   }
 );

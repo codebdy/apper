@@ -15,22 +15,24 @@ import { ID } from "shared";
 import { useGetPackage } from "../hooks/useGetPackage";
 import { useSelectedDiagramPackageUuid } from "../hooks/useSelectedDiagramPackageUuid";
 import { useToken } from "antd/es/theme/internal";
+import { themeModeState } from "recoil/atoms";
 
 export function useNodesShow(graph: Graph | undefined, appId: ID) {
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(appId));
-  
+
   const nodes = useDiagramNodes(selectedDiagram || "", appId);
   const getClass = useGetClass(appId);
   const getNode = useGetNode(appId);
   const getDiagramNode = useGetDiagramNode(appId);
 
   const [, token] = useToken();
+  const themeMode = useRecoilValue(themeModeState)
 
   const getClassRef = useRef(getClass);
   getClassRef.current = getClass;
 
   const getPackage = useGetPackage(appId);
-  
+
   const selectedDiagramUuid = useSelectedDiagramPackageUuid(appId);
 
   useEffect(() => {
@@ -46,6 +48,7 @@ export function useNodesShow(graph: Graph | undefined, appId: ID) {
         ...cls,
         ...node,
         packageName: selectedDiagramUuid !== cls.packageUuid ? getPackage(cls.packageUuid)?.name : undefined,
+        themeMode: themeMode,
         backgroundColor: token.colorBgBase,
         textColor: token.colorText,
         //selectedId: selectedElement,
@@ -97,5 +100,5 @@ export function useNodesShow(graph: Graph | undefined, appId: ID) {
         graph?.removeNode(node.id);
       }
     });
-  }, [getClass, getDiagramNode, getNode, getPackage, graph, nodes, selectedDiagram, selectedDiagramUuid, token.colorBgBase, token.colorText]);
+  }, [getClass, getDiagramNode, getNode, getPackage, graph, nodes, selectedDiagram, selectedDiagramUuid, themeMode, token.colorBgBase, token.colorText]);
 }
