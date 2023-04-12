@@ -20,6 +20,7 @@ import { EVENT_PREPARE_LINK_TO, triggerCanvasEvent } from "./events";
 import { useCheckCanLinkTo } from "./useCheckCanLinkTo";
 import { createUuid, ID } from "shared";
 import _ from "lodash";
+import { useToken } from "antd/es/theme/internal";
 
 export function useEdgeLineDraw(graph: Graph | undefined, appId: ID) {
   const [drawingLine, setDrawingLine] = useRecoilState(
@@ -34,6 +35,8 @@ export function useEdgeLineDraw(graph: Graph | undefined, appId: ID) {
   const [pressedLineType, setPressedLineType] = useRecoilState(
     pressedLineTypeState(appId)
   );
+
+  const [, token] = useToken();
 
   const createRelationInnerId = useCreateRelationInnerId(appId);
   const canLinkTo = useCheckCanLinkTo(appId);
@@ -186,12 +189,12 @@ export function useEdgeLineDraw(graph: Graph | undefined, appId: ID) {
           source: node.id,
           target: p,
           connector: { name: "rounded" },
-          attrs: getRelationGraphAttrs(pressedLineType),
+          attrs: getRelationGraphAttrs(pressedLineType, token),
         }).id,
       };
       setDrawingLine(lineAction);
     },
-    [graph, pressedLineType, setDrawingLine]
+    [graph, pressedLineType, setDrawingLine, token]
   );
 
   useEffect(() => {

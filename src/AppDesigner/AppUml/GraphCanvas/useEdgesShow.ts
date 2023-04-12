@@ -17,12 +17,14 @@ import {
 } from "../recoil/atoms";
 import { EdgeConfig, useDiagramEdges } from "../hooks/useDiagramEdges";
 import { ID } from "shared";
+import { GlobalToken } from "antd/es/theme/interface";
+import { useToken } from "antd/es/theme/internal";
 
 export function useEdgesShow(graph: Graph | undefined, appId: ID) {
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(appId));
   const selectedElement = useRecoilValue(selectedElementState(appId));
   const drawingLine = useRecoilValue(drawingLineState(appId));
-
+  const [, token] = useToken();
   const edges = useDiagramEdges(selectedDiagram || "", appId);
 
   useEffect(() => {
@@ -44,10 +46,10 @@ export function useEdgesShow(graph: Graph | undefined, appId: ID) {
           //   getRelationGraphAttrs(edgeMeta.relationType)
           // );
           grahpEdge.remove();
-          grahpEdge = addNewEdge(graph, edgeMeta, selectedElement);
+          grahpEdge = addNewEdge(graph, edgeMeta, selectedElement, token);
         }
       } else {
-        grahpEdge = addNewEdge(graph, edgeMeta, selectedElement);
+        grahpEdge = addNewEdge(graph, edgeMeta, selectedElement, token);
       }
 
       //如果是跟自己连接，那么需要增加2个中间点
@@ -71,7 +73,7 @@ export function useEdgesShow(graph: Graph | undefined, appId: ID) {
             attrs: {
               text: {
                 text: edgeMeta.roleOfSource || "",
-                //fill: theme.palette.text.primary,
+                fill: token.colorText,
               },
               rect: {
                 fill: "transparent",
@@ -84,7 +86,7 @@ export function useEdgesShow(graph: Graph | undefined, appId: ID) {
             attrs: {
               text: {
                 text: edgeMeta.sourceMutiplicity,
-                //fill: theme.palette.text.primary,
+                fill: token.colorText,
               },
               rect: {
                 fill: "transparent",
@@ -97,7 +99,7 @@ export function useEdgesShow(graph: Graph | undefined, appId: ID) {
             attrs: {
               text: {
                 text: edgeMeta.roleOfTarget,
-                //fill: theme.palette.text.primary,
+                fill: token.colorText,
               },
               rect: {
                 fill: "transparent",
@@ -109,7 +111,7 @@ export function useEdgesShow(graph: Graph | undefined, appId: ID) {
             attrs: {
               text: {
                 text: edgeMeta.targetMultiplicity,
-                //fill: theme.palette.text.primary,
+                fill: token.colorText,
               },
               rect: {
                 fill: "transparent",
@@ -129,9 +131,9 @@ export function useEdgesShow(graph: Graph | undefined, appId: ID) {
         graph?.removeEdge(edge.id);
       }
     });
-  }, [drawingLine?.tempEdgeId, edges, graph, selectedElement,]);
+  }, [drawingLine?.tempEdgeId, edges, graph, selectedElement, token]);
 }
-function addNewEdge(graph: Graph | undefined, edgeMeta: EdgeConfig, selectedElement: string | undefined) {
+function addNewEdge(graph: Graph | undefined, edgeMeta: EdgeConfig, selectedElement: string | undefined, token:GlobalToken) {
   const grahpEdge = graph?.addEdge({
     id: edgeMeta.id,
     source: {
@@ -165,7 +167,7 @@ function addNewEdge(graph: Graph | undefined, edgeMeta: EdgeConfig, selectedElem
         },
       ]
       : [],
-    attrs: getRelationGraphAttrs(edgeMeta.relationType),
+    attrs: getRelationGraphAttrs(edgeMeta.relationType, token),
     data: { relationType: edgeMeta.relationType },
   });
   return grahpEdge;

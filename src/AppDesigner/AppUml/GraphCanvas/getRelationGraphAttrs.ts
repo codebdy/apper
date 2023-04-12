@@ -1,3 +1,4 @@
+import { GlobalToken } from "antd/es/theme/interface";
 import { CANVAS_BACKGROUND_COLOR } from "../consts";
 import { RelationType } from "../meta/RelationMeta";
 
@@ -6,17 +7,17 @@ const diamondMarker = "M 0,0 L 9,-5 L 18,0 L 9,5 z";
 
 export function getRelationGraphAttrs(
   relationType: RelationType,
-  isTemp?: boolean
+  token:GlobalToken
 ) {
   if (relationType === RelationType.INHERIT) {
     return {
       line: {
-        //stroke: theme.palette.text.primary,
+        stroke: token.colorText,
         strokeWidth: 1,
         targetMarker: {
           tagName: "path",
-          fill: CANVAS_BACKGROUND_COLOR,
-          //stroke: theme.palette.text.primary,
+          fill: token.colorBgBase,
+          stroke: token.colorText,
           strokeWidth: 1,
           d: inheritMarker,
         },
@@ -25,7 +26,7 @@ export function getRelationGraphAttrs(
   } else if (relationType === RelationType.TWO_WAY_ASSOCIATION) {
     return {
       line: {
-        //stroke: theme.palette.text.primary,
+        stroke: token.colorText,
         strokeWidth: 1,
         targetMarker: {},
       },
@@ -33,12 +34,12 @@ export function getRelationGraphAttrs(
   } else if (relationType === RelationType.TWO_WAY_AGGREGATION) {
     return {
       line: {
-        //stroke: theme.palette.text.primary,
+        stroke: token.colorText,
         strokeWidth: 1,
         sourceMarker: {
           tagName: "path",
-          fill: CANVAS_BACKGROUND_COLOR,
-          //stroke: theme.palette.text.primary,
+          fill: token.colorBgBase,
+          stroke: token.colorText,
           strokeWidth: 1,
           d: diamondMarker,
         },
@@ -48,12 +49,12 @@ export function getRelationGraphAttrs(
   } else if (relationType === RelationType.TWO_WAY_COMBINATION) {
     return {
       line: {
-        //stroke: theme.palette.text.primary,
+        stroke: token.colorText,
         strokeWidth: 1,
         sourceMarker: {
           tagName: "path",
-          //fill: CANVAS_BACKGROUND_COLOR,
-          //stroke: theme.palette.text.primary,
+          fill: token.colorText,
+          stroke: token.colorText,
           strokeWidth: 1,
           d: diamondMarker,
         },
@@ -63,19 +64,19 @@ export function getRelationGraphAttrs(
   } else if (relationType === RelationType.ONE_WAY_ASSOCIATION) {
     return {
       line: {
-        //stroke: theme.palette.text.primary,
+        stroke: token.colorText,
         strokeWidth: 1,
       },
     };
   } else if (relationType === RelationType.ONE_WAY_AGGREGATION) {
     return {
       line: {
-        //stroke: theme.palette.text.primary,
+        stroke: token.colorText,
         strokeWidth: 1,
         sourceMarker: {
           tagName: "path",
-          fill: CANVAS_BACKGROUND_COLOR,
-          //stroke: theme.palette.text.primary,
+          fill: token.colorBgBase,
+          stroke: token.colorText,
           strokeWidth: 1,
           d: diamondMarker,
         },
@@ -84,12 +85,12 @@ export function getRelationGraphAttrs(
   } else if (relationType === RelationType.ONE_WAY_COMBINATION) {
     return {
       line: {
-        //stroke: theme.palette.text.primary,
+        stroke: token.colorText,
         strokeWidth: 1,
         sourceMarker: {
           tagName: "path",
-          //fill: theme.palette.text.primary,
-          //stroke: theme.palette.text.primary,
+          fill: token.colorText,
+          stroke: token.colorText,
           strokeWidth: 1,
           d: diamondMarker,
         },
