@@ -1,5 +1,5 @@
 import { gql, GraphQLRequestError } from "enthooks";
-import { useMemo, useEffect, useCallback } from "react";
+import { useMemo, useCallback } from "react";
 import { useSetRecoilState } from "recoil";
 import { useQueryOne } from "enthooks/hooks/useQueryOne";
 import { useSelectedAppId } from "plugin-sdk/contexts/desinger";

@@ -1,7 +1,7 @@
-import UmlEditor from "UmlEditor"
+import { UmlEditor } from "UmlEditor"
 import { memo } from "react"
 
-export const ServiceModel = memo(()=>{
+export const ServiceModel = memo(() => {
   return (
     <UmlEditor />
   )
