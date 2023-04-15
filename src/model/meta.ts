@@ -6,6 +6,7 @@ export interface IMeta {
   name?: string
   content?: MetaContent
   publishedContent?: MetaContent
+  publishedAt?: Date
   updatedAt?: Date
   createdAt?: Date
 }
@@ -15,4 +16,5 @@ export interface IMetaInput {
   name?: string
   content?: MetaContent
   publishedContent?: MetaContent
+  publishedAt?: Date
 }

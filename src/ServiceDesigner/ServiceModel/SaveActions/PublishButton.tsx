@@ -13,7 +13,7 @@ import { usePublishMeta } from 'hooks/usePublishMeta';
 const PublishButton = memo(() => {
   const metaId = useMetaId();
   const changed = useRecoilValue(changedState(metaId))
-  const published = usePublished(metaId)
+  const published = usePublished()
   const { t } = useTranslation();
 
   const [publish, { loading, error }] = usePublishMeta(metaId, {

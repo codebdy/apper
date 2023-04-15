@@ -1,27 +1,24 @@
 import { useMemo } from "react";
-import { useQueryApp } from "AppDesigner/hooks/useQueryApp";
-import { ID } from "shared";
 import dayjs from "dayjs";
+import { useMetaId } from "UmlEditor/hooks/useMetaId";
+import { useQueryOneMeta } from "./useQueryOneMeta";
 
-export function usePublished(appId: ID) {
-  const { app } = useQueryApp(appId)
+export function usePublished() {
+  const metaId = useMetaId()
+  const { meta } = useQueryOneMeta(metaId)
 
   const published = useMemo(() => {
-    if (!app) {
-      return false;
-    }
-
-    if (app.publishMetaAt && (dayjs(app?.saveMetaAt).diff(dayjs(app?.publishMetaAt)) <= 0)) {
+    if (!meta) {
       return true;
     }
 
-    if (!app.saveMetaAt) {
-      return true;
-    }
-    if (!app.publishMetaAt && app.saveMetaAt) {
+    if (meta.publishedAt && (dayjs(meta?.updatedAt).diff(dayjs(meta?.publishedAt)) <= 0)) {
       return false;
     }
-  }, [app])
+
+    return true
+
+  }, [meta])
 
 
   return published;
