@@ -36,9 +36,9 @@ export type UmlEditorOptions = {
 
 export type UmlEditorProps = {
   actions?: React.ReactNode,
-  metaContent?: MetaContent,
-  metaId?: string,
-  options?:UmlEditorOptions
+  metaContent: MetaContent | undefined,
+  metaId: string | undefined,
+  options?: UmlEditorOptions
 }
 
 export const UmlEditorInner = memo((
@@ -59,7 +59,7 @@ export const UmlEditorInner = memo((
   useEffect(() => {
     setEditorOptions(options)
   }, [options, setEditorOptions, setMetaId])
-  
+
   return (
     <ModelBoard
       listWidth={260}

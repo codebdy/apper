@@ -16,6 +16,7 @@ export const ServiceModel = memo(() => {
     <AwesomeSpin spinning={loading}>
       <UmlEditor
         metaContent={meta?.content}
+        metaId={meta?.id}
         options={{ supportCustomizedApi: true }}
         actions={<SaveActions />}
       />
