@@ -13,7 +13,6 @@ query ($serviceId:ID!){
     id
     name
     title
-    meta
     imageUrl
   }
 }
