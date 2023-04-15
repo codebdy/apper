@@ -10,7 +10,6 @@ import AvatarMenu from "components/AvatarMenu"
 import SelectLang from "components/LangSelect"
 import { ThemeSwitchButton } from "common/ThemeSwitchButton"
 import { Operate } from "./Operate"
-import { IService } from "model"
 import SvgIcon from "common/SvgIcon"
 import { useService } from "ServiceDesigner/contexts"
 

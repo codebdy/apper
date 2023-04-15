@@ -36,7 +36,7 @@ export type UmlEditorOptions = {
 
 export type UmlEditorProps = {
   actions?: React.ReactNode,
-  meta?: MetaContent,
+  metaContent?: MetaContent,
   metaId?: string,
   options?:UmlEditorOptions
 }
@@ -44,11 +44,11 @@ export type UmlEditorProps = {
 export const UmlEditorInner = memo((
   props: UmlEditorProps
 ) => {
-  const { actions, meta, metaId = "", options } = props;
+  const { actions, metaContent, metaId = "", options } = props;
   const [graph, setGraph] = useState<Graph>();
   const setMetaId = useSetRecoilState(metaIdState)
   const setEditorOptions = useSetRecoilState(editorOptionsState(metaId))
-  useParesMeta(meta, metaId);
+  useParesMeta(metaContent, metaId);
   const minMap = useRecoilValue(minMapState(metaId));
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
 
