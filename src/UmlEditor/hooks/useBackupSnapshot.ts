@@ -28,7 +28,6 @@ export function useBackupSnapshot(metaId: ID) {
 
   const setUndoList = useSetRecoilState(undoListState(metaId));
   const setRedoList = useSetRecoilState(redoListState(metaId));
-
   const backupSnapshot = useCallback(() => {
     setChanged(true);
     setUndoList((undoList) => [

@@ -31,7 +31,6 @@ const PackageAction = memo((
   const backupSnapshot = useBackupSnapshot(metaId);
   const setDiagrams = useSetRecoilState(diagramsState(metaId));
   const { t } = useTranslation();
-
   const setSelectedDiagram = useSetRecoilState(
     selectedUmlDiagramState(metaId)
   );
