@@ -1,5 +1,4 @@
 import { AttributeMeta } from "./AttributeMeta";
-import { MethodMeta } from "./MethodMeta";
 
 /**
  * 实体类型枚举
@@ -37,7 +36,7 @@ export interface ClassMeta {
 
   stereoType: StereoType;
   attributes: AttributeMeta[];
-  methods: MethodMeta[];
+  //methods: MethodMeta[];
 
   root?: boolean;
   packageUuid: string;

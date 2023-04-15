@@ -18,15 +18,6 @@ export function useIsElement(metaId: ID) {
           }
         }        
       }
-
-      if(cls.methods){
-        for (const method of cls.methods) {
-          if (method.uuid === uuid) {
-            return true;
-          }
-        }        
-      }
-
     }
     return false
   }, [classes])

@@ -9,13 +9,12 @@ const ClassActions = memo((
   props: {
     cls: ClassMeta,
     onAddAttribute: () => void,
-    onAddMethod: () => void,
     onHidden: () => void,
     onDelete: () => void,
     onVisible: (visible: boolean) => void,
   }
 ) => {
-  const { cls, onAddAttribute, onAddMethod, onHidden, onDelete, onVisible } = props;
+  const { cls, onAddAttribute, onHidden, onDelete, onVisible } = props;
   const [visible, setVisible] = useState(false);
   const { t } = useTranslation();
 
@@ -25,16 +24,13 @@ const ClassActions = memo((
     if (e.key === 'addAttribute') {
       onAddAttribute();
     }
-    if (e.key === 'addMethod') {
-      onAddMethod();
-    }
     if (e.key === 'hidden') {
       onHidden();
     }
     if (e.key === 'delete') {
       onDelete();
     }
-  }, [onVisible, onAddAttribute, onAddMethod, onHidden, onDelete]);
+  }, [onVisible, onAddAttribute, onHidden, onDelete]);
 
   const handleVisibleChange = useCallback((flag: any) => {
     setVisible(flag);
@@ -68,12 +64,6 @@ const ClassActions = memo((
               label: t("UmlEditor.AddAttribute"),
               key: 'addAttribute',
               disabled: cls.stereoType === StereoType.Service,
-            },
-            {
-              icon: <PlusOutlined />,
-              label: t("UmlEditor.AddMethod"),
-              key: 'addMethod',
-              disabled: cls.stereoType === StereoType.Enum || cls.stereoType === StereoType.ValueObject,
             },
             {
               icon: <EyeInvisibleOutlined />,

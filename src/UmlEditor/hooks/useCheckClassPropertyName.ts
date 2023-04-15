@@ -39,14 +39,6 @@ export function useCheckClassPropertyName(metaId: ID) {
         }
       }
 
-      if(cls.methods){
-        for (const method of cls.methods) {
-          if (method.uuid !== propertyUuid) {
-            names.push(method.name);
-          }
-        }        
-      }
-
       return !names.find((name) => name === propertyName);
     },
     [getClass, relations]

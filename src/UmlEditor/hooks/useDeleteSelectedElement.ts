@@ -7,8 +7,6 @@ import { useDeleteClass } from "./useDeleteClass";
 import { useDeleteRelation } from "./useDeleteRelation";
 import { useClass } from "./useClass";
 import { useRelation } from "./useRelation";
-import { useMethod } from "./useMethod";
-import { useDeleteMethod } from "./useDeleteMethod";
 import { ID } from "shared";
 
 /**
@@ -24,9 +22,7 @@ export function useDeleteSelectedElement(metaId: ID) {
   const deleteRelation = useDeleteRelation(metaId);
 
   const { attribute } = useAttribute(selectedElement || "", metaId);
-  const { method } = useMethod(selectedElement || "", metaId);
   const deletedAttribute = useDeleteAttribute(metaId);
-  const deleteMethod = useDeleteMethod(metaId);
 
   const deleteSelectedElement = useCallback(() => {
     if (cls) {
@@ -40,21 +36,8 @@ export function useDeleteSelectedElement(metaId: ID) {
       deletedAttribute(attribute.uuid);
     }
 
-    if (method) {
-      deleteMethod(method.uuid);
-    }
     setSelectedElement(undefined);
-  }, [
-    cls,
-    relation,
-    attribute,
-    method,
-    setSelectedElement,
-    deleteClass,
-    deleteRelation,
-    deletedAttribute,
-    deleteMethod,
-  ]);
+  }, [cls, relation, attribute, setSelectedElement, deleteClass, deleteRelation, deletedAttribute]);
 
   return deleteSelectedElement;
 }

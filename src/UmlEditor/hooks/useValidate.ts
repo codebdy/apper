@@ -21,7 +21,6 @@ export function useValidate(metaId: ID) {
     //检查属性名重复
     for (const cls of classes) {
       const names = cls.attributes?.map((atr) => atr.name) || [];
-      names.push(...(cls.methods?.map((mth) => mth.name) || []));
       names.push(
         ...(getClassAssociations(cls.uuid)?.map((aso) => aso.name) || [])
       );

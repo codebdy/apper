@@ -7,7 +7,6 @@ import { selectedElementState } from '../recoil/atoms';
 import { Button } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
 import { MethodMeta } from "../meta/MethodMeta";
-import { useDeleteMethod } from "../hooks/useDeleteMethod";
 import { useMetaId } from "../hooks/useMetaId";
 
 const MethodLabel = memo((
@@ -18,12 +17,12 @@ const MethodLabel = memo((
   const { method } = props;
   const metaId = useMetaId();
   const selectedElement = useRecoilValue(selectedElementState(metaId));
-  const removeMethod = useDeleteMethod(metaId);
+  // const removeMethod = useDeleteMethod(metaId);
 
   const handleDelete = useCallback((event: React.MouseEvent) => {
     event.stopPropagation();
-    removeMethod(method.uuid);
-  }, [method.uuid, removeMethod]);
+    //removeMethod(method.uuid);
+  }, []);
 
   return (
     <TreeNodeLabel

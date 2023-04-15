@@ -9,7 +9,6 @@ import React, {
 import classNames from "classnames";
 import AttributeView from "./AttributeView";
 import { ClassNodeData } from "./ClassNodeData";
-import MethodView from "./MethodView";
 import { canStartLink } from "../canStartLink";
 import {
   EVENT_CLASS_CHANGED,
@@ -34,9 +33,6 @@ export enum ClassEvent {
   attributeSelect = "attribute-select",
   attributeDelete = "class:attribute-delete",
   attributeCreate = "class:attribute-create",
-  methodSelect = "class:method-select",
-  methodDelete = "class:method-delete",
-  methodCreate = "class:method-create",
   hide = "class:hide",
   delete = "class:delete",
 }
@@ -147,23 +143,6 @@ export const ClassView = memo(
 
     const handleAttributeCreate = useCallback(() => {
       document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.attributeCreate, { detail: { classId: node.id } }))
-    }, [node]);
-
-    const handleMethodClick = useCallback(
-      (id: string) => {
-        document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.methodSelect, { detail: { classId: node.id, methodId: id } }))
-      },
-      [node]
-    );
-
-    const handleMethodDelete = useCallback(
-      (id: string) => {
-        document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.methodDelete, { detail: { classId: node.id, methodId: id } }))
-      },
-      [node]
-    );
-    const handleMethodCreate = useCallback(() => {
-      document.dispatchEvent(new CustomEvent<IClassEventData>(ClassEvent.methodCreate, { detail: { classId: node.id } }))
     }, [node]);
 
     const handleMouseOver = useCallback(() => {
@@ -288,7 +267,6 @@ export const ClassView = memo(
                 <ClassActions
                   cls={data}
                   onAddAttribute={handleAttributeCreate}
-                  onAddMethod={handleMethodCreate}
                   onHidden={handleHidden}
                   onDelete={handleDelete}
                   onVisible={handleMenuVisible}
@@ -330,30 +308,6 @@ export const ClassView = memo(
                   );
                 })}
               </div>
-
-
-              {data?.stereoType !== StereoType.Enum &&
-                data?.stereoType !== StereoType.ValueObject && (
-                  <div
-                    style={{
-                      display: "flex",
-                      flexFlow: "column",
-                      borderTop: "solid 1px",
-                      minHeight: "24px",
-                    }}
-                  >
-                    {data?.methods?.map((method) => {
-                      return (
-                        <MethodView
-                          key={method.uuid}
-                          method={method}
-                          onClick={handleMethodClick}
-                          onDelete={handleMethodDelete}
-                        />
-                      );
-                    })}
-                  </div>
-                )}
             </div>
           </div>
         </div>

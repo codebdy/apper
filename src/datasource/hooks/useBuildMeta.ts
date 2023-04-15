@@ -159,17 +159,14 @@ export function useBuildMeta(): { error?: GraphQLRequestError; loading?: boolean
   const makeEntity = useCallback((cls: ClassMeta, classMetas: ClassMeta[], relations: RelationMeta[]) => {
     const parentClasses = getParentClasses(cls.uuid, classMetas, relations);
     const parentAttributes: AttributeMeta[] = [];
-    const parentMethods: MethodMeta[] = [];
 
     for (const parentCls of parentClasses) {
       parentAttributes.push(...parentCls.attributes || []);
-      parentMethods.push(...parentCls.methods || []);
     }
 
     return {
       ...cls,
       attributes: sort(_.uniqBy([...cls.attributes || [], ...parentAttributes], "name")),
-      methods: sort(_.uniqBy([...cls.methods || [], ...parentMethods], "name")),
       associations: getEntityAssociations(cls.uuid, classMetas, relations)
     }
   }, []);

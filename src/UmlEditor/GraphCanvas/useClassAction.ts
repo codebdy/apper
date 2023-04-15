@@ -4,7 +4,6 @@ import { useSetRecoilState } from "recoil";
 import { ID } from "shared";
 import { useChangeClass } from "../hooks/useChangeClass";
 import { useCreateClassAttribute } from "../hooks/useCreateClassAttribute";
-import { useCreateClassMethod } from "../hooks/useCreateClassMethod";
 import { useDeleteClass } from "../hooks/useDeleteClass";
 import { useGetClass } from "../hooks/useGetClass";
 import { useHideClassFromDiagram } from "../hooks/useHideClassFromDiagram";
@@ -18,7 +17,6 @@ export function useClassAction(graph: Graph | undefined, metaId: ID) {
   );
   const changeClass = useChangeClass(metaId);
   const createAttribute = useCreateClassAttribute(metaId);
-  const createMethod = useCreateClassMethod(metaId);
 
   const getClassRef = useRef(getClass);
   getClassRef.current = getClass;
@@ -36,8 +34,6 @@ export function useClassAction(graph: Graph | undefined, metaId: ID) {
   const createAttributeRef = useRef(createAttribute);
   createAttributeRef.current = createAttribute;
 
-  const createMothodRef = useRef(createMethod);
-  createMothodRef.current = createMethod;
 
   const handleAttributeSelect = useCallback(
     (e: CustomEvent<IClassEventData>) => {
@@ -68,20 +64,6 @@ export function useClassAction(graph: Graph | undefined, metaId: ID) {
     [setSelectedElement]
   );
 
-  const handleMothodDelete = useCallback(
-    (e: CustomEvent<IClassEventData>) => {
-      const cls = getClassRef.current(e.detail.classId);
-      if (!cls) {
-        console.error("Class not exist: " + e.detail.classId);
-        return;
-      }
-      changeClassRef.current({
-        ...cls,
-        methods: cls.methods.filter((cls) => cls.uuid !== e.detail.methodId),
-      });
-    },
-    []
-  );
 
   const handleAttributeCreate = useCallback((e: CustomEvent<IClassEventData>) => {
     const cls = getClassRef.current(e.detail.classId);
@@ -92,15 +74,6 @@ export function useClassAction(graph: Graph | undefined, metaId: ID) {
     const attr = createAttributeRef.current(cls);
     setSelectedElement(attr?.uuid)
   }, [setSelectedElement]);
-
-  const handleMethodCreate = useCallback((e: CustomEvent<IClassEventData>) => {
-    const cls = getClassRef.current(e.detail.classId);
-    if (!cls) {
-      console.error("Class not exist: " + e.detail.classId);
-      return;
-    }
-    createMothodRef.current(cls);
-  }, []);
 
   const handleHideClass = useCallback(
     (e: CustomEvent<IClassEventData>) => {
@@ -120,20 +93,14 @@ export function useClassAction(graph: Graph | undefined, metaId: ID) {
     document.addEventListener(ClassEvent.attributeSelect, handleAttributeSelect as any)
     document.addEventListener(ClassEvent.attributeDelete, handleAttributeDelete as any);
     document.addEventListener(ClassEvent.attributeCreate, handleAttributeCreate as any);
-    document.addEventListener(ClassEvent.methodSelect, handleMethodSelect as any);
-    document.addEventListener(ClassEvent.methodDelete, handleMothodDelete as any);
-    document.addEventListener(ClassEvent.methodCreate, handleMethodCreate as any);
     document.addEventListener(ClassEvent.delete, handelDeleteClass as any);
     document.addEventListener(ClassEvent.hide, handleHideClass as any);
     return () => {
       document.removeEventListener(ClassEvent.attributeSelect, handleAttributeSelect as any)
       document.removeEventListener(ClassEvent.attributeDelete, handleAttributeDelete as any);
       document.removeEventListener(ClassEvent.attributeCreate, handleAttributeCreate as any);
-      document.removeEventListener(ClassEvent.methodSelect, handleMethodSelect as any);
-      document.removeEventListener(ClassEvent.methodDelete, handleMothodDelete as any);
-      document.removeEventListener(ClassEvent.methodCreate, handleMethodCreate as any);
       document.removeEventListener(ClassEvent.delete, handelDeleteClass as any);
       document.removeEventListener(ClassEvent.hide, handleHideClass as any);
     };
-  }, [graph, handelDeleteClass, handleAttributeCreate, handleAttributeDelete, handleAttributeSelect, handleHideClass, handleMethodCreate, handleMethodSelect, handleMothodDelete]);
+  }, [graph, handelDeleteClass, handleAttributeCreate, handleAttributeDelete, handleAttributeSelect, handleHideClass, handleMethodSelect]);
 }

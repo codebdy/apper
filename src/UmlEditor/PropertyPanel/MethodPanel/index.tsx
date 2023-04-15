@@ -1,7 +1,6 @@
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { MethodMeta } from "../../meta/MethodMeta";
 import { ClassMeta } from "../../meta/ClassMeta";
-import { useChangeMethod } from "../../hooks/useChangeMethod";
 import { useGetTypeLabel } from "../../hooks/useGetTypeLabel";
 import { Form } from "antd";
 import { useTranslation } from "react-i18next";
@@ -13,7 +12,7 @@ export const MethodPanel = memo((props: { method: MethodMeta; cls: ClassMeta }) 
   const { method, cls } = props;
   const [nameError, setNameError] = useState<string>();
   const metaId = useMetaId();
-  const changeMethod = useChangeMethod(metaId);
+  //const changeMethod = useChangeMethod(metaId);
   const getTypeLabel = useGetTypeLabel(metaId);
   const { t } = useTranslation();
   const [form] = Form.useForm();
@@ -25,17 +24,17 @@ export const MethodPanel = memo((props: { method: MethodMeta; cls: ClassMeta }) 
     [method, form]
   )
 
-  const handleChange = useCallback((form: any) => {
-    const errMsg = changeMethod(
-      {
-        ...method,
-        ...form,
-        typeLabel: getTypeLabel(form.type || method.type, form.typeUuid),
-      },
-      cls
-    );
-    setNameError(errMsg)
-  }, [changeMethod, method, getTypeLabel, cls])
+  // const handleChange = useCallback((form: any) => {
+  //   const errMsg = changeMethod(
+  //     {
+  //       ...method,
+  //       ...form,
+  //       typeLabel: getTypeLabel(form.type || method.type, form.typeUuid),
+  //     },
+  //     cls
+  //   );
+  //   setNameError(errMsg)
+  // }, [changeMethod, method, getTypeLabel, cls])
 
   return (
     <div className="property-pannel">
@@ -48,7 +47,7 @@ export const MethodPanel = memo((props: { method: MethodMeta; cls: ClassMeta }) 
         wrapperCol={{ span: 15 }}
         initialValues={method}
         autoComplete="off"
-        onValuesChange={handleChange}
+        //onValuesChange={handleChange}
       >
         <MethodFormCommonItems nameError={nameError} method={method} />
         <Form.Item

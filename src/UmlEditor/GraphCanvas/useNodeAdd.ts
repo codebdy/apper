@@ -38,7 +38,6 @@ export function useNodeAdd(graph: Graph | undefined, metaId: ID) {
             innerId: createInnerId(),
             name: classMeta.name,
             attributes: classMeta.attributes,
-            methods: classMeta.methods,
             stereoType: classMeta.stereoType,
             root: classMeta.root,
             packageUuid: classMeta.packageUuid,

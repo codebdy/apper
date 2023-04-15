@@ -4,7 +4,6 @@ import TreeNodeLabel from "common/TreeNodeLabel"
 import { Button } from "antd"
 import { ClassMeta } from "../meta/ClassMeta";
 import { PlusOutlined } from "@ant-design/icons";
-import { useCreateClassMethod } from './../hooks/useCreateClassMethod';
 import { useTranslation } from "react-i18next";
 import { useMetaId } from "../hooks/useMetaId";
 
@@ -15,7 +14,7 @@ const MethodsLabel = memo((
 ) => {
   const { cls } = props;
   const metaId = useMetaId();
-  const addMethod = useCreateClassMethod(metaId);
+ // const addMethod = useCreateClassMethod(metaId);
   const { t } = useTranslation();
   
   return (
@@ -27,7 +26,7 @@ const MethodsLabel = memo((
           size="small"
           onClick={(e) => {
             e.stopPropagation();
-            addMethod(cls);
+           // addMethod(cls);
           }}
         >
           <PlusOutlined />

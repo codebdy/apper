@@ -19,12 +19,7 @@ export function useCreateTempClassNodeForNew(metaId: ID) {
         return
       }
       const classMeta = creatNewClassMeta(stereoType, packageUuid);
-      if (
-        stereoType === StereoType.ValueObject ||
-        stereoType === StereoType.Enum
-      ) {
-        classMeta.methods = [];
-      }
+
       return {
         uuid: "entityMeta.uuid",
         ...NODE_INIT_SIZE,

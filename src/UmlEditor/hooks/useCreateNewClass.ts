@@ -43,7 +43,6 @@ export function useCreateNewClass(metaId: ID) {
                 typeLabel: Types.ID,
               },
             ],
-        methods: [],
       };
       //setEntities((entites) => [...entites, newEntity]);
       return newClass;

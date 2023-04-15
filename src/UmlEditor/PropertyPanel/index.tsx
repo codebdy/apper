@@ -7,8 +7,6 @@ import { selectedElementState } from "../recoil/atoms";
 import { useClass } from "../hooks/useClass";
 import { useAttribute } from "../hooks/useAttribute";
 import { useRelation } from "../hooks/useRelation";
-import { useMethod } from "../hooks/useMethod";
-import { MethodPanel } from "./MethodPanel";
 import { Empty } from "antd";
 import { useTranslation } from "react-i18next";
 import { PropertyBox } from "common/ModelBoard/PropertyBox";
@@ -23,10 +21,7 @@ export const PropertyPanel = memo(() => {
     selectedElement || "",
     metaId
   );
-  const { cls: methodCls, method } = useMethod(
-    selectedElement || "",
-    metaId
-  );
+
   const relation = useRelation(selectedElement || "", metaId);
 
   return (
@@ -35,7 +30,6 @@ export const PropertyPanel = memo(() => {
       {attribute && attributeCls && (
         <AttributePanel attribute={attribute} cls={attributeCls} />
       )}
-      {method && methodCls && <MethodPanel method={method} cls={methodCls} />}
       {relation && <RelationPanel relation={relation} />}
       {!selectedElement && (
         <div style={{ padding: "16px" }}>
