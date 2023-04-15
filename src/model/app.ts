@@ -63,7 +63,7 @@ export interface IApp {
   partsOfAppConfig?: IAppConfig[];
   partsOfAppDeviceConfig?:IAppDeviceConfig[];
   plugins?:IPluginInfo[]
-  meta?: MetaContent;
+  metaId?: ID;
   saveMetaAt?: Date;
   publishedMeta?: MetaContent;
   publishMetaAt?: Date;
@@ -77,7 +77,7 @@ export interface IAppInput {
   title?: string;
   description?: string;
   imageUrl?: string;
-  meta?: MetaContent;
+  metaId?: ID;
   saveMetaAt?: Date;
   publishedMeta?: MetaContent;
   publishMetaAt?: Date;

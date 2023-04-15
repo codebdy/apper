@@ -12,6 +12,7 @@ import { ThemeSwitchButton } from "common/ThemeSwitchButton"
 import { Operate } from "./Operate"
 import { IService } from "model"
 import SvgIcon from "common/SvgIcon"
+import { useService } from "ServiceDesigner/contexts"
 
 const StyledHeader = styled.div`
   display: flex;
@@ -50,15 +51,14 @@ const items: MenuProps['items'] = [
   },
 
 ];
-export const ServiceDesignerHeader = memo((props: {
-  service?: IService
-}) => {
-  const { service } = props;
+export const ServiceDesignerHeader = memo(() => {
   const [current, setCurrent] = useState('model');
   const navigate = useNavigate()
   const handleBack = useCallback(() => {
     navigate("/services")
   }, [navigate]);
+
+  const service = useService();
 
   const [, token] = useToken()
   const parse = useParseLangMessage();

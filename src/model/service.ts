@@ -1,4 +1,3 @@
-import { MetaContent } from "UmlEditor/meta";
 import { ID } from "shared";
 
 export enum ServiceStatus {
@@ -9,7 +8,7 @@ export interface IService {
   id: ID;
   name: string;
   title?: string;
-  meta?: MetaContent;
+  metaId?: ID;
   status?: ServiceStatus;
   imageUrl?: string;
 }
@@ -18,7 +17,7 @@ export interface IServiceInput {
   id?: ID;
   name: string;
   title?: string;
-  meta?: MetaContent;
+  metaId?: ID;
   status?: ServiceStatus;
   imageUrl?: string;
 }

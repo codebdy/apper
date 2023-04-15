@@ -5,6 +5,7 @@ import { Outlet, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useQueryOneService } from "hooks/useQueryOneService";
 import { useShowError } from "AppDesigner/hooks/useShowError";
+import { ServiceContext } from "./contexts";
 
 const { Content } = Layout;
 const StyledLayout = styled(Layout)`
@@ -18,13 +19,15 @@ export const ServiceDesigner = memo(() => {
   useShowError(error);
 
   return (
-    <Spin spinning = {loading}>
-      <StyledLayout>
-        <ServiceDesignerHeader service = {service} />
-        <Content>
-          <Outlet />
-        </Content>
-      </StyledLayout>
+    <Spin spinning={loading}>
+      <ServiceContext.Provider value={service}>
+        <StyledLayout>
+          <ServiceDesignerHeader />
+          <Content>
+            <Outlet />
+          </Content>
+        </StyledLayout>
+      </ServiceContext.Provider>
     </Spin>
   )
 })

@@ -36,8 +36,8 @@ const SaveActions = memo((props: {
       return;
     }
     const data = getMeta()
-    save({ id: metaId, meta: data, saveMetaAt: new Date() });
-  }, [save, metaId, getMeta, validate]);
+    //save({ id: metaId, meta: data, saveMetaAt: new Date() });
+  }, [getMeta, validate]);
 
   return (
     <Space>
