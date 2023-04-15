@@ -1,10 +1,11 @@
-import { Col, Row, Spin } from "antd"
+import { Col, Row } from "antd"
 import { memo } from "react"
 import styled from "styled-components"
 import { AppManagerHeader } from "./AppManagerHeader"
 import { AppCard } from "./AppCard"
 import { useQueryApps } from "hooks/useQueryApps"
 import { useShowError } from "AppDesigner/hooks/useShowError"
+import { AwesomeSpin } from "common/AwesomeSpin"
 
 const Container = styled.div`
   display:flex;
@@ -28,7 +29,7 @@ export const AppManager = memo(() => {
   const { apps, error, loading } = useQueryApps()
   useShowError(error)
   return (
-    <Spin spinning={loading}>
+    <AwesomeSpin spinning={loading}>
       <Container>
         <AppManagerHeader />
         <StyledRow gutter={32}>
@@ -41,6 +42,6 @@ export const AppManager = memo(() => {
           }
         </StyledRow>
       </Container>
-    </Spin>
+    </AwesomeSpin>
   )
 })
