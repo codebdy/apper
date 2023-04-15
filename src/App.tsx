@@ -26,6 +26,8 @@ import { AppFrames } from 'AppDesigner/AppDesignerHeader/AppFrames';
 import AppUis from 'AppDesigner/AppDesignerHeader/AppUis';
 import { ConfigRoot } from 'common/ConfigRoot';
 import { StyledThemeRoot } from 'common/StyledThemeRoot';
+import { ServiceRoutes } from 'ServiceDesigner/Routes';
+import { ServiceModel } from 'ServiceDesigner/ServiceModel';
 
 const App = memo(() => {
   return (
@@ -40,6 +42,8 @@ const App = memo(() => {
                 <Route path={DashboardRoutes.Services} element={<ServiceManager />} />
               </Route>
               <Route path={`/${SERVICE_DESIGN}/:serviceId`} element={<ServiceDesigner />}>
+                <Route path={''} element={<ServiceModel />} />
+                <Route path={ServiceRoutes.Model} element={<ServiceModel />} />
               </Route>
               <Route path={`/${APP_DESIGN}`} element={<AppDesigner />}>
                 <Route path=":appId">
