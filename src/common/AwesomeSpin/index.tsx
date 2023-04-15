@@ -11,6 +11,6 @@ export const AwesomeSpin = memo((
   return (
     spinning ?
       <Spin spinning={spinning}>{children}</Spin>
-      : <>children</>
+      : <>{children}</>
   )
 })

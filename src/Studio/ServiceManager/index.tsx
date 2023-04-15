@@ -11,7 +11,7 @@ const Container = styled.div`
   display:flex;
   flex-flow: column;
   flex:1;
-  color:${props=>props.theme.token?.colorText};
+  color:${props => props.theme.token?.colorText};
 `
 const StyledRow = styled(Row)`
 
@@ -26,12 +26,12 @@ const StyleCol = styled(Col)`
 
 
 export const ServiceManager = memo(() => {
-   const { services, error, loading } = useQueryServices()
-  useShowError(error) 
+  const { services, error, loading } = useQueryServices()
+  useShowError(error)
   return (
     <AwesomeSpin spinning={loading}>
       <Container>
-      <ServiceManagerHeader />
+        <ServiceManagerHeader />
         <StyledRow gutter={32}>
           {
             services?.map(service => {
