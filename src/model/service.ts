@@ -15,7 +15,7 @@ export interface IService {
 
 export interface IServiceInput {
   id?: ID;
-  name: string;
+  name?: string;
   title?: string;
   metaId?: ID;
   status?: ServiceStatus;
