@@ -31,6 +31,7 @@ import { DataNode } from "antd/es/tree";
 import styled from "styled-components";
 import { AppstoreOutlined } from "@ant-design/icons";
 import { useMetaId } from "../hooks/useMetaId";
+import { ModelRootAction } from "./ModelRootAction";
 const { DirectoryTree } = Tree;
 
 const Container = styled.div`
@@ -256,7 +257,7 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
         </svg>
       </SvgIcon>,
       title:
-        <TreeNodeLabel>
+        <TreeNodeLabel fixedAction action={<ModelRootAction />}>
           <div>{t("UmlEditor.DomainModel")}</div>
         </TreeNodeLabel>,
       key: "0",
