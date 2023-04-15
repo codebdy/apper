@@ -55,7 +55,7 @@ export interface IAppDeviceConfigInput {
 
 export interface IApp {
   id: ID;
-  uuid: string;
+  name: string;
   title?: string;
   imageUrl?: string;
   partsOfMenu?: IMenu[];
@@ -73,7 +73,7 @@ export interface IApp {
 
 export interface IAppInput {
   id?: ID;
-  uuid?: string;
+  name?: string;
   title?: string;
   description?: string;
   imageUrl?: string;

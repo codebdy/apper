@@ -40,13 +40,13 @@ export const AppBpmn = memo((props) => {
   const canvasrRef = useRef<HTMLDivElement>();
   const [bpmnModeler, setBpmnModeler] = useState<any>()
   const { element } = useSelection(bpmnModeler);
-  const setProcesses = useSetRecoilState(processesState(app?.uuid))
-  const setCategories = useSetRecoilState(categoriesState(app?.uuid))
-  const selectedProcessId = useRecoilValue(selectedBpmnProcessIdState(app?.uuid));
+  const setProcesses = useSetRecoilState(processesState(app?.id))
+  const setCategories = useSetRecoilState(categoriesState(app?.id))
+  const selectedProcessId = useRecoilValue(selectedBpmnProcessIdState(app?.id));
   const { process, loading, error } = useQueryOneProcess(selectedProcessId)
   const { processes, error: listError, loading: listLoading } = useQueryProcesses();
   const { categories, loading: categoriesLoading, error: categoryierError } = useQueryCagegories();
-  const [minMap, setMinMap] = useRecoilState(minMapState(app?.uuid));
+  const [minMap, setMinMap] = useRecoilState(minMapState(app?.id));
   const [xml, setXml] = useState<string>();
   const [showXml, setShowXml] = useState<boolean>();
   const minMapRef = useRef(minMap);

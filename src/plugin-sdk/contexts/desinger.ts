@@ -23,7 +23,7 @@ export const useDesignerViewKey = () => {
   const params = useDesignerParams()
 
   const key = useMemo(() => {
-    return params ? params.device + params.app.uuid : ""
+    return params ? params.device + params.app.id : ""
   }, [params])
 
   return key;

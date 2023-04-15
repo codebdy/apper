@@ -25,6 +25,7 @@
   "Description": "Description",
   "Image": "图片",
   "AppName": "App name",
+  "AppTitle":"App Title",
   "Login": "Login",
   "UserName": "User name",
   "Password": "密码",

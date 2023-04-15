@@ -26,7 +26,7 @@ const ProcessList = memo((
   const getProcess = useGetProcess();
 
   // const getPageCategory = useGetPageCategory();
-  const [selectedProcessId, setSelectedProcessId] = useRecoilState(selectedBpmnProcessIdState(app?.uuid));
+  const [selectedProcessId, setSelectedProcessId] = useRecoilState(selectedBpmnProcessIdState(app?.id));
   const pagesWithoutCategory = useProcessesWithoutCategory();
   const getCategoryProcesses = useGetCategoryProcesses();
 

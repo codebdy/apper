@@ -13,7 +13,7 @@ query ($appId:ID!){
     }
   }){
     id
-    uuid
+    name
     title
     saveMetaAt
     publishMetaAt

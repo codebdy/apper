@@ -25,7 +25,7 @@ export const useAppViewKey = () => {
   const params = useAppParams()
 
   const key = useMemo(() => {
-    return params ? params.device + params.app?.uuid : ""
+    return params ? params.device + params.app?.id : ""
   }, [params])
 
   return key;

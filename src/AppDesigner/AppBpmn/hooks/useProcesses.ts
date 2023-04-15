@@ -4,5 +4,5 @@ import { processesState } from "../recoil/atoms";
 
 export function useProcesses() {
   const { app } = useDesignerParams()
-  return useRecoilValue(processesState(app?.uuid))
+  return useRecoilValue(processesState(app?.id))
 }

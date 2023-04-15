@@ -1,4 +1,4 @@
-import { Form, message, Modal } from "antd"
+import { Form, Input, message, Modal } from "antd"
 import ImageUploader from "components/ImageUploader";
 import { MultiLangInput } from "components/MultiLangInput";
 import { useShowError } from "AppDesigner/hooks/useShowError";
@@ -7,7 +7,6 @@ import { IApp, IAppInput } from "model";
 import React, { useCallback, useEffect } from "react";
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
-import { createUuid } from "shared";
 
 export const UpsertAppModel = memo((
   props: {
@@ -39,8 +38,8 @@ export const UpsertAppModel = memo((
 
   const handleOk = useCallback(() => {
     form.validateFields().then((formData) => {
-      const { title, imageUrl } = formData;
-      upsert({ title, imageUrl, uuid: app?.uuid || createUuid(), id: app?.id })
+      const { title, imageUrl, name } = formData;
+      upsert({ title, imageUrl, name, id: app?.id })
       !app && reset();
     }).catch((err) => {
       console.error("form validate error", err);
@@ -69,13 +68,19 @@ export const UpsertAppModel = memo((
         autoComplete="off"
       >
         <Form.Item
-          label={t("AppName")}
+          label={t("AppTitle")}
           name="title"
           rules={[{ required: true, message: t("Required") }]}
         >
-          <MultiLangInput inline title={t("AppName")} />
+          <MultiLangInput inline title={t("AppTitle")} />
         </Form.Item>
-
+        <Form.Item
+          label={t("AppName")}
+          name="name"
+          rules={[{ required: true, message: t("Required") }]}
+        >
+          <Input/>
+        </Form.Item>
         < Form.Item
           label={t("Image")}
           name="imageUrl"

@@ -1,5 +1,3 @@
-import { AttributeMeta } from "./AttributeMeta";
-
 /**
  * 关系类型
  */
@@ -67,11 +65,6 @@ export interface RelationMeta {
   sourceMutiplicity: RelationMultiplicity;
 
   targetMultiplicity: RelationMultiplicity;
-  enableAssociaitonClass?: boolean;
-  associationClass?: {
-    name: string;
-    attributes: AttributeMeta[];
-  };
 
   system?: boolean;
 }

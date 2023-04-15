@@ -7,10 +7,9 @@ query {
   apps{
     nodes{
       id
-      uuid
+      name
       title
       imageUrl 
-      published
     }
     total
   }
