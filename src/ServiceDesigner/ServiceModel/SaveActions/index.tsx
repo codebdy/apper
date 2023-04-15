@@ -6,7 +6,6 @@ import PublishButton from "./PublishButton";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { useTranslation } from "react-i18next";
 import { SaveOutlined } from "@ant-design/icons";
-import { ID } from "shared";
 import { IService } from "model";
 import { changedState } from "UmlEditor/recoil/atoms";
 import { useGetMeta } from "UmlEditor/hooks/useGetMeta";
@@ -16,11 +15,10 @@ import { useUpsertMeta } from "hooks/useUpsertMeta";
 import { IMeta } from "model/meta";
 import { useService } from "ServiceDesigner/contexts";
 import { useUpsertService } from "hooks/useUpsertService";
+import { useMetaId } from "UmlEditor/hooks/useMetaId";
 
-const SaveActions = memo((props: {
-  metaId: ID
-}) => {
-  const { metaId } = props;
+const SaveActions = memo(() => {
+  const metaId = useMetaId() || "";
   const service = useService();
   const [changed, setChanged] = useRecoilState(changedState(metaId));
   const getMeta = useGetMeta(metaId);
@@ -31,6 +29,7 @@ const SaveActions = memo((props: {
       setChanged(false);
     }
   })
+
   const [save, { loading, error }] = useUpsertMeta({
     onCompleted(data: IMeta) {
       if (service?.metaId) {
@@ -51,7 +50,7 @@ const SaveActions = memo((props: {
       return;
     }
     const data = getMeta()
-    save({ id: metaId, content: data });
+    save({ id: metaId ? metaId : undefined, content: data });
   }, [getMeta, metaId, save, validate]);
 
   return (

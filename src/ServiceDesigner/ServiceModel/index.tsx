@@ -17,7 +17,7 @@ export const ServiceModel = memo(() => {
       <UmlEditor
         metaContent={meta?.content}
         options={{ supportCustomizedApi: true }}
-        actions={<SaveActions metaId="" />}
+        actions={<SaveActions />}
       />
     </AwesomeSpin>
   )
