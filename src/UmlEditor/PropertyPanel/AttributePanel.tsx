@@ -11,6 +11,7 @@ import { AttributeTypeInput } from "./AttributeTypeInput";
 import { MultiLangInput } from "components/MultiLangInput";
 import { isStr } from "@formily/shared";
 import { useMetaId } from "../hooks/useMetaId";
+import { PannelContainer } from "./PannelContainer";
 
 export const AttributePanel = (props: {
   attribute: AttributeMeta;
@@ -52,7 +53,7 @@ export const AttributePanel = (props: {
 
 
   return (
-    <div className="property-pannel">
+    <PannelContainer className="property-pannel">
       <Form
         name="attributeForm"
         form={form}
@@ -191,6 +192,6 @@ export const AttributePanel = (props: {
           <Input.TextArea />
         </Form.Item>
       </Form>
-    </div>
+    </PannelContainer>
   );
 };

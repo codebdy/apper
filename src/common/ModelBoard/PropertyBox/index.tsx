@@ -2,7 +2,12 @@ import { Empty } from "antd";
 import React, { memo } from "react";
 import ToolbarArea from "./ToolbarArea";
 import ToolbarTitle from "./ToolbarTitle";
+import styled from "styled-components";
 
+const Container = styled.div`
+  color: ${props => props.theme.token?.colorText};
+  border-left: solid 1px ${props => props.theme.token?.colorBorder};
+`
 export const PropertyBox = memo((
   props: {
     title?: string,
@@ -11,8 +16,8 @@ export const PropertyBox = memo((
 ) => {
   const { title, children } = props;
   return (
-    <div
-      className="property-box left-border"
+    <Container
+      className="property-box"
     >
       <ToolbarArea>
         <ToolbarTitle>{title}</ToolbarTitle>
@@ -29,6 +34,6 @@ export const PropertyBox = memo((
           </div>
         }
       </div>
-    </div>
+    </Container>
   );
 });

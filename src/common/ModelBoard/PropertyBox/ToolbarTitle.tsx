@@ -1,15 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  margin-left: 8px;
+  font-size: 0.95rem;
+`
 
 export default function ToolbarTitle(props: {
   children?: any,
 }) {
   return (
-    <div style={{
-      marginLeft: "8px",
-      fontSize: '0.95rem',
-      //color: theme.palette.text.primary,
-    }}>
+    <Container>
       {props.children}
-    </div>
+    </Container>
   )
 }

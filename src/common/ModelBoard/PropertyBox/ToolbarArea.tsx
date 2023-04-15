@@ -1,17 +1,22 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  color: ${props => props.theme.token?.colorText};
+  border-bottom: solid 1px ${props => props.theme.token?.colorBorder};
+`
 
 export default function ToolbarArea(props: {
   children?: any
 }) {
   return (
-    <div className="bottom-border" style={{
+    <Container style={{
       display: 'flex',
       width: '100%',
       height: '40px',
-      //borderBottom: `solid 1px ${theme.palette.divider}`,
       alignItems: 'center',
     }}>
       {props.children}
-    </div>
+    </Container>
   )
 }

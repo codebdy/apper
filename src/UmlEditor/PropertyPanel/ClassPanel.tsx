@@ -9,6 +9,7 @@ import { ScriptInput } from "./ScriptInput/ScriptInput";
 import { useParseLangMessage } from "plugin-sdk";
 import { packagesState } from "../recoil/atoms";
 import { useRecoilValue } from "recoil";
+import { PannelContainer } from "./PannelContainer";
 const { Option } = Select;
 
 export const ClassPanel = (props: { cls: ClassMeta }) => {
@@ -37,7 +38,7 @@ export const ClassPanel = (props: { cls: ClassMeta }) => {
   }, [changeClass, cls])
 
   return (
-    <div className="property-pannel">
+    <PannelContainer className="property-pannel">
       <Form
         name="classForm"
         form={form}
@@ -125,6 +126,6 @@ export const ClassPanel = (props: { cls: ClassMeta }) => {
           </>
         }
       </Form>
-    </div>
+    </PannelContainer>
   );
 };

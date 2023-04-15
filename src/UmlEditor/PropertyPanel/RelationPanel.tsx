@@ -10,6 +10,7 @@ import { Collapse, Form, Input, Select } from "antd";
 import { useTranslation } from "react-i18next";
 import { MultiLangInput } from "components/MultiLangInput";
 import { useMetaId } from "../hooks/useMetaId";
+import { PannelContainer } from "./PannelContainer";
 
 const { Panel } = Collapse;
 const { Option } = Select;
@@ -45,7 +46,7 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
   }, [relation, changeRelation])
 
   return (
-    <div className="property-pannel no-border" style={{ padding: 0 }}>
+    <PannelContainer className="property-pannel no-border" style={{ padding: 0 }}>
       {
         isInherit ?
           <div style={{
@@ -161,6 +162,6 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
 
           </Form>
       }
-    </div>
+    </PannelContainer>
   );
 };
