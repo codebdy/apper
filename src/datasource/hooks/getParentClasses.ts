@@ -1,4 +1,4 @@
-import { ClassMeta, RelationMeta, RelationType } from "AppDesigner/AppUml/meta";
+import { ClassMeta, RelationMeta, RelationType } from "UmlEditor/meta";
 
 
 export const getParentClasses = (classUuid: string, classMetas: ClassMeta[], relations: RelationMeta[]) => {

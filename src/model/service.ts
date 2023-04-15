@@ -1,4 +1,4 @@
-import { MetaContent } from "AppDesigner/AppUml/meta";
+import { MetaContent } from "UmlEditor/meta";
 import { ID } from "shared";
 
 export enum ServiceStatus {

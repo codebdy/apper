@@ -268,7 +268,7 @@
     "TemplateName": "模板名称",
     "Image": "图片"
   },
-  "AppUml": {
+  "UmlEditor": {
     "DomainModel": "领域模型",
     "ServiceModels": "服务模型",
     "AddPackage": "添加包",

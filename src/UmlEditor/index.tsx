@@ -1,0 +1,83 @@
+import React, { memo, useState } from "react";
+import { EntityTree } from "./EntityTree";
+import { Graph } from "@antv/x6";
+import "@antv/x6-react-shape";
+import { useReadMeta } from "./hooks/useReadMeta";
+import { useShowError } from "AppDesigner/hooks/useShowError";
+import { Spin } from "antd";
+import { ModelBoard } from "common/ModelBoard";
+import { minMapState, selectedUmlDiagramState } from "./recoil/atoms";
+import { useRecoilValue } from "recoil";
+import { Toolbox } from "./Toolbox";
+import { UmlToolbar } from "./UmlToolbar";
+import { GraphCanvas } from "./GraphCanvas";
+import { PropertyPanel } from "./PropertyPanel";
+import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import styled from "styled-components";
+
+const MapContianer = styled.div`
+  position: absolute;
+  z-index: 1;
+  bottom: 3px;
+  left: 3px;
+  width: 140px;
+  height: 110px;
+  border-radius: 5px;
+  overflow: hidden;
+  .x6-widget-minimap{
+    background-color: ${props=>props.theme.token?.colorBgBase};
+  }
+  .x6-graph{
+    box-shadow: none;
+  }
+`
+
+const UmlEditor = memo((
+  props: {
+    actions?: React.ReactNode,
+  }
+) => {
+  const [graph, setGraph] = useState<Graph>();
+  const appId = useEdittingAppId();
+  const { loading, error } = useReadMeta(appId);
+  const minMap = useRecoilValue(minMapState(appId));
+  const selectedDiagram = useRecoilValue(selectedUmlDiagramState(appId));
+  useShowError(error);
+
+  return (
+    <Spin tip="Loading..." spinning={loading}>
+      <ModelBoard
+        listWidth={260}
+        modelList={<EntityTree graph={graph}></EntityTree>}
+        toolbox={selectedDiagram && <Toolbox graph={graph}></Toolbox>}
+        toolbar={<UmlToolbar />}
+        propertyBox={<PropertyPanel />}
+      >
+        {
+          selectedDiagram &&
+          <div
+            style={{
+              display: "flex",
+              flex: 1,
+              flexFlow: "column",
+              overflow: "auto"
+            }}>
+            <GraphCanvas
+              graph={graph}
+              onSetGraph={setGraph}
+            ></GraphCanvas>
+            <MapContianer
+              className="model-minimap"
+              style={{
+                display: minMap ? "block" : "none"
+              }}
+              id="mini-map"
+            ></MapContianer>
+          </div>
+        }
+      </ModelBoard>
+    </Spin>
+  );
+});
+
+export default UmlEditor;

@@ -2,7 +2,7 @@ import { Table } from 'antd';
 import React, { memo, useCallback, useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useParseLangMessage } from 'plugin-sdk';
-import { packagesState } from '../../AppUml/recoil/atoms';
+import { packagesState } from 'UmlEditor/recoil/atoms';
 import { useEdittingAppId } from 'AppDesigner/hooks/useEdittingAppUuid';
 import { useColumns } from './useColumns';
 import { IAuthRow, RowType } from './IAuthRow';
@@ -10,7 +10,7 @@ import { useGetPackageCanAuthClasses } from '../hooks/useGetPackageCanAuthClasse
 import { IClassAuthConfig, IPropertyAuthConfig } from 'model';
 import { ID } from 'shared';
 import { useGetClassAttributes } from '../hooks/useGetClassAttributes';
-import { AttributeMeta } from 'AppDesigner/AppUml/meta';
+import { AttributeMeta } from 'UmlEditor/meta';
 
 export const ModelTable = memo((
   props: {

@@ -1,7 +1,7 @@
 import { atomFamily } from "recoil";
 
 import { EntityMeta } from "../model/EntityMeta";
-import { PackageMeta, ClassMeta } from "AppDesigner/AppUml/meta";
+import { PackageMeta, ClassMeta } from "UmlEditor/meta";
 
 export const packagesState = atomFamily<PackageMeta[], string>({
   key: "designer.packages",

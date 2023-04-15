@@ -1,4 +1,4 @@
-import { AttributeMeta, MethodMeta } from "AppDesigner/AppUml/meta";
+import { AttributeMeta, MethodMeta } from "UmlEditor/meta";
 import { AssociationMeta } from "./AssociationMeta";
 
 

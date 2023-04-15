@@ -8,7 +8,7 @@ import { LoggedInPanel } from './Login/LoggedInPanel';
 import { AppBpmn } from './AppDesigner/AppBpmn';
 import { AppDmn } from './AppDesigner/AppDmn';
 import AppConfig from './AppDesigner/AppConfig';
-import AppUml from './AppDesigner/AppUml';
+import UmlEditor from 'UmlEditor';
 import ApiBoard from './AppDesigner/ApiBoard';
 import { AuthBoard, AuthRoutes } from './AppDesigner/AppAuth';
 import { MenuAuthBoard } from './AppDesigner/AppAuth/MenuAuthBoard';
@@ -51,7 +51,7 @@ const App = memo(() => {
                     <Route path={AppEntryRouts.AppUis} element={<AppUis />} />
                     <Route path={AppEntryRouts.Bpmn} element={<AppBpmn />} />
                     <Route path={AppEntryRouts.Dmn} element={<AppDmn />} />
-                    <Route path={AppEntryRouts.Uml} element={<AppUml />} />
+                    <Route path={AppEntryRouts.Uml} element={<UmlEditor />} />
                     <Route path={AppEntryRouts.Api} element={<ApiBoard />} />
                     <Route path={AppEntryRouts.Frame} element={<AppFrames />} />
                     <Route path={AppEntryRouts.Auth} element={<AuthBoard />}>

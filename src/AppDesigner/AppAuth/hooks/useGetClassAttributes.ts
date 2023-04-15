@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import { classesState, relationsState } from "../../AppUml/recoil/atoms";
+import { classesState, relationsState } from "UmlEditor/recoil/atoms";
 import { getParentClasses } from "datasource/hooks/getParentClasses";
-import { AttributeMeta, ClassMeta, CONST_ID } from "../../AppUml/meta";
+import { AttributeMeta, ClassMeta, CONST_ID } from "UmlEditor/meta";
 import { sort } from "datasource";
 import _ from "lodash";
 import { ID } from "shared";

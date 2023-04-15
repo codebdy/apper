@@ -11,7 +11,7 @@ import { AssociationType } from "../model/IFieldSource";
 import { getParentClasses } from "./getParentClasses";
 import { IApp } from "model";
 import { getChildEntities } from "./getChildEntities";
-import { ClassMeta, RelationMeta, RelationType, RelationMultiplicity, StereoType, AttributeMeta, MethodMeta, PackageStereoType } from "AppDesigner/AppUml/meta";
+import { ClassMeta, RelationMeta, RelationType, RelationMultiplicity, StereoType, AttributeMeta, MethodMeta, PackageStereoType } from "UmlEditor/meta";
 
 export const sort = (array: { name: string }[]) => {
   return array.sort((a, b) => {

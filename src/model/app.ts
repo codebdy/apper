@@ -3,7 +3,7 @@ import { ID } from "shared";
 import { ILang, ILangLocal } from "./lang";
 import { IMenu } from "./menu";
 import { IPluginInfo } from "./plugin";
-import { MetaContent } from "AppDesigner/AppUml/meta";
+import { MetaContent } from "UmlEditor/meta";
 
 export interface IAppConfig {
   id: ID;
