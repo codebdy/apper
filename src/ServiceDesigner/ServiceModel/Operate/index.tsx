@@ -42,7 +42,7 @@ export const Operate = memo(() => {
           },
         ]
       }}>
-        <Button type="text" onClick={e => e.preventDefault()} loading={false}>
+        <Button  onClick={e => e.preventDefault()} loading={false}>
           <Space>
             {t("Designer.Operate")}
             <DownOutlined style={{ fontSize: 12 }} />

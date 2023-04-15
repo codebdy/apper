@@ -56,7 +56,6 @@ const SaveActions = memo(() => {
 
   return (
     <Space>
-      <Operate />
       <Button
         type="primary"
         disabled={!changed}
@@ -67,6 +66,7 @@ const SaveActions = memo(() => {
         {t("Save")}
       </Button>
       <PublishButton />
+      <Operate />
     </Space>
   )
 })
