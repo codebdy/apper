@@ -12,6 +12,8 @@ import { DeleteOutlined } from "@ant-design/icons"
 import { useDeleteClass } from "../hooks/useDeleteClass"
 import { useDnd } from "../GraphCanvas/useDnd"
 import { useMetaId } from "../hooks/useMetaId"
+import { useToken } from "antd/es/theme/internal"
+import { themeModeState } from "recoil/atoms"
 
 
 const ClassLabel = memo((
@@ -26,6 +28,8 @@ const ClassLabel = memo((
   //const classes = useRecoilValue(classesState(metaId));
   const selectedElement = useRecoilValue(selectedElementState(metaId));
   const deleteClass = useDeleteClass(metaId);
+  const themeMode = useRecoilValue(themeModeState);
+  const [, token] = useToken();
 
   // useEffect(() => {
   //   const theDnd = graph
@@ -48,11 +52,18 @@ const ClassLabel = memo((
         height: 70 + (cls?.attributes.length || 0) * 26,
         isTempForDrag: true,
         shape: "class-node",
-        data: { ...cls, isTempForDrag: true },
+
+        data: {
+          ...cls, 
+          isTempForDrag: true, 
+          themeMode,
+          backgroundColor: token.colorBgBase,
+          textColor: token.colorText,
+        },
       });
       dnd?.start(node, e.nativeEvent as any);
     },
-    [dnd, graph]
+    [dnd, graph, themeMode, token.colorBgBase, token.colorText]
   );
 
   const handleDelete = useCallback((event: React.MouseEvent) => {
