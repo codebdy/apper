@@ -9,7 +9,6 @@ import { useToken } from "antd/es/theme/internal"
 import AvatarMenu from "components/AvatarMenu"
 import SelectLang from "components/LangSelect"
 import { ThemeSwitchButton } from "common/ThemeSwitchButton"
-import { Operate } from "./Operate"
 import SvgIcon from "common/SvgIcon"
 import { useService } from "ServiceDesigner/contexts"
 
@@ -77,7 +76,6 @@ export const ServiceDesignerHeader = memo(() => {
         <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
       </MenuContainer>
       <Space>
-        <Operate />
         <ThemeSwitchButton />
         <Button type="text" icon={<QuestionCircleOutlined />} />
         <Button

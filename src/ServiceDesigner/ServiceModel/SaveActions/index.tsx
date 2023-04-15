@@ -12,6 +12,7 @@ import { useUpsertApp } from "hooks/useUpsertApp";
 import { changedState } from "UmlEditor/recoil/atoms";
 import { useGetMeta } from "UmlEditor/hooks/useGetMeta";
 import { useValidate } from "UmlEditor/hooks/useValidate";
+import { Operate } from "../Operate";
 
 const SaveActions = memo((props: {
   metaId: ID
@@ -41,6 +42,7 @@ const SaveActions = memo((props: {
 
   return (
     <Space>
+      <Operate />
       <Button
         type="primary"
         disabled={!changed}
