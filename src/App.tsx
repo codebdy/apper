@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from './Login';
 import AppDesigner from './AppDesigner/index';
 import Install from './Install';
-import { APP_DESIGN, DESIGNER_TOKEN_NAME, DESIGN_BOARD, INDEX_URL, INSTALL_URL, LOGIN_URL, SERVER_URL, SERVICE_DESIGN, SYSTEM_APP_ID } from './consts';
+import { APP_DESIGN, DESIGNER_TOKEN_NAME, DESIGN_BOARD, INDEX_URL, INSTALL_URL, LOGIN_URL, SERVER_URL, SERVICE_DESIGN } from './consts';
 import { LoggedInPanel } from './Login/LoggedInPanel';
 import { AppBpmn } from './AppDesigner/AppBpmn';
 import { AppDmn } from './AppDesigner/AppDmn';
@@ -31,7 +31,7 @@ import { ServiceModel } from 'ServiceDesigner/ServiceModel';
 
 const App = memo(() => {
   return (
-    <EntiRoot config={{ endpoint: SERVER_URL, appId: SYSTEM_APP_ID, tokenName: DESIGNER_TOKEN_NAME }} >
+    <EntiRoot config={{ endpoint: SERVER_URL, appId: "", tokenName: DESIGNER_TOKEN_NAME }} >
       <ConfigRoot>
         <StyledThemeRoot>
           <Routes>

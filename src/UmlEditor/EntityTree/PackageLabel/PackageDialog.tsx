@@ -1,7 +1,7 @@
 import { Form, Modal } from "antd"
 import { memo, useCallback, useEffect } from "react"
 import { useTranslation } from "react-i18next"
-import { PackageMeta, PackageStereoType } from "../../meta/PackageMeta"
+import { PackageMeta } from "../../meta/PackageMeta"
 import { MultiLangInput } from "components/MultiLangInput"
 
 export const PackageDialog = memo((
@@ -28,7 +28,7 @@ export const PackageDialog = memo((
 
   return (
     <Modal
-      title={t(pkg.stereoType === PackageStereoType.Service ? "UmlEditor.ServiceInfo" : "UmlEditor.PackageInfo")}
+      title={t("UmlEditor.PackageInfo")}
       open={open}
       cancelText={t("Cancel")}
       okText={t("Confirm")}

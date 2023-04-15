@@ -1,12 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { memo } from "react";
 import { useBackupSnapshot } from "../../hooks/useBackupSnapshot";
-import { PackageMeta, PackageStereoType } from "../../meta/PackageMeta";
+import { PackageMeta } from "../../meta/PackageMeta";
 import PackageAction from "./PackageAction";
 import TreeNodeLabel from "common/TreeNodeLabel";
 import { useSetRecoilState } from 'recoil';
 import { packagesState } from '../../recoil/atoms';
-import { SYSTEM_APP_ID } from "consts";
 import { useMetaId } from "../../hooks/useMetaId";
 import { useParseLangMessage } from "plugin-sdk";
 import { PackageDialog } from "./PackageDialog";
@@ -53,7 +52,7 @@ const PackageLabel = memo((
 
   return (
     <TreeNodeLabel
-      fixedAction={visible || (pkg.stereoType === PackageStereoType.Service && metaId !== SYSTEM_APP_ID)}
+      fixedAction={visible || (!pkg.system)}
       action={!editing ?
         <PackageAction pkg={pkg}
           onEdit={handleEdit}

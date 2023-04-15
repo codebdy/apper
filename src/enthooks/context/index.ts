@@ -1,5 +1,4 @@
 import { createContext, useContext } from "react";
-import { SYSTEM_APP_ID } from "consts";
 
 export interface IEntxConfig {
   token?: string,
@@ -13,7 +12,7 @@ export interface IEntxConfig {
 export const empertyConfig = {
   endpoint: "",
   tokenName: "",
-  appId: SYSTEM_APP_ID,
+  appId: "",
   setToken: () => {
     throw new Error("Not implement setToken")
   },

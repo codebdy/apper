@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { packagesState, diagramsState, classesState, selectedUmlDiagramState, selectedElementState } from './../recoil/atoms';
 import TreeNodeLabel from "common/TreeNodeLabel";
 import PackageLabel from "./PackageLabel";
-import { PackageMeta, PackageStereoType } from "../meta/PackageMeta";
+import { PackageMeta } from "../meta/PackageMeta";
 import { ClassMeta, StereoType } from "../meta/ClassMeta";
 import { ClassIcon } from "./svgs";
 import { useIsDiagram } from "../hooks/useIsDiagram";
@@ -19,7 +19,7 @@ import { useGetTargetRelations } from './../hooks/useGetTargetRelations';
 import { useGetClass } from "../hooks/useGetClass";
 import { MethodMeta } from "../meta/MethodMeta";
 import AttributeLabel from "./AttributeLabel";
-import { PRIMARY_COLOR, SYSTEM_APP_ID } from "consts";
+import { PRIMARY_COLOR } from "consts";
 import MethodLabel from "./MethodLabel";
 import AttributesLabel from "./AttributesLabel";
 import MethodsLabel from "./MethodsLabel";
@@ -27,20 +27,17 @@ import RelationLabel from "./RelationLabel";
 import { useTranslation } from "react-i18next";
 import PlugIcon from "icons/PlugIcon";
 import DiagramLabel from "./DiagramLabel";
-import { useParams } from "react-router-dom";
 import { DataNode } from "antd/es/tree";
 import styled from "styled-components";
-import { ModelRootAction } from "./ModelRootAction";
 import { AppstoreOutlined } from "@ant-design/icons";
+import { useMetaId } from "../hooks/useMetaId";
 const { DirectoryTree } = Tree;
-
 
 const Container = styled.div`
   flex: 1;
   display: flex;
   flex-flow: column;
   overflow: auto;
-  padding: 8;
   .ant-tree-node-content-wrapper{
     display: flex;
     .ant-tree-title{
@@ -54,19 +51,9 @@ const StyledDirectoryTree = styled(DirectoryTree)`
   flex: 1;
 `
 
-const Title = styled.div`
-  height: 48px;
-  color: ${props => props.theme.token?.colorText};
-  border-bottom: ${props => props.theme.token?.colorBorder} solid 1px;
-  display: flex;
-  align-items: center;
-  padding: 0 8px;
-  justify-content: space-between;
-`
-
 export const EntityTree = memo((props: { graph?: Graph }) => {
   const { graph } = props;
-  const { metaId = SYSTEM_APP_ID } = useParams();
+  const metaId = useMetaId();
   const packages = useRecoilValue(packagesState(metaId));
   const diagrams = useRecoilValue(diagramsState(metaId));
   const classes = useRecoilValue(classesState(metaId));
@@ -252,22 +239,10 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
 
   const getModelPackageNodes = useCallback(() => {
 
-    return packages.filter(pkg=>pkg.stereoType !== PackageStereoType.Service).map((pkg) => {
+    return packages.map((pkg) => {
       return {
         title: <PackageLabel pkg={pkg} />,
         key: pkg.uuid,
-        children: getPackageChildren(pkg),
-      }
-    })
-  }, [packages, getPackageChildren]);
-
-  const getServiceNodes = useCallback(() => {
-
-    return packages.filter(pkg=>pkg.stereoType === PackageStereoType.Service).map((pkg) => {
-      return {
-        title: <PackageLabel pkg={pkg} />,
-        key: pkg.uuid,
-        //icon: <CloudServerOutlined />,
         children: getPackageChildren(pkg),
       }
     })
@@ -294,10 +269,10 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
           <div>{t("UmlEditor.ServiceModels")}</div>
         </TreeNodeLabel>,
       key: "1",
-      children: getServiceNodes()
+      //children: getServiceNodes()
     },
 
-  ], [getModelPackageNodes, getServiceNodes, t]);
+  ], [getModelPackageNodes, t]);
 
   const handleSelect = useCallback((keys: string[]) => {
     for (const uuid of keys) {
@@ -317,10 +292,6 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
 
   return (
     <Container>
-      <Title>
-        <span>{t("Model.Title")}</span>
-        <ModelRootAction />
-      </Title>
       <StyledDirectoryTree
         defaultExpandedKeys={["0"]}
         selectedKeys={[selectedDiagramId] as any}

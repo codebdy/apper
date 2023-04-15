@@ -5,9 +5,7 @@ import { useTranslation } from "react-i18next";
 import { DiagramMeta } from "../../meta/DiagramMeta";
 import { useGetPackage } from "../../hooks/useGetPackage";
 import { useDeleteDiagram } from "../../hooks/useDeleteDiagram";
-import { SYSTEM_APP_ID } from "consts";
 import { useMetaId } from "../../hooks/useMetaId";
-import { PackageStereoType } from "UmlEditor/meta";
 
 const DiagramAction = memo((
   props: {
@@ -29,7 +27,7 @@ const DiagramAction = memo((
 
 
   return (
-    getPagcage(diagram.packageUuid)?.stereoType === PackageStereoType.Service && metaId !== SYSTEM_APP_ID ?
+    getPagcage(diagram.packageUuid)?.system ?
       <Button type="text" shape='circle' size='small' style={{ color: "inherit" }}>
         <LockOutlined />
       </Button>

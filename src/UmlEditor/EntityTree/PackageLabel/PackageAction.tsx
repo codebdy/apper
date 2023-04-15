@@ -3,7 +3,7 @@ import { Dropdown, Button } from "antd";
 import { memo, useCallback, useState } from "react"
 import { useSetRecoilState } from 'recoil';
 import { classesState, diagramsState, selectedUmlDiagramState } from "../../recoil/atoms";
-import { PackageMeta, PackageStereoType } from "../../meta/PackageMeta";
+import { PackageMeta } from "../../meta/PackageMeta";
 import { useDeletePackage } from '../../hooks/useDeletePackage';
 import { useCreateNewClass } from "../../hooks/useCreateNewClass";
 import { useCreateNewDiagram } from "../../hooks/useCreateNewDiagram";
@@ -11,8 +11,6 @@ import { StereoType } from "../../meta/ClassMeta";
 import { useBackupSnapshot } from "../../hooks/useBackupSnapshot";
 import { useTranslation } from "react-i18next";
 import { useMetaId } from "../../hooks/useMetaId";
-import { useChangePackage } from "../../hooks/useChangePackage";
-import { SYSTEM_APP_ID } from "consts";
 import { DiagramMeta } from "../../meta/DiagramMeta";
 import { DiagramDialog } from "../DiagramLabel/DiagramDialog";
 
@@ -33,8 +31,6 @@ const PackageAction = memo((
   const backupSnapshot = useBackupSnapshot(metaId);
   const setDiagrams = useSetRecoilState(diagramsState(metaId));
   const { t } = useTranslation();
-
-  const updatePackage = useChangePackage();
 
   const setSelectedDiagram = useSetRecoilState(
     selectedUmlDiagramState(metaId)
@@ -76,7 +72,7 @@ const PackageAction = memo((
 
 
   return (
-    pkg.stereoType === PackageStereoType.Service && metaId !== SYSTEM_APP_ID ?
+    pkg.system?
       <Button type="text" shape='circle' size='small'>
         <LockOutlined />
       </Button>

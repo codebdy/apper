@@ -1,6 +1,5 @@
 import { gql } from "../../enthooks";
 import { useMemo } from "react";
-import { SYSTEM_APP_ID } from "../../consts";
 import { useQuery } from "../../enthooks/hooks/useQuery";
 import { ILangLocal } from "../../model";
 
@@ -25,7 +24,7 @@ query ($appId:ID!){
 export function useQueryLangLocales(appId: string) {
   const input = useMemo(() => ({
     gql: langLocalGql,
-    params: { appId: appId || SYSTEM_APP_ID },
+    params: { appId: appId || "" },
     depEntityNames: ["LangLocal"]
   }), [appId])
   const { data, error, loading } = useQuery<ILangLocal>(input)

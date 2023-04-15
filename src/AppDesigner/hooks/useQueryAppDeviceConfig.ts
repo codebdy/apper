@@ -1,7 +1,6 @@
 import { Device } from "@rxdrag/appx-plugin-sdk";
 import { gql } from "../../enthooks";
 import { useMemo } from "react";
-import { SYSTEM_APP_ID } from "../../consts";
 import { useQueryOne } from "../../enthooks/hooks/useQueryOne";
 import { IAppDeviceConfig } from "../../model";
 import { ID } from "shared";
@@ -34,7 +33,7 @@ query ($appId:ID, $device:String){
 export function useQueryAppDeviceConfig(appId: ID, device: Device) {
   const input = useMemo(() => ({
     gql: configGql,
-    params: { appId: appId || SYSTEM_APP_ID, device },
+    params: { appId: appId || "", device },
     depEntityNames: ["AppDeviceConfig"]
   }), [appId, device])
   const { data, error, loading } = useQueryOne<IAppDeviceConfig>(input)

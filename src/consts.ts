@@ -21,6 +21,4 @@ export const DESIGN_FRAME = "design-frame"
 export const DESIGN_BOARD = "design-board"
 export const SERVICE_DESIGN = "service-design"
 
-export const SYSTEM_APP_ID = "1"
-
 export const CODE_LOGIN_EXPIRED = "entix.0001"

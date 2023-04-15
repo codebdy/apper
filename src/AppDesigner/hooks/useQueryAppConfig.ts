@@ -1,6 +1,5 @@
 import { gql } from "../../enthooks";
 import { useMemo } from "react";
-import { SYSTEM_APP_ID } from "../../consts";
 import { useQueryOne } from "../../enthooks/hooks/useQueryOne";
 import { IAppConfig } from "../../model";
 import { ID } from "shared";
@@ -23,7 +22,7 @@ query ($appId:ID){
 export function useQueryAppConfig(appId: ID) {
   const input = useMemo(() => ({
     gql: configGql,
-    params: { appId: appId || SYSTEM_APP_ID },
+    params: { appId: appId || "" },
     depEntityNames: ["AppConfig"]
   }), [appId])
 

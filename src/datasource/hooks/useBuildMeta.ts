@@ -1,7 +1,6 @@
 import { gql, GraphQLRequestError } from "enthooks";
 import { useMemo, useEffect, useCallback } from "react";
 import { useSetRecoilState } from "recoil";
-import { SYSTEM_APP_ID } from "consts";
 import { useQueryOne } from "enthooks/hooks/useQueryOne";
 import { useSelectedAppId } from "plugin-sdk/contexts/desinger";
 import { classesState, entitiesState, packagesState } from "../recoil";
@@ -11,7 +10,7 @@ import { AssociationType } from "../model/IFieldSource";
 import { getParentClasses } from "./getParentClasses";
 import { IApp } from "model";
 import { getChildEntities } from "./getChildEntities";
-import { ClassMeta, RelationMeta, RelationType, RelationMultiplicity, StereoType, AttributeMeta, MethodMeta, PackageStereoType } from "UmlEditor/meta";
+import { ClassMeta, RelationMeta, RelationType, RelationMultiplicity, StereoType, AttributeMeta, MethodMeta } from "UmlEditor/meta";
 
 export const sort = (array: { name: string }[]) => {
   return array.sort((a, b) => {
@@ -46,14 +45,14 @@ const getEntityAssociations = (classUuid: string, classMetas: ClassMeta[], relat
 
     if (relation.sourceId === classUuid) {
       associations.push({
-        name: relation.roleOfTarget||"",
+        name: relation.roleOfTarget || "",
         label: relation.labelOfTarget,
         typeUuid: relation.targetId,
         associationType: relation.targetMultiplicity === RelationMultiplicity.ZERO_MANY ? AssociationType.HasMany : AssociationType.HasOne,
       })
     } else if (relation.targetId === classUuid) {
       associations.push({
-        name: relation.roleOfSource||"",
+        name: relation.roleOfSource || "",
         label: relation.labelOfSource,
         typeUuid: relation.sourceId,
         associationType: relation.sourceMutiplicity === RelationMultiplicity.ZERO_MANY ? AssociationType.HasMany : AssociationType.HasOne
@@ -148,14 +147,14 @@ export function useBuildMeta(): { error?: GraphQLRequestError; loading?: boolean
 
   );
 
-  const systemParams = useMemo(() => ({ appId: SYSTEM_APP_ID }), []);
-  const { data: systemData, error: systemError, loading: systemLoading } = useQueryOne<IApp>(
-    {
-      gql: appId !== SYSTEM_APP_ID ? queryGql : undefined,
-      params: systemParams
-    }
+  // const systemParams = useMemo(() => ({ appId: SYSTEM_APP_ID }), []);
+  // const { data: systemData, error: systemError, loading: systemLoading } = useQueryOne<IApp>(
+  //   {
+  //     gql: appId !== SYSTEM_APP_ID ? queryGql : undefined,
+  //     params: systemParams
+  //   }
 
-  );
+  // );
 
   const makeEntity = useCallback((cls: ClassMeta, classMetas: ClassMeta[], relations: RelationMeta[]) => {
     const parentClasses = getParentClasses(cls.uuid, classMetas, relations);
@@ -175,34 +174,34 @@ export function useBuildMeta(): { error?: GraphQLRequestError; loading?: boolean
     }
   }, []);
 
-  useEffect(() => {
-    if (data && (systemData || appId === SYSTEM_APP_ID)) {
-      const meta = data[queryName];
-      const systemMeta = systemData?.[queryName];
-      const getPackage = (packageUuid: string) => {
-        return systemMeta?.publishedMeta?.packages?.find(pkg => pkg.uuid === packageUuid);
-      }
-      const systemPackages = systemMeta?.publishedMeta?.packages?.filter(pkg => pkg.stereoType === PackageStereoType.Service) || [];
-      const systemClasses = systemMeta?.publishedMeta?.classes?.filter(cls => getPackage(cls.packageUuid)?.stereoType === PackageStereoType.Service) || []
-      const allClasses: ClassMeta[] = [...systemClasses, ...meta?.publishedMeta?.classes || []];
-      const allRelations: RelationMeta[] = makeRelations(allClasses, [...systemMeta?.publishedMeta?.relations || [], ...meta?.publishedMeta?.relations || []]);
-      setPackages([...systemPackages, ...meta?.publishedMeta?.packages || []]);
-      setClasses(allClasses);
-      setEntitiesState(
-        sort(
-          allClasses.filter(
-            cls => cls.stereoType === StereoType.Entity
-          ).map(
-            cls => makeEntity(
-              cls,
-              allClasses,
-              allRelations
-            )
-          ) || []
-        )
-      )
-    }
-  }, [data, queryName, setClasses, setPackages, systemData, appId, setEntitiesState, makeEntity]);
+  // useEffect(() => {
+  //   if (data && (systemData || appId === SYSTEM_APP_ID)) {
+  //     const meta = data[queryName];
+  //     const systemMeta = systemData?.[queryName];
+  //     const getPackage = (packageUuid: string) => {
+  //       return systemMeta?.publishedMeta?.packages?.find(pkg => pkg.uuid === packageUuid);
+  //     }
+  //     const systemPackages = systemMeta?.publishedMeta?.packages?.filter(pkg => pkg.stereoType === PackageStereoType.Service) || [];
+  //     const systemClasses = systemMeta?.publishedMeta?.classes?.filter(cls => getPackage(cls.packageUuid)?.stereoType === PackageStereoType.Service) || []
+  //     const allClasses: ClassMeta[] = [...systemClasses, ...meta?.publishedMeta?.classes || []];
+  //     const allRelations: RelationMeta[] = makeRelations(allClasses, [...systemMeta?.publishedMeta?.relations || [], ...meta?.publishedMeta?.relations || []]);
+  //     setPackages([...systemPackages, ...meta?.publishedMeta?.packages || []]);
+  //     setClasses(allClasses);
+  //     setEntitiesState(
+  //       sort(
+  //         allClasses.filter(
+  //           cls => cls.stereoType === StereoType.Entity
+  //         ).map(
+  //           cls => makeEntity(
+  //             cls,
+  //             allClasses,
+  //             allRelations
+  //           )
+  //         ) || []
+  //       )
+  //     )
+  //   }
+  // }, [data, queryName, setClasses, setPackages, systemData, appId, setEntitiesState, makeEntity]);
 
-  return { error: error || systemError, loading: loading || systemLoading };
+  return { error: error, loading: loading };
 }
