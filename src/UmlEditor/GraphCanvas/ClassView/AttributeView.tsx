@@ -88,7 +88,7 @@ export default function AttributeView(props: {
                 marginLeft: "5px",
               }}
             >
-              {attr.typeLabel}
+              {attr.typeLabel||attr.type}
             </div>
           </>
         )}
