@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
-import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState } from "../recoil/atoms";
+import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState, changedState } from "../recoil/atoms";
 import { ID } from "shared";
 import { MetaContent } from "../meta";
 
@@ -11,7 +11,7 @@ export function useParesMeta(meta: MetaContent | undefined, metaId: ID) {
   const setX6Nodes = useSetRecoilState(x6NodesState(metaId));
   const setX6Edges = useSetRecoilState(x6EdgesState(metaId));
   const setPackages = useSetRecoilState(packagesState(metaId))
-
+  const setChanged = useSetRecoilState(changedState(metaId))
 
   useEffect(() => {
     setPackages(meta?.packages || []);
@@ -20,6 +20,7 @@ export function useParesMeta(meta: MetaContent | undefined, metaId: ID) {
     setDiagrams(meta?.diagrams || []);
     setX6Nodes(meta?.x6Nodes || []);
     setX6Edges(meta?.x6Edges || []);
-  }, [setDiagrams, setClasses, setPackages, setRelations, setX6Edges, setX6Nodes, meta]);
+    setChanged(false);
+  }, [setDiagrams, setClasses, setPackages, setRelations, setX6Edges, setX6Nodes, meta, setChanged]);
 
 }

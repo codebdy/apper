@@ -8,7 +8,7 @@ import { LoggedInPanel } from './Login/LoggedInPanel';
 import { AppBpmn } from './AppDesigner/AppBpmn';
 import { AppDmn } from './AppDesigner/AppDmn';
 import AppConfig from './AppDesigner/AppConfig';
-import { UmlEditor } from 'UmlEditor';
+import { UmlEditor } from 'UmlEditor/UmlEditor';
 import ApiBoard from './AppDesigner/ApiBoard';
 import { AuthBoard, AuthRoutes } from './AppDesigner/AppAuth';
 import { MenuAuthBoard } from './AppDesigner/AppAuth/MenuAuthBoard';

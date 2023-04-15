@@ -1,4 +1,4 @@
-import { UmlEditor } from "UmlEditor"
+import { UmlEditor } from "UmlEditor/UmlEditor"
 import { memo } from "react"
 import SaveActions from "./SaveActions"
 import { useService } from "ServiceDesigner/contexts"
