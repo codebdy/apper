@@ -1,5 +1,5 @@
-import { DownOutlined } from '@ant-design/icons';
-import { Button, Dropdown, Space } from 'antd';
+import { EllipsisOutlined } from '@ant-design/icons';
+import { Button, Dropdown } from 'antd';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -41,12 +41,8 @@ export const Operate = memo(() => {
             label: t("Designer.GenerateScaffold"),
           },
         ]
-      }}>
-        <Button  onClick={e => e.preventDefault()} loading={false}>
-          <Space>
-            {t("Designer.Operate")}
-            <DownOutlined style={{ fontSize: 12 }} />
-          </Space>
+      }} trigger={["click"]}>
+        <Button  onClick={e => e.preventDefault()} loading={false} icon={<EllipsisOutlined />}>
         </Button>
       </Dropdown>
 
