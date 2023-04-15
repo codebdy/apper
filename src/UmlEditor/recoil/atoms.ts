@@ -7,6 +7,7 @@ import { X6NodeMeta } from "../meta/X6NodeMeta";
 import { LineAction } from "./LineAction";
 import { ID } from "shared";
 import { PackageMeta } from "../meta/PackageMeta";
+import { UmlEditorOptions } from "UmlEditor/UmlEditorInner";
 
 export interface Snapshot {
   diagrams: DiagramMeta[];
@@ -24,6 +25,10 @@ export const metaIdState = atom<ID>({
   key: "uml.metaId",
   default: "",
 })
+export const editorOptionsState = atomFamily<UmlEditorOptions | undefined, string>({
+  key: "uml.editorOptions",
+  default: undefined,
+});
 
 export const minMapState = atomFamily<boolean, string>({
   key: "uml.minMap",

@@ -3,7 +3,7 @@ import { EntityTree } from "./EntityTree";
 import { Graph } from "@antv/x6";
 import "@antv/x6-react-shape";
 import { ModelBoard } from "common/ModelBoard";
-import { metaIdState, minMapState, selectedUmlDiagramState } from "./recoil/atoms";
+import { editorOptionsState, metaIdState, minMapState, selectedUmlDiagramState } from "./recoil/atoms";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Toolbox } from "./Toolbox";
 import { UmlToolbar } from "./UmlToolbar";
@@ -30,18 +30,24 @@ const MapContianer = styled.div`
   }
 `
 
+export type UmlEditorOptions = {
+  supportCustomizedApi?: boolean
+}
+
 export type UmlEditorProps = {
   actions?: React.ReactNode,
   meta?: MetaContent,
   metaId?: string,
+  options?:UmlEditorOptions
 }
 
 export const UmlEditorInner = memo((
   props: UmlEditorProps
 ) => {
-  const { actions, meta, metaId = "" } = props;
+  const { actions, meta, metaId = "", options } = props;
   const [graph, setGraph] = useState<Graph>();
   const setMetaId = useSetRecoilState(metaIdState)
+  const setEditorOptions = useSetRecoilState(editorOptionsState(metaId))
   useParesMeta(meta, metaId);
   const minMap = useRecoilValue(minMapState(metaId));
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
@@ -50,6 +56,10 @@ export const UmlEditorInner = memo((
     setMetaId(metaId)
   }, [metaId, setMetaId])
 
+  useEffect(() => {
+    setEditorOptions(options)
+  }, [options, setEditorOptions, setMetaId])
+  
   return (
     <ModelBoard
       listWidth={260}
