@@ -14,19 +14,19 @@ import { ID } from "shared";
 /**
  * 本方法不需要备份状态
  */
-export function useDeleteSelectedElement(appId: ID) {
+export function useDeleteSelectedElement(metaId: ID) {
   const [selectedElement, setSelectedElement] = useRecoilState(
-    selectedElementState(appId)
+    selectedElementState(metaId)
   );
-  const cls = useClass(selectedElement || "", appId);
-  const deleteClass = useDeleteClass(appId);
-  const relation = useRelation(selectedElement || "", appId);
-  const deleteRelation = useDeleteRelation(appId);
+  const cls = useClass(selectedElement || "", metaId);
+  const deleteClass = useDeleteClass(metaId);
+  const relation = useRelation(selectedElement || "", metaId);
+  const deleteRelation = useDeleteRelation(metaId);
 
-  const { attribute } = useAttribute(selectedElement || "", appId);
-  const { method } = useMethod(selectedElement || "", appId);
-  const deletedAttribute = useDeleteAttribute(appId);
-  const deleteMethod = useDeleteMethod(appId);
+  const { attribute } = useAttribute(selectedElement || "", metaId);
+  const { method } = useMethod(selectedElement || "", metaId);
+  const deletedAttribute = useDeleteAttribute(metaId);
+  const deleteMethod = useDeleteMethod(metaId);
 
   const deleteSelectedElement = useCallback(() => {
     if (cls) {

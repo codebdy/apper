@@ -12,22 +12,22 @@ import { MethodPanel } from "./MethodPanel";
 import { Empty } from "antd";
 import { useTranslation } from "react-i18next";
 import { PropertyBox } from "common/ModelBoard/PropertyBox";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../hooks/useMetaId";
 
 export const PropertyPanel = memo(() => {
-  const appId = useEdittingAppId();
-  const selectedElement = useRecoilValue(selectedElementState(appId));
-  const selectedEntity = useClass(selectedElement || "", appId);
+  const metaId = useMetaId();
+  const selectedElement = useRecoilValue(selectedElementState(metaId));
+  const selectedEntity = useClass(selectedElement || "", metaId);
   const { t } = useTranslation();
   const { cls: attributeCls, attribute } = useAttribute(
     selectedElement || "",
-    appId
+    metaId
   );
   const { cls: methodCls, method } = useMethod(
     selectedElement || "",
-    appId
+    metaId
   );
-  const relation = useRelation(selectedElement || "", appId);
+  const relation = useRelation(selectedElement || "", metaId);
 
   return (
     <PropertyBox title={t("UmlEditor.Properties")} >

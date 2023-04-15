@@ -4,19 +4,19 @@ import React, { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRecoilValue } from 'recoil';
 import { useShowError } from 'AppDesigner/hooks/useShowError';
-import { useEdittingAppId } from 'AppDesigner/hooks/useEdittingAppUuid';
-import { usePublishMeta } from '../hooks/usePublishMeta';
-import { changedState } from '../recoil/atoms';
-import { usePublished } from '../hooks/usePublished';
 import { EVENT_DATA_POSTED, trigger } from 'enthooks/events';
+import { usePublished } from 'hooks/usePublished';
+import { changedState } from 'UmlEditor/recoil/atoms';
+import { useMetaId } from 'UmlEditor/hooks/useMetaId';
+import { usePublishMeta } from 'hooks/usePublishMeta';
 
 const PublishButton = memo(() => {
-  const appId = useEdittingAppId();
-  const changed = useRecoilValue(changedState(appId))
-  const published = usePublished(appId)
+  const metaId = useMetaId();
+  const changed = useRecoilValue(changedState(metaId))
+  const published = usePublished(metaId)
   const { t } = useTranslation();
 
-  const [publish, { loading, error }] = usePublishMeta(appId, {
+  const [publish, { loading, error }] = usePublishMeta(metaId, {
     onCompleted() {
       trigger(EVENT_DATA_POSTED, { entity: "App" })
       message.success(t("OperateSuccess"));

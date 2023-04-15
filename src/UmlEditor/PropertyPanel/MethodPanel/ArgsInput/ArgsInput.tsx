@@ -14,7 +14,7 @@ import { ArgMeta } from "../../../meta/MethodMeta";
 import { createUuid } from "shared";
 import { LazyInput } from "./LazyInput";
 import { useGetTypeLabel } from "../../../hooks/useGetTypeLabel";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../../../hooks/useMetaId";
 import { ArgTypeInput } from "./ArgTypeInput";
 
 const SortableItem: any = SortableElement((props: React.HTMLAttributes<HTMLTableRowElement>) => (
@@ -32,8 +32,8 @@ export const ArgsInput = memo((
   const { value, onChange } = props;
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState<ArgMeta[]>([]);
-  const appId = useEdittingAppId();
-  const getTypeLabel = useGetTypeLabel(appId);
+  const metaId = useMetaId();
+  const getTypeLabel = useGetTypeLabel(metaId);
 
   const reset = useCallback(() => {
     setItems(value?.map((arg, index) => ({ ...arg, index })) || [])

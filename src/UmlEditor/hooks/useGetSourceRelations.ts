@@ -4,8 +4,8 @@ import { ID } from "shared";
 import { RelationType } from "../meta/RelationMeta";
 import { relationsState } from "../recoil/atoms";
 
-export function useGetSourceRelations(appId: ID) {
-  const relations = useRecoilValue(relationsState(appId));
+export function useGetSourceRelations(metaId: ID) {
+  const relations = useRecoilValue(relationsState(metaId));
 
   const getRelations = useCallback((entityUuid: string,)=>{
     return relations.filter(

@@ -7,19 +7,19 @@ import { packagesState } from "../recoil/atoms";
 import { useBackupSnapshot } from "../hooks/useBackupSnapshot";
 import { useExportModelJson } from "../hooks/useExportModelJson";
 import { useTranslation } from "react-i18next";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../hooks/useMetaId";
 import { PackageDialog } from "./PackageLabel/PackageDialog";
 import { PackageMeta, PackageStereoType } from "../meta/PackageMeta";
 import { useImportModelJson } from "../hooks/useImportModelJson";
 
 export const ModelRootAction = memo(() => {
-  const appId = useEdittingAppId();
+  const metaId = useMetaId();
   const [newPackage, setNewPackage] = useState<PackageMeta>();
-  const setPackages = useSetRecoilState(packagesState(appId));
-  const createNewPackage = useCreateNewPackage(appId);
-  const backup = useBackupSnapshot(appId);
-  const expotJson = useExportModelJson(appId);
-  const importJson = useImportModelJson(appId);
+  const setPackages = useSetRecoilState(packagesState(metaId));
+  const createNewPackage = useCreateNewPackage(metaId);
+  const backup = useBackupSnapshot(metaId);
+  const expotJson = useExportModelJson(metaId);
+  const importJson = useImportModelJson(metaId);
   const { t } = useTranslation();
 
   const handleNoneAction = useCallback((e: React.MouseEvent) => {

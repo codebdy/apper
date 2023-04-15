@@ -3,8 +3,8 @@ import { useRecoilValue } from 'recoil';
 import { classesState } from "../recoil/atoms";
 import { useCallback } from 'react';
 
-export function useIsElement(appId: ID) {
-  const classes = useRecoilValue(classesState(appId));
+export function useIsElement(metaId: ID) {
+  const classes = useRecoilValue(classesState(metaId));
 
   const isElement = useCallback((uuid: string) => {
     for (const cls of classes) {

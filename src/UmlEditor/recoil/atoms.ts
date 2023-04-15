@@ -1,4 +1,4 @@
-import { atomFamily } from "recoil";
+import { atom, atomFamily } from "recoil";
 import { DiagramMeta } from "../meta/DiagramMeta";
 import { ClassMeta } from "../meta/ClassMeta";
 import { RelationMeta, RelationType } from "../meta/RelationMeta";
@@ -19,6 +19,11 @@ export interface Snapshot {
   selectedDiagram?: string;
   selectedCode?: string;
 }
+
+export const metaIdState = atom<ID>({
+  key: "uml.metaId",
+  default: "",
+})
 
 export const minMapState = atomFamily<boolean, string>({
   key: "uml.minMap",

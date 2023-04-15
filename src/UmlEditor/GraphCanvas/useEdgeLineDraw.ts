@@ -22,24 +22,24 @@ import { createUuid, ID } from "shared";
 import _ from "lodash";
 import { useToken } from "antd/es/theme/internal";
 
-export function useEdgeLineDraw(graph: Graph | undefined, appId: ID) {
+export function useEdgeLineDraw(graph: Graph | undefined, metaId: ID) {
   const [drawingLine, setDrawingLine] = useRecoilState(
-    drawingLineState(appId)
+    drawingLineState(metaId)
   );
-  const selectedDiagram = useRecoilValue(selectedUmlDiagramState(appId));
-  const setRelations = useSetRecoilState(relationsState(appId));
-  const selectedElement = useSetRecoilState(selectedElementState(appId));
-  const setEdges = useSetRecoilState(x6EdgesState(appId));
-  const getClass = useGetClass(appId);
-  const backupSnapshot = useBackupSnapshot(appId);
+  const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
+  const setRelations = useSetRecoilState(relationsState(metaId));
+  const selectedElement = useSetRecoilState(selectedElementState(metaId));
+  const setEdges = useSetRecoilState(x6EdgesState(metaId));
+  const getClass = useGetClass(metaId);
+  const backupSnapshot = useBackupSnapshot(metaId);
   const [pressedLineType, setPressedLineType] = useRecoilState(
-    pressedLineTypeState(appId)
+    pressedLineTypeState(metaId)
   );
 
   const [, token] = useToken();
 
-  const createRelationInnerId = useCreateRelationInnerId(appId);
-  const canLinkTo = useCheckCanLinkTo(appId);
+  const createRelationInnerId = useCreateRelationInnerId(metaId);
+  const canLinkTo = useCheckCanLinkTo(metaId);
 
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {

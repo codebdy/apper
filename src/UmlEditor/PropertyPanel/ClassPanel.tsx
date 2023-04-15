@@ -4,7 +4,7 @@ import { useChangeClass } from "../hooks/useChangeClass";
 import { Form, Input, Select, Switch } from "antd";
 import { useTranslation } from "react-i18next";
 import { MultiLangInput } from "components/MultiLangInput";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../hooks/useMetaId";
 import { ScriptInput } from "./ScriptInput/ScriptInput";
 import { useParseLangMessage } from "plugin-sdk";
 import { packagesState } from "../recoil/atoms";
@@ -14,9 +14,9 @@ const { Option } = Select;
 export const ClassPanel = (props: { cls: ClassMeta }) => {
   const { cls } = props;
   const [nameError, setNameError] = useState<string>();
-  const appId = useEdittingAppId();
-  const changeClass = useChangeClass(appId);
-  const packages = useRecoilValue(packagesState(appId));
+  const metaId = useMetaId();
+  const changeClass = useChangeClass(metaId);
+  const packages = useRecoilValue(packagesState(metaId));
   const { t } = useTranslation();
   const p = useParseLangMessage();
   const [form] = Form.useForm()

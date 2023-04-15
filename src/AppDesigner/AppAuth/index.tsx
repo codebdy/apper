@@ -8,7 +8,7 @@ import { LayoutOutlined, MenuOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import "./style.less";
 import SvgIcon from "common/SvgIcon";
-import { useReadMeta } from "UmlEditor/hooks/useReadMeta";
+import { useReadMeta } from "hooks/useReadMeta";
 import { useQueryRoles } from "./hooks/useQueryRoles";
 import { APP_DESIGN, DESIGN_BOARD } from "consts";
 import { AppEntryRouts } from "../AppDesignerHeader/AppEntryRouts";

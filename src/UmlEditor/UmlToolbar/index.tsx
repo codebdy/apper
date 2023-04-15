@@ -15,22 +15,26 @@ import { CONST_ID } from "../meta/Meta";
 import { Button, Divider } from "antd";
 import { DeleteOutlined, RedoOutlined, UndoOutlined } from "@ant-design/icons";
 import { PRIMARY_COLOR } from "consts";
-import SaveActions from "../SaveActions";
 import { ModelToolbar } from "common/ModelBoard/ModelToolbar";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../hooks/useMetaId";
 
-export const UmlToolbar = memo(() => {
-  const appId = useEdittingAppId();
-  const undoList = useRecoilValue(undoListState(appId));
-  const redoList = useRecoilValue(redoListState(appId));
-  const selectedDiagram = useRecoilValue(selectedUmlDiagramState(appId));
-  const selectedElement = useRecoilValue(selectedElementState(appId));
+export const UmlToolbar = memo((
+  props: {
+    actions?: React.ReactNode
+  }
+) => {
+  const { actions } = props;
+  const metaId = useMetaId();
+  const undoList = useRecoilValue(undoListState(metaId));
+  const redoList = useRecoilValue(redoListState(metaId));
+  const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
+  const selectedElement = useRecoilValue(selectedElementState(metaId));
 
-  const { attribute } = useAttribute(selectedElement || "", appId);
-  const undo = useUndo(appId);
-  const redo = useRedo(appId);
-  const deleteSelectedElement = useDeleteSelectedElement(appId);
-  const [minMap, setMinMap] = useRecoilState(minMapState(appId));
+  const { attribute } = useAttribute(selectedElement || "", metaId);
+  const undo = useUndo(metaId);
+  const redo = useRedo(metaId);
+  const deleteSelectedElement = useDeleteSelectedElement(metaId);
+  const [minMap, setMinMap] = useRecoilState(minMapState(metaId));
 
   const toggleMinMap = useCallback(() => {
     setMinMap((a) => !a);
@@ -94,7 +98,7 @@ export const UmlToolbar = memo(() => {
         <DeleteOutlined />
       </Button>
       <div style={{ flex: 1 }} />
-      <SaveActions appId={appId} />
+      {actions}
     </ModelToolbar>
   );
 });

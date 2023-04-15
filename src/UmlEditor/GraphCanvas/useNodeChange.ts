@@ -5,11 +5,11 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useBackupSnapshot } from "../hooks/useBackupSnapshot";
 import { ID } from "shared";
 
-export function useNodeChange(graph: Graph | undefined, appId: ID) {
-  const selectedDiagram = useRecoilValue(selectedUmlDiagramState(appId));
-  const setNodes = useSetRecoilState(x6NodesState(appId));
-  const backupSnapshot = useBackupSnapshot(appId);
-  const setSelectedElement = useSetRecoilState(selectedElementState(appId));
+export function useNodeChange(graph: Graph | undefined, metaId: ID) {
+  const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
+  const setNodes = useSetRecoilState(x6NodesState(metaId));
+  const backupSnapshot = useBackupSnapshot(metaId);
+  const setSelectedElement = useSetRecoilState(selectedElementState(metaId));
 
   const handleNodeChanged = useCallback(
     (arg: { node: Node<Node.Properties> }) => {

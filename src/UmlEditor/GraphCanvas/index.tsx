@@ -13,7 +13,7 @@ import { useEdgeSelect } from "./useEdgeSelect";
 import { useTriggerSelectedEvent } from "./useTriggerSelectedEvent";
 import { useEdgeHover } from "./useEdgeHover";
 import { useTriggerPressedLineTypeEvent } from "./useTriggerPressedLineTypeEvent";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../hooks/useMetaId";
 import { Selection } from '@antv/x6-plugin-selection'
 import { MiniMap } from "@antv/x6-plugin-minimap";
 import { Transform } from '@antv/x6-plugin-transform'
@@ -26,7 +26,7 @@ export const GraphCanvas = memo(
     onSetGraph: (graph?: Graph) => void,
   }) => {
     const { graph, onSetGraph } = props;
-    const appId = useEdittingAppId();
+    const metaId = useMetaId();
     const [, token] = useToken();
 
     useEffect(() => {
@@ -60,18 +60,18 @@ export const GraphCanvas = memo(
     }, [onSetGraph, token]);
 
     useExplorerScrollbarHide();
-    useTriggerSelectedEvent(appId);
-    useTriggerPressedLineTypeEvent(appId);
-    useNodeSelect(graph, appId);
-    useEdgeSelect(graph, appId);
-    useNodesShow(graph, appId);
-    useEdgeLineDraw(graph, appId);
-    useEdgesShow(graph, appId);
-    useNodeChange(graph, appId);
-    useEdgeChange(graph, appId);
-    useNodeAdd(graph, appId);
-    useEdgeHover(graph, appId);
-    useClassAction(graph, appId);
+    useTriggerSelectedEvent(metaId);
+    useTriggerPressedLineTypeEvent(metaId);
+    useNodeSelect(graph, metaId);
+    useEdgeSelect(graph, metaId);
+    useNodesShow(graph, metaId);
+    useEdgeLineDraw(graph, metaId);
+    useEdgesShow(graph, metaId);
+    useNodeChange(graph, metaId);
+    useEdgeChange(graph, metaId);
+    useNodeAdd(graph, metaId);
+    useEdgeHover(graph, metaId);
+    useClassAction(graph, metaId);
     
     return (
       <div

@@ -3,8 +3,8 @@ import { useRecoilValue } from "recoil";
 import { ID } from "shared";
 import { x6EdgesState } from "../recoil/atoms";
 
-export function useGetEdge(appId: ID) {
-  const edges = useRecoilValue(x6EdgesState(appId));
+export function useGetEdge(metaId: ID) {
+  const edges = useRecoilValue(x6EdgesState(metaId));
   const getEdge = useCallback(
     (id: string, diagramUuid: string) => {
       return edges.find(

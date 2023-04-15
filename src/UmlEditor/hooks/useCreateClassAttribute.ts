@@ -4,9 +4,9 @@ import { ClassMeta } from "../meta/ClassMeta";
 import { useChangeClass } from "./useChangeClass";
 import { useCreateAttribute } from "./useCreateAttribute";
 
-export function useCreateClassAttribute(appId: ID) {
-  const changeClass = useChangeClass(appId);
-  const createAttribute = useCreateAttribute(appId);
+export function useCreateClassAttribute(metaId: ID) {
+  const changeClass = useChangeClass(metaId);
+  const createAttribute = useCreateAttribute(metaId);
   const createClassAttribute = useCallback(
     (cls: ClassMeta) => {
       const attr = createAttribute(cls.attributes);

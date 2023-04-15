@@ -3,22 +3,22 @@ import React, { useCallback } from "react";
 import { memo } from "react";
 import { useRecoilState } from "recoil";
 import PublishButton from "./PublishButton";
-import { changedState } from "../recoil/atoms";
-import { useValidate } from "../hooks/useValidate";
 import { useShowError } from "AppDesigner/hooks/useShowError";
-import { useGetMeta } from "../hooks/useGetMeta";
 import { useTranslation } from "react-i18next";
 import { SaveOutlined } from "@ant-design/icons";
 import { ID } from "shared";
 import { IApp } from "model";
 import { useUpsertApp } from "hooks/useUpsertApp";
+import { changedState } from "UmlEditor/recoil/atoms";
+import { useGetMeta } from "UmlEditor/hooks/useGetMeta";
+import { useValidate } from "UmlEditor/hooks/useValidate";
 
 const SaveActions = memo((props: {
-  appId: ID
+  metaId: ID
 }) => {
-  const { appId } = props;
-  const [changed, setChanged] = useRecoilState(changedState(appId));
-  const getMeta = useGetMeta(appId);
+  const { metaId } = props;
+  const [changed, setChanged] = useRecoilState(changedState(metaId));
+  const getMeta = useGetMeta(metaId);
   const { t } = useTranslation();
   const [save, { loading, error }] = useUpsertApp({
     onCompleted(data: IApp) {
@@ -27,7 +27,7 @@ const SaveActions = memo((props: {
     }
   })
 
-  const validate = useValidate(appId);
+  const validate = useValidate(metaId);
 
   useShowError(error);
 
@@ -36,8 +36,8 @@ const SaveActions = memo((props: {
       return;
     }
     const data = getMeta()
-    save({ id: appId, meta: data, saveMetaAt: new Date() });
-  }, [save, appId, getMeta, validate]);
+    save({ id: metaId, meta: data, saveMetaAt: new Date() });
+  }, [save, metaId, getMeta, validate]);
 
   return (
     <Space>

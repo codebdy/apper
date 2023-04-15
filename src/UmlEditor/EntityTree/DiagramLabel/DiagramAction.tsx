@@ -6,7 +6,7 @@ import { DiagramMeta } from "../../meta/DiagramMeta";
 import { useGetPackage } from "../../hooks/useGetPackage";
 import { useDeleteDiagram } from "../../hooks/useDeleteDiagram";
 import { SYSTEM_APP_ID } from "consts";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../../hooks/useMetaId";
 import { PackageStereoType } from "UmlEditor/meta";
 
 const DiagramAction = memo((
@@ -17,9 +17,9 @@ const DiagramAction = memo((
   }
 ) => {
   const { diagram, onEdit, onVisibleChange } = props;
-  const appId = useEdittingAppId();
-  const getPagcage = useGetPackage(appId)
-  const deleteDiagram = useDeleteDiagram(appId)
+  const metaId = useMetaId();
+  const getPagcage = useGetPackage(metaId)
+  const deleteDiagram = useDeleteDiagram(metaId)
   const { t } = useTranslation();
 
   const handleDelete = useCallback(() => {
@@ -29,7 +29,7 @@ const DiagramAction = memo((
 
 
   return (
-    getPagcage(diagram.packageUuid)?.stereoType === PackageStereoType.Service && appId !== SYSTEM_APP_ID ?
+    getPagcage(diagram.packageUuid)?.stereoType === PackageStereoType.Service && metaId !== SYSTEM_APP_ID ?
       <Button type="text" shape='circle' size='small' style={{ color: "inherit" }}>
         <LockOutlined />
       </Button>

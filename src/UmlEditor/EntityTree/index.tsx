@@ -66,18 +66,18 @@ const Title = styled.div`
 
 export const EntityTree = memo((props: { graph?: Graph }) => {
   const { graph } = props;
-  const { appId = SYSTEM_APP_ID } = useParams();
-  const packages = useRecoilValue(packagesState(appId));
-  const diagrams = useRecoilValue(diagramsState(appId));
-  const classes = useRecoilValue(classesState(appId));
-  const isDiagram = useIsDiagram(appId);
-  const isElement = useIsElement(appId);
-  const parseRelationUuid = useParseRelationUuid(appId);
-  const [selectedDiagramId, setSelecteDiagramId] = useRecoilState(selectedUmlDiagramState(appId));
-  const [selectedElement, setSelectedElement] = useRecoilState(selectedElementState(appId));
-  const getSourceRelations = useGetSourceRelations(appId);
-  const getTargetRelations = useGetTargetRelations(appId);
-  const getClass = useGetClass(appId);
+  const { metaId = SYSTEM_APP_ID } = useParams();
+  const packages = useRecoilValue(packagesState(metaId));
+  const diagrams = useRecoilValue(diagramsState(metaId));
+  const classes = useRecoilValue(classesState(metaId));
+  const isDiagram = useIsDiagram(metaId);
+  const isElement = useIsElement(metaId);
+  const parseRelationUuid = useParseRelationUuid(metaId);
+  const [selectedDiagramId, setSelecteDiagramId] = useRecoilState(selectedUmlDiagramState(metaId));
+  const [selectedElement, setSelectedElement] = useRecoilState(selectedElementState(metaId));
+  const getSourceRelations = useGetSourceRelations(metaId);
+  const getTargetRelations = useGetTargetRelations(metaId);
+  const getClass = useGetClass(metaId);
   const { t } = useTranslation();
 
   const getAttributeNode = useCallback((attr: AttributeMeta) => {

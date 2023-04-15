@@ -2,7 +2,7 @@ import { Form, Select } from "antd";
 import React, { useMemo } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../hooks/useMetaId";
 import { useEntities } from "../hooks/useEntities";
 import { useEnums } from "../hooks/useEnums";
 import { useValueObjects } from "../hooks/useValueObjects";
@@ -19,10 +19,10 @@ export const TypeUuidSelect = memo((
   }
 ) => {
   const { type, withFormItem, value, onChange, style } = props;
-  const appId = useEdittingAppId();
-  const enums = useEnums(appId);
-  const valueObjects = useValueObjects(appId);
-  const entities = useEntities(appId);
+  const metaId = useMetaId();
+  const enums = useEnums(metaId);
+  const valueObjects = useValueObjects(metaId);
+  const entities = useEntities(metaId);
   const { t } = useTranslation();
 
   const [title, classes] = useMemo(() => {

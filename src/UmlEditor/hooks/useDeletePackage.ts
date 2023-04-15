@@ -8,9 +8,9 @@ import { packagesState } from './../recoil/atoms';
  * 并没有删除包下面的元素，保存数据时需要过滤一下
  * @returns 
  */
-export function useDeletePackage(appId: ID) {
-  const setPackages = useSetRecoilState(packagesState(appId));
-  const backup = useBackupSnapshot(appId);
+export function useDeletePackage(metaId: ID) {
+  const setPackages = useSetRecoilState(packagesState(metaId));
+  const backup = useBackupSnapshot(metaId);
 
   const deletePackage = useCallback((uuid: string) => {
     backup()

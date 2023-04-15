@@ -7,15 +7,15 @@ import { MetaContent, PackageStereoType } from "../meta";
 import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";
 
-export function useImportModelJson(appId: string) {
-  const backupSnapshot = useBackupSnapshot(appId);
-  const [classes, setClasses] = useRecoilState(classesState(appId));
-  const setRelations = useSetRecoilState(relationsState(appId));
-  const setDiagrams = useSetRecoilState(diagramsState(appId));
-  //const setCodes = useSetRecoilState(codesState(appId));
-  const setX6Nodes = useSetRecoilState(x6NodesState(appId));
-  const setX6Edges = useSetRecoilState(x6EdgesState(appId));
-  const [packages, setPackages] = useRecoilState(packagesState(appId))
+export function useImportModelJson(metaId: string) {
+  const backupSnapshot = useBackupSnapshot(metaId);
+  const [classes, setClasses] = useRecoilState(classesState(metaId));
+  const setRelations = useSetRecoilState(relationsState(metaId));
+  const setDiagrams = useSetRecoilState(diagramsState(metaId));
+  //const setCodes = useSetRecoilState(codesState(metaId));
+  const setX6Nodes = useSetRecoilState(x6NodesState(metaId));
+  const setX6Edges = useSetRecoilState(x6EdgesState(metaId));
+  const [packages, setPackages] = useRecoilState(packagesState(metaId))
 
   const doImport = useCallback(() => {
     getTheFiles(".json").then((fileHandles) => {
@@ -28,8 +28,8 @@ export function useImportModelJson(appId: string) {
               return packages?.find(pkg => pkg.uuid === packageUuid);
             }
 
-            const systemPackages = appId === SYSTEM_APP_ID ? [] : packages?.filter(pkg => pkg.stereoType === PackageStereoType.Service) || [];
-            const systemClasses = appId === SYSTEM_APP_ID ? [] : classes?.filter(cls => getPackage(cls.packageUuid)?.stereoType === PackageStereoType.Service) || []
+            const systemPackages = metaId === SYSTEM_APP_ID ? [] : packages?.filter(pkg => pkg.stereoType === PackageStereoType.Service) || [];
+            const systemClasses = metaId === SYSTEM_APP_ID ? [] : classes?.filter(cls => getPackage(cls.packageUuid)?.stereoType === PackageStereoType.Service) || []
             setPackages([...systemPackages, ...meta?.packages || []]);
             setClasses([...systemClasses, ...meta?.classes || []]);
             setRelations(meta?.relations || []);
@@ -45,7 +45,7 @@ export function useImportModelJson(appId: string) {
         });
       });
     });
-  }, [backupSnapshot, appId, packages, classes, setPackages, setClasses, setRelations, setDiagrams, setX6Nodes, setX6Edges]);
+  }, [backupSnapshot, metaId, packages, classes, setPackages, setClasses, setRelations, setDiagrams, setX6Nodes, setX6Edges]);
 
   return doImport
 }

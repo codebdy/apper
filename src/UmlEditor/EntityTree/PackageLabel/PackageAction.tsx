@@ -10,7 +10,7 @@ import { useCreateNewDiagram } from "../../hooks/useCreateNewDiagram";
 import { StereoType } from "../../meta/ClassMeta";
 import { useBackupSnapshot } from "../../hooks/useBackupSnapshot";
 import { useTranslation } from "react-i18next";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../../hooks/useMetaId";
 import { useChangePackage } from "../../hooks/useChangePackage";
 import { SYSTEM_APP_ID } from "consts";
 import { DiagramMeta } from "../../meta/DiagramMeta";
@@ -24,20 +24,20 @@ const PackageAction = memo((
   }
 ) => {
   const { pkg, onEdit, onVisibleChange } = props;
-  const appId = useEdittingAppId();
+  const metaId = useMetaId();
   const [newDiagram, setNewDiagram] = useState<DiagramMeta>();
-  const deletePackage = useDeletePackage(appId)
-  const createNewClass = useCreateNewClass(appId);
-  const createNewDiagram = useCreateNewDiagram(appId);
-  const setClasses = useSetRecoilState(classesState(appId));
-  const backupSnapshot = useBackupSnapshot(appId);
-  const setDiagrams = useSetRecoilState(diagramsState(appId));
+  const deletePackage = useDeletePackage(metaId)
+  const createNewClass = useCreateNewClass(metaId);
+  const createNewDiagram = useCreateNewDiagram(metaId);
+  const setClasses = useSetRecoilState(classesState(metaId));
+  const backupSnapshot = useBackupSnapshot(metaId);
+  const setDiagrams = useSetRecoilState(diagramsState(metaId));
   const { t } = useTranslation();
 
   const updatePackage = useChangePackage();
 
   const setSelectedDiagram = useSetRecoilState(
-    selectedUmlDiagramState(appId)
+    selectedUmlDiagramState(metaId)
   );
 
   const handleDelete = useCallback(() => {
@@ -76,7 +76,7 @@ const PackageAction = memo((
 
 
   return (
-    pkg.stereoType === PackageStereoType.Service && appId !== SYSTEM_APP_ID ?
+    pkg.stereoType === PackageStereoType.Service && metaId !== SYSTEM_APP_ID ?
       <Button type="text" shape='circle' size='small'>
         <LockOutlined />
       </Button>

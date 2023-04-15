@@ -2,8 +2,8 @@ import { useCallback } from "react";
 import { ID } from "shared";
 import { useGetFirstParentUuids } from "./useGetFirstParentUuids";
 
-export function useGetAllParentUuids(appId: ID) {
-  const getFirstParentId = useGetFirstParentUuids(appId);
+export function useGetAllParentUuids(metaId: ID) {
+  const getFirstParentId = useGetFirstParentUuids(metaId);
 
   const getParentUuids = useCallback(
     (uuid: string) => {

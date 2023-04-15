@@ -8,7 +8,7 @@ import { Button } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
 import { MethodMeta } from "../meta/MethodMeta";
 import { useDeleteMethod } from "../hooks/useDeleteMethod";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../hooks/useMetaId";
 
 const MethodLabel = memo((
   props: {
@@ -16,9 +16,9 @@ const MethodLabel = memo((
   }
 ) => {
   const { method } = props;
-  const appId = useEdittingAppId();
-  const selectedElement = useRecoilValue(selectedElementState(appId));
-  const removeMethod = useDeleteMethod(appId);
+  const metaId = useMetaId();
+  const selectedElement = useRecoilValue(selectedElementState(metaId));
+  const removeMethod = useDeleteMethod(metaId);
 
   const handleDelete = useCallback((event: React.MouseEvent) => {
     event.stopPropagation();

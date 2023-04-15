@@ -17,13 +17,13 @@ import { useSelectedDiagramPackageUuid } from "../hooks/useSelectedDiagramPackag
 import { useToken } from "antd/es/theme/internal";
 import { themeModeState } from "recoil/atoms";
 
-export function useNodesShow(graph: Graph | undefined, appId: ID) {
-  const selectedDiagram = useRecoilValue(selectedUmlDiagramState(appId));
+export function useNodesShow(graph: Graph | undefined, metaId: ID) {
+  const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
 
-  const nodes = useDiagramNodes(selectedDiagram || "", appId);
-  const getClass = useGetClass(appId);
-  const getNode = useGetNode(appId);
-  const getDiagramNode = useGetDiagramNode(appId);
+  const nodes = useDiagramNodes(selectedDiagram || "", metaId);
+  const getClass = useGetClass(metaId);
+  const getNode = useGetNode(metaId);
+  const getDiagramNode = useGetDiagramNode(metaId);
 
   const [, token] = useToken();
   const themeMode = useRecoilValue(themeModeState)
@@ -31,9 +31,9 @@ export function useNodesShow(graph: Graph | undefined, appId: ID) {
   const getClassRef = useRef(getClass);
   getClassRef.current = getClass;
 
-  const getPackage = useGetPackage(appId);
+  const getPackage = useGetPackage(metaId);
 
-  const selectedDiagramUuid = useSelectedDiagramPackageUuid(appId);
+  const selectedDiagramUuid = useSelectedDiagramPackageUuid(metaId);
 
   useEffect(() => {
     nodes?.forEach((node) => {

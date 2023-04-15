@@ -16,7 +16,7 @@ import { StereoType } from "../meta/ClassMeta";
 import { Collapse } from "antd";
 import { PRIMARY_COLOR } from "consts";
 import { useTranslation } from "react-i18next";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../hooks/useMetaId";
 import { useDnd } from "../GraphCanvas/useDnd";
 import styled from "styled-components";
 
@@ -82,12 +82,12 @@ export const Toolbox = memo((props: { graph?: Graph }) => {
   const { graph } = props;
   const dnd = useDnd(graph)
   const { t } = useTranslation();
-  const appId = useEdittingAppId();
-  const setSelemedElement = useSetRecoilState(selectedElementState(appId))
+  const metaId = useMetaId();
+  const setSelemedElement = useSetRecoilState(selectedElementState(metaId))
   const [pressedLineType, setPressedLineType] = useRecoilState(
-    pressedLineTypeState(appId)
+    pressedLineTypeState(metaId)
   );
-  const createTempClassNodeForNew = useCreateTempClassNodeForNew(appId);
+  const createTempClassNodeForNew = useCreateTempClassNodeForNew(metaId);
 
   // useEffect(() => {
   //   const theDnd = graph

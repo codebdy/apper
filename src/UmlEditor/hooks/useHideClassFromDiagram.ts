@@ -4,10 +4,10 @@ import { ID } from "shared";
 import { selectedUmlDiagramState, x6NodesState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";
 
-export function useHideClassFromDiagram(appId: ID) {
-  const selectedDiagramUuid = useRecoilValue(selectedUmlDiagramState(appId))
-  const setNodes = useSetRecoilState(x6NodesState(appId));
-  const backupSnapshot = useBackupSnapshot(appId);
+export function useHideClassFromDiagram(metaId: ID) {
+  const selectedDiagramUuid = useRecoilValue(selectedUmlDiagramState(metaId))
+  const setNodes = useSetRecoilState(x6NodesState(metaId));
+  const backupSnapshot = useBackupSnapshot(metaId);
 
   const hideClass = useCallback((classUuid: string) => {
     if (!selectedDiagramUuid) {

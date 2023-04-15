@@ -7,7 +7,7 @@ import TreeNodeLabel from "common/TreeNodeLabel";
 import { useSetRecoilState } from 'recoil';
 import { packagesState } from '../../recoil/atoms';
 import { SYSTEM_APP_ID } from "consts";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../../hooks/useMetaId";
 import { useParseLangMessage } from "plugin-sdk";
 import { PackageDialog } from "./PackageDialog";
 import "./style.less";
@@ -28,9 +28,9 @@ const PackageLabel = memo((
     setName(pkg.name)
   }, [pkg])
 
-  const appId = useEdittingAppId();
-  const backup = useBackupSnapshot(appId);
-  const setPackages = useSetRecoilState(packagesState(appId));
+  const metaId = useMetaId();
+  const backup = useBackupSnapshot(metaId);
+  const setPackages = useSetRecoilState(packagesState(metaId));
 
   const handleVisableChange = useCallback((visible: any) => {
     setVisible(visible)
@@ -53,7 +53,7 @@ const PackageLabel = memo((
 
   return (
     <TreeNodeLabel
-      fixedAction={visible || (pkg.stereoType === PackageStereoType.Service && appId !== SYSTEM_APP_ID)}
+      fixedAction={visible || (pkg.stereoType === PackageStereoType.Service && metaId !== SYSTEM_APP_ID)}
       action={!editing ?
         <PackageAction pkg={pkg}
           onEdit={handleEdit}

@@ -5,8 +5,8 @@ import { createUuid, ID } from "shared";
 import { PackageMeta, PackageStereoType } from "../meta/PackageMeta";
 import { packagesState } from './../recoil/atoms';
 
-export function useCreateNewPackage(appId: ID) {
-  const packages = useRecoilValue(packagesState(appId));
+export function useCreateNewPackage(metaId: ID) {
+  const packages = useRecoilValue(packagesState(metaId));
   const { t } = useTranslation();
   const getNewPackageName = useCallback((stereoType: PackageStereoType) => {
     const prefix = stereoType === PackageStereoType.Service ? t("UmlEditor.NewService") : t("UmlEditor.NewPackage");

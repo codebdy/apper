@@ -9,17 +9,17 @@ import { useChangeRelation } from "../hooks/useChangeRelation";
 import { Collapse, Form, Input, Select } from "antd";
 import { useTranslation } from "react-i18next";
 import { MultiLangInput } from "components/MultiLangInput";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../hooks/useMetaId";
 
 const { Panel } = Collapse;
 const { Option } = Select;
 
 export const RelationPanel = (props: { relation: RelationMeta }) => {
   const { relation } = props;
-  const appId = useEdittingAppId();
-  const source = useClass(relation.sourceId, appId);
-  const target = useClass(relation.targetId, appId);
-  const changeRelation = useChangeRelation(appId);
+  const metaId = useMetaId();
+  const source = useClass(relation.sourceId, metaId);
+  const target = useClass(relation.targetId, metaId);
+  const changeRelation = useChangeRelation(metaId);
   const { t } = useTranslation();
 
   const [form] = Form.useForm()

@@ -5,16 +5,16 @@ import { useChangeMethod } from "../../hooks/useChangeMethod";
 import { useGetTypeLabel } from "../../hooks/useGetTypeLabel";
 import { Form } from "antd";
 import { useTranslation } from "react-i18next";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../../hooks/useMetaId";
 import { ScriptInput } from "../ScriptInput/ScriptInput";
 import { MethodFormCommonItems } from "./MethodFormCommonItems";
 
 export const MethodPanel = memo((props: { method: MethodMeta; cls: ClassMeta }) => {
   const { method, cls } = props;
   const [nameError, setNameError] = useState<string>();
-  const appId = useEdittingAppId();
-  const changeMethod = useChangeMethod(appId);
-  const getTypeLabel = useGetTypeLabel(appId);
+  const metaId = useMetaId();
+  const changeMethod = useChangeMethod(metaId);
+  const getTypeLabel = useGetTypeLabel(metaId);
   const { t } = useTranslation();
   const [form] = Form.useForm();
 

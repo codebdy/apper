@@ -3,10 +3,10 @@ import { useMemo, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { SYSTEM_APP_ID } from "consts";
 import { useQueryOne } from "enthooks/hooks/useQueryOne";
-import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState } from "../recoil/atoms";
+import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState } from "../UmlEditor/recoil/atoms";
 import { IApp } from "model";
 import { ID } from "shared";
-import { PackageStereoType } from "../meta";
+import { PackageStereoType } from "../UmlEditor/meta";
 
 const queryGql = gql`
 query ($appId:ID!) {

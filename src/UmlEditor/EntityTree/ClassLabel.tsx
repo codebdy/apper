@@ -10,8 +10,8 @@ import { selectedElementState } from './../recoil/atoms';
 import { Button } from "antd"
 import { DeleteOutlined } from "@ant-design/icons"
 import { useDeleteClass } from "../hooks/useDeleteClass"
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid"
 import { useDnd } from "../GraphCanvas/useDnd"
+import { useMetaId } from "../hooks/useMetaId"
 
 
 const ClassLabel = memo((
@@ -22,10 +22,10 @@ const ClassLabel = memo((
 ) => {
   const { cls, graph } = props;
   const dnd = useDnd(graph)
-  const appId = useEdittingAppId();
-  //const classes = useRecoilValue(classesState(appId));
-  const selectedElement = useRecoilValue(selectedElementState(appId));
-  const deleteClass = useDeleteClass(appId);
+  const metaId = useMetaId();
+  //const classes = useRecoilValue(classesState(metaId));
+  const selectedElement = useRecoilValue(selectedElementState(metaId));
+  const deleteClass = useDeleteClass(metaId);
 
   // useEffect(() => {
   //   const theDnd = graph

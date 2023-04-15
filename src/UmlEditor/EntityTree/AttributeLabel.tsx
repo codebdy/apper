@@ -9,7 +9,7 @@ import { DeleteOutlined } from "@ant-design/icons"
 import { AttributeMeta } from './../meta/AttributeMeta';
 import { useDeleteAttribute } from "../hooks/useDeleteAttribute";
 import { CONST_ID } from "../meta/Meta";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "UmlEditor/hooks/useMetaId";
 
 const AttributeLabel = memo((
   props: {
@@ -17,9 +17,9 @@ const AttributeLabel = memo((
   }
 ) => {
   const { attr } = props;
-  const appId = useEdittingAppId();
-  const selectedElement = useRecoilValue(selectedElementState(appId));
-  const removeAttribute = useDeleteAttribute(appId);
+  const metaId = useMetaId();
+  const selectedElement = useRecoilValue(selectedElementState(metaId));
+  const removeAttribute = useDeleteAttribute(metaId);
 
   const handleDelete = useCallback((event: React.MouseEvent) => {
     event.stopPropagation();

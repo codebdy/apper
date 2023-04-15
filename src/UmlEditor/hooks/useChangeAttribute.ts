@@ -6,9 +6,9 @@ import { useCheckClassPropertyName } from "./useCheckClassPropertyName";
 import { ID } from "shared";
 import { useTranslation } from "react-i18next";
 
-export function useChangeAttribute(appId: ID) {
-  const changeEntity = useChangeClass(appId);
-  const chackName = useCheckClassPropertyName(appId);
+export function useChangeAttribute(metaId: ID) {
+  const changeEntity = useChangeClass(metaId);
+  const chackName = useCheckClassPropertyName(metaId);
   const { t } = useTranslation();
   
   const changeAttribute = useCallback(

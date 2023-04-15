@@ -11,22 +11,22 @@ import { useHideClassFromDiagram } from "../hooks/useHideClassFromDiagram";
 import { selectedElementState } from "../recoil/atoms";
 import { ClassEvent, IClassEventData } from "./ClassView";
 
-export function useClassAction(graph: Graph | undefined, appId: ID) {
-  const getClass = useGetClass(appId);
+export function useClassAction(graph: Graph | undefined, metaId: ID) {
+  const getClass = useGetClass(metaId);
   const setSelectedElement = useSetRecoilState(
-    selectedElementState(appId)
+    selectedElementState(metaId)
   );
-  const changeClass = useChangeClass(appId);
-  const createAttribute = useCreateClassAttribute(appId);
-  const createMethod = useCreateClassMethod(appId);
+  const changeClass = useChangeClass(metaId);
+  const createAttribute = useCreateClassAttribute(metaId);
+  const createMethod = useCreateClassMethod(metaId);
 
   const getClassRef = useRef(getClass);
   getClassRef.current = getClass;
-  const hideClass = useHideClassFromDiagram(appId);
+  const hideClass = useHideClassFromDiagram(metaId);
   const hideClassRef = useRef(hideClass);
   hideClassRef.current = hideClass;
 
-  const deleteClass = useDeleteClass(appId);
+  const deleteClass = useDeleteClass(metaId);
   const deleteClassRef = useRef(deleteClass);
   deleteClassRef.current = deleteClass;
 

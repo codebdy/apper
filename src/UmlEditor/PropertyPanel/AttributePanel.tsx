@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { AttributeTypeInput } from "./AttributeTypeInput";
 import { MultiLangInput } from "components/MultiLangInput";
 import { isStr } from "@formily/shared";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../hooks/useMetaId";
 
 export const AttributePanel = (props: {
   attribute: AttributeMeta;
@@ -18,9 +18,9 @@ export const AttributePanel = (props: {
 }) => {
   const { attribute, cls } = props;
   const [nameError, setNameError] = useState<string>();
-  const appId = useEdittingAppId();
-  const changeAttribute = useChangeAttribute(appId);
-  const getTypeLabel = useGetTypeLabel(appId);
+  const metaId = useMetaId();
+  const changeAttribute = useChangeAttribute(metaId);
+  const getTypeLabel = useGetTypeLabel(metaId);
   const { t } = useTranslation();
   const [form] = Form.useForm()
 

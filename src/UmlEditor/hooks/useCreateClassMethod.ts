@@ -4,9 +4,9 @@ import { ClassMeta } from "../meta/ClassMeta";
 import { useChangeClass } from "./useChangeClass";
 import { useCreateMethod } from "./useCreateMethod";
 
-export function useCreateClassMethod(appId: ID) {
-  const changeClass = useChangeClass(appId);
-  const createMethod = useCreateMethod(appId);
+export function useCreateClassMethod(metaId: ID) {
+  const changeClass = useChangeClass(metaId);
+  const createMethod = useCreateMethod(metaId);
   const createClassMethod = useCallback(
     (cls: ClassMeta) => {
       const method = createMethod(cls.methods);

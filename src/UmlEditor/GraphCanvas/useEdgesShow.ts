@@ -20,12 +20,12 @@ import { ID } from "shared";
 import { GlobalToken } from "antd/es/theme/interface";
 import { useToken } from "antd/es/theme/internal";
 
-export function useEdgesShow(graph: Graph | undefined, appId: ID) {
-  const selectedDiagram = useRecoilValue(selectedUmlDiagramState(appId));
-  const selectedElement = useRecoilValue(selectedElementState(appId));
-  const drawingLine = useRecoilValue(drawingLineState(appId));
+export function useEdgesShow(graph: Graph | undefined, metaId: ID) {
+  const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
+  const selectedElement = useRecoilValue(selectedElementState(metaId));
+  const drawingLine = useRecoilValue(drawingLineState(metaId));
   const [, token] = useToken();
-  const edges = useDiagramEdges(selectedDiagram || "", appId);
+  const edges = useDiagramEdges(selectedDiagram || "", metaId);
 
   useEffect(() => {
     edges?.forEach((edgeMeta) => {

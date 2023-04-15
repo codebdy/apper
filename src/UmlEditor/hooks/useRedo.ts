@@ -16,23 +16,23 @@ import {
   packagesState,
 } from "../recoil/atoms";
 
-export function useRedo(appId: ID) {
-  const setUndoList = useSetRecoilState(undoListState(appId));
-  const [redoList, setRedoList] = useRecoilState(redoListState(appId));
-  const [packages, setPackages] = useRecoilState(packagesState(appId))
-  const [diagrams, setDiagrams] = useRecoilState(diagramsState(appId));
-  const [entities, setEntities] = useRecoilState(classesState(appId));
-  const [relations, setRelations] = useRecoilState(relationsState(appId));
-  const [x6Nodes, setX6Nodes] = useRecoilState(x6NodesState(appId));
-  const [x6Edges, setX6Edges] = useRecoilState(x6EdgesState(appId));
-  const setChanged = useSetRecoilState(changedState(appId));
+export function useRedo(metaId: ID) {
+  const setUndoList = useSetRecoilState(undoListState(metaId));
+  const [redoList, setRedoList] = useRecoilState(redoListState(metaId));
+  const [packages, setPackages] = useRecoilState(packagesState(metaId))
+  const [diagrams, setDiagrams] = useRecoilState(diagramsState(metaId));
+  const [entities, setEntities] = useRecoilState(classesState(metaId));
+  const [relations, setRelations] = useRecoilState(relationsState(metaId));
+  const [x6Nodes, setX6Nodes] = useRecoilState(x6NodesState(metaId));
+  const [x6Edges, setX6Edges] = useRecoilState(x6EdgesState(metaId));
+  const setChanged = useSetRecoilState(changedState(metaId));
 
   const [selectedDiagram, setSelectedDiagram] = useRecoilState(
-    selectedUmlDiagramState(appId)
+    selectedUmlDiagramState(metaId)
   );
 
   const [selectedElement, setSelectedElement] = useRecoilState(
-    selectedElementState(appId)
+    selectedElementState(metaId)
   );
 
   const undo = useCallback(() => {

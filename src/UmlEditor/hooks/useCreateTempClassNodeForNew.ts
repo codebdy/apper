@@ -8,9 +8,9 @@ import { useRecoilValue } from "recoil";
 import { themeModeState } from "recoil/atoms";
 import { useToken } from "antd/es/theme/internal";
 
-export function useCreateTempClassNodeForNew(appId: ID) {
-  const packageUuid = useSelectedDiagramPackageUuid(appId)
-  const creatNewClassMeta = useCreateNewClass(appId);
+export function useCreateTempClassNodeForNew(metaId: ID) {
+  const packageUuid = useSelectedDiagramPackageUuid(metaId)
+  const creatNewClassMeta = useCreateNewClass(metaId);
   const themeMode = useRecoilValue(themeModeState);
   const [, token] = useToken();
   const createTempClassNodeForNew = useCallback(

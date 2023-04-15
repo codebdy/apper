@@ -8,7 +8,7 @@ import { DiagramMeta } from "../../meta/DiagramMeta";
 import DiagramAction from "./DiagramAction";
 import { useGetPackage } from "../../hooks/useGetPackage";
 import { SYSTEM_APP_ID } from "consts";
-import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
+import { useMetaId } from "../../hooks/useMetaId";
 import { useParseLangMessage } from "plugin-sdk";
 import { DiagramDialog } from "./DiagramDialog";
 import { PackageStereoType } from "UmlEditor/meta";
@@ -23,10 +23,10 @@ const DiagramLabel = memo((
   const [editing, setEditing] = useState(false);
   const [visible, setVisible] = useState(false);
   const p = useParseLangMessage();
-  const appId = useEdittingAppId();
-  const backup = useBackupSnapshot(appId);
-  const setDiagrams = useSetRecoilState(diagramsState(appId));
-  const getPagcage = useGetPackage(appId)
+  const metaId = useMetaId();
+  const backup = useBackupSnapshot(metaId);
+  const setDiagrams = useSetRecoilState(diagramsState(metaId));
+  const getPagcage = useGetPackage(metaId)
 
   useEffect(() => {
     setName(diagram.name)
@@ -53,7 +53,7 @@ const DiagramLabel = memo((
 
   return (
     <TreeNodeLabel
-      fixedAction={visible || (getPagcage(diagram.packageUuid)?.stereoType === PackageStereoType.Service && appId !== SYSTEM_APP_ID)}
+      fixedAction={visible || (getPagcage(diagram.packageUuid)?.stereoType === PackageStereoType.Service && metaId !== SYSTEM_APP_ID)}
       action={
         !editing ?
           <DiagramAction diagram={diagram}

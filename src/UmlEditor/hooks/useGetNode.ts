@@ -3,8 +3,8 @@ import { useRecoilValue } from "recoil";
 import { ID } from "shared";
 import { x6NodesState } from "../recoil/atoms";
 
-export function useGetNode(appId: ID) {
-  const nodes = useRecoilValue(x6NodesState(appId));
+export function useGetNode(metaId: ID) {
+  const nodes = useRecoilValue(x6NodesState(metaId));
 
   const getNode = useCallback(
     (uuid: string, diagramUuid: string) => {
