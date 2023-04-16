@@ -1,6 +1,6 @@
 import { Device } from "@rxdrag/appx-plugin-sdk";
 import { createContext, useContext, useMemo } from "react";
-import { IApp, IAppConfig, IAppDeviceConfig, ILangLocal, IMaterialConfig } from "model";
+import { IApp, IAppConfig, IAppDeviceConfig, ILangLocal} from "model";
 
 
 export interface IDesignerContextParams {
@@ -11,13 +11,13 @@ export interface IDesignerContextParams {
   langLocales: ILangLocal[] | undefined,
   //uploadedPlugins?: IInstalledPlugin[],
   //debugPlugins?: IInstalledPlugin[],
-  materialConfig?: IMaterialConfig,
+  //materialConfig?: IMaterialConfig,
 }
 
 export const DesignerContext = createContext<IDesignerContextParams>({} as any);
 
 export const useDesignerParams = (): IDesignerContextParams => useContext(DesignerContext);
-export const useDesignerAppConfig = (): IAppConfig | undefined => useContext(DesignerContext)?.config;
+export const useDesignerAppConfig = (): IAppConfig | undefined => undefined;//useContext(DesignerContext)?.config;
 
 export const useDesignerViewKey = () => {
   const params = useDesignerParams()

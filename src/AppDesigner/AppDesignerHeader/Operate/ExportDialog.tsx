@@ -3,7 +3,6 @@ import { memo, useCallback, useRef, useState } from "react"
 import { useTranslation } from "react-i18next";
 import { useEdittingAppId } from "AppDesigner/hooks/useEdittingAppUuid";
 import { useShowError } from "AppDesigner/hooks/useShowError";
-import { useQueryVersions } from "enthooks/hooks/useQueryVersions";
 import { useDesignerParams, useParseLangMessage } from "plugin-sdk";
 import { useExportApp } from "enthooks/hooks/useExportApp";
 import { ID } from "shared";
@@ -23,7 +22,7 @@ export const ExportDialog = memo((
   const { t } = useTranslation();
   const p = useParseLangMessage();
   const [form] = Form.useForm<{ snapshotId?: ID }>();
-  const { snapshots, error: queryError } = useQueryVersions(appId, appId)
+  //const { snapshots, error: queryError } = useQueryVersions(appId, appId)
   const [exporting, setExporting] = useState(false);
   const snapshotIdRef = useRef<ID>();
 
@@ -59,7 +58,7 @@ export const ExportDialog = memo((
     }
   });
 
-  useShowError(error || queryError)
+  useShowError(error)
 
   const handleOk = useCallback(() => {
     form.validateFields().then((values: { snapshotId?: ID }) => {
@@ -76,9 +75,9 @@ export const ExportDialog = memo((
 
   const handleValueChange = useCallback((changeValues: any) => {
     if (changeValues?.snapshotId) {
-      form.setFieldValue("description", snapshots?.find(snapshot => snapshot.id === changeValues?.snapshotId)?.description)
+      //form.setFieldValue("description", snapshots?.find(snapshot => snapshot.id === changeValues?.snapshotId)?.description)
     }
-  }, [form, snapshots])
+  }, [])
   return (
     <Modal
       title={t("Designer.Export")}
@@ -107,13 +106,13 @@ export const ExportDialog = memo((
           rules={[{ required: true, message: t("Required") }]}
         >
           <Select >
-            {
+            {/* {
               snapshots?.map(snapshot => {
                 return (
                   <Option key={snapshot.id} value={snapshot.id}>{p(snapshot.version)}</Option>
                 )
               })
-            }
+            } */}
           </Select>
         </Form.Item>
         <Form.Item
