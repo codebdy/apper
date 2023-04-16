@@ -65,7 +65,7 @@ const AppDesignerHeader = memo((props: {
       <div className="app-title" style={{ marginLeft: "4px" }}>{parse(app?.title)}</div>
       <StyleMenu
         mode="horizontal"
-        defaultSelectedKeys={[match?.params?.["*"]?.split("/")?.[0] || AppEntryRouts.AppUis]}
+        defaultSelectedKeys={[match?.params?.["*"]?.split("/")?.[0] || AppEntryRouts.Uml]}
         onSelect={handleSelect}
         items={[
           {
