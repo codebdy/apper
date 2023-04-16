@@ -20,8 +20,8 @@ export const UpsertAppModel = memo((
   const { t } = useTranslation();
 
   const reset = useCallback(() => {
-    form.setFieldsValue({ title: app?.title || "", imageUrl: app?.imageUrl || "" })
-  }, [app?.imageUrl, app?.title, form])
+    form.setFieldsValue({ title: app?.title || "", name: app?.name || "", imageUrl: app?.imageUrl || "" })
+  }, [app?.imageUrl, app?.name, app?.title, form])
 
   useEffect(() => {
     reset();
@@ -68,18 +68,18 @@ export const UpsertAppModel = memo((
         autoComplete="off"
       >
         <Form.Item
+          label={t("AppName")}
+          name="name"
+          rules={[{ required: true, message: t("Required") }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
           label={t("AppTitle")}
           name="title"
           rules={[{ required: true, message: t("Required") }]}
         >
           <MultiLangInput inline title={t("AppTitle")} />
-        </Form.Item>
-        <Form.Item
-          label={t("AppName")}
-          name="name"
-          rules={[{ required: true, message: t("Required") }]}
-        >
-          <Input/>
         </Form.Item>
         < Form.Item
           label={t("Image")}
