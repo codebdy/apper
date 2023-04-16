@@ -27,7 +27,7 @@ import { AppEntryRouts } from 'Studio/AppDesigner/AppDesignerHeader/AppEntryRout
 import { AppFrames } from 'Studio/AppDesigner/AppDesignerHeader/AppFrames';
 import AppUis from 'Studio/AppDesigner/AppDesignerHeader/AppUis';
 import { AppDmn } from 'Studio/AppDesigner/AppDmn';
-import { AppUml } from 'Studio/AppDesigner/AppUml';
+import { AppModel } from 'Studio/AppDesigner/AppModel';
 
 const App = memo(() => {
   return (
@@ -51,7 +51,7 @@ const App = memo(() => {
                     <Route path={AppEntryRouts.AppUis} element={<AppUis />} />
                     <Route path={AppEntryRouts.Bpmn} element={<AppBpmn />} />
                     <Route path={AppEntryRouts.Dmn} element={<AppDmn />} />
-                    <Route path={AppEntryRouts.Uml} element={<AppUml />} />
+                    <Route path={AppEntryRouts.Uml} element={<AppModel />} />
                     <Route path={AppEntryRouts.Api} element={<ApiBoard />} />
                     <Route path={AppEntryRouts.Frame} element={<AppFrames />} />
                     <Route path={AppEntryRouts.Auth} element={<AuthBoard />}>
@@ -61,7 +61,7 @@ const App = memo(() => {
                       <Route path="" element={<MenuAuthBoard />} />
                     </Route>
                     <Route path={AppEntryRouts.Config} element={<AppConfig />}></Route>
-                    <Route path="" element={<AppUml />}></Route>
+                    <Route path="" element={<AppModel />}></Route>
                   </Route>
                 </Route>
                 <Route path="" element={<AppDesignBoard />} >

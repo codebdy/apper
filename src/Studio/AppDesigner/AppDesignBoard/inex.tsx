@@ -1,12 +1,14 @@
 
 import { Layout } from 'antd';
 import React, { memo } from 'react';
-import { Outlet } from 'react-router-dom';
-import { useDesignerParams } from 'plugin-sdk';
+import { Outlet, useParams } from 'react-router-dom';
 import DesignerHeader from "../AppDesignerHeader";
 import styled from 'styled-components';
 import { themeModeState } from 'recoil/atoms';
 import { useRecoilValue } from 'recoil';
+import { useQueryApp } from '../hooks/useQueryApp';
+import { AwesomeSpin } from 'common/AwesomeSpin';
+import { useShowError } from 'hooks/useShowError';
 
 const { Content } = Layout;
 const StyledContent = styled(Content)`
@@ -22,14 +24,20 @@ const StyledLayout = styled(Layout)`
 `
 
 export const AppDesignBoard = memo(() => {
-  const { app } = useDesignerParams();
+  const { appId = "" } = useParams();
+  const { app, loading, error } = useQueryApp(appId)
   const themeMode = useRecoilValue(themeModeState)
+
+  useShowError(error);
+  
   return (
-    <StyledLayout className={themeMode}>
-      <DesignerHeader app={app} />
-      <StyledContent className='app-board-content'>
-        <Outlet />
-      </StyledContent>
-    </StyledLayout>
+    <AwesomeSpin spinning={loading}>
+      <StyledLayout className={themeMode}>
+        <DesignerHeader app={app} />
+        <StyledContent className='app-board-content'>
+          <Outlet />
+        </StyledContent>
+      </StyledLayout>
+    </AwesomeSpin>
   )
 })

@@ -2,7 +2,7 @@ import { UmlEditor } from "UmlEditor"
 import { memo } from "react"
 import SaveActions from "./SaveActions"
 
-export const AppUml = memo(() => {
+export const AppModel = memo(() => {
   return (<UmlEditor
     metaContent={undefined}
     metaId={undefined}
