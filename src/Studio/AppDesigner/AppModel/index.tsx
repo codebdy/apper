@@ -9,7 +9,6 @@ import { AwesomeSpin } from "common/AwesomeSpin";
 export const AppModel = memo(() => {
   const app = useApp();
   const { meta, loading, error } = useQueryOneMeta(app?.metaId);
-
   useShowError(error)
 
   return (

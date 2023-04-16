@@ -13,6 +13,7 @@ query ($appId:ID!){
     id
     name
     title
+    metaId
   }
 }
 `
