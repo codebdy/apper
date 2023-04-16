@@ -15,7 +15,7 @@ import { APP_DESIGN, DESIGN_BOARD } from "consts";
 import { UpsertAppModel } from "./AppModal/UpsertAppModel";
 import { useTranslation } from "react-i18next";
 import { useRemoveApp } from "hooks/useRemoveApp";
-import { useShowError } from "AppDesigner/hooks/useShowError";
+import { useShowError } from "hooks/useShowError";
 
 const { Meta } = Card;
 

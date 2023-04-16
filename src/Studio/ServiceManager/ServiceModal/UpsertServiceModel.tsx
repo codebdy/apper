@@ -1,4 +1,4 @@
-import { useShowError } from "AppDesigner/hooks/useShowError";
+import { useShowError } from "hooks/useShowError";
 import { Form, Input, message, Modal } from "antd"
 import ImageUploader from "components/ImageUploader";
 import { MultiLangInput } from "components/MultiLangInput";

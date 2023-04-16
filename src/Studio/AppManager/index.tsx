@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { AppManagerHeader } from "./AppManagerHeader"
 import { AppCard } from "./AppCard"
 import { useQueryApps } from "hooks/useQueryApps"
-import { useShowError } from "AppDesigner/hooks/useShowError"
+import { useShowError } from "hooks/useShowError"
 import { AwesomeSpin } from "common/AwesomeSpin"
 
 const Container = styled.div`

@@ -4,7 +4,7 @@ import SaveActions from "./SaveActions"
 import { useService } from "../contexts"
 import { useQueryOneMeta } from "hooks/useQueryOneMeta"
 import { AwesomeSpin } from "common/AwesomeSpin"
-import { useShowError } from "AppDesigner/hooks/useShowError"
+import { useShowError } from "hooks/useShowError"
 
 export const ServiceModel = memo(() => {
   const service = useService();

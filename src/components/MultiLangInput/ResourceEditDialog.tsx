@@ -3,11 +3,11 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
 import { useDesignerAppConfig, useDesignerParams } from "plugin-sdk/contexts/desinger";
-import { useUpsertLangLocal } from "AppDesigner/hooks/useUpsertLangLocal";
-import { useShowError } from "AppDesigner/hooks/useShowError";
+import { useShowError } from "hooks/useShowError";
 import { LANG_INLINE_PREFIX, LANG_RESOURCE_PREFIX } from "plugin-sdk/hooks/useParseLangMessage";
 import { ID } from "shared";
 import { ILangLocal } from "model";
+import { useUpsertLangLocal } from "Studio/AppDesigner/hooks/useUpsertLangLocal";
 
 export enum MultilangType {
   Inline = "Inline",

@@ -4,7 +4,7 @@ import { ServiceDesignerHeader } from "./ServiceDesignerHeader";
 import { Outlet, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useQueryOneService } from "hooks/useQueryOneService";
-import { useShowError } from "AppDesigner/hooks/useShowError";
+import { useShowError } from "hooks/useShowError";
 import { ServiceContext } from "./contexts";
 import { useRecoilValue } from "recoil";
 import { themeModeState } from "recoil/atoms";

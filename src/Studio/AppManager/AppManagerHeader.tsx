@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { useTranslation } from "react-i18next";
 import { useImportApp } from "enthooks/hooks/useImportApp";
 import { useOpenFile } from "../../hooks/useAppOpenFile";
-import { useShowError } from "AppDesigner/hooks/useShowError";
+import { useShowError } from "hooks/useShowError";
 import { CreateAppDialog } from "./AppModal/CreateAppDialog";
 
 const Container = styled.div`

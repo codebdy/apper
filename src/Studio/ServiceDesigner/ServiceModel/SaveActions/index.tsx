@@ -3,7 +3,7 @@ import React, { useCallback } from "react";
 import { memo } from "react";
 import { useRecoilState } from "recoil";
 import PublishButton from "./PublishButton";
-import { useShowError } from "AppDesigner/hooks/useShowError";
+import { useShowError } from "hooks/useShowError";
 import { useTranslation } from "react-i18next";
 import { SaveOutlined } from "@ant-design/icons";
 import { IService } from "model";

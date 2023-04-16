@@ -1,33 +1,33 @@
 import { memo } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Login from './Login';
-import AppDesigner from './AppDesigner/index';
 import Install from './Install';
 import { APP_DESIGN, DESIGNER_TOKEN_NAME, DESIGN_BOARD, INDEX_URL, INSTALL_URL, LOGIN_URL, SERVER_URL, SERVICE_DESIGN } from './consts';
 import { LoggedInPanel } from './Login/LoggedInPanel';
-import { AppBpmn } from './AppDesigner/AppBpmn';
-import { AppDmn } from './AppDesigner/AppDmn';
-import AppConfig from './AppDesigner/AppConfig';
-import ApiBoard from './AppDesigner/ApiBoard';
-import { AuthBoard, AuthRoutes } from './AppDesigner/AppAuth';
-import { MenuAuthBoard } from './AppDesigner/AppAuth/MenuAuthBoard';
-import { ModelAuthBoard } from './AppDesigner/AppAuth/ModelAuthBoard';
-import { PageAuthBoard } from './AppDesigner/AppAuth/PageAuthBoard';
 import { EntiRoot } from './enthooks';
-import { AppDesignBoard } from './AppDesigner/AppDesignBoard/inex';
 import { Studio } from 'Studio';
 import { DashboardRoutes } from 'Studio/Routes';
 import { AppManager } from 'Studio/AppManager';
 import { ServiceManager } from 'Studio/ServiceManager';
-import { AppEntryRouts } from 'AppDesigner/AppDesignerHeader/AppEntryRouts';
-import { AppFrames } from 'AppDesigner/AppDesignerHeader/AppFrames';
-import AppUis from 'AppDesigner/AppDesignerHeader/AppUis';
 import { ConfigRoot } from 'common/ConfigRoot';
 import { StyledThemeRoot } from 'common/StyledThemeRoot';
-import { AppUml } from 'AppDesigner/AppUml';
 import { ServiceDesigner } from 'Studio/ServiceDesigner';
 import { ServiceRoutes } from 'Studio/ServiceDesigner/Routes';
 import { ServiceModel } from 'Studio/ServiceDesigner/ServiceModel';
+import AppDesigner from 'Studio/AppDesigner';
+import ApiBoard from 'Studio/AppDesigner/ApiBoard';
+import { AuthBoard, AuthRoutes } from 'Studio/AppDesigner/AppAuth';
+import { MenuAuthBoard } from 'Studio/AppDesigner/AppAuth/MenuAuthBoard';
+import { ModelAuthBoard } from 'Studio/AppDesigner/AppAuth/ModelAuthBoard';
+import { PageAuthBoard } from 'Studio/AppDesigner/AppAuth/PageAuthBoard';
+import { AppBpmn } from 'Studio/AppDesigner/AppBpmn';
+import AppConfig from 'Studio/AppDesigner/AppConfig';
+import { AppDesignBoard } from 'Studio/AppDesigner/AppDesignBoard/inex';
+import { AppEntryRouts } from 'Studio/AppDesigner/AppDesignerHeader/AppEntryRouts';
+import { AppFrames } from 'Studio/AppDesigner/AppDesignerHeader/AppFrames';
+import AppUis from 'Studio/AppDesigner/AppDesignerHeader/AppUis';
+import { AppDmn } from 'Studio/AppDesigner/AppDmn';
+import { AppUml } from 'Studio/AppDesigner/AppUml';
 
 const App = memo(() => {
   return (

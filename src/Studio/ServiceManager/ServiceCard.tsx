@@ -12,7 +12,7 @@ import { UpsertServiceModel } from "./ServiceModal/UpsertServiceModel";
 import { useTranslation } from "react-i18next";
 import { IService } from "model/service";
 import { useRemoveService } from "hooks/useRemoveService";
-import { useShowError } from "AppDesigner/hooks/useShowError";
+import { useShowError } from "hooks/useShowError";
 
 const { Meta } = Card;
 

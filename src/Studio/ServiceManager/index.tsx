@@ -1,4 +1,4 @@
-import { useShowError } from "AppDesigner/hooks/useShowError"
+import { useShowError } from "hooks/useShowError"
 import { Col, Row } from "antd"
 import { AwesomeSpin } from "common/AwesomeSpin"
 import { useQueryServices } from "hooks/useQueryServices"
