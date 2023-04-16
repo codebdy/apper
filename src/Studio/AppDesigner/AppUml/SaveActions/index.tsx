@@ -12,11 +12,11 @@ import { useUpsertApp } from "hooks/useUpsertApp";
 import { changedState } from "UmlEditor/recoil/atoms";
 import { useGetMeta } from "UmlEditor/hooks/useGetMeta";
 import { useValidate } from "UmlEditor/hooks/useValidate";
+import { useMetaId } from "UmlEditor/hooks/useMetaId";
 
 const SaveActions = memo((props: {
-  metaId: ID
 }) => {
-  const { metaId } = props;
+  const metaId = useMetaId();
   const [changed, setChanged] = useRecoilState(changedState(metaId));
   const getMeta = useGetMeta(metaId);
   const { t } = useTranslation();
