@@ -23,7 +23,7 @@ const SaveActions = memo((props: {
   const [changed, setChanged] = useRecoilState(changedState(metaId));
   const getMeta = useGetMeta(metaId);
   const { t } = useTranslation();
-  const [saveService, { loading: appSaving, error: serviceError }] = useUpsertApp({
+  const [saveApp, { loading: appSaving, error: serviceError }] = useUpsertApp({
     onCompleted(data: IApp) {
       message.success(t("OperateSuccess"));
       setChanged(false);
@@ -36,7 +36,7 @@ const SaveActions = memo((props: {
         message.success(t("OperateSuccess"));
         setChanged(false);
       } else {
-        saveService({ id: app?.id, metaId: data.id })
+        saveApp({ id: app?.id, metaId: data.id })
       }
     }
   })

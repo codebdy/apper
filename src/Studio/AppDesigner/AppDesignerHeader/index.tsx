@@ -3,7 +3,6 @@ import { Button, Divider, Menu, Space } from "antd"
 import { useCallback } from "react"
 import { memo } from "react"
 import { useMatch, useNavigate } from "react-router-dom"
-import { IApp } from "model"
 import { AppEntryRouts } from "./AppEntryRouts"
 import { useTranslation } from "react-i18next"
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage"
@@ -16,6 +15,7 @@ import AvatarMenu from "components/AvatarMenu"
 import SelectLang from "components/LangSelect"
 import { ThemeSwitchButton } from "common/ThemeSwitchButton"
 import { useEdittingAppId } from "../hooks/useEdittingAppUuid"
+import { useApp } from "../contexts"
 
 const StyledHeader = styled.div`
   display: flex;
@@ -39,10 +39,8 @@ const StyleMenu = styled(Menu)`
   margin-left: 100px;
 `
 
-const AppDesignerHeader = memo((props: {
-  app?: IApp,
-}) => {
-  const { app } = props;
+const AppDesignerHeader = memo(() => {
+  const app = useApp();
   const navigate = useNavigate()
   const handleBack = useCallback(() => {
     navigate("/")

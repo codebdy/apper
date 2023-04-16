@@ -9,6 +9,7 @@ import { useRecoilValue } from 'recoil';
 import { useQueryApp } from '../hooks/useQueryApp';
 import { AwesomeSpin } from 'common/AwesomeSpin';
 import { useShowError } from 'hooks/useShowError';
+import { AppContext } from '../contexts';
 
 const { Content } = Layout;
 const StyledContent = styled(Content)`
@@ -29,15 +30,17 @@ export const AppDesignBoard = memo(() => {
   const themeMode = useRecoilValue(themeModeState)
 
   useShowError(error);
-  
+
   return (
     <AwesomeSpin spinning={loading}>
-      <StyledLayout className={themeMode}>
-        <DesignerHeader app={app} />
-        <StyledContent className='app-board-content'>
-          <Outlet />
-        </StyledContent>
-      </StyledLayout>
+      <AppContext.Provider value = {app}>
+        <StyledLayout className={themeMode}>
+          <DesignerHeader />
+          <StyledContent className='app-board-content'>
+            <Outlet />
+          </StyledContent>
+        </StyledLayout>
+      </AppContext.Provider>
     </AwesomeSpin>
   )
 })
