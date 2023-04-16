@@ -1,7 +1,7 @@
 import { UmlEditor } from "UmlEditor/UmlEditor"
 import { memo } from "react"
 import SaveActions from "./SaveActions"
-import { useService } from "ServiceDesigner/contexts"
+import { useService } from "../contexts"
 import { useQueryOneMeta } from "hooks/useQueryOneMeta"
 import { AwesomeSpin } from "common/AwesomeSpin"
 import { useShowError } from "AppDesigner/hooks/useShowError"

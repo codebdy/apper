@@ -11,6 +11,8 @@ import { Outlet, useMatch, useNavigate } from "react-router-dom"
 import { DashboardRoutes } from "./Routes"
 import { ThemeSwitchButton } from "common/ThemeSwitchButton"
 import SvgIcon from "common/SvgIcon"
+import { themeModeState } from "recoil/atoms"
+import { useRecoilValue } from "recoil"
 
 const Container = styled.div`
   width: 100%;
@@ -46,7 +48,7 @@ const Content = styled.div`
 
 export const Studio = memo(() => {
   const { t } = useTranslation();
-
+  const themeMode = useRecoilValue(themeModeState)
   const navigate = useNavigate();
 
   const match = useMatch(`/*`)
@@ -60,7 +62,7 @@ export const Studio = memo(() => {
   }, [navigate])
 
   return (
-    <Container>
+    <Container className={themeMode}>
       <Toolbar>
         <Logo />
         <StyledDivider type="vertical" />

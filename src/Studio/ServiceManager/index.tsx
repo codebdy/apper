@@ -27,6 +27,7 @@ const StyleCol = styled(Col)`
 
 export const ServiceManager = memo(() => {
   const { services, error, loading } = useQueryServices()
+
   useShowError(error)
   return (
     <AwesomeSpin spinning={loading}>

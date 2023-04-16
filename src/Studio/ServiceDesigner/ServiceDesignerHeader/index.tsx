@@ -10,7 +10,7 @@ import AvatarMenu from "components/AvatarMenu"
 import SelectLang from "components/LangSelect"
 import { ThemeSwitchButton } from "common/ThemeSwitchButton"
 import SvgIcon from "common/SvgIcon"
-import { useService } from "ServiceDesigner/contexts"
+import { useService } from "../contexts"
 
 const StyledHeader = styled.div`
   display: flex;

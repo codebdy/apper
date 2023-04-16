@@ -13,7 +13,7 @@ import { useValidate } from "UmlEditor/hooks/useValidate";
 import { Operate } from "../Operate";
 import { useUpsertMeta } from "hooks/useUpsertMeta";
 import { IMeta } from "model/meta";
-import { useService } from "ServiceDesigner/contexts";
+import { useService } from "../../contexts";
 import { useUpsertService } from "hooks/useUpsertService";
 import { useMetaId } from "UmlEditor/hooks/useMetaId";
 

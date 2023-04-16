@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { useQueryOneService } from "hooks/useQueryOneService";
 import { useShowError } from "AppDesigner/hooks/useShowError";
 import { ServiceContext } from "./contexts";
+import { useRecoilValue } from "recoil";
+import { themeModeState } from "recoil/atoms";
 
 const { Content } = Layout;
 const StyledLayout = styled(Layout)`
@@ -15,13 +17,13 @@ const StyledLayout = styled(Layout)`
 export const ServiceDesigner = memo(() => {
   const { serviceId = "" } = useParams();
   const { service, loading, error } = useQueryOneService(serviceId)
-
+  const themeMode = useRecoilValue(themeModeState)
   useShowError(error);
 
   return (
     <Spin spinning={loading}>
       <ServiceContext.Provider value={service}>
-        <StyledLayout>
+        <StyledLayout className={themeMode}>
           <ServiceDesignerHeader />
           <Content>
             <Outlet />

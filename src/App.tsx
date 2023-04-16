@@ -19,15 +19,15 @@ import { Studio } from 'Studio';
 import { DashboardRoutes } from 'Studio/Routes';
 import { AppManager } from 'Studio/AppManager';
 import { ServiceManager } from 'Studio/ServiceManager';
-import { ServiceDesigner } from 'ServiceDesigner';
 import { AppEntryRouts } from 'AppDesigner/AppDesignerHeader/AppEntryRouts';
 import { AppFrames } from 'AppDesigner/AppDesignerHeader/AppFrames';
 import AppUis from 'AppDesigner/AppDesignerHeader/AppUis';
 import { ConfigRoot } from 'common/ConfigRoot';
 import { StyledThemeRoot } from 'common/StyledThemeRoot';
-import { ServiceRoutes } from 'ServiceDesigner/Routes';
-import { ServiceModel } from 'ServiceDesigner/ServiceModel';
 import { AppUml } from 'AppDesigner/AppUml';
+import { ServiceDesigner } from 'Studio/ServiceDesigner';
+import { ServiceRoutes } from 'Studio/ServiceDesigner/Routes';
+import { ServiceModel } from 'Studio/ServiceDesigner/ServiceModel';
 
 const App = memo(() => {
   return (
