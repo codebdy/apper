@@ -18,7 +18,7 @@ const PublishButton = memo(() => {
 
   const [publish, { loading, error }] = usePublishMeta(metaId, {
     onCompleted() {
-      trigger(EVENT_DATA_POSTED, { entity: "App" })
+      trigger(EVENT_DATA_POSTED, { entity: "Meta" })
       message.success(t("OperateSuccess"));
     },
   });

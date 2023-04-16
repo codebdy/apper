@@ -50,7 +50,6 @@ const SaveActions = memo(() => {
       return;
     }
     const data = getMeta()
-    console.log("哈哈", metaId)
     save({ id: metaId ? metaId : undefined, content: data });
   }, [getMeta, metaId, save, validate]);
 
