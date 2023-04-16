@@ -5,6 +5,8 @@ import { Outlet } from 'react-router-dom';
 import { useDesignerParams } from 'plugin-sdk';
 import DesignerHeader from "../AppDesignerHeader";
 import styled from 'styled-components';
+import { themeModeState } from 'recoil/atoms';
+import { useRecoilValue } from 'recoil';
 
 const { Content } = Layout;
 const StyledContent = styled(Content)`
@@ -21,8 +23,9 @@ const StyledLayout = styled(Layout)`
 
 export const AppDesignBoard = memo(() => {
   const { app } = useDesignerParams();
+  const themeMode = useRecoilValue(themeModeState)
   return (
-    <StyledLayout>
+    <StyledLayout className={themeMode}>
       <DesignerHeader app={app} />
       <StyledContent className='app-board-content'>
         <Outlet />
