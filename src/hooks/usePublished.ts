@@ -12,7 +12,11 @@ export function usePublished() {
       return true;
     }
 
-    if (meta.publishedAt && (dayjs(meta?.updatedAt).diff(dayjs(meta?.publishedAt)) > 0)) {
+    if (!meta.publishedAt) {
+      return false;
+    }
+
+    if (dayjs(meta?.updatedAt).diff(dayjs(meta?.publishedAt)) > 0) {
       return false;
     }
 
