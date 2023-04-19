@@ -1,4 +1,7 @@
 import { EllipsisOutlined } from '@ant-design/icons';
+import { useExportModelJson } from 'UmlEditor/hooks/useExportModelJson';
+import { useImportModelJson } from 'UmlEditor/hooks/useImportModelJson';
+import { useMetaId } from 'UmlEditor/hooks/useMetaId';
 import { Button, Dropdown } from 'antd';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -12,21 +15,19 @@ enum OperateEnum {
 export const Operate = memo(() => {
 
   const { t } = useTranslation();
+  const metaId = useMetaId();
+  const expotJson = useExportModelJson(metaId);
+  const importJson = useImportModelJson(metaId);
 
   const handleMenuClick = useCallback(({ key }: any) => {
 
-    // if (key === OperateEnum.createVaresion) {
+    if (key === OperateEnum.exportJson) {
+      expotJson()
+    } else if (key === OperateEnum.importJson) {
+      importJson()
+    } 
 
-    // } else if (key === OperateEnum.export) {
-
-    // } else if (key === OperateEnum.import) {
-
-    // } else if (key === OperateEnum.publish) {
-
-    //}
-  }, [])
-
-
+  }, [expotJson, importJson])
 
   return (
     <>
