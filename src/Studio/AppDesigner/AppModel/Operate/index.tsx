@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 enum OperateEnum {
   exportJson = "exportJson",
   importJson = "importJson",
-  generateScaffold = "GenerateScaffold"
 }
 
 export const Operate = memo(() => {
@@ -40,10 +39,6 @@ export const Operate = memo(() => {
           {
             key: OperateEnum.importJson,
             label: t("Designer.ImportJson"),
-          },
-          {
-            key: OperateEnum.generateScaffold,
-            label: t("Designer.GenerateScaffold"),
           },
         ]
       }} trigger={["click"]}>

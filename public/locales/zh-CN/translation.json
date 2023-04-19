@@ -169,6 +169,7 @@
     "SelecteMessage": "已选择 {{count}} 项",
     "TemplateTypeError": "模板类型错误",
     "ExportJson": "导出JSON",
+    "ImportJson": "导入JSON",
     "GenerateScaffold": "生成脚手架"
   },
   "Plugins": {

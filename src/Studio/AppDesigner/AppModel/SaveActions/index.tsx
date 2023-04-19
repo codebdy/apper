@@ -15,6 +15,7 @@ import { useMetaId } from "UmlEditor/hooks/useMetaId";
 import { useApp } from "../../contexts";
 import { useUpsertMeta } from "hooks/useUpsertMeta";
 import { IMeta } from "model/meta";
+import { Operate } from "../Operate";
 
 const SaveActions = memo((props: {
 }) => {
@@ -59,12 +60,13 @@ const SaveActions = memo((props: {
         type="primary"
         disabled={!changed}
         icon={<SaveOutlined />}
-        loading={loading||appSaving}
+        loading={loading || appSaving}
         onClick={handleSave}
       >
         {t("Save")}
       </Button>
       <PublishButton />
+      <Operate />
     </Space>
   )
 })
