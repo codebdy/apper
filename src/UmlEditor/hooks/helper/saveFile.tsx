@@ -1,5 +1,3 @@
-import { getHandle, setHandle } from "./FileHandlers";
-
 export const pickerTypes = [
   {
     accept: {
@@ -10,10 +8,10 @@ export const pickerTypes = [
 
 
 export async function saveFile(name: string, content: string) {
-  const handle = getHandle();
+  //const handle = getHandle();
   // create a new handle
   try{
-    const newHandle =  handle || await (window as any).showSaveFilePicker({
+    const newHandle =  await (window as any).showSaveFilePicker({
       suggestedName: name + ".json",
       types: pickerTypes,
     });
@@ -27,7 +25,7 @@ export async function saveFile(name: string, content: string) {
     // close the file and write the contents to disk.
     await writableStream.close();
 
-    setHandle(newHandle);    
+    //setHandle(newHandle);    
 
     return newHandle.name;
   }
