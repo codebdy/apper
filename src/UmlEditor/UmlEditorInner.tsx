@@ -1,9 +1,9 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { EntityTree } from "./EntityTree";
 import { Graph } from "@antv/x6";
 import "@antv/x6-react-shape";
 import { ModelBoard } from "common/ModelBoard";
-import { editorOptionsState, metaIdState, minMapState, selectedScriptLogicIdState, selectedUmlDiagramState } from "./recoil/atoms";
+import { editorOptionsState, metaIdState, minMapState, selectedUmlDiagramState } from "./recoil/atoms";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Toolbox } from "./Toolbox";
 import { UmlToolbar } from "./UmlToolbar";
@@ -12,6 +12,9 @@ import { PropertyPanel } from "./PropertyPanel";
 import styled from "styled-components";
 import { MetaContent } from "./meta";
 import { useParesMeta } from "./hooks/useParesMeta";
+import Editor from "@monaco-editor/react"
+import { themeModeState } from "recoil/atoms";
+import { useSelectedScriptLogic } from "./hooks/useSelectedScriptLogic";
 
 const MapContianer = styled.div`
   position: absolute;
@@ -51,7 +54,8 @@ export const UmlEditorInner = memo((
   useParesMeta(metaContent, metaId);
   const minMap = useRecoilValue(minMapState(metaId));
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
-  const selectedScriptId = useRecoilValue(selectedScriptLogicIdState(metaId));
+  const selectedScript = useSelectedScriptLogic();
+  const themeMode = useRecoilValue(themeModeState);
 
   useEffect(() => {
     setMetaId(metaId)
@@ -60,6 +64,10 @@ export const UmlEditorInner = memo((
   useEffect(() => {
     setEditorOptions(options)
   }, [options, setEditorOptions, setMetaId])
+
+  const handleCodeChange = useCallback(() => {
+
+  }, [])
 
   return (
     <ModelBoard
@@ -92,9 +100,13 @@ export const UmlEditorInner = memo((
         </div>
       }
       {
-        selectedScriptId &&<div>
-          
-        </div>
+        selectedScript && <Editor
+          height="100%"
+          language="javascript"
+          theme={themeMode === "dark" ? "vs-dark" : "vs-light"}
+          value={selectedScript.logicScript || ""}
+          onChange={handleCodeChange}
+        />
       }
     </ModelBoard>
   );
