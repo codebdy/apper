@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useBackupSnapshot } from "./useBackupSnapshot";
-import { graphLogicsState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../recoil/atoms";
+import { graphLogicsState, selectedElementState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../recoil/atoms";
 import { useSetRecoilState } from "recoil";
 import { useGetGraphLogicByName } from "./useGetGraphLogicByName";
 import { MethodMeta, MethodOperateType, Types } from "../meta";
@@ -15,7 +15,7 @@ export function useCreateNewGraphLogic(metaId: ID) {
   const setSelectedDiagram = useSetRecoilState(
     selectedUmlDiagramState(metaId)
   );
-
+  const setSelectedElement = useSetRecoilState(selectedElementState(metaId));
 
   const getNewName = useCallback(() => {
     const prefix = "newGraphLogic";
@@ -42,7 +42,8 @@ export function useCreateNewGraphLogic(metaId: ID) {
     setSelectedGraphLogicId(newGraphLogic.uuid);
     setSelectedDiagram(undefined);
     setSelectedScriptLogicId(undefined);
-  }, [backup, getNewName, setMetaLogics, setSelectedGraphLogicId, setSelectedDiagram, setSelectedScriptLogicId]);
+    setSelectedElement(undefined);
+  }, [backup, getNewName, setMetaLogics, setSelectedGraphLogicId, setSelectedDiagram, setSelectedScriptLogicId, setSelectedElement]);
 
   return createNewGraphLogic;
 }

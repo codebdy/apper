@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useBackupSnapshot } from "./useBackupSnapshot";
-import { scriptLogicsState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../recoil/atoms";
+import { scriptLogicsState, selectedElementState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../recoil/atoms";
 import { useSetRecoilState } from "recoil";
 import { useGetScriptLogicByName } from "./useGetScriptLogicByName";
 import { MethodMeta, MethodOperateType, Types } from "../meta";
@@ -15,7 +15,7 @@ export function useCreateNewScriptLogic(metaId: ID) {
   const setSelectedDiagram = useSetRecoilState(
     selectedUmlDiagramState(metaId)
   );
-
+  const setSelectedElement = useSetRecoilState(selectedElementState(metaId));
 
   const getNewName = useCallback(() => {
     const prefix = "newScript";
@@ -42,7 +42,8 @@ export function useCreateNewScriptLogic(metaId: ID) {
     setSelectedScriptLogicId(newScriptLogic.uuid);
     setSelectedGraphLogicId(undefined);
     setSelectedDiagram(undefined);
-  }, [backup, getNewName, setScriptLogics, setSelectedScriptLogicId, setSelectedGraphLogicId, setSelectedDiagram]);
+    setSelectedElement(undefined);
+  }, [backup, getNewName, setScriptLogics, setSelectedScriptLogicId, setSelectedGraphLogicId, setSelectedDiagram, setSelectedElement]);
 
   return createNewScriptLogic;
 }

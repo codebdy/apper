@@ -296,12 +296,16 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
         setSelecteDiagramId(undefined);
         setSelectedScriptId(uuid);
         setSelectGraphLogicId(undefined);
+        setSelectedElement(undefined);
       } else if (isGraphLogic(uuid)) {
         setSelecteDiagramId(undefined);
         setSelectedScriptId(undefined);
         setSelectGraphLogicId(uuid);
+        setSelectedElement(undefined);
       } else if (isElement(uuid)) {
         setSelectedElement(uuid);
+        setSelectedScriptId(undefined);
+        setSelectGraphLogicId(undefined);
       } else {
         const relationUuid = parseRelationUuid(uuid);
         if (relationUuid) {
