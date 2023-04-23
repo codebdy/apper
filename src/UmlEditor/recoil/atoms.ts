@@ -14,11 +14,15 @@ export interface Snapshot {
   diagrams: DiagramMeta[];
   packages: PackageMeta[];
   classes: ClassMeta[];
+  scriptLogics: MethodMeta[];
+  graphLogics: MethodMeta[];
   relations: RelationMeta[];
   x6Nodes: X6NodeMeta[];
   x6Edges: X6EdgeMeta[];
   selectedElement?: string;
   selectedDiagram?: string;
+  selectedScriptLogic?: string;
+  selectedGraphLogic?: string;
   selectedCode?: string;
 }
 

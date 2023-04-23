@@ -13,17 +13,25 @@ import {
   x6EdgesState,
   x6NodesState,
   packagesState,
+  selectedScriptLogicIdState,
+  selectedGraphLogicIdState,
+  scriptLogicsState,
+  graphLogicsState,
 } from "../recoil/atoms";
 
 export function useBackupSnapshot(metaId: ID) {
   const diagrams = useRecoilValue(diagramsState(metaId));
-  const entities = useRecoilValue(classesState(metaId));
+  const classes = useRecoilValue(classesState(metaId));
   const relations = useRecoilValue(relationsState(metaId));
   const packages = useRecoilValue(packagesState(metaId))
+  const scriptLogics = useRecoilValue(scriptLogicsState(metaId))
+  const graphLogics = useRecoilValue(graphLogicsState(metaId))
   const x6Nodes = useRecoilValue(x6NodesState(metaId));
   const x6Edges = useRecoilValue(x6EdgesState(metaId));
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
   const selectedElement = useRecoilValue(selectedElementState(metaId));
+  const selectedScriptLogic = useRecoilValue(selectedScriptLogicIdState(metaId));
+  const selectedGraphLogic = useRecoilValue(selectedGraphLogicIdState(metaId));
   const setChanged = useSetRecoilState(changedState(metaId));
 
   const setUndoList = useSetRecoilState(undoListState(metaId));
@@ -35,28 +43,20 @@ export function useBackupSnapshot(metaId: ID) {
       {
         packages,
         diagrams,
-        classes: entities,
+        classes,
+        scriptLogics,
+        graphLogics,
         relations,
         x6Nodes,
         x6Edges,
         selectedDiagram,
         selectedElement,
+        selectedScriptLogic,
+        selectedGraphLogic,
       },
     ]);
     setRedoList([]);
-  }, [
-    packages,
-    diagrams,
-    entities,
-    relations,
-    selectedDiagram,
-    selectedElement,
-    setChanged,
-    setRedoList,
-    setUndoList,
-    x6Edges,
-    x6Nodes,
-  ]);
+  }, [setChanged, setUndoList, setRedoList, packages, diagrams, classes, scriptLogics, graphLogics, relations, x6Nodes, x6Edges, selectedDiagram, selectedElement, selectedScriptLogic, selectedGraphLogic]);
 
   return backupSnapshot;
 }

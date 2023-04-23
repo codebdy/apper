@@ -14,6 +14,10 @@ import {
   x6EdgesState,
   x6NodesState,
   packagesState,
+  graphLogicsState,
+  scriptLogicsState,
+  selectedGraphLogicIdState,
+  selectedScriptLogicIdState,
 } from "../recoil/atoms";
 
 export function useRedo(metaId: ID) {
@@ -21,7 +25,9 @@ export function useRedo(metaId: ID) {
   const [redoList, setRedoList] = useRecoilState(redoListState(metaId));
   const [packages, setPackages] = useRecoilState(packagesState(metaId))
   const [diagrams, setDiagrams] = useRecoilState(diagramsState(metaId));
-  const [entities, setEntities] = useRecoilState(classesState(metaId));
+  const [classes, setClasses] = useRecoilState(classesState(metaId));
+  const [scriptLogics, setScriptLogics] = useRecoilState(scriptLogicsState(metaId))
+  const [graphLogics, setGraphLogics] = useRecoilState(graphLogicsState(metaId))
   const [relations, setRelations] = useRecoilState(relationsState(metaId));
   const [x6Nodes, setX6Nodes] = useRecoilState(x6NodesState(metaId));
   const [x6Edges, setX6Edges] = useRecoilState(x6EdgesState(metaId));
@@ -34,7 +40,9 @@ export function useRedo(metaId: ID) {
   const [selectedElement, setSelectedElement] = useRecoilState(
     selectedElementState(metaId)
   );
-
+  const [selectedScriptLogic, setSelectedScriptLogic] = useRecoilState(selectedScriptLogicIdState(metaId));
+  const [selectedGraphLogic, setSelectedGraphLogic] = useRecoilState(selectedGraphLogicIdState(metaId));
+  
   const undo = useCallback(() => {
     const snapshot = redoList[redoList.length - 1];
     setChanged(true);
@@ -43,26 +51,34 @@ export function useRedo(metaId: ID) {
       {
         packages,
         diagrams,
-        classes: entities,
+        classes,
+        scriptLogics,
+        graphLogics,
         relations,
         x6Nodes,
         x6Edges,
         selectedDiagram,
         selectedElement,
+        selectedScriptLogic,
+        selectedGraphLogic
       },
     ]);
     setRedoList((snapshots) => snapshots.slice(0, snapshots.length - 1));
     setPackages(snapshot.packages);
     setDiagrams(snapshot.diagrams);
-    setEntities(snapshot.classes);
+    setClasses(snapshot.classes);
     setRelations(snapshot.relations);
+    setScriptLogics(snapshot.scriptLogics);
+    setGraphLogics(snapshot.graphLogics);
     setX6Nodes(snapshot.x6Nodes);
     setX6Edges(snapshot.x6Edges);
     setSelectedDiagram(snapshot.selectedDiagram);
     setSelectedElement(snapshot.selectedElement);
+    setSelectedScriptLogic(snapshot.selectedScriptLogic);
+    setSelectedGraphLogic(snapshot.selectedGraphLogic);
     triggerCanvasEvent({
       name: EVENT_UNDO_REDO,
     });
-  }, [redoList, setChanged, setUndoList, setRedoList, setPackages, setDiagrams, setEntities, setRelations, setX6Nodes, setX6Edges, setSelectedDiagram, setSelectedElement, packages, diagrams, entities, relations, x6Nodes, x6Edges, selectedDiagram, selectedElement]);
+  }, [redoList, setChanged, setUndoList, setRedoList, setPackages, setDiagrams, setClasses, setRelations, setScriptLogics, setGraphLogics, setX6Nodes, setX6Edges, setSelectedDiagram, setSelectedElement, setSelectedScriptLogic, setSelectedGraphLogic, packages, diagrams, classes, scriptLogics, graphLogics, relations, x6Nodes, x6Edges, selectedDiagram, selectedElement, selectedScriptLogic, selectedGraphLogic]);
   return undo;
 }

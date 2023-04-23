@@ -3,7 +3,7 @@ import { EntityTree } from "./EntityTree";
 import { Graph } from "@antv/x6";
 import "@antv/x6-react-shape";
 import { ModelBoard } from "common/ModelBoard";
-import { editorOptionsState, metaIdState, minMapState, selectedUmlDiagramState } from "./recoil/atoms";
+import { editorOptionsState, metaIdState, minMapState, selectedScriptLogicIdState, selectedUmlDiagramState } from "./recoil/atoms";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Toolbox } from "./Toolbox";
 import { UmlToolbar } from "./UmlToolbar";
@@ -51,6 +51,7 @@ export const UmlEditorInner = memo((
   useParesMeta(metaContent, metaId);
   const minMap = useRecoilValue(minMapState(metaId));
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
+  const selectedScriptId = useRecoilValue(selectedScriptLogicIdState(metaId));
 
   useEffect(() => {
     setMetaId(metaId)
@@ -88,6 +89,11 @@ export const UmlEditorInner = memo((
             }}
             id="mini-map"
           ></MapContianer>
+        </div>
+      }
+      {
+        selectedScriptId &&<div>
+          
         </div>
       }
     </ModelBoard>
