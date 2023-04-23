@@ -15,6 +15,7 @@ import { useParesMeta } from "./hooks/useParesMeta";
 import Editor from "@monaco-editor/react"
 import { themeModeState } from "recoil/atoms";
 import { useSelectedScriptLogic } from "./hooks/useSelectedScriptLogic";
+import { useChangeScriptLogic } from "./hooks/useChangeScriptLogic";
 
 const MapContianer = styled.div`
   position: absolute;
@@ -56,6 +57,7 @@ export const UmlEditorInner = memo((
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
   const selectedScript = useSelectedScriptLogic();
   const themeMode = useRecoilValue(themeModeState);
+  const changeScript = useChangeScriptLogic(metaId);
 
   useEffect(() => {
     setMetaId(metaId)
@@ -65,9 +67,9 @@ export const UmlEditorInner = memo((
     setEditorOptions(options)
   }, [options, setEditorOptions, setMetaId])
 
-  const handleCodeChange = useCallback(() => {
-
-  }, [])
+  const handleCodeChange = useCallback((value?: string) => {
+    selectedScript && changeScript({ ...selectedScript, logicScript: value })
+  }, [changeScript, selectedScript])
 
   return (
     <ModelBoard
