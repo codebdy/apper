@@ -286,7 +286,8 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     }
 
 
-    let apiNodes: { icon: JSX.Element; title: JSX.Element; key: string; }[] = []
+    let apiNodes: { icon: JSX.Element; title: JSX.Element; key: string; }[] = [scriptNode,
+      graphLogicsNode,]
     if (options?.supportCustomizedApi) {
       apiNodes = [{
         icon: <SvgIcon>
@@ -302,8 +303,6 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     }
     return [
       modelNode,
-      scriptNode,
-      graphLogicsNode,
       ...apiNodes,
 
     ]
