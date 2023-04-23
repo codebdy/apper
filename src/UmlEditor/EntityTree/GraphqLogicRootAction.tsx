@@ -3,7 +3,7 @@ import { Dropdown, Button } from "antd";
 import React, { memo, useCallback } from "react"
 import { useTranslation } from "react-i18next";
 
-export const ScriptRootAction = memo(() => {
+export const GraphqLogicRootAction = memo(() => {
 
   const { t } = useTranslation();
 

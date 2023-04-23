@@ -31,6 +31,7 @@ import { ModelRootAction } from "./ModelRootAction";
 import { APIRootAction } from "./APIRootAction";
 import { ScriptRootAction } from "./ScriptRootAction";
 import { CodeOutlined } from "@ant-design/icons";
+import { GraphqLogicRootAction } from "./GraphqLogicRootAction";
 const { DirectoryTree } = Tree;
 
 const Container = styled.div`
@@ -278,7 +279,7 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
       </svg>
     </SvgIcon>,
       title:
-        <TreeNodeLabel fixedAction action={<ScriptRootAction />}>
+        <TreeNodeLabel fixedAction action={<GraphqLogicRootAction />}>
           <div>{t("UmlEditor.GraphLogics")}</div>
         </TreeNodeLabel>,
       key: "2",
