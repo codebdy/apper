@@ -34,6 +34,8 @@ import { CodeOutlined } from "@ant-design/icons";
 import { GraphLogicRootAction } from "./GraphLogicRootAction";
 import { useGetScriptNodes } from "./useGetScriptNodes";
 import { useGetGraphNodes } from "./useGetGraphNodes";
+import { useIsScriptLogic } from "UmlEditor/hooks/useIsScriptLogic";
+import { useIsGraphLogic } from "UmlEditor/hooks/useIsGraphLogic";
 const { DirectoryTree } = Tree;
 
 const Container = styled.div`
@@ -61,9 +63,11 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
   const packages = useRecoilValue(packagesState(metaId));
   const diagrams = useRecoilValue(diagramsState(metaId));
   const classes = useRecoilValue(classesState(metaId));
-  const selectedScriptId = useRecoilValue(selectedScriptLogicIdState(metaId));
-  const selectedGraphqLogicId = useRecoilValue(selectedGraphLogicIdState(metaId));
+  const [selectedScriptId, setSelectedScriptId] = useRecoilState(selectedScriptLogicIdState(metaId));
+  const [selectedGraphLogicId, setSelectGraphLogicId] = useRecoilState(selectedGraphLogicIdState(metaId));
   const isDiagram = useIsDiagram(metaId);
+  const isScriptLogic = useIsScriptLogic(metaId)
+  const isGraphLogic = useIsGraphLogic(metaId)
   const isElement = useIsElement(metaId);
   const parseRelationUuid = useParseRelationUuid(metaId);
   const [selectedDiagramId, setSelecteDiagramId] = useRecoilState(selectedUmlDiagramState(metaId));
@@ -186,9 +190,6 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     const entities = classes.filter(cls => cls.stereoType === StereoType.Entity && cls.packageUuid === pkg.uuid)
     const enums = classes.filter(cls => cls.stereoType === StereoType.Enum && cls.packageUuid === pkg.uuid)
     const valueObjects = classes.filter(cls => cls.stereoType === StereoType.ValueObject && cls.packageUuid === pkg.uuid)
-    const thirdParties = classes.filter(cls => cls.stereoType === StereoType.ThirdParty && cls.packageUuid === pkg.uuid)
-    // const services = classes.filter(cls => cls.stereoType === StereoType.Service && cls.packageUuid === pkg.uuid)
-    // const pgkCodes = codes.filter(code => code.packageUuid === pkg.uuid)
 
     if (abstracts.length > 0) {
       packageChildren.push(getClassCategoryNode(t("UmlEditor.AbstractClass"), pkg.uuid + "abstracts", abstracts))
@@ -201,9 +202,6 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     }
     if (valueObjects.length > 0) {
       packageChildren.push(getClassCategoryNode(t("UmlEditor.ValueClass"), pkg.uuid + "valueObjects", valueObjects))
-    }
-    if (thirdParties.length > 0) {
-      packageChildren.push(getClassCategoryNode(t("UmlEditor.ThirdPartyClass"), pkg.uuid + "thirdParties", thirdParties))
     }
 
     for (const diagram of diagrams.filter(diagram => diagram.packageUuid === pkg.uuid)) {
@@ -292,6 +290,16 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     for (const uuid of keys) {
       if (isDiagram(uuid)) {
         setSelecteDiagramId(uuid);
+        setSelectedScriptId(undefined);
+        setSelectGraphLogicId(undefined);
+      } else if (isScriptLogic(uuid)) {
+        setSelecteDiagramId(undefined);
+        setSelectedScriptId(uuid);
+        setSelectGraphLogicId(undefined);
+      } else if (isGraphLogic(uuid)) {
+        setSelecteDiagramId(undefined);
+        setSelectedScriptId(undefined);
+        setSelectGraphLogicId(uuid);
       } else if (isElement(uuid)) {
         setSelectedElement(uuid);
       } else {
@@ -301,13 +309,13 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
         }
       }
     }
-  }, [isDiagram, isElement, parseRelationUuid, setSelecteDiagramId, setSelectedElement])
+  }, [isDiagram, isElement, isGraphLogic, isScriptLogic, parseRelationUuid, setSelectGraphLogicId, setSelecteDiagramId, setSelectedElement, setSelectedScriptId])
 
   return (
     <Container>
       <StyledDirectoryTree
         defaultExpandedKeys={["0"]}
-        selectedKeys={[selectedScriptId || selectedGraphqLogicId || selectedDiagramId] as any}
+        selectedKeys={[selectedScriptId || selectedGraphLogicId || selectedDiagramId] as any}
         onSelect={handleSelect as any}
         treeData={treeData}
       />

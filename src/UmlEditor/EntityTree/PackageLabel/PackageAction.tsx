@@ -2,7 +2,7 @@ import { MoreOutlined, EditOutlined, DeleteOutlined, FileAddOutlined, PlusSquare
 import { Dropdown, Button } from "antd";
 import { memo, useCallback, useState } from "react"
 import { useSetRecoilState } from 'recoil';
-import { classesState, diagramsState, selectedUmlDiagramState } from "../../recoil/atoms";
+import { classesState, diagramsState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../../recoil/atoms";
 import { PackageMeta } from "../../meta/PackageMeta";
 import { useDeletePackage } from '../../hooks/useDeletePackage';
 import { useCreateNewClass } from "../../hooks/useCreateNewClass";
@@ -34,6 +34,8 @@ const PackageAction = memo((
   const setSelectedDiagram = useSetRecoilState(
     selectedUmlDiagramState(metaId)
   );
+  const setSelectedScriptId = useSetRecoilState(selectedScriptLogicIdState(metaId));
+  const setSelectGraphLogicId = useSetRecoilState(selectedGraphLogicIdState(metaId));
 
   const handleDelete = useCallback(() => {
     deletePackage(pkg.uuid)
@@ -66,12 +68,14 @@ const PackageAction = memo((
     backupSnapshot();
     setDiagrams((diams) => [...diams, diagram]);
     setSelectedDiagram(diagram.uuid);
+    setSelectedScriptId(undefined);
+    setSelectGraphLogicId(undefined);
     setNewDiagram(undefined);
-  }, [backupSnapshot, setDiagrams, setSelectedDiagram]);
+  }, [backupSnapshot, setDiagrams, setSelectGraphLogicId, setSelectedDiagram, setSelectedScriptId]);
 
 
   return (
-    pkg.system?
+    pkg.system ?
       <Button type="text" shape='circle' size='small'>
         <LockOutlined />
       </Button>
