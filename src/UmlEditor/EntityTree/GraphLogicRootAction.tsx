@@ -3,7 +3,7 @@ import { Dropdown, Button } from "antd";
 import React, { memo, useCallback } from "react"
 import { useTranslation } from "react-i18next";
 
-export const GraphqLogicRootAction = memo(() => {
+export const GraphLogicRootAction = memo(() => {
 
   const { t } = useTranslation();
 
@@ -15,14 +15,14 @@ export const GraphqLogicRootAction = memo(() => {
   return (
     <Dropdown menu={{items:[
       {
-        label: t("UmlEditor.AddQuery"),
+        label: t("UmlEditor.AddQueryGraph"),
         key: '12',
         onClick: e => {
           //addOrchestration(MethodOperateType.Query);
         },
       },
       {
-        label: t("UmlEditor.AddMutation"),
+        label: t("UmlEditor.AddMutationGraph"),
         key: '13',
         onClick: e => {
           //addOrchestration(MethodOperateType.Mutation);

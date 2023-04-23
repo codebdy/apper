@@ -1,11 +1,11 @@
 import { useCallback } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { logicScriptsState, selectedScriptLogicIdState } from "../recoil/atoms";
+import { scriptLogicsState, selectedScriptLogicIdState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";
 import { ID } from "shared";
 
 export function useDeleteScriptLogic(metaId: ID) {
-  const setLogicScripts = useSetRecoilState(logicScriptsState(metaId));
+  const setLogicScripts = useSetRecoilState(scriptLogicsState(metaId));
   const [selectedScriptId, setSelectedScriptId] = useRecoilState(selectedScriptLogicIdState(metaId));
 
   const backupSnapshot = useBackupSnapshot(metaId);

@@ -29,9 +29,10 @@ import styled from "styled-components";
 import { useMetaId } from "../hooks/useMetaId";
 import { ModelRootAction } from "./ModelRootAction";
 import { APIRootAction } from "./APIRootAction";
-import { ScriptRootAction } from "./ScriptRootAction";
+import { ScriptLogicRootAction } from "./ScriptLogicRootAction";
 import { CodeOutlined } from "@ant-design/icons";
-import { GraphqLogicRootAction } from "./GraphqLogicRootAction";
+import { GraphLogicRootAction } from "./GraphLogicRootAction";
+import { useGetScriptNodes } from "./useGetScriptNodes";
 const { DirectoryTree } = Tree;
 
 const Container = styled.div`
@@ -68,6 +69,8 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
   const getTargetRelations = useGetTargetRelations(metaId);
   const getClass = useGetClass(metaId);
   const { t } = useTranslation();
+
+  const getScriptLogicNodes = useGetScriptNodes()
 
   const getAttributeNode = useCallback((attr: AttributeMeta) => {
     const color = selectedElement === attr.uuid ? PRIMARY_COLOR : undefined
@@ -143,7 +146,6 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
   }, [getClass, getSourceRelations, getTargetRelations, selectedElement, t])
 
 
-
   const getClassNode = useCallback((cls: ClassMeta) => {
     const children = [];
     if (cls.stereoType !== StereoType.Service) {
@@ -199,13 +201,6 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     if (thirdParties.length > 0) {
       packageChildren.push(getClassCategoryNode(t("UmlEditor.ThirdPartyClass"), pkg.uuid + "thirdParties", thirdParties))
     }
-    // if (services.length > 0) {
-    //   packageChildren.push(getClassCategoryNode(t("UmlEditor.ServiceClass"), pkg.uuid + "services", services))
-    // }
-
-    // if (pgkCodes.length > 0) {
-    //   packageChildren.push(getCodesNode(t("UmlEditor.CustomCode"), pkg.uuid + "codes", pgkCodes))
-    // }
 
     for (const diagram of diagrams.filter(diagram => diagram.packageUuid === pkg.uuid)) {
       packageChildren.push({
@@ -266,11 +261,11 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
     const scriptNode =     {
       icon: <CodeOutlined />,
       title:
-        <TreeNodeLabel fixedAction action={<ScriptRootAction />}>
+        <TreeNodeLabel fixedAction action={<ScriptLogicRootAction />}>
           <div>{t("UmlEditor.LogicScripts")}</div>
         </TreeNodeLabel>,
       key: "1",
-      children: []//getOrchestrationNodes()
+      children: getScriptLogicNodes()
     }
     const graphLogicsNode =     {
       icon: <SvgIcon>
@@ -279,7 +274,7 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
       </svg>
     </SvgIcon>,
       title:
-        <TreeNodeLabel fixedAction action={<GraphqLogicRootAction />}>
+        <TreeNodeLabel fixedAction action={<GraphLogicRootAction />}>
           <div>{t("UmlEditor.GraphLogics")}</div>
         </TreeNodeLabel>,
       key: "2",
@@ -307,7 +302,7 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
       ...apiNodes,
 
     ]
-  }, [getModelPackageNodes, options?.supportCustomizedApi, t]);
+  }, [getModelPackageNodes, getScriptLogicNodes, options?.supportCustomizedApi, t]);
 
   const handleSelect = useCallback((keys: string[]) => {
     for (const uuid of keys) {

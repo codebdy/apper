@@ -1,11 +1,11 @@
 import { useCallback } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { logicGraphsState, selectedGraphLogicIdState } from "../recoil/atoms";
+import { graphLogicsState, selectedGraphLogicIdState } from "../recoil/atoms";
 import { useBackupSnapshot } from "./useBackupSnapshot";
 import { ID } from "shared";
 
 export function useDeleteGraphLogic(metaId: ID) {
-  const setLogicGraphs = useSetRecoilState(logicGraphsState(metaId));
+  const setLogicGraphs = useSetRecoilState(graphLogicsState(metaId));
   const [selectedLogicId, setSelectedLogicId] = useRecoilState(selectedGraphLogicIdState(metaId));
 
   const backupSnapshot = useBackupSnapshot(metaId);

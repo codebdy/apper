@@ -56,13 +56,13 @@ export const classesState = atomFamily<ClassMeta[], string>({
   default: [],
 });
 
-export const logicScriptsState = atomFamily<MethodMeta[], string>({
-  key: "uml.logicScripts",
+export const scriptLogicsState = atomFamily<MethodMeta[], string>({
+  key: "uml.scriptLogics",
   default: [],
 });
 
-export const logicGraphsState = atomFamily<MethodMeta[], string>({
-  key: "uml.logicGraphs",
+export const graphLogicsState = atomFamily<MethodMeta[], string>({
+  key: "uml.graphLogics",
   default: [],
 });
 export const apisState = atomFamily<MethodMeta[], string>({

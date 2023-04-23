@@ -1,6 +1,6 @@
 import { useMetaId } from "UmlEditor/hooks/useMetaId";
 import { MethodMeta, MethodOperateType } from "UmlEditor/meta";
-import { logicScriptsState } from "UmlEditor/recoil/atoms";
+import { scriptLogicsState } from "UmlEditor/recoil/atoms";
 import { DataNode } from "antd/es/tree";
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
@@ -11,7 +11,7 @@ import { ScriptLogicLabel } from "./ScriptLogicLabel";
 export function useGetScriptNodes() {
   const metaId = useMetaId();
   const { t } = useTranslation();
-  const scriptMetas = useRecoilValue(logicScriptsState(metaId))
+  const scriptMetas = useRecoilValue(scriptLogicsState(metaId))
   const getOrchestrationNode = useCallback((scriptMeta: MethodMeta) => {
     return {
       title: <ScriptLogicLabel scriptMeta={scriptMeta} />,
@@ -40,8 +40,8 @@ export function useGetScriptNodes() {
 
   const getScriptNodes = useCallback(() => {
     const scriptChildren: DataNode[] = []
-    const queryNodes = getQueryNodes(t("UmlEditor.Querys"), "querys");
-    const mutationNodes = getMutationNodes(t("UmlEditor.Mutations"), "mutations");
+    const queryNodes = getQueryNodes(t("UmlEditor.QueryScripts"), "querys");
+    const mutationNodes = getMutationNodes(t("UmlEditor.MutationScripts"), "mutations");
 
     if (queryNodes?.children?.length) {
       scriptChildren.push(queryNodes)
