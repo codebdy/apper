@@ -33,6 +33,7 @@ import { ScriptLogicRootAction } from "./ScriptLogicRootAction";
 import { CodeOutlined } from "@ant-design/icons";
 import { GraphLogicRootAction } from "./GraphLogicRootAction";
 import { useGetScriptNodes } from "./useGetScriptNodes";
+import { useGetGraphNodes } from "./useGetGraphNodes";
 const { DirectoryTree } = Tree;
 
 const Container = styled.div`
@@ -71,6 +72,7 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
   const { t } = useTranslation();
 
   const getScriptLogicNodes = useGetScriptNodes()
+  const getMetaLogicNodes = useGetGraphNodes()
 
   const getAttributeNode = useCallback((attr: AttributeMeta) => {
     const color = selectedElement === attr.uuid ? PRIMARY_COLOR : undefined
@@ -278,9 +280,8 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
           <div>{t("UmlEditor.GraphLogics")}</div>
         </TreeNodeLabel>,
       key: "2",
-      children: []//getOrchestrationNodes()
+      children: getMetaLogicNodes()
     }
-
 
     let apiNodes: { icon: JSX.Element; title: JSX.Element; key: string; }[] = [scriptNode,
       graphLogicsNode,]
@@ -302,7 +303,7 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
       ...apiNodes,
 
     ]
-  }, [getModelPackageNodes, getScriptLogicNodes, options?.supportCustomizedApi, t]);
+  }, [getMetaLogicNodes, getModelPackageNodes, getScriptLogicNodes, options?.supportCustomizedApi, t]);
 
   const handleSelect = useCallback((keys: string[]) => {
     for (const uuid of keys) {

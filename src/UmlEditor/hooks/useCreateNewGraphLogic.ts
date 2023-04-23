@@ -1,23 +1,23 @@
 import { useCallback } from "react";
 import { useBackupSnapshot } from "./useBackupSnapshot";
-import { scriptLogicsState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../recoil/atoms";
+import { graphLogicsState, selectedGraphLogicIdState, selectedUmlDiagramState } from "../recoil/atoms";
 import { useSetRecoilState } from "recoil";
-import { useGetScriptLogicByName } from "./useGetScriptLogicByName";
+import { useGetGraphLogicByName } from "./useGetGraphLogicByName";
 import { MethodMeta, MethodOperateType, Types } from "../meta";
 import { ID, createUuid } from "shared";
 
-export function useCreateNewScriptLogic(metaId: ID) {
-  const getByName = useGetScriptLogicByName(metaId);
+export function useCreateNewGraphLogic(metaId: ID) {
+  const getByName = useGetGraphLogicByName(metaId);
   const backup = useBackupSnapshot(metaId);
-  const setScriptLogics = useSetRecoilState(scriptLogicsState(metaId));
-  const setSelectedScriptLogicId = useSetRecoilState(selectedScriptLogicIdState(metaId));
+  const setMetaLogics = useSetRecoilState(graphLogicsState(metaId));
+  const setSelectedGraphLogicId = useSetRecoilState(selectedGraphLogicIdState(metaId));
   const setSelectedDiagram = useSetRecoilState(
     selectedUmlDiagramState(metaId)
   );
 
 
   const getNewName = useCallback(() => {
-    const prefix = "newScript";
+    const prefix = "newGraphLogic";
     let index = 1;
     while (getByName(prefix + index)) {
       index++;
@@ -26,7 +26,7 @@ export function useCreateNewScriptLogic(metaId: ID) {
     return prefix + index;
   }, [getByName]);
 
-  const createNewScriptLogic = useCallback((operateType: MethodOperateType) => {
+  const createNewGraphLogic = useCallback((operateType: MethodOperateType) => {
     backup()
     const newOrchestration: MethodMeta = {
       uuid: createUuid(),
@@ -37,10 +37,10 @@ export function useCreateNewScriptLogic(metaId: ID) {
       args: [],
       typeLabel: "String",
     };
-    setScriptLogics(orchestrations => [...orchestrations, newOrchestration]);
-    setSelectedScriptLogicId(newOrchestration.uuid);
+    setMetaLogics(orchestrations => [...orchestrations, newOrchestration]);
+    setSelectedGraphLogicId(newOrchestration.uuid);
     setSelectedDiagram(undefined);
-  }, [backup, getNewName, setScriptLogics, setSelectedScriptLogicId, setSelectedDiagram]);
+  }, [backup, getNewName, setMetaLogics, setSelectedGraphLogicId, setSelectedDiagram]);
 
-  return createNewScriptLogic;
+  return createNewGraphLogic;
 }

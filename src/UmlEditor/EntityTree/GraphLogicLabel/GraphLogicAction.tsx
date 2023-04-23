@@ -5,18 +5,18 @@ import { MethodMeta } from "UmlEditor/meta";
 import { Button } from "antd";
 import React, { memo, useCallback } from "react"
 
-export const LogicScriptAction = memo((
+export const GraphLogicAction = memo((
   props: {
-    logicScript: MethodMeta,
+    graphLogic: MethodMeta,
   }
 ) => {
-  const { logicScript } = props;
+  const { graphLogic } = props;
   const metaId = useMetaId();
   const deleteOrches = useDeleteScriptLogic(metaId)
 
   const handleDelete = useCallback(() => {
-    deleteOrches(logicScript.uuid)
-  }, [deleteOrches, logicScript.uuid]);
+    deleteOrches(graphLogic.uuid)
+  }, [deleteOrches, graphLogic.uuid]);
 
   return (
     <Button

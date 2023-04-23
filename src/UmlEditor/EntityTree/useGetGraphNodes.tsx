@@ -1,21 +1,21 @@
 import { useMetaId } from "UmlEditor/hooks/useMetaId";
 import { MethodMeta, MethodOperateType } from "UmlEditor/meta";
-import { scriptLogicsState } from "UmlEditor/recoil/atoms";
+import { graphLogicsState } from "UmlEditor/recoil/atoms";
 import { DataNode } from "antd/es/tree";
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
 import { FunctionOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { ScriptLogicLabel } from "./ScriptLogicLabel";
+import { GraphLogicLabel } from "./GraphLogicLabel";
 
-export function useGetScriptNodes() {
+export function useGetGraphNodes() {
   const metaId = useMetaId();
   const { t } = useTranslation();
-  const scriptMetas = useRecoilValue(scriptLogicsState(metaId))
-  const getScriptLogicNode = useCallback((scriptMeta: MethodMeta) => {
+  const graphMetas = useRecoilValue(graphLogicsState(metaId))
+  const getGraphLogicNode = useCallback((graphMeta: MethodMeta) => {
     return {
-      title: <ScriptLogicLabel scriptMeta={scriptMeta} />,
-      key: scriptMeta.uuid,
+      title: <GraphLogicLabel graphLogicMeta={graphMeta} />,
+      key: graphMeta.uuid,
       isLeaf: true,
       icon: <FunctionOutlined />
     }
@@ -26,22 +26,22 @@ export function useGetScriptNodes() {
     return {
       title: title,
       key: key,
-      children: scriptMetas.filter(orches => orches.operateType === MethodOperateType.Query).map(orchestration => getScriptLogicNode(orchestration))
+      children: graphMetas.filter(orches => orches.operateType === MethodOperateType.Query).map(orchestration => getGraphLogicNode(orchestration))
     }
-  }, [getScriptLogicNode, scriptMetas])
+  }, [getGraphLogicNode, graphMetas])
 
   const getMutationNodes = useCallback((title: string, key: string) => {
     return {
       title: title,
       key: key,
-      children: scriptMetas.filter(orches => orches.operateType === MethodOperateType.Mutation).map(orchestration => getScriptLogicNode(orchestration))
+      children: graphMetas.filter(orches => orches.operateType === MethodOperateType.Mutation).map(orchestration => getGraphLogicNode(orchestration))
     }
-  }, [getScriptLogicNode, scriptMetas])
+  }, [getGraphLogicNode, graphMetas])
 
   const getScriptNodes = useCallback(() => {
     const scriptChildren: DataNode[] = []
-    const queryNodes = getQueryNodes(t("UmlEditor.QueryScripts"), "querys");
-    const mutationNodes = getMutationNodes(t("UmlEditor.MutationScripts"), "mutations");
+    const queryNodes = getQueryNodes(t("UmlEditor.QueryGraphs"), "querys");
+    const mutationNodes = getMutationNodes(t("UmlEditor.MutationGraphs"), "mutations");
 
     if (queryNodes?.children?.length) {
       scriptChildren.push(queryNodes)

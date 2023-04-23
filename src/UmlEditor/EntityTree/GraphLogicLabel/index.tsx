@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { memo } from "react";
-import { ScriptLogicAction } from "./ScriptLogicAction";
+import { GraphLogicAction } from "./GraphLogicAction";
 import { MethodMeta } from "UmlEditor/meta";
 import TreeNodeLabel from "common/TreeNodeLabel";
 
-export const ScriptLogicLabel = memo((
+export const GraphLogicLabel = memo((
   props: {
-    scriptMeta: MethodMeta
+    graphLogicMeta: MethodMeta
   }
 ) => {
-  const { scriptMeta } = props;
-  const [name, setName] = useState(scriptMeta.name);
+  const { graphLogicMeta } = props;
+  const [name, setName] = useState(graphLogicMeta.name);
 
   useEffect(() => {
-    setName(scriptMeta.name)
-  }, [scriptMeta])
+    setName(graphLogicMeta.name)
+  }, [graphLogicMeta])
 
 
   return (
     <TreeNodeLabel
       action={
-        <ScriptLogicAction scriptLogic={scriptMeta} />
+        <GraphLogicAction graphLogic={graphLogicMeta} />
       }
     >
       <div>{name}</div>

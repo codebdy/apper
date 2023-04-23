@@ -7,7 +7,7 @@ export function useGetScriptLogicByName(metaId: ID) {
   const scriptLogics = useRecoilValue(scriptLogicsState(metaId));
 
   const getScriptLogicByName = useCallback((name: string) => {
-    return scriptLogics.find((orchestration) => orchestration.name === name);
+    return scriptLogics.find((logic) => logic.name === name);
   }, [scriptLogics]);
 
   return getScriptLogicByName;
