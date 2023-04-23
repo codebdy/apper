@@ -40,8 +40,8 @@ export function useGetGraphNodes() {
 
   const getScriptNodes = useCallback(() => {
     const scriptChildren: DataNode[] = []
-    const queryNodes = getQueryNodes(t("UmlEditor.QueryGraphs"), "querys");
-    const mutationNodes = getMutationNodes(t("UmlEditor.MutationGraphs"), "mutations");
+    const queryNodes = getQueryNodes(t("UmlEditor.QueryGraphs"), "graph-querys");
+    const mutationNodes = getMutationNodes(t("UmlEditor.MutationGraphs"), "graph-mutations");
 
     if (queryNodes?.children?.length) {
       scriptChildren.push(queryNodes)

@@ -40,8 +40,8 @@ export function useGetScriptNodes() {
 
   const getScriptNodes = useCallback(() => {
     const scriptChildren: DataNode[] = []
-    const queryNodes = getQueryNodes(t("UmlEditor.QueryScripts"), "querys");
-    const mutationNodes = getMutationNodes(t("UmlEditor.MutationScripts"), "mutations");
+    const queryNodes = getQueryNodes(t("UmlEditor.QueryScripts"), "script-querys");
+    const mutationNodes = getMutationNodes(t("UmlEditor.MutationScripts"), "scriptmutations");
 
     if (queryNodes?.children?.length) {
       scriptChildren.push(queryNodes)
