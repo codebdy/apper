@@ -35,7 +35,6 @@ export interface MethodMeta {
    */
   name: string;
 
-  label?: string;
   description?: string;
   /**
    * 字段类型
@@ -56,8 +55,7 @@ export interface MethodMeta {
 
   operateType: MethodOperateType;
 
-  //implementType: MethodImplementType;
-  script?: string;
+  logicScript?: string;
 
-  system?: boolean;
+  logicMetas?: any;
 }

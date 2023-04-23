@@ -275,6 +275,8 @@
   },
   "UmlEditor": {
     "DomainModel": "领域模型",
+    "LogicScripts": "业务脚本",
+    "GraphLogics": "业务编排",
     "GraphqlAPIs": "自定义接口",
     "AddPackage": "添加包",
     "ExportModel": "导出模型",

@@ -3,9 +3,9 @@ import React from "react";
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
 import { MultiLangInput } from "components/MultiLangInput";
-import { MethodMeta, MethodOperateType } from "../../meta";
 import { ArgsInput } from "./ArgsInput/ArgsInput";
 import { MethodTypeInput } from "./MethodTypeInput";
+import { MethodMeta, MethodOperateType } from "UmlEditor/meta/MethodMeta";
 
 export const MethodFormCommonItems = memo((
   props: {
