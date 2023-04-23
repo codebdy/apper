@@ -8,6 +8,7 @@ import { LineAction } from "./LineAction";
 import { ID } from "shared";
 import { PackageMeta } from "../meta/PackageMeta";
 import { UmlEditorOptions } from "UmlEditor/UmlEditorInner";
+import { MethodMeta } from "UmlEditor/meta";
 
 export interface Snapshot {
   diagrams: DiagramMeta[];
@@ -55,6 +56,21 @@ export const classesState = atomFamily<ClassMeta[], string>({
   default: [],
 });
 
+export const logicScriptsState = atomFamily<MethodMeta[], string>({
+  key: "uml.logicScripts",
+  default: [],
+});
+
+export const logicGraphsState = atomFamily<MethodMeta[], string>({
+  key: "uml.logicGraphs",
+  default: [],
+});
+export const apisState = atomFamily<MethodMeta[], string>({
+  key: "uml.apis",
+  default: [],
+});
+
+
 export const relationsState = atomFamily<RelationMeta[], string>({
   key: "uml.relations",
   default: [],
@@ -84,6 +100,18 @@ export const selectedElementState = atomFamily<string | undefined, string>({
   key: "uml.selectedElement",
   default: undefined,
 });
+
+export const selectedScriptLogicIdState = atomFamily<string | undefined, string>({
+  key: "uml.selectedScriptLogicId",
+  default: undefined,
+});
+
+export const selectedGraphLogicIdState = atomFamily<string | undefined, string>({
+  key: "uml.selectedGraphLogicId",
+  default: undefined,
+});
+
+
 
 export const selectedUmlDiagramState = atomFamily<string | undefined, string>({
   key: "uml.selectedDiagram",
