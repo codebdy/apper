@@ -28,7 +28,7 @@ export function useCreateNewGraphLogic(metaId: ID) {
 
   const createNewGraphLogic = useCallback((operateType: MethodOperateType) => {
     backup()
-    const newOrchestration: MethodMeta = {
+    const newGraphLogic: MethodMeta = {
       uuid: createUuid(),
       name: getNewName(),
       logicScript: "",
@@ -37,8 +37,8 @@ export function useCreateNewGraphLogic(metaId: ID) {
       args: [],
       typeLabel: "String",
     };
-    setMetaLogics(orchestrations => [...orchestrations, newOrchestration]);
-    setSelectedGraphLogicId(newOrchestration.uuid);
+    setMetaLogics(orchestrations => [...orchestrations, newGraphLogic]);
+    setSelectedGraphLogicId(newGraphLogic.uuid);
     setSelectedDiagram(undefined);
   }, [backup, getNewName, setMetaLogics, setSelectedGraphLogicId, setSelectedDiagram]);
 

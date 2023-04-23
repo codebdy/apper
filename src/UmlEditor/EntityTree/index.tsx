@@ -3,7 +3,7 @@ import { Graph } from "@antv/x6";
 import { Tree } from "antd";
 import SvgIcon from "common/SvgIcon";
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { packagesState, diagramsState, classesState, selectedUmlDiagramState, selectedElementState, editorOptionsState, scriptLogicsState, graphLogicsState } from './../recoil/atoms';
+import { packagesState, diagramsState, classesState, selectedUmlDiagramState, selectedElementState, editorOptionsState, selectedScriptLogicIdState, selectedGraphLogicIdState } from './../recoil/atoms';
 import TreeNodeLabel from "common/TreeNodeLabel";
 import PackageLabel from "./PackageLabel";
 import { PackageMeta } from "../meta/PackageMeta";
@@ -61,8 +61,8 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
   const packages = useRecoilValue(packagesState(metaId));
   const diagrams = useRecoilValue(diagramsState(metaId));
   const classes = useRecoilValue(classesState(metaId));
-  const selectedScriptId = useRecoilValue(scriptLogicsState(metaId));
-  const selectedGraphqLogicId = useRecoilValue(graphLogicsState(metaId));
+  const selectedScriptId = useRecoilValue(selectedScriptLogicIdState(metaId));
+  const selectedGraphqLogicId = useRecoilValue(selectedGraphLogicIdState(metaId));
   const isDiagram = useIsDiagram(metaId);
   const isElement = useIsElement(metaId);
   const parseRelationUuid = useParseRelationUuid(metaId);
@@ -302,7 +302,6 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
       }
     }
   }, [isDiagram, isElement, parseRelationUuid, setSelecteDiagramId, setSelectedElement])
-
 
   return (
     <Container>

@@ -28,7 +28,7 @@ export function useCreateNewScriptLogic(metaId: ID) {
 
   const createNewScriptLogic = useCallback((operateType: MethodOperateType) => {
     backup()
-    const newOrchestration: MethodMeta = {
+    const newScriptLogic: MethodMeta = {
       uuid: createUuid(),
       name: getNewName(),
       logicScript: "",
@@ -37,8 +37,8 @@ export function useCreateNewScriptLogic(metaId: ID) {
       args: [],
       typeLabel: "String",
     };
-    setScriptLogics(orchestrations => [...orchestrations, newOrchestration]);
-    setSelectedScriptLogicId(newOrchestration.uuid);
+    setScriptLogics(orchestrations => [...orchestrations, newScriptLogic]);
+    setSelectedScriptLogicId(newScriptLogic.uuid);
     setSelectedDiagram(undefined);
   }, [backup, getNewName, setScriptLogics, setSelectedScriptLogicId, setSelectedDiagram]);
 
