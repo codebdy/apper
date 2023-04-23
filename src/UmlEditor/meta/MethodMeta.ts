@@ -18,12 +18,6 @@ export enum MethodOperateType {
   Mutation = "mutation"
 }
 
-// export enum MethodImplementType {
-//   Script = "script",
-//   CloudFunction = "cloudFunction",
-//   MicroService = "microService",
-// }
-
 export interface MethodMeta {
   /**
    * 唯一标识
