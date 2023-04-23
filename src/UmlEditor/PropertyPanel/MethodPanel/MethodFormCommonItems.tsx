@@ -28,12 +28,6 @@ export const MethodFormCommonItems = memo((
       </Form.Item>
 
       <Form.Item
-        label={t("Label")}
-        name="label"
-      >
-        <MultiLangInput inline title={t("Label")} />
-      </Form.Item>
-      <Form.Item
         label={t("UmlEditor.OperateType")}
         name="operateType"
       >

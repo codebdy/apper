@@ -5,7 +5,6 @@ import { Form, Input, Select, Switch } from "antd";
 import { useTranslation } from "react-i18next";
 import { MultiLangInput } from "components/MultiLangInput";
 import { useMetaId } from "../hooks/useMetaId";
-import { ScriptInput } from "./ScriptInput/ScriptInput";
 import { useParseLangMessage } from "plugin-sdk";
 import { packagesState } from "../recoil/atoms";
 import { useRecoilValue } from "recoil";
@@ -99,24 +98,6 @@ export const ClassPanel = (props: { cls: ClassMeta }) => {
         {
           cls.stereoType === StereoType.Entity &&
           <>
-            <Form.Item
-              label={t("UmlEditor.OnCreated")}
-              name="onCreated"
-            >
-              <ScriptInput />
-            </Form.Item>
-            <Form.Item
-              label={t("UmlEditor.OnUpdated")}
-              name="onUpdated"
-            >
-              <ScriptInput />
-            </Form.Item>
-            <Form.Item
-              label={t("UmlEditor.OnDeleted")}
-              name="onDeleted"
-            >
-              <ScriptInput />
-            </Form.Item>
             <Form.Item
               label={t("UmlEditor.InnerId")}
               name="innerId"

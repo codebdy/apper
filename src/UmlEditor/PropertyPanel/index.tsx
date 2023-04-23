@@ -11,11 +11,14 @@ import { Empty } from "antd";
 import { useTranslation } from "react-i18next";
 import { PropertyBox } from "common/ModelBoard/PropertyBox";
 import { useMetaId } from "../hooks/useMetaId";
+import { useSelectedScriptLogic } from "UmlEditor/hooks/useSelectedScriptLogic";
+import { ScriptLogicPanel } from "./MethodPanel/ScriptLogicPanel";
 
 export const PropertyPanel = memo(() => {
   const metaId = useMetaId();
   const selectedElement = useRecoilValue(selectedElementState(metaId));
   const selectedEntity = useClass(selectedElement || "", metaId);
+  const selectedScript = useSelectedScriptLogic();
   const { t } = useTranslation();
   const { cls: attributeCls, attribute } = useAttribute(
     selectedElement || "",
@@ -31,7 +34,8 @@ export const PropertyPanel = memo(() => {
         <AttributePanel attribute={attribute} cls={attributeCls} />
       )}
       {relation && <RelationPanel relation={relation} />}
-      {!selectedElement && (
+      {selectedScript && <ScriptLogicPanel scriptLogic={selectedScript} />}
+      {!selectedElement && !selectedScript && (
         <div style={{ padding: "16px" }}>
           <Empty />
         </div>
