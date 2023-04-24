@@ -1,14 +1,11 @@
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button,  Modal } from "antd"
+import { Button, Modal } from "antd"
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { memo } from "react"
 import { useTranslation } from "react-i18next";
 import "./style.less";
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import { SortableContainerProps, SortEnd } from 'react-sortable-hoc';
-import { SortableContainer, SortableElement } from 'react-sortable-hoc';
-import { arrayMoveImmutable } from "array-move";
 import { Type, Types } from "../../../meta/Type";
 import { ArgMeta } from "../../../meta/MethodMeta";
 import { createUuid } from "shared";
@@ -17,12 +14,12 @@ import { useGetTypeLabel } from "../../../hooks/useGetTypeLabel";
 import { useMetaId } from "../../../hooks/useMetaId";
 import { ArgTypeInput } from "./ArgTypeInput";
 
-const SortableItem: any = SortableElement((props: React.HTMLAttributes<HTMLTableRowElement>) => (
-  <tr {...props} />
-));
-const SortableBody: any = SortableContainer((props: React.HTMLAttributes<HTMLTableSectionElement>) => (
-  <tbody {...props} />
-));
+// const SortableItem: any = SortableElement((props: React.HTMLAttributes<HTMLTableRowElement>) => (
+//   <tr {...props} />
+// ));
+// const SortableBody: any = SortableContainer((props: React.HTMLAttributes<HTMLTableSectionElement>) => (
+//   <tbody {...props} />
+// ));
 export const ArgsInput = memo((
   props: {
     value?: ArgMeta[],
@@ -112,30 +109,30 @@ export const ArgsInput = memo((
   ], [handleNameChange, handleRemove, handleTypeChange, t]);
 
 
-  const onSortEnd = ({ oldIndex, newIndex }: SortEnd) => {
-    if (oldIndex !== newIndex) {
-      const newData = arrayMoveImmutable(items.slice(), oldIndex, newIndex).filter(
-        (el: ArgMeta) => !!el,
-      );
-      setItems(newData);
-    }
-  };
+  // const onSortEnd = ({ oldIndex, newIndex }: SortEnd) => {
+  //   if (oldIndex !== newIndex) {
+  //     const newData = arrayMoveImmutable(items.slice(), oldIndex, newIndex).filter(
+  //       (el: ArgMeta) => !!el,
+  //     );
+  //     setItems(newData);
+  //   }
+  // };
 
-  const DraggableContainer = (props: SortableContainerProps) => (
-    <SortableBody
-      useDragHandle
-      disableAutoscroll
-      helperClass="row-dragging"
-      onSortEnd={onSortEnd}
-      {...props}
-    />
-  );
+  // const DraggableContainer = (props: SortableContainerProps) => (
+  //   <SortableBody
+  //     useDragHandle
+  //     disableAutoscroll
+  //     helperClass="row-dragging"
+  //     onSortEnd={onSortEnd}
+  //     {...props}
+  //   />
+  // );
 
-  const DraggableBodyRow: React.FC<any> = ({ className, style, ...restProps }) => {
-    // function findIndex base on Table rowKey props and should always be a right array index
-    const index = items.findIndex(x => x.index === restProps['data-row-key']);
-    return <SortableItem index={index} {...restProps} />;
-  };
+  // const DraggableBodyRow: React.FC<any> = ({ className, style, ...restProps }) => {
+  //   // function findIndex base on Table rowKey props and should always be a right array index
+  //   const index = items.findIndex(x => x.index === restProps['data-row-key']);
+  //   return <SortableItem index={index} {...restProps} />;
+  // };
 
   const handleAdd = useCallback(() => {
     setItems(items => {
@@ -173,6 +170,7 @@ export const ArgsInput = memo((
       </Button>
       <Modal
         className="args-input-modal"
+        forceRender
         title={t("UmlEditor.ConfigArgs")}
         width={700}
         open={open}
@@ -187,12 +185,6 @@ export const ArgsInput = memo((
             dataSource={items}
             columns={columns}
             rowKey="index"
-            components={{
-              body: {
-                wrapper: DraggableContainer,
-                row: DraggableBodyRow,
-              },
-            }}
           />
           <Button
             type="dashed"
