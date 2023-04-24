@@ -1,6 +1,6 @@
 import { AwesomeGraphQLClient, GraphQLRequestError } from "enthooks";
 import { useCallback, useRef, useState } from "react";
-import { HEADER_APPX_APPID, HEADER_AUTHORIZATION, TOKEN_PREFIX } from "consts";
+import { HEADER_LEDA_APPID, HEADER_AUTHORIZATION, TOKEN_PREFIX } from "consts";
 import { useEnthooksAppId, useEndpoint, useToken } from "../context";
 import { useMountRef } from "./useMountRef";
 
@@ -42,7 +42,7 @@ export function useLazyRequest<T>(options?: RequestOptions<any>)
 
       const headers = {
         [HEADER_AUTHORIZATION]: token ? `${TOKEN_PREFIX}${token}` : "",
-        [HEADER_APPX_APPID]: appId,
+        [HEADER_LEDA_APPID]: appId,
       }
 
       const graphQLClient = new AwesomeGraphQLClient({ endpoint })

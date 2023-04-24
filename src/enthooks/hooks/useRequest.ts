@@ -1,6 +1,6 @@
 import { AwesomeGraphQLClient, GraphQLRequestError } from "enthooks";
 import { useEffect, useState } from "react";
-import { HEADER_APPX_APPID, HEADER_AUTHORIZATION, TOKEN_PREFIX } from "consts";
+import { HEADER_LEDA_APPID, HEADER_AUTHORIZATION, TOKEN_PREFIX } from "consts";
 import { useEnthooksAppId, useEndpoint, useToken } from "../context";
 
 
@@ -29,7 +29,7 @@ export function useRequest(gql: string | undefined, params?: { [key: string]: an
         .request(gql, params, {
           headers: {
             [HEADER_AUTHORIZATION]: token ? `${TOKEN_PREFIX}${token}` : "",
-            [HEADER_APPX_APPID]: appId,
+            [HEADER_LEDA_APPID]: appId,
           } as any
         })
         .then((data) => {

@@ -6,7 +6,8 @@ export const SERVER_SUBSCRIPTION_URL = "ws://localhost:4000/subscriptions";
 
 export const HEADER_AUTHORIZATION = "Authorization"
 export const TOKEN_PREFIX= "Bearer "
-export const HEADER_APPX_APPID ="Appx-appid"
+export const HEADER_LEDA_APPID ="leda-appid"
+export const HEADER_LEDA_APPNAME ="leda-appname"
 export const DESIGNER_TOKEN_NAME = "EntifyDesignerToken";
 
 //普通角色的ID永远不会是1
