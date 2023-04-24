@@ -17,11 +17,11 @@ const AppDesignerRoot = memo((
     const localStorageToken = localStorage.getItem(DESIGNER_TOKEN_NAME)
     return {
       endpoint: SERVER_URL,
-      appId: app.id,
+      //appId: app.id,
       token: token || localStorageToken,
       tokenName: DESIGNER_TOKEN_NAME,
     }
-  }, [app, token])
+  }, [token])
 
   return (
     <ThemeRoot>
