@@ -13,6 +13,7 @@ export interface MetaContent {
   relations?: RelationMeta[];
   scriptLogics?: MethodMeta[];
   graphLogics?: MethodMeta[];
+  apis?: MethodMeta[];
   x6Nodes?: X6NodeMeta[];
   x6Edges?: X6EdgeMeta[];
 }

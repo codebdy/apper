@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
 import { ID } from "shared";
-import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState, graphLogicsState, scriptLogicsState } from "../recoil/atoms";
+import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState, graphLogicsState, scriptLogicsState, apisState } from "../recoil/atoms";
 
 export function useGetMeta(metaId: ID) {
   const packages = useRecoilValue(packagesState(metaId))
@@ -10,6 +10,7 @@ export function useGetMeta(metaId: ID) {
   const diagrams = useRecoilValue(diagramsState(metaId));
   const scriptLogics = useRecoilValue(scriptLogicsState(metaId))
   const graphLogics = useRecoilValue(graphLogicsState(metaId))
+  const apis = useRecoilValue(apisState(metaId))
   const x6Nodes = useRecoilValue(x6NodesState(metaId));
   const x6Edges = useRecoilValue(x6EdgesState(metaId));
   const getMeta = useCallback(() => {
@@ -26,12 +27,13 @@ export function useGetMeta(metaId: ID) {
       diagrams: diagms,
       graphLogics,
       scriptLogics,
+      apis,
       x6Nodes,
       x6Edges,
     };
 
     return content;
-  }, [classes, diagrams, graphLogics, packages, relations, scriptLogics, x6Edges, x6Nodes]);
+  }, [apis, classes, diagrams, graphLogics, packages, relations, scriptLogics, x6Edges, x6Nodes]);
 
   return getMeta
 }

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
-import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState, changedState, graphLogicsState, scriptLogicsState } from "../recoil/atoms";
+import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState, changedState, graphLogicsState, scriptLogicsState, apisState } from "../recoil/atoms";
 import { ID } from "shared";
 import { MetaContent } from "../meta";
 
@@ -10,6 +10,7 @@ export function useParesMeta(meta: MetaContent | undefined, metaId: ID) {
   const setDiagrams = useSetRecoilState(diagramsState(metaId));
   const setScriptLogics = useSetRecoilState(scriptLogicsState(metaId));
   const setGraphLogics = useSetRecoilState(graphLogicsState(metaId));
+  const setApis = useSetRecoilState(apisState(metaId));
   const setX6Nodes = useSetRecoilState(x6NodesState(metaId));
   const setX6Edges = useSetRecoilState(x6EdgesState(metaId));
   const setPackages = useSetRecoilState(packagesState(metaId))
@@ -22,9 +23,10 @@ export function useParesMeta(meta: MetaContent | undefined, metaId: ID) {
     setDiagrams(meta?.diagrams || []);
     setScriptLogics(meta?.scriptLogics || []);
     setGraphLogics(meta?.graphLogics || []);
+    setApis(meta?.apis || []);
     setX6Nodes(meta?.x6Nodes || []);
     setX6Edges(meta?.x6Edges || []);
     setChanged(false);
-  }, [setDiagrams, setClasses, setPackages, setRelations, setX6Edges, setX6Nodes, meta, setChanged, setScriptLogics, setGraphLogics]);
+  }, [setDiagrams, setClasses, setPackages, setRelations, setX6Edges, setX6Nodes, meta, setChanged, setScriptLogics, setGraphLogics, setApis]);
 
 }
