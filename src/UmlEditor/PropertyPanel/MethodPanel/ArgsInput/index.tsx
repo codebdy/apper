@@ -184,7 +184,7 @@ export const ArgsInput = memo((
             pagination={false}
             dataSource={items}
             columns={columns}
-            rowKey="index"
+            rowKey="uuid"
           />
           <Button
             type="dashed"
