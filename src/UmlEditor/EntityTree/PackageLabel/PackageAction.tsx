@@ -2,7 +2,7 @@ import { MoreOutlined, EditOutlined, DeleteOutlined, FileAddOutlined, PlusSquare
 import { Dropdown, Button } from "antd";
 import { memo, useCallback, useState } from "react"
 import { useSetRecoilState } from 'recoil';
-import { classesState, diagramsState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../../recoil/atoms";
+import { classesState, diagramsState, selectedApiIdState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../../recoil/atoms";
 import { PackageMeta } from "../../meta/PackageMeta";
 import { useDeletePackage } from '../../hooks/useDeletePackage';
 import { useCreateNewClass } from "../../hooks/useCreateNewClass";
@@ -36,6 +36,7 @@ const PackageAction = memo((
   );
   const setSelectedScriptId = useSetRecoilState(selectedScriptLogicIdState(metaId));
   const setSelectGraphLogicId = useSetRecoilState(selectedGraphLogicIdState(metaId));
+  const setSelectApiId = useSetRecoilState(selectedApiIdState(metaId));
 
   const handleDelete = useCallback(() => {
     deletePackage(pkg.uuid)
@@ -71,7 +72,8 @@ const PackageAction = memo((
     setSelectedScriptId(undefined);
     setSelectGraphLogicId(undefined);
     setNewDiagram(undefined);
-  }, [backupSnapshot, setDiagrams, setSelectGraphLogicId, setSelectedDiagram, setSelectedScriptId]);
+    setSelectApiId(undefined);
+  }, [backupSnapshot, setDiagrams, setSelectApiId, setSelectGraphLogicId, setSelectedDiagram, setSelectedScriptId]);
 
 
   return (

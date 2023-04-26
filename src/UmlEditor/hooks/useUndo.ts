@@ -18,6 +18,7 @@ import {
   scriptLogicsState,
   selectedScriptLogicIdState,
   selectedGraphLogicIdState,
+  selectedApiIdState,
 } from "../recoil/atoms";
 
 export function useUndo(metaId: ID) {
@@ -40,6 +41,7 @@ export function useUndo(metaId: ID) {
     useRecoilState(selectedElementState(metaId));
   const [selectedScriptLogic, setSelectedScriptLogic] = useRecoilState(selectedScriptLogicIdState(metaId));
   const [selectedGraphLogic, setSelectedGraphLogic] = useRecoilState(selectedGraphLogicIdState(metaId));
+  const [selectedApi, setSelectedApi] = useRecoilState(selectedApiIdState(metaId));
   const undo = useCallback(() => {
     const snapshot = undoList[undoList.length - 1];
     setChanged(true);
@@ -57,7 +59,8 @@ export function useUndo(metaId: ID) {
         selectedDiagram,
         selectedElement,
         selectedScriptLogic,
-        selectedGraphLogic
+        selectedGraphLogic,
+        selectedApi
       },
     ]);
     setUndoList((snapshots) => snapshots.slice(0, snapshots.length - 1));
@@ -73,9 +76,10 @@ export function useUndo(metaId: ID) {
     setSelectedElement(snapshot.selectedElement);
     setSelectedScriptLogic(snapshot.selectedScriptLogic);
     setSelectedGraphLogic(snapshot.selectedGraphLogic);
+    setSelectedApi(snapshot.selectedApi)
     triggerCanvasEvent({
       name: EVENT_UNDO_REDO,
     });
-  }, [undoList, setChanged, setRedoList, setUndoList, setPackages, setDiagrams, setClasses, setRelations, setScriptLogics, setGraphLogics, setX6Nodes, setX6Edges, setSelectedDiagram, setSelectedElement, setSelectedScriptLogic, setSelectedGraphLogic, packages, diagrams, classes, scriptLogics, graphLogics, relations, x6Nodes, x6Edges, selectedDiagram, selectedElement, selectedScriptLogic, selectedGraphLogic]);
+  }, [undoList, setChanged, setRedoList, setUndoList, setPackages, setDiagrams, setClasses, setRelations, setScriptLogics, setGraphLogics, setX6Nodes, setX6Edges, setSelectedDiagram, setSelectedElement, setSelectedScriptLogic, setSelectedGraphLogic, setSelectedApi, packages, diagrams, classes, scriptLogics, graphLogics, relations, x6Nodes, x6Edges, selectedDiagram, selectedElement, selectedScriptLogic, selectedGraphLogic, selectedApi]);
   return undo;
 }

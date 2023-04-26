@@ -23,6 +23,7 @@ export interface Snapshot {
   selectedDiagram?: string;
   selectedScriptLogic?: string;
   selectedGraphLogic?: string;
+  selectedApi?: string;
   selectedCode?: string;
 }
 
@@ -115,7 +116,10 @@ export const selectedGraphLogicIdState = atomFamily<string | undefined, string>(
   default: undefined,
 });
 
-
+export const selectedApiIdState = atomFamily<string | undefined, string>({
+  key: "uml.selectedApiId",
+  default: undefined,
+});
 
 export const selectedUmlDiagramState = atomFamily<string | undefined, string>({
   key: "uml.selectedDiagram",

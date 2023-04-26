@@ -10,7 +10,7 @@ export function useDeleteScriptLogic(metaId: ID) {
 
   const backupSnapshot = useBackupSnapshot(metaId);
 
-  const deleteOrchestration = useCallback(
+  const deleteScriptLogic = useCallback(
     (logicScriptUuid: string) => {
       backupSnapshot();
       setLogicScripts((orches) =>
@@ -24,5 +24,5 @@ export function useDeleteScriptLogic(metaId: ID) {
     [backupSnapshot, selectedScriptId, setLogicScripts, setSelectedScriptId]
   );
 
-  return deleteOrchestration;
+  return deleteScriptLogic;
 }

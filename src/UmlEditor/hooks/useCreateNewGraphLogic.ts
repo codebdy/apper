@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useBackupSnapshot } from "./useBackupSnapshot";
-import { graphLogicsState, selectedElementState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../recoil/atoms";
+import { graphLogicsState, selectedApiIdState, selectedElementState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../recoil/atoms";
 import { useSetRecoilState } from "recoil";
 import { useGetGraphLogicByName } from "./useGetGraphLogicByName";
 import { MethodMeta, MethodOperateType, Types } from "../meta";
@@ -12,6 +12,7 @@ export function useCreateNewGraphLogic(metaId: ID) {
   const setMetaLogics = useSetRecoilState(graphLogicsState(metaId));
   const setSelectedGraphLogicId = useSetRecoilState(selectedGraphLogicIdState(metaId));
   const setSelectedScriptLogicId = useSetRecoilState(selectedScriptLogicIdState(metaId));
+  const setSelectedApiId = useSetRecoilState(selectedApiIdState(metaId));
   const setSelectedDiagram = useSetRecoilState(
     selectedUmlDiagramState(metaId)
   );
@@ -42,8 +43,9 @@ export function useCreateNewGraphLogic(metaId: ID) {
     setSelectedGraphLogicId(newGraphLogic.uuid);
     setSelectedDiagram(undefined);
     setSelectedScriptLogicId(undefined);
+    setSelectedApiId(undefined);
     setSelectedElement(undefined);
-  }, [backup, getNewName, setMetaLogics, setSelectedGraphLogicId, setSelectedDiagram, setSelectedScriptLogicId, setSelectedElement]);
+  }, [backup, getNewName, setMetaLogics, setSelectedGraphLogicId, setSelectedDiagram, setSelectedScriptLogicId, setSelectedApiId, setSelectedElement]);
 
   return createNewGraphLogic;
 }

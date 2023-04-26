@@ -1,25 +1,25 @@
 import { useCallback } from "react";
 import { useBackupSnapshot } from "./useBackupSnapshot";
-import { scriptLogicsState, selectedApiIdState, selectedElementState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../recoil/atoms";
+import { apisState, selectedApiIdState, selectedElementState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../recoil/atoms";
 import { useSetRecoilState } from "recoil";
-import { useGetScriptLogicByName } from "./useGetScriptLogicByName";
 import { MethodMeta, MethodOperateType, Types } from "../meta";
 import { ID, createUuid } from "shared";
+import { useGetApiByName } from "./useGetApiByName";
 
-export function useCreateNewScriptLogic(metaId: ID) {
-  const getByName = useGetScriptLogicByName(metaId);
+export function useCreateNewApi(metaId: ID) {
+  const getByName = useGetApiByName(metaId);
   const backup = useBackupSnapshot(metaId);
-  const setScriptLogics = useSetRecoilState(scriptLogicsState(metaId));
+  const setApis = useSetRecoilState(apisState(metaId));
   const setSelectedScriptLogicId = useSetRecoilState(selectedScriptLogicIdState(metaId));
   const setSelectedGraphLogicId = useSetRecoilState(selectedGraphLogicIdState(metaId));
-  const setSelectedApiId = useSetRecoilState(selectedApiIdState(metaId));
   const setSelectedDiagram = useSetRecoilState(
     selectedUmlDiagramState(metaId)
   );
+  const setSelectedApiId = useSetRecoilState(selectedApiIdState(metaId));
   const setSelectedElement = useSetRecoilState(selectedElementState(metaId));
 
   const getNewName = useCallback(() => {
-    const prefix = "newScript";
+    const prefix = "newApi";
     let index = 1;
     while (getByName(prefix + index)) {
       index++;
@@ -28,9 +28,9 @@ export function useCreateNewScriptLogic(metaId: ID) {
     return prefix + index;
   }, [getByName]);
 
-  const createNewScriptLogic = useCallback((operateType: MethodOperateType) => {
+  const createNewApi = useCallback((operateType: MethodOperateType) => {
     backup()
-    const newScriptLogic: MethodMeta = {
+    const newApi: MethodMeta = {
       uuid: createUuid(),
       name: getNewName(),
       logicScript: "",
@@ -39,13 +39,13 @@ export function useCreateNewScriptLogic(metaId: ID) {
       args: [],
       typeLabel: "String",
     };
-    setScriptLogics(orchestrations => [...orchestrations, newScriptLogic]);
-    setSelectedScriptLogicId(newScriptLogic.uuid);
+    setApis(apis => [...apis, newApi]);
+    setSelectedApiId(newApi.uuid)
+    setSelectedScriptLogicId(undefined);
     setSelectedGraphLogicId(undefined);
     setSelectedDiagram(undefined);
-    setSelectedApiId(undefined);
     setSelectedElement(undefined);
-  }, [backup, getNewName, setScriptLogics, setSelectedScriptLogicId, setSelectedGraphLogicId, setSelectedDiagram, setSelectedApiId, setSelectedElement]);
+  }, [backup, getNewName, setApis, setSelectedApiId, setSelectedScriptLogicId, setSelectedGraphLogicId, setSelectedDiagram, setSelectedElement]);
 
-  return createNewScriptLogic;
+  return createNewApi;
 }
