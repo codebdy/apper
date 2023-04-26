@@ -4,15 +4,15 @@ import React, { memo, useCallback, useMemo } from "react"
 import { useTranslation } from "react-i18next";
 import { useMetaId } from "../hooks/useMetaId";
 import { MenuItemType } from "antd/es/menu/hooks/useItems";
-import { useCreateNewScriptLogic } from "UmlEditor/hooks/useCreateNewScriptLogic";
 import { MethodOperateType } from "UmlEditor/meta";
+import { useCreateNewApi } from "UmlEditor/hooks/useCreateNewApi";
 
 export const APIRootAction = memo(() => {
   const metaId = useMetaId();
 
   const { t } = useTranslation();
 
-  const createApi = useCreateNewScriptLogic(metaId)
+  const createApi = useCreateNewApi(metaId)
 
   const handleNoneAction = useCallback((e: React.MouseEvent) => {
     e.stopPropagation()
@@ -32,7 +32,7 @@ export const APIRootAction = memo(() => {
         label: t("UmlEditor.AddMutationApi"),
         key: '1',
         onClick: e => {
-          createApi(MethodOperateType.Query);
+          createApi(MethodOperateType.Mutation);
         },
       },
     ]
