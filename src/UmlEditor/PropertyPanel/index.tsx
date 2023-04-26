@@ -13,12 +13,15 @@ import { PropertyBox } from "common/ModelBoard/PropertyBox";
 import { useMetaId } from "../hooks/useMetaId";
 import { useSelectedScriptLogic } from "UmlEditor/hooks/useSelectedScriptLogic";
 import { ScriptLogicPanel } from "./MethodPanel/ScriptLogicPanel";
+import { useSelectedApi } from "UmlEditor/hooks/useSelectedApi";
+import { ApiPanel } from "./MethodPanel/ApiPanel";
 
 export const PropertyPanel = memo(() => {
   const metaId = useMetaId();
   const selectedElement = useRecoilValue(selectedElementState(metaId));
   const selectedEntity = useClass(selectedElement || "", metaId);
   const selectedScript = useSelectedScriptLogic();
+  const selectedApi = useSelectedApi();
   const { t } = useTranslation();
   const { cls: attributeCls, attribute } = useAttribute(
     selectedElement || "",
@@ -35,7 +38,8 @@ export const PropertyPanel = memo(() => {
       )}
       {relation && <RelationPanel relation={relation} />}
       {selectedScript && <ScriptLogicPanel scriptLogic={selectedScript} />}
-      {!selectedElement && !selectedScript && (
+      {selectedApi && <ApiPanel api={selectedApi} />}
+      {!selectedElement && !selectedScript && !selectedApi && (
         <div style={{ padding: "16px" }}>
           <Empty />
         </div>
