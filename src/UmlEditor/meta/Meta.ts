@@ -7,6 +7,7 @@ import { X6EdgeMeta } from "./X6EdgeMeta";
 import { MethodMeta } from "./MethodMeta";
 
 export interface MetaContent {
+  id?: number;
   packages?: PackageMeta[];
   classes?: ClassMeta[];
   diagrams?: DiagramMeta[];
