@@ -23,7 +23,7 @@ export function useChangeScriptLogic(metaId: ID) {
       }
       backupSnapshot();
       setScripts((scripts) =>
-        scripts.map((ent) => (ent.uuid === method.uuid ? method : ent))
+        scripts.map((mthd) => (mthd.uuid === method.uuid ? method : mthd))
       );
       return undefined;
     },

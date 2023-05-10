@@ -103,6 +103,7 @@ export const UmlEditorInner = memo((
       }
       {
         selectedScript && <Editor
+          key = {selectedScript.uuid}
           height="100%"
           language="javascript"
           theme={themeMode === "dark" ? "vs-dark" : "vs-light"}
