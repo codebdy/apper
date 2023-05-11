@@ -5,6 +5,7 @@ import { DiagramMeta } from "./DiagramMeta";
 import { X6NodeMeta } from "./X6NodeMeta";
 import { X6EdgeMeta } from "./X6EdgeMeta";
 import { MethodMeta } from "./MethodMeta";
+import { CodeMeta } from "./CodeMeta";
 
 export interface MetaContent {
   id?: number;
@@ -14,6 +15,7 @@ export interface MetaContent {
   relations?: RelationMeta[];
   scriptLogics?: MethodMeta[];
   graphLogics?: MethodMeta[];
+  codes?: CodeMeta[];
   apis?: MethodMeta[];
   x6Nodes?: X6NodeMeta[];
   x6Edges?: X6EdgeMeta[];

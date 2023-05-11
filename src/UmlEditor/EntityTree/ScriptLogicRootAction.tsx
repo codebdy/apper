@@ -1,4 +1,5 @@
 import { MoreOutlined } from "@ant-design/icons";
+import { useCreateNewCode } from "UmlEditor/hooks/useCreateNewCode";
 import { useCreateNewScriptLogic } from "UmlEditor/hooks/useCreateNewScriptLogic";
 import { useMetaId } from "UmlEditor/hooks/useMetaId";
 import { MethodOperateType } from "UmlEditor/meta";
@@ -10,6 +11,7 @@ export const ScriptLogicRootAction = memo(() => {
   const metaId = useMetaId()
   const { t } = useTranslation();
   const createScriptLogic = useCreateNewScriptLogic(metaId)
+  const createCode = useCreateNewCode(metaId)
 
   const handleNoneAction = useCallback((e: React.MouseEvent) => {
     e.stopPropagation()
@@ -18,6 +20,13 @@ export const ScriptLogicRootAction = memo(() => {
   return (
     <Dropdown menu={{
       items: [
+        {
+          label: t("UmlEditor.AddCode"),
+          key: '11',
+          onClick: e => {
+            createCode();
+          },
+        },
         {
           label: t("UmlEditor.AddQueryScript"),
           key: '12',

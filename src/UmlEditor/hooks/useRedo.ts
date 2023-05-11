@@ -18,6 +18,7 @@ import {
   scriptLogicsState,
   selectedGraphLogicIdState,
   selectedScriptLogicIdState,
+  codesState,
 } from "../recoil/atoms";
 
 export function useRedo(metaId: ID) {
@@ -28,6 +29,7 @@ export function useRedo(metaId: ID) {
   const [classes, setClasses] = useRecoilState(classesState(metaId));
   const [scriptLogics, setScriptLogics] = useRecoilState(scriptLogicsState(metaId))
   const [graphLogics, setGraphLogics] = useRecoilState(graphLogicsState(metaId))
+  const [codes, setCodes] = useRecoilState(codesState(metaId))
   const [relations, setRelations] = useRecoilState(relationsState(metaId));
   const [x6Nodes, setX6Nodes] = useRecoilState(x6NodesState(metaId));
   const [x6Edges, setX6Edges] = useRecoilState(x6EdgesState(metaId));
@@ -42,7 +44,7 @@ export function useRedo(metaId: ID) {
   );
   const [selectedScriptLogic, setSelectedScriptLogic] = useRecoilState(selectedScriptLogicIdState(metaId));
   const [selectedGraphLogic, setSelectedGraphLogic] = useRecoilState(selectedGraphLogicIdState(metaId));
-  
+
   const undo = useCallback(() => {
     const snapshot = redoList[redoList.length - 1];
     setChanged(true);
@@ -54,6 +56,7 @@ export function useRedo(metaId: ID) {
         classes,
         scriptLogics,
         graphLogics,
+        codes,
         relations,
         x6Nodes,
         x6Edges,
@@ -70,6 +73,7 @@ export function useRedo(metaId: ID) {
     setRelations(snapshot.relations);
     setScriptLogics(snapshot.scriptLogics);
     setGraphLogics(snapshot.graphLogics);
+    setCodes(snapshot.codes);
     setX6Nodes(snapshot.x6Nodes);
     setX6Edges(snapshot.x6Edges);
     setSelectedDiagram(snapshot.selectedDiagram);
@@ -79,6 +83,6 @@ export function useRedo(metaId: ID) {
     triggerCanvasEvent({
       name: EVENT_UNDO_REDO,
     });
-  }, [redoList, setChanged, setUndoList, setRedoList, setPackages, setDiagrams, setClasses, setRelations, setScriptLogics, setGraphLogics, setX6Nodes, setX6Edges, setSelectedDiagram, setSelectedElement, setSelectedScriptLogic, setSelectedGraphLogic, packages, diagrams, classes, scriptLogics, graphLogics, relations, x6Nodes, x6Edges, selectedDiagram, selectedElement, selectedScriptLogic, selectedGraphLogic]);
+  }, [redoList, setChanged, setUndoList, setRedoList, setPackages, setDiagrams, setClasses, setRelations, setScriptLogics, setGraphLogics, setCodes, setX6Nodes, setX6Edges, setSelectedDiagram, setSelectedElement, setSelectedScriptLogic, setSelectedGraphLogic, packages, diagrams, classes, scriptLogics, graphLogics, codes, relations, x6Nodes, x6Edges, selectedDiagram, selectedElement, selectedScriptLogic, selectedGraphLogic]);
   return undo;
 }

@@ -18,6 +18,7 @@ import {
   scriptLogicsState,
   graphLogicsState,
   selectedApiIdState,
+  codesState,
 } from "../recoil/atoms";
 
 export function useBackupSnapshot(metaId: ID) {
@@ -27,6 +28,7 @@ export function useBackupSnapshot(metaId: ID) {
   const packages = useRecoilValue(packagesState(metaId))
   const scriptLogics = useRecoilValue(scriptLogicsState(metaId))
   const graphLogics = useRecoilValue(graphLogicsState(metaId))
+  const codes = useRecoilValue(codesState(metaId))
   const x6Nodes = useRecoilValue(x6NodesState(metaId));
   const x6Edges = useRecoilValue(x6EdgesState(metaId));
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
@@ -48,6 +50,7 @@ export function useBackupSnapshot(metaId: ID) {
         classes,
         scriptLogics,
         graphLogics,
+        codes,
         relations,
         x6Nodes,
         x6Edges,
@@ -59,7 +62,7 @@ export function useBackupSnapshot(metaId: ID) {
       },
     ]);
     setRedoList([]);
-  }, [setChanged, setUndoList, setRedoList, packages, diagrams, classes, scriptLogics, graphLogics, relations, x6Nodes, x6Edges, selectedDiagram, selectedElement, selectedScriptLogic, selectedGraphLogic, selectedApi]);
+  }, [setChanged, setUndoList, setRedoList, packages, diagrams, classes, scriptLogics, graphLogics, codes, relations, x6Nodes, x6Edges, selectedDiagram, selectedElement, selectedScriptLogic, selectedGraphLogic, selectedApi]);
 
   return backupSnapshot;
 }

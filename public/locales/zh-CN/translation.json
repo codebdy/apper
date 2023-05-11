@@ -291,7 +291,7 @@
     "NewPackage": "新建包",
     "NewService": "新建服务",
     "Add": "添加",
-    "AddCode": "添加JS代码",
+    "AddCode": "添加通用代码",
     "AddQueryScript": "添加读脚本",
     "AddMutationScript": "添加写脚本",
     "AddQueryGraph": "添加读编排",

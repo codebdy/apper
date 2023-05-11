@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useBackupSnapshot } from "./useBackupSnapshot";
-import { scriptLogicsState, selectedApiIdState, selectedElementState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../recoil/atoms";
+import { scriptLogicsState, selectedApiIdState, selectedCodeIdState, selectedElementState, selectedGraphLogicIdState, selectedScriptLogicIdState, selectedUmlDiagramState } from "../recoil/atoms";
 import { useSetRecoilState } from "recoil";
 import { useGetScriptLogicByName } from "./useGetScriptLogicByName";
 import { MethodMeta, MethodOperateType, Types } from "../meta";
@@ -12,6 +12,7 @@ export function useCreateNewScriptLogic(metaId: ID) {
   const setScriptLogics = useSetRecoilState(scriptLogicsState(metaId));
   const setSelectedScriptLogicId = useSetRecoilState(selectedScriptLogicIdState(metaId));
   const setSelectedGraphLogicId = useSetRecoilState(selectedGraphLogicIdState(metaId));
+  const setSelectedCodeId = useSetRecoilState(selectedCodeIdState(metaId));
   const setSelectedApiId = useSetRecoilState(selectedApiIdState(metaId));
   const setSelectedDiagram = useSetRecoilState(
     selectedUmlDiagramState(metaId)
@@ -42,10 +43,11 @@ export function useCreateNewScriptLogic(metaId: ID) {
     setScriptLogics(orchestrations => [...orchestrations, newScriptLogic]);
     setSelectedScriptLogicId(newScriptLogic.uuid);
     setSelectedGraphLogicId(undefined);
+    setSelectedCodeId(undefined);
     setSelectedDiagram(undefined);
     setSelectedApiId(undefined);
     setSelectedElement(undefined);
-  }, [backup, getNewName, setScriptLogics, setSelectedScriptLogicId, setSelectedGraphLogicId, setSelectedDiagram, setSelectedApiId, setSelectedElement]);
+  }, [backup, getNewName, setScriptLogics, setSelectedScriptLogicId, setSelectedGraphLogicId, setSelectedCodeId, setSelectedDiagram, setSelectedApiId, setSelectedElement]);
 
   return createNewScriptLogic;
 }

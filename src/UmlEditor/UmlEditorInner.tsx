@@ -16,6 +16,8 @@ import Editor from "@monaco-editor/react"
 import { themeModeState } from "recoil/atoms";
 import { useSelectedScriptLogic } from "./hooks/useSelectedScriptLogic";
 import { useChangeScriptLogic } from "./hooks/useChangeScriptLogic";
+import { useSelectedCode } from "./hooks/useSelectedCode";
+import { useChangeCode } from "./hooks/useChangeCode";
 
 const MapContianer = styled.div`
   position: absolute;
@@ -56,8 +58,10 @@ export const UmlEditorInner = memo((
   const minMap = useRecoilValue(minMapState(metaId));
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
   const selectedScript = useSelectedScriptLogic();
+  const selectedCode = useSelectedCode();
   const themeMode = useRecoilValue(themeModeState);
   const changeScript = useChangeScriptLogic(metaId);
+  const changeCode = useChangeCode(metaId);
 
   useEffect(() => {
     setMetaId(metaId)
@@ -67,9 +71,14 @@ export const UmlEditorInner = memo((
     setEditorOptions(options)
   }, [options, setEditorOptions, setMetaId])
 
-  const handleCodeChange = useCallback((value?: string) => {
+  const handleScriptChange = useCallback((value?: string) => {
     selectedScript && changeScript({ ...selectedScript, logicScript: value })
   }, [changeScript, selectedScript])
+
+  const handleCodeChange = useCallback((value?: string) => {
+    selectedCode && changeCode({ ...selectedCode, scriptText: value })
+  }, [selectedCode, changeCode])
+
 
   return (
     <ModelBoard
@@ -103,11 +112,22 @@ export const UmlEditorInner = memo((
       }
       {
         selectedScript && <Editor
-          key = {selectedScript.uuid}
+          key={selectedScript.uuid}
           height="100%"
           language="javascript"
           theme={themeMode === "dark" ? "vs-dark" : "vs-light"}
           value={selectedScript.logicScript || ""}
+          onChange={handleScriptChange}
+        />
+      }
+
+      {
+        selectedCode && <Editor
+          key={selectedCode.uuid}
+          height="100%"
+          language="javascript"
+          theme={themeMode === "dark" ? "vs-dark" : "vs-light"}
+          value={selectedCode.scriptText || ""}
           onChange={handleCodeChange}
         />
       }

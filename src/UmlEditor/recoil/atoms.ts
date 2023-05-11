@@ -9,6 +9,7 @@ import { ID } from "shared";
 import { PackageMeta } from "../meta/PackageMeta";
 import { UmlEditorOptions } from "UmlEditor/UmlEditorInner";
 import { MethodMeta } from "UmlEditor/meta";
+import { CodeMeta } from "UmlEditor/meta/CodeMeta";
 
 export interface Snapshot {
   diagrams: DiagramMeta[];
@@ -16,6 +17,7 @@ export interface Snapshot {
   classes: ClassMeta[];
   scriptLogics: MethodMeta[];
   graphLogics: MethodMeta[];
+  codes: CodeMeta[];
   relations: RelationMeta[];
   x6Nodes: X6NodeMeta[];
   x6Edges: X6EdgeMeta[];
@@ -70,6 +72,13 @@ export const graphLogicsState = atomFamily<MethodMeta[], string>({
   key: "uml.graphLogics",
   default: [],
 });
+
+export const codesState = atomFamily<CodeMeta[], string>({
+  key: "uml.codes",
+  default: [],
+});
+
+
 export const apisState = atomFamily<MethodMeta[], string>({
   key: "uml.apis",
   default: [],
@@ -108,6 +117,11 @@ export const selectedElementState = atomFamily<string | undefined, string>({
 
 export const selectedScriptLogicIdState = atomFamily<string | undefined, string>({
   key: "uml.selectedScriptLogicId",
+  default: undefined,
+});
+
+export const selectedCodeIdState = atomFamily<string | undefined, string>({
+  key: "uml.selectedCodeId",
   default: undefined,
 });
 
