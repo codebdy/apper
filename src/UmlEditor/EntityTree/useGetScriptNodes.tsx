@@ -1,17 +1,29 @@
 import { useMetaId } from "UmlEditor/hooks/useMetaId";
 import { MethodMeta, MethodOperateType } from "UmlEditor/meta";
-import { scriptLogicsState } from "UmlEditor/recoil/atoms";
+import { codesState, scriptLogicsState } from "UmlEditor/recoil/atoms";
 import { DataNode } from "antd/es/tree";
 import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import { FunctionOutlined } from "@ant-design/icons";
+import { FileOutlined, FunctionOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { ScriptLogicLabel } from "./ScriptLogicLabel";
+import { CodeMeta } from "UmlEditor/meta/CodeMeta";
+import { CodeLabel } from "./CodeLabel";
 
 export function useGetScriptNodes() {
   const metaId = useMetaId();
   const { t } = useTranslation();
   const scriptMetas = useRecoilValue(scriptLogicsState(metaId))
+  const codeMetas = useRecoilValue(codesState(metaId))
+  const getCodeNode = useCallback((codeMeta: CodeMeta) => {
+    return {
+      title: <CodeLabel codeMeta={codeMeta} />,
+      key: codeMeta.uuid,
+      isLeaf: true,
+      icon: <FileOutlined />
+    }
+  }, [])
+
   const getScriptLogicNode = useCallback((scriptMeta: MethodMeta) => {
     return {
       title: <ScriptLogicLabel scriptMeta={scriptMeta} />,
@@ -20,7 +32,13 @@ export function useGetScriptNodes() {
       icon: <FunctionOutlined />
     }
   }, [])
-
+  const getCodeNodes = useCallback((key: string) => {
+    return {
+      title: t("UmlEditor.Codes"),
+      key: key,
+      children: codeMetas.map(code => getCodeNode(code))
+    }
+  }, [codeMetas, getCodeNode, t])
 
   const getQueryNodes = useCallback((title: string, key: string) => {
     return {
@@ -40,9 +58,13 @@ export function useGetScriptNodes() {
 
   const getScriptNodes = useCallback(() => {
     const scriptChildren: DataNode[] = []
+    const codeNodes = getCodeNodes("script-codes");
     const queryNodes = getQueryNodes(t("UmlEditor.QueryScripts"), "script-querys");
     const mutationNodes = getMutationNodes(t("UmlEditor.MutationScripts"), "scriptmutations");
 
+    if (codeNodes.children?.length) {
+      scriptChildren.push(codeNodes)
+    }
     if (queryNodes?.children?.length) {
       scriptChildren.push(queryNodes)
     }
@@ -51,8 +73,9 @@ export function useGetScriptNodes() {
       scriptChildren.push(mutationNodes)
     }
 
+
     return scriptChildren
-  }, [getQueryNodes, t, getMutationNodes]);
+  }, [getCodeNodes, getQueryNodes, t, getMutationNodes]);
 
   return getScriptNodes
 }

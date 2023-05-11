@@ -3,7 +3,7 @@ import { Graph } from "@antv/x6";
 import { Tree } from "antd";
 import SvgIcon from "common/SvgIcon";
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { packagesState, diagramsState, classesState, selectedUmlDiagramState, selectedElementState, editorOptionsState, selectedScriptLogicIdState, selectedGraphLogicIdState, selectedApiIdState } from './../recoil/atoms';
+import { packagesState, diagramsState, classesState, selectedUmlDiagramState, selectedElementState, editorOptionsState, selectedScriptLogicIdState, selectedGraphLogicIdState, selectedApiIdState, selectedCodeIdState } from './../recoil/atoms';
 import TreeNodeLabel from "common/TreeNodeLabel";
 import PackageLabel from "./PackageLabel";
 import { PackageMeta } from "../meta/PackageMeta";
@@ -38,6 +38,7 @@ import { useIsScriptLogic } from "UmlEditor/hooks/useIsScriptLogic";
 import { useIsGraphLogic } from "UmlEditor/hooks/useIsGraphLogic";
 import { useGetApiNodes } from "./useGetApiNodes";
 import { useIsApi } from "UmlEditor/hooks/useIsApi";
+import { useIsCode } from "UmlEditor/hooks/useIsCode";
 const { DirectoryTree } = Tree;
 
 const Container = styled.div`
@@ -67,10 +68,12 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
   const classes = useRecoilValue(classesState(metaId));
   const [selectedScriptId, setSelectedScriptId] = useRecoilState(selectedScriptLogicIdState(metaId));
   const [selectedGraphLogicId, setSelectGraphLogicId] = useRecoilState(selectedGraphLogicIdState(metaId));
+  const [selectedCodeId, setSelectCodeId] = useRecoilState(selectedCodeIdState(metaId));
   const [selectedApiId, setSelectApiId] = useRecoilState(selectedApiIdState(metaId));
   const isDiagram = useIsDiagram(metaId);
   const isScriptLogic = useIsScriptLogic(metaId)
   const isGraphLogic = useIsGraphLogic(metaId)
+  const isCode = useIsCode(metaId)
   const isApi = useIsApi(metaId)
   const isElement = useIsElement(metaId);
   const parseRelationUuid = useParseRelationUuid(metaId);
@@ -297,43 +300,55 @@ export const EntityTree = memo((props: { graph?: Graph }) => {
         setSelecteDiagramId(uuid);
         setSelectedScriptId(undefined);
         setSelectGraphLogicId(undefined);
+        setSelectCodeId(undefined);
         setSelectApiId(undefined);
       } else if (isScriptLogic(uuid)) {
         setSelecteDiagramId(undefined);
         setSelectedScriptId(uuid);
         setSelectGraphLogicId(undefined);
+        setSelectCodeId(undefined);
         setSelectedElement(undefined);
         setSelectApiId(undefined);
       } else if (isGraphLogic(uuid)) {
         setSelecteDiagramId(undefined);
         setSelectedScriptId(undefined);
         setSelectGraphLogicId(uuid);
+        setSelectCodeId(undefined);
         setSelectedElement(undefined);
         setSelectApiId(undefined);
       } else if (isElement(uuid)) {
         setSelectedElement(uuid);
         setSelectedScriptId(undefined);
         setSelectGraphLogicId(undefined);
+        setSelectCodeId(undefined);
         setSelectApiId(undefined);
       } else if (isApi(uuid)) {
         setSelectedElement(undefined);
         setSelectedScriptId(undefined);
         setSelectGraphLogicId(undefined);
+        setSelectCodeId(undefined);
         setSelectApiId(uuid);
-      } else {
+      } else if(isCode(uuid)){
+        setSelecteDiagramId(undefined);
+        setSelectedScriptId(undefined);
+        setSelectGraphLogicId(undefined);
+        setSelectCodeId(uuid);
+        setSelectedElement(undefined);
+        setSelectApiId(undefined);
+      }else {
         const relationUuid = parseRelationUuid(uuid);
         if (relationUuid) {
           setSelectedElement(relationUuid);
         }
       }
     }
-  }, [isApi, isDiagram, isElement, isGraphLogic, isScriptLogic, parseRelationUuid, setSelectApiId, setSelectGraphLogicId, setSelecteDiagramId, setSelectedElement, setSelectedScriptId])
+  }, [isApi, isCode, isDiagram, isElement, isGraphLogic, isScriptLogic, parseRelationUuid, setSelectApiId, setSelectCodeId, setSelectGraphLogicId, setSelecteDiagramId, setSelectedElement, setSelectedScriptId])
 
   return (
     <Container>
       <StyledDirectoryTree
         defaultExpandedKeys={["0"]}
-        selectedKeys={[selectedScriptId || selectedGraphLogicId || selectedApiId || selectedDiagramId] as any}
+        selectedKeys={[selectedScriptId || selectedGraphLogicId || selectedCodeId || selectedApiId || selectedDiagramId] as any}
         onSelect={handleSelect as any}
         treeData={treeData}
       />

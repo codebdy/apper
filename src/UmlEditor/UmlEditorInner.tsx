@@ -79,7 +79,6 @@ export const UmlEditorInner = memo((
     selectedCode && changeCode({ ...selectedCode, scriptText: value })
   }, [selectedCode, changeCode])
 
-
   return (
     <ModelBoard
       listWidth={260}
