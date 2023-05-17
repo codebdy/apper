@@ -15,11 +15,14 @@ import { useSelectedScriptLogic } from "UmlEditor/hooks/useSelectedScriptLogic";
 import { ScriptLogicPanel } from "./MethodPanel/ScriptLogicPanel";
 import { useSelectedApi } from "UmlEditor/hooks/useSelectedApi";
 import { ApiPanel } from "./MethodPanel/ApiPanel";
+import { useSelectedCode } from "UmlEditor/hooks/useSelectedCode";
+import { CodePanel } from "./CodePanel";
 
 export const PropertyPanel = memo(() => {
   const metaId = useMetaId();
   const selectedElement = useRecoilValue(selectedElementState(metaId));
   const selectedEntity = useClass(selectedElement || "", metaId);
+  const selecctedCode = useSelectedCode();
   const selectedScript = useSelectedScriptLogic();
   const selectedApi = useSelectedApi();
   const { t } = useTranslation();
@@ -39,7 +42,8 @@ export const PropertyPanel = memo(() => {
       {relation && <RelationPanel relation={relation} />}
       {selectedScript && <ScriptLogicPanel scriptLogic={selectedScript} />}
       {selectedApi && <ApiPanel api={selectedApi} />}
-      {!selectedElement && !selectedScript && !selectedApi && (
+      {selecctedCode && <CodePanel code={selecctedCode} />}
+      {!selectedElement && !selectedScript && !selectedApi && !selecctedCode && (
         <div style={{ padding: "16px" }}>
           <Empty />
         </div>
