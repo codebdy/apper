@@ -18,7 +18,9 @@ import { IMeta } from "model/meta";
 import { Operate } from "../Operate";
 
 const SaveActions = memo((props: {
+  meta: IMeta | undefined
 }) => {
+  const { meta } = props;
   const metaId = useMetaId() || "";
   const app = useApp();
   const [changed, setChanged] = useRecoilState(changedState(metaId));
@@ -66,7 +68,7 @@ const SaveActions = memo((props: {
         {t("Save")}
       </Button>
       <PublishButton />
-      <Operate />
+      <Operate meta ={meta} />
     </Space>
   )
 })

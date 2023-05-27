@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useRecoilValue } from "recoil";
 import { ID } from "shared";
 import { classesState, relationsState, diagramsState, x6NodesState, x6EdgesState, packagesState, graphLogicsState, scriptLogicsState, apisState, codesState } from "../recoil/atoms";
+import { MetaContent } from "UmlEditor/meta";
 
 export function useGetMeta(metaId: ID) {
   const packages = useRecoilValue(packagesState(metaId))
@@ -21,7 +22,7 @@ export function useGetMeta(metaId: ID) {
       return !!sourceClass
     })
     const diagms = diagrams.filter(diagram => packages.find(pkg => pkg.uuid === diagram.packageUuid))
-    const content = {
+    const content: MetaContent = {
       id: parseInt(metaId),
       packages: packages,
       classes: clses,

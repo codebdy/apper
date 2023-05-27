@@ -16,7 +16,7 @@ export const AppModel = memo(() => {
       <UmlEditor
         metaContent={meta?.content}
         metaId={meta?.id}
-        actions={<SaveActions />}
+        actions={<SaveActions meta = {meta}/>}
       />
     </AwesomeSpin>
   )

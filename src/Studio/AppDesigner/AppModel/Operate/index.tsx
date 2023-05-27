@@ -1,33 +1,44 @@
 import { EllipsisOutlined } from '@ant-design/icons';
-import { useExportModelJson } from 'UmlEditor/hooks/useExportModelJson';
-import { useImportModelJson } from 'UmlEditor/hooks/useImportModelJson';
 import { useMetaId } from 'UmlEditor/hooks/useMetaId';
 import { Button, Dropdown } from 'antd';
+import { IMeta } from 'model/meta';
+import { useApp } from "../../contexts";
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useGetMeta } from 'UmlEditor/hooks/useGetMeta';
+import { useImportAppJson } from '../hooks/useImportAppJson';
+import { useExportAppJson } from '../hooks/useExportAppJson';
 
 enum OperateEnum {
   exportJson = "exportJson",
   importJson = "importJson",
 }
 
-export const Operate = memo(() => {
-
+export const Operate = memo((
+  props: {
+    meta?: IMeta,
+  }
+) => {
+  const { meta } = props;
   const { t } = useTranslation();
   const metaId = useMetaId();
-  const expotJson = useExportModelJson(metaId);
-  const importJson = useImportModelJson(metaId);
-  
+  const app = useApp();
+  const getMeta = useGetMeta(metaId)
+  const importJson = useImportAppJson(metaId);
+  const exportJson = useExportAppJson(metaId);
 
   const handleMenuClick = useCallback(({ key }: any) => {
 
     if (key === OperateEnum.exportJson) {
-      expotJson()
+      exportJson({
+        app,
+        meta: meta ? { ...meta, content: getMeta() } : undefined,
+      })
     } else if (key === OperateEnum.importJson) {
       importJson()
-    } 
+    }
 
-  }, [expotJson, importJson])
+  }, [app, exportJson, getMeta, importJson, meta])
 
 
   return (
@@ -45,7 +56,7 @@ export const Operate = memo(() => {
           },
         ]
       }} trigger={["click"]}>
-        <Button  onClick={e => e.preventDefault()} loading={false} icon={<EllipsisOutlined />}>
+        <Button onClick={e => e.preventDefault()} loading={false} icon={<EllipsisOutlined />}>
         </Button>
       </Dropdown>
 

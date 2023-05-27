@@ -1,4 +1,4 @@
-export const SERVER_URL = "http://localhost:8081/graphql"
+export const SERVER_URL = "http://localhost:4000/graphql"
 
 export const PRIMARY_COLOR = "#5d78ff";
 export const SERVER_SUBSCRIPTION_URL = "ws://localhost:4000/subscriptions";
