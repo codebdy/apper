@@ -8,7 +8,7 @@ import { MethodMeta } from "./MethodMeta";
 import { CodeMeta } from "./CodeMeta";
 
 export interface MetaContent {
-  id?: number;
+  //id?: number;
   packages?: PackageMeta[];
   classes?: ClassMeta[];
   diagrams?: DiagramMeta[];

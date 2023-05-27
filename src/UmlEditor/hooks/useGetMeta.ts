@@ -23,7 +23,7 @@ export function useGetMeta(metaId: ID) {
     })
     const diagms = diagrams.filter(diagram => packages.find(pkg => pkg.uuid === diagram.packageUuid))
     const content: MetaContent = {
-      id: parseInt(metaId),
+      //id: parseInt(metaId),
       packages: packages,
       classes: clses,
       relations: relns,
@@ -37,7 +37,7 @@ export function useGetMeta(metaId: ID) {
     };
 
     return content;
-  }, [apis, classes, codes, diagrams, graphLogics, metaId, packages, relations, scriptLogics, x6Edges, x6Nodes]);
+  }, [apis, classes, codes, diagrams, graphLogics, packages, relations, scriptLogics, x6Edges, x6Nodes]);
 
   return getMeta
 }
