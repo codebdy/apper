@@ -17,7 +17,10 @@ import { useService } from "../../contexts";
 import { useUpsertService } from "hooks/useUpsertService";
 import { useMetaId } from "UmlEditor/hooks/useMetaId";
 
-const SaveActions = memo(() => {
+const SaveActions = memo((props: {
+  meta: IMeta | undefined
+}) => {
+  const { meta } = props;
   const metaId = useMetaId() || "";
   const service = useService();
   const [changed, setChanged] = useRecoilState(changedState(metaId));
@@ -65,7 +68,7 @@ const SaveActions = memo(() => {
         {t("Save")}
       </Button>
       <PublishButton />
-      <Operate />
+      <Operate meta={meta} />
     </Space>
   )
 })

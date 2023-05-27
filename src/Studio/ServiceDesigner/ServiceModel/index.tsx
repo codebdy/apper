@@ -18,7 +18,7 @@ export const ServiceModel = memo(() => {
         metaContent={meta?.content}
         metaId={meta?.id}
         options={{ supportCustomizedApi: true }}
-        actions={<SaveActions />}
+        actions={<SaveActions meta = {meta}/>}
       />
     </AwesomeSpin>
   )

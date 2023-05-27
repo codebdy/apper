@@ -1,10 +1,13 @@
 import { EllipsisOutlined } from '@ant-design/icons';
-import { useExportModelJson } from 'UmlEditor/hooks/useExportModelJson';
-import { useImportModelJson } from 'UmlEditor/hooks/useImportModelJson';
 import { useMetaId } from 'UmlEditor/hooks/useMetaId';
 import { Button, Dropdown } from 'antd';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useExportServiceJson } from '../hooks/useExportServiceJson';
+import { useImportServiceJson } from '../hooks/useImportServiceJson';
+import { useService } from 'Studio/ServiceDesigner/contexts';
+import { useGetMeta } from 'UmlEditor/hooks/useGetMeta';
+import { IMeta } from 'model/meta';
 
 enum OperateEnum {
   exportJson = "exportJson",
@@ -12,22 +15,31 @@ enum OperateEnum {
   generateScaffold = "GenerateScaffold"
 }
 
-export const Operate = memo(() => {
-
+export const Operate = memo((
+  props: {
+    meta?: IMeta,
+  }
+) => {
+  const { meta } = props;
   const { t } = useTranslation();
   const metaId = useMetaId();
-  const expotJson = useExportModelJson(metaId);
-  const importJson = useImportModelJson(metaId);
+  const expotJson = useExportServiceJson(metaId);
+  const importJson = useImportServiceJson(metaId);
+  const service = useService();
+  const getMeta = useGetMeta(metaId)
 
   const handleMenuClick = useCallback(({ key }: any) => {
 
     if (key === OperateEnum.exportJson) {
-      expotJson()
+      expotJson({
+        service,
+        meta: meta ? { ...meta, content: getMeta() } : undefined,
+      })
     } else if (key === OperateEnum.importJson) {
       importJson()
-    } 
+    }
 
-  }, [expotJson, importJson])
+  }, [expotJson, getMeta, importJson, meta, service])
 
   return (
     <>
@@ -48,7 +60,7 @@ export const Operate = memo(() => {
           },
         ]
       }} trigger={["click"]}>
-        <Button  onClick={e => e.preventDefault()} loading={false} icon={<EllipsisOutlined />}>
+        <Button onClick={e => e.preventDefault()} loading={false} icon={<EllipsisOutlined />}>
         </Button>
       </Dropdown>
 

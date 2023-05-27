@@ -1,10 +1,10 @@
 import { message } from "antd";
 import { getTheFiles } from "hooks/useAppOpenFile";
 import { useCallback } from "react";
-import { IAppJson } from "../interfaces";
+import { IServieJson } from "../interfaces";
 import { useImportModel } from "UmlEditor/hooks/useImportModel";
 
-export function useImportAppJson(metaId: string) {
+export function useImportServiceJson(metaId: string) {
   const importMeta = useImportModel(metaId);
 
   const doImport = useCallback(() => {
@@ -12,8 +12,8 @@ export function useImportAppJson(metaId: string) {
       fileHandles?.[0]?.getFile().then((file: any) => {
         file.text().then((fileData: any) => {
           try {
-            const appJson: IAppJson = JSON.parse(fileData);
-            const meta = appJson.meta?.content
+            const serviceJson: IServieJson = JSON.parse(fileData);
+            const meta = serviceJson.meta?.content
             meta && importMeta(meta)
 
           } catch (error: any) {
