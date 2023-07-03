@@ -150,7 +150,7 @@
     "AddMethod": "添加方法",
     "Properties": "属性",
     "Name": "名称",
-    "RootNode": "根节点",
+    "RootNode": "聚合根",
     "Description": "描述",
     "DataType": "数据类型",
     "Entity": "实体",

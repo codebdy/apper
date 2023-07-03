@@ -27,7 +27,7 @@ export function useQueryFragmentFromSchema(schema?: Schema): IFragmentParams {
       currentFields = subFields;
       currentOrderBys = subOrderBys;
     }
-    else if (!key) {//根节点
+    else if (!key) {//聚合根
       //选择列表控件
       if (schema?.['x-component-props']?.["labelField"]) {
         const subFields:any[] = [];
