@@ -7,6 +7,7 @@ export enum AppEntryRouts {
   Dmn = "dmn",
   Business = "business",
   Uml = "uml",
+  Logic = "logic",
   Api = "api",
   Auth = "auth",
   Plugins = "plugins",

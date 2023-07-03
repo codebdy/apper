@@ -131,7 +131,7 @@
     "UMLModel": "领域模型",
     "BPMNFlow": "工作流模型",
     "DMN": "决策模型",
-    "LogicFlow": "业务逻辑",
+    "LogicFlow": "逻辑编排",
     "AppApi": "接口",
     "ModelAuth": "权限",
     "Plugins": "插件"
@@ -276,7 +276,7 @@
   "UmlEditor": {
     "DomainModel": "领域模型",
     "LogicScripts": "业务脚本",
-    "GraphLogics": "业务编排",
+    "GraphLogics": "逻辑编排",
     "GraphqlAPIs": "自定义接口",
     "AddPackage": "添加包",
     "ExportModel": "导出模型",
