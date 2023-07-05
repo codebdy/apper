@@ -1,8 +1,11 @@
 import { EditOutlined } from "@ant-design/icons"
-import { Button, Modal } from "antd"
+import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5"
+import { Fieldy } from "@rxdrag/react-fieldy"
+import { Button, Form, Modal } from "antd"
 import { memo, useCallback, useState } from "react"
 import { useTranslation } from "react-i18next"
 import styled from "styled-components"
+import { activityMaterialCategories, activityMaterialLocales } from "./minion-materials"
 
 const Container = styled.div`
   flex: 1;
@@ -50,9 +53,38 @@ export const LogicEditor = memo(() => {
         cancelText={t("Cancel")}
       >
         <EditorShell>
-          <p>some contents...</p>
-          <p>some contents...</p>
-          <p>some contents...</p>
+          <Fieldy>
+            <Form
+              labelAlign="left"
+              colon={false}
+              labelCol={{ span: 7 }}
+              wrapperCol={{ span: 17 }}
+              autoComplete="off"
+              labelWrap={true}
+              style={{
+                flex: 1,
+                height: '100%',
+                display: "flex",
+              }}
+            >
+              <LogicFlowEditorAntd5
+                //value={inputValue}
+                //onChange={handleChange}
+                //controllerMetas={[inputValue]}
+                materialCategories={activityMaterialCategories}
+                locales={activityMaterialLocales}
+                value={{
+                  nodes: [],
+                  lines: []
+                }}
+              // setters={{
+              //   VariableSelect,
+              //   PropSelect,
+              //   ReactionSelect,
+              // }}
+              />
+            </Form>
+          </Fieldy>
         </EditorShell>
       </Modal>
     </Container>
