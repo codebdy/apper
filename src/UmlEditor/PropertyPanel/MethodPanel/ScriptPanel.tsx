@@ -6,7 +6,7 @@ import { useMetaId } from "../../hooks/useMetaId";
 import { MethodFormCommonItems } from "./MethodFormCommonItems";
 import { useChangeScriptLogic } from "UmlEditor/hooks/useChangeScriptLogic";
 
-export const MethodPanel = memo((props: { scriptLogic: MethodMeta; }) => {
+export const ScriptPanel = memo((props: { scriptLogic: MethodMeta; }) => {
   const { scriptLogic } = props;
   const [nameError, setNameError] = useState<string>();
   const metaId = useMetaId();

@@ -12,12 +12,13 @@ import { useTranslation } from "react-i18next";
 import { PropertyBox } from "common/ModelBoard/PropertyBox";
 import { useMetaId } from "../hooks/useMetaId";
 import { useSelectedScriptLogic } from "UmlEditor/hooks/useSelectedScriptLogic";
-import { MethodPanel } from "./MethodPanel";
+import { ScriptPanel } from "./MethodPanel/ScriptPanel";
 import { useSelectedApi } from "UmlEditor/hooks/useSelectedApi";
 import { ApiPanel } from "./MethodPanel/ApiPanel";
 import { useSelectedCode } from "UmlEditor/hooks/useSelectedCode";
 import { CodePanel } from "./CodePanel";
 import { useSelectedGraphLogic } from "UmlEditor/hooks/useSelectedGraphLogic";
+import { GraphLogicPanel } from "./MethodPanel/GraphLogicPanel";
 
 export const PropertyPanel = memo(() => {
   const metaId = useMetaId();
@@ -25,7 +26,7 @@ export const PropertyPanel = memo(() => {
   const selectedEntity = useClass(selectedElement || "", metaId);
   const selecctedCode = useSelectedCode();
   const selectedScript = useSelectedScriptLogic();
-  const selectedGraphScript = useSelectedGraphLogic();
+  const selectedGraphLogic = useSelectedGraphLogic();
   const selectedApi = useSelectedApi();
   const { t } = useTranslation();
   const { cls: attributeCls, attribute } = useAttribute(
@@ -42,8 +43,8 @@ export const PropertyPanel = memo(() => {
         <AttributePanel attribute={attribute} cls={attributeCls} />
       )}
       {relation && <RelationPanel relation={relation} />}
-      {selectedScript && <MethodPanel scriptLogic={selectedScript} />}
-      {selectedGraphScript && <MethodPanel scriptLogic={selectedGraphScript} />}
+      {selectedScript && <ScriptPanel scriptLogic={selectedScript} />}
+      {selectedGraphLogic && <GraphLogicPanel graphLogic={selectedGraphLogic} />}
       {selectedApi && <ApiPanel api={selectedApi} />}
       {selecctedCode && <CodePanel code={selecctedCode} />}
       {!selectedElement && !selectedScript && !selectedApi && !selecctedCode && (
