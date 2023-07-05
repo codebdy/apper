@@ -18,6 +18,8 @@ import { useSelectedScriptLogic } from "./hooks/useSelectedScriptLogic";
 import { useChangeScriptLogic } from "./hooks/useChangeScriptLogic";
 import { useSelectedCode } from "./hooks/useSelectedCode";
 import { useChangeCode } from "./hooks/useChangeCode";
+import { LogicEditor } from "./LogicEditor";
+import { useSelectedGraphLogic } from "./hooks/useSelectedGraphLogic";
 
 const MapContianer = styled.div`
   position: absolute;
@@ -58,6 +60,7 @@ export const UmlEditorInner = memo((
   const minMap = useRecoilValue(minMapState(metaId));
   const selectedDiagram = useRecoilValue(selectedUmlDiagramState(metaId));
   const selectedScript = useSelectedScriptLogic();
+  const selectedGraphLogic = useSelectedGraphLogic();
   const selectedCode = useSelectedCode();
   const themeMode = useRecoilValue(themeModeState);
   const changeScript = useChangeScriptLogic(metaId);
@@ -129,6 +132,10 @@ export const UmlEditorInner = memo((
           value={selectedCode.scriptText || ""}
           onChange={handleCodeChange}
         />
+      }
+      {
+        selectedGraphLogic &&
+        <LogicEditor />
       }
     </ModelBoard>
   );

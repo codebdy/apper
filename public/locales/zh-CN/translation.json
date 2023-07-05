@@ -367,7 +367,8 @@
     "InnerId": "内部ID",
     "OnCreated": "新建事件",
     "OnUpdated": "更新事件",
-    "OnDeleted": "删除事件"
+    "OnDeleted": "删除事件",
+    "EditLogic": "编辑逻辑流"
   },
   "AppBpmn": {
     "General": "通用",
