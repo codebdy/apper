@@ -1,5 +1,5 @@
 import { TranslationOutlined } from "@ant-design/icons";
-import { Button, Input } from "antd";
+import { Button, Input, Space } from "antd";
 import React, { useCallback, useMemo, useState } from "react";
 import { useParseLangMessage } from "plugin-sdk/hooks/useParseLangMessage";
 import { useDesignerAppConfig } from "plugin-sdk/contexts/desinger";
@@ -49,7 +49,7 @@ export const MultiLangInput = (
 
   return (
     <>
-      <Input.Group compact {...other}>
+      <Space.Compact {...other}>
         <InputCtrl
           onClick={onClick}
           style={{ width: isMultLang ? 'calc(100% - 32px)' : "100%" }}
@@ -62,7 +62,7 @@ export const MultiLangInput = (
           <Button icon={<TranslationOutlined />} style={{ width: "32px" }} onClick={handleOpen}></Button>
         }
 
-      </Input.Group>
+      </Space.Compact>
       <ResourceEditDialog
         visiable={visiable}
         multiline={multiline}
