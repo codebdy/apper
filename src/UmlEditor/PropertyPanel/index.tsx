@@ -47,7 +47,7 @@ export const PropertyPanel = memo(() => {
       {selectedGraphLogic && <GraphLogicPanel graphLogic={selectedGraphLogic} />}
       {selectedApi && <ApiPanel api={selectedApi} />}
       {selecctedCode && <CodePanel code={selecctedCode} />}
-      {!selectedElement && !selectedScript && !selectedApi && !selecctedCode && (
+      {!selectedElement && !selectedScript && !selectedGraphLogic && !selectedApi && !selecctedCode && (
         <div style={{ padding: "16px" }}>
           <Empty />
         </div>
