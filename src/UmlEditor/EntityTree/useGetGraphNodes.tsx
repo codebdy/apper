@@ -38,21 +38,33 @@ export function useGetGraphNodes() {
     }
   }, [getGraphLogicNode, graphMetas])
 
+  const getSubNodes = useCallback((title: string, key: string) => {
+    return {
+      title: title,
+      key: key,
+      children: graphMetas.filter(orches => orches.operateType === MethodOperateType.SubMethod).map(orchestration => getGraphLogicNode(orchestration))
+    }
+  }, [getGraphLogicNode, graphMetas])
+
   const getScriptNodes = useCallback(() => {
-    const scriptChildren: DataNode[] = []
+    const logicChildren: DataNode[] = []
     const queryNodes = getQueryNodes(t("UmlEditor.QueryGraphs"), "graph-querys");
     const mutationNodes = getMutationNodes(t("UmlEditor.MutationGraphs"), "graph-mutations");
+    const subNodes = getSubNodes(t("UmlEditor.SubGraphs"), "graph-subs");
 
     if (queryNodes?.children?.length) {
-      scriptChildren.push(queryNodes)
+      logicChildren.push(queryNodes)
     }
 
     if (mutationNodes?.children?.length) {
-      scriptChildren.push(mutationNodes)
+      logicChildren.push(mutationNodes)
     }
 
-    return scriptChildren
-  }, [getQueryNodes, t, getMutationNodes]);
+    if (subNodes?.children?.length) {
+      logicChildren.push(subNodes)
+    }
+    return logicChildren
+  }, [getQueryNodes, t, getMutationNodes, getSubNodes]);
 
   return getScriptNodes
 }

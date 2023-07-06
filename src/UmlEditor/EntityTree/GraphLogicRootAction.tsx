@@ -21,16 +21,23 @@ export const GraphLogicRootAction = memo(() => {
       items: [
         {
           label: t("UmlEditor.AddQueryGraph"),
-          key: '12',
+          key: 'query',
           onClick: e => {
             addGraphLogic(MethodOperateType.Query);
           },
         },
         {
           label: t("UmlEditor.AddMutationGraph"),
-          key: '13',
+          key: 'mutation',
           onClick: e => {
             addGraphLogic(MethodOperateType.Mutation);
+          },
+        },
+        {
+          label: t("UmlEditor.AddSubLogic"),
+          key: 'submethod',
+          onClick: e => {
+            addGraphLogic(MethodOperateType.SubMethod);
           },
         },
       ]

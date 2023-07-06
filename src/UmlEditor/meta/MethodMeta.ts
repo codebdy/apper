@@ -15,7 +15,8 @@ export interface ArgMeta {
 
 export enum MethodOperateType {
   Query = "query",
-  Mutation = "mutation"
+  Mutation = "mutation",
+  SubMethod = "subMethod"
 }
 
 export interface MethodMeta {

@@ -11,9 +11,10 @@ export const MethodFormCommonItems = memo((
   props: {
     nameError?: string,
     method: MethodMeta,
+    hasSub?: boolean,
   }
 ) => {
-  const { nameError, method } = props;
+  const { nameError, method, hasSub } = props;
   const { t } = useTranslation();
 
   return (
@@ -41,17 +42,27 @@ export const MethodFormCommonItems = memo((
             {
               value: MethodOperateType.Mutation,
               label: t("UmlEditor.Mutation"),
-            }
+            },
+            ...(hasSub ? [{
+              value: MethodOperateType.SubMethod,
+              label: t("UmlEditor.SubMethod"),
+            }] : [])
+
           ]}
         />
       </Form.Item>
-      <MethodTypeInput method={method} />
-      <Form.Item
-        label={t("UmlEditor.Arguments")}
-        name="args"
-      >
-        <ArgsInput />
-      </Form.Item>
+      {
+        method.operateType !== MethodOperateType.SubMethod &&
+        <>
+          <MethodTypeInput method={method} />
+          <Form.Item
+            label={t("UmlEditor.Arguments")}
+            name="args"
+          >
+            <ArgsInput />
+          </Form.Item>
+        </>
+      }
       <Form.Item
         label={t("Description")}
         name="description"

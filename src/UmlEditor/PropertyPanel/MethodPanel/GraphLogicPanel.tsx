@@ -45,7 +45,7 @@ export const GraphLogicPanel = memo((props: { graphLogic: MethodMeta; }) => {
         autoComplete="off"
         onValuesChange={handleChange}
       >
-        <MethodFormCommonItems nameError={nameError} method={graphLogic} />
+        <MethodFormCommonItems nameError={nameError} method={graphLogic} hasSub />
       </Form>
     </div>
   );

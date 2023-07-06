@@ -23,7 +23,7 @@ const Container = styled.div`
     display: flex;
     height: 100%;
     flex-flow: column;
-    width: 260px;
+    width: 300px;
     background-color:${props=>props.theme.token?.colorBgBase};
     .property-box{
       flex:1;
