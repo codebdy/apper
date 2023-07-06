@@ -2,11 +2,12 @@ import { EditOutlined } from "@ant-design/icons"
 import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5"
 import { Fieldy } from "@rxdrag/react-fieldy"
 import { Button, Form, Modal } from "antd"
-import { memo, useCallback, useState } from "react"
+import { memo, useCallback, useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import styled from "styled-components"
 import { activityMaterialCategories, activityMaterialLocales } from "./minion-materials"
 import { useToken } from "antd/es/theme/internal"
+import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
 
 const Container = styled.div`
   flex: 1;
@@ -18,13 +19,34 @@ const Container = styled.div`
 const EditorShell = styled.div`
   display: flex;
   height: calc(100vh - 200px);
-  border: solid 1px ${props => props.theme?.token?.colorBorder}
+  border: solid 1px ${props => props.theme?.token?.colorBorder};
 `
 
-export const LogicEditor = memo(() => {
+const EmpertyMetas = {
+  nodes: [],
+  lines: []
+}
+
+export const LogicEditor = memo((
+  props: {
+    value?: ILogicMetas,
+    onChange?: (value?: ILogicMetas) => void
+  }
+) => {
+  const { value = EmpertyMetas, onChange } = props;
   const [open, setOpen] = useState(false);
+  const [inputValue, setInputValue] = useState<ILogicMetas>(value);
+
+  useEffect(() => {
+    setInputValue(value)
+  }, [value])
+
   const { t } = useTranslation();
   const [, token] = useToken();
+
+  const handleChange = useCallback((val: ILogicMetas) => {
+    setInputValue(val)
+  }, [])
 
   const handleEditClick = useCallback(() => {
     setOpen(true)
@@ -33,6 +55,11 @@ export const LogicEditor = memo(() => {
   const handleClose = useCallback(() => {
     setOpen(false)
   }, [])
+
+  const handleOk = useCallback(() => {
+    onChange?.(inputValue)
+    handleClose()
+  }, [handleClose, inputValue, onChange])
 
   return (
     <Container>
@@ -49,7 +76,7 @@ export const LogicEditor = memo(() => {
         centered
         open={open}
         maskClosable={false}
-        onOk={handleClose}
+        onOk={handleOk}
         onCancel={handleClose}
         width={"calc(100vw - 100px)"}
         okText={t("Confirm")}
@@ -77,10 +104,8 @@ export const LogicEditor = memo(() => {
                 materialCategories={activityMaterialCategories}
                 locales={activityMaterialLocales}
                 token={token}
-                value={{
-                  nodes: [],
-                  lines: []
-                }}
+                value={inputValue}
+                onChange={handleChange}
               // setters={{
               //   VariableSelect,
               //   PropSelect,

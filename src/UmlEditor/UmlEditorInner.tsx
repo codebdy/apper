@@ -20,6 +20,8 @@ import { useSelectedCode } from "./hooks/useSelectedCode";
 import { useChangeCode } from "./hooks/useChangeCode";
 import { LogicEditor } from "./LogicEditor";
 import { useSelectedGraphLogic } from "./hooks/useSelectedGraphLogic";
+import { ILogicMetas } from "@rxdrag/minions-logicflow-editor";
+import { useChangeGraphLogic } from "./hooks/useChangeGraphLogic";
 
 const MapContianer = styled.div`
   position: absolute;
@@ -64,6 +66,7 @@ export const UmlEditorInner = memo((
   const selectedCode = useSelectedCode();
   const themeMode = useRecoilValue(themeModeState);
   const changeScript = useChangeScriptLogic(metaId);
+  const changeGraphLogic = useChangeGraphLogic(metaId)
   const changeCode = useChangeCode(metaId);
 
   useEffect(() => {
@@ -81,6 +84,10 @@ export const UmlEditorInner = memo((
   const handleCodeChange = useCallback((value?: string) => {
     selectedCode && changeCode({ ...selectedCode, scriptText: value })
   }, [selectedCode, changeCode])
+
+  const handleLogicMetaChange = useCallback((metas?: ILogicMetas) => {
+    selectedGraphLogic && changeGraphLogic({ ...selectedGraphLogic, logicMetas: metas })
+  }, [changeGraphLogic, selectedGraphLogic])
 
   return (
     <ModelBoard
@@ -135,7 +142,10 @@ export const UmlEditorInner = memo((
       }
       {
         selectedGraphLogic &&
-        <LogicEditor />
+        <LogicEditor
+          value={selectedGraphLogic.logicMetas}
+          onChange={handleLogicMetaChange}
+        />
       }
     </ModelBoard>
   );
