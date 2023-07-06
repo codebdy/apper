@@ -6,6 +6,7 @@ import { memo, useCallback, useState } from "react"
 import { useTranslation } from "react-i18next"
 import styled from "styled-components"
 import { activityMaterialCategories, activityMaterialLocales } from "./minion-materials"
+import { useToken } from "antd/es/theme/internal"
 
 const Container = styled.div`
   flex: 1;
@@ -17,11 +18,13 @@ const Container = styled.div`
 const EditorShell = styled.div`
   display: flex;
   height: calc(100vh - 200px);
+  border: solid 1px ${props => props.theme?.token?.colorBorder}
 `
 
 export const LogicEditor = memo(() => {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
+  const [, token] = useToken();
 
   const handleEditClick = useCallback(() => {
     setOpen(true)
@@ -73,6 +76,7 @@ export const LogicEditor = memo(() => {
                 //controllerMetas={[inputValue]}
                 materialCategories={activityMaterialCategories}
                 locales={activityMaterialLocales}
+                token={token}
                 value={{
                   nodes: [],
                   lines: []
