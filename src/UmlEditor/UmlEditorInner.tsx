@@ -20,7 +20,6 @@ import { useSelectedCode } from "./hooks/useSelectedCode";
 import { useChangeCode } from "./hooks/useChangeCode";
 import { LogicEditor } from "./LogicEditor";
 import { useSelectedGraphLogic } from "./hooks/useSelectedGraphLogic";
-import { ILogicMetas } from "@rxdrag/minions-logicflow-editor";
 import { useChangeGraphLogic } from "./hooks/useChangeGraphLogic";
 
 const MapContianer = styled.div`

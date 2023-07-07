@@ -11,6 +11,7 @@ import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
 import { useSubLogicFlows } from "UmlEditor/hooks/useSubLogicFlows"
 import { ILogicFlowContext } from "./ILogicFlowContext"
 import { MethodMeta } from "UmlEditor/meta"
+import { SubLogicFlowSelect } from "./setters/SubLogicFlowSelect"
 
 const Container = styled.div`
   flex: 1;
@@ -39,10 +40,11 @@ export const LogicEditor = memo((
 ) => {
   const { metaId, value, onChange } = props;
   const [open, setOpen] = useState(false);
-  const [inputValue, setInputValue] = useState<ILogicMetas>(value?.logicMetas||EmpertyMetas);
+  const [inputValue, setInputValue] = useState<ILogicMetas>(value?.logicMetas || EmpertyMetas);
   const subFlows = useSubLogicFlows(metaId)
   useEffect(() => {
-    setInputValue(value?.logicMetas||EmpertyMetas)
+    setInputValue(value?.logicMetas || EmpertyMetas)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value?.uuid])
 
   const { t } = useTranslation();
@@ -61,15 +63,15 @@ export const LogicEditor = memo((
   }, [])
 
   const handleOk = useCallback(() => {
-    value && onChange?.({...value, logicMetas:inputValue})
+    value && onChange?.({ ...value, logicMetas: inputValue })
     handleClose()
-  }, [handleClose, inputValue, onChange])
+  }, [handleClose, inputValue, onChange, value])
 
-  const logicFlowContext:ILogicFlowContext = useMemo(()=>{
-    return{
-      subLogicFlows: subFlows||[]
+  const logicFlowContext: ILogicFlowContext = useMemo(() => {
+    return {
+      subLogicFlows: subFlows || []
     }
-  }, [])
+  }, [subFlows])
 
   return (
     <Container>
@@ -112,13 +114,11 @@ export const LogicEditor = memo((
                 locales={activityMaterialLocales}
                 token={token}
                 value={inputValue}
-                logicFlowContext = {logicFlowContext}
+                logicFlowContext={logicFlowContext}
                 onChange={handleChange}
-              // setters={{
-              //   VariableSelect,
-              //   PropSelect,
-              //   ReactionSelect,
-              // }}
+                setters={{
+                  SubLogicFlowSelect,
+                }}
               />
             </Form>
           </Fieldy>
