@@ -1,8 +1,8 @@
 export const activityMaterialLocales = {
   "zh-CN": {
     name: "名称",
-    basicReactions: "基础节点",
-    commonReactions: "常用计算",
+    basicAcitivites: "基础节点",
+    advancedAcitivites: "高级节点",
     auxTools: "辅助工具",
     start: "开始",
     end: "结束",
@@ -68,13 +68,13 @@ export const activityMaterialLocales = {
     field: "字段",
     componentControl: "组件控制",
     component: "组件",
-    reaction: "交互",
+    subLogicFlow: "子编排",
     splitArray: "拆分数组",
     splitObject: "拆分对象",
     tip: "提示",
   },
   'en-US': {
-    basicReactions: "Basic Reactions",
+    basicAcitivites: "Basic Reactions",
     commonReactions: "Common Reactions",
     auxTools: "Aux Tools",
     start: "Start",
@@ -143,7 +143,7 @@ export const activityMaterialLocales = {
     field: "Field",
     componentControl: "Component Control",
     component: "Component",
-    reaction: "Reaction",
+    subLogicFlow: "Sub LogicFlow",
     splitArray: "Split Array",
     splitObject: "Split Object",
     tip: "Tip"

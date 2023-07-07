@@ -11,7 +11,7 @@ export interface ISubLogicFlowConfig{
 export const subLogicFlowMaterial: IRxDragActivityMaterial<ISubLogicFlowConfig, ILogicFlowContext> = {
   activityName: "subLogicFlow",
   icon: methodIcon,
-  label: "$reaction",
+  label: "$subLogicFlow",
   activityType: ActivityType.LogicFlowActivity,
   defaultPorts: {
   },
