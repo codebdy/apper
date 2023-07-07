@@ -2309,7 +2309,7 @@
   resolved "https://registry.yarnpkg.com/@rxdrag/minions-runtime/-/minions-runtime-1.0.0.tgz#ec8b6d1bccb7e24cfee8d47c3b34447b88f6ca78"
   integrity sha512-yE0+JBnPuVG5l2LsfcrulDczA1kugRwVh30CuGuXO0aM6Xu0+Y7ZXL/UgL4PdoLqqll0eew5jcuNojDpOjm82A==
 
-"@rxdrag/minions-schema@0.2.2", "@rxdrag/minions-schema@^0.2.2":
+"@rxdrag/minions-schema@0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@rxdrag/minions-schema/-/minions-schema-0.2.2.tgz#24e7445c8fdb66d9a711edf46b182de32f857519"
   integrity sha512-iMH36zSOckQw3UttUGlRdrPtRSBn1gcn3t5UoTOjuvPUw9EmLNGk4AF7SUx2pofXCkRKc4J/nsSx5FjIwkquXQ==

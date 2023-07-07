@@ -10,7 +10,7 @@ import { UmlToolbar } from "./UmlToolbar";
 import { GraphCanvas } from "./GraphCanvas";
 import { PropertyPanel } from "./PropertyPanel";
 import styled from "styled-components";
-import { MetaContent } from "./meta";
+import { MetaContent, MethodMeta } from "./meta";
 import { useParesMeta } from "./hooks/useParesMeta";
 import Editor from "@monaco-editor/react"
 import { themeModeState } from "recoil/atoms";
@@ -85,8 +85,8 @@ export const UmlEditorInner = memo((
     selectedCode && changeCode({ ...selectedCode, scriptText: value })
   }, [selectedCode, changeCode])
 
-  const handleLogicMetaChange = useCallback((metas?: ILogicMetas) => {
-    selectedGraphLogic && changeGraphLogic({ ...selectedGraphLogic, logicMetas: metas })
+  const handleLogicMetaChange = useCallback((methodMeta: MethodMeta) => {
+    selectedGraphLogic && changeGraphLogic(methodMeta)
   }, [changeGraphLogic, selectedGraphLogic])
 
   return (
@@ -143,7 +143,8 @@ export const UmlEditorInner = memo((
       {
         selectedGraphLogic &&
         <LogicEditor
-          value={selectedGraphLogic.logicMetas}
+          metaId={metaId}
+          value={selectedGraphLogic}
           onChange={handleLogicMetaChange}
         />
       }

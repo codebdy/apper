@@ -1,3 +1,4 @@
+import { ILogicMetas } from "@rxdrag/minions-logicflow-editor";
 import { Type } from "./Type";
 
 export interface ArgMeta {
@@ -52,5 +53,5 @@ export interface MethodMeta {
 
   logicScript?: string;
 
-  logicMetas?: any;
+  logicMetas?: ILogicMetas;
 }

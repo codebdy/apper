@@ -2,12 +2,15 @@ import { EditOutlined } from "@ant-design/icons"
 import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5"
 import { Fieldy } from "@rxdrag/react-fieldy"
 import { Button, Form, Modal } from "antd"
-import { memo, useCallback, useEffect, useState } from "react"
+import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
 import styled from "styled-components"
 import { activityMaterialCategories, activityMaterialLocales } from "./minion-materials"
 import { useToken } from "antd/es/theme/internal"
 import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
+import { useSubLogicFlows } from "UmlEditor/hooks/useSubLogicFlows"
+import { ILogicFlowContext } from "./ILogicFlowContext"
+import { MethodMeta } from "UmlEditor/meta"
 
 const Container = styled.div`
   flex: 1;
@@ -29,17 +32,18 @@ const EmpertyMetas = {
 
 export const LogicEditor = memo((
   props: {
-    value?: ILogicMetas,
-    onChange?: (value?: ILogicMetas) => void
+    metaId: string,
+    value?: MethodMeta,
+    onChange?: (value: MethodMeta) => void
   }
 ) => {
-  const { value = EmpertyMetas, onChange } = props;
+  const { metaId, value, onChange } = props;
   const [open, setOpen] = useState(false);
-  const [inputValue, setInputValue] = useState<ILogicMetas>(value);
-
+  const [inputValue, setInputValue] = useState<ILogicMetas>(value?.logicMetas||EmpertyMetas);
+  const subFlows = useSubLogicFlows(metaId)
   useEffect(() => {
-    setInputValue(value)
-  }, [value])
+    setInputValue(value?.logicMetas||EmpertyMetas)
+  }, [value?.uuid])
 
   const { t } = useTranslation();
   const [, token] = useToken();
@@ -57,9 +61,15 @@ export const LogicEditor = memo((
   }, [])
 
   const handleOk = useCallback(() => {
-    onChange?.(inputValue)
+    value && onChange?.({...value, logicMetas:inputValue})
     handleClose()
   }, [handleClose, inputValue, onChange])
+
+  const logicFlowContext:ILogicFlowContext = useMemo(()=>{
+    return{
+      subLogicFlows: subFlows||[]
+    }
+  }, [])
 
   return (
     <Container>
@@ -98,13 +108,11 @@ export const LogicEditor = memo((
               }}
             >
               <LogicFlowEditorAntd5
-                //value={inputValue}
-                //onChange={handleChange}
-                //controllerMetas={[inputValue]}
                 materialCategories={activityMaterialCategories}
                 locales={activityMaterialLocales}
                 token={token}
                 value={inputValue}
+                logicFlowContext = {logicFlowContext}
                 onChange={handleChange}
               // setters={{
               //   VariableSelect,

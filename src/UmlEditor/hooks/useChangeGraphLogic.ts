@@ -22,8 +22,8 @@ export function useChangeGraphLogic(metaId: ID) {
         return t("ErrorNameRepeat");
       }
       backupSnapshot();
-      setGraphLogics((scripts) =>
-        scripts.map((mthd) => (mthd.uuid === method.uuid ? method : mthd))
+      setGraphLogics((graphLogics) =>
+        graphLogics.map((mthd) => (mthd.uuid === method.uuid ? method : mthd))
       );
       return undefined;
     },

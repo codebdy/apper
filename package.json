@@ -15,7 +15,6 @@
     "@rxdrag/appx-plugin-sdk": "^0.0.4",
     "@rxdrag/logicflow-editor-antd5": "^0.2.8",
     "@rxdrag/minions-logicflow-editor": "^0.2.4",
-    "@rxdrag/minions-schema": "^0.2.2",
     "@rxdrag/react-fieldy": "^0.2.2",
     "@rxdrag/schema": "^0.2.2",
     "@rxdrag/shared": "^0.2.2",
