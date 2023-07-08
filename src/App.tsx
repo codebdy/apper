@@ -28,7 +28,6 @@ import { AppFrames } from 'Studio/AppDesigner/AppDesignerHeader/AppFrames';
 import AppUis from 'Studio/AppDesigner/AppDesignerHeader/AppUis';
 import { AppDmn } from 'Studio/AppDesigner/AppDmn';
 import { AppModel } from 'Studio/AppDesigner/AppModel';
-import { AppLogic } from 'Studio/AppDesigner/AppLogic';
 
 const App = memo(() => {
   return (
@@ -53,7 +52,6 @@ const App = memo(() => {
                     <Route path={AppEntryRouts.Bpmn} element={<AppBpmn />} />
                     <Route path={AppEntryRouts.Dmn} element={<AppDmn />} />
                     <Route path={AppEntryRouts.Uml} element={<AppModel />} />
-                    <Route path={AppEntryRouts.Logic} element={<AppLogic />} />
                     <Route path={AppEntryRouts.Api} element={<ApiBoard />} />
                     <Route path={AppEntryRouts.Frame} element={<AppFrames />} />
                     <Route path={AppEntryRouts.Auth} element={<AuthBoard />}>

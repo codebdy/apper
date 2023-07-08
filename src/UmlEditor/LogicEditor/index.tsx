@@ -12,6 +12,7 @@ import { useSubLogicFlows } from "UmlEditor/hooks/useSubLogicFlows"
 import { ILogicFlowContext } from "./ILogicFlowContext"
 import { MethodMeta } from "UmlEditor/meta"
 import { SubLogicFlowSelect } from "./setters/SubLogicFlowSelect"
+import { ActivityType, ILogicFlowDefine } from "@rxdrag/minions-schema"
 
 const Container = styled.div`
   flex: 1;
@@ -44,7 +45,7 @@ export const LogicEditor = memo((
   const subFlows = useSubLogicFlows(metaId)
   useEffect(() => {
     setInputValue(value?.logicMetas || EmpertyMetas)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value?.uuid])
 
   const { t } = useTranslation();
@@ -71,6 +72,16 @@ export const LogicEditor = memo((
     return {
       subLogicFlows: subFlows || []
     }
+  }, [subFlows])
+
+  const canBeReferencedLogflowMetas: ILogicFlowDefine[] = useMemo(() => {
+    return subFlows.map(subflow => ({
+      id: subflow.uuid,
+      name: subflow.name,
+      type: ActivityType.LogicFlowActivity,
+      nodes: subflow?.logicMetas?.nodes || [],
+      lines: subflow?.logicMetas?.lines || [],
+    }))
   }, [subFlows])
 
   return (
@@ -119,6 +130,7 @@ export const LogicEditor = memo((
                 setters={{
                   SubLogicFlowSelect,
                 }}
+                canBeReferencedLogflowMetas={canBeReferencedLogflowMetas}
               />
             </Form>
           </Fieldy>

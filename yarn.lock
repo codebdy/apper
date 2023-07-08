@@ -2319,6 +2319,11 @@
   resolved "https://registry.yarnpkg.com/@rxdrag/minions-schema/-/minions-schema-1.0.0.tgz#ca8cd818ec52107e831be05e5679c7bd39cdb5df"
   integrity sha512-ykXB5KcTSk+dLsNhJ+fCygRz4q/Twgb2AC93Q0CF1jWgO7aQy1zY9rHQJ/yvHoWcUqdHoeZaoxNVEzOqSnrD6g==
 
+"@rxdrag/minions-schema@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@rxdrag/minions-schema/-/minions-schema-0.2.3.tgz#f91b0a9458bffa580fea4ffd116efa3f58d33de9"
+  integrity sha512-+FcVYVhke+llqYn44mpmk+PPWJtp1tp3O4sJbq/KPNkAAXjehu4DsCWd435zz5kcnp2lTDAtxaTuSgd7MTNl5Q==
+
 "@rxdrag/react-antd-components@0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@rxdrag/react-antd-components/-/react-antd-components-0.2.2.tgz#a26d43f3baa62f18a696652644f866f563629ece"

@@ -8,7 +8,7 @@ export const subLogicFlowSchema: INodeSchema = {
     {
       componentName: "SubLogicFlowSelect",
       "x-field": {
-        name: "config.subFlowId",
+        name: "config.param.logicFlowId",
         params: {
           withBind: true,
         }

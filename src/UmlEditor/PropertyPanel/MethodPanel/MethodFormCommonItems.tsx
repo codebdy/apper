@@ -34,6 +34,7 @@ export const MethodFormCommonItems = memo((
       >
         <Radio.Group
           optionType="button"
+          disabled={method.operateType === MethodOperateType.SubMethod}
           options={[
             {
               value: MethodOperateType.Query,
