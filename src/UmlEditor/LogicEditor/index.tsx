@@ -1,18 +1,18 @@
 import { EditOutlined } from "@ant-design/icons"
 import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5"
 import { Fieldy } from "@rxdrag/react-fieldy"
-import { Button, Form, Modal } from "antd"
+import { Button, Modal } from "antd"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
 import styled from "styled-components"
 import { activityMaterialCategories, activityMaterialLocales } from "./minion-materials"
 import { useToken } from "antd/es/theme/internal"
-import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
 import { useSubLogicFlows } from "UmlEditor/hooks/useSubLogicFlows"
 import { ILogicFlowContext } from "./ILogicFlowContext"
 import { MethodMeta } from "UmlEditor/meta"
 import { SubLogicFlowSelect } from "./setters/SubLogicFlowSelect"
 import { ActivityType, ILogicFlowDefine } from "@rxdrag/minions-schema"
+import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
 
 const Container = styled.div`
   flex: 1;
@@ -107,32 +107,18 @@ export const LogicEditor = memo((
       >
         <EditorShell>
           <Fieldy>
-            <Form
-              labelAlign="left"
-              colon={false}
-              labelCol={{ span: 7 }}
-              wrapperCol={{ span: 17 }}
-              autoComplete="off"
-              labelWrap={true}
-              style={{
-                flex: 1,
-                height: '100%',
-                display: "flex",
+            <LogicFlowEditorAntd5
+              materialCategories={activityMaterialCategories}
+              locales={activityMaterialLocales}
+              token={token}
+              value={inputValue}
+              logicFlowContext={logicFlowContext}
+              onChange={handleChange}
+              setters={{
+                SubLogicFlowSelect,
               }}
-            >
-              <LogicFlowEditorAntd5
-                materialCategories={activityMaterialCategories}
-                locales={activityMaterialLocales}
-                token={token}
-                value={inputValue}
-                logicFlowContext={logicFlowContext}
-                onChange={handleChange}
-                setters={{
-                  SubLogicFlowSelect,
-                }}
-                canBeReferencedLogflowMetas={canBeReferencedLogflowMetas}
-              />
-            </Form>
+              canBeReferencedLogflowMetas={canBeReferencedLogflowMetas}
+            />
           </Fieldy>
         </EditorShell>
       </Modal>
