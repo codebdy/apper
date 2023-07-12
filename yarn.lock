@@ -2243,22 +2243,22 @@
     "@rxdrag/shared" "1.1.0"
     lodash "^4.17.21"
 
-"@rxdrag/logicflow-editor-antd5@^0.2.11":
-  version "0.2.11"
-  resolved "https://registry.yarnpkg.com/@rxdrag/logicflow-editor-antd5/-/logicflow-editor-antd5-0.2.11.tgz#93f7a8e811686d84472294ab6cb40fae63946b2b"
-  integrity sha512-YawqJx0H0xZItA3bTLphL393pBhcmOwDSHg5FV0u2F5lhTwja5aO6R3bqWeFhG+BzhGQD4CEqvAnTJ+VdR/6pA==
+"@rxdrag/logicflow-editor-antd5@^0.2.14":
+  version "0.2.14"
+  resolved "https://registry.yarnpkg.com/@rxdrag/logicflow-editor-antd5/-/logicflow-editor-antd5-0.2.14.tgz#f525ac1b4c46986536d4b76655afebe00a15b11e"
+  integrity sha512-zqQUl9UXe0ohaMGFJ9q/ce8n3eKB8+KyTKOd4X0L+57nbA8pakZDCmUEHGr4AH0ygh4nyb790YPlhJT2zP3aJA==
   dependencies:
     "@ant-design/icons" "^4.8.0"
     "@rxdrag/fieldy" "0.2.4"
     "@rxdrag/locales" "0.2.2"
-    "@rxdrag/minions-logicflow-editor" "0.2.6"
+    "@rxdrag/minions-logicflow-editor" "0.2.7"
     "@rxdrag/minions-runtime-react" "0.2.3"
     "@rxdrag/minions-schema" "0.2.5"
     "@rxdrag/react-antd-components" "0.2.3"
     "@rxdrag/react-antd-props-inputs" "0.2.3"
     "@rxdrag/react-fieldy" "0.2.3"
     "@rxdrag/react-locales" "0.2.2"
-    "@rxdrag/react-runner" "0.2.3"
+    "@rxdrag/react-runner" "0.2.4"
     "@rxdrag/react-shared" "0.2.2"
     "@rxdrag/schema" "0.2.2"
     "@rxdrag/shared" "0.2.2"
@@ -2278,10 +2278,10 @@
     "@rxdrag/minions-schema" "0.2.5"
     lodash "^4.17.21"
 
-"@rxdrag/minions-logicflow-editor@0.2.6", "@rxdrag/minions-logicflow-editor@^0.2.6":
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/@rxdrag/minions-logicflow-editor/-/minions-logicflow-editor-0.2.6.tgz#a115fa381d4fcfde47a820a93be4782cbaa801ba"
-  integrity sha512-6QV0+/HrawaNhBAB8x14P/UMD+XboOLdH1DY+rErJSju2XJH5FqeFEkwSQpt1jtG0uhh4Dhvrz4CGiPQEO9chw==
+"@rxdrag/minions-logicflow-editor@0.2.7", "@rxdrag/minions-logicflow-editor@^0.2.7":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@rxdrag/minions-logicflow-editor/-/minions-logicflow-editor-0.2.7.tgz#56fe497b714823066d20a958b69536e42c4d317d"
+  integrity sha512-G/jlZpoEGttG19eoyb3rHW6YuzfPwp9PFy+50vNB8DHzJ3et57lCIWN0ZDrXj5gkKJ5x8US/JY5LWjltnhtkwA==
   dependencies:
     "@antv/x6" "^2.10.1"
     "@antv/x6-plugin-dnd" "^2.0.5"
@@ -2571,6 +2571,29 @@
     "@rxdrag/minions-runtime" "0.2.2"
     "@rxdrag/minions-runtime-react" "0.2.2"
     "@rxdrag/react-fieldy" "0.2.2"
+    "@rxdrag/react-shared" "0.2.2"
+    "@rxdrag/schema" "0.2.2"
+    "@rxdrag/shared" "0.2.2"
+    "@types/react" "^18.0.28"
+    "@types/react-dom" "^18.0.11"
+    lodash "^4.17.21"
+    redux "^4.2.1"
+    styled-components "^5.3.9"
+
+"@rxdrag/react-runner@0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@rxdrag/react-runner/-/react-runner-0.2.4.tgz#fc0361e6c9942c9c54ac017675501a8a39eccdd8"
+  integrity sha512-ZiKWwPuo/HBRdBi1JkpKH7LtM0X7GJzjCgUO+B82C88fjSYQyn/pZBXDtJOvay68AEcbt6CX0QyQvy31fLtz2Q==
+  dependencies:
+    "@monaco-editor/react" "^4.4.6"
+    "@reduxjs/toolkit" "^1.9.3"
+    "@rxdrag/fieldy" "0.2.4"
+    "@rxdrag/fieldy-minions-activities" "0.2.2"
+    "@rxdrag/fieldy-schema" "0.2.2"
+    "@rxdrag/locales" "0.2.2"
+    "@rxdrag/minions-runtime" "0.2.4"
+    "@rxdrag/minions-runtime-react" "0.2.3"
+    "@rxdrag/react-fieldy" "0.2.3"
     "@rxdrag/react-shared" "0.2.2"
     "@rxdrag/schema" "0.2.2"
     "@rxdrag/shared" "0.2.2"
