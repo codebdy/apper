@@ -2243,10 +2243,10 @@
     "@rxdrag/shared" "1.1.0"
     lodash "^4.17.21"
 
-"@rxdrag/logicflow-editor-antd5@^0.2.14":
-  version "0.2.14"
-  resolved "https://registry.yarnpkg.com/@rxdrag/logicflow-editor-antd5/-/logicflow-editor-antd5-0.2.14.tgz#f525ac1b4c46986536d4b76655afebe00a15b11e"
-  integrity sha512-zqQUl9UXe0ohaMGFJ9q/ce8n3eKB8+KyTKOd4X0L+57nbA8pakZDCmUEHGr4AH0ygh4nyb790YPlhJT2zP3aJA==
+"@rxdrag/logicflow-editor-antd5@^0.2.15":
+  version "0.2.15"
+  resolved "https://registry.yarnpkg.com/@rxdrag/logicflow-editor-antd5/-/logicflow-editor-antd5-0.2.15.tgz#842ef8497b210e67ee1d2e6e20d18cc0bd93c10c"
+  integrity sha512-G4MROwUW09mU2o29ZuP9pEezsjRXSl7x9vww6Kh3YNNAiwsAjihrsWZyYlFu8qecx+pDLISFNxvh59Rox14gqg==
   dependencies:
     "@ant-design/icons" "^4.8.0"
     "@rxdrag/fieldy" "0.2.4"
@@ -2258,7 +2258,7 @@
     "@rxdrag/react-antd-props-inputs" "0.2.3"
     "@rxdrag/react-fieldy" "0.2.3"
     "@rxdrag/react-locales" "0.2.2"
-    "@rxdrag/react-runner" "0.2.4"
+    "@rxdrag/react-runner" "0.2.5"
     "@rxdrag/react-shared" "0.2.2"
     "@rxdrag/schema" "0.2.2"
     "@rxdrag/shared" "0.2.2"
@@ -2580,10 +2580,10 @@
     redux "^4.2.1"
     styled-components "^5.3.9"
 
-"@rxdrag/react-runner@0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@rxdrag/react-runner/-/react-runner-0.2.4.tgz#fc0361e6c9942c9c54ac017675501a8a39eccdd8"
-  integrity sha512-ZiKWwPuo/HBRdBi1JkpKH7LtM0X7GJzjCgUO+B82C88fjSYQyn/pZBXDtJOvay68AEcbt6CX0QyQvy31fLtz2Q==
+"@rxdrag/react-runner@0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@rxdrag/react-runner/-/react-runner-0.2.5.tgz#02bfffeacf863d2641bc9f50477a67e4db0a9684"
+  integrity sha512-e3Ik3xBfWr67EtPco0OCxM/7aoVJwUt/5S2FsMsawl2zAFwbysxGEi9lpPpfO3XFd7uodeoguy1mID5Yj0RrMw==
   dependencies:
     "@monaco-editor/react" "^4.4.6"
     "@reduxjs/toolkit" "^1.9.3"

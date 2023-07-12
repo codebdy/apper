@@ -13,7 +13,7 @@
     "@graphiql/toolkit": "^0.6.0",
     "@monaco-editor/react": "^4.4.6",
     "@rxdrag/appx-plugin-sdk": "^0.0.4",
-    "@rxdrag/logicflow-editor-antd5": "^0.2.14",
+    "@rxdrag/logicflow-editor-antd5": "^0.2.15",
     "@rxdrag/minions-logicflow-editor": "^0.2.7",
     "@rxdrag/minions-schema": "^0.2.5",
     "@rxdrag/react-fieldy": "^0.2.3",
