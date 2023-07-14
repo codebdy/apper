@@ -74,6 +74,7 @@ export const activityMaterialLocales = {
     oneOutput: "单次输出",
     finished: "结束",
     rollback: "回滚",
+    splitArgs: "拆分参数",
     splitArray: "拆分数组",
     splitObject: "拆分对象",
     tip: "提示",
@@ -154,6 +155,7 @@ export const activityMaterialLocales = {
     oneOutput: "One output",
     finished: "Finished",
     rollback: "Rollback",
+    splitArgs: "Split args",
     splitArray: "Split Array",
     splitObject: "Split Object",
     tip: "Tip"
