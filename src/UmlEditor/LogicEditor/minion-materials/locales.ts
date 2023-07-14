@@ -78,6 +78,11 @@ export const activityMaterialLocales = {
     splitArray: "拆分数组",
     splitObject: "拆分对象",
     tip: "提示",
+    contextWrite: "写上下文",
+    contextRead: "读上下文",
+    httpRequest: "HTTP请求",
+    graphqlRequest: "GraphQL",
+    entifyRequest: "模型操作"
   },
   'en-US': {
     basicAcitivites: "Basic Reactions",
@@ -158,6 +163,11 @@ export const activityMaterialLocales = {
     splitArgs: "Split args",
     splitArray: "Split Array",
     splitObject: "Split Object",
-    tip: "Tip"
+    tip: "Tip",
+    contextWrite: "Context Write",
+    contextRead: "Context Read",
+    httpRequest: "HTTP Req",
+    graphqlRequest: "GraphQL Req",
+    entifyRequest: "Model Operate"
   }
 }

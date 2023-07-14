@@ -11,6 +11,8 @@ import { splitArrayMaterial } from "./SplitArray";
 import { splitObjectMaterial } from "./SplitObject";
 import { jsCodeMaterial } from "./jsCode";
 import { splitArgsMaterial } from "./SplitArgs";
+import { contextReadMaterial } from "./contextRead";
+import { contextWriteMaterial } from "./contextWrite";
 
 export const startEndSchema: INodeSchema = {
   componentName: "Fragment",
@@ -41,5 +43,7 @@ export const basicActivities: IActivityMaterial<any, any, any, any>[] = [
   splitArgsMaterial,
   splitArrayMaterial,
   splitObjectMaterial,
-  jsCodeMaterial
+  jsCodeMaterial,
+  contextReadMaterial,
+  contextWriteMaterial
 ]
