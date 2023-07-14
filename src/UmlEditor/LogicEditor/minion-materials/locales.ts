@@ -1,8 +1,8 @@
 export const activityMaterialLocales = {
   "zh-CN": {
     name: "名称",
-    basicAcitivites: "基础节点",
-    advancedAcitivites: "高级节点",
+    basicAcitivites: "基础元件",
+    advancedAcitivites: "高级元件",
     auxTools: "辅助工具",
     start: "开始",
     end: "结束",

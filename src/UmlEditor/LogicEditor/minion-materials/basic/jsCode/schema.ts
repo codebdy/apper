@@ -65,7 +65,7 @@ export const jsCodeSchema: INodeSchema = {
           },
           props: {
             defaultValue:
-              `({ inputs, outputs }) => {
+              `( inputs, outputs, context ) => {
   const { output } = outputs;
   output('not implement');
 }`
