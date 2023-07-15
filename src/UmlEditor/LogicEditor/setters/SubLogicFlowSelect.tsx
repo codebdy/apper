@@ -1,9 +1,8 @@
 import { useMetaId } from "UmlEditor/hooks/useMetaId";
 import { useSelectedGraphLogic } from "UmlEditor/hooks/useSelectedGraphLogic";
 import { useSubLogicFlows } from "UmlEditor/hooks/useSubLogicFlows";
-import { Form, Select } from "antd";
+import { Select } from "antd";
 import { memo, useCallback } from "react"
-import { useTranslation } from "react-i18next";
 
 export const SubLogicFlowSelect = memo((
   props: {
@@ -12,7 +11,6 @@ export const SubLogicFlowSelect = memo((
   }
 ) => {
   const { value, onChange } = props
-  const { t } = useTranslation();
   const metaId = useMetaId();
   const subFlows = useSubLogicFlows(metaId || "")
   const current = useSelectedGraphLogic()
@@ -21,14 +19,10 @@ export const SubLogicFlowSelect = memo((
   }, [onChange])
 
   return (
-    <Form.Item
-      label={t("UmlEditor.SubGraphs")}
-    >
-      <Select
-        value={value}
-        options={subFlows?.filter(subflow => subflow.uuid !== current?.uuid)?.map((subFlow) => ({ value: subFlow.uuid, label: subFlow.name }))}
-        onChange={hanldeSubFlowChange}
-      />
-    </Form.Item>
+    <Select
+      value={value}
+      options={subFlows?.filter(subflow => subflow.uuid !== current?.uuid)?.map((subFlow) => ({ value: subFlow.uuid, label: subFlow.name }))}
+      onChange={hanldeSubFlowChange}
+    />
   )
 })

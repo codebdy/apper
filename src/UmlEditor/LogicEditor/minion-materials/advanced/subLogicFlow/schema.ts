@@ -6,13 +6,21 @@ export const subLogicFlowSchema: INodeSchema = {
   children: [
     labelSchema,
     {
-      componentName: "SubLogicFlowSelect",
-      "x-field": {
-        name: "config.param.logicFlowId",
-        params: {
-          withBind: true,
-        }
+      componentName: "FormItem",
+      props: {
+        label: "$subLogicFlow",
       },
-    },
+      children: [
+        {
+          componentName: "SubLogicFlowSelect",
+          "x-field": {
+            name: "config.param.logicFlowId",
+            params: {
+              withBind: true,
+            }
+          },
+        },
+      ]
+    }
   ],
 }
