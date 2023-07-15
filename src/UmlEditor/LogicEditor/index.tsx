@@ -5,11 +5,14 @@ import styled from "styled-components"
 import { activityMaterialCategories, activityMaterialLocales } from "./minion-materials"
 import { useToken } from "antd/es/theme/internal"
 import { useSubLogicFlows } from "UmlEditor/hooks/useSubLogicFlows"
-import { ILogicFlowContext } from "./ILogicFlowContext"
+import { ILogicFlowContext } from "./contexts"
 import { MethodMeta } from "UmlEditor/meta"
 import { SubLogicFlowSelect } from "./setters/SubLogicFlowSelect"
 import { ActivityType, ILogicFlowDefine } from "@rxdrag/minions-schema"
 import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
+import { useLogicFlowEditorStore } from "./hooks/useLogicFlowEditorStore"
+import { minMapState } from "UmlEditor/recoil/atoms"
+import { useRecoilValue } from "recoil"
 
 
 const EditorShell = styled.div`
@@ -26,13 +29,9 @@ export const LogicEditor = memo((
   }
 ) => {
   const { metaId, value, onChange } = props;
-  //const [inputValue, setInputValue] = useState<ILogicMetas>(value?.logicMetas || EmpertyMetas);
   const subFlows = useSubLogicFlows(metaId)
-  // useEffect(() => {
-  //   setInputValue(value?.logicMetas || EmpertyMetas)
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [value?.uuid])
-
+  const logicFlowStore = useLogicFlowEditorStore()
+  const minMap = useRecoilValue(minMapState(metaId));
   const [, token] = useToken();
 
   const handleChange = useCallback((val: ILogicMetas) => {
@@ -59,7 +58,7 @@ export const LogicEditor = memo((
     <EditorShell>
       <Fieldy>
         {
-          value?.logicMetas && <LogicFlowEditorAntd5
+          value?.logicMetas && logicFlowStore && <LogicFlowEditorAntd5
             materialCategories={activityMaterialCategories}
             locales={activityMaterialLocales}
             token={token}
@@ -71,6 +70,8 @@ export const LogicEditor = memo((
             }}
             canBeReferencedLogflowMetas={canBeReferencedLogflowMetas}
             toolbar={false}
+            editorStore={logicFlowStore}
+            showMap={minMap}
           />
         }
       </Fieldy>

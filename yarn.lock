@@ -2243,18 +2243,18 @@
     "@rxdrag/shared" "1.1.0"
     lodash "^4.17.21"
 
-"@rxdrag/logicflow-editor-antd5@^0.2.18":
-  version "0.2.18"
-  resolved "https://registry.yarnpkg.com/@rxdrag/logicflow-editor-antd5/-/logicflow-editor-antd5-0.2.18.tgz#a406f013f5d5af2024c13964b94732eba2ad12d5"
-  integrity sha512-pcn1qDugehW4go8K/fbaejg88OfMJbubJJOhWypdkATiq0ifbYWX3OBbsd/qE81U1bAF5peyFeGns4G5X8WhVQ==
+"@rxdrag/logicflow-editor-antd5@^0.2.20":
+  version "0.2.20"
+  resolved "https://registry.yarnpkg.com/@rxdrag/logicflow-editor-antd5/-/logicflow-editor-antd5-0.2.20.tgz#1e317fd8da49024c56a620986ac5f45c5f58b12f"
+  integrity sha512-1XDT3dasJV3iCnLjD0N1vWBVNWSTgsF9gjCQF0hBMseIMbWbBa+7P+xIDOLmXCvCly5rTKTgNbZ3VsZNxn2FTg==
   dependencies:
     "@ant-design/icons" "^4.8.0"
     "@rxdrag/fieldy" "0.2.4"
     "@rxdrag/locales" "0.2.2"
-    "@rxdrag/minions-logicflow-editor" "0.2.10"
+    "@rxdrag/minions-logicflow-editor" "0.2.11"
     "@rxdrag/minions-runtime-react" "0.2.3"
     "@rxdrag/minions-schema" "0.2.5"
-    "@rxdrag/react-antd-components" "0.2.3"
+    "@rxdrag/react-antd-components" "0.2.5"
     "@rxdrag/react-antd-props-inputs" "0.2.3"
     "@rxdrag/react-fieldy" "0.2.3"
     "@rxdrag/react-locales" "0.2.2"
@@ -2278,10 +2278,10 @@
     "@rxdrag/minions-schema" "0.2.5"
     lodash "^4.17.21"
 
-"@rxdrag/minions-logicflow-editor@0.2.10", "@rxdrag/minions-logicflow-editor@^0.2.10":
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/@rxdrag/minions-logicflow-editor/-/minions-logicflow-editor-0.2.10.tgz#2fb1f7af02604f1e7764dd15adac462eb99b70ea"
-  integrity sha512-6d5hetMXX2Uy+cgdR4Npe/1u+TC21CPSRgrYjBtt2ce8ibWybLxwXuu+LxXMj+ZRN0oEZWQ7u9xp6oK193YlDw==
+"@rxdrag/minions-logicflow-editor@0.2.11", "@rxdrag/minions-logicflow-editor@^0.2.11":
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/@rxdrag/minions-logicflow-editor/-/minions-logicflow-editor-0.2.11.tgz#b74ae6bcccb1bac77848beb0fae484a0f1bd7371"
+  integrity sha512-R/YF+98q9eXlGvzyUfK2uem/t6mBH5ksAxPf2M8xTFnW9YtJC1YUSHn7dFfKCnpuKmh67GRgltOfgrMwVl9OKQ==
   dependencies:
     "@antv/x6" "^2.10.1"
     "@antv/x6-plugin-dnd" "^2.0.5"
@@ -2382,29 +2382,7 @@
     lodash "^4.17.21"
     styled-components "^5.3.9"
 
-"@rxdrag/react-antd-components@0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@rxdrag/react-antd-components/-/react-antd-components-0.2.3.tgz#e23d7c0a69cab050435f12659282ba6a4c5589f9"
-  integrity sha512-wht6QVQElug7W842rPmwO1gMhva+CFMRT/Rzk87XkaEeaSSu6ikb7zN4rQOW8lYxnfUba8oKpb0tZ65LSQfYdQ==
-  dependencies:
-    "@ant-design/icons" "^4.8.0"
-    "@rxdrag/fieldy" "0.2.4"
-    "@rxdrag/fieldy-schema" "0.2.2"
-    "@rxdrag/react-antd-icons" "0.2.2"
-    "@rxdrag/react-core" "0.2.3"
-    "@rxdrag/react-fieldy" "0.2.3"
-    "@rxdrag/react-runner" "0.2.3"
-    "@rxdrag/react-shared" "0.2.2"
-    "@rxdrag/schema" "0.2.2"
-    "@rxdrag/shared" "0.2.2"
-    "@types/react" "^18.0.28"
-    "@types/react-dom" "^18.0.11"
-    antd "^5.6.2"
-    dayjs "^1.11.7"
-    lodash "^4.17.21"
-    styled-components "^5.3.9"
-
-"@rxdrag/react-antd-components@^0.2.5":
+"@rxdrag/react-antd-components@0.2.5", "@rxdrag/react-antd-components@^0.2.5":
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/@rxdrag/react-antd-components/-/react-antd-components-0.2.5.tgz#3d93451c7ec4deae31d783e00da3f38c370364a4"
   integrity sha512-HvlvygFvZNFgBIChM2ftwPiud6TuM47lpS/vOtnRd5XhGoPKQwxtSFSEbtiqicYIMj24Y41PB2gtzrSk1FG15A==

@@ -2,7 +2,7 @@ import { ActivityType, ILogicFlowConfig } from "@rxdrag/minions-schema";
 import { methodIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { subLogicFlowSchema } from "./schema";
-import { ILogicFlowContext } from "UmlEditor/LogicEditor/ILogicFlowContext";
+import { ILogicFlowContext } from "UmlEditor/LogicEditor/contexts";
 
 // export interface ISubLogicFlowConfig{
 //   subFlowId?:string
