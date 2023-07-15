@@ -18,7 +18,6 @@ import { ApiPanel } from "./MethodPanel/ApiPanel";
 import { useSelectedCode } from "UmlEditor/hooks/useSelectedCode";
 import { CodePanel } from "./CodePanel";
 import { useSelectedGraphLogic } from "UmlEditor/hooks/useSelectedGraphLogic";
-import { GraphLogicPanel } from "./MethodPanel/GraphLogicPanel";
 
 export const PropertyPanel = memo(() => {
   const metaId = useMetaId();
@@ -44,7 +43,6 @@ export const PropertyPanel = memo(() => {
       )}
       {relation && <RelationPanel relation={relation} />}
       {selectedScript && <ScriptPanel scriptLogic={selectedScript} />}
-      {selectedGraphLogic && <GraphLogicPanel graphLogic={selectedGraphLogic} />}
       {selectedApi && <ApiPanel api={selectedApi} />}
       {selecctedCode && <CodePanel code={selecctedCode} />}
       {!selectedElement && !selectedScript && !selectedGraphLogic && !selectedApi && !selecctedCode && (

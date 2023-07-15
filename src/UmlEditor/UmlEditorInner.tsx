@@ -94,7 +94,7 @@ export const UmlEditorInner = memo((
       modelList={<EntityTree graph={graph}></EntityTree>}
       toolbox={selectedDiagram && <Toolbox graph={graph}></Toolbox>}
       toolbar={<UmlToolbar actions={actions} />}
-      propertyBox={<PropertyPanel />}
+      propertyBox={!selectedGraphLogic ? <PropertyPanel /> : undefined}
     >
       {
         selectedDiagram &&
