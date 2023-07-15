@@ -1,6 +1,6 @@
 import { LogicFlowEditorAntd5 } from "@rxdrag/logicflow-editor-antd5"
 import { Fieldy } from "@rxdrag/react-fieldy"
-import { memo, useCallback, useEffect, useMemo, useState } from "react"
+import { memo, useCallback, useMemo } from "react"
 import styled from "styled-components"
 import { activityMaterialCategories, activityMaterialLocales } from "./minion-materials"
 import { useToken } from "antd/es/theme/internal"
@@ -17,11 +17,6 @@ const EditorShell = styled.div`
   display: flex;
   height: calc(100vh - 200px);
 `
-
-const EmpertyMetas = {
-  nodes: [],
-  lines: []
-}
 
 export const LogicEditor = memo((
   props: {
