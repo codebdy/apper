@@ -13,12 +13,13 @@ import { useAttribute } from "../hooks/useAttribute";
 import { useDeleteSelectedElement } from "../hooks/useDeleteSelectedElement";
 import { CONST_ID } from "../meta/Meta";
 import { Button, Divider, Space } from "antd";
-import { DeleteOutlined, RedoOutlined, UndoOutlined } from "@ant-design/icons";
-import { PRIMARY_COLOR } from "consts";
+import { DeleteOutlined, FunctionOutlined, RedoOutlined, UndoOutlined, ZoomInOutlined, ZoomOutOutlined } from "@ant-design/icons";
 import { ModelToolbar } from "common/ModelBoard/ModelToolbar";
 import { useMetaId } from "../hooks/useMetaId";
 import styled from "styled-components";
 import { useSelectedGraphLogic } from "UmlEditor/hooks/useSelectedGraphLogic";
+import { mapIcon, zoomResetIcon } from "./icons";
+import { MIN_ZOOM, MAX_ZOOM, useZoom, useZoomIn, useZoomOut } from "@rxdrag/minions-logicflow-editor";
 
 const ToolbarButton = styled((props) => <Button type="text" {...props} />)`
 `
@@ -41,6 +42,15 @@ export const UmlToolbar = memo((
   const redo = useRedo(metaId);
   const deleteSelectedElement = useDeleteSelectedElement(metaId);
   const [minMap, setMinMap] = useRecoilState(minMapState(metaId));
+  const { zoom, setZoom } = useZoom()
+  const zoomIn = useZoomIn()
+  const zoomOut = useZoomOut()
+
+  console.log("哈哈", zoom, setZoom)
+
+  const handleZoomReset = useCallback(() => {
+    setZoom(1)
+  }, [setZoom])
 
   const toggleMinMap = useCallback(() => {
     setMinMap((a) => !a);
@@ -57,6 +67,7 @@ export const UmlToolbar = memo((
   const handleDelete = useCallback(() => {
     deleteSelectedElement();
   }, [deleteSelectedElement]);
+
 
   return (
     <ModelToolbar>
@@ -84,20 +95,36 @@ export const UmlToolbar = memo((
         </ToolbarButton>
       </Space>
       <div style={{ flex: 1 }} />
-      <Space>
+      <Space
+        style={{ marginRight: 16 }}
+      >
         <ToolbarButton
           disabled={!selectedDiagram && !selectedLogicflow}
           onClick={toggleMinMap}
-          style={{ marginRight: 16 }}
+
           type={minMap ? "default" : "text"}
-          icon={<svg style={{ width: '18px', height: '18px', marginTop: "4px" }} viewBox="0 0 24 24">
-            <path
-              fill={minMap && selectedDiagram ? PRIMARY_COLOR : "currentColor"}
-              d="M12 4C14.2 4 16 5.8 16 8C16 10.1 13.9 13.5 12 15.9C10.1 13.4 8 10.1 8 8C8 5.8 9.8 4 12 4M12 2C8.7 2 6 4.7 6 8C6 12.5 12 19 12 19S18 12.4 18 8C18 4.7 15.3 2 12 2M12 6C10.9 6 10 6.9 10 8S10.9 10 12 10 14 9.1 14 8 13.1 6 12 6M20 19C20 21.2 16.4 23 12 23S4 21.2 4 19C4 17.7 5.2 16.6 7.1 15.8L7.7 16.7C6.7 17.2 6 17.8 6 18.5C6 19.9 8.7 21 12 21S18 19.9 18 18.5C18 17.8 17.3 17.2 16.2 16.7L16.8 15.8C18.8 16.6 20 17.7 20 19Z"
-            />
-          </svg>}
+          icon={mapIcon}
         >
         </ToolbarButton>
+        <ToolbarButton
+          icon={zoomResetIcon}
+          disabled={zoom === 1}
+          onClick={handleZoomReset}
+        ></ToolbarButton>
+        <ToolbarButton
+          icon={<ZoomOutOutlined />}
+          disabled={zoom === MIN_ZOOM}
+          onClick={zoomOut}
+        ></ToolbarButton>
+        <ToolbarButton
+          icon={<ZoomInOutlined />}
+          disabled={zoom === MAX_ZOOM}
+          onClick={zoomIn}
+        ></ToolbarButton>
+
+        <ToolbarButton
+          icon={<FunctionOutlined />}
+        ></ToolbarButton>
       </Space>
       {actions}
     </ModelToolbar>
