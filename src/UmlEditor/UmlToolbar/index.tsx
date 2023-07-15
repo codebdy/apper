@@ -13,13 +13,12 @@ import { useAttribute } from "../hooks/useAttribute";
 import { useDeleteSelectedElement } from "../hooks/useDeleteSelectedElement";
 import { CONST_ID } from "../meta/Meta";
 import { Button, Divider, Space } from "antd";
-import { DeleteOutlined, FunctionOutlined, RedoOutlined, UndoOutlined, ZoomInOutlined, ZoomOutOutlined } from "@ant-design/icons";
+import { DeleteOutlined, FunctionOutlined, RedoOutlined, UndoOutlined } from "@ant-design/icons";
 import { ModelToolbar } from "common/ModelBoard/ModelToolbar";
 import { useMetaId } from "../hooks/useMetaId";
 import styled from "styled-components";
 import { useSelectedGraphLogic } from "UmlEditor/hooks/useSelectedGraphLogic";
-import { mapIcon, zoomResetIcon } from "./icons";
-import { MIN_ZOOM, MAX_ZOOM, useZoom, useZoomIn, useZoomOut } from "@rxdrag/minions-logicflow-editor";
+import { mapIcon } from "./icons";
 
 const ToolbarButton = styled((props) => <Button type="text" {...props} />)`
 `
@@ -42,15 +41,6 @@ export const UmlToolbar = memo((
   const redo = useRedo(metaId);
   const deleteSelectedElement = useDeleteSelectedElement(metaId);
   const [minMap, setMinMap] = useRecoilState(minMapState(metaId));
-  const { zoom, setZoom } = useZoom()
-  const zoomIn = useZoomIn()
-  const zoomOut = useZoomOut()
-
-  console.log("哈哈", zoom, setZoom)
-
-  const handleZoomReset = useCallback(() => {
-    setZoom(1)
-  }, [setZoom])
 
   const toggleMinMap = useCallback(() => {
     setMinMap((a) => !a);
@@ -72,6 +62,19 @@ export const UmlToolbar = memo((
   return (
     <ModelToolbar>
       <Space>
+        {
+          !selectedLogicflow &&
+          <ToolbarButton
+            disabled={!selectedDiagram}
+            onClick={toggleMinMap}
+
+            type={minMap ? "default" : "text"}
+            icon={mapIcon}
+          >
+          </ToolbarButton>
+        }
+
+        <Divider />
         <ToolbarButton
           icon={<UndoOutlined />}
           disabled={undoList.length === 0}
@@ -98,33 +101,12 @@ export const UmlToolbar = memo((
       <Space
         style={{ marginRight: 16 }}
       >
-        <ToolbarButton
-          disabled={!selectedDiagram && !selectedLogicflow}
-          onClick={toggleMinMap}
-
-          type={minMap ? "default" : "text"}
-          icon={mapIcon}
-        >
-        </ToolbarButton>
-        <ToolbarButton
-          icon={zoomResetIcon}
-          disabled={zoom === 1}
-          onClick={handleZoomReset}
-        ></ToolbarButton>
-        <ToolbarButton
-          icon={<ZoomOutOutlined />}
-          disabled={zoom === MIN_ZOOM}
-          onClick={zoomOut}
-        ></ToolbarButton>
-        <ToolbarButton
-          icon={<ZoomInOutlined />}
-          disabled={zoom === MAX_ZOOM}
-          onClick={zoomIn}
-        ></ToolbarButton>
-
-        <ToolbarButton
-          icon={<FunctionOutlined />}
-        ></ToolbarButton>
+        {
+          selectedLogicflow &&
+          <ToolbarButton
+            icon={<FunctionOutlined />}
+          ></ToolbarButton>
+        }
       </Space>
       {actions}
     </ModelToolbar>

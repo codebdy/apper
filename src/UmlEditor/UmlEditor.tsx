@@ -1,18 +1,14 @@
-import { memo, useMemo } from "react"
+import { memo } from "react"
 import { UmlEditorInner, UmlEditorProps } from "./UmlEditorInner"
 import { RecoilRoot } from "recoil"
-import { EditorStore } from "@rxdrag/minions-logicflow-editor"
-import { LogicFlowEditorStoreContext } from "./LogicEditor/contexts"
+import { LogicFlowEditorScope } from "@rxdrag/minions-logicflow-editor"
 
 export const UmlEditor = memo((props: UmlEditorProps) => {
-  const store: EditorStore = useMemo(() => {
-    return new EditorStore()
-  }, [])
 
   return <RecoilRoot>
-    <LogicFlowEditorStoreContext.Provider value={store}>
+    <LogicFlowEditorScope>
       <UmlEditorInner {...props} />
-    </LogicFlowEditorStoreContext.Provider>
+    </LogicFlowEditorScope>
   </RecoilRoot>
 })
 

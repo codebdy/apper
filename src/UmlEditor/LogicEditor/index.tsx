@@ -10,10 +10,6 @@ import { MethodMeta } from "UmlEditor/meta"
 import { SubLogicFlowSelect } from "./setters/SubLogicFlowSelect"
 import { ActivityType, ILogicFlowDefine } from "@rxdrag/minions-schema"
 import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
-import { useLogicFlowEditorStore } from "./hooks/useLogicFlowEditorStore"
-import { minMapState } from "UmlEditor/recoil/atoms"
-import { useRecoilValue } from "recoil"
-
 
 const EditorShell = styled.div`
   flex: 1;
@@ -30,8 +26,6 @@ export const LogicEditor = memo((
 ) => {
   const { metaId, value, onChange } = props;
   const subFlows = useSubLogicFlows(metaId)
-  const logicFlowStore = useLogicFlowEditorStore()
-  const minMap = useRecoilValue(minMapState(metaId));
   const [, token] = useToken();
 
   const handleChange = useCallback((val: ILogicMetas) => {
@@ -58,7 +52,7 @@ export const LogicEditor = memo((
     <EditorShell>
       <Fieldy>
         {
-          value?.logicMetas && logicFlowStore && <LogicFlowEditorAntd5
+          value?.logicMetas  && <LogicFlowEditorAntd5
             materialCategories={activityMaterialCategories}
             locales={activityMaterialLocales}
             token={token}
@@ -70,8 +64,6 @@ export const LogicEditor = memo((
             }}
             canBeReferencedLogflowMetas={canBeReferencedLogflowMetas}
             toolbar={false}
-            editorStore={logicFlowStore}
-            showMap={minMap}
           />
         }
       </Fieldy>
