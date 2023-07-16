@@ -20,11 +20,10 @@ import { useMetaId } from "../hooks/useMetaId";
 import { useDnd } from "../GraphCanvas/useDnd";
 import styled from "styled-components";
 
-const { Panel } = Collapse;
 const Container = styled.div`
   display: flex;
   flex-flow: column;
-  border-right: solid 1px ${props=>props.theme.token?.colorBorder};
+  border-right: solid 1px ${props => props.theme.token?.colorBorder};
   width: 100px;
   align-items: center;
   overflow-y: auto;
@@ -89,17 +88,6 @@ export const Toolbox = memo((props: { graph?: Graph }) => {
   );
   const createTempClassNodeForNew = useCreateTempClassNodeForNew(metaId);
 
-  // useEffect(() => {
-  //   const theDnd = graph
-  //     ? new Dnd({
-  //       target: graph,
-  //       scaled: false,
-  //       animation: true,
-  //     })
-  //     : undefined;
-  //   setDnd(theDnd);
-  // }, [graph]);
-
   const startDragFn = (stereoType: StereoType) => {
     return (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       if (!graph) {
@@ -136,70 +124,73 @@ export const Toolbox = memo((props: { graph?: Graph }) => {
       <Collapse
         accordion
         defaultActiveKey={["1"]}
+
+        items={[
+          {
+            key: "1",
+            label: t("UmlEditor.Class"),
+            children: <>
+              <ToolItem onMouseDown={startDragFn(StereoType.Entity)}>
+                <ClassRect oneBorder={false} />
+                {t("UmlEditor.EntityClass")}
+              </ToolItem>
+              <ToolItem onMouseDown={startDragFn(StereoType.Abstract)}>
+                <ClassRect stereoChar="A" oneBorder={false} />
+                {t("UmlEditor.AbstractClass")}
+              </ToolItem>
+              <ToolItem onMouseDown={startDragFn(StereoType.Enum)}>
+                <ClassRect stereoChar="E" oneBorder={true} />
+                {t("UmlEditor.EnumClass")}
+              </ToolItem>
+              <ToolItem onMouseDown={startDragFn(StereoType.ValueObject)}>
+                <ClassRect stereoChar="V" oneBorder={true} />
+                {t("UmlEditor.ValueClass")}
+              </ToolItem>
+              <ToolItem
+                selected={pressedLineType === RelationType.INHERIT}
+                onClick={handleRelationClick(RelationType.INHERIT)}
+              >
+                {svgInherit}
+                {t("UmlEditor.Inherit")}
+              </ToolItem>
+            </>
+          },
+          {
+            key: "2",
+            label: t("UmlEditor.Relationships"),
+            children: <>
+              <ToolItem
+                selected={pressedLineType === RelationType.TWO_WAY_ASSOCIATION}
+                onClick={handleRelationClick(RelationType.TWO_WAY_ASSOCIATION)}
+              >
+                {svgTwoWayAssociation}
+                {t("UmlEditor.Association")}
+              </ToolItem>
+              <ToolItem
+                selected={pressedLineType === RelationType.TWO_WAY_AGGREGATION}
+                onClick={handleRelationClick(RelationType.TWO_WAY_AGGREGATION)}
+              >
+                {svgTwoWayAggregation}
+                {t("UmlEditor.Aggregation")}
+              </ToolItem>
+              <ToolItem
+                selected={pressedLineType === RelationType.TWO_WAY_COMBINATION}
+                onClick={handleRelationClick(RelationType.TWO_WAY_COMBINATION)}
+              >
+                {svgTwoWayCombination}
+                {t("UmlEditor.Combination")}
+              </ToolItem>
+              <ToolItem
+                selected={pressedLineType === RelationType.ONE_WAY_ASSOCIATION}
+                onClick={handleRelationClick(RelationType.ONE_WAY_ASSOCIATION)}
+              >
+                {svgOneWayAssociation}
+                {t("UmlEditor.OneWanAssociation")}
+              </ToolItem>
+            </>
+          }
+        ]}
       >
-        <Panel header={t("UmlEditor.Class")} key="1">
-          <ToolItem onMouseDown={startDragFn(StereoType.Entity)}>
-            <ClassRect oneBorder={false} />
-            {t("UmlEditor.EntityClass")}
-          </ToolItem>
-          <ToolItem onMouseDown={startDragFn(StereoType.Abstract)}>
-            <ClassRect stereoChar="A" oneBorder={false} />
-            {t("UmlEditor.AbstractClass")}
-          </ToolItem>
-          <ToolItem onMouseDown={startDragFn(StereoType.Enum)}>
-            <ClassRect stereoChar="E" oneBorder={true} />
-            {t("UmlEditor.EnumClass")}
-          </ToolItem>
-          <ToolItem onMouseDown={startDragFn(StereoType.ValueObject)}>
-            <ClassRect stereoChar="V" oneBorder={true} />
-            {t("UmlEditor.ValueClass")}
-          </ToolItem>
-          {/* <ToolItem onMouseDown={startDragFn(StereoType.ThirdParty)}>
-            <ClassRect stereoChar="T" oneBorder={true} />
-            {t("UmlEditor.ThirdPartyClass")}
-          </ToolItem> */}
-          {/* <ToolItem onMouseDown={startDragFn(StereoType.Service)}>
-            <ClassRect stereoChar="V" oneBorder={true} />
-            {t("UmlEditor.ServiceClass")}
-          </ToolItem> */}
-          <ToolItem
-            selected={pressedLineType === RelationType.INHERIT}
-            onClick={handleRelationClick(RelationType.INHERIT)}
-          >
-            {svgInherit}
-            {t("UmlEditor.Inherit")}
-          </ToolItem>
-        </Panel>
-        <Panel header={t("UmlEditor.Relationships")} key="2">
-          <ToolItem
-            selected={pressedLineType === RelationType.TWO_WAY_ASSOCIATION}
-            onClick={handleRelationClick(RelationType.TWO_WAY_ASSOCIATION)}
-          >
-            {svgTwoWayAssociation}
-            {t("UmlEditor.Association")}
-          </ToolItem>
-          <ToolItem
-            selected={pressedLineType === RelationType.TWO_WAY_AGGREGATION}
-            onClick={handleRelationClick(RelationType.TWO_WAY_AGGREGATION)}
-          >
-            {svgTwoWayAggregation}
-            {t("UmlEditor.Aggregation")}
-          </ToolItem>
-          <ToolItem
-            selected={pressedLineType === RelationType.TWO_WAY_COMBINATION}
-            onClick={handleRelationClick(RelationType.TWO_WAY_COMBINATION)}
-          >
-            {svgTwoWayCombination}
-            {t("UmlEditor.Combination")}
-          </ToolItem>
-          <ToolItem
-            selected={pressedLineType === RelationType.ONE_WAY_ASSOCIATION}
-            onClick={handleRelationClick(RelationType.ONE_WAY_ASSOCIATION)}
-          >
-            {svgOneWayAssociation}
-            {t("UmlEditor.OneWanAssociation")}
-          </ToolItem>
-        </Panel>
       </Collapse>
       {/* <CategoryCollapse title={intl.get("one-way-relation")}>
         <ToolItem
