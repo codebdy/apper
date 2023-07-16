@@ -19,6 +19,7 @@ import { useMetaId } from "../hooks/useMetaId";
 import styled from "styled-components";
 import { useSelectedGraphLogic } from "UmlEditor/hooks/useSelectedGraphLogic";
 import { mapIcon } from "./icons";
+import { useRemoveSelected, useSelected } from "@rxdrag/minions-logicflow-editor";
 
 const ToolbarButton = styled((props) => <Button type="text" {...props} />)`
 `
@@ -58,6 +59,8 @@ export const UmlToolbar = memo((
     deleteSelectedElement();
   }, [deleteSelectedElement]);
 
+  const { selected } = useSelected()
+  const handleRemove = useRemoveSelected()
 
   return (
     <ModelToolbar>
@@ -88,14 +91,24 @@ export const UmlToolbar = memo((
         >
         </ToolbarButton>
         <Divider type="vertical" />
-        <ToolbarButton
-          disabled={
-            (attribute && attribute.name === CONST_ID) || !selectedElement
-          }
-          icon={<DeleteOutlined />}
-          onClick={handleDelete}
-        >
-        </ToolbarButton>
+        {
+          !selectedLogicflow ?
+            <ToolbarButton
+              disabled={
+                (attribute && attribute.name === CONST_ID) || !selectedElement
+              }
+              icon={<DeleteOutlined />}
+              onClick={handleDelete}
+            ></ToolbarButton>
+            :
+            <ToolbarButton
+              disabled={
+                !selected
+              }
+              icon={<DeleteOutlined />}
+              onClick={handleRemove}
+            ></ToolbarButton>
+        }
       </Space>
       <div style={{ flex: 1 }} />
       <Space
