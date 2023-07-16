@@ -12,7 +12,6 @@ import { MultiLangInput } from "components/MultiLangInput";
 import { useMetaId } from "../hooks/useMetaId";
 import { PannelContainer } from "./PannelContainer";
 
-const { Panel } = Collapse;
 const { Option } = Select;
 
 export const RelationPanel = (props: { relation: RelationMeta }) => {
@@ -54,7 +53,7 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
             padding: "8px",
           }}>{t("UmlEditor.Inherit")}</div>
           : <Form
-            name="classForm"
+            name="relationForm"
             form={form}
             colon={false}
             labelAlign="left"
@@ -64,100 +63,112 @@ export const RelationPanel = (props: { relation: RelationMeta }) => {
             autoComplete="off"
             onValuesChange={handleChange}
           >
-            <Collapse className="no-border" defaultActiveKey={['1', '2']}>
-              <Panel header={source?.name + t("UmlEditor.Side")} key="1">
-                <Form.Item
-                  label={t("UmlEditor.Multiplicity")}
-                  name="sourceMutiplicity"
-                >
-                  <Select>
-                    <Option value={RelationMultiplicity.ZERO_ONE}> {RelationMultiplicity.ZERO_ONE}</Option>
-                    {relation.relationType !==
-                      RelationType.ONE_WAY_COMBINATION &&
-                      relation.relationType !==
-                      RelationType.TWO_WAY_COMBINATION && (
-                        <Option value={RelationMultiplicity.ZERO_MANY}> {RelationMultiplicity.ZERO_MANY}</Option>
-                      )}
-                  </Select>
-
-                </Form.Item>
+            <Collapse className="no-border" defaultActiveKey={['1', '2']}
+              items={[
                 {
-                  relation.relationType !== RelationType.ONE_WAY_AGGREGATION &&
-                  relation.relationType !== RelationType.ONE_WAY_ASSOCIATION &&
-                  relation.relationType !== RelationType.ONE_WAY_COMBINATION &&
-                  <>
+                  key: "1",
+                  label: source?.name + t("UmlEditor.Side"),
+                  children: <>
+                    <Form.Item
+                      label={t("UmlEditor.Multiplicity")}
+                      name="sourceMutiplicity"
+                    >
+                      <Select>
+                        <Option value={RelationMultiplicity.ZERO_ONE}> {RelationMultiplicity.ZERO_ONE}</Option>
+                        {relation.relationType !==
+                          RelationType.ONE_WAY_COMBINATION &&
+                          relation.relationType !==
+                          RelationType.TWO_WAY_COMBINATION && (
+                            <Option value={RelationMultiplicity.ZERO_MANY}> {RelationMultiplicity.ZERO_MANY}</Option>
+                          )}
+                      </Select>
+
+                    </Form.Item>
+                    {
+                      relation.relationType !== RelationType.ONE_WAY_AGGREGATION &&
+                      relation.relationType !== RelationType.ONE_WAY_ASSOCIATION &&
+                      relation.relationType !== RelationType.ONE_WAY_COMBINATION &&
+                      <>
+                        <Form.Item
+                          label={t("UmlEditor.RoleName")}
+                          name="roleOfSource"
+                        >
+                          <Input />
+                        </Form.Item>
+                        <Form.Item
+                          label={t("Label")}
+                          name="labelOfSource"
+                        >
+                          <MultiLangInput inline title={t("Label")} />
+                        </Form.Item>
+                        <Form.Item
+                          label={t("UmlEditor.Description")}
+                          name="descriptionOnSource"
+                        >
+                          <Input.TextArea />
+                        </Form.Item>
+                      </>
+                    }
+                  </>
+                },
+                {
+                  key: "2",
+                  label: target?.name + t("UmlEditor.Side"),
+                  children: <>
+                    <Form.Item
+                      label={t("UmlEditor.Multiplicity")}
+                      name="targetMultiplicity"
+                    >
+                      <Select>
+                        <Option value={RelationMultiplicity.ZERO_ONE}> {RelationMultiplicity.ZERO_ONE}</Option>
+                        <Option value={RelationMultiplicity.ZERO_MANY}> {RelationMultiplicity.ZERO_MANY}</Option>
+                      </Select>
+                    </Form.Item>
                     <Form.Item
                       label={t("UmlEditor.RoleName")}
-                      name="roleOfSource"
+                      name="roleOfTarget"
                     >
                       <Input />
                     </Form.Item>
                     <Form.Item
                       label={t("Label")}
-                      name="labelOfSource"
+                      name="labelOfTarget"
                     >
                       <MultiLangInput inline title={t("Label")} />
                     </Form.Item>
                     <Form.Item
                       label={t("UmlEditor.Description")}
-                      name="descriptionOnSource"
+                      name="descriptionOnTarget"
                     >
                       <Input.TextArea />
                     </Form.Item>
                   </>
+                },
+                {
+                  key: "3",
+                  label: t("UmlEditor.Other"),
+                  children: <>
+                    <Form.Item
+                      label={t("UmlEditor.Type")}
+                      name="relationType"
+                    >
+                      <Select>
+                        <Option value={RelationType.TWO_WAY_ASSOCIATION}> {t("UmlEditor.Association")}</Option>
+                        <Option value={RelationType.TWO_WAY_AGGREGATION}> {t("UmlEditor.Aggregation")}</Option>
+                        <Option value={RelationType.TWO_WAY_COMBINATION}> {t("UmlEditor.Combination")}</Option>
+                        <Option value={RelationType.ONE_WAY_ASSOCIATION}> {t("UmlEditor.OneWanAssociation")}</Option>
+                      </Select>
+                    </Form.Item>
+                    <Form.Item
+                      label={"InnerId"}
+                      name="innerId"
+                    >
+                      <Input disabled />
+                    </Form.Item>
+                  </>
                 }
-              </Panel>
-              <Panel header={target?.name + t("UmlEditor.Side")} key="2">
-                <Form.Item
-                  label={t("UmlEditor.Multiplicity")}
-                  name="targetMultiplicity"
-                >
-                  <Select>
-                    <Option value={RelationMultiplicity.ZERO_ONE}> {RelationMultiplicity.ZERO_ONE}</Option>
-                    <Option value={RelationMultiplicity.ZERO_MANY}> {RelationMultiplicity.ZERO_MANY}</Option>
-                  </Select>
-                </Form.Item>
-                <Form.Item
-                  label={t("UmlEditor.RoleName")}
-                  name="roleOfTarget"
-                >
-                  <Input />
-                </Form.Item>
-                <Form.Item
-                  label={t("Label")}
-                  name="labelOfTarget"
-                >
-                  <MultiLangInput inline title={t("Label")} />
-                </Form.Item>
-                <Form.Item
-                  label={t("UmlEditor.Description")}
-                  name="descriptionOnTarget"
-                >
-                  <Input.TextArea />
-                </Form.Item>
-              </Panel>
-              {
-                RelationType.INHERIT !== relation.relationType &&
-                <Panel header={t("UmlEditor.Other")} key="3">
-                  <Form.Item
-                    label={t("UmlEditor.Type")}
-                    name="relationType"
-                  >
-                    <Select>
-                      <Option value={RelationType.TWO_WAY_ASSOCIATION}> {t("UmlEditor.Association")}</Option>
-                      <Option value={RelationType.TWO_WAY_AGGREGATION}> {t("UmlEditor.Aggregation")}</Option>
-                      <Option value={RelationType.TWO_WAY_COMBINATION}> {t("UmlEditor.Combination")}</Option>
-                      <Option value={RelationType.ONE_WAY_ASSOCIATION}> {t("UmlEditor.OneWanAssociation")}</Option>
-                    </Select>
-                  </Form.Item>
-                  <Form.Item
-                    label={"InnerId"}
-                    name="innerId"
-                  >
-                    <Input disabled />
-                  </Form.Item>
-                </Panel>
-              }
+              ]}
+            >
             </Collapse>
 
           </Form>
