@@ -2243,15 +2243,15 @@
     "@rxdrag/shared" "1.1.0"
     lodash "^4.17.21"
 
-"@rxdrag/logicflow-editor-antd5@^0.2.27":
-  version "0.2.27"
-  resolved "https://registry.yarnpkg.com/@rxdrag/logicflow-editor-antd5/-/logicflow-editor-antd5-0.2.27.tgz#fee5725020aff4cd5aa5502194129022484450b3"
-  integrity sha512-FhY/2DRGprgBf2S3kNldbK4FbcKGxHN2IuPv6OhI16cmQGIS3U+95VuwjhJ/uAxmbFY0YF2n9+O7RcRXDJIEVA==
+"@rxdrag/logicflow-editor-antd5@^0.2.30":
+  version "0.2.30"
+  resolved "https://registry.yarnpkg.com/@rxdrag/logicflow-editor-antd5/-/logicflow-editor-antd5-0.2.30.tgz#06bffc8984e722725bb415a874a2bfde9c86f162"
+  integrity sha512-Nw8KCHzg6+WR7TNP3ODPCFHVTMZvq2Z2DGQ0HUYVg6xI+riOoOUq9BEU4kq1bJnEDMUqnwDn+6IB0isOpPub+Q==
   dependencies:
     "@ant-design/icons" "^4.8.0"
     "@rxdrag/fieldy" "0.2.4"
     "@rxdrag/locales" "0.2.2"
-    "@rxdrag/minions-logicflow-editor" "0.2.15"
+    "@rxdrag/minions-logicflow-editor" "0.2.18"
     "@rxdrag/minions-runtime-react" "0.2.3"
     "@rxdrag/minions-schema" "0.2.5"
     "@rxdrag/react-antd-components" "0.2.5"
@@ -2278,10 +2278,10 @@
     "@rxdrag/minions-schema" "0.2.5"
     lodash "^4.17.21"
 
-"@rxdrag/minions-logicflow-editor@0.2.15", "@rxdrag/minions-logicflow-editor@^0.2.15":
-  version "0.2.15"
-  resolved "https://registry.yarnpkg.com/@rxdrag/minions-logicflow-editor/-/minions-logicflow-editor-0.2.15.tgz#e035998a05cda075f6f2c1964058cc83a2792e6c"
-  integrity sha512-Wr/up9I0AjFUGJ/ZvsHXnKJQZPEl2qYnBPtZBA5Rr0/Mi0wDEzK0Hq6d/BPr21x/YHhjltyrH9XJr5EUaBPcXg==
+"@rxdrag/minions-logicflow-editor@0.2.18", "@rxdrag/minions-logicflow-editor@^0.2.18":
+  version "0.2.18"
+  resolved "https://registry.yarnpkg.com/@rxdrag/minions-logicflow-editor/-/minions-logicflow-editor-0.2.18.tgz#8ec98d42a7037d5ade0572d586866d686772bd5d"
+  integrity sha512-dnrqfq/WbxGK/xCa8bxqjMfL6oftL9IqqPNVFAUllGoEJR+uo98qWYVS5/3nm5ECf00Ki1lVRF/bhqQLsmGwuQ==
   dependencies:
     "@antv/x6" "^2.10.1"
     "@antv/x6-plugin-dnd" "^2.0.5"

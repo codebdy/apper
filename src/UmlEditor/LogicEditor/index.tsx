@@ -17,6 +17,11 @@ const EditorShell = styled.div`
   height: calc(100vh - 200px);
 `
 
+const EmpertyLogic: ILogicMetas = {
+  nodes: [],
+  lines: []
+}
+
 export const LogicEditor = memo((
   props: {
     metaId: string,
@@ -52,11 +57,11 @@ export const LogicEditor = memo((
     <EditorShell>
       <Fieldy>
         {
-          value?.logicMetas  && <LogicFlowEditorAntd5
+          value && <LogicFlowEditorAntd5
             materialCategories={activityMaterialCategories}
             locales={activityMaterialLocales}
             token={token}
-            value={value?.logicMetas}
+            value={value?.logicMetas || EmpertyLogic}
             logicFlowContext={logicFlowContext}
             onChange={handleChange}
             setters={{
