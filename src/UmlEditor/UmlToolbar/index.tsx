@@ -13,15 +13,16 @@ import { useAttribute } from "../hooks/useAttribute";
 import { useDeleteSelectedElement } from "../hooks/useDeleteSelectedElement";
 import { CONST_ID } from "../meta/Meta";
 import { Button, Divider, Space } from "antd";
-import { DeleteOutlined, FunctionOutlined, RedoOutlined, UndoOutlined } from "@ant-design/icons";
+import { DeleteOutlined, RedoOutlined, UndoOutlined } from "@ant-design/icons";
 import { ModelToolbar } from "common/ModelBoard/ModelToolbar";
 import { useMetaId } from "../hooks/useMetaId";
 import styled from "styled-components";
 import { useSelectedGraphLogic } from "UmlEditor/hooks/useSelectedGraphLogic";
 import { mapIcon } from "./icons";
 import { useRemoveSelected, useSelected } from "@rxdrag/minions-logicflow-editor";
+import { LogicFlowProperty } from "./LogicFlowProperty";
 
-const ToolbarButton = styled((props) => <Button type="text" {...props} />)`
+export const ToolbarButton = styled((props) => <Button type="text" {...props} />)`
 `
 
 export const UmlToolbar = memo((
@@ -116,9 +117,7 @@ export const UmlToolbar = memo((
       >
         {
           selectedLogicflow &&
-          <ToolbarButton
-            icon={<FunctionOutlined />}
-          ></ToolbarButton>
+          <LogicFlowProperty />
         }
       </Space>
       {actions}
