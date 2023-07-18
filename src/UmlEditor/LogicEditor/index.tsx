@@ -8,7 +8,7 @@ import { useSubLogicFlows } from "UmlEditor/hooks/useSubLogicFlows"
 import { ILogicFlowContext } from "./contexts"
 import { MethodMeta } from "UmlEditor/meta"
 import { SubLogicFlowSelect } from "./setters/SubLogicFlowSelect"
-import { ActivityType, ILogicFlowDefine } from "@rxdrag/minions-schema"
+import { NodeType, ILogicFlowDefine } from "@rxdrag/minions-schema"
 import { ILogicMetas } from "@rxdrag/minions-logicflow-editor"
 
 const EditorShell = styled.div`
@@ -47,7 +47,7 @@ export const LogicEditor = memo((
     return subFlows.map(subflow => ({
       id: subflow.uuid,
       name: subflow.name,
-      type: ActivityType.LogicFlowActivity,
+      type: NodeType.LogicFlowActivity,
       nodes: subflow?.logicMetas?.nodes || [],
       lines: subflow?.logicMetas?.lines || [],
     }))

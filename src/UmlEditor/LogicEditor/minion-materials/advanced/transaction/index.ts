@@ -1,4 +1,4 @@
-import { ActivityType } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { transactionIcon } from "../../icons";
 import { transactionSchema } from "./schema";
@@ -7,7 +7,7 @@ import { createUuid } from "@rxdrag/shared";
 export const transactionMaterial: IRxDragActivityMaterial = {
   icon: transactionIcon,
   label: "$transaction",
-  activityType: ActivityType.EmbeddedFlow,
+  activityType: NodeType.EmbeddedFlow,
   defaultPorts: {
     inPorts: [
       {

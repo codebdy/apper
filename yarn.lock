@@ -2243,17 +2243,17 @@
     "@rxdrag/shared" "1.1.0"
     lodash "^4.17.21"
 
-"@rxdrag/logicflow-editor-antd5@^0.2.30":
-  version "0.2.30"
-  resolved "https://registry.yarnpkg.com/@rxdrag/logicflow-editor-antd5/-/logicflow-editor-antd5-0.2.30.tgz#06bffc8984e722725bb415a874a2bfde9c86f162"
-  integrity sha512-Nw8KCHzg6+WR7TNP3ODPCFHVTMZvq2Z2DGQ0HUYVg6xI+riOoOUq9BEU4kq1bJnEDMUqnwDn+6IB0isOpPub+Q==
+"@rxdrag/logicflow-editor-antd5@^0.2.33":
+  version "0.2.33"
+  resolved "https://registry.yarnpkg.com/@rxdrag/logicflow-editor-antd5/-/logicflow-editor-antd5-0.2.33.tgz#92022fee175f833d0274e07c566371dbf36e2eeb"
+  integrity sha512-n/YpAJeiGergweHbyYllWBe8SjwvLSOpxfVZZRPyXGqQ411+hVQ2vkHG6mu7FqJyZl4v0R7Gh12j70aUHVgmuw==
   dependencies:
     "@ant-design/icons" "^4.8.0"
     "@rxdrag/fieldy" "0.2.4"
     "@rxdrag/locales" "0.2.2"
-    "@rxdrag/minions-logicflow-editor" "0.2.18"
-    "@rxdrag/minions-runtime-react" "0.2.3"
-    "@rxdrag/minions-schema" "0.2.5"
+    "@rxdrag/minions-logicflow-editor" "0.2.20"
+    "@rxdrag/minions-runtime-react" "0.2.4"
+    "@rxdrag/minions-schema" "0.2.6"
     "@rxdrag/react-antd-components" "0.2.5"
     "@rxdrag/react-antd-props-inputs" "0.2.3"
     "@rxdrag/react-fieldy" "0.2.3"
@@ -2269,19 +2269,19 @@
     redux "^4.2.1"
     styled-components "^5.3.9"
 
-"@rxdrag/minions-activities@0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@rxdrag/minions-activities/-/minions-activities-0.2.3.tgz#085d8b246e38d0498977c0ba00b0e31f70f5d8f4"
-  integrity sha512-VXR6InQqPLx85Bgr2+tc2JoanqI2MMyVbh6luXaWwIHax3mkDNnmKR56PZiMgtYCHdD2OtksM8iFabxQ4J0Vxg==
+"@rxdrag/minions-activities@0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@rxdrag/minions-activities/-/minions-activities-0.2.4.tgz#ca0ab8d4fb1dea7fa7ed7b2002be60b96b0fda8b"
+  integrity sha512-Mx8fR+QE0S0I0MfofclwadUPr0WYhocL6Q6u+r93urB0d+L3EWPkVukhPeHEVXnHL/6ylGOTdYq6Zkd1FiydQA==
   dependencies:
-    "@rxdrag/minions-runtime" "0.2.4"
-    "@rxdrag/minions-schema" "0.2.5"
+    "@rxdrag/minions-runtime" "0.2.5"
+    "@rxdrag/minions-schema" "0.2.6"
     lodash "^4.17.21"
 
-"@rxdrag/minions-logicflow-editor@0.2.18", "@rxdrag/minions-logicflow-editor@^0.2.18":
-  version "0.2.18"
-  resolved "https://registry.yarnpkg.com/@rxdrag/minions-logicflow-editor/-/minions-logicflow-editor-0.2.18.tgz#8ec98d42a7037d5ade0572d586866d686772bd5d"
-  integrity sha512-dnrqfq/WbxGK/xCa8bxqjMfL6oftL9IqqPNVFAUllGoEJR+uo98qWYVS5/3nm5ECf00Ki1lVRF/bhqQLsmGwuQ==
+"@rxdrag/minions-logicflow-editor@0.2.20", "@rxdrag/minions-logicflow-editor@^0.2.20":
+  version "0.2.20"
+  resolved "https://registry.yarnpkg.com/@rxdrag/minions-logicflow-editor/-/minions-logicflow-editor-0.2.20.tgz#19c41f413d96941be98f6983508da6646b7a54ec"
+  integrity sha512-rUDTH4b0Oc9pfzBGqRWujXxp/a2aWaaofHgnI3P2vLMvIWCJ1EHVVLibC+xRTreCoWbQYDQAh86/IA9UNTa6pg==
   dependencies:
     "@antv/x6" "^2.10.1"
     "@antv/x6-plugin-dnd" "^2.0.5"
@@ -2289,8 +2289,8 @@
     "@antv/x6-plugin-selection" "^2.1.7"
     "@antv/x6-react-shape" "^2.1.2"
     "@reduxjs/toolkit" "^1.9.3"
-    "@rxdrag/minions-activities" "0.2.3"
-    "@rxdrag/minions-schema" "0.2.5"
+    "@rxdrag/minions-activities" "0.2.4"
+    "@rxdrag/minions-schema" "0.2.6"
     insert-css "^2.0.0"
     redux "^4.2.1"
     styled-components "^5.3.9"
@@ -2311,6 +2311,14 @@
   dependencies:
     "@rxdrag/minions-runtime" "0.2.3"
     "@rxdrag/minions-schema" "0.2.3"
+
+"@rxdrag/minions-runtime-react@0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@rxdrag/minions-runtime-react/-/minions-runtime-react-0.2.4.tgz#f18aab19f2d64030e3844127ca50f2b2387c9574"
+  integrity sha512-e0S2Pf3JaBC7ml09g2xXKOxuRIM+JWDwdofd51ne8kBjI58PaJcbEy6NGdVfHkNEWWXr4oKQp+a4Us+arPjbgA==
+  dependencies:
+    "@rxdrag/minions-runtime" "0.2.5"
+    "@rxdrag/minions-schema" "0.2.6"
 
 "@rxdrag/minions-runtime-react@1.0.0":
   version "1.0.0"
@@ -2335,6 +2343,11 @@
   resolved "https://registry.yarnpkg.com/@rxdrag/minions-runtime/-/minions-runtime-0.2.4.tgz#ce879f09e14184e0082031d7d143cd97bfa3f499"
   integrity sha512-LgejaDz0a9FXOShDFBPX60GNYE4zJVRrYGUQL9Wpqi94ej5+kels7sZLTBBk8AjZSGnNzh1AX1wRTLMuWv4z9A==
 
+"@rxdrag/minions-runtime@0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@rxdrag/minions-runtime/-/minions-runtime-0.2.5.tgz#ba8ff5e2c995f61c71d48861d46070f2401ac420"
+  integrity sha512-laGOGpzUG1JkjJaRsic1Fc230FkAtBC9hezWTFrJgzI6882hP1cbj1B12idRueANDf+CdSNTs9zvE3Cy+EyadQ==
+
 "@rxdrag/minions-runtime@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@rxdrag/minions-runtime/-/minions-runtime-1.0.0.tgz#ec8b6d1bccb7e24cfee8d47c3b34447b88f6ca78"
@@ -2350,10 +2363,10 @@
   resolved "https://registry.yarnpkg.com/@rxdrag/minions-schema/-/minions-schema-0.2.3.tgz#f91b0a9458bffa580fea4ffd116efa3f58d33de9"
   integrity sha512-+FcVYVhke+llqYn44mpmk+PPWJtp1tp3O4sJbq/KPNkAAXjehu4DsCWd435zz5kcnp2lTDAtxaTuSgd7MTNl5Q==
 
-"@rxdrag/minions-schema@0.2.5", "@rxdrag/minions-schema@^0.2.5":
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/@rxdrag/minions-schema/-/minions-schema-0.2.5.tgz#15872f93989e65255b788432c2b1b51606a144f5"
-  integrity sha512-xjIRCIMWGWIWLcZttPQHNI/T64P8uDMSeKod1+Z20SHWaX12zd6sB/D84zQko5uTpXSOs7N9/xpVrv4uEolCjg==
+"@rxdrag/minions-schema@0.2.6", "@rxdrag/minions-schema@^0.2.6":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@rxdrag/minions-schema/-/minions-schema-0.2.6.tgz#074d013071c9daa203b2305b81368e4065985c5a"
+  integrity sha512-9RjuLHflwRrnn3zxmnQDa6NVTbkzKv1P6hflzOb0kO5a0QHtNx4iYYc5Tnm9VOMNMw0BwYV4uaHr8YAnDbRD9w==
 
 "@rxdrag/minions-schema@1.0.0":
   version "1.0.0"

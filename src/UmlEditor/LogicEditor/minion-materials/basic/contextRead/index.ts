@@ -1,7 +1,7 @@
 import { createUuid } from "@rxdrag/shared";
 import { contextReadSchema } from "./schema";
 import { ReactNode } from "react";
-import { ActivityType, IActivityMaterial } from "@rxdrag/minions-schema";
+import { NodeType, IActivityMaterial } from "@rxdrag/minions-schema";
 import { contextReadIcon } from "../../icons";
 import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "../../consts";
 
@@ -9,7 +9,7 @@ export const contextReadMaterial: IActivityMaterial<ReactNode> = {
   activityName: "contextRead",
   icon:contextReadIcon,
   label: "$contextRead",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
       {

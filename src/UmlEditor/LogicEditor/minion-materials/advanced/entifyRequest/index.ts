@@ -1,7 +1,7 @@
 import { createUuid } from "@rxdrag/shared";
 import { constValueSchema } from "./schema";
 import { ReactNode } from "react";
-import { ActivityType, IActivityMaterial } from "@rxdrag/minions-schema";
+import { NodeType, IActivityMaterial } from "@rxdrag/minions-schema";
 import { entifyRequestIcon } from "../../icons";
 import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "../../consts";
 
@@ -9,7 +9,7 @@ export const entifyRequestMaterial: IActivityMaterial<ReactNode> = {
   activityName: "engifyRequest",
   icon: entifyRequestIcon,
   label: "$entifyRequest",
-  activityType: ActivityType.Activity,
+  activityType: NodeType.Activity,
   defaultPorts: {
     inPorts: [
       {

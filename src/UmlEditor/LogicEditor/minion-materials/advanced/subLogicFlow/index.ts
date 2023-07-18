@@ -1,4 +1,4 @@
-import { ActivityType, ILogicFlowConfig } from "@rxdrag/minions-schema";
+import { NodeType, ILogicFlowConfig } from "@rxdrag/minions-schema";
 import { methodIcon } from "../../icons";
 import { IRxDragActivityMaterial } from "../../interfaces";
 import { subLogicFlowSchema } from "./schema";
@@ -12,7 +12,7 @@ export const subLogicFlowMaterial: IRxDragActivityMaterial<ILogicFlowConfig, ILo
   activityName: "subLogicFlow",
   icon: methodIcon,
   label: "$subLogicFlow",
-  activityType: ActivityType.LogicFlowActivity,
+  activityType: NodeType.LogicFlowActivity,
   defaultPorts: {
   },
   subTitle: (config?: ILogicFlowConfig, context?: ILogicFlowContext) => {
