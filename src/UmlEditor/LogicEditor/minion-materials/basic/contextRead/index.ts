@@ -1,11 +1,12 @@
 import { createUuid } from "@rxdrag/shared";
 import { contextReadSchema } from "./schema";
-import { ReactNode } from "react";
-import { NodeType, IActivityMaterial } from "@rxdrag/minions-schema";
+import { NodeType } from "@rxdrag/minions-schema";
 import { contextReadIcon } from "../../icons";
 import { DEFAULT_INPUT_NAME, DEFAULT_OUTPUT_NAME } from "../../consts";
+import { IRxDragActivityMaterial } from "../../interfaces";
+import { IContextVariableConfig } from "../contextWrite";
 
-export const contextReadMaterial: IActivityMaterial<ReactNode> = {
+export const contextReadMaterial:  IRxDragActivityMaterial<IContextVariableConfig>= {
   activityName: "contextRead",
   icon:contextReadIcon,
   label: "$contextRead",
@@ -27,4 +28,7 @@ export const contextReadMaterial: IActivityMaterial<ReactNode> = {
     ],
   },
   schema: contextReadSchema,
+  subTitle: (config?: IContextVariableConfig) => {
+    return config?.name
+  },
 }

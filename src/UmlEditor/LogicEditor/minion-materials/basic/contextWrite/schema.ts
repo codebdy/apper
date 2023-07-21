@@ -1,26 +1,26 @@
 import { INodeSchema } from "@rxdrag/schema";
 import { labelSchema } from "../../baseSchema";
 
-export const constValueSchema: INodeSchema = {
+export const contextWriteSchema: INodeSchema = {
   componentName: "Fragment",
   children: [
     labelSchema,
     {
       componentName: "FormItem",
       props: {
-        label: "$value",
+        label: "$name",
       },
       children: [
         {
-          componentName: "ValueInput",
+          componentName: "Input",
           "x-field": {
-            name: `config.value`,
+            name: `config.name`,
             params: {
               withBind: true,
             }
           },
         }
       ]
-    },
+    }
   ],
 }

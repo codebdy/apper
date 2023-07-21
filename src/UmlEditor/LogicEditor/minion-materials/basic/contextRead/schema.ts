@@ -8,19 +8,19 @@ export const contextReadSchema: INodeSchema = {
     {
       componentName: "FormItem",
       props: {
-        label: "$value",
+        label: "$name",
       },
       children: [
         {
-          componentName: "ValueInput",
+          componentName: "Input",
           "x-field": {
-            name: `config.value`,
+            name: `config.name`,
             params: {
               withBind: true,
             }
           },
         }
       ]
-    },
+    }
   ],
 }
